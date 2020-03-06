@@ -1,0 +1,45 @@
+{
+    "groupBy": {
+        "Enhancements:": [
+            "enhancement",
+            "internal"
+        ],
+        "Bug Fixes:": [
+            "bug"
+        ],
+        "Dependency Updates": [
+            "dependency",
+            "dependencies"
+        ],
+        "Feature": [
+            "feature"
+        ],
+        "Security": [
+            "security"
+        ],
+        "Others": [
+            "release",
+            "buildtools"
+        ],
+        "@donmahallem/trapeze-api-types": [
+            "trapeze-api-types",
+            "pkg:trapeze-api-types"
+        ],
+        "@donmahallem/trapeze-api-proxy-router": [
+            "trapeze-api-proxy-router",
+            "pkg:trapeze-api-proxy-router"
+        ],
+        "@donmahallem/trapeze-api-proxy-server": [
+            "trapeze-api-proxy-router",
+            "pkg:trapeze-api-proxy-router"
+        ],
+        "@donmahallem/trapeze-vehicle-location-diff": [
+            "trapeze-vehicle-location-diff",
+            "pkg:trapeze-vehicle-location-diff"
+        ],
+        "@donmahallem/trapeze-client-desktop": [
+            "trapeze-client-desktop",
+            "pkg:trapeze-client-desktop"
+        ]
+    }
+}

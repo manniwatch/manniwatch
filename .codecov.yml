@@ -1,0 +1,47 @@
+codecov:
+  require_ci_to_pass: yes
+
+coverage:
+  precision: 2
+  round: down
+  range: "70...100"
+  status:
+    project:
+      target: 90%
+      threshold: 5%
+    TrapezeApiTypes:
+      flags: 
+        - TrapezeApiTypes
+      target: 90%
+    TrapezeApiServer:
+      flags: 
+        - TrapezeApiServer
+      target: 90%
+    TrapezeApiServerRoute:
+      target: 90%
+      flags: 
+        - TrapezeApiServerRoute
+
+parsers:
+  gcov:
+    branch_detection:
+      conditional: yes
+      loop: yes
+      method: no
+      macro: no
+
+comment:
+  layout: "reach,diff,flags,tree"
+  behavior: default
+  require_changes: no
+
+flags:
+  TrapezeApiTypes:  
+    paths:
+      - packages/trapeze-api-types/src
+  TrapezeApiServer:  
+    paths:
+      - packages/trapeze-api-server/src
+  TrapezeApiServerRoute:  
+    paths:
+      - packages/trapeze-api-server-route/src
