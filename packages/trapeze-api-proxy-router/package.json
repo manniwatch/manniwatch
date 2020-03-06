@@ -1,0 +1,62 @@
+{
+  "name": "@donmahallem/trapeze-api-proxy-router",
+  "version": "5.1.1",
+  "description": "An express api router used to proxy requests to the upstream server",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": false,
+  "keywords": [
+    "api",
+    "types"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "mocha --config ../../.mocharc.yml",
+    "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
+    "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
+    "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json src/**/*.ts",
+    "docs": "typedoc --options ../../typedoc.json"
+  },
+  "homepage": "https://donmahallem.github.io/trapeze/",
+  "author": {
+    "name": "donmahallem",
+    "email": "donmahallem@users.noreply.github.com",
+    "url": "https://github.com/donmahallem"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/donmahallem/trapeze/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/donmahallem/trapeze.git"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@donmahallem/trapeze-api-client": "^5.0.7",
+    "@donmahallem/trapeze-api-protobuf": "^5.0.7",
+    "@donmahallem/trapeze-api-types": "^5.0.7",
+    "express": "~4.17.1",
+    "jsonschema": "~1.2.5",
+    "protobufjs": "~6.8.8",
+    "request": "~2.88.2",
+    "request-promise-native": "~1.0.8"
+  },
+  "devDependencies": {
+    "@types/express": "~4.17.3",
+    "@types/helmet": "~0.0.45",
+    "@types/request-promise-native": "~1.0.17",
+    "@types/supertest": "~2.0.8",
+    "apidoc": "~0.20.0",
+    "supertest": "~4.0.2"
+  }
+}

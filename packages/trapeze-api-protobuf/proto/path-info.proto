@@ -1,0 +1,26 @@
+package trapeze;
+syntax = "proto3";
+
+message WayPoint {
+    /**
+     * latitude in arcmilisecond
+     */
+    int64 lat = 1;
+    /**
+     * longitude in arcmilisecond
+     */
+    int64 lon = 2;
+    /**
+     * sequence number as string starting at 1
+     */
+    string seq = 3;
+}
+
+message Path{
+    string color = 1;
+    repeated WayPoint wayPoints = 2;
+}
+
+message PathInfo{
+    repeated Path paths = 1;
+}

@@ -1,0 +1,55 @@
+package trapeze;
+syntax = "proto3";
+
+/**
+ * Information about the stop location
+ * @since 2.0.0
+ */
+message StopPointLocation {
+    /**
+     * Type of vehicle
+     */
+    string category = 1;
+    /**
+     * Stop Id
+     */
+    string id = 2;
+    /**
+     * label
+     */
+    string label = 3;
+    /**
+     * Latitude in arcmiliseconds
+     */
+    int64 latitude = 4;
+    /**
+     * Longitutde in arcmiliseconds
+     */
+    int64 longitude = 5;
+    /**
+     * Humanreadable name of the stop
+     */
+    string name = 6;
+    /**
+     * Stop short id
+     */
+    string shortName = 7;
+    /**
+     * Stop point
+     */
+    string stopPoint = 8;
+}
+
+/**
+ * Response for
+ * ```
+ * /internetservice/geoserviceDispatcher/services/stopinfo/stopPoints
+ * ```
+ * @since 2.0.0
+ */
+message StopPointLocations {
+    /**
+     * List of StopLocation
+     */
+    repeated StopPointLocation stopPoints = 1;
+}

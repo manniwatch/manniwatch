@@ -1,0 +1,45 @@
+package trapeze;
+syntax = "proto3";
+
+/**
+ * Response for
+ * ```
+ * /internetservice/settings
+ * ```
+ * @since 1.0.0
+ */
+message Settings{
+    /**
+     * Two letter country codes
+     */
+    repeated string AVAILABLE_LANGUAGES = 1;
+    int32 DEFAULT_TIME_PREVIEW = 2;
+    bool GEOLOCATION_ENABLED = 3;
+    int64 INITIAL_LAT = 4;
+    int64 INITIAL_LON = 5;
+    int32 INITIAL_ZOOM = 6;
+    /**
+     * Two letter country code
+     */
+    string LANGUAGE = 7;
+    bool MAP_ENABLED = 8;
+    bool MAP_SHOW_CONTROLS = 9;
+    bool MAP_SHOW_PATTERNS = 10;
+    bool MAP_SHOW_STOPS = 11;
+    bool MAP_SHOW_VEHICLES = 12;
+    int32 MAX_ZOOM = 13;
+    int32 MIN_ZOOM = 14;
+    bool MOBILE_ENABLED = 15;
+    bool SEARCH_BY_ROUTES_ENABLED = 16;
+    bool SEARCH_BY_STOPPOINTS_ENABLED = 17;
+    bool SHOW_ABOUT_DEPARTURE_TEXT = 18;
+    bool SHOW_ACTUAL_COLUMN = 19;
+    bool SHOW_DEPARTING_TEXT = 20;
+    bool SHOW_DEP_ARR_TEXT = 21;
+    bool SHOW_LANGUAGE_BAR = 22;
+    bool SHOW_MIXED_COLUMN = 23;
+    bool SHOW_PASSAGETYPE_COLUMN = 24;
+    bool SHOW_SCHEDULE_COLUMN = 25;
+    bool SUPPRESS_COUNTDOWN_TIME_INCREMENT = 26;
+    bool TIMESLIDER_ENABLED = 27;
+}

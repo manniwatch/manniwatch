@@ -1,0 +1,17 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "version": "5.1.1",
+  "command": {
+    "publish": {
+      "ignoreChanges": [
+        "ignored-file",
+        "*.md",
+        "tslint.json",
+        "tsconfig.json"
+      ],
+      "message": "chore(release): publish"
+    }
+  }
+}

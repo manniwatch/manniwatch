@@ -1,0 +1,45 @@
+{
+  "name": "@donmahallem/trapeze-api-protobuf",
+  "version": "5.0.7",
+  "description": "Protobuf Helper helper for TrapezeApi",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": false,
+  "keywords": [
+    "api",
+    "types"
+  ],
+  "scripts": {
+    "build": "npm run build:proto",
+    "build:proto:pbjs": "pbjs -t static-module -w commonjs --force-number -o ./dist/index.js ./proto/*.proto",
+    "build:proto:pbts": "pbts -o ./dist/index.d.ts ./dist/index.js",
+    "build:proto": "npm run build:proto:pbjs && npm run build:proto:pbts"
+  },
+  "homepage": "https://donmahallem.github.io/trapeze/",
+  "author": {
+    "name": "donmahallem",
+    "email": "donmahallem@users.noreply.github.com",
+    "url": "https://github.com/donmahallem"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/donmahallem/trapeze/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/donmahallem/trapeze.git"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "protobufjs": "~6.8.8"
+  }
+}

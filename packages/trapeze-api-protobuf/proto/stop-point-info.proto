@@ -1,0 +1,8 @@
+package trapeze;
+syntax = "proto3";
+
+message StopPointInfo{
+    string id = 1;
+    string passengerName = 2;
+    string stopPointCode = 3;
+}

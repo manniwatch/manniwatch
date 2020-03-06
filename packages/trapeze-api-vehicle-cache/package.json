@@ -1,0 +1,50 @@
+{
+    "name": "@donmahallem/trapeze-api-vehicle-cache",
+    "version": "5.0.7",
+    "description": "Caching for vehicle locations",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "private": false,
+    "scripts": {
+        "build": "tsc",
+        "test": "mocha --config ../../.mocharc.yml",
+        "test:watch": "mocha --config ../../.mocharc.yml --watch",
+        "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
+        "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
+        "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json src/**/*.ts",
+        "docs": "typedoc --options ../../typedoc.json"
+    },
+    "dependencies": {
+        "@donmahallem/trapeze-api-client": "^5.0.7",
+        "@donmahallem/trapeze-api-protobuf": "^5.0.7",
+        "@donmahallem/trapeze-api-types": "^5.0.7",
+        "rxjs": "~6.5.4"
+    },
+    "devDependencies": {
+        "mocha": "~7.1.0"
+    },
+    "files": [
+        "dist/*",
+        "src/*"
+    ],
+    "homepage": "https://donmahallem.github.io/trapeze/",
+    "author": {
+        "name": "donmahallem",
+        "email": "donmahallem@users.noreply.github.com",
+        "url": "https://github.com/donmahallem"
+    },
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/donmahallem/trapeze/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/donmahallem/trapeze.git"
+    },
+    "engines": {
+        "node": ">=8.0.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

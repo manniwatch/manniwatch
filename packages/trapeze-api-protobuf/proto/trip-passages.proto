@@ -1,0 +1,21 @@
+package trapeze;
+syntax = "proto3";
+
+message TripPassage{
+    message TripPassageStop {
+        string id = 1;
+        string name = 2;
+        string shortName = 3;
+    }
+    string actualTime = 1;
+    string status = 2;
+    TripPassageStop stop = 3;
+    string stop_seq_num = 4;
+}
+
+message TripPassages{
+    repeated TripPassage actual = 1;
+    repeated TripPassage old = 2;
+    string directionText = 3;
+    string routeName = 4;
+}
