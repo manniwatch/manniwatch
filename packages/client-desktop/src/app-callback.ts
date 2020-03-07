@@ -2,11 +2,11 @@
  * Source https://github.com/manniwatch/manniwatch
  */
 
-import { TrapezeApp } from './app';
+import { ManniWatchApp } from './app';
 import { ArgsCallback, IConfig } from './cli-commands';
 
 export const appCallback: ArgsCallback = (config: IConfig): void => {
-    const trapezeApp: TrapezeApp = new TrapezeApp(config);
+    const trapezeApp: ManniWatchApp = new ManniWatchApp(config);
     trapezeApp.init()
         .then(() => {
             // tslint:disable-next-line:no-console

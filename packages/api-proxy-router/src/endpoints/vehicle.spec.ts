@@ -1,5 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
+ * Source https://github.com/manniwatch/manniwatch
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
@@ -79,7 +79,6 @@ describe('endpoints/vehicle.ts', (): void => {
                     expect(promiseStub.callCount).to.equal(1);
                     expect(promiseStub.getCall(0).args).to.deep.equal([
                         methodStubResponse,
-                        undefined,
                         res,
                         next,
                     ]);

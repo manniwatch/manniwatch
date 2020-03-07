@@ -16,7 +16,6 @@
     },
     "dependencies": {
         "@manniwatch/api-client": "~0.0.1",
-        "@manniwatch/api-protobuf": "~0.0.1",
         "@manniwatch/api-types": "~0.0.1",
         "rxjs": "~6.5.4"
     },

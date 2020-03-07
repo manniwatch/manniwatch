@@ -1,5 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
+ * Source https://github.com/manniwatch/manniwatch
  */
 
 import { PositionType, ManniWatchApiClient } from '@manniwatch/api-client';
@@ -47,7 +47,7 @@ export const getVehicleLocationSchema: jsonschema.Schema = {
 export class GeoEndpoints {
     public static createStationLocationsEndpoint(client: ManniWatchApiClient): express.RequestHandler {
         return (req: express.Request, res: express.Response, next: express.NextFunction): void => {
-            // promiseToResponse(client.getStopLocations(), null, res, next);
+            promiseToResponse(client.getStopLocations(), res, next);
         };
     }
     public static createVehicleLocationsEndpoint(client: ManniWatchApiClient): express.RequestHandler {
@@ -62,7 +62,7 @@ export class GeoEndpoints {
                     // tslint:disable-next-line:triple-equals
                     queryParams.positionType != undefined ? queryParams.positionType : 'RAW',
                     queryParams.lastUpdate,
-                ), undefined as any, res, next);
+                ), res, next);
             } else {
                 next(new Error('Invalid number or type of query parameters'));
             }

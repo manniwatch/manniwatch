@@ -43,11 +43,9 @@
   },
   "dependencies": {
     "@manniwatch/api-client": "~0.0.1",
-    "@manniwatch/api-protobuf": "~0.0.1",
     "@manniwatch/api-types": "~0.0.1",
     "express": "~4.17.1",
     "jsonschema": "~1.2.5",
-    "protobufjs": "~6.8.8",
     "request": "~2.88.2",
     "request-promise-native": "~1.0.8"
   },

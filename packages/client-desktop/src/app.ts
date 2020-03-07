@@ -88,7 +88,7 @@ export class ManniWatchApp {
             icon: __dirname + '/../icon.png',
             minHeight: 480,
             minWidth: 640,
-            title: 'TrapezeClient',
+            title: 'ManniWatchClient',
             webPreferences: {
                 allowRunningInsecureContent: true,
                 javascript: true,

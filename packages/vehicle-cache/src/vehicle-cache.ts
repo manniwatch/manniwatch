@@ -3,11 +3,10 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import { trapeze } from '@manniwatch/api-protobuf';
 import { IVehicleLocationList } from '@manniwatch/api-types';
 import { defer, from, of, BehaviorSubject, Observable } from 'rxjs';
 import { concatMap, delay, retryWhen, share, switchMap, tap } from 'rxjs/operators';
-export class TrapezeVehicleCache {
+export class VehicleCache {
     public constructor(public client: ManniWatchApiClient, public readonly queryDelay: number = 15000) {
 
     }

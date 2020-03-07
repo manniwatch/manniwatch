@@ -29,7 +29,7 @@ export class ManniWatchProxyServer {
     private app: express.Application;
     private server: Server;
     private readonly ngModulePath: string = pathResolve(__dirname +
-        './../node_modules/@manniwatch/trapeze-client-ng/dist/trapeze-client-ng');
+        './../node_modules/@manniwatch/client-ng/dist/client-ng');
     constructor(public readonly endpoint: string,
         public readonly port: number) {
         this.app = express();

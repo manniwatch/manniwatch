@@ -1,5 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
+ * Source https://github.com/manniwatch/manniwatch
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
@@ -17,7 +17,7 @@ import { SettingsEndpoints } from './endpoints/settings';
  *
  * @param endpoint example: http://test.domain/
  */
-export const createApiProxyRouter: (endpoint: string) => express.Router = (endpoint: string): express.Router => {
+export const createApiProxyRoute: (endpoint: string) => express.Router = (endpoint: string): express.Router => {
     const apiClient: ManniWatchApiClient = new ManniWatchApiClient(endpoint);
     const route: express.Router = express.Router();
     /**
@@ -93,7 +93,7 @@ export const createApiProxyRouter: (endpoint: string) => express.Router = (endpo
      * @since 1.5.0
      */
     /**
-     * @api {get} /settings Request Settings
+     * @api {get} /settings Request Trapeze Settings
      * @apiName GetSettings
      * @apiGroup Settings
      * @apiVersion 1.5.0

@@ -1,5 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
+ * Source https://github.com/manniwatch/manniwatch
  */
 
 import { expect } from 'chai';
@@ -7,7 +7,7 @@ import * as express from 'express';
 import 'mocha';
 import * as sinon from 'sinon';
 import * as supertest from 'supertest';
-import { createApiProxyRouter } from './api-routes';
+import { createApiProxyRoute } from './api-routes';
 import { StopEndpoints, StopPointEndpoints, TripEndpoints, VehicleEndpoints } from './endpoints';
 import { SettingsEndpoints } from './endpoints/settings';
 
@@ -30,7 +30,7 @@ interface ITestElement {
     noId?: boolean;
 }
 describe('api-routes.ts', (): void => {
-    describe('createApiProxyRouter()', (): void => {
+    describe('createTrapezeApiRoute()', (): void => {
         let app: express.Express;
         let routeErrorStub: sinon.SinonStub;
         const NOT_FOUND_RESPONSE: any = { error: true, status: 404 };
@@ -44,7 +44,7 @@ describe('api-routes.ts', (): void => {
             });
         });
         beforeEach((): void => {
-            const route: express.Router = createApiProxyRouter('https://localhost:12345/');
+            const route: express.Router = createApiProxyRoute('https://localhost:12345/');
             app = express();
             app.use(route);
             app.use((req: express.Request, res: express.Response, next: express.NextFunction): void => {
