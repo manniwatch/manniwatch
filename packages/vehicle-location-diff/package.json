@@ -1,7 +1,7 @@
 {
     "name": "@manniwatch/vehicle-location-diff",
     "version": "0.0.1",
-    "description": "Node Client to consume the Trapeze Api",
+    "description": "Tool to calculate diff between vehicle location snapshots",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "private": false,

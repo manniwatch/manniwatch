@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
-import { TrapezeApiClient } from '@manniwatch/api-client';
+import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { expect } from 'chai';
 import * as express from 'express';
 import 'mocha';
@@ -11,7 +11,7 @@ import * as prom from '../promise-to-response';
 import { ITestEndpoint } from './common-test.spec';
 import { VehicleEndpoints } from './vehicle';
 
-const testEndpoints: ITestEndpoint<VehicleEndpoints, TrapezeApiClient>[] = [
+const testEndpoints: ITestEndpoint<VehicleEndpoints, ManniWatchApiClient>[] = [
     {
         endpointFn: 'createVehicleInfoEndpoint',
         innerMethod: 'getRouteByVehicleId',
@@ -19,7 +19,7 @@ const testEndpoints: ITestEndpoint<VehicleEndpoints, TrapezeApiClient>[] = [
 ];
 describe('endpoints/vehicle.ts', (): void => {
     describe('VehicleEndpoints', (): void => {
-        const apiClient: TrapezeApiClient = new TrapezeApiClient('https://test.url/');
+        const apiClient: ManniWatchApiClient = new ManniWatchApiClient('https://test.url/');
         let promiseStub: sinon.SinonStub;
         before((): void => {
             promiseStub = sinon.stub(prom, 'promiseToResponse');

@@ -1,19 +1,19 @@
-# Trapeze Desktop Client
+# Desktop Client
 
-![Sample Logo](https://raw.githubusercontent.com/manniwatch/manniwatch/packages/trapeze-client-desktop/master/assets/screenshot.png)
+![Sample Logo](https://raw.githubusercontent.com/manniwatch/manniwatch/packages/client-desktop/master/assets/screenshot.png)
 
 
-[![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg?flag=TrapezeClientDesktop)](https://codecov.io/gh/manniwatch/manniwatch/tree/master/packages/trapeze-client-desktop) [![npm version](https://badge.fury.io/js/%40manniwatch%2Ftrapeze-client-desktop.svg)](https://badge.fury.io/js/%40manniwatch%2Ftrapeze-client-desktop)
+[![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg?flag=ClientDesktop)](https://codecov.io/gh/manniwatch/manniwatch/tree/master/packages/client-desktop) [![npm version](https://badge.fury.io/js/%40manniwatch%2Fclient-desktop.svg)](https://badge.fury.io/js/%40manniwatch%2Fclient-desktop)
 
 ## Setup 1 (requires node install)
-1. npm install -g @manniwatch/trapeze-client-desktop
-2. run: trapeze-client [DOMAIN AND PATH OF THE SERVICE]
+1. npm install -g @manniwatch/client-desktop
+2. run: manniwatch-client [DOMAIN AND PATH OF THE SERVICE]
 
 ## Setup 2 (requires node install)
-1. Clone TrapezeClientElectron
+1. Clone ClientElectron
 2. Install its dependencies
 3. run ng build --aot --prod --base-href=./
-4. copy the data inside the dist/trapeze-client-ng folder to the dist/app folder inside this project
+4. copy the data inside the dist/client-ng folder to the dist/app folder inside this project
 5. run "npm run start -- [DOMAIN AND PATH OF THE SERVICE]"
 6. ... it should work
 

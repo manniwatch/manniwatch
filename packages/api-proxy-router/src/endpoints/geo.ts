@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
-import { PositionType, TrapezeApiClient } from '@manniwatch/api-client';
+import { PositionType, ManniWatchApiClient } from '@manniwatch/api-client';
 import * as express from 'express';
 import * as jsonschema from 'jsonschema';
 import { promiseToResponse } from '../promise-to-response';
@@ -45,12 +45,12 @@ export const getVehicleLocationSchema: jsonschema.Schema = {
 };
 
 export class GeoEndpoints {
-    public static createStationLocationsEndpoint(client: TrapezeApiClient): express.RequestHandler {
+    public static createStationLocationsEndpoint(client: ManniWatchApiClient): express.RequestHandler {
         return (req: express.Request, res: express.Response, next: express.NextFunction): void => {
             // promiseToResponse(client.getStopLocations(), null, res, next);
         };
     }
-    public static createVehicleLocationsEndpoint(client: TrapezeApiClient): express.RequestHandler {
+    public static createVehicleLocationsEndpoint(client: ManniWatchApiClient): express.RequestHandler {
         return (req: express.Request, res: express.Response, next: express.NextFunction): void => {
             const result: jsonschema.ValidatorResult = jsonschema.validate(req.query, getVehicleLocationSchema);
             if (result.valid) {

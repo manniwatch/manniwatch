@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
-import { TrapezeApiClient } from '@manniwatch/api-client';
+import { ManniWatchApiClient } from '@manniwatch/api-client';
 import * as express from 'express';
 import {
     GeoEndpoints,
@@ -18,7 +18,7 @@ import { SettingsEndpoints } from './endpoints/settings';
  * @param endpoint example: http://test.domain/
  */
 export const createTrapezeApiProxyRouter: (endpoint: string) => express.Router = (endpoint: string): express.Router => {
-    const trapezeApi: TrapezeApiClient = new TrapezeApiClient(endpoint);
+    const trapezeApi: ManniWatchApiClient = new ManniWatchApiClient(endpoint);
     const route: express.Router = express.Router();
     /**
      * @api {get} /geo/stations Request station locations

@@ -9,9 +9,9 @@ import { of, Observable } from 'rxjs';
 import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
 import * as sinon from 'sinon';
-import { TrapezeVehicleCache } from './trapeze-vehicle-cache';
+import { TrapezeVehicleCache } from './vehicle-cache';
 
-describe('trapeze-vehicle-cache', (): void => {
+describe('vehicle-cache', (): void => {
     describe('TrapezeVehicleCache', (): void => {
         let testScheduler: TestScheduler;
         let testInstance: TrapezeVehicleCache;
