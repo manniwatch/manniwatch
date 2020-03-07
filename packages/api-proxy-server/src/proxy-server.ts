@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-server
  */
 
-import { createTrapezeApiProxyRouter } from '@manniwatch/api-proxy-router';
+import { createApiProxyRouter } from '@manniwatch/api-proxy-router';
 import * as express from 'express';
 import * as helmet from 'helmet';
 import { Server } from 'http';
@@ -25,7 +25,7 @@ export const serverErrorHandler: express.ErrorRequestHandler = (err: any,
     console.error(err);
     res.status(500).json({ error: true });
 };
-export class TrapezeServer {
+export class ManniWatchProxyServer {
     private app: express.Application;
     private server: Server;
     private readonly ngModulePath: string = pathResolve(__dirname +
@@ -49,7 +49,7 @@ export class TrapezeServer {
                 styleSrc: ['\'self\'', '\'unsafe-inline\''],
             },
         }));
-        this.app.use('/api', createTrapezeApiProxyRouter(endpoint));
+        this.app.use('/api', createApiProxyRouter(endpoint));
         this.app.use('/api', api404Handler);
         this.app.use(express.static(this.ngModulePath));
         this.app.get('/*', (req: express.Request, res: express.Response): void => {

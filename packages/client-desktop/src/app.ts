@@ -7,7 +7,7 @@ import { app, BrowserWindow, BrowserWindowConstructorOptions } from 'electron';
 import { ApiServer } from './api-server';
 import { IConfig } from './cli-commands';
 
-export class TrapezeApp {
+export class ManniWatchApp {
 
     /**
      * Main Window
@@ -22,7 +22,7 @@ export class TrapezeApp {
      */
     private secureToken: string;
     /**
-     * Trapeze Client APP
+     * Client APP
      * @param config Config to be setup
      */
     public constructor(private readonly config: IConfig) {

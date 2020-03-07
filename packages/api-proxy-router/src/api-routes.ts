@@ -17,8 +17,8 @@ import { SettingsEndpoints } from './endpoints/settings';
  *
  * @param endpoint example: http://test.domain/
  */
-export const createTrapezeApiProxyRouter: (endpoint: string) => express.Router = (endpoint: string): express.Router => {
-    const trapezeApi: ManniWatchApiClient = new ManniWatchApiClient(endpoint);
+export const createApiProxyRouter: (endpoint: string) => express.Router = (endpoint: string): express.Router => {
+    const apiClient: ManniWatchApiClient = new ManniWatchApiClient(endpoint);
     const route: express.Router = express.Router();
     /**
      * @api {get} /geo/stations Request station locations
@@ -35,7 +35,7 @@ export const createTrapezeApiProxyRouter: (endpoint: string) => express.Router =
      *
      * @apiVersion 1.5.0
      */
-    route.get('/geo/stops', GeoEndpoints.createStationLocationsEndpoint(trapezeApi));
+    route.get('/geo/stops', GeoEndpoints.createStationLocationsEndpoint(apiClient));
     /**
      * @api {get} /geo/vehicles Request vehicle locations
      * @apiName GetVehicleLocations
@@ -43,7 +43,7 @@ export const createTrapezeApiProxyRouter: (endpoint: string) => express.Router =
      *
      * @apiVersion 1.5.0
      */
-    route.get('/geo/vehicles', GeoEndpoints.createVehicleLocationsEndpoint(trapezeApi));
+    route.get('/geo/vehicles', GeoEndpoints.createVehicleLocationsEndpoint(apiClient));
     /**
      * @api {get} /trip/:id/route Request Vehicle Route
      * @apiName GetTripRoute
@@ -52,7 +52,7 @@ export const createTrapezeApiProxyRouter: (endpoint: string) => express.Router =
      * @apiParam {String} id Vehicle id
      * @apiVersion 1.5.0
      */
-    route.get('/trip/:id([a-z0-9A-Z\-\+]+)/route', TripEndpoints.createTripRouteEndpoint(trapezeApi));
+    route.get('/trip/:id([a-z0-9A-Z\-\+]+)/route', TripEndpoints.createTripRouteEndpoint(apiClient));
     /**
      * @api {get} /vehicle/:id/route Request Vehicle Route
      * @apiName GetVehicleRoute
@@ -61,7 +61,7 @@ export const createTrapezeApiProxyRouter: (endpoint: string) => express.Router =
      * @apiParam {String} id Vehicle id
      * @apiVersion 1.5.0
      */
-    route.get('/vehicle/:id([a-z0-9A-Z\-\+]+)/route', VehicleEndpoints.createVehicleInfoEndpoint(trapezeApi));
+    route.get('/vehicle/:id([a-z0-9A-Z\-\+]+)/route', VehicleEndpoints.createVehicleInfoEndpoint(apiClient));
     /**
      * @api {get} /stop/:id/departures Request Stop Departures
      * @apiName GetStopDepartures
@@ -70,7 +70,7 @@ export const createTrapezeApiProxyRouter: (endpoint: string) => express.Router =
      * @apiParam {String} id Stop id
      * @apiVersion 1.5.0
      */
-    route.get('/stop/:id([a-z0-9A-Z\-\+]+)/departures', StopEndpoints.createStopDeparturesEndpoint(trapezeApi));
+    route.get('/stop/:id([a-z0-9A-Z\-\+]+)/departures', StopEndpoints.createStopDeparturesEndpoint(apiClient));
     /**
      * @api {get} /stop/:id/info Request Stop Info
      * @apiName GetStopInfo
@@ -79,7 +79,7 @@ export const createTrapezeApiProxyRouter: (endpoint: string) => express.Router =
      * @apiParam {String} id Stop id
      * @apiVersion 1.5.0
      */
-    route.get('/stop/:id([a-z0-9A-Z\-\+]+)/info', StopEndpoints.createStopInfoEndpoint(trapezeApi));
+    route.get('/stop/:id([a-z0-9A-Z\-\+]+)/info', StopEndpoints.createStopInfoEndpoint(apiClient));
     /**
      * @api {get} /stopPoint/:id/info Request stop point info
      * @apiName StopPointInfo
@@ -88,16 +88,16 @@ export const createTrapezeApiProxyRouter: (endpoint: string) => express.Router =
      * @apiParam {String} id Stop Point ID
      * @apiVersion 1.5.0
      */
-    route.get('/stopPoint/:id([a-z0-9A-Z\-\+]+)/info', StopPointEndpoints.createStopPointInfoEndpoint(trapezeApi));
+    route.get('/stopPoint/:id([a-z0-9A-Z\-\+]+)/info', StopPointEndpoints.createStopPointInfoEndpoint(apiClient));
     /**
      * @since 1.5.0
      */
     /**
-     * @api {get} /settings Request Trapeze Settings
+     * @api {get} /settings Request Settings
      * @apiName GetSettings
      * @apiGroup Settings
      * @apiVersion 1.5.0
      */
-    route.get('/settings', SettingsEndpoints.createSettingsEndpoint(trapezeApi));
+    route.get('/settings', SettingsEndpoints.createSettingsEndpoint(apiClient));
     return route;
 };

@@ -7,7 +7,7 @@ import * as express from 'express';
 import 'mocha';
 import * as sinon from 'sinon';
 import * as supertest from 'supertest';
-import { createTrapezeApiProxyRouter } from './api-routes';
+import { createApiProxyRouter } from './api-routes';
 import { StopEndpoints, StopPointEndpoints, TripEndpoints, VehicleEndpoints } from './endpoints';
 import { SettingsEndpoints } from './endpoints/settings';
 
@@ -30,7 +30,7 @@ interface ITestElement {
     noId?: boolean;
 }
 describe('api-routes.ts', (): void => {
-    describe('createTrapezeApiProxyRouter()', (): void => {
+    describe('createApiProxyRouter()', (): void => {
         let app: express.Express;
         let routeErrorStub: sinon.SinonStub;
         const NOT_FOUND_RESPONSE: any = { error: true, status: 404 };
@@ -44,7 +44,7 @@ describe('api-routes.ts', (): void => {
             });
         });
         beforeEach((): void => {
-            const route: express.Router = createTrapezeApiProxyRouter('https://localhost:12345/');
+            const route: express.Router = createApiProxyRouter('https://localhost:12345/');
             app = express();
             app.use(route);
             app.use((req: express.Request, res: express.Response, next: express.NextFunction): void => {

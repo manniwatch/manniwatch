@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch
  */
 
-import { createTrapezeApiProxyRouter } from '@manniwatch/api-proxy-router';
+import { createApiProxyRouter } from '@manniwatch/api-proxy-router';
 import * as express from 'express';
 import * as helmet from 'helmet';
 import { Server } from 'http';
@@ -24,9 +24,9 @@ export class ApiServer {
     private server: Server;
     private isRunning: boolean = false;
     private readonly ngModulePath: string = pathResolve(__dirname +
-        './../node_modules/@manniwatch/trapeze-client-ng/dist/trapeze-client-ng');
+        './../node_modules/@manniwatch/client-ng/dist/client-ng');
     /**
-     * Api Server for the Trapeze Api Wrapper
+     * Api Server for the Api Wrapper
      * @param config Config to be used to start the server
      */
     constructor(public readonly config: IApiServerConfig) {
@@ -48,7 +48,7 @@ export class ApiServer {
                 styleSrc: ['\'self\'', '\'unsafe-inline\''],
             },
         }));
-        this.app.use('/api', createTrapezeApiProxyRouter(this.config.endpoint));
+        this.app.use('/api', createApiProxyRouter(this.config.endpoint));
         this.app.use('/api', api404Handler);
         this.app.use(express.static(this.ngModulePath));
         this.app.get('/*', (req: express.Request, res: express.Response) => {

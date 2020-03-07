@@ -9,18 +9,18 @@ import { of, Observable } from 'rxjs';
 import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
 import * as sinon from 'sinon';
-import { TrapezeVehicleCache } from './vehicle-cache';
+import { VehicleCache } from './vehicle-cache';
 
 describe('vehicle-cache', (): void => {
-    describe('TrapezeVehicleCache', (): void => {
+    describe('VehicleCache', (): void => {
         let testScheduler: TestScheduler;
-        let testInstance: TrapezeVehicleCache;
+        let testInstance: VehicleCache;
         let sandbox: sinon.SinonSandbox;
         before((): void => {
             sandbox = sinon.createSandbox();
         });
         beforeEach((): void => {
-            testInstance = new TrapezeVehicleCache(undefined as any);
+            testInstance = new VehicleCache(undefined as any);
             testScheduler = new TestScheduler((actual: any, expected: any): void => {
                 // asserting the two objects are equal
                 // e.g. using chai.

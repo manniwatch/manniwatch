@@ -1,7 +1,7 @@
 {
   "name": "@manniwatch/api-types",
   "version": "0.0.1",
-  "description": "Api Types and helper for TrapezeApi",
+  "description": "Api Types and helper for Trapeze Api",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "private": false,

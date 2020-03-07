@@ -1,4 +1,4 @@
-# trapeze
+# ManniWatch
 
 
 ## Packages
