@@ -26,9 +26,9 @@
         "file-header": [
             true,
             {
-                "match": "Source https://github.com/donmahallem/TrapezeApiTypes",
+                "match": "Source https://github.com/manniwatch/TrapezeApiTypes",
                 "allow-single-line-comments": true,
-                "default": "Source https://github.com/donmahallem/TrapezeApiTypes",
+                "default": "Source https://github.com/manniwatch/TrapezeApiTypes",
                 "enforce-trailing-newline": false
             }
         ],

@@ -1,7 +1,0 @@
-package trapeze;
-syntax = "proto3";
-
-message StopInfo{
-    string id = 1;
-    string passengerName = 2;
-}

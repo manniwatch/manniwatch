@@ -1,0 +1,21 @@
+/*!
+ * Source https://github.com/manniwatch/TrapezeApiTypes
+ */
+
+/*!
+ * Source https://github.com/manniwatch/TrapezeApiClientNode
+ */
+
+import {
+    ISettings,
+} from '@manniwatch/trapeze-api-types';
+export class Util {
+    public static transformSettingsBody(body: string): ISettings {
+        const bracketStart: number = body.indexOf('{');
+        const bracketEnd: number = body.lastIndexOf('}');
+        if (bracketStart >= 0 && bracketEnd > bracketStart) {
+            return JSON.parse(body.substring(bracketStart, bracketEnd + 1)) as ISettings;
+        }
+        throw new Error('non valid response body');
+    }
+}

@@ -47,4 +47,4 @@ jobs:
           npm config set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
           npm whoami
       - name: Upload Package
-        run: npx lerna publish from-git --registry https://npm.pkg.github.com/donmahallem --yes
+        run: npx lerna publish from-git --registry https://npm.pkg.github.com/manniwatch --yes

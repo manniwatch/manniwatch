@@ -21,23 +21,23 @@
             "release",
             "buildtools"
         ],
-        "@donmahallem/trapeze-api-types": [
+        "@manniwatch/trapeze-api-types": [
             "trapeze-api-types",
             "pkg:trapeze-api-types"
         ],
-        "@donmahallem/trapeze-api-proxy-router": [
+        "@manniwatch/trapeze-api-proxy-router": [
             "trapeze-api-proxy-router",
             "pkg:trapeze-api-proxy-router"
         ],
-        "@donmahallem/trapeze-api-proxy-server": [
+        "@manniwatch/trapeze-api-proxy-server": [
             "trapeze-api-proxy-router",
             "pkg:trapeze-api-proxy-router"
         ],
-        "@donmahallem/trapeze-vehicle-location-diff": [
+        "@manniwatch/trapeze-vehicle-location-diff": [
             "trapeze-vehicle-location-diff",
             "pkg:trapeze-vehicle-location-diff"
         ],
-        "@donmahallem/trapeze-client-desktop": [
+        "@manniwatch/trapeze-client-desktop": [
             "trapeze-client-desktop",
             "pkg:trapeze-client-desktop"
         ]
