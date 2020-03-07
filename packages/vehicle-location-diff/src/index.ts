@@ -1,5 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/trapeze Package: trapeze-vehicle-location-diff
+ * Source https://github.com/manniwatch/manniwatch Package: trapeze-vehicle-location-diff
  */
 
 export {

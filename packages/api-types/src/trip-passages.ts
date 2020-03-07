@@ -1,5 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/TrapezeApiTypes
+ * Source https://github.com/manniwatch/manniwatch
  */
 
 import { VEHICLE_STATUS } from './vehicle-status';

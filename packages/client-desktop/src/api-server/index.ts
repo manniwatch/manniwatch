@@ -1,5 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/trapeze
+ * Source https://github.com/manniwatch/manniwatch
  */
 
 export * from './server-error-request-handler';

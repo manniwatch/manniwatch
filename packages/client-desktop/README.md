@@ -1,9 +1,9 @@
 # Trapeze Desktop Client
 
-![Sample Logo](https://raw.githubusercontent.com/manniwatch/trapeze/packages/trapeze-client-desktop/master/assets/screenshot.png)
+![Sample Logo](https://raw.githubusercontent.com/manniwatch/manniwatch/packages/trapeze-client-desktop/master/assets/screenshot.png)
 
 
-[![codecov](https://codecov.io/gh/manniwatch/trapeze/branch/master/graph/badge.svg?flag=TrapezeClientDesktop)](https://codecov.io/gh/manniwatch/trapeze/tree/master/packages/trapeze-client-desktop) [![npm version](https://badge.fury.io/js/%40manniwatch%2Ftrapeze-client-desktop.svg)](https://badge.fury.io/js/%40manniwatch%2Ftrapeze-client-desktop)
+[![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg?flag=TrapezeClientDesktop)](https://codecov.io/gh/manniwatch/manniwatch/tree/master/packages/trapeze-client-desktop) [![npm version](https://badge.fury.io/js/%40manniwatch%2Ftrapeze-client-desktop.svg)](https://badge.fury.io/js/%40manniwatch%2Ftrapeze-client-desktop)
 
 ## Setup 1 (requires node install)
 1. npm install -g @manniwatch/trapeze-client-desktop

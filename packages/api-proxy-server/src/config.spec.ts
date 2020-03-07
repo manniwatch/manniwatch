@@ -1,5 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/trapeze Package: trapeze-api-proxy-server
+ * Source https://github.com/manniwatch/manniwatch Package: trapeze-api-proxy-server
  */
 
 describe('test', (): void => {

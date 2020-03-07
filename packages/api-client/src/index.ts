@@ -3,10 +3,10 @@
  */
 
 export {
-    TrapezeApiClient,
+    ManniWatchApiClient,
     StopMode,
     PositionType,
-} from './trapeze-api-client';
+} from './manni-watch-api-client';
 export {
     Util,
 } from './util';

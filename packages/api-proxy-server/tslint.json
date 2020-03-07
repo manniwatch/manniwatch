@@ -6,9 +6,9 @@
         "file-header": [
             true,
             {
-                "match": "Source https://github.com/manniwatch/trapeze Package: api-proxy-server",
+                "match": "Source https://github.com/manniwatch/manniwatch Package: api-proxy-server",
                 "allow-single-line-comments": true,
-                "default": "Source https://github.com/manniwatch/trapeze Package: api-proxy-server",
+                "default": "Source https://github.com/manniwatch/manniwatch Package: api-proxy-server",
                 "enforce-trailing-newline": false
             }
         ]

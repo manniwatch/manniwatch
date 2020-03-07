@@ -11,6 +11,6 @@ describe('index.ts', (): void => {
         // tslint:disable-next-line:no-unused-expression
         expect(instance).to.not.be.undefined;
         // tslint:disable-next-line:no-unused-expression
-        expect(instance.TrapezeApiClient).to.not.be.undefined;
+        expect(instance.ManniWatchApiClient).to.not.be.undefined;
     });
 });

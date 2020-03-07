@@ -1,5 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/TrapezeApiTypes
+ * Source https://github.com/manniwatch/manniwatch
  */
 
 import {
@@ -18,7 +18,7 @@ import * as reqp from 'request-promise-native';
 import { Util } from './util';
 
 // tslint:disable-next-line:no-var-requires
-export const DEFAULT_USER_AGENT: string = 'Trapeze Api Client/' + require('../package.json').version;
+export const DEFAULT_USER_AGENT: string = 'ManniWatch Api Client/' + require('../package.json').version;
 export type StopMode = 'arrival' | 'departure';
 export type PositionType = 'CORRECTED' | 'RAW';
 export interface IBoundingBox {
@@ -27,7 +27,7 @@ export interface IBoundingBox {
     left: number;
     right: number;
 }
-export class TrapezeApiClient {
+export class ManniWatchApiClient {
     private httpClient: req.RequestAPI<reqp.RequestPromise<any>, reqp.RequestPromiseOptions, req.UriOptions>;
     /**
      *

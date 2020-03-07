@@ -13,7 +13,7 @@ import 'mocha';
 import * as nock from 'nock';
 import * as reqp from 'request-promise-native';
 import * as sinon from 'sinon';
-import { IBoundingBox, PositionType, StopMode, TrapezeApiClient } from './trapeze-api-client';
+import { IBoundingBox, PositionType, StopMode, ManniWatchApiClient } from './manni-watch-api-client';
 import { Util } from './util';
 
 const testSuccessResponse: any = {
@@ -21,10 +21,10 @@ const testSuccessResponse: any = {
     'status': 200,
 };
 const STOP_MODES: StopMode[] = ['departure', 'arrival'];
-describe('trapeze-api-client.ts', (): void => {
-    describe('TrapezeApiClient', (): void => {
+describe('manni-watch-api-client.ts', (): void => {
+    describe('ManniWatchApiClient', (): void => {
         const testDomain: string = 'http://test.domain';
-        let instance: TrapezeApiClient;
+        let instance: ManniWatchApiClient;
         before('create Sandbox', (): void => {
             if (!nock.isActive()) {
                 nock.activate();
@@ -32,7 +32,7 @@ describe('trapeze-api-client.ts', (): void => {
             nock.disableNetConnect();
         });
         beforeEach((): void => {
-            instance = new TrapezeApiClient(testDomain);
+            instance = new ManniWatchApiClient(testDomain);
             expect(nock.isActive()).to.eq(true);
         });
 
@@ -90,7 +90,7 @@ describe('trapeze-api-client.ts', (): void => {
                 getProxyStub.returns(undefined);
                 const scope: nock.Scope = nock(testDomain)
                     .get('/test/path')
-                    .matchHeader('User-Agent', /^Trapeze Api Client\/[0-9+]\.[0-9+]\.[0-9+]/)
+                    .matchHeader('User-Agent', /^ManniWatch Api Client\/[0-9+]\.[0-9+]\.[0-9+]/)
                     .reply(200, testSuccessResponse);
                 return instance.request(testOpts)
                     .then((val: any): void => {

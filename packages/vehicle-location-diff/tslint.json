@@ -6,9 +6,9 @@
         "file-header": [
             true,
             {
-                "match": "Source https://github.com/manniwatch/trapeze Package: trapeze-vehicle-location-diff",
+                "match": "Source https://github.com/manniwatch/manniwatch Package: trapeze-vehicle-location-diff",
                 "allow-single-line-comments": true,
-                "default": "Source https://github.com/manniwatch/trapeze Package: trapeze-vehicle-location-diff",
+                "default": "Source https://github.com/manniwatch/manniwatch Package: trapeze-vehicle-location-diff",
                 "enforce-trailing-newline": false
             }
         ]
