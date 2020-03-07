@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch
  */
 
-import { createTrapezeApiProxyRouter } from '@manniwatch/trapeze-api-proxy-router';
+import { createTrapezeApiProxyRouter } from '@manniwatch/api-proxy-router';
 import * as express from 'express';
 import * as helmet from 'helmet';
 import { Server } from 'http';

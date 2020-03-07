@@ -1,8 +1,8 @@
 /*!
- * Source https://github.com/manniwatch/manniwatch Package: trapeze-api-proxy-server
+ * Source https://github.com/manniwatch/manniwatch Package: api-proxy-server
  */
 
-import { createTrapezeApiProxyRouter } from '@manniwatch/trapeze-api-proxy-router';
+import { createTrapezeApiProxyRouter } from '@manniwatch/api-proxy-router';
 import * as express from 'express';
 import { Config } from './config';
 const app: express.Application = express();

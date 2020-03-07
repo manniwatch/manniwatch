@@ -1,5 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/manniwatch Package: trapeze-api-proxy-router
+ * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
 import * as express from 'express';

@@ -22,24 +22,28 @@
             "buildtools"
         ],
         "@manniwatch/api-types": [
-            "trapeze-api-types",
-            "pkg:trapeze-api-types"
+            "api-types",
+            "pkg:api-types"
         ],
-        "@manniwatch/trapeze-api-proxy-router": [
-            "trapeze-api-proxy-router",
-            "pkg:trapeze-api-proxy-router"
+        "@manniwatch/api-proxy-router": [
+            "api-proxy-router",
+            "pkg:api-proxy-router"
         ],
-        "@manniwatch/trapeze-api-proxy-server": [
-            "trapeze-api-proxy-router",
-            "pkg:trapeze-api-proxy-router"
+        "@manniwatch/api-proxy-server": [
+            "api-proxy-router",
+            "pkg:api-proxy-router"
         ],
-        "@manniwatch/trapeze-vehicle-location-diff": [
-            "trapeze-vehicle-location-diff",
-            "pkg:trapeze-vehicle-location-diff"
+        "@manniwatch/vehicle-location-diff": [
+            "vehicle-location-diff",
+            "pkg:vehicle-location-diff"
         ],
-        "@manniwatch/trapeze-client-desktop": [
-            "trapeze-client-desktop",
-            "pkg:trapeze-client-desktop"
+        "@manniwatch/client-desktop": [
+            "client-desktop",
+            "pkg:client-desktop"
+        ],
+        "@manniwatch/client-ng": [
+            "client-ng",
+            "pkg:client-ng"
         ]
     }
 }

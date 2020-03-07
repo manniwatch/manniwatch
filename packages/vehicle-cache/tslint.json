@@ -6,9 +6,9 @@
         "file-header": [
             true,
             {
-                "match": "Source https://github.com/manniwatch/manniwatch Package: trapeze-api-proxy-router",
+                "match": "Source https://github.com/manniwatch/manniwatch Package: api-proxy-router",
                 "allow-single-line-comments": true,
-                "default": "Source https://github.com/manniwatch/manniwatch Package: trapeze-api-proxy-router",
+                "default": "Source https://github.com/manniwatch/manniwatch Package: api-proxy-router",
                 "enforce-trailing-newline": false
             }
         ]
