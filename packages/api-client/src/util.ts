@@ -2,13 +2,9 @@
  * Source https://github.com/manniwatch/TrapezeApiTypes
  */
 
-/*!
- * Source https://github.com/manniwatch/TrapezeApiClientNode
- */
-
 import {
     ISettings,
-} from '@manniwatch/trapeze-api-types';
+} from '@manniwatch/api-types';
 export class Util {
     public static transformSettingsBody(body: string): ISettings {
         const bracketStart: number = body.indexOf('{');

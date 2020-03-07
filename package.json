@@ -23,12 +23,8 @@
     "lint": "lerna run lint",
     "docs": "lerna run docs",
     "lint:fix": "lerna run lint:fix",
-    "lerna:bootstrap": "lerna bootstrap",
-    "lerna:bootstrap:hoist": "lerna bootstrap --hoist",
     "prepublishOnly": "npm run test && npm run docs && npm run build",
-    "clean:modules": "rm -rf ./packages/*/node_modules && rm -rf ./node_modules",
-    "lerna:publish": "lerna publish",
-    "lerna:release": "lerna version --no-git-tag-version"
+    "clean:modules": "rm -rf ./packages/*/node_modules && rm -rf ./node_modules"
   },
   "nyc": {
     "include": [

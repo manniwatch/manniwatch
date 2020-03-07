@@ -2,9 +2,9 @@
  * Source https://github.com/manniwatch/trapeze Package: trapeze-api-proxy-router
  */
 
-import { TrapezeApiClient } from '@manniwatch/trapeze-api-client';
+import { TrapezeApiClient } from '@manniwatch/api-client';
 import { trapeze } from '@manniwatch/trapeze-api-protobuf';
-import { IVehicleLocationList } from '@manniwatch/trapeze-api-types';
+import { IVehicleLocationList } from '@manniwatch/api-types';
 import { defer, from, of, BehaviorSubject, Observable } from 'rxjs';
 import { concatMap, delay, retryWhen, share, switchMap, tap } from 'rxjs/operators';
 export class TrapezeVehicleCache {

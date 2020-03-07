@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/trapeze Package: trapeze-api-proxy-router
  */
 
-import { PositionType, TrapezeApiClient } from '@manniwatch/trapeze-api-client';
+import { PositionType, TrapezeApiClient } from '@manniwatch/api-client';
 import * as express from 'express';
 import * as jsonschema from 'jsonschema';
 import { promiseToResponse } from '../promise-to-response';

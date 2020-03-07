@@ -1,9 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/TrapezeApiTypes
- */
-
-/*!
- * Source https://github.com/manniwatch/TrapezeApiClientNode
+ * Source https://github.com/manniwatch/manniwatch
  */
 
 import {
@@ -11,7 +7,7 @@ import {
     IStopPointInfo,
     IStopPointLocations,
     IVehicleLocationList,
-} from '@manniwatch/trapeze-api-types';
+} from '@manniwatch/api-types';
 import { expect } from 'chai';
 import 'mocha';
 import * as nock from 'nock';

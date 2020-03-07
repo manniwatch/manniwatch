@@ -1,6 +1,6 @@
 {
     "name": "@manniwatch/vehicle-location-diff",
-    "version": "5.0.7",
+    "version": "0.0.1",
     "description": "Node Client to consume the Trapeze Api",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -15,7 +15,7 @@
         "docs": "typedoc --options ../../typedoc.json"
     },
     "dependencies": {
-        "@manniwatch/trapeze-api-types": "^5.0.7"
+        "@manniwatch/api-types": "~0.0.1"
     },
     "devDependencies": {
         "mocha": "~7.1.0",

@@ -2,10 +2,6 @@
  * Source https://github.com/manniwatch/TrapezeApiTypes
  */
 
-/*!
- * Source https://github.com/manniwatch/TrapezeApiClientNode
- */
-
 import {
     ISettings,
     IStopInfo,
@@ -16,7 +12,7 @@ import {
     ITripPassages,
     IVehicleLocationList,
     IVehiclePathInfo,
-} from '@manniwatch/trapeze-api-types';
+} from '@manniwatch/api-types';
 import * as req from 'request';
 import * as reqp from 'request-promise-native';
 import { Util } from './util';

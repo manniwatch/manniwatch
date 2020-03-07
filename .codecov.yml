@@ -9,18 +9,18 @@ coverage:
     project:
       target: 90%
       threshold: 5%
-    TrapezeApiTypes:
+    ApiTypes:
       flags: 
-        - TrapezeApiTypes
+        - ApiTypes
       target: 90%
-    TrapezeApiServer:
+    ApiProxyServer:
       flags: 
-        - TrapezeApiServer
+        - ApiProxyServer
       target: 90%
-    TrapezeApiServerRoute:
+    ApiProxyRouter:
       target: 90%
       flags: 
-        - TrapezeApiServerRoute
+        - ApiProxyRouter
 
 parsers:
   gcov:
@@ -36,12 +36,12 @@ comment:
   require_changes: no
 
 flags:
-  TrapezeApiTypes:  
+  ApiTypes:  
     paths:
-      - packages/trapeze-api-types/src
-  TrapezeApiServer:  
+      - packages/api-types/src
+  ApiProxyServer:  
     paths:
-      - packages/trapeze-api-server/src
-  TrapezeApiServerRoute:  
+      - packages/api-proxy-server/src
+  ApiProxyRouter:  
     paths:
-      - packages/trapeze-api-server-route/src
+      - packages/api-proxy-router/src

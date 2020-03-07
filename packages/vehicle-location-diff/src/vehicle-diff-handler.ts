@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/trapeze Package: trapeze-vehicle-location-diff
  */
 
-import { IVehicleLocation, IVehicleLocationList } from '@manniwatch/trapeze-api-types';
+import { IVehicleLocation, IVehicleLocationList } from '@manniwatch/api-types';
 
 export type ITimestampedVehicleLocation = IVehicleLocation & {
     lastUpdate: number;

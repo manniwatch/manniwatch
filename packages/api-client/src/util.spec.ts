@@ -2,10 +2,6 @@
  * Source https://github.com/manniwatch/TrapezeApiTypes
  */
 
-/*!
- * Source https://github.com/manniwatch/TrapezeApiClientNode
- */
-
 import { expect } from 'chai';
 import 'mocha';
 import { Util } from './util';

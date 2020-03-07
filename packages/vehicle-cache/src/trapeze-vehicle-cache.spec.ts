@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/trapeze Package: trapeze-api-proxy-router
  */
 
-import { IVehicleLocationList } from '@manniwatch/trapeze-api-types';
+import { IVehicleLocationList } from '@manniwatch/api-types';
 import { expect } from 'chai';
 import 'mocha';
 import { of, Observable } from 'rxjs';

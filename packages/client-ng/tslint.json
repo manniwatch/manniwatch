@@ -6,9 +6,9 @@
         "file-header": [
             true,
             {
-                "match": "Source https://github.com/manniwatch/trapeze Package: api-proxy-router",
+                "match": "Source https://github.com/manniwatch/TrapezeApiTypes",
                 "allow-single-line-comments": true,
-                "default": "Source https://github.com/manniwatch/trapeze Package: api-proxy-router",
+                "default": "Source https://github.com/manniwatch/TrapezeApiTypes",
                 "enforce-trailing-newline": false
             }
         ]

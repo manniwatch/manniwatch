@@ -1,9 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/TrapezeApiTypes
- */
-
-/*!
- * Source https://github.com/manniwatch/TrapezeApiClientNode
+ * Source https://github.com/manniwatch/manniwatch
  */
 
 export {

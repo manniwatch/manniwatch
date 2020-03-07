@@ -1,6 +1,6 @@
 {
-    "name": "@manniwatch/api-vehicle-cache",
-    "version": "5.0.7",
+    "name": "@manniwatch/vehicle-cache",
+    "version": "0.0.1",
     "description": "Caching for vehicle locations",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -15,9 +15,9 @@
         "docs": "typedoc --options ../../typedoc.json"
     },
     "dependencies": {
-        "@manniwatch/trapeze-api-client": "^5.0.7",
-        "@manniwatch/trapeze-api-protobuf": "^5.0.7",
-        "@manniwatch/trapeze-api-types": "^5.0.7",
+        "@manniwatch/api-client": "~0.0.1",
+        "@manniwatch/api-protobuf": "~0.0.1",
+        "@manniwatch/api-types": "~0.0.1",
         "rxjs": "~6.5.4"
     },
     "devDependencies": {

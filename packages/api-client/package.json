@@ -1,7 +1,7 @@
 {
-    "name": "@manniwatch/trapeze-api-client",
-    "version": "5.0.7",
-    "description": "Node Client to consume the Trapeze Api",
+    "name": "@manniwatch/api-client",
+    "version": "0.0.1",
+    "description": "Node Client to consume the Api",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "private": false,
@@ -11,11 +11,10 @@
         "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
         "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
         "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json src/**/*.ts",
-        "docs": "typedoc --options ../../typedoc.json",
-        "coverage:upload": "codecov --flags trapeze-api-client"
+        "docs": "typedoc --options ../../typedoc.json"
     },
     "dependencies": {
-        "@manniwatch/trapeze-api-types": "^5.0.7",
+        "@manniwatch/api-types": "~0.0.1",
         "request": "~2.88.2",
         "request-promise-native": "~1.0.8"
     },
@@ -28,7 +27,7 @@
         "dist/*",
         "src/*"
     ],
-    "homepage": "https://manniwatch.github.io/trapeze/",
+    "homepage": "https://manniwatch.github.io/manniwatch/",
     "author": {
         "name": "manniwatch",
         "email": "manniwatch@users.noreply.github.com",
@@ -36,11 +35,11 @@
     },
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/manniwatch/trapeze/issues"
+        "url": "https://github.com/manniwatch/manniwatch/issues"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/manniwatch/trapeze.git"
+        "url": "https://github.com/manniwatch/manniwatch.git"
     },
     "engines": {
         "node": ">=8.0.0"

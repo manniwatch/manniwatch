@@ -1,6 +1,6 @@
 {
-  "name": "@manniwatch/trapeze-api-types",
-  "version": "5.0.7",
+  "name": "@manniwatch/api-types",
+  "version": "0.0.1",
   "description": "Api Types and helper for TrapezeApi",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,7 +17,7 @@
     "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json src/**/*.ts",
     "docs": "typedoc --options ../../typedoc.json"
   },
-  "homepage": "https://manniwatch.github.io/trapeze/",
+  "homepage": "https://manniwatch.github.io/manniwatch/",
   "author": {
     "name": "manniwatch",
     "email": "manniwatch@users.noreply.github.com",
@@ -25,11 +25,11 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/manniwatch/trapeze/issues"
+    "url": "https://github.com/manniwatch/manniwatch/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/manniwatch/trapeze.git"
+    "url": "https://github.com/manniwatch/manniwatch.git"
   },
   "engines": {
     "node": ">=8.0.0"

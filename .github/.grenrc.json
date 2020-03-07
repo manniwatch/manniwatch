@@ -21,7 +21,7 @@
             "release",
             "buildtools"
         ],
-        "@manniwatch/trapeze-api-types": [
+        "@manniwatch/api-types": [
             "trapeze-api-types",
             "pkg:trapeze-api-types"
         ],
