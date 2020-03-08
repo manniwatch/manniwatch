@@ -1,6 +1,6 @@
 {
   "name": "@manniwatch/client-desktop",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An electron app to be used with manniwatch endpoints",
   "main": "./dist/main.js",
   "private": false,
