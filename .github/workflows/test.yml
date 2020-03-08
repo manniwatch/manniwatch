@@ -16,9 +16,6 @@ jobs:
         run: |
           npm ci
           npx lerna bootstrap
-          cd ./packages/api-protobuf/node_modules/protobufjs/cli
-          npm install jsdoc@3.6.3
-          cd ../../../../
       - name: Run Build
         run: npm run build
       - name: Run Test
