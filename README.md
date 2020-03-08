@@ -1,5 +1,5 @@
 # ManniWatch
-
+![Test](https://github.com/manniwatch/manniwatch/workflows/Test/badge.svg?branch=master&event=push) [![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg)](https://codecov.io/gh/manniwatch/manniwatch/branch/master)
 
 ## Packages
 | Package | NPM |
