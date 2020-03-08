@@ -1,6 +1,6 @@
 {
     "name": "@manniwatch/api-client",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "Node Client to consume the Api",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -14,7 +14,7 @@
         "docs": "typedoc --options ../../typedoc.json"
     },
     "dependencies": {
-        "@manniwatch/api-types": "~0.0.1",
+        "@manniwatch/api-types": "^0.1.0",
         "request": "~2.88.2",
         "request-promise-native": "~1.0.8"
     },

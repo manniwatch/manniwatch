@@ -1,6 +1,6 @@
 {
   "name": "@manniwatch/client-ng",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Angular Client for Manniwatch",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

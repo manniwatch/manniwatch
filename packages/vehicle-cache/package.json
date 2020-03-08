@@ -1,6 +1,6 @@
 {
     "name": "@manniwatch/vehicle-cache",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "Caching for vehicle locations",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -15,8 +15,8 @@
         "docs": "typedoc --options ../../typedoc.json"
     },
     "dependencies": {
-        "@manniwatch/api-client": "~0.0.1",
-        "@manniwatch/api-types": "~0.0.1",
+        "@manniwatch/api-client": "^0.1.0",
+        "@manniwatch/api-types": "^0.1.0",
         "rxjs": "~6.5.4"
     },
     "devDependencies": {
