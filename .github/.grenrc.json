@@ -1,0 +1,49 @@
+{
+    "groupBy": {
+        "Enhancements:": [
+            "enhancement",
+            "internal"
+        ],
+        "Bug Fixes:": [
+            "bug"
+        ],
+        "Dependency Updates": [
+            "dependency",
+            "dependencies"
+        ],
+        "Feature": [
+            "feature"
+        ],
+        "Security": [
+            "security"
+        ],
+        "Others": [
+            "release",
+            "buildtools"
+        ],
+        "@manniwatch/api-types": [
+            "api-types",
+            "pkg:api-types"
+        ],
+        "@manniwatch/api-proxy-router": [
+            "api-proxy-router",
+            "pkg:api-proxy-router"
+        ],
+        "@manniwatch/api-proxy-server": [
+            "api-proxy-router",
+            "pkg:api-proxy-router"
+        ],
+        "@manniwatch/vehicle-location-diff": [
+            "vehicle-location-diff",
+            "pkg:vehicle-location-diff"
+        ],
+        "@manniwatch/client-desktop": [
+            "client-desktop",
+            "pkg:client-desktop"
+        ],
+        "@manniwatch/client-ng": [
+            "client-ng",
+            "pkg:client-ng"
+        ]
+    }
+}

@@ -1,0 +1,55 @@
+<svg width="108.00000000000001" height="108.00000000000001" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <mask id="easyMask" x="0" y="0" width="110" height="110">
+  <rect x="0" y="0" rx="30" ry="30" width="110" height="110" id="svg_41" fill="white"/>
+ </mask>
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="110" height="110" id="canvas_background" fill="none"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g mask="url(#easyMask)" id="svg_42">
+   <path fill="#4a8bc3" d="m0,0l108,0l0,108l-108,0l0,-108z" id="svg_7"/>
+   <path fill="#00000000" d="m9,0l0,108" stroke="#33FFFFFF" id="svg_8"/>
+   <path fill="#00000000" d="m19,0l0,108" stroke="#33FFFFFF" id="svg_9"/>
+   <path fill="#00000000" d="m29,0l0,108" stroke="#33FFFFFF" id="svg_10"/>
+   <path fill="#00000000" d="m39,0l0,108" stroke="#33FFFFFF" id="svg_11"/>
+   <path fill="#00000000" d="m49,0l0,108" stroke="#33FFFFFF" id="svg_12"/>
+   <path fill="#00000000" d="m59,0l0,108" stroke="#33FFFFFF" id="svg_13"/>
+   <path fill="#00000000" d="m69,0l0,108" stroke="#33FFFFFF" id="svg_14"/>
+   <path fill="#00000000" d="m79,0l0,108" stroke="#33FFFFFF" id="svg_15"/>
+   <path fill="#00000000" d="m89,0l0,108" stroke="#33FFFFFF" id="svg_16"/>
+   <path fill="#00000000" d="m99,0l0,108" stroke="#33FFFFFF" id="svg_17"/>
+   <path fill="#00000000" d="m0,9l108,0" stroke="#33FFFFFF" id="svg_18"/>
+   <path fill="#00000000" d="m0,19l108,0" stroke="#33FFFFFF" id="svg_19"/>
+   <path fill="#00000000" d="m0,29l108,0" stroke="#33FFFFFF" id="svg_20"/>
+   <path fill="#00000000" d="m0,39l108,0" stroke="#33FFFFFF" id="svg_21"/>
+   <path fill="#00000000" d="m0,49l108,0" stroke="#33FFFFFF" id="svg_22"/>
+   <path fill="#00000000" d="m0,59l108,0" stroke="#33FFFFFF" id="svg_23"/>
+   <path fill="#00000000" d="m0,69l108,0" stroke="#33FFFFFF" id="svg_24"/>
+   <path fill="#00000000" d="m0,79l108,0" stroke="#33FFFFFF" id="svg_25"/>
+   <path fill="#00000000" d="m0,89l108,0" stroke="#33FFFFFF" id="svg_26"/>
+   <path fill="#00000000" d="m0,99l108,0" stroke="#33FFFFFF" id="svg_27"/>
+   <path fill="#00000000" d="m19,29l70,0" stroke="#33FFFFFF" id="svg_28"/>
+   <path fill="#00000000" d="m19,39l70,0" stroke="#33FFFFFF" id="svg_29"/>
+   <path fill="#00000000" d="m19,49l70,0" stroke="#33FFFFFF" id="svg_30"/>
+   <path fill="#00000000" d="m19,59l70,0" stroke="#33FFFFFF" id="svg_31"/>
+   <path fill="#00000000" d="m19,69l70,0" stroke="#33FFFFFF" id="svg_32"/>
+   <path fill="#00000000" d="m19,79l70,0" stroke="#33FFFFFF" id="svg_33"/>
+   <path fill="#00000000" d="m29,19l0,70" stroke="#33FFFFFF" id="svg_34"/>
+   <path fill="#00000000" d="m39,19l0,70" stroke="#33FFFFFF" id="svg_35"/>
+   <path fill="#00000000" d="m49,19l0,70" stroke="#33FFFFFF" id="svg_36"/>
+   <path fill="#00000000" d="m59,19l0,70" stroke="#33FFFFFF" id="svg_37"/>
+   <path fill="#00000000" d="m69,19l0,70" stroke="#33FFFFFF" id="svg_38"/>
+   <path fill="#00000000" d="m79,19l0,70" stroke="#33FFFFFF" id="svg_39"/>
+  </g>
+  <g id="svg_40">
+   <path id="svg_4" d="m34.5,36l39,0l0,18l-39,0l0,-18z" fill="#33000000"/>
+   <path id="svg_5" d="m34.5,60l39,0l0,12l-39,0l0,-12z" fill="#CCFFEB3B"/>
+   <path id="svg_6" d="m30,67.5c0,2.64 1.17,5.01 3,6.66l0,5.34c0,1.65 1.35,3 3,3l3,0c1.65,0 3,-1.35 3,-3l0,-3l24,0l0,3c0,1.65 1.35,3 3,3l3,0c1.65,0 3,-1.35 3,-3l0,-5.34c1.83,-1.65 3,-4.02 3,-6.66l0,-30c0,-10.5 -10.74,-12 -24,-12c-13.26,0 -24,1.5 -24,12l0,30zm10.5,3c-2.49,0 -4.5,-2.01 -4.5,-4.5c0,-2.49 2.01,-4.5 4.5,-4.5c2.49,0 4.5,2.01 4.5,4.5c0,2.49 -2.01,4.5 -4.5,4.5zm27,0c-2.49,0 -4.5,-2.01 -4.5,-4.5c0,-2.49 2.01,-4.5 4.5,-4.5c2.49,0 4.5,2.01 4.5,4.5c0,2.49 -2.01,4.5 -4.5,4.5zm4.5,-18l-36,0l0,-15l36,0l0,15z" fill="#c34a4e"/>
+   <path fill="#ab6366" id="svg_3" d="m54,70.5l6,-9l-6,-6l-6,6l6,9z"/>
+  </g>
+ </g>
+</svg>

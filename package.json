@@ -1,0 +1,55 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "@types/chai": "~4.2.10",
+    "@types/mocha": "~7.0.2",
+    "@types/node": "~13.7.7",
+    "@types/sinon": "~7.5.2",
+    "chai": "~4.2.0",
+    "lerna": "~3.20.2",
+    "mocha": "~7.1.0",
+    "nyc": "~15.0.0",
+    "sinon": "~9.0.0",
+    "ts-node": "~8.6.2",
+    "tslint": "~6.0.0",
+    "typedoc": "~0.16.11",
+    "typescript": "~3.8.3"
+  },
+  "scripts": {
+    "build": "lerna run build",
+    "test": "lerna run test",
+    "test:coverage": "lerna run test:coverage",
+    "lint": "lerna run lint",
+    "docs": "lerna run docs",
+    "lint:fix": "lerna run lint:fix",
+    "prepublishOnly": "npm run test && npm run docs && npm run build",
+    "clean:modules": "rm -rf ./packages/*/node_modules && rm -rf ./node_modules"
+  },
+  "nyc": {
+    "include": [
+      "src/*.ts",
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "typings",
+      "src/**/*.spec.ts",
+      "**/*.d.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "json",
+      "html",
+      "text-summary",
+      "lcov"
+    ],
+    "sourceMap": true,
+    "instrument": true,
+    "all": true
+  }
+}

@@ -1,0 +1,7 @@
+{
+    "mode": "file",
+    "out": "docs",
+    "exclude": [
+        "**/*.spec.ts"
+    ]
+}
