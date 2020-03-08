@@ -3,88 +3,13 @@ update_configs:
   - package_manager: "javascript"
     directory: "/"
     update_schedule: "live"
+    target_branch: "dev"
+    version_requirement_updates: "increase_versions"
+    automerged_updates:
+      - match:
+          dependency_type: "all"
     default_labels:
       - "dependencies"
-    commit_message:
-      prefix: "build"
-      prefix_development: "build"
-      include_scope: true
-  - package_manager: "javascript"
-    directory: "/packages/api-types"
-    update_schedule: "live"
-    default_labels:
-      - "dependencies"
-      - "pkg:api-types"
-    commit_message:
-      prefix: "build"
-      prefix_development: "build"
-      include_scope: true
-  - package_manager: "javascript"
-    directory: "/packages/api-client"
-    update_schedule: "live"
-    default_labels:
-      - "dependencies"
-      - "pkg:api-client"
-    commit_message:
-      prefix: "build"
-      prefix_development: "build"
-      include_scope: true
-  - package_manager: "javascript"
-    directory: "/packages/api-proxy-router"
-    update_schedule: "live"
-    default_labels:
-      - "dependencies"
-      - "pkg:api-proxy-router"
-    commit_message:
-      prefix: "build"
-      prefix_development: "build"
-      include_scope: true
-  - package_manager: "javascript"
-    directory: "/packages/api-proxy-server"
-    update_schedule: "live"
-    default_labels:
-      - "dependencies"
-      - "pkg:api-proxy-server"
-    commit_message:
-      prefix: "build"
-      prefix_development: "build"
-      include_scope: true
-  - package_manager: "javascript"
-    directory: "/packages/client-desktop"
-    update_schedule: "live"
-    default_labels:
-      - "dependencies"
-      - "pkg:client-desktop"
-    commit_message:
-      prefix: "build"
-      prefix_development: "build"
-      include_scope: true
-  - package_manager: "javascript"
-    directory: "/packages/client-ng"
-    update_schedule: "live"
-    default_labels:
-      - "dependencies"
-      - "pkg:client-ng"
-    commit_message:
-      prefix: "build"
-      prefix_development: "build"
-      include_scope: true
-  - package_manager: "javascript"
-    directory: "/packages/vehicle-cache"
-    update_schedule: "live"
-    default_labels:
-      - "dependencies"
-      - "pkg:vehicle-cache"
-    commit_message:
-      prefix: "build"
-      prefix_development: "build"
-      include_scope: true
-  - package_manager: "javascript"
-    directory: "/packages/vehicle-location-diff"
-    update_schedule: "live"
-    default_labels:
-      - "dependencies"
-      - "pkg:vehicle-location-diff"
     commit_message:
       prefix: "build"
       prefix_development: "build"
