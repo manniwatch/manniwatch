@@ -1,0 +1,22 @@
+name: Create Release Notes
+on:
+  release:
+    types: [created]
+
+jobs:
+  create_release_notes:
+    runs-on: ubuntu-latest
+    name: Update Release Notes via GREN
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1 
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Install GREN
+        run: |
+          npm install github-release-notes -g
+      - name: Run Gren
+        run: |
+          gren release --override --token=${{ secrets.GITHUB_TOKEN }} --data-source=prs --config=./.github/.grenrc.json

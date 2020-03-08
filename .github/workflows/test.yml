@@ -1,0 +1,30 @@
+name: Test
+on: [push,pull_request]
+
+jobs:
+  test_suite:
+    runs-on: ubuntu-latest
+    name: Test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Install Deps
+        run: |
+          npm ci
+          npx lerna bootstrap
+      - name: Run Build
+        run: npm run build
+      - name: Run Test
+        run: npm run test:coverage
+      - name: Run Lint
+        run: npm run lint
+      - name: Run Docs
+        run: npm run docs
+      - name: Upload coverage to Codecov  
+        run: ./codecov_upload.sh
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
