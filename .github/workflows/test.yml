@@ -15,7 +15,7 @@ jobs:
       - name: Install Deps
         run: |
           npm ci
-          npm run lerna:bootstrap
+          npx lerna bootstrap
           cd ./packages/api-protobuf/node_modules/protobufjs/cli
           npm install jsdoc@3.6.3
           cd ../../../../

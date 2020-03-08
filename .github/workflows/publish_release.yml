@@ -17,7 +17,7 @@ jobs:
       - name: Install Packages
         run: |
           npm ci
-          npm run lerna:bootstrap
+          npx lerna bootstrap
       - name: Build Package
         run: npm run build
       - name: Prepare Package
@@ -39,7 +39,7 @@ jobs:
       - name: Install Packages
         run: |
           npm ci
-          npm run lerna:bootstrap
+          npx lerna bootstrap
       - name: Build Package
         run: npm run build
       - name: Prepare Package
