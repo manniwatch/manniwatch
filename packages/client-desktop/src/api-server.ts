@@ -51,7 +51,7 @@ export class ApiServer {
         this.app.use('/api', createApiProxyRouter(this.config.endpoint));
         this.app.use('/api', api404Handler);
         this.app.use(express.static(this.ngModulePath));
-        this.app.get('/*', (req: express.Request, res: express.Response) => {
+        this.app.get('/*', (req: express.Request, res: express.Response): void => {
             // tslint:disable-next-line:no-console
             console.info('Not found', req.path);
             res.status(404).sendFile(this.ngModulePath + '/index.html');

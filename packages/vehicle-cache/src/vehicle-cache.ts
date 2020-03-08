@@ -3,7 +3,7 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import { IVehicleLocationList } from '@manniwatch/api-types';
+import { IVehicleLocationList, IVehicleLocation } from '@manniwatch/api-types';
 import { defer, from, of, BehaviorSubject, Observable } from 'rxjs';
 import { concatMap, delay, retryWhen, share, switchMap, tap } from 'rxjs/operators';
 export class VehicleCache {
@@ -12,15 +12,11 @@ export class VehicleCache {
     }
     private lastUpdateSubject: BehaviorSubject<number> = new BehaviorSubject(0);
     public polling: boolean = true;
-    public getVehicle(id: string): trapeze.VehicleLocation {
-        return trapeze.VehicleLocation.create({
-            id: 'I',
-            isDeleted: false,
-            lastUpdate: 29,
-        });
+    public getVehicle(id: string): IVehicleLocation {
+        return undefined as any;
     }
 
-    public watch(cb: trapeze.VehicleLocation): void {
+    public watch(cb: IVehicleLocation): void {
     }
 
     public safeQueryData(lastUpdate: number): Observable<IVehicleLocationList> {

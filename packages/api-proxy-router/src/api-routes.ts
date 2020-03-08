@@ -17,7 +17,7 @@ import { SettingsEndpoints } from './endpoints/settings';
  *
  * @param endpoint example: http://test.domain/
  */
-export const createApiProxyRoute: (endpoint: string) => express.Router = (endpoint: string): express.Router => {
+export const createApiProxyRouter: (endpoint: string) => express.Router = (endpoint: string): express.Router => {
     const apiClient: ManniWatchApiClient = new ManniWatchApiClient(endpoint);
     const route: express.Router = express.Router();
     /**

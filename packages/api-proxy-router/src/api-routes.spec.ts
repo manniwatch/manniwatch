@@ -7,7 +7,7 @@ import * as express from 'express';
 import 'mocha';
 import * as sinon from 'sinon';
 import * as supertest from 'supertest';
-import { createApiProxyRoute } from './api-routes';
+import { createApiProxyRouter } from './api-routes';
 import { StopEndpoints, StopPointEndpoints, TripEndpoints, VehicleEndpoints } from './endpoints';
 import { SettingsEndpoints } from './endpoints/settings';
 
@@ -44,7 +44,7 @@ describe('api-routes.ts', (): void => {
             });
         });
         beforeEach((): void => {
-            const route: express.Router = createApiProxyRoute('https://localhost:12345/');
+            const route: express.Router = createApiProxyRouter('https://localhost:12345/');
             app = express();
             app.use(route);
             app.use((req: express.Request, res: express.Response, next: express.NextFunction): void => {
