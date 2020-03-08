@@ -19,4 +19,4 @@ jobs:
           npm install github-release-notes -g
       - name: Run Gren
         run: |
-          gren release --override --token=${{ secrets.GITHUB_TOKEN }} --data-source=prs --config=./.github/.grenrc.json
+          gren release --override --token=${{ secrets.GITHUB_TOKEN }} --config=./.github/.grenrc.json
