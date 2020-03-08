@@ -13,7 +13,7 @@ import 'mocha';
 import * as nock from 'nock';
 import * as reqp from 'request-promise-native';
 import * as sinon from 'sinon';
-import { IBoundingBox, PositionType, StopMode, ManniWatchApiClient } from './manni-watch-api-client';
+import { IBoundingBox, ManniWatchApiClient, PositionType, StopMode } from './manni-watch-api-client';
 import { Util } from './util';
 
 const testSuccessResponse: any = {

@@ -1,5 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/manniwatch
+ * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
 import { expect } from 'chai';
@@ -30,7 +30,7 @@ interface ITestElement {
     noId?: boolean;
 }
 describe('api-routes.ts', (): void => {
-    describe('createTrapezeApiRoute()', (): void => {
+    describe('createApiProxyRouter()', (): void => {
         let app: express.Express;
         let routeErrorStub: sinon.SinonStub;
         const NOT_FOUND_RESPONSE: any = { error: true, status: 404 };

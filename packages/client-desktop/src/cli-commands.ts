@@ -13,7 +13,7 @@ export type ArgsCallback = (config: IConfig) => void;
 export const parseArgs: (cb: ArgsCallback) => void = (cb: ArgsCallback): void => {
     // tslint:disable-next-line:no-unused-expression
     yargs
-        .command('$0 [endpoint]', 'endpoint url to query', (ya: yargs.Argv<any>) =>
+        .command('$0 [endpoint]', 'endpoint url to query', (ya: yargs.Argv<any>): void =>
             ya
                 .positional('endpoint', {
                     alias: 'endpoint',
@@ -31,9 +31,9 @@ export const parseArgs: (cb: ArgsCallback) => void = (cb: ArgsCallback): void =>
                     describe: 'Enable dev mode',
                     type: 'boolean',
                 })
-                .coerce('endpoint', (value: string) =>
+                .coerce('endpoint', (value: string): URL =>
                     new URL(value))
-                .check((argv: yargs.Arguments<any>, aliases: { [alias: string]: string }) =>
+                .check((argv: yargs.Arguments<any>, aliases: { [alias: string]: string }): true =>
                     true), (argv: yargs.Arguments<any>): void => {
                         cb(argv);
                     })

@@ -3,7 +3,7 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import { IVehicleLocationList, IVehicleLocation } from '@manniwatch/api-types';
+import { IVehicleLocation, IVehicleLocationList } from '@manniwatch/api-types';
 import { defer, from, of, BehaviorSubject, Observable } from 'rxjs';
 import { concatMap, delay, retryWhen, share, switchMap, tap } from 'rxjs/operators';
 export class VehicleCache {

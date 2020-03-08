@@ -90,7 +90,7 @@ export class ApiServer {
             return Promise.resolve();
         }
         return new Promise((resolve: () => void, reject: (err: any) => void): void => {
-            this.server = this.app.listen(this.config.port, (...args: any[]) => {
+            this.server = this.app.listen(this.config.port, (...args: any[]): void => {
                 if (args.length > 0) {
                     reject(args[0]);
                 } else {

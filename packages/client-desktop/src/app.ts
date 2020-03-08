@@ -47,18 +47,18 @@ export class ManniWatchApp {
     public init(): Promise<void> {
         return this.apiServer
             .start()
-            .then(() => {
+            .then((): void => {
 
                 app.on('ready', this.createWindow.bind(this));
 
-                app.on('window-all-closed', () => {
+                app.on('window-all-closed', (): void => {
                     if (process.platform !== 'darwin') {
                         app.quit();
                         this.apiServer.stop();
                     }
                 });
 
-                app.on('activate', () => {
+                app.on('activate', (): void => {
                     if (this.mainWindow === null) {
                         this.createWindow();
                     }
@@ -73,7 +73,7 @@ export class ManniWatchApp {
             ],
         };
         session.webRequest
-            .onBeforeSendHeaders(filter, (details: Electron.OnBeforeSendHeadersListenerDetails, callback: (v: any) => void) => {
+            .onBeforeSendHeaders(filter, (details: Electron.OnBeforeSendHeadersListenerDetails, callback: (v: any) => void): void => {
                 // tslint:disable-next-line:no-string-literal
                 details.requestHeaders['Authorization'] = 'Bearer ' + this.secureToken;
                 callback({ cancel: false, requestHeaders: details.requestHeaders });
@@ -110,7 +110,7 @@ export class ManniWatchApp {
         }
 
         // emitted when the window is closed.
-        this.mainWindow.on('closed', () => {
+        this.mainWindow.on('closed', (): void => {
             // dereference the window object, usually you would store windows
             // in an array if your app supports multi windows, this is the time
             // when you should delete the corresponding element.
