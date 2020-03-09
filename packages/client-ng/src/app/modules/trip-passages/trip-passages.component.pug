@@ -1,0 +1,16 @@
+app-map-header-box([blur]="hasError()",title="{{routeName}} - {{tripData?.directionText}}")
+    map(appTripPassages,[location]="tripData?.location",role="none")
+div.error-box(*ngIf="hasError()",aria-errormessage="Error retrieving data",i18n-aria-errormessage="@@errorUpdatingData")
+    span.title(i18n="@@anErrorOccured") An error occured (Code: {{statusCode}})
+    span.text Retrying in
+        |
+        span(appCountdownTimer,[targetTime]="lastTimestamp + DEBOUNCE_TIME",[placeholder]="'<i class=\"material-icons\">sync</i>'") test
+mat-nav-list(*ngIf="tripId==tripData?.tripId",role="list")
+    a(*ngFor="let passage of tripPassages",[routerLink]="['/stop', passage?.stop?.shortName]",role="listitem")
+        mat-list-item
+            mat-icon(matListIcon,role="figure",i18n-aria-label="@@busStopIcon",aria-label="Bus stop icon") trip_origin
+            h3(matLine,aria-label="Stop name",i18n-aria-label="@@stopName") {{passage?.stop?.name}}
+            p(matLine)
+                span(role="timer") {{passage?.actualTime}}
+                |
+                span(class="demo-2",role="status") -- {{passage?.status}}

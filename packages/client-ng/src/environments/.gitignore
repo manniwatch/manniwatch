@@ -1,0 +1,7 @@
+*
+!environment.base.ts
+#!environment.ts
+!environment.example.ts
+!environment.example.pwa.ts
+!.gitignore
+!app-version.ts

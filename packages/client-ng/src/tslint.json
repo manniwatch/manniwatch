@@ -1,0 +1,62 @@
+{
+    "extends": "../tslint.json",
+    "rules": {
+        "only-arrow-functions": true,
+        "object-literal-sort-keys": true,
+        "no-console": true,
+        "trailing-comma": [
+            true,
+            {
+                "multiline": "always",
+                "singleline": "never"
+            }
+        ],
+        "no-consecutive-blank-lines": [
+            true,
+            1
+        ],
+        "directive-selector": [
+            true,
+            "attribute",
+            "app",
+            "camelCase"
+        ],
+        "component-selector": [
+            true,
+            "element",
+            "app",
+            "kebab-case"
+        ],
+        "ordered-imports": [
+            true,
+            {
+                "import-sources-order": "lowercase-first",
+                "named-imports-order": "lowercase-first"
+            }
+        ],
+        "curly": [
+            true,
+            "ignore-same-line"
+        ],
+        "no-null-keyword": true,
+        "no-string-throw": true,
+        "no-unused-variable": true,
+        "prefer-const": true,
+        "member-ordering": [
+            true,
+            {
+                "order": "statics-first"
+            }
+        ],
+        "no-return-await": true,
+        "no-string-literal": true,
+        "no-var-keyword": true,
+        "static-this": true,
+        "arrow-return-shorthand": [
+            true,
+            "multiline"
+        ],
+        "no-angle-bracket-type-assertion": true,
+        "no-boolean-literal-compare": true
+    }
+}

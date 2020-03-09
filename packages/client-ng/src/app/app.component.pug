@@ -1,0 +1,9 @@
+mat-sidenav-container.main-container(#sidenavContainer,[hasBackdrop]="true")
+    mat-sidenav.main-nav(#sidenav,mode="over")
+        app-sidebar
+    mat-sidenav-content
+        map(appMainMap)
+        .overlay-box
+            .router-box
+                router-outlet
+            app-main-toolbar
