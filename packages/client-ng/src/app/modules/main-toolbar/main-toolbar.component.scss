@@ -1,0 +1,84 @@
+.fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.search-open{
+    app-toolbar-search{
+        opacity: 1;
+    }
+}
+button.sidebar-toggle{
+    display:block;
+}
+
+@media (max-width: 439px){
+    .navigation-closeable{
+        button.close{
+            display:none;
+        }
+        mat-divider.close-divider{
+            display:none;
+        }
+    }
+}
+button.close{
+    display:none;
+    ::after{
+        content: "close"
+    }
+}
+mat-divider.close-divider{
+    display:none;
+}
+@media (max-width:439px){
+    .navigation-closeable{
+        button.close{
+            display:block;
+            order: 1;
+            ::after{
+                content: "arrow_back"
+            }
+        }
+        mat-divider.close-divider{
+            display:none;
+        }
+        app-toolbar-search{
+            order:2;
+        }
+        button#btnSearch{
+            order:3;
+        }
+        button.sidebar-toggle{
+            display:none;
+        }
+    }
+}
+@media (min-width:440px){
+    .navigation-closeable{
+        button.close{
+            display:block;
+            order: 4;
+        }
+        mat-divider.close-divider{
+            display:block;
+            order: 3;
+        }
+    }
+}
+
+app-toolbar-search{
+    flex:1 1 auto;
+    opacity:0.4;
+}
+
+mat-toolbar mat-divider{
+    height:40px;
+    border-right-color: rgba(255,255,255,0.1);
+}

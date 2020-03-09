@@ -1,0 +1,22 @@
+h3.route-title {
+    padding: 24px;
+}
+
+div.error-box {
+    background: #F44336;
+    padding: 16px;
+    flex:0 0 auto; 
+    span.title {
+        text-transform: capitalize;
+        font-weight: bold;
+        display: block;
+        font-size: 16px;
+    }
+    span.text {
+        font-size: 12px;
+    }
+}
+
+mat-nav-list{
+    flex-grow: 1;
+}
