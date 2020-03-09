@@ -17,6 +17,15 @@
       "app",
       "kebab-case"
     ],
+    "file-header": [
+      true,
+      {
+        "match": "Source https://github.com/manniwatch/manniwatch Package: client-ng",
+        "allow-single-line-comments": true,
+        "default": "Source https://github.com/manniwatch/manniwatch Package: client-ng",
+        "enforce-trailing-newline": false
+      }
+    ],
     "object-literal-key-quotes": [
       true,
       "as-needed"
