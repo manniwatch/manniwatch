@@ -11,19 +11,48 @@
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
     "e2e": "ng e2e",
-    "postinstall": "node ./ng-add-pug-loader.js"
+    "postinstall": "node ./ng-add-pug-loader.js",
+    "docs": "npx compodoc -p tsconfig.app.json -d ./docs"
   },
-  "private": true,
+  "private": false,
+  "homepage": "https://manniwatch.github.io/manniwatch/",
+  "author": {
+    "name": "manniwatch",
+    "email": "manniwatch@users.noreply.github.com",
+    "url": "https://github.com/manniwatch"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/manniwatch/manniwatch/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manniwatch/manniwatch.git"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
-    "@angular/animations": "~8.2.14",
-    "@angular/common": "~8.2.14",
-    "@angular/compiler": "~8.2.14",
-    "@angular/core": "~8.2.14",
-    "@angular/forms": "~8.2.14",
-    "@angular/platform-browser": "~8.2.14",
-    "@angular/platform-browser-dynamic": "~8.2.14",
-    "@angular/router": "~8.2.14",
+    "@angular/animations": "~8.2.0",
+    "@angular/cdk": "~8.2.0",
+    "@angular/common": "~8.2.0",
+    "@angular/compiler": "~8.2.0",
+    "@angular/core": "~8.2.0",
+    "@angular/forms": "~8.2.0",
+    "@angular/material": "~8.2.0",
+    "@angular/platform-browser": "~8.2.0",
+    "@angular/platform-browser-dynamic": "~8.2.0",
+    "@angular/pwa": "~0.803.25",
+    "@angular/router": "~8.2.0",
+    "@angular/service-worker": "~8.2.0",
+    "@manniwatch/api-types": "~0.1.0",
+    "material-design-icons": "~3.0.1",
+    "moment": "~2.24.0",
     "ng-cli-pug-loader": "~0.2.2",
+    "ol": "~6.2.1",
     "rxjs": "~6.4.0",
     "tslib": "~1.10.0",
     "zone.js": "~0.9.1"
@@ -33,12 +62,14 @@
     "@angular/cli": "~8.3.19",
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
-    "@types/jasmine": "~3.3.8",
-    "@types/jasminewd2": "~2.0.3",
-    "@types/node": "~8.9.4",
+    "@compodoc/compodoc": "~1.1.11",
+    "@types/jasmine": "~3.5.6",
+    "@types/jasminewd2": "~2.0.8",
+    "@types/node": "~13.9.0",
+    "@types/ol": "~6.1.0",
     "apply-loader": "~2.0.0",
     "codelyzer": "~5.0.0",
-    "jasmine-core": "~3.4.0",
+    "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
     "karma-chrome-launcher": "~2.2.0",

@@ -1,0 +1,3 @@
+form(role="search")
+    mat-form-field
+        input(#searchInput,(blur)="onLoseFocus()",type="search",aria-label="Number",placeholder="Stopname",matInput,[formControl]="searchControl",i18n-placeholder="Stopname to search@@stopnameToSearch",i18n-aria-placeholder="Stopname to search@@stopnameToSearch",(ngSubmit)="onSubmit()",(keyup.enter)="onSubmit()")
