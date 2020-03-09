@@ -1,8 +1,0 @@
-div.info([ngSwitch]="errorTypeObservable|async")
-    ng-container(*ngSwitchCase="1")
-        p The passage could not be found. It either expired or has yet to start.
-        p Please select another passage.
-    ng-container(*ngSwitchCase="2")
-        p The requested vehicle could not be found. It might not be active at the moment.
-    ng-container(*ngSwitchDefault)
-        p The requested resource can not be found.
