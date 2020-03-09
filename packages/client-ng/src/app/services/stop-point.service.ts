@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { Injectable } from '@angular/core';
 import { IStopLocation } from '@donmahallem/trapeze-api-types';
 import { from, Observable, Subject, Subscriber } from 'rxjs';

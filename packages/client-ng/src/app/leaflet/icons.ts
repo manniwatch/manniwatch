@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { Location } from '@angular/common';
 import * as L from 'leaflet';
 import { STOP_ICON_SHADOW_URL, STOP_ICON_URL } from './constants';

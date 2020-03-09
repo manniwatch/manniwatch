@@ -1,3 +1,6 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
 
 import { AfterViewInit, ElementRef, NgZone, OnDestroy, ViewChild } from '@angular/core';
 import * as L from 'leaflet';

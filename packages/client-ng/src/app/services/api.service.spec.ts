@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { HttpClient } from '@angular/common/http';
 import { async, TestBed } from '@angular/core/testing';
 import { IStopInfo, IStopLocations, IVehicleLocation, IVehiclePathInfo } from '@donmahallem/trapeze-api-types';

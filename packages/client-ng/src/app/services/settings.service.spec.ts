@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { async, TestBed } from '@angular/core/testing';
 import { LatLng } from 'leaflet';
 import { from, throwError } from 'rxjs';

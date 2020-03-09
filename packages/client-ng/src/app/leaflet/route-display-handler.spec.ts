@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { IVehiclePath } from '@donmahallem/trapeze-api-types';
 import * as L from 'leaflet';
 import { Subscription } from 'rxjs';

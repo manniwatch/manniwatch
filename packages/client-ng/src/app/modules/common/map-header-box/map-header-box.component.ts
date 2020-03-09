@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { Component, HostBinding, Input } from '@angular/core';
 @Component({
     selector: 'app-map-header-box',

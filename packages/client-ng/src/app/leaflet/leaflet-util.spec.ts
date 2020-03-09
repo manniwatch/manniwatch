@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { IWayPoint } from '@donmahallem/trapeze-api-types';
 import { LatLng } from 'leaflet';
 import { LeafletUtil } from './leaflet-util';

@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { from, merge, throwError, Subject } from 'rxjs';
 import { delay, flatMap, retryWhen, tap } from 'rxjs/operators';
 import { retryDialogStrategy, RetryDialogStrategyFuncResponse } from './retry-dialog-strategy';

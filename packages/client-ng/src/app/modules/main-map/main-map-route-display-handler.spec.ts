@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { fakeAsync, tick } from '@angular/core/testing';
 import { IVehiclePath, IVehiclePathInfo, TripId } from '@donmahallem/trapeze-api-types';
 import * as L from 'leaflet';

@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import {

@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { ITripPassages, IVehicleLocation } from '@donmahallem/trapeze-api-types';
 
 export type TripPassagesLocation = ITripPassages & {
