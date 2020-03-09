@@ -1,4 +1,4 @@
-import { getAppVersion } from './app-version';
+import { APP_VERSION } from './app-version';
 import { IEnvironmentBase } from './environment.base';
 
 export const environment: IEnvironmentBase = {
@@ -6,5 +6,5 @@ export const environment: IEnvironmentBase = {
     //backendType: 'nginx',
     production: false,
     pwa: false,
-    version: getAppVersion(),
+    version: APP_VERSION,
 };

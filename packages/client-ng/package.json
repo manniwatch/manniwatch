@@ -11,9 +11,30 @@
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
     "e2e": "ng e2e",
-    "postinstall": "node ./ng-add-pug-loader.js"
+    "postinstall": "node ./ng-add-pug-loader.js",
+    "docs": "npx compodoc -p src/tsconfig.app.json -d ./docs"
   },
-  "private": true,
+  "private": false,
+  "homepage": "https://manniwatch.github.io/manniwatch/",
+  "author": {
+    "name": "manniwatch",
+    "email": "manniwatch@users.noreply.github.com",
+    "url": "https://github.com/manniwatch"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/manniwatch/manniwatch/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manniwatch/manniwatch.git"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@angular/animations": "~8.2.0",
     "@angular/cdk": "~8.2.0",
@@ -46,7 +67,7 @@
     "@types/jasmine": "~3.5.6",
     "@types/jasminewd2": "~2.0.8",
     "@types/leaflet": "~1.5.10",
-    "@types/node": "~8.9.4",
+    "@types/node": "~13.9.0",
     "apply-loader": "~2.0.0",
     "codelyzer": "~5.0.0",
     "jasmine-core": "~3.5.0",
