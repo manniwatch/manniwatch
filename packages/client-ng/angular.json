@@ -5,8 +5,12 @@
   "projects": {
     "manniwatch": {
       "projectType": "application",
-      "schematics": {},
-      "root": "./packages/client-ng",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
@@ -24,7 +28,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -89,7 +93,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
