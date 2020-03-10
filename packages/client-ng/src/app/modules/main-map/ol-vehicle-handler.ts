@@ -1,5 +1,5 @@
 import { NgZone } from '@angular/core';
-import { IVehicleLocation } from '@donmahallem/trapeze-api-types';
+import { IVehicleLocation, IVehicleLocationList } from '@donmahallem/trapeze-api-types';
 import { Feature, Map as OlMap } from 'ol';
 import Point from 'ol/geom/Point';
 import VectorLayer from 'ol/layer/Vector';
@@ -7,7 +7,7 @@ import VectorSource from 'ol/source/Vector';
 import { Subscription } from 'rxjs';
 import { distinctUntilChanged, pluck } from 'rxjs/operators';
 import { runOutsideZone } from 'src/app/rxjs-util/run-outside-zone';
-import { IData, TimestampedVehicleLocation } from 'src/app/services';
+import { TimestampedVehicleLocation } from 'src/app/services';
 import { OlUtil } from '../common/openlayers';
 import { OlMainMapDirective } from './ol-main-map.directive';
 export class OlVehicleHandler {
@@ -34,7 +34,7 @@ export class OlVehicleHandler {
             this.mainMap.vehicleSerivce
                 .getVehicles
                 .pipe(runOutsideZone(this.mainMap.zone),
-                    distinctUntilChanged((x: IData, y: IData): boolean => {
+                    distinctUntilChanged((x: IVehicleLocationList, y: IVehicleLocationList): boolean => {
                         if (x && y) {
                             return x.lastUpdate === y.lastUpdate;
                         }
