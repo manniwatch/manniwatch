@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { createVehicleDiff, IVehicleDiff, TimestampedVehicleLocation } from '../services/vehicle.service';
 
 describe('src/app/services/vehicle.service.ts', () => {

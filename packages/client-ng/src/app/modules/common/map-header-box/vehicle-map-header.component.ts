@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { TripInfoWithId } from 'src/app/services';
 import { MapHeaderComponent } from './map-header.component';

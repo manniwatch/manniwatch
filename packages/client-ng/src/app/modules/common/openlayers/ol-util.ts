@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { IVehicleLocation } from '@donmahallem/trapeze-api-types';
 import { Coordinate } from 'ol/coordinate';
 import { fromLonLat } from 'ol/proj';

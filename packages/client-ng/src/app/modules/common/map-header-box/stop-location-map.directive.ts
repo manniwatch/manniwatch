@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { Location } from '@angular/common';
 import { Directive, ElementRef, Input, NgZone, OnChanges, SimpleChanges } from '@angular/core';
 import { IStopLocation, IStopPointLocation } from '@donmahallem/trapeze-api-types';

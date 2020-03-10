@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { Component, VERSION } from '@angular/core';
 import { SidebarService } from 'src/app/services/sidebar.service';
 import { environment } from 'src/environments';

@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IStopLocation } from '@donmahallem/trapeze-api-types';

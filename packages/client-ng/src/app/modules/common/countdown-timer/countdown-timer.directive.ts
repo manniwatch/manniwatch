@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { Directive, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
 import { combineLatest, timer, BehaviorSubject, Subscriber, Subscription } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';

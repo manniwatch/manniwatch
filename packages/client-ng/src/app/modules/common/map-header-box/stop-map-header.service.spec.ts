@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { IStopPassage } from '@donmahallem/trapeze-api-types';
 import { of } from 'rxjs';
 import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';

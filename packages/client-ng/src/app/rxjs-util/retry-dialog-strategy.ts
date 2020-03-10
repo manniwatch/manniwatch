@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialogRef } from '@angular/material';
 import { Observable } from 'rxjs';

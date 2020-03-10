@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IActualDeparture, IRoute, IStopPassage, IStopPointLocation, StopShortName } from '@donmahallem/trapeze-api-types';

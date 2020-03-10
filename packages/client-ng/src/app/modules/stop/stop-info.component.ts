@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { IStopLocation, IStopPassage } from '@donmahallem/trapeze-api-types';
 import { StopInfoService } from './stop-info.service';

@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { Injectable } from '@angular/core';
 import { IVehiclePathInfo } from '@donmahallem/trapeze-api-types';
 import { combineLatest, of, BehaviorSubject, Observable } from 'rxjs';

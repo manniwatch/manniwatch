@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { NgZone } from '@angular/core';
 import { IVehicleLocation, IVehicleLocationList } from '@donmahallem/trapeze-api-types';
 import { Feature, Map as OlMap } from 'ol';

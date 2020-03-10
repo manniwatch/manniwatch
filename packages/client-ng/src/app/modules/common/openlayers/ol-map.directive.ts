@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 
 import { AfterViewInit, ElementRef, NgZone, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { Collection, Map, View } from 'ol';

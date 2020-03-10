@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
 import { IStopLocation, IStopPassage, IStopPointLocation } from '@donmahallem/trapeze-api-types';
 import { of, BehaviorSubject, Observable } from 'rxjs';

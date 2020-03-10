@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarDismiss } from '@angular/material';
 import { zip, Observable, Subject } from 'rxjs';

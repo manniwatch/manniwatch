@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { fakeAsync, tick } from '@angular/core/testing';
 import { TripId } from '@donmahallem/trapeze-api-types';
 import { of, EMPTY, NEVER, Observable, Subject, Subscription } from 'rxjs';

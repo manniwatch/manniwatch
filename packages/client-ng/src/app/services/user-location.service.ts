@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, EMPTY, Observable, Subscriber } from 'rxjs';
 import { catchError, debounceTime, flatMap } from 'rxjs/operators';

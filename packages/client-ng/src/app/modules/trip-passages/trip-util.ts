@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { TripId } from '@donmahallem/trapeze-api-types';
 import { of, Observable, OperatorFunction } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';

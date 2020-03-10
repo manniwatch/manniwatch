@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { Location } from '@angular/common';
 import { Directive, ElementRef, NgZone, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';

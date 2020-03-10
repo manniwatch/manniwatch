@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { StopPointInfoService } from './stop-point-info.service';
 

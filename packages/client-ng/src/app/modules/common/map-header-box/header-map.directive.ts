@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
+
 import { ElementRef, HostBinding, NgZone } from '@angular/core';
 import { Map as OlMap } from 'ol';
 import { Coordinate } from 'ol/coordinate';
