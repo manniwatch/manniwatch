@@ -3,7 +3,6 @@
  */
 
 import { fakeAsync, tick } from '@angular/core/testing';
-import { TripId } from '@manniwatch/api-types';
 import { of, EMPTY, NEVER, Observable, Subject, Subscription } from 'rxjs';
 import { delay, map, skip, take, toArray } from 'rxjs/operators';
 import { TripPassagesService } from './trip-passages.service';
@@ -96,7 +95,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', () => {
             });
             [2, 5, 20].forEach((testDelay: number): void => {
                 it('should call getTripPassages after ' + testDelay + ' seconds', fakeAsync(() => {
-                    const testTripId: TripId = 'any test id' as TripId;
+                    const testTripId: string = 'any test id';
                     convertResponseSpy.and.returnValue(map((a: any) => Object.assign({ c: 2 }, a)));
                     handleErrorSpy.and.returnValue(map((a: any) => Object.assign({ d: 3 }, a)));
                     getTripPassagesSpy.and.returnValue(of(networkResult));
@@ -150,7 +149,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', () => {
                     failures: 0,
                     status: UpdateStatus.ERROR,
                     timestamp: 292992,
-                    tripId: 'tripId' as TripId,
+                    tripId: 'tripId',
                     tripInfo: undefined,
                 };
                 createRefreshPollObservableSpy.and
@@ -176,7 +175,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', () => {
                     failures: 0,
                     status: UpdateStatus.ERROR,
                     timestamp: 292992,
-                    tripId: 'tripId' as TripId,
+                    tripId: 'tripId',
                     tripInfo: undefined,
                 };
                 createRefreshPollObservableSpy.and
@@ -202,14 +201,14 @@ describe('src/app/modules/trip-passages/trip-passages.service', () => {
                     failures: 0,
                     status: UpdateStatus.ERROR,
                     timestamp: 292992,
-                    tripId: 'tripId' as TripId,
+                    tripId: 'tripId',
                     tripInfo: undefined,
                 };
                 const testValue2: IPassageStatus = {
                     failures: 0,
                     status: UpdateStatus.ERROR,
                     timestamp: 29232,
-                    tripId: 'tripId' as TripId,
+                    tripId: 'tripId',
                     tripInfo: undefined,
                 };
                 createRefreshPollObservableSpy.and
@@ -240,14 +239,14 @@ describe('src/app/modules/trip-passages/trip-passages.service', () => {
                     failures: 1,
                     status: UpdateStatus.ERROR,
                     timestamp: 292992,
-                    tripId: 'tripId' as TripId,
+                    tripId: 'tripId',
                     tripInfo: undefined,
                 };
                 const testValue2: IPassageStatus = {
                     failures: 3,
                     status: UpdateStatus.ERROR,
                     timestamp: 29232,
-                    tripId: 'tripId' as TripId,
+                    tripId: 'tripId',
                     tripInfo: undefined,
                 };
                 createRefreshPollObservableSpy.and
@@ -264,7 +263,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', () => {
                                 failures: 4,
                                 status: UpdateStatus.ERROR,
                                 timestamp: 29232,
-                                tripId: 'tripId' as TripId,
+                                tripId: 'tripId',
                                 tripInfo: undefined,
                             }]);
                             expect(statusSubjectNextSpy).toHaveBeenCalledTimes(3);
@@ -275,7 +274,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', () => {
                                     failures: 4,
                                     status: UpdateStatus.ERROR,
                                     timestamp: 29232,
-                                    tripId: 'tripId' as TripId,
+                                    tripId: 'tripId',
                                     tripInfo: undefined,
                                 }]]);
                         },
@@ -317,7 +316,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', () => {
                 expect(createDelayedPassageRequestSpy).toHaveBeenCalledTimes(0);
                 statusSubject.next({
                     status: UpdateStatus.LOADED,
-                    tripId: '1' as TripId,
+                    tripId: '1',
                 });
                 expect(createDelayedPassageRequestSpy).toHaveBeenCalledTimes(1);
                 expect(nextSpy).toHaveBeenCalledTimes(0);
@@ -325,14 +324,14 @@ describe('src/app/modules/trip-passages/trip-passages.service', () => {
                 expect(nextSpy).toHaveBeenCalledTimes(1);
                 statusSubject.next({
                     status: UpdateStatus.LOADED,
-                    tripId: '2' as TripId,
+                    tripId: '2',
                 });
                 expect(createDelayedPassageRequestSpy).toHaveBeenCalledTimes(2);
                 tick(500);
                 expect(nextSpy).toHaveBeenCalledTimes(1);
                 statusSubject.next({
                     status: UpdateStatus.ERROR,
-                    tripId: '3' as TripId,
+                    tripId: '3',
                 });
                 expect(createDelayedPassageRequestSpy).toHaveBeenCalledTimes(3);
                 expect(nextSpy).toHaveBeenCalledTimes(1);

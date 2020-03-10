@@ -10,9 +10,6 @@ import {
   IDepartedTripPassage,
   ITripPassage,
   ITripPassages,
-  StopId,
-  StopShortName,
-  TripId,
 } from '@manniwatch/api-types';
 import { VEHICLE_STATUS } from '@manniwatch/api-types/dist/vehicle-status';
 import { TripInfoWithId } from 'src/app/services';
@@ -48,27 +45,27 @@ const testActualPassages: IActualTripPassage[] = [{
   actualTime: '09:30',
   status: VEHICLE_STATUS.STOPPING,
   stop: {
-    id: 'anyid3' as StopId,
+    id: 'anyid3',
     name: 'anystop3',
-    shortName: 'anyStopName3' as StopShortName,
+    shortName: 'anyStopName3',
   },
   stop_seq_num: '3',
 }, {
   actualTime: '12:20',
   status: VEHICLE_STATUS.PREDICTED,
   stop: {
-    id: 'anyid1' as StopId,
+    id: 'anyid1',
     name: 'anystop1',
-    shortName: 'anyStopName1' as StopShortName,
+    shortName: 'anyStopName1',
   },
   stop_seq_num: '1',
 }, {
   actualTime: '15:30',
   status: VEHICLE_STATUS.PLANNED,
   stop: {
-    id: 'anyid2' as StopId,
+    id: 'anyid2',
     name: 'anystop2',
-    shortName: 'anyStopName2' as StopShortName,
+    shortName: 'anyStopName2',
   },
   stop_seq_num: '2',
 }];
@@ -76,27 +73,27 @@ const testOldPassages: IDepartedTripPassage[] = [{
   actualTime: '15:30',
   status: VEHICLE_STATUS.DEPARTED,
   stop: {
-    id: 'anyid11' as StopId,
+    id: 'anyid11',
     name: 'anystop11',
-    shortName: 'anyStopName11' as StopShortName,
+    shortName: 'anyStopName11',
   },
   stop_seq_num: '11',
 }, {
   actualTime: '12:20',
   status: VEHICLE_STATUS.DEPARTED,
   stop: {
-    id: 'anyid4' as StopId,
+    id: 'anyid4',
     name: 'anystop4',
-    shortName: 'anyStopName4' as StopShortName,
+    shortName: 'anyStopName4',
   },
   stop_seq_num: '4',
 }, {
   actualTime: '09:30',
   status: VEHICLE_STATUS.DEPARTED,
   stop: {
-    id: 'anyid6' as StopId,
+    id: 'anyid6',
     name: 'anystop6',
-    shortName: 'anyStopName6' as StopShortName,
+    shortName: 'anyStopName6',
   },
   stop_seq_num: '6',
 }];
@@ -141,7 +138,7 @@ describe('src/app/modules/trip-passages/trip-passages-list.component', () => {
             directionText: 'direction1',
             old: testOldPassages,
             routeName: 'routeName1',
-            tripId: 'testId' as TripId,
+            tripId: 'testId',
           };
           expect(cmp.passages).toEqual([testActualPassages[1],
           testActualPassages[2],
@@ -156,7 +153,7 @@ describe('src/app/modules/trip-passages/trip-passages-list.component', () => {
             directionText: 'direction1',
             old: testOldPassages,
             routeName: 'routeName1',
-            tripId: 'testId' as TripId,
+            tripId: 'testId',
           };
           expect(cmp.passages).toEqual([testOldPassages[1],
           testOldPassages[2],
@@ -168,7 +165,7 @@ describe('src/app/modules/trip-passages/trip-passages-list.component', () => {
             directionText: 'direction1',
             old: undefined,
             routeName: 'routeName1',
-            tripId: 'testId' as TripId,
+            tripId: 'testId',
           };
           expect(cmp.passages).toEqual([testActualPassages[1],
           testActualPassages[2],

@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { createVehicleDiff, IVehicleDiff, TimestampedVehicleLocation } from '../services/vehicle.service';
+import { createVehicleDiff, IVehicleDiff } from './vehicle.service';
 
 describe('src/app/services/vehicle.service.ts', () => {
     describe('createVehicleDiff(oldVehicles, newVehicles)', () => {
@@ -10,13 +10,13 @@ describe('src/app/services/vehicle.service.ts', () => {
             // tslint:disable-next-line:no-null-keyword
             [undefined, null].forEach((testValue: any): void => {
                 it('should pass on new vehicles if olds are ' + testValue, () => {
-                    const newVehicles: TimestampedVehicleLocation[] = [
+                    const newVehicles: any[] = [
                         {
-                            id: 1,
-                        } as TimestampedVehicleLocation,
+                            id: '1',
+                        },
                         {
-                            id: 2,
-                        } as TimestampedVehicleLocation,
+                            id: '2',
+                        },
                     ];
                     const result: IVehicleDiff = createVehicleDiff(testValue, newVehicles);
                     expect(result).toEqual({

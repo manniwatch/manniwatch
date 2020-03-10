@@ -5,7 +5,7 @@
 import { ChangeDetectionStrategy, Component, Directive, Input } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ITripPassage, StopId, StopShortName } from '@manniwatch/api-types';
+import { ITripPassage } from '@manniwatch/api-types';
 import { VEHICLE_STATUS } from '@manniwatch/api-types/dist/vehicle-status';
 import { TripPassagesListItemComponent } from './trip-passages-list-item.component';
 // tslint:disable:max-classes-per-file
@@ -45,27 +45,27 @@ const testPassages: ITripPassage[] = [{
   actualTime: '12:20',
   status: VEHICLE_STATUS.DEPARTED,
   stop: {
-    id: 'anyid1' as StopId,
+    id: 'anyid1',
     name: 'anystop1',
-    shortName: 'anyStopName1' as StopShortName,
+    shortName: 'anyStopName1',
   },
   stop_seq_num: '1',
 }, {
   actualTime: '15:30',
   status: VEHICLE_STATUS.PLANNED,
   stop: {
-    id: 'anyid2' as StopId,
+    id: 'anyid2',
     name: 'anystop2',
-    shortName: 'anyStopName2' as StopShortName,
+    shortName: 'anyStopName2',
   },
   stop_seq_num: '2',
 }, {
   actualTime: '09:30',
   status: VEHICLE_STATUS.STOPPING,
   stop: {
-    id: 'anyid3' as StopId,
+    id: 'anyid3',
     name: 'anystop3',
-    shortName: 'anyStopName3' as StopShortName,
+    shortName: 'anyStopName3',
   },
   stop_seq_num: '3',
 }];

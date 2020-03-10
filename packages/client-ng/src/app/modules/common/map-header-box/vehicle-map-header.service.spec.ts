@@ -2,7 +2,6 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { TripId } from '@manniwatch/api-types';
 import { of, throwError } from 'rxjs';
 import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
@@ -93,7 +92,7 @@ describe('src/app/modules/common/map-header-box/vehicle-map-header.service.ts', 
             });
             it('should emit only distinct vehicle results', () => {
                 testScheduler.run((helpers: RunHelpers): void => {
-                    getVehicleByTripIdSpy.and.callFake((a: TripId) => {
+                    getVehicleByTripIdSpy.and.callFake((a: any) => {
                         switch (a) {
                             case 1:
                                 return of({ tripId: 1, lastUpdate: 1 });
@@ -194,7 +193,7 @@ describe('src/app/modules/common/map-header-box/vehicle-map-header.service.ts', 
             });
             it('should emit results from the api', () => {
                 testScheduler.run((helpers: RunHelpers): void => {
-                    getRouteByTripIdSpy.and.callFake((id: TripId) =>
+                    getRouteByTripIdSpy.and.callFake((id: any) =>
                         of(id));
                     const { cold, expectObservable, expectSubscriptions } = helpers;
                     const e1: ColdObservable<TripInfoWithId> = cold('-a--b--a---|', {

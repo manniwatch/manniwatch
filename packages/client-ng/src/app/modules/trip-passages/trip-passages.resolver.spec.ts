@@ -3,7 +3,6 @@
  */
 
 import { async, TestBed } from '@angular/core/testing';
-import { TripId } from '@manniwatch/api-types';
 import { of, throwError, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { ApiService } from 'src/app/services';
@@ -13,7 +12,7 @@ import { TripPassagesUtil } from './trip-util';
 describe('src/app/modules/trip-passages/trip-passages.resolver', () => {
     describe('TripPassagesResolver', () => {
         let resolver: TripPassagesResolver;
-        const testId: TripId = '239jmcntest' as TripId;
+        const testId: string = '239jmcntest';
         let convertResponseStub: jasmine.Spy<jasmine.Func>;
         let handleErrorStub: jasmine.Spy<jasmine.Func>;
         let convertResponseOperatorStub: jasmine.Spy<jasmine.Func>;

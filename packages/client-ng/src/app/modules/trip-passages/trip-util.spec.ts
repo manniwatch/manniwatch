@@ -2,7 +2,6 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { TripId } from '@manniwatch/api-types';
 import { of, throwError } from 'rxjs';
 import { map, toArray } from 'rxjs/operators';
 import { TripInfoWithId } from 'src/app/services';
@@ -23,7 +22,7 @@ describe('src/app/modules/trip-passages/trip-util', () => {
             it('should convert TripInfoWithId to an IPassageStatus', (doneFn: DoneFn) => {
                 of(1, 2, 3)
                     .pipe(map((val: number): TripInfoWithId => ({
-                        tripId: '' + val as TripId,
+                        tripId: '' + val,
                     } as TripInfoWithId)),
                         TripPassagesUtil.convertResponse(undefined),
                         toArray())
@@ -32,11 +31,11 @@ describe('src/app/modules/trip-passages/trip-util', () => {
                         error: doneFn.fail,
                         next: (testResult: IPassageStatus[]): void => {
                             const testTrips: Partial<TripInfoWithId>[] = [{
-                                tripId: '1' as TripId,
+                                tripId: '1',
                             }, {
-                                tripId: '2' as TripId,
+                                tripId: '2',
                             }, {
-                                tripId: '3' as TripId,
+                                tripId: '3',
                             }];
                             const testStatuses: IPassageStatus[] = testTrips
                                 .map((val: TripInfoWithId): IPassageStatus =>
@@ -79,7 +78,7 @@ describe('src/app/modules/trip-passages/trip-util', () => {
             });
             describe('errors without status', () => {
                 it('should convert errors and not fail without status', (doneFn: DoneFn) => {
-                    const testTripId: TripId = 'testTripId' as TripId;
+                    const testTripId: string = 'testTripId';
                     throwError(testError)
                         .pipe(TripPassagesUtil.handleError(testTripId),
                             toArray())
@@ -101,7 +100,7 @@ describe('src/app/modules/trip-passages/trip-util', () => {
             describe('errors with status', () => {
                 [300, 400, 401, 404].forEach((testStatus: number): void => {
                     it('should convert error without 5xx error status "' + testStatus + '"', (doneFn: DoneFn) => {
-                        const testTripId: TripId = 'testTripId' + testStatus as TripId;
+                        const testTripId: string = 'testTripId' + testStatus;
                         throwError({ status: testStatus })
                             .pipe(TripPassagesUtil.handleError(testTripId),
                                 toArray())
@@ -122,7 +121,7 @@ describe('src/app/modules/trip-passages/trip-util', () => {
                 });
                 [500, 521, 599].forEach((testStatus: number): void => {
                     it('should convert error with 5xx error status "' + testStatus + '" to 500', (doneFn: DoneFn) => {
-                        const testTripId: TripId = 'testTripId' + testStatus as TripId;
+                        const testTripId: string = 'testTripId' + testStatus;
                         throwError({ status: testStatus })
                             .pipe(TripPassagesUtil.handleError(testTripId),
                                 toArray())

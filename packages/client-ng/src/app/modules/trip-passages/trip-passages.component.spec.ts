@@ -5,7 +5,7 @@
 import { Component, DebugElement, Input } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ITripPassages, TripId } from '@manniwatch/api-types';
+import { ITripPassages } from '@manniwatch/api-types';
 import { Subject } from 'rxjs';
 import { TripPassagesComponent } from './trip-passages.component';
 import { TripPassagesService } from './trip-passages.service';
@@ -71,7 +71,7 @@ describe('src/app/modules/trip-passages/trip-passage.component', () => {
         failures: 0,
         status: UpdateStatus.LOADED,
         timestamp: Date.now(),
-        tripId: 'tripId' as TripId,
+        tripId: 'tripId',
         tripInfo: { test: true } as any,
       };
       beforeEach(() => {
