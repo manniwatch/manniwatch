@@ -45,7 +45,7 @@
     "@angular/material": "~8.2.0",
     "@angular/platform-browser": "~8.2.0",
     "@angular/platform-browser-dynamic": "~8.2.0",
-    "@angular/pwa": "~0.803.25",
+    "@angular/pwa": "~0.900.5",
     "@angular/router": "~8.2.0",
     "@angular/service-worker": "~8.2.0",
     "@manniwatch/api-types": "~0.1.0",
