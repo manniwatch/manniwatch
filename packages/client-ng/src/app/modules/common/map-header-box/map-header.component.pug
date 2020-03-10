@@ -1,0 +1,5 @@
+block map
+.title-box
+    span.title(*ngIf="title!==undefined",role="heading",aria-level="2",title="{{title}}") {{title}}
+    span.subtitle(*ngIf="lastUpdate!==undefined",title="{{ lastUpdate  | date:'full'}}") Last Update: {{ lastUpdate  | date:'mediumTime'}}
+mat-icon location_off

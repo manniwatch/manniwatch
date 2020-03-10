@@ -16,6 +16,9 @@ jobs:
         run: |
           npm ci
           npx lerna bootstrap
+          cp ./packages/client-ng/src/environments/environment.example.ts ./packages/client-ng/src/environments/environment.prod.ts
+          cp ./packages/client-ng/src/environments/environment.example.ts ./packages/client-ng/src/environments/environment.dev.ts
+          cp ./packages/client-ng/src/environments/environment.example.ts ./packages/client-ng/src/environments/environment.ts
       - name: Run Build
         run: npm run build
       - name: Run Test

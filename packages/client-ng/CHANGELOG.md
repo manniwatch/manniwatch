@@ -34,6 +34,3 @@
 ### feat
 
 * Initialize Repository ([364a0f2](https://github.com/manniwatch/manniwatch/commit/364a0f2e8a81e3df0cbaa9e09a4e9f70c1994270))
-
-
-

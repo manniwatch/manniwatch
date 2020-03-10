@@ -1,0 +1,21 @@
+mat-tab-group{
+    flex-grow: 1;
+}
+div.error-box{
+    flex:0 0 auto;
+    background:#B00020;
+    color:white;
+    padding:5px 20px 5px 20px;
+    h3{
+        font-size: 25px;
+        line-height: 30px;
+        padding:0px;
+        margin:0px;
+    }
+    p{
+        font-size: 15px;
+        line-height: 20px;
+        padding:0px;
+        margin:0px;
+    }
+}

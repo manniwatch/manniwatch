@@ -1,0 +1,7 @@
+ng-container(*ngIf="stopInfoService.statusObservable | async as status")
+    app-stop-map-header([stop]="status?.stop")
+    mat-tab-group(mat-stretch-tabs,dynamicHeight)
+        mat-tab(i18n-label="tab header departures|Departures@@departures",label="Departures")
+            app-departure-list([departures]="status?.stop.actual")
+        mat-tab(i18n-label="tab header routes|Routes@@Routes",label="Routes")
+            app-route-list([routes]="status?.stop.routes")
