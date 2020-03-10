@@ -1,11 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
- */
-
 import {
     Component,
     Input,
 } from '@angular/core';
+import { IDeparture } from '@donmahallem/trapeze-api-types';
 
 @Component({
     selector: 'app-route-list',
@@ -27,7 +24,7 @@ export class RouteListComponent {
     public get hasRoutes(): boolean {
         return this.mDepartures && this.mDepartures.length > 0;
     }
-    public convertTime(time, data) {
+    public convertTime(time: number, data: IDeparture): string {
         if (time > 300) {
             return data.actualTime;
         } else {

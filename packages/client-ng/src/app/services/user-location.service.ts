@@ -1,9 +1,5 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
- */
-
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, EMPTY, Observable } from 'rxjs';
+import { BehaviorSubject, EMPTY, Observable, Subscriber } from 'rxjs';
 import { catchError, debounceTime, flatMap } from 'rxjs/operators';
 
 @Injectable({
@@ -31,20 +27,20 @@ export class UserLocationService {
     public constructor() {
         this.locationErrorObservable
             .pipe(debounceTime(30000),
-                flatMap((val) =>
+                flatMap((val: PositionError) =>
                     this.createPositionRequest()),
-                catchError((err) => {
+                catchError((err: any) => {
                     this.locationErrorSubject.next(err);
                     return EMPTY;
                 }))
-            .subscribe((val) => {
+            .subscribe((val: Position) => {
                 this.locationErrorSubject.next(undefined);
                 this.locationSubject.next(val);
             });
     }
 
-    public createPositionRequest(timeout: number = 10000, highAccuracy: boolean = false) {
-        return new Observable<any>((subscriber) => {
+    public createPositionRequest(timeout: number = 10000, highAccuracy: boolean = false): Observable<Position> {
+        return new Observable<any>((subscriber: Subscriber<Position>): void => {
 
             const geoSuccess = (position: Position): void => {
                 subscriber.next(position);

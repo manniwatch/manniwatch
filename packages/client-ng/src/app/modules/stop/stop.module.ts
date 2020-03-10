@@ -1,7 +1,3 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
- */
-
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import {
@@ -11,20 +7,18 @@ import {
     MatTabsModule,
     MatToolbarModule,
 } from '@angular/material';
-import { MapHeaderBoxModule } from '../common';
+import { StopMapHeaderBoxModule } from '../common';
 import { DepartureListItemComponent } from './departure-list-item.component';
 import { DepartureListComponent } from './departure-list.component';
 import { RouteListComponent } from './route-list.component';
 import { StopInfoComponent } from './stop-info.component';
 import { StopInfoResolver } from './stop-info.resolver';
-import { StopLocationMapDirective } from './stop-map.directive';
 import { StopRoutingModule } from './stop-routing.module';
 @NgModule({
     declarations: [
         StopInfoComponent,
         DepartureListComponent,
         RouteListComponent,
-        StopLocationMapDirective,
         DepartureListItemComponent,
     ],
     imports: [
@@ -35,7 +29,7 @@ import { StopRoutingModule } from './stop-routing.module';
         MatProgressSpinnerModule,
         StopRoutingModule,
         MatTabsModule,
-        MapHeaderBoxModule,
+        StopMapHeaderBoxModule,
     ],
     providers: [
         StopInfoResolver,

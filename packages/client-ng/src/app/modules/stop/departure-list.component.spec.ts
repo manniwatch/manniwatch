@@ -1,7 +1,3 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
- */
-
 import { Component, Input } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IDeparture } from '@donmahallem/trapeze-api-types';
@@ -38,8 +34,8 @@ describe('src/app/modules/stop/departure-list.component', () => {
       }).compileComponents();
     }));
     it('should create the app', async(() => {
-      const fixture = TestBed.createComponent(DepartureListComponent);
-      const app = fixture.debugElement.componentInstance;
+      const fixture: ComponentFixture<DepartureListComponent> = TestBed.createComponent(DepartureListComponent);
+      const app: DepartureListComponent = fixture.debugElement.componentInstance;
       expect(app).toBeTruthy();
     }));
     describe('layout', () => {
@@ -52,7 +48,8 @@ describe('src/app/modules/stop/departure-list.component', () => {
         fixture = TestBed.createComponent(DepartureListComponent);
         cmp = fixture.debugElement.componentInstance;
       });
-      const testPassages: { value: IDeparture[], result: IDeparture[] }[] = [
+      interface ITestDepartures { value: IDeparture[]; result: IDeparture[]; }
+      const testPassages: ITestDepartures[] = [
         {
           result: [],
           value: undefined,
@@ -66,7 +63,7 @@ describe('src/app/modules/stop/departure-list.component', () => {
       ];
       describe('departures', () => {
         describe('getter', () => {
-          testPassages.forEach((testPassage) => {
+          testPassages.forEach((testPassage: ITestDepartures) => {
             it('should get the correct value for "' + testPassage.value + '"', () => {
               (cmp as any).mDepartures = testPassage.value;
               expect(cmp.departures).toEqual(testPassage.result);
@@ -74,7 +71,7 @@ describe('src/app/modules/stop/departure-list.component', () => {
           });
         });
         describe('setter', () => {
-          testPassages.forEach((testPassage) => {
+          testPassages.forEach((testPassage: ITestDepartures) => {
             it('should set the correct value for "' + testPassage.value + '"', () => {
               cmp.departures = testPassage.value;
               expect((cmp as any).mDepartures).toEqual(testPassage.result);
@@ -96,7 +93,7 @@ describe('src/app/modules/stop/departure-list.component', () => {
           result: true,
           value: [1, 2],
         }];
-        data.forEach((testData) => {
+        data.forEach((testData: { value: any, result: boolean }) => {
           it('should return "' + testData.result + '" for ' + JSON.stringify(testData.value), () => {
             (cmp as any).mDepartures = testData.value;
             expect(cmp.hasDepartures()).toEqual(testData.result);

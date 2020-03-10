@@ -1,7 +1,3 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
- */
-
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandler } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
@@ -39,13 +35,19 @@ describe('src/app/app-error-handler.ts', () => {
         });
         describe('handleError()', () => {
             let handleHttpErrorResponseSpy: jasmine.Spy<jasmine.Func>;
+            let consoleErrorSpy: jasmine.Spy<jasmine.Func>;
+            beforeAll(() => {
+                consoleErrorSpy = spyOn(console, 'error');
+            });
             beforeEach(() => {
+                consoleErrorSpy.and.callFake(() => { });
                 handleHttpErrorResponseSpy = spyOn(handler, 'handleHttpErrorResponse');
                 handleHttpErrorResponseSpy.and.callFake(() =>
                     false);
             });
             afterEach(() => {
                 handleHttpErrorResponseSpy.calls.reset();
+                consoleErrorSpy.calls.reset();
             });
             describe('an HttpErrorResponse is reported', () => {
                 [new HttpErrorResponse({
@@ -57,6 +59,7 @@ describe('src/app/app-error-handler.ts', () => {
                         expect(handleHttpErrorResponseSpy).toHaveBeenCalledTimes(1);
                         expect(handleHttpErrorResponseSpy).toHaveBeenCalledWith(testError, notificationService);
                         expect(notifySpy).toHaveBeenCalledTimes(0);
+                        expect(consoleErrorSpy).toHaveBeenCalledTimes(0);
                     });
                 });
             });
@@ -73,26 +76,29 @@ describe('src/app/app-error-handler.ts', () => {
                             title: 'Uncaught error occured',
                             type: AppNotificationType.ERROR,
                         });
+                        expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
+                        expect(consoleErrorSpy).toHaveBeenCalledWith('It happens: ', testError);
                     });
                 });
             });
         });
         describe('handleHttpErrorResponse(err,notificationService)', () => {
-            const createError = (code: number) =>
+            const createError = (code: number): HttpErrorResponse =>
                 new HttpErrorResponse({
                     status: code,
                     statusText: 'Status ' + code,
                     url: 'http://test.com/' + code,
                 });
-            const testHttpErrors: {
-                error: HttpErrorResponse,
+            interface ITestHttpError {
+                error: HttpErrorResponse;
                 message: {
                     type?: AppNotificationType;
                     title: string;
                     message?: string;
                     reportable?: boolean;
-                },
-            }[] = [{
+                };
+            }
+            const testHttpErrors: ITestHttpError[] = [{
                 error: createError(404),
                 message: {
                     message: `404 - ${createError(404).message}`,
@@ -117,7 +123,7 @@ describe('src/app/app-error-handler.ts', () => {
                 beforeEach(() => {
                     isClientOfflineSpy.and.returnValue(true);
                 });
-                testHttpErrors.forEach((testError) => {
+                testHttpErrors.forEach((testError: ITestHttpError): void => {
                     it('should notify that the client is offline for status: ' + testError.error.status, () => {
                         handler.handleHttpErrorResponse(testError.error, notificationService);
                         expect(isClientOfflineSpy).toHaveBeenCalledTimes(1);
@@ -133,7 +139,7 @@ describe('src/app/app-error-handler.ts', () => {
                 beforeEach(() => {
                     isClientOfflineSpy.and.callFake(() => false);
                 });
-                testHttpErrors.forEach((testError) => {
+                testHttpErrors.forEach((testError: ITestHttpError) => {
                     it('should propagate a server error for code: ' + testError.error.status, () => {
                         handler.handleHttpErrorResponse(testError.error, notificationService);
                         expect(isClientOfflineSpy).toHaveBeenCalledTimes(1);

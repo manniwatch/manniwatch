@@ -1,7 +1,3 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
- */
-
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
@@ -35,7 +31,7 @@ export class StopsResolver implements Resolve<IStopLocations> {
      */
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IStopLocations> {
         return this.api
-            .getStations()
+            .getStopLocations()
             .pipe(catchError((err: any | HttpErrorResponse): Observable<IStopLocations> => {
                 if (err.status === 404) {
                     this.router.navigate(['error', 'not-found']);

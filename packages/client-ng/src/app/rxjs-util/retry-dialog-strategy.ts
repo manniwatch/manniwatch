@@ -1,7 +1,3 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
- */
-
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialogRef } from '@angular/material';
 import { Observable } from 'rxjs';
@@ -19,9 +15,9 @@ export type RetryDialogStrategyFunc = (createDialog: CreateDialogFunc) => RetryD
  * If the result equals true the stream will be retried
  * @param createDialog a method that returns valid Dialog
  */
-export const retryDialogStrategy: RetryDialogStrategyFunc = (createDialog: CreateDialogFunc) =>
+export const retryDialogStrategy: RetryDialogStrategyFunc = (createDialog: CreateDialogFunc): RetryDialogStrategyFuncResponse =>
     (errors: Observable<ErrorItem>): Observable<true> => {
-        let dialogOpen = false;
+        let dialogOpen: boolean = false;
         return errors.pipe(skipWhile((): boolean => dialogOpen),
             flatMap((error: ErrorItem): Observable<true> => {
                 dialogOpen = true;

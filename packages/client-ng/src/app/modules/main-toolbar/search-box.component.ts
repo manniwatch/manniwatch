@@ -1,7 +1,3 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
- */
-
 import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,7 +10,7 @@ import { debounceTime, filter, startWith } from 'rxjs/operators';
 })
 export class ToolbarSearchBoxComponent implements OnInit, OnDestroy {
 
-    searchControl = new FormControl();
+    public searchControl: FormControl = new FormControl();
 
     @ViewChild('searchInput', { static: false })
     public searchInput: ElementRef;

@@ -1,11 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
- */
-
 import { Injectable } from '@angular/core';
 import { ISettings } from '@donmahallem/trapeze-api-types';
-import * as L from 'leaflet';
-import { from, Observable, Subscriber } from 'rxjs';
+import { from, Observable, Subscriber, Subscription } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { ApiService } from './api.service';
 
@@ -40,23 +35,23 @@ export class SettingsService {
         return this.mSettings;
     }
 
-    public getInitialMapCenter(): L.LatLng {
+    public getInitialMapCenter(): [number, number] {
         if (this.settings &&
             this.settings.INITIAL_LAT &&
             this.settings.INITIAL_LON) {
-            return new L.LatLng(this.settings.INITIAL_LAT / 3600000, this.settings.INITIAL_LON / 3600000);
+            return [this.settings.INITIAL_LON / 3600000, this.settings.INITIAL_LAT / 3600000];
         }
-        return new L.LatLng(0, 0);
+        return [0, 0];
     }
     public getInitialMapZoom(): number {
         if (this.settings && this.settings.INITIAL_ZOOM) {
             return this.settings.INITIAL_ZOOM;
         }
-        return 20;
+        return 13;
     }
 
     public load(): Promise<void> {
-        return new Promise((resolve: (arg: void) => void, reject: (err: any) => void) =>
+        return new Promise((resolve: (arg: void) => void, reject: (err: any) => void): Subscription =>
             this.apiService.getSettings()
                 .pipe(tap((value: ISettings): void => {
                     this.mSettings = value;

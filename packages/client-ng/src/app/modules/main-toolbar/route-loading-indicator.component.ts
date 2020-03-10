@@ -1,7 +1,3 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
- */
-
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
     Event,
@@ -39,7 +35,7 @@ export class RouteLoadingSubscriber extends Subscriber<Event> {
 })
 export class RouteLoadingIndicatorComponent implements OnInit, OnDestroy {
 
-    public loading = false;
+    public loading: boolean = false;
     private subscription: Subscription;
     constructor(private router: Router) {
 

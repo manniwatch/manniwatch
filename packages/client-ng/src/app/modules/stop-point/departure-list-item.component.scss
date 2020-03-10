@@ -1,0 +1,19 @@
+:host{
+    display:block;
+}
+div.no-departures{
+    margin:15px;
+}
+span.pattern-text{
+    font-weight: bold;
+}
+
+span.pattern-text.late{
+    color:#d50000;
+}
+span.pattern-text.late:before{
+    content: '+';
+}
+span.pattern-text.early{
+    color:#00d500;
+}

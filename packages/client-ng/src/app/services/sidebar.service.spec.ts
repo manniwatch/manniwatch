@@ -1,7 +1,3 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
- */
-
 import { async, TestBed } from '@angular/core/testing';
 import { BehaviorSubject } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -28,9 +24,9 @@ describe('src/app/services/sidebar.service', () => {
         });
 
         describe('sidebarObservable', () => {
-            it('should publish the events from the suject to the observable', (done) => {
+            it('should publish the events from the suject to the observable', (done: DoneFn) => {
                 subject.next(false);
-                const cb: (err?: any) => void = (err?: any) => {
+                const cb: (err?: any) => void = (err?: any): void => {
                     expect(err).not.toBeDefined();
                     expect(nextSpy).toHaveBeenCalledTimes(4);
                     expect(nextSpy.calls.argsFor(0)).toEqual([false]);
@@ -56,9 +52,9 @@ describe('src/app/services/sidebar.service', () => {
             });
         });
         describe('openSidebar()', () => {
-            it('should publish a true event', (done) => {
+            it('should publish a true event', (done: DoneFn) => {
                 subject.next(false);
-                const cb: (err?: any) => void = (err?: any) => {
+                const cb: (err?: any) => void = (err?: any): void => {
                     expect(err).not.toBeDefined();
                     expect(nextSpy).toHaveBeenCalledTimes(2);
                     expect(nextSpy.calls.argsFor(0)).toEqual([false]);
@@ -70,9 +66,9 @@ describe('src/app/services/sidebar.service', () => {
             });
         });
         describe('closeSidebar()', () => {
-            it('should publish a false event', (done) => {
+            it('should publish a false event', (done: DoneFn) => {
                 subject.next(false);
-                const cb: (err?: any) => void = (err?: any) => {
+                const cb: (err?: any) => void = (err?: any): void => {
                     expect(err).not.toBeDefined();
                     expect(nextSpy).toHaveBeenCalledTimes(2);
                     expect(nextSpy.calls.argsFor(0)).toEqual([false]);
@@ -84,9 +80,9 @@ describe('src/app/services/sidebar.service', () => {
             });
         });
         describe('toggleSidebar()', () => {
-            it('should publish a false event', (done) => {
+            it('should publish a false event', (done: DoneFn) => {
                 subject.next(false);
-                const cb: (err?: any) => void = (err?: any) => {
+                const cb: (err?: any) => void = (err?: any): void => {
                     expect(err).not.toBeDefined();
                     expect(nextSpy).toHaveBeenCalledTimes(3);
                     expect(nextSpy.calls.argsFor(0)).toEqual([false]);

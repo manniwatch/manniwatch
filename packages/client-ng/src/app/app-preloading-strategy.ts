@@ -1,7 +1,3 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
- */
-
 import { PreloadingStrategy, Route } from '@angular/router';
 import { EMPTY, Observable } from 'rxjs';
 

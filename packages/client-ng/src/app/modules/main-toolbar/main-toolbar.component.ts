@@ -1,8 +1,4 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
- */
-
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router, RouterEvent } from '@angular/router';
 import { Subscriber } from 'rxjs';
 import { SidebarService } from 'src/app/services/sidebar.service';
@@ -27,7 +23,7 @@ export class NavigationSubscriber extends Subscriber<RouterEvent> {
     styleUrls: ['./main-toolbar.component.scss'],
     templateUrl: './main-toolbar.component.pug',
 })
-export class MainToolbarComponent implements OnInit {
+export class MainToolbarComponent {
 
     public get searchOpen(): boolean {
         return this.mSearchOpen;
@@ -36,25 +32,22 @@ export class MainToolbarComponent implements OnInit {
     public set searchOpen(open: boolean) {
         this.mSearchOpen = open;
     }
-    public closeable = false;
+    public closeable: boolean = false;
     @ViewChild(ToolbarSearchBoxComponent, { static: false })
     private searchBoxComponent: ToolbarSearchBoxComponent;
 
-    private mSearchOpen = false;
+    private mSearchOpen: boolean = false;
 
     constructor(private sidebarService: SidebarService,
                 private router: Router) {
         this.router.events.subscribe(new NavigationSubscriber(this));
     }
 
-    ngOnInit() {
-    }
-
     public toggleSidebar(): void {
         this.sidebarService.toggleSidebar();
     }
 
-    public onFocusSearch(event) {
+    public onFocusSearch(event: any): void {
         this.searchOpen = event;
     }
     public toggleSearch(): void {

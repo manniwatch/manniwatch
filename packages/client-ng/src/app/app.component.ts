@@ -1,10 +1,5 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
- */
-
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav, MatSidenavContainer } from '@angular/material';
-import { DrawableDirective } from './drawable.directive';
 import { SidebarService } from './services/sidebar.service';
 @Component({
     selector: 'app-root',
@@ -16,7 +11,6 @@ export class AppComponent implements OnInit {
     public get isSidenavOpen(): boolean {
         return this.sidenav.opened;
     }
-    title = 'app';
     prediction: any;
 
     @ViewChild(MatSidenavContainer, { static: true })
@@ -25,19 +19,18 @@ export class AppComponent implements OnInit {
     sidenav: MatSidenav;
     predictions: any;
     tripId: string;
-    @ViewChild(DrawableDirective, { static: false }) canvas;
     constructor(private sidebarService: SidebarService) {
     }
-    ngOnInit() {
+    public ngOnInit(): void {
         this.sidebarService.sidebarObservable
-            .subscribe((open) => {
+            .subscribe((open: boolean) => {
                 if (open) {
                     this.sidenav.open();
                 } else {
                     this.sidenav.close();
                 }
             });
-        this.sidenav.openedChange.subscribe((open) => {
+        this.sidenav.openedChange.subscribe((open: boolean) => {
             if (open) {
                 this.sidebarService.openSidebar();
             } else {
@@ -45,7 +38,7 @@ export class AppComponent implements OnInit {
             }
         });
     }
-    onVoted(agreed: any) {
+    public onVoted(agreed: any): void {
         this.tripId = agreed.tripId;
     }
 

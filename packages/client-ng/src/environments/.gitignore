@@ -5,3 +5,4 @@
 !environment.example.pwa.ts
 !.gitignore
 !app-version.ts
+!index.ts

@@ -1,10 +1,7 @@
-app-map-header-box([blur]="stopLocation===undefined",title="{{stopInfo?.stopName}}",i18n-title="@@stopName",i18n-subtitle="Refreshing in x seconds@@refreshingInXSeconds",subtitle="Refreshing in {{timeUntilRefresh}}s")
-    map(appStopLocation,[location]="stopLocation",role="none")
-mat-tab-group(mat-stretch-tabs,dynamicHeight)
-    mat-tab(i18n-label="tab header departures|Departures@@departures",label="Departures")
-        app-departure-list([departures]="stopInfo?.actual")
-    mat-tab(i18n-label="tab header routes|Routes@@Routes",label="Routes")
-        app-route-list([routes]="stopInfo?.routes")
-div.error-box(*ngIf="errorOccured")
-    h3 Error occured
-    p Will retry in a {{timeUntilRefresh}}s
+ng-container(*ngIf="stopInfoService.statusObservable | async as status")
+    app-stop-map-header([stop]="status?.stop")
+    mat-tab-group(mat-stretch-tabs,dynamicHeight)
+        mat-tab(i18n-label="tab header departures|Departures@@departures",label="Departures")
+            app-departure-list([departures]="status?.stop.actual")
+        mat-tab(i18n-label="tab header routes|Routes@@Routes",label="Routes")
+            app-route-list([routes]="status?.stop.routes")

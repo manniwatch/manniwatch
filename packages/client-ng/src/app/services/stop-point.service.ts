@@ -1,11 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
- */
-
 import { Injectable } from '@angular/core';
-import { IStopLocation } from '@donmahallem/trapeze-api-types';
-import { from, Observable, Subject, Subscriber } from 'rxjs';
-import { catchError, delay, filter, flatMap, map, shareReplay, startWith, tap } from 'rxjs/operators';
+import { IStopLocation, IStopLocations, IStopPointLocation, IStopPointLocations, StopShortName } from '@donmahallem/trapeze-api-types';
+import { Observable, Subscriber } from 'rxjs';
+import { debounceTime, map, retryWhen, shareReplay, tap, withLatestFrom } from 'rxjs/operators';
 import { ApiService } from './api.service';
 import { AppNotificationService } from './app-notification.service';
 
@@ -34,76 +30,60 @@ export class StopPointLoadSubscriber extends Subscriber<IStopLocation[]> {
 })
 export class StopPointService {
 
-    private mStopLocations: IStopLocation[];
-    private sharedReplay: Observable<IStopLocation[]> = undefined;
-    private retrySubject: Subject<void> = new Subject();
-    constructor(private api: ApiService, private notificationService: AppNotificationService) { }
-
-    public createStopLoadObservable(): Observable<IStopLocation[]> {
-        return this.retrySubject.pipe(delay(10 * 1000))
-            .pipe(
-                // tslint:disable-next-line:deprecation
-                startWith<void>(undefined),
-                flatMap((): Observable<IStopLocation[]> =>
-                    this.api.getStations()
-                        .pipe(
-                            map((value): IStopLocation[] =>
-                                value.stops),
-                            catchError((err: any, caught: Observable<IStopLocation[]>): Observable<IStopLocation[]> => {
-                                this.notificationService.report(err);
-                                this.retrySubject.next();
-                                return from([[]]);
-                            }))),
-                tap((value: IStopLocation[]) => {
-                    this.mStopLocations = value;
-                }),
-                catchError((err) =>
-                    from([[]])),
-                shareReplay(1));
+    private mStopPointObservable: Observable<IStopPointLocation[]>;
+    private mStopObservable: Observable<IStopLocation[]>;
+    constructor(private api: ApiService,
+                private notificationService: AppNotificationService) {
+        this.mStopObservable = this.setupLocationsPoll(this.api.getStopLocations()
+            .pipe(map((stops: IStopLocations): IStopLocation[] =>
+                stops.stops)));
+        this.mStopPointObservable = this.setupLocationsPoll(this.api.getStopPointLocations()
+            .pipe(map((stops: IStopPointLocations): IStopPointLocation[] =>
+                stops.stopPoints)));
     }
 
-    public get stopLocations(): IStopLocation[] {
-        return this.mStopLocations ? this.mStopLocations : [];
+    public setupLocationsPoll<T extends IStopLocation | IStopPointLocation>(pollObservable: Observable<T[]>): Observable<T[]> {
+        return pollObservable
+            .pipe(retryWhen((errors: Observable<any>): Observable<any> =>
+                errors
+                    .pipe(tap((err: any) => this.notificationService.report(err)),
+                        debounceTime(5000))), shareReplay(1));
     }
 
-    /**
-     * retrieves the stop or undefined if not loaded yet or undefined
-     * @param stopShortName short name
-     */
-    public getStopLocation(stopShortName: string): IStopLocation {
-        for (const stop of this.stopLocations) {
-            if (stop.shortName === stopShortName) {
-                return stop;
-            }
-        }
-        return undefined;
-    }
-
-    /**
-     * Searches the stops for a given stopShortName
-     * @param stopShortName the stop shortName
-     */
-    public searchStop(stopShortName: string): Observable<IStopLocation> {
-        return this.stopLocationsObservable
-            .pipe(
-                flatMap((stops: IStopLocation[]): Observable<IStopLocation> =>
-                    from(stops)),
-                filter((stop: IStopLocation) => {
-                    if (stop) {
-                        return stop.shortName === stopShortName;
+    public filterByObservable(filter: Observable<StopShortName>): Observable<IStopLocation> {
+        return this.stopObservable
+            .pipe(withLatestFrom(filter),
+                map((value: [IStopLocation[], StopShortName]): IStopLocation => {
+                    if (value[0] && value[1]) {
+                        const idx: number = value[0].findIndex((stop: IStopLocation) =>
+                            stop.shortName === value[1]);
+                        if (idx >= 0) {
+                            return value[0][idx];
+                        }
                     }
-                    return false;
+                    return undefined;
                 }));
     }
+    public filterStop(stopShortName: StopShortName): Observable<IStopLocation> {
+        return this.stopObservable
+            .pipe(map((stopLocations: IStopLocation[]): IStopLocation => {
+                if (stopLocations) {
+                    const idx: number = stopLocations.findIndex((stop: IStopLocation) =>
+                        stop.shortName === stopShortName);
+                    if (idx >= 0) {
+                        return stopLocations[idx];
+                    }
+                }
+                return undefined;
+            }));
+    }
 
-    /**
-     * Gets the shared stop location observable
-     */
-    public get stopLocationsObservable(): Observable<IStopLocation[]> {
-        if (this.sharedReplay === undefined) {
-            this.sharedReplay = this.createStopLoadObservable();
-        }
-        return this.sharedReplay;
+    public get stopObservable(): Observable<IStopLocation[]> {
+        return this.mStopObservable;
+    }
+
+    public get stopPointObservable(): Observable<IStopPointLocation[]> {
+        return this.mStopPointObservable;
     }
 
 }

@@ -1,7 +1,3 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
- */
-
 import { Directive, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
 import { combineLatest, timer, BehaviorSubject, Subscriber, Subscription } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
@@ -26,7 +22,7 @@ export class CountdownTimerDirective implements OnInit, OnDestroy {
      * The innerHtml for the directive
      */
     @HostBinding('innerHTML')
-    public get text() {
+    public get text(): string {
         return this.timestamp;
     }
 
@@ -34,9 +30,9 @@ export class CountdownTimerDirective implements OnInit, OnDestroy {
      * Placeholder if time has run out
      */
     @Input()
-    public placeholder = '-';
+    public placeholder: string = '-';
 
-    private timestamp = '';
+    private timestamp: string = '';
     private updateSubscription: Subscription;
     private timestampSubject: BehaviorSubject<number> = new BehaviorSubject(0);
 
@@ -51,7 +47,7 @@ export class CountdownTimerDirective implements OnInit, OnDestroy {
                 }
             }),
                 distinctUntilChanged())
-            .subscribe(new Subscriber((val) => {
+            .subscribe(new Subscriber((val: string): void => {
                 this.timestamp = val;
             }));
 
