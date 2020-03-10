@@ -13,6 +13,7 @@ import {
 } from '@angular/router';
 import { Subscriber, Subscription } from 'rxjs';
 
+// tslint:disable:max-classes-per-file
 export class RouteLoadingSubscriber extends Subscriber<Event> {
 
     constructor(private indicatorCmp: RouteLoadingIndicatorComponent) {

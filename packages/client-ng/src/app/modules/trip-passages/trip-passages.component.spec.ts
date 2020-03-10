@@ -11,6 +11,7 @@ import { TripPassagesComponent } from './trip-passages.component';
 import { TripPassagesService } from './trip-passages.service';
 import { IPassageStatus, UpdateStatus } from './trip-util';
 
+// tslint:disable:max-classes-per-file
 // tslint:disable:component-selector
 // tslint:disable:directive-selector
 @Component({

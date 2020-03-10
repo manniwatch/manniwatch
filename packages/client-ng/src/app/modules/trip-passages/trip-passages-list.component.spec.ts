@@ -5,11 +5,20 @@
 import { ChangeDetectionStrategy, Component, DebugElement, Input } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { IActualTripPassage, IDepartedTripPassage, ITripPassage, ITripPassages, StopId, StopShortName, TripId } from '@donmahallem/trapeze-api-types';
+import {
+  IActualTripPassage,
+  IDepartedTripPassage,
+  ITripPassage,
+  ITripPassages,
+  StopId,
+  StopShortName,
+  TripId,
+} from '@donmahallem/trapeze-api-types';
 import { VEHICLE_STATUS } from '@donmahallem/trapeze-api-types/dist/vehicle-status';
 import { TripInfoWithId } from 'src/app/services';
 import { TripPassagesListComponent } from './trip-passages-list.component';
 
+// tslint:disable:max-classes-per-file
 // tslint:disable:component-selector
 // tslint:disable:directive-selector
 @Component({

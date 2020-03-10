@@ -87,7 +87,7 @@ describe('src/app/app-error-handler.ts', () => {
             });
         });
         describe('handleHttpErrorResponse(err,notificationService)', () => {
-            const createError = (code: number): HttpErrorResponse =>
+            const createError: (code: number) => HttpErrorResponse = (code: number): HttpErrorResponse =>
                 new HttpErrorResponse({
                     status: code,
                     statusText: 'Status ' + code,

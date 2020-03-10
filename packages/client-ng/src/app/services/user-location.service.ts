@@ -46,11 +46,11 @@ export class UserLocationService {
     public createPositionRequest(timeout: number = 10000, highAccuracy: boolean = false): Observable<Position> {
         return new Observable<any>((subscriber: Subscriber<Position>): void => {
 
-            const geoSuccess = (position: Position): void => {
+            const geoSuccess: (position: Position) => void = (position: Position): void => {
                 subscriber.next(position);
                 subscriber.complete();
             };
-            const geoError = (error: PositionError): void => {
+            const geoError: (error: PositionError) => void = (error: PositionError): void => {
                 subscriber.error(error);
             };
             navigator.geolocation.getCurrentPosition(geoSuccess, geoError, {

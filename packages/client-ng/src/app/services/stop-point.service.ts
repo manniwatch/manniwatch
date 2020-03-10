@@ -9,6 +9,7 @@ import { debounceTime, map, retryWhen, shareReplay, tap, withLatestFrom } from '
 import { ApiService } from './api.service';
 import { AppNotificationService } from './app-notification.service';
 
+// tslint:disable:max-classes-per-file
 export class StopPointLoadSubscriber extends Subscriber<IStopLocation[]> {
 
     public constructor(private service: StopPointService) {
@@ -37,7 +38,7 @@ export class StopPointService {
     private mStopPointObservable: Observable<IStopPointLocation[]>;
     private mStopObservable: Observable<IStopLocation[]>;
     constructor(private api: ApiService,
-                private notificationService: AppNotificationService) {
+        private notificationService: AppNotificationService) {
         this.mStopObservable = this.setupLocationsPoll(this.api.getStopLocations()
             .pipe(map((stops: IStopLocations): IStopLocation[] =>
                 stops.stops)));

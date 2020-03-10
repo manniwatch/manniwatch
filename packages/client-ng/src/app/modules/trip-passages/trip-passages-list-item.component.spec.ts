@@ -8,6 +8,7 @@ import { By } from '@angular/platform-browser';
 import { ITripPassage, StopId, StopShortName } from '@donmahallem/trapeze-api-types';
 import { VEHICLE_STATUS } from '@donmahallem/trapeze-api-types/dist/vehicle-status';
 import { TripPassagesListItemComponent } from './trip-passages-list-item.component';
+// tslint:disable:max-classes-per-file
 // tslint:disable:component-selector
 // tslint:disable:directive-selector
 @Component({

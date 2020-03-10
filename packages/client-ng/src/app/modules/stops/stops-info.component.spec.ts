@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StopsInfoComponent } from './stops-info.component';
 
+// tslint:disable:max-classes-per-file
 // tslint:disable:component-selector
 // tslint:disable:directive-selector
 @Component({

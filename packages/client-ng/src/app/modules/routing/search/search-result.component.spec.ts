@@ -9,6 +9,7 @@ import { StopPointService } from 'src/app/services';
 import { SearchResultResolver } from './search-result.resolver';
 import { SearchComponent } from './search.component';
 
+// tslint:disable:max-classes-per-file
 // tslint:disable:component-selector
 // tslint:disable:directive-selector
 

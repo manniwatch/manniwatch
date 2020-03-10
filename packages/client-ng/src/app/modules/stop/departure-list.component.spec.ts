@@ -7,6 +7,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IDeparture } from '@donmahallem/trapeze-api-types';
 import { DepartureListComponent } from './departure-list.component';
 
+// tslint:disable:max-classes-per-file
 // tslint:disable:component-selector
 // tslint:disable:directive-selector
 @Component({

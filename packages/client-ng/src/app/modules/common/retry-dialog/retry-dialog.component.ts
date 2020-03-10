@@ -8,7 +8,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 /**
  * Additional Data that can be provided to the dialog
  */
-export class RetryDialogData {
+export interface IRetryDialogData {
     message?: string;
     code?: number;
 }
@@ -25,7 +25,7 @@ export class RetryDialogComponent {
      * @param data Additional data that can be provided to the Dialog
      */
     constructor(public dialogRef: MatDialogRef<RetryDialogComponent, boolean>,
-                @Inject(MAT_DIALOG_DATA) public data: RetryDialogData) { }
+        @Inject(MAT_DIALOG_DATA) public data: IRetryDialogData) { }
 
     /**
      * OnClick Event

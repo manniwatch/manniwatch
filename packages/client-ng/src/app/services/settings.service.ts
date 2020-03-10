@@ -8,6 +8,7 @@ import { from, Observable, Subscriber, Subscription } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { ApiService } from './api.service';
 
+// tslint:disable:max-classes-per-file
 export class SettingsLoadSubscriber extends Subscriber<void> {
     public constructor(private resolve: (arg: void) => void) {
         super();

@@ -2,7 +2,6 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-
 import { AfterViewInit, ElementRef, NgZone, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { Collection, Map, View } from 'ol';
 import { defaults, Interaction } from 'ol/interaction';
@@ -17,8 +16,8 @@ export abstract class OlMapComponent implements AfterViewInit, OnDestroy, OnChan
     private map: Map;
     private locationSubscription: Subscription;
     constructor(private elRef: ElementRef,
-                public readonly zone: NgZone,
-                public readonly settings: SettingsService) {
+        public readonly zone: NgZone,
+        public readonly settings: SettingsService) {
     }
     public ngAfterViewInit(): void {
         this.zone.runOutsideAngular(() => {

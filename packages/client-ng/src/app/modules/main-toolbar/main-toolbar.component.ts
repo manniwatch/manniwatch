@@ -8,6 +8,7 @@ import { Subscriber } from 'rxjs';
 import { SidebarService } from 'src/app/services/sidebar.service';
 import { ToolbarSearchBoxComponent } from './search-box.component';
 
+// tslint:disable:max-classes-per-file
 export class NavigationSubscriber extends Subscriber<RouterEvent> {
 
     public constructor(private toolbar: MainToolbarComponent) {
@@ -43,7 +44,7 @@ export class MainToolbarComponent {
     private mSearchOpen: boolean = false;
 
     constructor(private sidebarService: SidebarService,
-                private router: Router) {
+        private router: Router) {
         this.router.events.subscribe(new NavigationSubscriber(this));
     }
 

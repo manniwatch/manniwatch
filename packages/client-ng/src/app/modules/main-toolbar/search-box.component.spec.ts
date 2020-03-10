@@ -9,6 +9,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { StopPointService } from './../../services/stop-point.service';
 import { ToolbarSearchBoxComponent } from './search-box.component';
 
+// tslint:disable:max-classes-per-file
 // tslint:disable:component-selector
 // tslint:disable:directive-selector
 @Component({

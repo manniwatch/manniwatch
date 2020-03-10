@@ -12,6 +12,7 @@ import { ErrorType } from './error-type';
 import { NotFoundMessageSwitchComponent } from './not-found-msg-switch.component';
 import { NotFoundComponent } from './not-found.component';
 
+// tslint:disable:max-classes-per-file
 // tslint:disable:component-selector
 // tslint:disable:directive-selector
 
@@ -61,7 +62,8 @@ describe('src/modules/error/not-found-msg-switch.component.ts', () => {
                     cmpFixture.detectChanges();
                 });
                 it('should only display that the passage could not be found', () => {
-                    expect(infoBoxDebugElement.nativeElement.textContent).toEqual('The passage could not be found. It either expired or has yet to start.Please select another passage.');
+                    expect(infoBoxDebugElement.nativeElement.textContent)
+                        .toEqual('The passage could not be found. It either expired or has yet to start.Please select another passage.');
                 });
             });
             describe('error type is ' + ErrorType.VEHICLE_NOT_FOUND, () => {
@@ -72,7 +74,8 @@ describe('src/modules/error/not-found-msg-switch.component.ts', () => {
                     cmpFixture.detectChanges();
                 });
                 it('should only display that the vehicle could not be found', () => {
-                    expect(infoBoxDebugElement.nativeElement.textContent).toEqual('The requested vehicle could not be found. It might not be active at the moment.');
+                    expect(infoBoxDebugElement.nativeElement.textContent)
+                        .toEqual('The requested vehicle could not be found. It might not be active at the moment.');
                 });
             });
             describe('error type is an unsupported value', () => {
