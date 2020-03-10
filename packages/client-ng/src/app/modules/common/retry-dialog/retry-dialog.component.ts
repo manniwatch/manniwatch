@@ -25,7 +25,7 @@ export class RetryDialogComponent {
      * @param data Additional data that can be provided to the Dialog
      */
     constructor(public dialogRef: MatDialogRef<RetryDialogComponent, boolean>,
-        @Inject(MAT_DIALOG_DATA) public data: IRetryDialogData) { }
+                @Inject(MAT_DIALOG_DATA) public data: IRetryDialogData) { }
 
     /**
      * OnClick Event

@@ -44,7 +44,7 @@ export class MainToolbarComponent {
     private mSearchOpen: boolean = false;
 
     constructor(private sidebarService: SidebarService,
-        private router: Router) {
+                private router: Router) {
         this.router.events.subscribe(new NavigationSubscriber(this));
     }
 

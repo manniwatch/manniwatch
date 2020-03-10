@@ -38,7 +38,7 @@ export class StopPointService {
     private mStopPointObservable: Observable<IStopPointLocation[]>;
     private mStopObservable: Observable<IStopLocation[]>;
     constructor(private api: ApiService,
-        private notificationService: AppNotificationService) {
+                private notificationService: AppNotificationService) {
         this.mStopObservable = this.setupLocationsPoll(this.api.getStopLocations()
             .pipe(map((stops: IStopLocations): IStopLocation[] =>
                 stops.stops)));
