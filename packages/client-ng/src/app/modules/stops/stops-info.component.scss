@@ -1,0 +1,12 @@
+mat-nav-list.stoplist {
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1;
+    
+}
+@import './../../box-settings.scss';
+@media (min-width: #{$boxMaxWidth + 1}){
+    mat-nav-list.stoplist{
+        padding-top:100px;
+    }
+}

@@ -1,0 +1,5 @@
+mat-nav-list(role="navigation")
+    a(*ngFor="let item of results | async",[routerLink]="['/stop', item.shortName]",role="listitem")
+        mat-list-item
+            mat-icon(mat-list-icon) place
+            h4(mat-line) {{item?.name}}

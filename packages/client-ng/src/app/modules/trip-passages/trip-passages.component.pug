@@ -1,0 +1,5 @@
+ng-container(*ngIf="passageService.statusObservable | async as status")
+    app-vehicle-map-header([tripInfo]="status.tripInfo")
+    div.not-found(*ngIf="status.status==STATUS_OPS.NOT_FOUND")
+        h4 not found
+    app-trip-passages-list([tripInfo]="status.tripInfo")
