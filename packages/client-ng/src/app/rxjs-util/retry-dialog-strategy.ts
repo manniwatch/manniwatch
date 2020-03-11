@@ -3,7 +3,7 @@
  */
 
 import { HttpErrorResponse } from '@angular/common/http';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { flatMap, map, skipWhile } from 'rxjs/operators';
 import { RetryDialogComponent } from '../modules/common/retry-dialog';

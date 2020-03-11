@@ -4,7 +4,8 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatIconModule, MatListModule } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 import { VehicleMapHeaderBoxModule } from '../common';
 import { TripPassagesListItemComponent } from './trip-passages-list-item.component';
 import { TripPassagesListComponent } from './trip-passages-list.component';
