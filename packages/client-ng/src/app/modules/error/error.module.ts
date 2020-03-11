@@ -4,9 +4,9 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import {
-    MatDividerModule, MatIconModule, MatListModule,
-} from '@angular/material';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 import { CommonErrorComponent } from './common-error.component';
 import { ErrorRoutingModule } from './error-routing.module';
 import { NotFoundMessageSwitchComponent } from './not-found-msg-switch.component';

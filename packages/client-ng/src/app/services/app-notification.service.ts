@@ -3,7 +3,7 @@
  */
 
 import { Injectable } from '@angular/core';
-import { MatSnackBar, MatSnackBarDismiss } from '@angular/material';
+import { MatSnackBar, MatSnackBarDismiss } from '@angular/material/snack-bar';
 import { zip, Observable, Subject } from 'rxjs';
 import { flatMap, map, startWith } from 'rxjs/operators';
 

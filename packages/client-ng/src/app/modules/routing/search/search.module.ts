@@ -4,7 +4,8 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatIconModule, MatListModule } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 import { SearchResultResolver } from './search-result.resolver';
 import { SearchRoutingModule } from './search-routing.module';
 import { SearchComponent } from './search.component';

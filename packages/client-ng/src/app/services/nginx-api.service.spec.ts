@@ -42,7 +42,7 @@ describe('src/app/services/nginx-api.service', () => {
                         },
                     }],
             });
-            apiService = TestBed.get(NginxApiService);
+            apiService = TestBed.inject(NginxApiService);
             spyOn(apiService, 'baseUrl').and.returnValue(testEndpoint);
         }));
 

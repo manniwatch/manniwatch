@@ -4,9 +4,7 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import {
-    MatIconModule,
-} from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
 import { VehicleLocationHeaderMapDirective } from './vehicle-location-map.directive';
 import { VehicleMapHeaderBoxComponent } from './vehicle-map-header.component';
 

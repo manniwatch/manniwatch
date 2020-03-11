@@ -18,7 +18,7 @@ describe('src/app/services/app-notification.service', () => {
             TestBed.configureTestingModule({
                 providers: [AppNotificationService],
             });
-            notificationService = TestBed.get(AppNotificationService);
+            notificationService = TestBed.inject(AppNotificationService);
             subject = (notificationService as any).notificationSubject;
         }));
 

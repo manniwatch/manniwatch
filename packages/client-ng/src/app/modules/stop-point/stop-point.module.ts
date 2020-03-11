@@ -4,13 +4,11 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import {
-    MatIconModule,
-    MatListModule,
-    MatProgressSpinnerModule,
-    MatTabsModule,
-    MatToolbarModule,
-} from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { StopMapHeaderBoxModule } from '../common';
 import { DepartureListItemComponent } from './departure-list-item.component';
 import { DepartureListComponent } from './departure-list.component';

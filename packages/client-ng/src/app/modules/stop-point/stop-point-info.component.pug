@@ -1,5 +1,5 @@
 ng-container(*ngIf="stopInfoService.statusObservable | async as status")
-    app-map-header-box([stopLocation]="status.location",title="{{status?.passages.stopName}}")
+    app-stop-map-header(title="{{status?.passages.stopName}}")
     mat-tab-group(mat-stretch-tabs,dynamicHeight)
         mat-tab(i18n-label="tab header departures|Departures@@departures",label="Departures")
             app-departure-list([departures]="status?.passages.actual")

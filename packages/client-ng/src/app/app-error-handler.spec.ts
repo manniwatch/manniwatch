@@ -26,8 +26,8 @@ describe('src/app/app-error-handler.ts', () => {
                     useClass: AppErrorHandler,
                 }],
             });
-            handler = TestBed.get(ErrorHandler);
-            notificationService = TestBed.get(AppNotificationService);
+            handler = TestBed.inject(ErrorHandler) as AppErrorHandler;
+            notificationService = TestBed.inject(AppNotificationService);
             isClientOfflineSpy = spyOn(handler, 'isClientOffline');
         });
         afterEach(() => {
