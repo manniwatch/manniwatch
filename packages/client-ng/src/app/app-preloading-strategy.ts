@@ -2,9 +2,9 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
+import { Injectable } from '@angular/core';
 import { PreloadingStrategy, Route } from '@angular/router';
 import { EMPTY, Observable } from 'rxjs';
-import { Injectable } from "@angular/core";
 
 @Injectable()
 export class AppPreloadingStrategy implements PreloadingStrategy {

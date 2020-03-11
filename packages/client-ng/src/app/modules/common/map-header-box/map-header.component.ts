@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { Input, Directive } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 
 @Directive()
 export abstract class MapHeaderDirective {

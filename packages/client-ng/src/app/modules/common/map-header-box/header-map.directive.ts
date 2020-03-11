@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { ElementRef, HostBinding, NgZone, Directive } from '@angular/core';
+import { Directive, ElementRef, HostBinding, NgZone } from '@angular/core';
 import { Map as OlMap } from 'ol';
 import { Coordinate } from 'ol/coordinate';
 import VectorLayer from 'ol/layer/Vector';
