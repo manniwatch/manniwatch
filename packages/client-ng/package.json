@@ -54,7 +54,7 @@
     "ng-cli-pug-loader": "~0.2.2",
     "ol": "~6.2.1",
     "rxjs": "~6.5.4",
-    "tslib": "~1.10.0",
+    "tslib": "~1.11.1",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
