@@ -46,7 +46,7 @@ describe('src/modules/error/not-found-msg-switch.component.ts', () => {
             }).compileComponents();
             cmpFixture = TestBed.createComponent(NotFoundMessageSwitchComponent);
             cmp = cmpFixture.debugElement.componentInstance;
-            testActivatedRoute = TestBed.inject(ActivatedRoute);
+            testActivatedRoute = TestBed.inject(ActivatedRoute) as any;
             infoBoxDebugElement = cmpFixture.debugElement.query(By.css('div.info'));
         }));
         it('should create the app', async(() => {
