@@ -36,7 +36,7 @@ describe('src/app/modules/stop/stop-info.resolver', () => {
                         },
                     }],
             });
-            resolver = TestBed.get(StopInfoResolver);
+            resolver = TestBed.inject(StopInfoResolver);
         }));
 
         afterEach(() => {

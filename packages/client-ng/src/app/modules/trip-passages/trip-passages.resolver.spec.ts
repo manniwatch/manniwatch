@@ -39,7 +39,7 @@ describe('src/app/modules/trip-passages/trip-passages.resolver', () => {
                         },
                     }],
             });
-            resolver = TestBed.get(TripPassagesResolver);
+            resolver = TestBed.inject(TripPassagesResolver);
         }));
 
         afterEach(() => {

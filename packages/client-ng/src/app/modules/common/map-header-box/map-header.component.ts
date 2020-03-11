@@ -5,7 +5,7 @@
 import { Input, Directive } from '@angular/core';
 
 @Directive()
-export abstract class MapHeaderComponent {
+export abstract class MapHeaderDirective {
 
     @Input()
     public lastUpdate: Date = undefined;

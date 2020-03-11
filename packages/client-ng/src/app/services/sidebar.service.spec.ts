@@ -19,7 +19,7 @@ describe('src/app/services/sidebar.service', () => {
             TestBed.configureTestingModule({
                 providers: [SidebarService],
             });
-            sidebarService = TestBed.get(SidebarService);
+            sidebarService = TestBed.inject(SidebarService);
             subject = (sidebarService as any).mSidebarStatusSubject;
         }));
 
