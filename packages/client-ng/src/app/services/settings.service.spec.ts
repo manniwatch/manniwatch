@@ -27,7 +27,7 @@ describe('src/app/services/settings.service', () => {
                     },
                 ],
             });
-            settingsService = TestBed.get(SettingsService);
+            settingsService = TestBed.inject(SettingsService);
         }));
 
         afterEach(() => {

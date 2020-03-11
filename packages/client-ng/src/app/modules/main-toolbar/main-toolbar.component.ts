@@ -38,7 +38,7 @@ export class MainToolbarComponent {
         this.mSearchOpen = open;
     }
     public closeable: boolean = false;
-    @ViewChild(ToolbarSearchBoxComponent, { static: false })
+    @ViewChild(ToolbarSearchBoxComponent)
     private searchBoxComponent: ToolbarSearchBoxComponent;
 
     private mSearchOpen: boolean = false;

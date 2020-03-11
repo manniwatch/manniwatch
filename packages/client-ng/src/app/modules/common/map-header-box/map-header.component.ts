@@ -2,9 +2,10 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 
-export abstract class MapHeaderComponent {
+@Directive()
+export abstract class MapHeaderDirective {
 
     @Input()
     public lastUpdate: Date = undefined;

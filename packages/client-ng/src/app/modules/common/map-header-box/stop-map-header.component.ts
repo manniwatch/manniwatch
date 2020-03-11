@@ -7,7 +7,7 @@ import { IStopLocation, IStopPassage, IStopPointLocation } from '@manniwatch/api
 import { of, BehaviorSubject, Observable } from 'rxjs';
 import { distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
 import { StopPointService } from 'src/app/services';
-import { MapHeaderComponent } from './map-header.component';
+import { MapHeaderDirective } from './map-header.component';
 import { StopLocationHeaderMapDirective } from './stop-location-map.directive';
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -15,7 +15,7 @@ import { StopLocationHeaderMapDirective } from './stop-location-map.directive';
     styleUrls: ['./map-header.component.scss'],
     templateUrl: './stop-map-header.component.pug',
 })
-export class StopMapHeaderComponent extends MapHeaderComponent {
+export class StopMapHeaderComponent extends MapHeaderDirective {
 
     @Input()
     public set stop(st: IStopPassage) {

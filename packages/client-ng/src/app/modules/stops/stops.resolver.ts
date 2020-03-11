@@ -4,7 +4,7 @@
 
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { IStopLocations } from '@manniwatch/api-types';
 import { throwError, EMPTY, Observable } from 'rxjs';

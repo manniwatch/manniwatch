@@ -4,11 +4,9 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import {
-    MatDialogModule,
-    MatIconModule,
-    MatListModule,
-} from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 import { RetryDialogModule } from '../common/retry-dialog';
 import { StopsInfoComponent } from './stops-info.component';
 import { StopsRoutingModule } from './stops-routing.module';

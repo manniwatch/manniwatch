@@ -4,7 +4,7 @@
 
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { TripInfoWithId } from 'src/app/services';
-import { MapHeaderComponent } from './map-header.component';
+import { MapHeaderDirective } from './map-header.component';
 import { VehicleMapHeaderService } from './vehicle-map-header.service';
 
 @Component({
@@ -16,7 +16,7 @@ import { VehicleMapHeaderService } from './vehicle-map-header.service';
     styleUrls: ['./map-header.component.scss'],
     templateUrl: './vehicle-map-header.component.pug',
 })
-export class VehicleMapHeaderBoxComponent extends MapHeaderComponent {
+export class VehicleMapHeaderBoxComponent extends MapHeaderDirective {
 
     public constructor(private mapHeaderService: VehicleMapHeaderService) {
         super();

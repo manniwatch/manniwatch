@@ -68,7 +68,7 @@ describe('src/modules/routing/search/search-result.resolver.ts', () => {
                     },
                 ],
             }).compileComponents();
-            testResolver = TestBed.get(SearchResultResolver);
+            testResolver = TestBed.inject(SearchResultResolver);
         }));
         afterEach(() => {
             stopLocationSpy.calls.reset();
