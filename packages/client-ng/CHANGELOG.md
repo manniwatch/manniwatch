@@ -1,5 +1,16 @@
-# [0.1.0](https://github.com/manniwatch/manniwatch/compare/v0.1.1...v0.1.0) (2020-03-08)
+# [0.1.0](https://github.com/manniwatch/manniwatch/compare/v0.1.2...v0.1.0) (2020-03-12)
 
+
+
+
+## [0.1.2](https://github.com/manniwatch/manniwatch/compare/v0.1.1...v0.1.2) (2020-03-08)
+
+
+### chore
+
+* temp. fix for changelog preset styling ([defffcd](https://github.com/manniwatch/manniwatch/commit/defffcd1fdf3260b763875c3879c75647b04fc35))
+* temp. fix for changelog preset styling ([4c9b597](https://github.com/manniwatch/manniwatch/commit/4c9b597f2e3e562c2ebd9a41346b8551c5522e29))
+* Update old Changelogs with eslint preset ([2ea7381](https://github.com/manniwatch/manniwatch/commit/2ea738130149da08b6650189ae03fff1b44f2ad4))
 
 
 
