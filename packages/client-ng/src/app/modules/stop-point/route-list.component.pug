@@ -1,0 +1,8 @@
+mat-list(role="list",*ngIf="hasRoutes")
+    ng-container(*ngFor="let passage of routes")
+        h3(matSubheader) {{passage?.shortName}}
+        mat-divider
+        mat-list-item(*ngFor="let direction of passage.directions")
+            h4(matLine) {{direction}}
+.no-routes(*ngIf="!hasRoutes")
+    h4 No Routes

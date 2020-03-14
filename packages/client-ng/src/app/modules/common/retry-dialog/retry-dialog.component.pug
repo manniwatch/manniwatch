@@ -1,0 +1,7 @@
+h1(mat-dialog-title) Error
+div(mat-dialog-content)
+    p {{data.message}}
+    p(*ngIf="data.code") Code: {{data.code}}
+div(mat-dialog-actions)
+    button(mat-button,(click)="onNoClick()") No Thanks
+    button(mat-button,[mat-dialog-close]="true",cdkFocusInitial) Ok

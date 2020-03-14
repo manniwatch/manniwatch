@@ -3,7 +3,8 @@
 ![Sample Logo](https://raw.githubusercontent.com/manniwatch/manniwatch/packages/client-desktop/master/assets/screenshot.png)
 
 
-[![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg?flag=ClientDesktop)](https://codecov.io/gh/manniwatch/manniwatch/tree/master/packages/client-desktop) [![npm version](https://badge.fury.io/js/%40manniwatch%2Fclient-desktop.svg)](https://badge.fury.io/js/%40manniwatch%2Fclient-desktop)
+[![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg?flag=ClientDesktop)](https://codecov.io/gh/manniwatch/manniwatch/tree/master/packages/client-desktop) [![npm version](https://badge.fury.io/js/%40manniwatch%2Fclient-desktop.svg)](https://badge.fury.io/js/%40manniwatch%2Fclient-desktop) [![dependencies Status](https://david-dm.org/manniwatch/manniwatch/status.svg?path=packages/client-desktop)](https://david-dm.org/manniwatch/manniwatch?path=packages/client-desktop) [![devDependencies Status](https://david-dm.org/manniwatch/manniwatch/dev-status.svg?path=packages/client-desktop)](https://david-dm.org/manniwatch/manniwatch?path=packages/client-desktop&type=dev)
+
 
 ## Setup 1 (requires node install)
 1. npm install -g @manniwatch/client-desktop

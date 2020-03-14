@@ -22,7 +22,7 @@
   ],
   "manniwatch": "./bin/manniwatch",
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=10.0.0"
   },
   "publishConfig": {
     "access": "public"
@@ -42,10 +42,10 @@
     "url": "https://github.com/manniwatch/manniwatch.git"
   },
   "devDependencies": {
-    "@types/chai": "~4.2.10",
+    "@types/chai": "~4.2.11",
     "@types/mocha": "~7.0.2",
     "@types/sinon": "~7.5.2",
-    "asar": "~2.1.0",
+    "asar": "~3.0.1",
     "chai": "~4.2.0",
     "mocha": "~7.1.0",
     "nyc": "~15.0.0",
@@ -59,7 +59,7 @@
     "@manniwatch/api-proxy-router": "^0.1.0",
     "@manniwatch/api-types": "^0.1.0",
     "@manniwatch/client-ng": "^0.1.0",
-    "electron": "~8.1.0",
+    "electron": "~8.1.1",
     "express": "~4.17.1",
     "helmet": "~3.21.3",
     "yargs": "~15.3.0"
