@@ -12,5 +12,5 @@ update_configs:
       - "dependencies"
     commit_message:
       prefix: "fix"
-      prefix_development: "build"
+      prefix_development: "chore"
       include_scope: true
