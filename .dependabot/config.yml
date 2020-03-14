@@ -11,6 +11,6 @@ update_configs:
     default_labels:
       - "dependencies"
     commit_message:
-      prefix: "build"
-      prefix_development: "build"
+      prefix: "fix"
+      prefix_development: "chore"
       include_scope: true
