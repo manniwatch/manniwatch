@@ -24,8 +24,6 @@
     "lint": "lerna run lint",
     "docs": "lerna run docs",
     "lint:fix": "lerna run lint:fix",
-    "prepublishOnly": "npm run test && npm run docs && npm run build",
-    "clean:modules": "rm -rf ./packages/*/node_modules && rm -rf ./node_modules",
     "version-temp": "npx conventional-changelog --preset eslint --release-count 0 --outfile ./CHANGELOG.md --verbose && npx lerna exec --concurrency 1 --stream -- 'conventional-changelog --preset eslint --release-count 0 --pkg ./package.json --outfile ./CHANGELOG.md --verbose'"
   },
   "nyc": {
