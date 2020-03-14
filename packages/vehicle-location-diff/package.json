@@ -1,6 +1,6 @@
 {
     "name": "@manniwatch/vehicle-location-diff",
-    "version": "0.1.0",
+    "version": "0.1.3",
     "description": "Tool to calculate diff between vehicle location snapshots",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -15,7 +15,7 @@
         "docs": "typedoc --options ../../typedoc.json"
     },
     "dependencies": {
-        "@manniwatch/api-types": "^0.1.0"
+        "@manniwatch/api-types": "^0.1.3"
     },
     "devDependencies": {
         "mocha": "~7.1.0",
