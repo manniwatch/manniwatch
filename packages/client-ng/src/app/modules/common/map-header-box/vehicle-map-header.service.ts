@@ -18,7 +18,7 @@ export class VehicleMapHeaderService {
     public readonly statusObservable: Observable<IStatus>;
     public readonly tripInfoSubject: BehaviorSubject<TripInfoWithId> = new BehaviorSubject(undefined);
     constructor(public vehicleService: VehicleService,
-                public apiService: ApiService) {
+        public apiService: ApiService) {
     }
 
     public createVehicleDataObservable(): Observable<IStatus> {
@@ -37,7 +37,7 @@ export class VehicleMapHeaderService {
             } else {
                 return of(undefined);
             }
-        }), distinctUntilChanged((x: TimestampedVehicleLocation, y: TimestampedVehicleLocation) => {
+        }), distinctUntilChanged((x: TimestampedVehicleLocation, y: TimestampedVehicleLocation): boolean => {
             // tslint:disable-next-line:triple-equals
             if (x == undefined && y == undefined) {
                 return true;

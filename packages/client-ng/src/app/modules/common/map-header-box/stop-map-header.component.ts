@@ -44,7 +44,7 @@ export class StopMapHeaderComponent extends MapHeaderDirective {
         super();
         this.stopSubject = new BehaviorSubject(undefined);
         this.stopObservable = this.stopSubject.asObservable()
-            .pipe(tap(() => {
+            .pipe(tap((): void => {
                 this.lastUpdate = new Date();
             }), distinctUntilChanged((x: IStopPassage, y: IStopPassage): boolean => {
                 if (x && y) {

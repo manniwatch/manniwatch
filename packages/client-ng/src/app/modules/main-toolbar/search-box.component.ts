@@ -37,7 +37,7 @@ export class ToolbarSearchBoxComponent implements OnInit, OnDestroy {
                     value.length > 0),
                 debounceTime(200),
             )
-            .subscribe((value: string) => {
+            .subscribe((value: string): void => {
                 this.router.navigate(['search'], {
                     queryParams: {
                         q: value,

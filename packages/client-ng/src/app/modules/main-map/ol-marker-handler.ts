@@ -27,7 +27,7 @@ export class OlMarkerHandler {
     private stopMarkerVectorSource: VectorSource = undefined;
     private loadSubscription: Subscription;
     public constructor(private mainMap: OlMainMapDirective,
-                       private readonly zoomBorder: number) {
+        private readonly zoomBorder: number) {
     }
 
     public getStopLocations(): Observable<IStopLocation[]> {
@@ -59,7 +59,7 @@ export class OlMarkerHandler {
         leafletMap.addLayer(this.stopPointMarkerLayer);
         this.loadSubscription =
             combineLatest([this.getStopLocations(), this.getStopPointLocations()])
-                .subscribe((result: [IStopLocation[], IStopPointLocation[]]) => {
+                .subscribe((result: [IStopLocation[], IStopPointLocation[]]): void => {
                     this.setStopPoints(result[1]);
                     this.setStops(result[0]);
                 });

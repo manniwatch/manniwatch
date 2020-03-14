@@ -44,7 +44,7 @@ export class OlVehicleHandler {
                         }
                         return false;
                     }), pluck('vehicles'))
-                .subscribe((result: TimestampedVehicleLocation[]) => {
+                .subscribe((result: TimestampedVehicleLocation[]): void => {
                     this.setVehicles(result);
                 });
     }

@@ -31,13 +31,13 @@ export class UserLocationService {
     public constructor() {
         this.locationErrorObservable
             .pipe(debounceTime(30000),
-                flatMap((val: PositionError) =>
+                flatMap((val: PositionError): Observable<Position> =>
                     this.createPositionRequest()),
-                catchError((err: any) => {
+                catchError((err: any): Observable<any> => {
                     this.locationErrorSubject.next(err);
                     return EMPTY;
                 }))
-            .subscribe((val: Position) => {
+            .subscribe((val: Position): void => {
                 this.locationErrorSubject.next(undefined);
                 this.locationSubject.next(val);
             });

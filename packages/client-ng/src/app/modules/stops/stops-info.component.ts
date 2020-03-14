@@ -13,7 +13,7 @@ import { IStopLocation } from '@manniwatch/api-types';
 export class StopsInfoComponent {
     private mStops: IStopLocation[] = [];
     constructor(private activatedRoute: ActivatedRoute) {
-        const st: IStopLocation[] = this.activatedRoute.snapshot.data.stops.stops.sort((a: IStopLocation, b: IStopLocation) =>
+        const st: IStopLocation[] = this.activatedRoute.snapshot.data.stops.stops.sort((a: IStopLocation, b: IStopLocation): number =>
             a.name.localeCompare(b.name));
         this.mStops = st;
 

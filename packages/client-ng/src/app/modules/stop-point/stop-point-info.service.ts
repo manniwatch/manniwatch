@@ -41,8 +41,8 @@ export class StopPointInfoService {
     public readonly passagesObservable: Observable<IStopPassage>;
     private readonly mStatusSubject: Subject<string> = new Subject();
     constructor(private route: ActivatedRoute,
-                private apiService: ApiService,
-                stopService: StopPointService) {
+        private apiService: ApiService,
+        stopService: StopPointService) {
         const stopPointIdObservable: Observable<string> = this.route.params
             .pipe(map((params: any): string =>
                 params.stopPointId));
@@ -50,17 +50,17 @@ export class StopPointInfoService {
             .pipe(map((data: any): IStopPassage =>
                 data.stopPoint));
         const d: Observable<IStopPassage> = this.mStatusSubject
-            .pipe(switchMap((name: any) =>
-                timer(5000).pipe(flatMap(() =>
+            .pipe(switchMap((name: any): Observable<IStopPassage> =>
+                timer(5000).pipe(flatMap((): Observable<IStopPassage> =>
                     this.apiService
                         .getStopPointPassages(name))))) as Observable<IStopPassage>;
         this.passagesObservable = merge(resolverData, d)
-            .pipe(tap((stop: IStopPassage) => {
+            .pipe(tap((stop: IStopPassage): void => {
                 this.mStatusSubject.next(stop.stopShortName);
             }), shareReplay(1));
         this.locationObservable = combineLatest([stopPointIdObservable, stopService.stopPointObservable])
-            .pipe(map((data: [string, IStopPointLocation[]]) => {
-                const idx: number = data[1].findIndex((stp: IStopPointLocation) =>
+            .pipe(map((data: [string, IStopPointLocation[]]): IStopPointLocation => {
+                const idx: number = data[1].findIndex((stp: IStopPointLocation): boolean =>
                     stp.stopPoint === data[0]);
                 return idx >= 0 ? data[1][idx] : undefined;
             }), distinctUntilChanged((x: IStopPointLocation, y: IStopPointLocation): boolean => {
