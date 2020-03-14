@@ -12,7 +12,8 @@
         "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
         "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
         "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json src/**/*.ts",
-        "docs": "typedoc --options ../../typedoc.json"
+        "docs": "typedoc --options ../../typedoc.json",
+        "prepublishOnly": "npm run test && npm run docs && npm run build"
     },
     "dependencies": {
         "@manniwatch/api-types": "^0.1.3"
