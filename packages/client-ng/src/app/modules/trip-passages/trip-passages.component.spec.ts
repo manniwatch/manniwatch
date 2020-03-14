@@ -33,10 +33,10 @@ export class TestTripPassagesListComponent {
 
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
-describe('src/app/modules/trip-passages/trip-passage.component', () => {
-  describe('TripPassagesComponent', () => {
+describe('src/app/modules/trip-passages/trip-passage.component', (): void => {
+  describe('TripPassagesComponent', (): void => {
     const testStatusSubject: Subject<IPassageStatus> = new Subject();
-    beforeEach(async(() => {
+    beforeEach(async((): void => {
       TestBed.configureTestingModule({
         declarations: [
           TripPassagesComponent,
@@ -59,11 +59,11 @@ describe('src/app/modules/trip-passages/trip-passage.component', () => {
     }));
     let cmpFixture: ComponentFixture<TripPassagesComponent>;
     let cmp: TripPassagesComponent;
-    beforeEach(() => {
+    beforeEach((): void => {
       cmpFixture = TestBed.createComponent(TripPassagesComponent);
       cmp = cmpFixture.componentInstance;
     });
-    describe('with status set', () => {
+    describe('with status set', (): void => {
       let listDebugElement: DebugElement;
       let mapHeaderDebugElement: DebugElement;
       let notFoundDebugElement: DebugElement;
@@ -74,7 +74,7 @@ describe('src/app/modules/trip-passages/trip-passage.component', () => {
         tripId: 'tripId',
         tripInfo: { test: true } as any,
       };
-      beforeEach(() => {
+      beforeEach((): void => {
         cmpFixture.detectChanges();
         testStatusSubject.next(testStatus);
         cmpFixture.detectChanges();
@@ -85,7 +85,7 @@ describe('src/app/modules/trip-passages/trip-passage.component', () => {
         notFoundDebugElement = cmpFixture.debugElement
           .query(By.css('div.not-found'));
       });
-      it('should display "no passages" disclaimer', () => {
+      it('should display "no passages" disclaimer', (): void => {
         expect(listDebugElement).toBeDefined();
         expect(mapHeaderDebugElement).toBeDefined();
         expect(notFoundDebugElement).toBeNull();
@@ -95,8 +95,8 @@ describe('src/app/modules/trip-passages/trip-passage.component', () => {
         expect(mapHeaderCmp.tripInfo).toEqual(testStatus.tripInfo);
       });
     });
-    describe('with no status emitted', () => {
-      it('should display no content', () => {
+    describe('with no status emitted', (): void => {
+      it('should display no content', (): void => {
         cmpFixture.detectChanges();
         expect(cmpFixture.debugElement.nativeElement.innerText).toEqual('');
       });

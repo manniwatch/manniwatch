@@ -7,19 +7,19 @@ import { map, toArray } from 'rxjs/operators';
 import { TripInfoWithId } from 'src/app/services';
 import { IPassageStatus, TripPassagesUtil, UpdateStatus } from './trip-util';
 
-describe('src/app/modules/trip-passages/trip-util', () => {
-    describe('TripPassagesUtil', () => {
+describe('src/app/modules/trip-passages/trip-util', (): void => {
+    describe('TripPassagesUtil', (): void => {
         const testTimestamp: number = 38382992;
         const testError: Error = new Error('Should not have been called');
-        beforeAll(() => {
+        beforeAll((): void => {
             jasmine.clock().install();
             jasmine.clock().mockDate(new Date(testTimestamp));
         });
-        afterAll(() => {
+        afterAll((): void => {
             jasmine.clock().uninstall();
         });
-        describe('convertResponse(tripId)', () => {
-            it('should convert TripInfoWithId to an IPassageStatus', (doneFn: DoneFn) => {
+        describe('convertResponse(tripId)', (): void => {
+            it('should convert TripInfoWithId to an IPassageStatus', (doneFn: DoneFn): void => {
                 of(1, 2, 3)
                     .pipe(map((val: number): TripInfoWithId => ({
                         tripId: '' + val,
@@ -50,7 +50,7 @@ describe('src/app/modules/trip-passages/trip-util', () => {
                         },
                     });
             });
-            it('should pass on an downstream error', (doneFn: DoneFn) => {
+            it('should pass on an downstream error', (doneFn: DoneFn): void => {
                 throwError(testError)
                     .pipe(TripPassagesUtil.convertResponse(undefined))
                     .subscribe({
@@ -63,8 +63,8 @@ describe('src/app/modules/trip-passages/trip-util', () => {
                     });
             });
         });
-        describe('handleError(tripId)', () => {
-            it('should pass on non errors', (doneFn: DoneFn) => {
+        describe('handleError(tripId)', (): void => {
+            it('should pass on non errors', (doneFn: DoneFn): void => {
                 of(1, 2, 3)
                     .pipe(TripPassagesUtil.handleError(undefined),
                         toArray())
@@ -76,8 +76,8 @@ describe('src/app/modules/trip-passages/trip-util', () => {
                         },
                     });
             });
-            describe('errors without status', () => {
-                it('should convert errors and not fail without status', (doneFn: DoneFn) => {
+            describe('errors without status', (): void => {
+                it('should convert errors and not fail without status', (doneFn: DoneFn): void => {
                     const testTripId: string = 'testTripId';
                     throwError(testError)
                         .pipe(TripPassagesUtil.handleError(testTripId),
@@ -97,9 +97,9 @@ describe('src/app/modules/trip-passages/trip-util', () => {
                         });
                 });
             });
-            describe('errors with status', () => {
+            describe('errors with status', (): void => {
                 [300, 400, 401, 404].forEach((testStatus: number): void => {
-                    it('should convert error without 5xx error status "' + testStatus + '"', (doneFn: DoneFn) => {
+                    it('should convert error without 5xx error status "' + testStatus + '"', (doneFn: DoneFn): void => {
                         const testTripId: string = 'testTripId' + testStatus;
                         throwError({ status: testStatus })
                             .pipe(TripPassagesUtil.handleError(testTripId),
@@ -120,7 +120,7 @@ describe('src/app/modules/trip-passages/trip-util', () => {
                     });
                 });
                 [500, 521, 599].forEach((testStatus: number): void => {
-                    it('should convert error with 5xx error status "' + testStatus + '" to 500', (doneFn: DoneFn) => {
+                    it('should convert error with 5xx error status "' + testStatus + '" to 500', (doneFn: DoneFn): void => {
                         const testTripId: string = 'testTripId' + testStatus;
                         throwError({ status: testStatus })
                             .pipe(TripPassagesUtil.handleError(testTripId),

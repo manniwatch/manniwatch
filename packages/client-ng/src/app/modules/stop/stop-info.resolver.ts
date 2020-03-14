@@ -32,7 +32,7 @@ export class StopInfoResolver implements Resolve<IStopPassage> {
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IStopPassage> {
         return this.api
             .getStopPassages(route.params.stopId)
-            .pipe(catchError((err: any | HttpErrorResponse) => {
+            .pipe(catchError((err: any | HttpErrorResponse): Observable<any> => {
                 if (err.status === 404) {
                     this.router.navigate(['stops']);
                 }

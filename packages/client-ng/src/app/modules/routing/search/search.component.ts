@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
     public ngOnInit(): void {
         this.searchParamSubscription = this.activatedRoute
-            .queryParams.subscribe((value: Params) => {
+            .queryParams.subscribe((value: Params): void => {
                 this.data = value.q ? value.q : '';
                 this.titleService.setTitle('Search - \"' + this.data + '\"');
             });

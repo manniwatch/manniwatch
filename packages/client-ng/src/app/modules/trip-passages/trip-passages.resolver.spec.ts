@@ -9,8 +9,8 @@ import { ApiService } from 'src/app/services';
 import { TripPassagesResolver } from './trip-passages.resolver';
 import { TripPassagesUtil } from './trip-util';
 
-describe('src/app/modules/trip-passages/trip-passages.resolver', () => {
-    describe('TripPassagesResolver', () => {
+describe('src/app/modules/trip-passages/trip-passages.resolver', (): void => {
+    describe('TripPassagesResolver', (): void => {
         let resolver: TripPassagesResolver;
         const testId: string = '239jmcntest';
         let convertResponseStub: jasmine.Spy<jasmine.Func>;
@@ -19,7 +19,7 @@ describe('src/app/modules/trip-passages/trip-passages.resolver', () => {
         let handleErrorOperatorStub: jasmine.Spy<jasmine.Func>;
         let getTripPassagesSpy: jasmine.Spy<jasmine.Func>;
         let nextSpy: jasmine.Spy<jasmine.Func>;
-        beforeAll(() => {
+        beforeAll((): void => {
             convertResponseStub = spyOn(TripPassagesUtil, 'convertResponse');
             handleErrorStub = spyOn(TripPassagesUtil, 'handleError');
             convertResponseOperatorStub = jasmine.createSpy('convertResponseOperator');
@@ -27,9 +27,9 @@ describe('src/app/modules/trip-passages/trip-passages.resolver', () => {
             getTripPassagesSpy = jasmine.createSpy('getTripPassages');
             nextSpy = jasmine.createSpy('onNext');
         });
-        beforeEach(async(() => {
-            convertResponseStub.and.callFake(() => convertResponseOperatorStub);
-            handleErrorStub.and.callFake(() => handleErrorOperatorStub);
+        beforeEach(async((): void => {
+            convertResponseStub.and.callFake((): any => convertResponseOperatorStub);
+            handleErrorStub.and.callFake((): any => handleErrorOperatorStub);
             TestBed.configureTestingModule({
                 providers: [TripPassagesResolver,
                     {
@@ -42,7 +42,7 @@ describe('src/app/modules/trip-passages/trip-passages.resolver', () => {
             resolver = TestBed.inject(TripPassagesResolver);
         }));
 
-        afterEach(() => {
+        afterEach((): void => {
             convertResponseStub.calls.reset();
             handleErrorStub.calls.reset();
             getTripPassagesSpy.calls.reset();
@@ -51,7 +51,7 @@ describe('src/app/modules/trip-passages/trip-passages.resolver', () => {
             nextSpy.calls.reset();
         });
 
-        describe('resolve(route, state)', () => {
+        describe('resolve(route, state)', (): void => {
             const convertedResponse: any = {
                 converted: true,
                 type: 'response',
@@ -61,18 +61,18 @@ describe('src/app/modules/trip-passages/trip-passages.resolver', () => {
                 type: 'error',
             };
 
-            afterEach(() => {
+            afterEach((): void => {
                 expect(convertResponseStub).toHaveBeenCalledTimes(1);
                 expect(handleErrorStub).toHaveBeenCalledTimes(1);
             });
-            describe('getTripPassages() resolves', () => {
-                beforeEach(() => {
+            describe('getTripPassages() resolves', (): void => {
+                beforeEach((): void => {
                     getTripPassagesSpy.and.callFake((...args: any[]): Observable<any> =>
                         of(args));
-                    handleErrorOperatorStub.and.callFake(catchError(() => of(errorResponse)));
-                    convertResponseOperatorStub.and.callFake(map(() => convertedResponse));
+                    handleErrorOperatorStub.and.callFake(catchError((): Observable<any> => of(errorResponse)));
+                    convertResponseOperatorStub.and.callFake(map((): any => convertedResponse));
                 });
-                it('should construct the request correctly', (done: DoneFn) => {
+                it('should construct the request correctly', (done: DoneFn): void => {
                     resolver.resolve({ params: { tripId: testId } } as any, undefined)
                         .subscribe({
                             complete: (): void => {
@@ -93,14 +93,14 @@ describe('src/app/modules/trip-passages/trip-passages.resolver', () => {
                         });
                 });
             });
-            describe('getTripPassages() rejects', () => {
-                beforeEach(() => {
+            describe('getTripPassages() rejects', (): void => {
+                beforeEach((): void => {
                     getTripPassagesSpy.and.callFake((...args: any[]): Observable<any> =>
                         throwError(args));
-                    handleErrorOperatorStub.and.callFake(catchError(() => of(errorResponse)));
-                    convertResponseOperatorStub.and.callFake(map(() => convertedResponse));
+                    handleErrorOperatorStub.and.callFake(catchError((): Observable<any> => of(errorResponse)));
+                    convertResponseOperatorStub.and.callFake(map((): any => convertedResponse));
                 });
-                it('should construct the request correctly', (done: DoneFn) => {
+                it('should construct the request correctly', (done: DoneFn): void => {
                     resolver.resolve({ params: { tripId: testId } } as any, undefined)
                         .subscribe({
                             complete: (): void => {

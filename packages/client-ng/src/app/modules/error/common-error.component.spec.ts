@@ -20,11 +20,11 @@ class TestMatIconComponent {
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
 
-describe('src/modules/error/common.component.ts', () => {
-    describe('CommonComponent', () => {
+describe('src/modules/error/common.component.ts', (): void => {
+    describe('CommonComponent', (): void => {
         let cmpFixture: ComponentFixture<CommonErrorComponent>;
         let cmp: CommonErrorComponent;
-        beforeEach(async(() => {
+        beforeEach(async((): void => {
             TestBed.configureTestingModule({
                 declarations: [
                     CommonErrorComponent,
@@ -39,7 +39,7 @@ describe('src/modules/error/common.component.ts', () => {
             cmp = cmpFixture.debugElement.componentInstance;
         }));
 
-        it('should create the app', async(() => {
+        it('should create the app', async((): void => {
             expect(cmp).toBeTruthy();
         }));
     });

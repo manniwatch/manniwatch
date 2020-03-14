@@ -104,7 +104,7 @@ export class VehicleService {
             vehicles: [],
         };
         concat(from([startValue]), this.state.pipe(debounceTime(10000)))
-            .pipe(flatMap((previousData: IData) =>
+            .pipe(flatMap((previousData: IData): Observable<IData> =>
                 this.api.getVehicleLocations(previousData.lastUpdate)
                     .pipe(map((value: IVehicleLocationList): IData => {/*
                         if(previousData.lastUpdate!==value.lastUpdate){
@@ -142,11 +142,11 @@ export class VehicleService {
                             lastUpdate: value.lastUpdate,
                             vehicles: filterInvalid,
                         };
-                    }), catchError((err: any) =>
+                    }), catchError((err: any): Observable<IData> =>
                         of(Object.assign({
                             error: err,
                         }, previousData))))))
-            .subscribe((data: IData) => {
+            .subscribe((data: IData): void => {
                 this.state.next(data);
             });
     }

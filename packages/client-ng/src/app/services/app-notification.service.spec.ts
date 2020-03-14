@@ -6,15 +6,15 @@ import { async, TestBed } from '@angular/core/testing';
 import { BehaviorSubject } from 'rxjs';
 import { AppNotificationService } from './app-notification.service';
 // import * as sinon from "sinon";
-describe('src/app/services/app-notification.service', () => {
-    describe('AppNotificationService', () => {
+describe('src/app/services/app-notification.service', (): void => {
+    describe('AppNotificationService', (): void => {
         let notificationService: AppNotificationService;
         let nextSpy: jasmine.Spy<jasmine.Func>;
         let subject: BehaviorSubject<boolean>;
-        beforeAll(() => {
+        beforeAll((): void => {
             nextSpy = jasmine.createSpy();
         });
-        beforeEach(async(() => {
+        beforeEach(async((): void => {
             TestBed.configureTestingModule({
                 providers: [AppNotificationService],
             });
@@ -22,11 +22,11 @@ describe('src/app/services/app-notification.service', () => {
             subject = (notificationService as any).notificationSubject;
         }));
 
-        afterEach(() => {
+        afterEach((): void => {
             nextSpy.calls.reset();
         });
 
-        describe('notificationObservable', () => {
+        describe('notificationObservable', (): void => {
             it('needs to be implemented');
         });
     });

@@ -27,9 +27,9 @@ export class TestDepartureListItemComponent {
 
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
-describe('src/app/modules/stop/departure-list.component', () => {
-  describe('DepartureListComponent', () => {
-    beforeEach(async(() => {
+describe('src/app/modules/stop/departure-list.component', (): void => {
+  describe('DepartureListComponent', (): void => {
+    beforeEach(async((): void => {
       TestBed.configureTestingModule({
         declarations: [
           DepartureListComponent,
@@ -38,18 +38,18 @@ describe('src/app/modules/stop/departure-list.component', () => {
         ],
       }).compileComponents();
     }));
-    it('should create the app', async(() => {
+    it('should create the app', async((): void => {
       const fixture: ComponentFixture<DepartureListComponent> = TestBed.createComponent(DepartureListComponent);
       const app: DepartureListComponent = fixture.debugElement.componentInstance;
       expect(app).toBeTruthy();
     }));
-    describe('layout', () => {
+    describe('layout', (): void => {
       it('needs to be implemented');
     });
-    describe('Component methods and attributes', () => {
+    describe('Component methods and attributes', (): void => {
       let fixture: ComponentFixture<DepartureListComponent>;
       let cmp: DepartureListComponent;
-      beforeEach(() => {
+      beforeEach((): void => {
         fixture = TestBed.createComponent(DepartureListComponent);
         cmp = fixture.debugElement.componentInstance;
       });
@@ -65,25 +65,25 @@ describe('src/app/modules/stop/departure-list.component', () => {
           value: [1, 2] as any,
         },
       ];
-      describe('departures', () => {
-        describe('getter', () => {
-          testPassages.forEach((testPassage: { value: IDeparture[], result: IDeparture[] }) => {
-            it('should get the correct value for "' + testPassage.value + '"', () => {
+      describe('departures', (): void => {
+        describe('getter', (): void => {
+          testPassages.forEach((testPassage: { value: IDeparture[], result: IDeparture[] }): void => {
+            it('should get the correct value for "' + testPassage.value + '"', (): void => {
               (cmp as any).mDepartures = testPassage.value;
               expect(cmp.departures).toEqual(testPassage.result);
             });
           });
         });
-        describe('setter', () => {
-          testPassages.forEach((testPassage: { value: IDeparture[], result: IDeparture[] }) => {
-            it('should set the correct value for "' + testPassage.value + '"', () => {
+        describe('setter', (): void => {
+          testPassages.forEach((testPassage: { value: IDeparture[], result: IDeparture[] }): void => {
+            it('should set the correct value for "' + testPassage.value + '"', (): void => {
               cmp.departures = testPassage.value;
               expect((cmp as any).mDepartures).toEqual(testPassage.result);
             });
           });
         });
       });
-      describe('hasDepartures()', () => {
+      describe('hasDepartures()', (): void => {
         const data: { value: any, result: boolean }[] = [{
           result: false,
           value: undefined,
@@ -97,8 +97,8 @@ describe('src/app/modules/stop/departure-list.component', () => {
           result: true,
           value: [1, 2],
         }];
-        data.forEach((testData: { value: any, result: boolean }) => {
-          it('should return "' + testData.result + '" for ' + JSON.stringify(testData.value), () => {
+        data.forEach((testData: { value: any, result: boolean }): void => {
+          it('should return "' + testData.result + '" for ' + JSON.stringify(testData.value), (): void => {
             (cmp as any).mDepartures = testData.value;
             expect(cmp.hasDepartures()).toEqual(testData.result);
           });

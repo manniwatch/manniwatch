@@ -15,14 +15,14 @@ export class TripPassagesService {
     public readonly statusObservable: Observable<IPassageStatus>;
     private readonly statusSubject: BehaviorSubject<IPassageStatus>;
     constructor(private route: ActivatedRoute,
-                private apiService: ApiService) {
+        private apiService: ApiService) {
         this.statusSubject = new BehaviorSubject(route.snapshot.data.tripPassages);
         this.statusObservable = this.createStatusObservable(this.statusSubject);
     }
 
     public createStatusObservable(statusSubject: Subject<IPassageStatus>): Observable<IPassageStatus> {
         const refreshObservable: Observable<IPassageStatus> = this.createRefreshPollObservable(statusSubject);
-        return merge(this.route.data.pipe(map((data: Data) => data.tripPassages)), refreshObservable)
+        return merge(this.route.data.pipe(map((data: Data): ITripPassages => data.tripPassages)), refreshObservable)
             .pipe(scan((acc: IPassageStatus, val: IPassageStatus, idx: number): IPassageStatus => {
                 if (val.failures > 0) {
                     const newVal: IPassageStatus = Object.assign({}, val);

@@ -74,7 +74,7 @@ export class AppNotificationService {
             // tslint:disable-next-line:deprecation
             .pipe(startWith<undefined>(undefined)))
             .pipe(
-                map((value: [IAppNotification, void]) => value[0]),
+                map((value: [IAppNotification, void]): IAppNotification => value[0]),
                 flatMap((noti: IAppNotification): Observable<IAppNotificationDismiss> =>
                     this.matSnackBar.open(noti.title, undefined, {
                         announcementMessage: noti.title,

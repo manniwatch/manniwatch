@@ -24,8 +24,8 @@ export class StopsResolver implements Resolve<IStopLocations> {
      * @param api the {@ApiService}
      */
     public constructor(private api: ApiService,
-                       private router: Router,
-                       private dialog: MatDialog) { }
+        private router: Router,
+        private dialog: MatDialog) { }
 
     /**
      * Resolves the station response
@@ -44,7 +44,7 @@ export class StopsResolver implements Resolve<IStopLocations> {
                     return throwError(err);
                 }
             }),
-                retryWhen(retryDialogStrategy((error: any | HttpErrorResponse) =>
+                retryWhen(retryDialogStrategy((error: any | HttpErrorResponse): any =>
                     this.dialog.open(RetryDialogComponent, {
                         data: {
                             code: error.status ? error.status : undefined,
