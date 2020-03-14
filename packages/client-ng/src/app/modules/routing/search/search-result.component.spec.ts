@@ -40,14 +40,14 @@ class TestMatIconComponent {
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
 
-describe('src/modules/routing/search/search-result.resolver.ts', () => {
-    describe('SearchResultResolver', () => {
+describe('src/modules/routing/search/search-result.resolver.ts', (): void => {
+    describe('SearchResultResolver', (): void => {
         let stopLocationSpy: jasmine.Spy<jasmine.Func>;
         let testResolver: SearchResultResolver;
-        beforeAll(() => {
+        beforeAll((): void => {
             stopLocationSpy = jasmine.createSpy();
         });
-        beforeEach(async(() => {
+        beforeEach(async((): void => {
             TestBed.configureTestingModule({
                 declarations: [
                     SearchComponent,
@@ -70,11 +70,11 @@ describe('src/modules/routing/search/search-result.resolver.ts', () => {
             }).compileComponents();
             testResolver = TestBed.inject(SearchResultResolver);
         }));
-        afterEach(() => {
+        afterEach((): void => {
             stopLocationSpy.calls.reset();
         });
 
-        it('should create the component', async(() => {
+        it('should create the component', async((): void => {
             expect(testResolver).toBeTruthy();
         }));
     });

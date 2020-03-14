@@ -12,7 +12,7 @@ export const runOutsideZone: <T>(zone: NgZone) => MonoTypeOperatorFunction<T> =
                 source.subscribe({
                     next(x: T): void {
                         if (NgZone.isInAngularZone()) {
-                            zone.runOutsideAngular(() => {
+                            zone.runOutsideAngular((): void => {
                                 observer.next(x);
                             });
                         } else {

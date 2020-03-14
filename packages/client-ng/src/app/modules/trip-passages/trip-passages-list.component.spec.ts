@@ -97,9 +97,9 @@ const testOldPassages: IDepartedTripPassage[] = [{
   },
   stop_seq_num: '6',
 }];
-describe('src/app/modules/trip-passages/trip-passages-list.component', () => {
-  describe('TripPassagesListComponent', () => {
-    beforeEach(async(() => {
+describe('src/app/modules/trip-passages/trip-passages-list.component', (): void => {
+  describe('TripPassagesListComponent', (): void => {
+    beforeEach(async((): void => {
       TestBed.configureTestingModule({
         declarations: [
           TripPassagesListComponent,
@@ -111,28 +111,28 @@ describe('src/app/modules/trip-passages/trip-passages-list.component', () => {
         set: { changeDetection: ChangeDetectionStrategy.Default },
       }).compileComponents();
     }));
-    describe('properties', () => {
+    describe('properties', (): void => {
       let cmpFixture: ComponentFixture<TripPassagesListComponent>;
       let cmp: TripPassagesListComponent;
-      beforeEach(() => {
+      beforeEach((): void => {
         cmpFixture = TestBed.createComponent(TripPassagesListComponent);
         cmp = cmpFixture.componentInstance;
       });
-      describe('set - tripInfo', () => {
-        it('should set passages to an empty array for null', () => {
+      describe('set - tripInfo', (): void => {
+        it('should set passages to an empty array for null', (): void => {
           // tslint:disable-next-line:no-null-keyword
           cmp.tripInfo = null;
           expect(cmp.passages).toEqual([]);
         });
-        it('should set passages to an empty array for undefined', () => {
+        it('should set passages to an empty array for undefined', (): void => {
           cmp.tripInfo = undefined;
           expect(cmp.passages).toEqual([]);
         });
-        it('should set passages to an empty array with no actual and old provided', () => {
+        it('should set passages to an empty array with no actual and old provided', (): void => {
           cmp.tripInfo = {} as TripInfoWithId;
           expect(cmp.passages).toEqual([]);
         });
-        it('should set passages ordered correctly for actual and old provided', () => {
+        it('should set passages ordered correctly for actual and old provided', (): void => {
           cmp.tripInfo = {
             actual: testActualPassages,
             directionText: 'direction1',
@@ -147,7 +147,7 @@ describe('src/app/modules/trip-passages/trip-passages-list.component', () => {
           testOldPassages[2],
           testOldPassages[0]]);
         });
-        it('should set passages ordered correctly with only old provided', () => {
+        it('should set passages ordered correctly with only old provided', (): void => {
           cmp.tripInfo = {
             actual: undefined,
             directionText: 'direction1',
@@ -159,7 +159,7 @@ describe('src/app/modules/trip-passages/trip-passages-list.component', () => {
           testOldPassages[2],
           testOldPassages[0]]);
         });
-        it('should set passages ordered correctly with only actual provided', () => {
+        it('should set passages ordered correctly with only actual provided', (): void => {
           cmp.tripInfo = {
             actual: testActualPassages,
             directionText: 'direction1',
@@ -173,47 +173,47 @@ describe('src/app/modules/trip-passages/trip-passages-list.component', () => {
         });
       });
     });
-    describe('methods', () => {
+    describe('methods', (): void => {
       let cmpFixture: ComponentFixture<TripPassagesListComponent>;
       let cmp: TripPassagesListComponent;
-      beforeEach(() => {
+      beforeEach((): void => {
         cmpFixture = TestBed.createComponent(TripPassagesListComponent);
         cmp = cmpFixture.componentInstance;
       });
-      describe('hasPassages()', () => {
+      describe('hasPassages()', (): void => {
         // tslint:disable-next-line:no-null-keyword
-        [undefined, null, [], 1, 'k'].forEach((testValue: any) => {
-          it('should return false for passages being "' + testValue + '"', () => {
+        [undefined, null, [], 1, 'k'].forEach((testValue: any): void => {
+          it('should return false for passages being "' + testValue + '"', (): void => {
             cmp.passages = testValue;
             expect(cmp.hasPassages()).toBeFalse();
           });
         });
-        [[1], [1, 2]].forEach((testValue: any[]) => {
-          it('should return true for ' + testValue.length + ' set passages', () => {
+        [[1], [1, 2]].forEach((testValue: any[]): void => {
+          it('should return true for ' + testValue.length + ' set passages', (): void => {
             cmp.passages = testValue;
             expect(cmp.hasPassages()).toBeTrue();
           });
         });
       });
     });
-    describe('without parent element', () => {
+    describe('without parent element', (): void => {
       let cmpFixture: ComponentFixture<TripPassagesListComponent>;
       let cmp: TripPassagesListComponent;
-      beforeEach(() => {
+      beforeEach((): void => {
         cmpFixture = TestBed.createComponent(TripPassagesListComponent);
         cmp = cmpFixture.componentInstance;
       });
-      describe('with passages set', () => {
+      describe('with passages set', (): void => {
         let listItems: TestTripPassagesListItemComponent[];
         let bodyText: string;
         [1, 2, 3].forEach((testNum: number): void => {
 
-          it('should display ' + testNum + ' all relavent items', () => {
+          it('should display ' + testNum + ' all relavent items', (): void => {
             cmp.passages = testActualPassages.slice(0, testNum);
             cmpFixture.detectChanges();
             listItems = cmpFixture.debugElement
               .queryAll(By.directive(TestTripPassagesListItemComponent))
-              .map((val: DebugElement) => val.componentInstance);
+              .map((val: DebugElement): TestTripPassagesListItemComponent => val.componentInstance);
             bodyText = cmpFixture.debugElement.nativeElement.innerText;
             expect(bodyText).not.toEqual('No Passages');
             expect(listItems.length).toEqual(testNum);
@@ -225,17 +225,17 @@ describe('src/app/modules/trip-passages/trip-passages-list.component', () => {
           });
         });
       });
-      describe('without passages set', () => {
+      describe('without passages set', (): void => {
         let listItems: TestTripPassagesListItemComponent[];
         let bodyText: string;
         [undefined, []].forEach((testItem: any): void => {
 
-          it('should display "no passages" disclaimer', () => {
+          it('should display "no passages" disclaimer', (): void => {
             cmp.passages = testItem;
             cmpFixture.detectChanges();
             listItems = cmpFixture.debugElement
               .queryAll(By.directive(TestTripPassagesListItemComponent))
-              .map((val: DebugElement) => val.componentInstance);
+              .map((val: DebugElement): TestTripPassagesListItemComponent => val.componentInstance);
             bodyText = cmpFixture.debugElement.nativeElement.innerText;
             expect(bodyText).toEqual('No Passages');
             expect(listItems.length).toEqual(0);
@@ -243,22 +243,22 @@ describe('src/app/modules/trip-passages/trip-passages-list.component', () => {
         });
       });
     });
-    describe('with parent element', () => {
+    describe('with parent element', (): void => {
       let parentFixture: ComponentFixture<TestParentComponent>;
       let parentCmp: TestParentComponent;
       let cmp: TripPassagesListComponent;
       let tripInfoSpy: jasmine.Spy<jasmine.Func>;
-      beforeEach(() => {
+      beforeEach((): void => {
         parentFixture = TestBed.createComponent(TestParentComponent);
         parentCmp = parentFixture.componentInstance;
         cmp = parentFixture.debugElement.query(By.directive(TripPassagesListComponent)).componentInstance;
         tripInfoSpy = spyOnProperty(cmp, 'tripInfo', 'set');
-        tripInfoSpy.and.callFake(() => {
+        tripInfoSpy.and.callFake((): void => {
         });
         parentCmp.testPassage = undefined;
         parentFixture.detectChanges();
       });
-      it('should set the elements via the Input tag', () => {
+      it('should set the elements via the Input tag', (): void => {
         expect(tripInfoSpy).toHaveBeenCalledTimes(1);
         expect(tripInfoSpy).toHaveBeenCalledWith(undefined);
         parentCmp.testPassage = testActualPassages as any;
@@ -266,7 +266,7 @@ describe('src/app/modules/trip-passages/trip-passages-list.component', () => {
         expect(tripInfoSpy).toHaveBeenCalledTimes(2);
         expect(tripInfoSpy).toHaveBeenCalledWith(testActualPassages);
       });
-      afterEach(() => {
+      afterEach((): void => {
         tripInfoSpy.calls.reset();
       });
     });

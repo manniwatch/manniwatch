@@ -45,12 +45,12 @@ class TestNotFoundMessageSwitchComponent {
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
 
-describe('src/modules/error/not-found.component.ts', () => {
-    describe('NotFoundComponent', () => {
+describe('src/modules/error/not-found.component.ts', (): void => {
+    describe('NotFoundComponent', (): void => {
         let cmpFixture: ComponentFixture<NotFoundComponent>;
         let cmp: NotFoundComponent;
         let matListDebugElements: DebugElement[];
-        beforeEach(async(() => {
+        beforeEach(async((): void => {
             TestBed.configureTestingModule({
                 declarations: [
                     NotFoundComponent,
@@ -70,10 +70,10 @@ describe('src/modules/error/not-found.component.ts', () => {
             cmp = cmpFixture.debugElement.componentInstance;
             matListDebugElements = cmpFixture.debugElement.queryAll(By.css('mat-list-item'));
         }));
-        it('should create the app', async(() => {
+        it('should create the app', async((): void => {
             expect(cmp).toBeTruthy();
         }));
-        it('should create the correct number of list items', () => {
+        it('should create the correct number of list items', (): void => {
             expect(matListDebugElements.length).toEqual(2);
         });
     });

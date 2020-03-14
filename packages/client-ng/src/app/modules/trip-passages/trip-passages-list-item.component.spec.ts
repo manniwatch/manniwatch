@@ -69,9 +69,9 @@ const testPassages: ITripPassage[] = [{
   },
   stop_seq_num: '3',
 }];
-describe('src/app/modules/trip-passages/trip-passages-list-item.component', () => {
-  describe('TripPassagesListItemComponent', () => {
-    beforeEach(async(() => {
+describe('src/app/modules/trip-passages/trip-passages-list-item.component', (): void => {
+  describe('TripPassagesListItemComponent', (): void => {
+    beforeEach(async((): void => {
       TestBed.configureTestingModule({
         declarations: [
           TripPassagesListItemComponent,
@@ -84,47 +84,47 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', () =
         set: { changeDetection: ChangeDetectionStrategy.Default },
       }).compileComponents();
     }));
-    describe('properties', () => {
+    describe('properties', (): void => {
       let cmpFixture: ComponentFixture<TripPassagesListItemComponent>;
       let cmp: TripPassagesListItemComponent;
-      beforeEach(() => {
+      beforeEach((): void => {
         cmpFixture = TestBed.createComponent(TripPassagesListItemComponent);
         cmp = cmpFixture.componentInstance;
       });
-      describe('departed', () => {
+      describe('departed', (): void => {
         // tslint:disable-next-line:no-null-keyword
         [null, undefined, { status: VEHICLE_STATUS.STOPPING }]
-          .forEach((testValue: any) => {
-            it('should return false for :' + JSON.stringify(testValue), () => {
+          .forEach((testValue: any): void => {
+            it('should return false for :' + JSON.stringify(testValue), (): void => {
               cmp.passage = testValue;
               expect(cmp.departed).toBeFalse();
             });
           });
-        it('should return true for status being DEPARTED ', () => {
+        it('should return true for status being DEPARTED ', (): void => {
           cmp.passage = { status: VEHICLE_STATUS.DEPARTED } as ITripPassage;
           expect(cmp.departed).toBeTrue();
         });
       });
-      describe('stopping', () => {
+      describe('stopping', (): void => {
         // tslint:disable-next-line:no-null-keyword
         [null, undefined, { status: VEHICLE_STATUS.DEPARTED }]
-          .forEach((testValue: any) => {
-            it('should return false for :' + JSON.stringify(testValue), () => {
+          .forEach((testValue: any): void => {
+            it('should return false for :' + JSON.stringify(testValue), (): void => {
               cmp.passage = testValue;
               expect(cmp.stopping).toBeFalse();
             });
           });
-        it('should return true for status being STOPPING', () => {
+        it('should return true for status being STOPPING', (): void => {
           cmp.passage = { status: VEHICLE_STATUS.STOPPING } as ITripPassage;
           expect(cmp.stopping).toBeTrue();
         });
       });
     });
-    describe('without parent element', () => {
+    describe('without parent element', (): void => {
       let cmpFixture: ComponentFixture<TripPassagesListItemComponent>;
       let cmp: TripPassagesListItemComponent;
       let routerLinkCmp: TestRouterLinkDirective;
-      beforeEach(() => {
+      beforeEach((): void => {
         cmpFixture = TestBed.createComponent(TripPassagesListItemComponent);
         cmp = cmpFixture.componentInstance;
         routerLinkCmp = cmpFixture.debugElement
@@ -132,7 +132,7 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', () =
           .injector.get(TestRouterLinkDirective);
       });
       testPassages.forEach((testPassage: ITripPassage): void => {
-        it('layout should be updated with correct values with passage seq_num "' + testPassage.stop_seq_num + '"', () => {
+        it('layout should be updated with correct values with passage seq_num "' + testPassage.stop_seq_num + '"', (): void => {
           cmp.passage = testPassage;
           cmpFixture.detectChanges();
           const titleElement: HTMLElement = cmpFixture.debugElement.query(By.css('h3')).nativeElement;
@@ -141,17 +141,17 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', () =
         });
       });
     });
-    describe('with parent element', () => {
+    describe('with parent element', (): void => {
       let parentFixture: ComponentFixture<TestParentComponent>;
       let cmp: TripPassagesListItemComponent;
       let parentCmp: TestParentComponent;
-      beforeEach(() => {
+      beforeEach((): void => {
         parentFixture = TestBed.createComponent(TestParentComponent);
         parentCmp = parentFixture.componentInstance;
         cmp = parentFixture.debugElement.query(By.directive(TripPassagesListItemComponent)).componentInstance;
       });
       testPassages.forEach((testPassage: ITripPassage): void => {
-        it('layout should be updated with correct values with passage seq_num "' + testPassage.stop_seq_num + '"', () => {
+        it('layout should be updated with correct values with passage seq_num "' + testPassage.stop_seq_num + '"', (): void => {
           parentCmp.testPassage = testPassage;
           parentFixture.detectChanges();
           expect(cmp.passage).toEqual(testPassage);

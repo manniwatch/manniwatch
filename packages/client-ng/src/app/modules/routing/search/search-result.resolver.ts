@@ -21,7 +21,7 @@ export class SearchResultResolver implements Resolve<any> {
                         /**
                          * Filter by search term
                          */
-                        .filter((option: IStopLocation) => option.name.toLowerCase().includes(route.queryParams.q))
-                        .sort((a: IStopLocation, b: IStopLocation) => a.name.localeCompare(b.name))));
+                        .filter((option: IStopLocation): boolean => option.name.toLowerCase().includes(route.queryParams.q))
+                        .sort((a: IStopLocation, b: IStopLocation): number => a.name.localeCompare(b.name))));
     }
 }

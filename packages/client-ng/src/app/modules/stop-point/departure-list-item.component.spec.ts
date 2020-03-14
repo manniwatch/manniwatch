@@ -32,9 +32,9 @@ export class TestRouterLinkDirective {
 
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
-describe('src/app/modules/stop/departure-list-item.component', () => {
-  describe('DepartureListItemComponent', () => {
-    beforeEach(async(() => {
+describe('src/app/modules/stop/departure-list-item.component', (): void => {
+  describe('DepartureListItemComponent', (): void => {
+    beforeEach(async((): void => {
       TestBed.configureTestingModule({
         declarations: [
           DepartureListItemComponent,
@@ -44,46 +44,46 @@ describe('src/app/modules/stop/departure-list-item.component', () => {
         ],
       }).compileComponents();
     }));
-    it('should create the app', async(() => {
+    it('should create the app', async((): void => {
       const fixture: ComponentFixture<DepartureListItemComponent> = TestBed.createComponent(DepartureListItemComponent);
       const app: DepartureListItemComponent = fixture.debugElement.componentInstance;
       expect(app).toBeTruthy();
     }));
-    describe('layout', () => {
+    describe('layout', (): void => {
       it('needs to be implemented');
     });
-    describe('Component methods and attributes', () => {
+    describe('Component methods and attributes', (): void => {
       let fixture: ComponentFixture<DepartureListItemComponent>;
       let cmp: DepartureListItemComponent;
-      beforeEach(() => {
+      beforeEach((): void => {
         fixture = TestBed.createComponent(DepartureListItemComponent);
         cmp = fixture.debugElement.componentInstance;
       });
       const testPassages: any[] = [
         [{ test: true }], [{ test: false }],
       ];
-      describe('departure', () => {
-        describe('getter', () => {
-          testPassages.forEach((testPassage: any) => {
-            it('should get the correct value', () => {
+      describe('departure', (): void => {
+        describe('getter', (): void => {
+          testPassages.forEach((testPassage: any): void => {
+            it('should get the correct value', (): void => {
               (cmp as any).mDeparture = testPassage;
               expect(cmp.departure).toEqual(testPassage);
             });
           });
         });
-        describe('setter', () => {
+        describe('setter', (): void => {
           let calculateDelaySpy: jasmine.Spy<jasmine.Func>;
           let convertTimeSpy: jasmine.Spy<jasmine.Func>;
-          beforeEach(() => {
+          beforeEach((): void => {
             calculateDelaySpy = spyOn(cmp, 'calculateDelay');
             convertTimeSpy = spyOn(cmp, 'convertTime');
-            calculateDelaySpy.and.callFake((arg: any) =>
+            calculateDelaySpy.and.callFake((arg: any): any =>
               ({ delay: arg }));
-            convertTimeSpy.and.callFake((arg: any) =>
+            convertTimeSpy.and.callFake((arg: any): any =>
               ({ time: arg }));
           });
-          testPassages.forEach((testPassage: any) => {
-            it('should set the correct value', () => {
+          testPassages.forEach((testPassage: any): void => {
+            it('should set the correct value', (): void => {
               cmp.departure = testPassage;
               expect((cmp as any).mDeparture).toEqual(testPassage);
               expect(calculateDelaySpy).toHaveBeenCalledTimes(1);
@@ -94,33 +94,33 @@ describe('src/app/modules/stop/departure-list-item.component', () => {
               expect((cmp as any).mDelay).toEqual({ delay: testPassage });
             });
           });
-          afterEach(() => {
+          afterEach((): void => {
             calculateDelaySpy.calls.reset();
             convertTimeSpy.calls.reset();
           });
         });
       });
-      describe('time', () => {
-        describe('getter', () => {
-          testPassages.forEach((value: any) => {
-            it('should convert the object to "' + value + '\'', () => {
+      describe('time', (): void => {
+        describe('getter', (): void => {
+          testPassages.forEach((value: any): void => {
+            it('should convert the object to "' + value + '\'', (): void => {
               (cmp as any).mTime = value;
               expect(cmp.time).toEqual(value);
             });
           });
         });
       });
-      describe('delay', () => {
-        describe('getter', () => {
-          testPassages.forEach((value: any) => {
-            it('should convert the object to "' + value + '\'', () => {
+      describe('delay', (): void => {
+        describe('getter', (): void => {
+          testPassages.forEach((value: any): void => {
+            it('should convert the object to "' + value + '\'', (): void => {
               (cmp as any).mDelay = value;
               expect(cmp.delay).toEqual(value);
             });
           });
         });
       });
-      describe('convertTime(departure)', () => {
+      describe('convertTime(departure)', (): void => {
         const passages: {
           actualRelativeTime: number,
           actualTime: string,
@@ -142,8 +142,8 @@ describe('src/app/modules/stop/departure-list-item.component', () => {
               result: '1min',
             },
           ];
-        passages.forEach((value: any) => {
-          it('should convert the object to "' + value.result + '\'', () => {
+        passages.forEach((value: any): void => {
+          it('should convert the object to "' + value.result + '\'', (): void => {
             const testValue: any = {
               actualRelativeTime: value.actualRelativeTime,
               actualTime: value.actualTime,
@@ -152,7 +152,7 @@ describe('src/app/modules/stop/departure-list-item.component', () => {
           });
         });
       });
-      describe('calculateDelay(departure)', () => {
+      describe('calculateDelay(departure)', (): void => {
         const passages: {
           value: {
             actualTime: string
@@ -196,8 +196,8 @@ describe('src/app/modules/stop/departure-list-item.component', () => {
               },
             },
           ];
-        passages.forEach((value: any) => {
-          it('should convert the "' + value.value + '" to "' + value.result + '\'', () => {
+        passages.forEach((value: any): void => {
+          it('should convert the "' + value.value + '" to "' + value.result + '\'', (): void => {
             expect(cmp.calculateDelay(value.value as any)).toEqual(value.result);
           });
         });

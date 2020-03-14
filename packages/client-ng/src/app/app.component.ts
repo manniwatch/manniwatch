@@ -27,14 +27,14 @@ export class AppComponent implements OnInit {
     }
     public ngOnInit(): void {
         this.sidebarService.sidebarObservable
-            .subscribe((open: boolean) => {
+            .subscribe((open: boolean): void => {
                 if (open) {
                     this.sidenav.open();
                 } else {
                     this.sidenav.close();
                 }
             });
-        this.sidenav.openedChange.subscribe((open: boolean) => {
+        this.sidenav.openedChange.subscribe((open: boolean): void => {
             if (open) {
                 this.sidebarService.openSidebar();
             } else {

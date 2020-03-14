@@ -41,9 +41,9 @@ export class TestParentComponent {
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
 
-describe('src/modules/stop/route-list.component.ts', () => {
-    describe('RouteListComponent', () => {
-        beforeEach(async(() => {
+describe('src/modules/stop/route-list.component.ts', (): void => {
+    describe('RouteListComponent', (): void => {
+        beforeEach(async((): void => {
             TestBed.configureTestingModule({
                 declarations: [
                     RouteListComponent,
@@ -60,23 +60,23 @@ describe('src/modules/stop/route-list.component.ts', () => {
             }).compileComponents();
         }));
 
-        beforeEach(() => {
+        beforeEach((): void => {
             // testUploadDataService.
         });
-        describe('as child element', () => {
+        describe('as child element', (): void => {
             let fixture: ComponentFixture<TestParentComponent>;
             let component: TestParentComponent;
             let routeListCmp: RouteListComponent;
-            beforeEach(() => {
+            beforeEach((): void => {
                 fixture = TestBed.createComponent(TestParentComponent);
                 component = fixture.debugElement.componentInstance;
                 routeListCmp = fixture.debugElement.query(By.directive(RouteListComponent)).componentInstance;
             });
-            it('should create the components', () => {
+            it('should create the components', (): void => {
                 expect(component).toBeTruthy();
                 expect(routeListCmp).toBeTruthy();
             });
-            describe('test the "routes" input', () => {
+            describe('test the "routes" input', (): void => {
                 const testItem: any[] = [
                     {
                         directions: [
@@ -93,7 +93,7 @@ describe('src/modules/stop/route-list.component.ts', () => {
                         shortName: '421',
                     },
                 ];
-                it('should set the testitem correctly as the input element', () => {
+                it('should set the testitem correctly as the input element', (): void => {
                     component.testData = testItem;
                     fixture.detectChanges();
                     expect(routeListCmp.routes)
@@ -101,7 +101,7 @@ describe('src/modules/stop/route-list.component.ts', () => {
                 });
             });
         });
-        beforeAll(() => { });
-        afterEach(() => { });
+        beforeAll((): void => { });
+        afterEach((): void => { });
     });
 });

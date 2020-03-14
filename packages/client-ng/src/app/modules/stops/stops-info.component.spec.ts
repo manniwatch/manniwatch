@@ -41,11 +41,11 @@ class TestMatIconComponent {
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
 
-describe('src/modules/stops/stops-info.component.ts', () => {
-    describe('StopsInfoComponent', () => {
+describe('src/modules/stops/stops-info.component.ts', (): void => {
+    describe('StopsInfoComponent', (): void => {
         let fixture: ComponentFixture<StopsInfoComponent>;
         let app: StopsInfoComponent;
-        beforeEach(async(() => {
+        beforeEach(async((): void => {
             TestBed.configureTestingModule({
                 declarations: [
                     StopsInfoComponent,
@@ -81,16 +81,16 @@ describe('src/modules/stops/stops-info.component.ts', () => {
             app = fixture.debugElement.componentInstance;
         }));
 
-        it('should create the app', async(() => {
+        it('should create the app', async((): void => {
             expect(app).toBeTruthy();
         }));
-        describe('layout', () => {
+        describe('layout', (): void => {
             it('needs to done');
         });
 
-        describe('Class', () => {
-            describe('constructor', () => {
-                it('should sort the provided stops', () => {
+        describe('Class', (): void => {
+            describe('constructor', (): void => {
+                it('should sort the provided stops', (): void => {
                     const stops: any[] = (app as any).mStops;
                     expect(stops[0].name).toEqual('aa');
                     expect(stops[1].name).toEqual('ab');
@@ -98,17 +98,17 @@ describe('src/modules/stops/stops-info.component.ts', () => {
                     expect(stops[3].name).toEqual('c');
                 });
             });
-            describe('stops', () => {
-                describe('getter', () => {
-                    it('should return mStops', () => {
+            describe('stops', (): void => {
+                describe('getter', (): void => {
+                    it('should return mStops', (): void => {
                         const stops: any[] = (app as any).mStops;
                         expect(app.stops).toEqual(stops);
                     });
                 });
             });
-            describe('hasHeader(idx)', () => {
-                [true, false, true, true].forEach((responseValue: boolean, idx: number) => {
-                    it('should return ' + responseValue + ' for idx: ' + idx, () => {
+            describe('hasHeader(idx)', (): void => {
+                [true, false, true, true].forEach((responseValue: boolean, idx: number): void => {
+                    it('should return ' + responseValue + ' for idx: ' + idx, (): void => {
                         expect(app.hasHeader(idx)).toEqual(responseValue);
                     });
                 });

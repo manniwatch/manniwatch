@@ -8,13 +8,13 @@ import { TestBed } from '@angular/core/testing';
 import { AppErrorHandler } from './app-error-handler';
 import { AppNotificationService, AppNotificationType } from './services/app-notification.service';
 
-describe('src/app/app-error-handler.ts', () => {
-    describe('AppErrorHandler', () => {
+describe('src/app/app-error-handler.ts', (): void => {
+    describe('AppErrorHandler', (): void => {
         let handler: AppErrorHandler;
         const notifySpy: jasmine.Spy<jasmine.Func> = jasmine.createSpy('notifySpy');
         let isClientOfflineSpy: jasmine.Spy<jasmine.Func>;
         let notificationService: AppNotificationService;
-        beforeEach(() => {
+        beforeEach((): void => {
             TestBed.configureTestingModule({
                 providers: [{
                     provide: AppNotificationService,
@@ -30,35 +30,35 @@ describe('src/app/app-error-handler.ts', () => {
             notificationService = TestBed.inject(AppNotificationService);
             isClientOfflineSpy = spyOn(handler, 'isClientOffline');
         });
-        afterEach(() => {
+        afterEach((): void => {
             isClientOfflineSpy.calls.reset();
             notifySpy.calls.reset();
         });
-        it('should be constructed', () => {
+        it('should be constructed', (): void => {
             expect(handler).toBeTruthy();
         });
-        describe('handleError()', () => {
+        describe('handleError()', (): void => {
             let handleHttpErrorResponseSpy: jasmine.Spy<jasmine.Func>;
             let consoleErrorSpy: jasmine.Spy<jasmine.Func>;
-            beforeAll(() => {
+            beforeAll((): void => {
                 consoleErrorSpy = spyOn(console, 'error');
             });
-            beforeEach(() => {
-                consoleErrorSpy.and.callFake(() => { });
+            beforeEach((): void => {
+                consoleErrorSpy.and.callFake((): void => { });
                 handleHttpErrorResponseSpy = spyOn(handler, 'handleHttpErrorResponse');
-                handleHttpErrorResponseSpy.and.callFake(() =>
+                handleHttpErrorResponseSpy.and.callFake((): boolean =>
                     false);
             });
-            afterEach(() => {
+            afterEach((): void => {
                 handleHttpErrorResponseSpy.calls.reset();
                 consoleErrorSpy.calls.reset();
             });
-            describe('an HttpErrorResponse is reported', () => {
+            describe('an HttpErrorResponse is reported', (): void => {
                 [new HttpErrorResponse({
                     status: 200,
                     statusText: '500 error message',
-                })].forEach((testError: any) => {
-                    it('should call handleHttpErrorResponse()', () => {
+                })].forEach((testError: any): void => {
+                    it('should call handleHttpErrorResponse()', (): void => {
                         handler.handleError(testError);
                         expect(handleHttpErrorResponseSpy).toHaveBeenCalledTimes(1);
                         expect(handleHttpErrorResponseSpy).toHaveBeenCalledWith(testError, notificationService);
@@ -67,10 +67,10 @@ describe('src/app/app-error-handler.ts', () => {
                     });
                 });
             });
-            describe('an Error is reported', () => {
+            describe('an Error is reported', (): void => {
                 [new Error('test error'),
-                ].forEach((testError: any) => {
-                    it('should call notify()', () => {
+                ].forEach((testError: any): void => {
+                    it('should call notify()', (): void => {
                         handler.handleError(testError);
                         expect(handleHttpErrorResponseSpy).toHaveBeenCalledTimes(0);
                         expect(notifySpy).toHaveBeenCalledTimes(1);
@@ -86,7 +86,7 @@ describe('src/app/app-error-handler.ts', () => {
                 });
             });
         });
-        describe('handleHttpErrorResponse(err,notificationService)', () => {
+        describe('handleHttpErrorResponse(err,notificationService)', (): void => {
             const createError: (code: number) => HttpErrorResponse = (code: number): HttpErrorResponse =>
                 new HttpErrorResponse({
                     status: code,
@@ -123,12 +123,12 @@ describe('src/app/app-error-handler.ts', () => {
                     type: AppNotificationType.ERROR,
                 },
             }];
-            describe('client is offline', () => {
-                beforeEach(() => {
+            describe('client is offline', (): void => {
+                beforeEach((): void => {
                     isClientOfflineSpy.and.returnValue(true);
                 });
                 testHttpErrors.forEach((testError: ITestHttpError): void => {
-                    it('should notify that the client is offline for status: ' + testError.error.status, () => {
+                    it('should notify that the client is offline for status: ' + testError.error.status, (): void => {
                         handler.handleHttpErrorResponse(testError.error, notificationService);
                         expect(isClientOfflineSpy).toHaveBeenCalledTimes(1);
                         expect(notifySpy).toHaveBeenCalledTimes(1);
@@ -139,12 +139,12 @@ describe('src/app/app-error-handler.ts', () => {
                     });
                 });
             });
-            describe('client is online', () => {
-                beforeEach(() => {
-                    isClientOfflineSpy.and.callFake(() => false);
+            describe('client is online', (): void => {
+                beforeEach((): void => {
+                    isClientOfflineSpy.and.callFake((): boolean => false);
                 });
-                testHttpErrors.forEach((testError: ITestHttpError) => {
-                    it('should propagate a server error for code: ' + testError.error.status, () => {
+                testHttpErrors.forEach((testError: ITestHttpError): void => {
+                    it('should propagate a server error for code: ' + testError.error.status, (): void => {
                         handler.handleHttpErrorResponse(testError.error, notificationService);
                         expect(isClientOfflineSpy).toHaveBeenCalledTimes(1);
                         expect(notifySpy).toHaveBeenCalledTimes(1);

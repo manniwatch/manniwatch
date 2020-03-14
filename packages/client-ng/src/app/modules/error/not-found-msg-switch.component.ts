@@ -16,10 +16,10 @@ import { ErrorType } from './error-type';
  * Component showing eventually more helpful error message for non found elements.
  */
 export class NotFoundMessageSwitchComponent {
-    public errorTypeObservable: Observable<string>;
+    public errorTypeObservable: Observable<ErrorType>;
     constructor(private route: ActivatedRoute) {
         this.errorTypeObservable = this.route.queryParams
-            .pipe(map((value: Params) => {
+            .pipe(map((value: Params): ErrorType => {
                 if (value.type) {
                     return value.type;
                 }

@@ -7,15 +7,15 @@ import { BehaviorSubject } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { SidebarService } from './sidebar.service';
 // import * as sinon from "sinon";
-describe('src/app/services/sidebar.service', () => {
-    describe('SidebarService', () => {
+describe('src/app/services/sidebar.service', (): void => {
+    describe('SidebarService', (): void => {
         let sidebarService: SidebarService;
         let nextSpy: jasmine.Spy<jasmine.Func>;
         let subject: BehaviorSubject<boolean>;
-        beforeAll(() => {
+        beforeAll((): void => {
             nextSpy = jasmine.createSpy();
         });
-        beforeEach(async(() => {
+        beforeEach(async((): void => {
             TestBed.configureTestingModule({
                 providers: [SidebarService],
             });
@@ -23,12 +23,12 @@ describe('src/app/services/sidebar.service', () => {
             subject = (sidebarService as any).mSidebarStatusSubject;
         }));
 
-        afterEach(() => {
+        afterEach((): void => {
             nextSpy.calls.reset();
         });
 
-        describe('sidebarObservable', () => {
-            it('should publish the events from the suject to the observable', (done: DoneFn) => {
+        describe('sidebarObservable', (): void => {
+            it('should publish the events from the suject to the observable', (done: DoneFn): void => {
                 subject.next(false);
                 const cb: (err?: any) => void = (err?: any): void => {
                     expect(err).not.toBeDefined();
@@ -45,18 +45,18 @@ describe('src/app/services/sidebar.service', () => {
                 subject.next(true);
             });
         });
-        describe('sidebarOpen', () => {
-            describe('-- getter', () => {
-                [true, false].forEach((testValue: boolean) => {
-                    it('should return ' + testValue, () => {
+        describe('sidebarOpen', (): void => {
+            describe('-- getter', (): void => {
+                [true, false].forEach((testValue: boolean): void => {
+                    it('should return ' + testValue, (): void => {
                         subject.next(testValue);
                         expect(sidebarService.sidebarOpen).toEqual(testValue);
                     });
                 });
             });
         });
-        describe('openSidebar()', () => {
-            it('should publish a true event', (done: DoneFn) => {
+        describe('openSidebar()', (): void => {
+            it('should publish a true event', (done: DoneFn): void => {
                 subject.next(false);
                 const cb: (err?: any) => void = (err?: any): void => {
                     expect(err).not.toBeDefined();
@@ -69,8 +69,8 @@ describe('src/app/services/sidebar.service', () => {
                 sidebarService.openSidebar();
             });
         });
-        describe('closeSidebar()', () => {
-            it('should publish a false event', (done: DoneFn) => {
+        describe('closeSidebar()', (): void => {
+            it('should publish a false event', (done: DoneFn): void => {
                 subject.next(false);
                 const cb: (err?: any) => void = (err?: any): void => {
                     expect(err).not.toBeDefined();
@@ -83,8 +83,8 @@ describe('src/app/services/sidebar.service', () => {
                 sidebarService.closeSidebar();
             });
         });
-        describe('toggleSidebar()', () => {
-            it('should publish a false event', (done: DoneFn) => {
+        describe('toggleSidebar()', (): void => {
+            it('should publish a false event', (done: DoneFn): void => {
                 subject.next(false);
                 const cb: (err?: any) => void = (err?: any): void => {
                     expect(err).not.toBeDefined();

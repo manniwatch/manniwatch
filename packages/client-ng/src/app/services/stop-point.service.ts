@@ -38,7 +38,7 @@ export class StopPointService {
     private mStopPointObservable: Observable<IStopPointLocation[]>;
     private mStopObservable: Observable<IStopLocation[]>;
     constructor(private api: ApiService,
-                private notificationService: AppNotificationService) {
+        private notificationService: AppNotificationService) {
         this.mStopObservable = this.setupLocationsPoll(this.api.getStopLocations()
             .pipe(map((stops: IStopLocations): IStopLocation[] =>
                 stops.stops)));
@@ -51,7 +51,7 @@ export class StopPointService {
         return pollObservable
             .pipe(retryWhen((errors: Observable<any>): Observable<any> =>
                 errors
-                    .pipe(tap((err: any) => this.notificationService.report(err)),
+                    .pipe(tap((err: any): void => this.notificationService.report(err)),
                         debounceTime(5000))), shareReplay(1));
     }
 
@@ -60,7 +60,7 @@ export class StopPointService {
             .pipe(withLatestFrom(filter),
                 map((value: [IStopLocation[], string]): IStopLocation => {
                     if (value[0] && value[1]) {
-                        const idx: number = value[0].findIndex((stop: IStopLocation) =>
+                        const idx: number = value[0].findIndex((stop: IStopLocation): boolean =>
                             stop.shortName === value[1]);
                         if (idx >= 0) {
                             return value[0][idx];
@@ -73,7 +73,7 @@ export class StopPointService {
         return this.stopObservable
             .pipe(map((stopLocations: IStopLocation[]): IStopLocation => {
                 if (stopLocations) {
-                    const idx: number = stopLocations.findIndex((stop: IStopLocation) =>
+                    const idx: number = stopLocations.findIndex((stop: IStopLocation): boolean =>
                         stop.shortName === string);
                     if (idx >= 0) {
                         return stopLocations[idx];

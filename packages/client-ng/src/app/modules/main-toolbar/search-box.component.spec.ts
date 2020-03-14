@@ -64,9 +64,9 @@ class TestStopPointService {
 
 }
 
-describe('src/modules/main-toolbar/search-box.component.ts', () => {
-    describe('ToolbarSearchBoxComponent', () => {
-        beforeEach(async(() => {
+describe('src/modules/main-toolbar/search-box.component.ts', (): void => {
+    describe('ToolbarSearchBoxComponent', (): void => {
+        beforeEach(async((): void => {
             TestBed.configureTestingModule({
                 declarations: [
                     ToolbarSearchBoxComponent,
@@ -88,7 +88,7 @@ describe('src/modules/main-toolbar/search-box.component.ts', () => {
             }).compileComponents();
         }));
 
-        it('should create the app', async(() => {
+        it('should create the app', async((): void => {
             const fixture: ComponentFixture<ToolbarSearchBoxComponent> = TestBed.createComponent(ToolbarSearchBoxComponent);
             const app: ToolbarSearchBoxComponent = fixture.debugElement.componentInstance;
             expect(app).toBeTruthy();

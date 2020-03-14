@@ -48,13 +48,13 @@ export class OlMainMapDirective extends OlMapComponent implements OnDestroy {
      * @param zone ngZone Instance
      */
     constructor(elRef: ElementRef,
-                public apiService: ApiService,
-                public router: Router,
-                public stopService: StopPointService,
-                public location: Location,
-                settings: SettingsService,
-                public vehicleSerivce: VehicleService,
-                zone: NgZone) {
+        public apiService: ApiService,
+        public router: Router,
+        public stopService: StopPointService,
+        public location: Location,
+        settings: SettingsService,
+        public vehicleSerivce: VehicleService,
+        zone: NgZone) {
         super(elRef, zone, settings);
         this.markerHandler = new OlMarkerHandler(this, 15);
         this.vehicleHandler = new OlVehicleHandler(this);
@@ -77,20 +77,20 @@ export class OlMainMapDirective extends OlMapComponent implements OnDestroy {
     }
     public onClickStopPoint(stopPoint: IStopPointLocation): void {
         NgZone.assertNotInAngularZone();
-        this.zone.run(() => {
+        this.zone.run((): void => {
             this.router.navigate(['stopPoint', stopPoint.stopPoint]);
         });
     }
 
     public onClickStop(stop: IStopLocation): void {
         NgZone.assertNotInAngularZone();
-        this.zone.run(() => {
+        this.zone.run((): void => {
             this.router.navigate(['stop', stop.shortName]);
         });
     }
     public onClickVehicle(vehicle: IVehicleLocation): void {
         NgZone.assertNotInAngularZone();
-        this.zone.run(() => {
+        this.zone.run((): void => {
             this.router.navigate(['passages', vehicle.tripId]);
         });
     }

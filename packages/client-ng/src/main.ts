@@ -12,10 +12,10 @@ if (environment.production) {
     enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule).then(() => {
+platformBrowserDynamic().bootstrapModule(AppModule).then((): void => {
     if ('serviceWorker' in navigator && environment.production) {
         navigator.serviceWorker.register('/ngsw-worker.js');
     }
 })
     // tslint:disable:no-console
-    .catch((err: any) => console.error(err));
+    .catch((err: any): void => console.error(err));

@@ -26,13 +26,13 @@ class TestActivatedRoute {
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
 
-describe('src/modules/error/not-found-msg-switch.component.ts', () => {
-    describe('NotFoundMessageSwitchComponent', () => {
+describe('src/modules/error/not-found-msg-switch.component.ts', (): void => {
+    describe('NotFoundMessageSwitchComponent', (): void => {
         let cmpFixture: ComponentFixture<NotFoundMessageSwitchComponent>;
         let cmp: NotFoundComponent;
         let testActivatedRoute: TestActivatedRoute;
         let infoBoxDebugElement: DebugElement;
-        beforeEach(async(() => {
+        beforeEach(async((): void => {
             TestBed.configureTestingModule({
                 declarations: [
                     NotFoundMessageSwitchComponent,
@@ -49,43 +49,43 @@ describe('src/modules/error/not-found-msg-switch.component.ts', () => {
             testActivatedRoute = TestBed.inject(ActivatedRoute) as any;
             infoBoxDebugElement = cmpFixture.debugElement.query(By.css('div.info'));
         }));
-        it('should create the app', async(() => {
+        it('should create the app', async((): void => {
             expect(cmp).toBeTruthy();
             expect(infoBoxDebugElement.componentInstance).toBeTruthy();
         }));
-        describe('error type is provided', () => {
-            describe('error type is ' + ErrorType.PASSAGE_NOT_FOUND, () => {
-                beforeEach(() => {
+        describe('error type is provided', (): void => {
+            describe('error type is ' + ErrorType.PASSAGE_NOT_FOUND, (): void => {
+                beforeEach((): void => {
                     testActivatedRoute.queryParams.next({
                         type: ErrorType.PASSAGE_NOT_FOUND,
                     });
                     cmpFixture.detectChanges();
                 });
-                it('should only display that the passage could not be found', () => {
+                it('should only display that the passage could not be found', (): void => {
                     expect(infoBoxDebugElement.nativeElement.textContent)
                         .toEqual('The passage could not be found. It either expired or has yet to start.Please select another passage.');
                 });
             });
-            describe('error type is ' + ErrorType.VEHICLE_NOT_FOUND, () => {
-                beforeEach(() => {
+            describe('error type is ' + ErrorType.VEHICLE_NOT_FOUND, (): void => {
+                beforeEach((): void => {
                     testActivatedRoute.queryParams.next({
                         type: ErrorType.VEHICLE_NOT_FOUND,
                     });
                     cmpFixture.detectChanges();
                 });
-                it('should only display that the vehicle could not be found', () => {
+                it('should only display that the vehicle could not be found', (): void => {
                     expect(infoBoxDebugElement.nativeElement.textContent)
                         .toEqual('The requested vehicle could not be found. It might not be active at the moment.');
                 });
             });
-            describe('error type is an unsupported value', () => {
-                beforeEach(() => {
+            describe('error type is an unsupported value', (): void => {
+                beforeEach((): void => {
                     testActivatedRoute.queryParams.next({
                         type: -100,
                     });
                     cmpFixture.detectChanges();
                 });
-                it('should only display that the requested resource could not be found', () => {
+                it('should only display that the requested resource could not be found', (): void => {
                     expect(infoBoxDebugElement.nativeElement.textContent).toEqual('The requested resource can not be found.');
                 });
             });

@@ -3,33 +3,33 @@
  */
 
 import { IStopPassage } from '@manniwatch/api-types';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
 import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { delay } from 'rxjs/operators';
 import { TestScheduler } from 'rxjs/testing';
 import { StopMapHeaderService } from './stop-map-header.service';
-describe('src/app/modules/common/map-header-box/vehicle-map-header.service.ts', () => {
-    describe('VehicleMapHeaderService', () => {
+describe('src/app/modules/common/map-header-box/vehicle-map-header.service.ts', (): void => {
+    describe('VehicleMapHeaderService', (): void => {
         let testScheduler: TestScheduler;
-        beforeEach(() => {
+        beforeEach((): void => {
             testScheduler = new TestScheduler((actual: any, expected: any): void => {
                 expect(actual).toEqual(expected);
             });
         });
-        describe('pollStopLocation(source)', () => {
+        describe('pollStopLocation(source)', (): void => {
 
             const filterStopSpy: jasmine.Spy<jasmine.Func> = jasmine.createSpy('filterStop');
             let testService: StopMapHeaderService;
-            beforeAll(() => {
+            beforeAll((): void => {
                 testService = new StopMapHeaderService({
                     filterStop: filterStopSpy,
                 } as any);
             });
-            afterEach(() => {
+            afterEach((): void => {
                 filterStopSpy.calls.reset();
             });
-            it('should emit undefined if trip is not defined', () => {
+            it('should emit undefined if trip is not defined', (): void => {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { cold, expectObservable, expectSubscriptions } = helpers;
                     // tslint:disable-next-line:no-null-keyword
@@ -42,10 +42,10 @@ describe('src/app/modules/common/map-header-box/vehicle-map-header.service.ts', 
                 });
                 expect(filterStopSpy).toHaveBeenCalledTimes(0);
             });
-            it('should skip inflight api requests with switchMap', () => {
+            it('should skip inflight api requests with switchMap', (): void => {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { cold, expectObservable, expectSubscriptions } = helpers;
-                    filterStopSpy.and.callFake((inp: any) =>
+                    filterStopSpy.and.callFake((inp: any): Observable<any> =>
                         of(inp).pipe(delay(100, testScheduler)));
                     // tslint:disable-next-line:no-null-keyword
                     const e1: ColdObservable<any> = cold('a 50ms b 120ms c|', {
@@ -62,9 +62,9 @@ describe('src/app/modules/common/map-header-box/vehicle-map-header.service.ts', 
                 expect(filterStopSpy).toHaveBeenCalledTimes(3);
                 expect(filterStopSpy.calls.allArgs()).toEqual([[8], [9], [10]]);
             });
-            it('should emit results from the api', () => {
+            it('should emit results from the api', (): void => {
                 testScheduler.run((helpers: RunHelpers): void => {
-                    filterStopSpy.and.callFake((id: any) =>
+                    filterStopSpy.and.callFake((id: any): Observable<any> =>
                         of(id));
                     const { cold, expectObservable, expectSubscriptions } = helpers;
                     const e1: ColdObservable<IStopPassage> = cold('-a--b--a---|', {

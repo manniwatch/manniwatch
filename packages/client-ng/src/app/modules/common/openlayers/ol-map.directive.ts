@@ -16,11 +16,11 @@ export abstract class OlMapComponent implements AfterViewInit, OnDestroy, OnChan
     private map: Map;
     private locationSubscription: Subscription;
     constructor(private elRef: ElementRef,
-                public readonly zone: NgZone,
-                public readonly settings: SettingsService) {
+        public readonly zone: NgZone,
+        public readonly settings: SettingsService) {
     }
     public ngAfterViewInit(): void {
-        this.zone.runOutsideAngular(() => {
+        this.zone.runOutsideAngular((): void => {
             // Seems to be necessary to run ngZone updates EVERY SINGLE TIME!!!! the map is firing a drag event
             this.map = new Map({
                 interactions: defaults(),

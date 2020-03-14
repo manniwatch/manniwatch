@@ -29,9 +29,9 @@ export class VehicleLocationHeaderMapDirective extends HeaderMapDirective implem
     private vehicleMarker: Feature;
     private routeMarker: Feature;
     constructor(elRef: ElementRef,
-                zone: NgZone,
-                settingsService: SettingsService,
-                public headerService: VehicleMapHeaderService) {
+        zone: NgZone,
+        settingsService: SettingsService,
+        public headerService: VehicleMapHeaderService) {
         super(elRef, zone, settingsService);
     }
 
@@ -87,7 +87,7 @@ export class VehicleLocationHeaderMapDirective extends HeaderMapDirective implem
         this.updateVehicleSubscription = this.headerService
             .createVehicleDataObservable()
             .pipe(debounceTime(100),
-                tap((tapValue: IStatus) => {
+                tap((tapValue: IStatus): void => {
                     /**
                      * Required to set blur inside angular zone
                      */

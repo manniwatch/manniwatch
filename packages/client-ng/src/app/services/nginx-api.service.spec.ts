@@ -21,16 +21,16 @@ const handleResult: <T>(obs: Observable<T>, doneCb: DoneFn, expectedResponse: an
         });
     };
 
-describe('src/app/services/nginx-api.service', () => {
-    describe('NginxApiService', () => {
+describe('src/app/services/nginx-api.service', (): void => {
+    describe('NginxApiService', (): void => {
         let apiService: NginxApiService;
         let getSpy: jasmine.Spy<jasmine.Func>;
         const testEndpoint: string = 'https://test.com/';
         const testId: any = 'testId1234';
-        beforeAll(() => {
+        beforeAll((): void => {
             getSpy = jasmine.createSpy();
         });
-        beforeEach(async(() => {
+        beforeEach(async((): void => {
             getSpy.and.callFake((...args: any[]): Observable<any> =>
                 from([args]));
             TestBed.configureTestingModule({
@@ -46,54 +46,54 @@ describe('src/app/services/nginx-api.service', () => {
             spyOn(apiService, 'baseUrl').and.returnValue(testEndpoint);
         }));
 
-        afterEach(() => {
+        afterEach((): void => {
             getSpy.calls.reset();
         });
 
-        describe('getTripPassages(tripId)', () => {
-            it('should construct the request correctly', (done: DoneFn) => {
+        describe('getTripPassages(tripId)', (): void => {
+            it('should construct the request correctly', (done: DoneFn): void => {
                 handleResult(apiService.getTripPassages(testId),
                     done,
                     { 0: testEndpoint + 'trip/' + testId + '/passages?mode=departure', tripId: testId });
             });
         });
-        describe('getRouteByVehicleId(vehicleId)', () => {
-            it('should construct the request correctly', (done: DoneFn) => {
+        describe('getRouteByVehicleId(vehicleId)', (): void => {
+            it('should construct the request correctly', (done: DoneFn): void => {
                 handleResult(apiService.getRouteByVehicleId(testId),
                     done,
                     [testEndpoint + 'vehicle/' + testId + '/route']);
             });
         });
-        describe('getRouteByTripId(vehicleId)', () => {
-            it('should construct the request correctly', (done: DoneFn) => {
+        describe('getRouteByTripId(vehicleId)', (): void => {
+            it('should construct the request correctly', (done: DoneFn): void => {
                 handleResult(apiService.getRouteByTripId(testId),
                     done,
                     [testEndpoint + 'trip/' + testId + '/route']);
             });
         });
-        describe('getStopInfo(vehicleId)', () => {
-            it('should construct the request correctly', (done: DoneFn) => {
+        describe('getStopInfo(vehicleId)', (): void => {
+            it('should construct the request correctly', (done: DoneFn): void => {
                 handleResult(apiService.getStopInfo(testId),
                     done,
                     [testEndpoint + 'stop/' + testId + '/info']);
             });
         });
-        describe('getStopDepartures(vehicleId)', () => {
-            it('should construct the request correctly', (done: DoneFn) => {
+        describe('getStopDepartures(vehicleId)', (): void => {
+            it('should construct the request correctly', (done: DoneFn): void => {
                 handleResult(apiService.getStopPassages(testId),
                     done,
                     [testEndpoint + 'stop/' + testId + '/passages']);
             });
         });
-        describe('getStopLocations()', () => {
-            it('should construct the request correctly', (done: DoneFn) => {
+        describe('getStopLocations()', (): void => {
+            it('should construct the request correctly', (done: DoneFn): void => {
                 handleResult(apiService.getStopLocations(),
                     done,
                     [testEndpoint + 'geo/stops?left=-648000000&bottom=-324000000&right=648000000&top=324000000']);
             });
         });
-        describe('getStopPointLocations()', () => {
-            it('should construct the request correctly', (done: DoneFn) => {
+        describe('getStopPointLocations()', (): void => {
+            it('should construct the request correctly', (done: DoneFn): void => {
                 handleResult(apiService.getStopPointLocations(),
                     done,
                     [testEndpoint + 'geo/stopPoints?left=-648000000&bottom=-324000000&right=648000000&top=324000000']);
