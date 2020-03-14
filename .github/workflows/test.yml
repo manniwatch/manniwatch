@@ -15,7 +15,7 @@ jobs:
       - name: Install Deps
         run: |
           npm ci
-          npx lerna bootstrap
+          npx lerna bootstrap --ci
       - name: Run Build
         run: npm run build
       - name: Run Test
