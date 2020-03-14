@@ -20,7 +20,7 @@
     },
     "devDependencies": {
         "mocha": "~7.1.0",
-        "tslint": "~6.0.0"
+        "tslint": "~6.1.0"
     },
     "files": [
         "dist/*",
