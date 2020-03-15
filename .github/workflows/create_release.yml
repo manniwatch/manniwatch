@@ -24,6 +24,9 @@ jobs:
         run: |
           npm install -g conventional-changelog-cli
           changelog=$(conventional-changelog --preset cli --release-count 1)
+          changelog="${changelog//'%'/'%25'}"
+          changelog="${changelog//$'\n'/'%0A'}"
+          changelog="${changelog//$'\r'/'%0D'}"
           echo ::set-output name=changelog::$changelog
       - name: Create Release
         id: create_release
