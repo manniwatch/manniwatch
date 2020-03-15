@@ -15,6 +15,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@master
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Create Changelog
+        id: create-changelog
+        run: |
+          npm install -g conventional-changelog-cli
+          changelog=$(conventional-changelog --preset cli --release-count 1)
+          echo ::set-output name=changelog::$changelog -e
       - name: Create Release
         id: create_release
         uses: actions/create-release@latest
@@ -23,9 +33,6 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          body: |
-            Changes in this Release
-            - First Change
-            - Second Change
+          body: steps.create-changelog.outputs.changelog
           draft: true
           prerelease: false
