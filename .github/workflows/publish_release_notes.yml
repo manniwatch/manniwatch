@@ -9,7 +9,7 @@ jobs:
     name: Update Release Notes via GREN
     steps:
       - name: Checkout
-        uses: actions/checkout@v1 
+        uses: actions/checkout@v1
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
@@ -19,4 +19,4 @@ jobs:
           npm install github-release-notes -g
       - name: Run Gren
         run: |
-          gren release --override --token=${{ secrets.GITHUB_TOKEN }} --config=./.github/.grenrc.json
+          gren release --token=${{ secrets.GITHUB_TOKEN }} --config=./.github/.grenrc.json
