@@ -22,7 +22,7 @@
     "devDependencies": {
         "@types/request": "~2.48.4",
         "@types/request-promise-native": "~1.0.17",
-        "nock": "~12.0.1"
+        "nock": "~12.0.3"
     },
     "files": [
         "dist/*",
