@@ -55,7 +55,7 @@
     "@types/helmet": "~0.0.45",
     "@types/request-promise-native": "~1.0.17",
     "@types/supertest": "~2.0.8",
-    "apidoc": "~0.20.0",
+    "apidoc": "~0.20.1",
     "supertest": "~4.0.2"
   }
 }
