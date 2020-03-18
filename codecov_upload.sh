@@ -11,7 +11,7 @@ do
     flag_name=$(echo "$package_name" | sed -r 's/(^|\W)(\w)/\U\2/g')
     echo "Uploading $package_name - $flag_name"
     echo "Coverage File: $coverage_filename"
-    sed -i 's/SF\:src/SF\:\.\/packages\/'"$package_name"'\/src/g' $coverage_filename
+    sed -i 's/SF\:src/SF\:'"$GITHUB_WORKSPACE"'\/packages\/'"$package_name"'\/src/g' $coverage_filename
     export COVERALLS_FLAG_NAME=$flag_name
     cat $coverage_filename | coveralls -v ./packages/$package_name/src
     echo "Uploaded"
