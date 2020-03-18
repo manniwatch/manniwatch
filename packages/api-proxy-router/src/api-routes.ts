@@ -5,7 +5,7 @@
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import * as express from 'express';
 import {
-    GeoEndpoints,
+    createGeoRouter,
     StopEndpoints,
     StopPointEndpoints,
     TripEndpoints,
@@ -20,30 +20,8 @@ import { SettingsEndpoints } from './endpoints/settings';
 export const createApiProxyRouter: (endpoint: string) => express.Router = (endpoint: string): express.Router => {
     const apiClient: ManniWatchApiClient = new ManniWatchApiClient(endpoint);
     const route: express.Router = express.Router();
-    /**
-     * @api {get} /geo/stations Request station locations
-     * @apiName GetStationsLocations
-     * @apiGroup Geo
-     *
-     * @apiVersion 1.0.0
-     * @apiDeprecated use now (#Geo:StopLocations).
-     */
-    /**
-     * @api {get} /geo/stops Request stop locations
-     * @apiName StopLocations
-     * @apiGroup Geo
-     *
-     * @apiVersion 1.5.0
-     */
-    route.get('/geo/stops', GeoEndpoints.createStationLocationsEndpoint(apiClient));
-    /**
-     * @api {get} /geo/vehicles Request vehicle locations
-     * @apiName GetVehicleLocations
-     * @apiGroup Geo
-     *
-     * @apiVersion 1.5.0
-     */
-    route.get('/geo/vehicles', GeoEndpoints.createVehicleLocationsEndpoint(apiClient));
+
+    route.use('/geo', createGeoRouter(apiClient));
     /**
      * @api {get} /trip/:id/route Request Vehicle Route
      * @apiName GetTripRoute
