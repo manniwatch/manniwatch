@@ -12,7 +12,7 @@ do
     echo "Uploading $package_name - $flag_name"
     echo "Coverage File: $coverage_filename"
     export COVERALLS_FLAG_NAME=$flag_name
-    cat $coverage_filename | coveralls
+    cat $coverage_filename | coveralls -v
     echo "Uploaded"
 done
 unset COVERALLS_PARALLEL
