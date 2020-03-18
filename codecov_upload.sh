@@ -4,7 +4,6 @@ COVERAGE_FILES+=(./packages/*/coverage/**/lcov.info)
 npm install coveralls -g
 echo "Found ${#COVERAGE_FILES[@]} Coverage Files"
 export COVERALLS_PARALLEL=true
-export COVERALLS_SERVICE_JOB_ID=$GITHUB_RUN_ID
 for coverage_filename in "${COVERAGE_FILES[@]}"
 do
     package_name=$(echo "$coverage_filename" | awk -F "/" '{print $3}')
