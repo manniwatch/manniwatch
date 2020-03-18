@@ -13,7 +13,7 @@ do
     echo "Coverage File: $coverage_filename"
     sed -i 's/SF\:src/SF\:'"$GITHUB_WORKSPACE"'\/packages\/'"$package_name"'\/src/g' $coverage_filename
     export COVERALLS_FLAG_NAME=$flag_name
-    cat $coverage_filename | coveralls -v ./packages/$package_name/src
+    cat $coverage_filename | coveralls -v
     echo "Uploaded"
 done
 unset COVERALLS_PARALLEL
