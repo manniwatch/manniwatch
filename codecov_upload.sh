@@ -13,3 +13,4 @@ do
     cat $coverage_filename | coveralls
     echo "Uploaded"
 done
+curl -k https://coveralls.io/webhook?repo_token=$COVERALLS_REPO_TOKEN -d "payload[build_num]=$BUILD_NUMBER&payload[status]=done"
