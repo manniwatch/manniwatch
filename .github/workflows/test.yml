@@ -31,12 +31,11 @@ jobs:
         run: npm run lint
       - name: Run Docs
         run: npm run docs
-      - name: Hello world
-        run: echo Hello world $GITHUB_RUN_ID $GITHUB_RUN_NUMBER $GITHUB_ACTION!
       - name: Upload coverage to Codecov
         run: ./codecov_upload.sh
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          COVERALLS_SERVICE_NAME: "GithubActions"
           COVERALLS_REPO_TOKEN: "${{ secrets.COVERALLS_REPO_TOKEN }}"
           COVERALLS_GIT_BRANCH: "${{ github.ref }}"
-          COVERALLS_PARALLEL: true
+          COVERALLS_SERVICE_JOB_ID: ${{ GITHUB_RUN_ID }}

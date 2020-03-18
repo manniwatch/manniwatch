@@ -3,6 +3,7 @@ COVERAGE_FILES=(./packages/*/coverage/lcov.info)
 COVERAGE_FILES+=(./packages/*/coverage/**/lcov.info)
 npm install coveralls -g
 echo "Found ${#COVERAGE_FILES[@]} Coverage Files"
+export COVERALLS_PARALLEL=true
 for coverage_filename in "${COVERAGE_FILES[@]}"
 do
     package_name=$(echo "$coverage_filename" | awk -F "/" '{print $3}')
@@ -13,4 +14,5 @@ do
     cat $coverage_filename | coveralls
     echo "Uploaded"
 done
+unset COVERALLS_PARALLEL
 curl -k https://coveralls.io/webhook?repo_token=$COVERALLS_REPO_TOKEN -d "payload[build_num]=$BUILD_NUMBER&payload[status]=done"
