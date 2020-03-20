@@ -68,7 +68,7 @@
     "@types/jasmine": "~3.5.9",
     "@types/jasminewd2": "~2.0.8",
     "@types/node": "^13.9.2",
-    "@types/ol": "~6.1.0",
+    "@types/ol": "~6.2.0",
     "apply-loader": "~2.0.0",
     "codelyzer": "^5.1.2",
     "jasmine-core": "~3.5.0",
