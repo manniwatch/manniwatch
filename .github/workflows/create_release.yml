@@ -1,0 +1,41 @@
+on:
+  push:
+    branches:
+      - master
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+name: Create Release
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Create Changelog
+        id: create-changelog
+        run: |
+          npm install -g conventional-changelog-cli
+          changelog=$(conventional-changelog --preset cli --release-count 1)
+          changelog="${changelog//'%'/'%25'}"
+          changelog="${changelog//$'\n'/'%0A'}"
+          changelog="${changelog//$'\r'/'%0D'}"
+          echo ::set-output name=changelog::$changelog
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: ${{ steps.create-changelog.outputs.changelog }}
+          draft: false
+          prerelease: false

@@ -12,6 +12,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
+      - name: Setup Cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: Install Deps
         run: |
           npm ci
@@ -19,12 +26,14 @@ jobs:
       - name: Run Build
         run: npm run build
       - name: Run Test
-        run: npm run test:coverage
+        run: npm run test:coverage --no-sort
       - name: Run Lint
-        run: npm run lint
+        run: npm run lint --no-sort
       - name: Run Docs
-        run: npm run docs
-      - name: Upload coverage to Codecov
-        run: ./codecov_upload.sh
+        run: npm run docs --no-sort
+      - name: Upload Coverage
+        uses: donmahallem/lerna-coveralls@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
         env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          NODE_COVERALLS_DEBUG: 1

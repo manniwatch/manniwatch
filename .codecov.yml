@@ -7,21 +7,35 @@ coverage:
   range: "70...100"
   status:
     project:
-      target: 90%
-      threshold: 5%
-    ApiTypes:
-      flags: 
-        - ApiTypes
-      target: 90%
-    ApiProxyServer:
-      flags: 
-        - ApiProxyServer
-      target: 90%
-    ApiProxyRouter:
-      target: 90%
-      flags: 
-        - ApiProxyRouter
-
+      default:
+        # basic
+        target: auto
+        threshold: 5%
+        base: auto
+      api-types:
+        flags:
+          - ApiTypes
+      client-ng:
+        flags:
+          - ClientNg
+      client-desktop:
+        flags:
+          - ClientDesktop
+      api-client:
+        flags:
+          - ApiClient
+      api-proxy-router:
+        flags:
+          - ApiProxyRouter
+      api-proxy-server:
+        flags:
+          - ApiProxyServer
+      vehicle-cache:
+        flags:
+          - VehicleCache
+      vehicle-location-diff:
+        flags:
+          - VehicleLocationDiff
 parsers:
   gcov:
     branch_detection:
@@ -34,14 +48,3 @@ comment:
   layout: "reach,diff,flags,tree"
   behavior: default
   require_changes: no
-
-flags:
-  ApiTypes:  
-    paths:
-      - packages/api-types/src
-  ApiProxyServer:  
-    paths:
-      - packages/api-proxy-server/src
-  ApiProxyRouter:  
-    paths:
-      - packages/api-proxy-router/src
