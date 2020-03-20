@@ -7,7 +7,7 @@
     "@types/node": "~13.9.2",
     "@types/sinon": "~7.5.2",
     "chai": "~4.2.0",
-    "conventional-changelog-eslint": "^3.0.4",
+    "conventional-changelog-angular": "^5.0.6",
     "lerna": "~3.20.2",
     "mocha": "~7.1.1",
     "nyc": "~15.0.0",
@@ -51,5 +51,6 @@
     "sourceMap": true,
     "instrument": true,
     "all": true
-  }
+  },
+  "dependencies": {}
 }
