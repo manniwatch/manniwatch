@@ -1,6 +1,6 @@
 #!/bin/bash
-COVERAGE_FILES=(./packages/*/coverage/lcov.info)
-COVERAGE_FILES+=(./packages/*/coverage/**/lcov.info)
+COVERAGE_FILES=(./packages/*/coverage/coverage-final.json)
+COVERAGE_FILES+=(./packages/*/coverage/**/coverage-final.json)
 echo "Found ${#COVERAGE_FILES[@]} Coverage Files"
 for coverage_filename in "${COVERAGE_FILES[@]}"
 do

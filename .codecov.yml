@@ -37,6 +37,8 @@ coverage:
         flags:
           - VehicleLocationDiff
 parsers:
+  javascript:
+    enable_partials: yes
   gcov:
     branch_detection:
       conditional: yes
