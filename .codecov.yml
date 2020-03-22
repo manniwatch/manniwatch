@@ -36,7 +36,12 @@ coverage:
       vehicle-location-diff:
         flags:
           - VehicleLocationDiff
+      express-utils:
+        flags:
+          - ExpressUtils
 parsers:
+  javascript:
+    enable_partials: yes
   gcov:
     branch_detection:
       conditional: yes

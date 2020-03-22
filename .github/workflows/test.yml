@@ -27,13 +27,11 @@ jobs:
         run: npm run build
       - name: Run Test
         run: npm run test:coverage --no-sort
+      - name: Upload coverage to Codecov
+        run: ./codecov_upload.sh
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: Run Lint
         run: npm run lint --no-sort
       - name: Run Docs
         run: npm run docs --no-sort
-      - name: Upload Coverage
-        uses: donmahallem/lerna-coveralls@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-        env:
-          NODE_COVERALLS_DEBUG: 1
