@@ -2,16 +2,14 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
-import { ManniWatchApiClient, PositionType } from '@manniwatch/api-client';
-import { IBoundingBox } from '@manniwatch/api-client/dist/manni-watch-api-client';
+import { IBoundingBox, ManniWatchApiClient, PositionType } from '@manniwatch/api-client';
+import * as expressUtils from '@manniwatch/express-utils';
 import { expect } from 'chai';
 import * as express from 'express';
-import { validate, Schema, ValidatorResult } from 'jsonschema';
+import { validate, ValidatorResult } from 'jsonschema';
 import 'mocha';
 import * as sinon from 'sinon';
 import * as supertest from 'supertest';
-import { ProxyError } from '../proxy-error';
-import * as util from './../util';
 import { delayPromise } from './common-test.spec';
 import { createGeoRouter, geoFenceSchema, getVehicleLocationSchema } from './geo';
 
@@ -27,7 +25,7 @@ const lastUpdates: string[] = ['22929299292', '2938'];
 type TestIBoundingBox = { [key in keyof IBoundingBox]: string };
 describe('endpoints/geo.ts', (): void => {
     describe('geoFenceSchema', (): void => {
-        const parameters: (keyof IBoundingBox)[] = ['top', 'bottom', 'right', 'left'];
+        const parameters: string[] = ['top', 'bottom', 'right', 'left'];
         const combinations: Partial<TestIBoundingBox>[] = [{}];
         const paramMap: TestIBoundingBox = { bottom: '-1000', left: '-1000', right: '1000', top: '1000' };
         for (let i: number = 0; i < 4; i++) {
@@ -127,22 +125,22 @@ describe('endpoints/geo.ts', (): void => {
         const SUCCESS_RESPONSE: any = { error: false, status: 200 };
         const SUCCESS_RESPONSE_LENGTH: string = '' + JSON.stringify(SUCCESS_RESPONSE).length;
         let stubClient: sinon.SinonStubbedInstance<ManniWatchApiClient>;
-        let validateStubParent: sinon.SinonStub<[Schema], express.RequestHandler>;
+        let validateStubParent: sinon.SinonStub;
         let geoFenceValidateStub: sinon.SinonStub;
         let vehicleValidateStub: sinon.SinonStub;
         before((): void => {
             sandbox = sinon.createSandbox();
             stubClient = sandbox.createStubInstance(ManniWatchApiClient);
             routeErrorStub = sandbox.stub();
-            validateStubParent = sandbox.stub(util, 'validateQueryParameter');
+            validateStubParent = sandbox.stub(expressUtils, 'validateRequest');
             geoFenceValidateStub = sandbox.stub();
             vehicleValidateStub = sandbox.stub();
         });
         beforeEach((): void => {
-            validateStubParent.callsFake((schema: Schema): sinon.SinonStub => {
-                if (schema === geoFenceSchema) {
+            validateStubParent.callsFake((schema: expressUtils.IValidationSchemas): sinon.SinonStub => {
+                if (schema.query === geoFenceSchema) {
                     return geoFenceValidateStub;
-                } else if (schema === getVehicleLocationSchema) {
+                } else if (schema.query === getVehicleLocationSchema) {
                     return vehicleValidateStub;
                 } else {
                     throw new Error('Unknown Schema');
@@ -164,8 +162,12 @@ describe('endpoints/geo.ts', (): void => {
         });
         afterEach((): void => {
             expect(validateStubParent.callCount).to.equal(2, 'validate method should be called twice');
-            expect(validateStubParent.getCall(0).args).to.deep.equal([geoFenceSchema]);
-            expect(validateStubParent.getCall(1).args).to.deep.equal([getVehicleLocationSchema]);
+            expect(validateStubParent.getCall(0).args).to.deep.equal([{
+                query: geoFenceSchema,
+            }]);
+            expect(validateStubParent.getCall(1).args).to.deep.equal([{
+                query: getVehicleLocationSchema,
+            }]);
             sandbox.reset();
         });
         after((): void => {
@@ -224,7 +226,7 @@ describe('endpoints/geo.ts', (): void => {
             describe('rejects', (): void => {
                 beforeEach((): void => {
                     geoFenceValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
-                        next(new ProxyError(1234, 'Caught by schema'));
+                        next(new expressUtils.ServerError(1234, 'Caught by schema'));
                     });
                 });
                 afterEach((): void => {
@@ -245,7 +247,7 @@ describe('endpoints/geo.ts', (): void => {
                             .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
                             .then((res: supertest.Response): void => {
                                 expect(routeErrorStub.callCount).to.equal(1, 'error handler should be called');
-                                const testError: ProxyError = routeErrorStub.getCall(0).args[0];
+                                const testError: expressUtils.ServerError = routeErrorStub.getCall(0).args[0];
                                 expect(testError.message)
                                     .to.equal('Caught by schema');
                                 expect(testError.statusCode)
@@ -297,7 +299,7 @@ describe('endpoints/geo.ts', (): void => {
             describe('rejects', (): void => {
                 beforeEach((): void => {
                     vehicleValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
-                        next(new ProxyError(4321, 'Caught by schema'));
+                        next(new expressUtils.ServerError(4321, 'Caught by schema'));
                     });
                 });
                 afterEach((): void => {
@@ -321,7 +323,7 @@ describe('endpoints/geo.ts', (): void => {
                                 .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
                                 .then((res: supertest.Response): void => {
                                     expect(routeErrorStub.callCount).to.equal(1, 'error handler should be called');
-                                    const testError: ProxyError = routeErrorStub.getCall(0).args[0];
+                                    const testError: expressUtils.ServerError = routeErrorStub.getCall(0).args[0];
                                     expect(testError.message)
                                         .to.equal('Caught by schema');
                                     expect(testError.statusCode)

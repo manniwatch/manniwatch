@@ -3,10 +3,10 @@
  */
 
 import { ManniWatchApiClient, PositionType } from '@manniwatch/api-client';
+import { validateRequest } from '@manniwatch/express-utils';
 import * as express from 'express';
 import * as jsonschema from 'jsonschema';
 import { promiseToResponse } from '../promise-to-response';
-import { validateQueryParameter } from '../util';
 
 export const geoFenceSchema: jsonschema.Schema = {
     properties: {
@@ -64,7 +64,9 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
          * @apiVersion 0.1.0
          */
         router.get('/stops',
-            validateQueryParameter(geoFenceSchema),
+            validateRequest({
+                query: geoFenceSchema,
+            }),
             (req: express.Request, res: express.Response, next: express.NextFunction): void => {
                 promiseToResponse(apiClient.getStopLocations({
                     bottom: req.query.bottom,
@@ -81,7 +83,9 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
          * @apiVersion 0.1.0
          */
         router.get('/vehicles',
-            validateQueryParameter(getVehicleLocationSchema),
+            validateRequest({
+                query: getVehicleLocationSchema,
+            }),
             (req: express.Request, res: express.Response, next: express.NextFunction): void => {
                 // tslint:disable-next-line:triple-equals
                 const positionType: PositionType = req.query.positionType != undefined ? req.query.positionType : 'RAW';

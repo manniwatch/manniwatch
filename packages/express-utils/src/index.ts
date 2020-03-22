@@ -4,3 +4,4 @@
 
 export * from './server-error';
 export * from './promise-to-response';
+export * from './validate-request';
