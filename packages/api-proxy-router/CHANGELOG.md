@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.3.0](https://github.com/manniwatch/manniwatch/compare/v0.2.0...v0.3.0) (2020-03-22)
+
+**Note:** Version bump only for package @manniwatch/api-proxy-router
+
+
+
+
+
 # [0.2.0](https://github.com/manniwatch/manniwatch/compare/v0.1.5...v0.2.0) (2020-03-20)
 
 
@@ -21,6 +34,3 @@
 ### Features
 
 * Initialize Repository ([364a0f2](https://github.com/manniwatch/manniwatch/commit/364a0f2e8a81e3df0cbaa9e09a4e9f70c1994270))
-
-
-

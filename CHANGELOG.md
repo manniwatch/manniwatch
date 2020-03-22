@@ -1,3 +1,19 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.3.0](https://github.com/manniwatch/manniwatch/compare/v0.2.0...v0.3.0) (2020-03-22)
+
+
+### Features
+
+* **express-utils:** Add express-utils package ([#87](https://github.com/manniwatch/manniwatch/issues/87)) ([56c7ba5](https://github.com/manniwatch/manniwatch/commit/56c7ba5f383e8c9914ab4a54881a5479247dfcf2))
+
+
+
+
+
 # [](https://github.com/manniwatch/manniwatch/compare/v0.2.0...v) (2020-03-20)
 
 
@@ -51,6 +67,3 @@
 ### Features
 
 * Initialize Repository ([364a0f2](https://github.com/manniwatch/manniwatch/commit/364a0f2e8a81e3df0cbaa9e09a4e9f70c1994270))
-
-
-

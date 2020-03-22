@@ -1,6 +1,6 @@
 {
   "name": "@manniwatch/express-utils",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Helpers for express",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -42,7 +42,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {},
   "devDependencies": {
     "@types/express": "~4.17.3",
     "@types/request-promise-native": "^1.0.17",
