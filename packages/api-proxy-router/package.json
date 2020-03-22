@@ -45,6 +45,7 @@
   "dependencies": {
     "@manniwatch/api-client": "^0.3.0",
     "@manniwatch/api-types": "^0.3.0",
+    "@manniwatch/express-utils": "^0.3.0",
     "express": "~4.17.1",
     "jsonschema": "~1.2.5"
   },
