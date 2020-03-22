@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/manniwatch/manniwatch/compare/v0.3.0...v0.3.1) (2020-03-22)
+
+
+### Bug Fixes
+
+* **api-proxy-router:** use express-utils methods ([ca434a8](https://github.com/manniwatch/manniwatch/commit/ca434a886cd6cf37b1bccfb3ecd76bb949e85765))
+* **deps:** add @manniwatch/express-utils ([eb8f0f4](https://github.com/manniwatch/manniwatch/commit/eb8f0f4f51f81e56b46502741cd7878ed4abfe6d))
+
+
+
+
+
+
 # [0.3.0](https://github.com/manniwatch/manniwatch/compare/v0.2.0...v0.3.0) (2020-03-22)
 
 **Note:** Version bump only for package @manniwatch/api-proxy-router
