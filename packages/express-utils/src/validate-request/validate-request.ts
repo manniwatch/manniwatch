@@ -5,13 +5,11 @@
 import { NextFunction, Request, RequestHandler, Response } from 'express';
 import { validate, Schema, ValidatorResult } from 'jsonschema';
 import { convertValidationError } from './convert-validation-error';
-export type ObjectSchema = Schema & {
-    type: 'object',
-};
+
 export interface IValidationSchemas {
-    body?: ObjectSchema;
-    params?: ObjectSchema;
-    query?: ObjectSchema;
+    body?: Schema;
+    params?: Schema;
+    query?: Schema;
 }
 export const validateRequest: (schemas: IValidationSchemas) => RequestHandler =
     (schemas: IValidationSchemas): RequestHandler => {
