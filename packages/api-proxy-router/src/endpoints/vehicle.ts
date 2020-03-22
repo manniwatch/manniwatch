@@ -3,8 +3,8 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
+import { promiseToResponse } from '@manniwatch/express-utils';
 import * as express from 'express';
-import { promiseToResponse } from '../promise-to-response';
 
 export class VehicleEndpoints {
     public static createVehicleInfoEndpoint(client: ManniWatchApiClient): express.RequestHandler {
