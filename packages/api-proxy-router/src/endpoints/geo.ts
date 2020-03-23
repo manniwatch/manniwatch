@@ -3,10 +3,9 @@
  */
 
 import { ManniWatchApiClient, PositionType } from '@manniwatch/api-client';
-import { validateRequest } from '@manniwatch/express-utils';
+import { promiseToResponse, validateRequest } from '@manniwatch/express-utils';
 import * as express from 'express';
 import * as jsonschema from 'jsonschema';
-import { promiseToResponse } from '../promise-to-response';
 
 export const geoFenceSchema: jsonschema.Schema = {
     properties: {

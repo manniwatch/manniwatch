@@ -3,8 +3,8 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
+import { promiseToResponse } from '@manniwatch/express-utils';
 import * as express from 'express';
-import { promiseToResponse } from '../promise-to-response';
 
 export class TripEndpoints {
     public static createTripRouteEndpoint(client: ManniWatchApiClient): express.RequestHandler {

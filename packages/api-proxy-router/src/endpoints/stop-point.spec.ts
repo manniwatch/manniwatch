@@ -3,11 +3,11 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
+import * as prom from '@manniwatch/express-utils';
 import { expect } from 'chai';
 import * as express from 'express';
 import 'mocha';
 import * as sinon from 'sinon';
-import * as prom from '../promise-to-response';
 import { ITestEndpoint } from './common-test.spec';
 import { StopPointEndpoints } from './stop-point';
 
