@@ -1,6 +1,6 @@
 {
   "name": "@manniwatch/express-utils",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Helpers for express",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/manniwatch/manniwatch/compare/v0.3.1...v0.3.2) (2020-03-24)
+
+
+### Bug Fixes
+
+* **api-proxy-router:** remove promiseToResponse from module ([#102](https://github.com/manniwatch/manniwatch/issues/102)) ([63da2a7](https://github.com/manniwatch/manniwatch/commit/63da2a7c9b197eecb9edbb62346d1b54f487b795))
+
+
+
+
+
 ## [0.3.1](https://github.com/manniwatch/manniwatch/compare/v0.3.0...v0.3.1) (2020-03-22)
 
 
