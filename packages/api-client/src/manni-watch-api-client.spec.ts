@@ -17,8 +17,8 @@ import { IBoundingBox, ManniWatchApiClient, PositionType, StopMode } from './man
 import { Util } from './util';
 
 const testSuccessResponse: any = {
-    'message': 'This is a mocked response',
-    'status': 200,
+    message: 'This is a mocked response',
+    status: 200,
 };
 const STOP_MODES: StopMode[] = ['departure', 'arrival'];
 describe('manni-watch-api-client.ts', (): void => {
