@@ -14,7 +14,7 @@ export const passagesSchema: Schema = {
             description: 'unix timestamp in ms since epoch',
             enum: ['departure', 'arrival'],
             id: 'mode',
-            'type': 'string',
+            type: 'string',
         },
         startTime: {
             description: 'startTime to query',

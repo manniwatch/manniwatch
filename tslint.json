@@ -97,7 +97,7 @@
         "no-redundant-jsdoc": true,
         "no-return-await": true,
         "no-shadowed-variable": true,
-        "no-string-literal": false,
+        "no-string-literal": true,
         "no-string-throw": true,
         "no-switch-case-fall-through": true,
         "no-trailing-whitespace": true,
@@ -105,6 +105,10 @@
         "no-unused-expression": true,
         "no-unused-variable": true,
         "no-var-keyword": true,
+        "object-literal-key-quotes": [
+            true,
+            "as-needed"
+        ],
         "object-literal-sort-keys": true,
         "one-line": [
             true,
@@ -132,6 +136,10 @@
             "always"
         ],
         "static-this": true,
+        "switch-final-break": [
+            true,
+            "always"
+        ],
         "trailing-comma": [
             true,
             {
