@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://github.com/manniwatch/manniwatch/compare/v0.3.2...v0.3.3) (2020-03-24)
+
+
+### Bug Fixes
+
+* **deps:** bump electron from 8.1.1 to 8.2.0 ([8fb7de1](https://github.com/manniwatch/manniwatch/commit/8fb7de1ec09e435af889c1163707e682db3d3ffb))
+* **deps:** bump helmet from 3.21.3 to 3.22.0 ([86920bc](https://github.com/manniwatch/manniwatch/commit/86920bc924312d2c05c64ba6e2ce0b1c3877dc9a))
+
+
+
+
+
+
 ## [0.3.2](https://github.com/manniwatch/manniwatch/compare/v0.3.1...v0.3.2) (2020-03-24)
 
 **Note:** Version bump only for package @manniwatch/client-desktop

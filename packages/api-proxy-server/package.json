@@ -1,6 +1,6 @@
 {
   "name": "@manniwatch/api-proxy-server",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Server Helper helper for TrapezeApi",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -43,8 +43,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@manniwatch/api-proxy-router": "^0.3.2",
-    "@manniwatch/api-types": "^0.3.2",
+    "@manniwatch/api-proxy-router": "^0.3.3",
+    "@manniwatch/api-types": "^0.3.3",
     "express": "~4.17.1",
     "helmet": "~3.22.0",
     "nconf": "~0.10.0"
