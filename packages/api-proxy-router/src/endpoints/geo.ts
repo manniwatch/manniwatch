@@ -40,14 +40,14 @@ export const getVehicleLocationSchema: jsonschema.Schema = {
         lastUpdate: {
             description: 'unix timestamp in ms since epoch',
             id: 'lastUpdate',
-            'pattern': '^[0-9]+$',
-            'type': 'string',
+            pattern: '^[0-9]+$',
+            type: 'string',
         },
         positionType: {
             description: 'position type to query',
-            'enum': ['RAW', 'CORRECTED'],
+            enum: ['RAW', 'CORRECTED'],
             id: 'positionType',
-            'type': 'string',
+            type: 'string',
         },
     },
     type: 'object',

@@ -281,7 +281,7 @@ export class ManniWatchApiClient {
     public getSettings(): reqp.RequestPromise<ISettings> {
         const options: reqp.OptionsWithUri = {
             headers: {
-                'Accept': 'text/javascript',
+                Accept: 'text/javascript',
             },
             method: 'GET',
             transform: Util.transformSettingsBody,
