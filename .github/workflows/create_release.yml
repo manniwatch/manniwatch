@@ -20,7 +20,7 @@ jobs:
         id: create-changelog
         run: |
           npm install -g conventional-changelog-cli
-          changelog=$(conventional-changelog --preset cli --release-count 1)
+          changelog=$(conventional-changelog --preset cli --release-count 2 -u false)
           changelog="${changelog//'%'/'%25'}"
           changelog="${changelog//$'\n'/'%0A'}"
           changelog="${changelog//$'\r'/'%0D'}"
@@ -34,5 +34,5 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
           body: ${{ steps.create-changelog.outputs.changelog }}
-          draft: false
+          draft: true
           prerelease: false
