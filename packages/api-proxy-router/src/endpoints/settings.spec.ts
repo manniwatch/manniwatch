@@ -3,84 +3,60 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
+import * as prom from '@manniwatch/express-utils';
 import { expect } from 'chai';
 import * as express from 'express';
 import 'mocha';
 import * as sinon from 'sinon';
-import * as prom from '../promise-to-response';
-import { ITestEndpoint } from './common-test.spec';
-import { SettingsEndpoints } from './settings';
+import * as supertest from 'supertest';
+import { SUCCESS_RESPONSE, SUCCESS_RESPONSE_LENGTH } from './common-test.spec';
+import { createSettingsRouter } from './settings';
 
-const testEndpoints: ITestEndpoint<SettingsEndpoints, ManniWatchApiClient>[] = [
-    {
-        endpointFn: 'createSettingsEndpoint',
-        innerMethod: 'getSettings',
-    },
-];
 describe('endpoints/settings.ts', (): void => {
-    describe('SettingsEndpoints', (): void => {
-        const apiClient: ManniWatchApiClient = new ManniWatchApiClient('https://test.url/');
+    describe('createSettingsRouter', (): void => {
+        let app: express.Express;
         let promiseStub: sinon.SinonStub;
+        let getSettingsStub: sinon.SinonStub;
+        let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
         before((): void => {
             promiseStub = sinon.stub(prom, 'promiseToResponse');
-            promiseStub.resolves(true);
+            getSettingsStub = sinon.stub();
+            apiClientStub = sinon.createStubInstance(ManniWatchApiClient, {
+                getSettings: getSettingsStub as any,
+            });
         });
 
+        beforeEach((): void => {
+            const route: express.Router = createSettingsRouter(apiClientStub as any);
+            app = express();
+            app.use('/settings', route);
+        });
         afterEach('test and reset promise stub', (): void => {
             expect(promiseStub.callCount).to.equal(1);
             promiseStub.resetHistory();
+            getSettingsStub.resetHistory();
         });
-
         after((): void => {
             promiseStub.restore();
         });
-        testEndpoints.forEach((testEndpoint: any): void => {
-            describe(testEndpoint.endpointFn + '(client)', (): void => {
-                const methodStubResponse: any = {
-                    method: true,
-                    response: 'test',
-                    stub: 29,
-                };
-                const req: any = {
-                    params: {
-                        id: 95482,
-                    },
-                };
-                const res: any = {
-                    test: 'many',
-                };
-                const next: any = {
-                    next: true,
-                    value: 'test',
-                };
-                let methodStub: sinon.SinonStub;
-                before((): void => {
-                    methodStub = sinon.stub(apiClient, testEndpoint.innerMethod);
-                    methodStub.returns(methodStubResponse);
+        describe('query \'\'', (): void => {
+            it('should pass on the provided parameters', (): Promise<void> => {
+                getSettingsStub.resolves(SUCCESS_RESPONSE);
+                promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
+                    source
+                        .then((responseObject: any): void => {
+                            res.json(responseObject);
+                        });
                 });
-                afterEach('test and reset stubs', (): void => {
-                    expect(methodStub.callCount).to.equal(1);
-                    methodStub.resetHistory();
-                });
-                after((): void => {
-                    methodStub.restore();
-                });
-                it('should pass on the provided parameters', (): void => {
-                    const endpoint: express.RequestHandler = SettingsEndpoints[testEndpoint.endpointFn](apiClient);
-                    endpoint(req, res, next);
-                    expect(methodStub.callCount).to.equal(1);
-                    expect(methodStub.getCall(0).args).to.deep.equal([]);
-                });
-                it('should call inner methods correclty', (): void => {
-                    const endpoint: express.RequestHandler = SettingsEndpoints[testEndpoint.endpointFn](apiClient);
-                    endpoint(req, res, next);
-                    expect(promiseStub.callCount).to.equal(1);
-                    expect(promiseStub.getCall(0).args).to.deep.equal([
-                        methodStubResponse,
-                        res,
-                        next,
-                    ]);
-                });
+                return supertest(app)
+                    .get('/settings')
+                    .expect('Content-Type', /json/)
+                    .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
+                    .expect(200, SUCCESS_RESPONSE)
+                    .then((res: supertest.Response): void => {
+                        expect(apiClientStub.getSettings.callCount)
+                            .to.equal(1, 'getSettings should only be called once');
+                    });
             });
         });
     });

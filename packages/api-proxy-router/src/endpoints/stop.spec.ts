@@ -3,89 +3,167 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
+import * as prom from '@manniwatch/express-utils';
 import { expect } from 'chai';
 import * as express from 'express';
 import 'mocha';
 import * as sinon from 'sinon';
-import * as prom from '../promise-to-response';
-import { ITestEndpoint } from './common-test.spec';
-import { StopEndpoints } from './stop';
-
-const testEndpoints: ITestEndpoint<StopEndpoints, ManniWatchApiClient>[] = [
-    {
-        endpointFn: 'createStopInfoEndpoint',
-        innerMethod: 'getStopInfo',
-    },
-    {
-        endpointFn: 'createStopDeparturesEndpoint',
-        innerMethod: 'getStopPassages',
-    },
-];
-describe('endpoints/stop.ts', (): void => {
-    describe('StopEndpoints', (): void => {
-        const apiClient: ManniWatchApiClient = new ManniWatchApiClient('https://test.url/');
+import * as supertest from 'supertest';
+import {
+    createTestErrorRequestHandler,
+    NOT_FOUND_RESPONSE,
+    NOT_FOUND_RESPONSE_LENGTH,
+    SUCCESS_RESPONSE,
+    SUCCESS_RESPONSE_LENGTH,
+} from './common-test.spec';
+import { createStopRouter, passagesSchema } from './stop';
+const testIds: string[] = ['-12883', 'kasd'];
+describe('endpoints/trip.ts', (): void => {
+    describe('createTripRouter', (): void => {
+        let app: express.Express;
         let promiseStub: sinon.SinonStub;
+        let getStopInfoStub: sinon.SinonStub;
+        let getStopPassagesStub: sinon.SinonStub;
+        let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
+        let validateStub: sinon.SinonStub;
+        let validateStubHandler: sinon.SinonStub;
+        let errorSpy: sinon.SinonSpy;
         before((): void => {
+            validateStub = sinon.stub(prom, 'validateRequest');
             promiseStub = sinon.stub(prom, 'promiseToResponse');
-            promiseStub.resolves(true);
+            getStopInfoStub = sinon.stub();
+            getStopPassagesStub = sinon.stub();
+            validateStubHandler = sinon.stub();
+            errorSpy = sinon.spy();
+            apiClientStub = sinon.createStubInstance(ManniWatchApiClient, {
+                getStopInfo: getStopInfoStub as any,
+                getStopPassages: getStopPassagesStub as any,
+            });
+            validateStub.returns(validateStubHandler);
         });
 
+        beforeEach((): void => {
+            const route: express.Router = createStopRouter(apiClientStub as any);
+            app = express();
+            app.use('/stop', route);
+            app.use(createTestErrorRequestHandler(errorSpy));
+        });
         afterEach('test and reset promise stub', (): void => {
-            expect(promiseStub.callCount).to.equal(1);
+            expect(validateStub.callCount).to.equal(1, 'validateRequest should be called once');
+            expect(validateStub.args[0]).to.deep.equal([{ query: passagesSchema }], 'should be called with correct schema');
             promiseStub.resetHistory();
+            getStopInfoStub.reset();
+            getStopPassagesStub.reset();
+            validateStubHandler.reset();
+            validateStub.resetHistory();
+            errorSpy.resetHistory();
         });
-
         after((): void => {
             promiseStub.restore();
+            validateStub.restore();
         });
-        testEndpoints.forEach((testEndpoint: any): void => {
-            describe(testEndpoint.endpointFn + '(client)', (): void => {
-                const methodStubResponse: any = {
-                    method: true,
-                    response: 'test',
-                    stub: 29,
-                };
-                const req: any = {
-                    params: {
-                        id: 95482,
-                    },
-                };
-                const res: any = {
-                    test: 'many',
-                };
-                const next: any = {
-                    next: true,
-                    value: 'test',
-                };
-                let methodStub: sinon.SinonStub;
-                before((): void => {
-                    methodStub = sinon.stub(apiClient, testEndpoint.innerMethod);
-                    methodStub.returns(methodStubResponse);
+        describe('query \'/trip/:id/route\'', (): void => {
+            afterEach((): void => {
+                expect(promiseStub.callCount).to.equal(1);
+                expect(errorSpy.callCount).to.equal(0, 'No route error should occur');
+            });
+            testIds.forEach((testId: string): void => {
+                const queryUrl: string = `/stop/${testId}/info`;
+                it(`should query \'${queryUrl}\'`, (): Promise<void> => {
+                    getStopInfoStub.resolves(SUCCESS_RESPONSE);
+                    promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
+                        source
+                            .then((responseObject: any): void => {
+                                res.json(responseObject);
+                            });
+                    });
+                    return supertest(app)
+                        .get(queryUrl)
+                        .expect('Content-Type', /json/)
+                        .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
+                        .expect(200, SUCCESS_RESPONSE)
+                        .then((res: supertest.Response): void => {
+                            expect(apiClientStub.getStopInfo.callCount)
+                                .to.equal(1, 'getStopInfo should only be called once');
+                            expect(apiClientStub.getStopInfo.getCall(0).args)
+                                .to.deep.equal([testId]);
+                            expect(apiClientStub.getStopPassages.callCount)
+                                .to.equal(0, 'getStopPassages should not be called');
+                            expect(validateStubHandler.callCount).to.equal(0, 'should not be called');
+                        });
                 });
-                afterEach('test and reset stubs', (): void => {
-                    expect(methodStub.callCount).to.equal(1);
-                    methodStub.resetHistory();
+            });
+        });
+        describe('query \'/trip/:id/passages\'', (): void => {
+            afterEach((): void => {
+                expect(validateStubHandler.callCount).to.equal(1, 'should be called once');
+                expect(apiClientStub.getStopInfo.callCount)
+                    .to.equal(0, 'getStopInfo should not be called');
+            });
+            describe('query validation passes', (): void => {
+                beforeEach((): void => {
+                    validateStubHandler.callsFake((...args: any[]): void => {
+                        args[2]();
+                    });
                 });
-                after((): void => {
-                    methodStub.restore();
+                afterEach((): void => {
+                    expect(errorSpy.callCount).to.equal(0, 'no route error should occur');
                 });
-                it('should pass on the provided parameters', (): void => {
-                    const endpoint: express.RequestHandler = StopEndpoints[testEndpoint.endpointFn](apiClient);
-                    endpoint(req, res, next);
-                    expect(methodStub.callCount).to.equal(1);
-                    expect(methodStub.getCall(0).args).to.deep.equal([
-                        req.params.id,
-                    ]);
+                testIds.forEach((testId: string): void => {
+                    const queryUrl: string = `/stop/${testId}/passages`;
+                    it(`should query \'${queryUrl}\'`, (): Promise<void> => {
+                        getStopPassagesStub.resolves(SUCCESS_RESPONSE);
+                        promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
+                            source
+                                .then((responseObject: any): void => {
+                                    res.json(responseObject);
+                                });
+                        });
+                        return supertest(app)
+                            .get(queryUrl)
+                            .expect('Content-Type', /json/)
+                            .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
+                            .expect(200, SUCCESS_RESPONSE)
+                            .then((res: supertest.Response): void => {
+                                expect(apiClientStub.getStopPassages.callCount)
+                                    .to.equal(1, 'getStopPassages should only be called once');
+                                expect(apiClientStub.getStopPassages.getCall(0).args)
+                                    .to.deep.equal([testId, undefined, undefined, undefined]);
+                            });
+                    });
                 });
-                it('should call inner methods correclty', (): void => {
-                    const endpoint: express.RequestHandler = StopEndpoints[testEndpoint.endpointFn](apiClient);
-                    endpoint(req, res, next);
-                    expect(promiseStub.callCount).to.equal(1);
-                    expect(promiseStub.getCall(0).args).to.deep.equal([
-                        methodStubResponse,
-                        res,
-                        next,
-                    ]);
+            });
+            describe('query validation does not pass', (): void => {
+                const testError: Error = new Error('test error');
+                beforeEach((): void => {
+                    validateStubHandler.callsFake((...args: any[]): void => {
+                        args[2](testError);
+                    });
+                });
+                afterEach((): void => {
+                    expect(errorSpy.callCount).to.equal(1, 'one route error should occur');
+                    expect(errorSpy.getCall(0).args).to.deep.equal([testError]);
+                });
+                testIds.forEach((testId: string): void => {
+                    const queryUrl: string = `/stop/${testId}/passages`;
+                    it(`should query \'${queryUrl}\'`, (): Promise<void> => {
+                        getStopPassagesStub.resolves(SUCCESS_RESPONSE);
+                        promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
+                            source
+                                .then((responseObject: any): void => {
+                                    res.json(responseObject);
+                                });
+                        });
+                        return supertest(app)
+                            .get(queryUrl)
+                            .expect('Content-Type', /json/)
+                            .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
+                            .expect(200, NOT_FOUND_RESPONSE)
+                            .then((res: supertest.Response): void => {
+                                expect(apiClientStub.getStopPassages.callCount)
+                                    .to.equal(0, 'getStopPassages should not be called');
+                            });
+                    });
                 });
             });
         });

@@ -3,86 +3,63 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
+import * as prom from '@manniwatch/express-utils';
 import { expect } from 'chai';
 import * as express from 'express';
 import 'mocha';
 import * as sinon from 'sinon';
-import * as prom from '../promise-to-response';
-import { ITestEndpoint } from './common-test.spec';
-import { StopPointEndpoints } from './stop-point';
-
-const testEndpoints: ITestEndpoint<StopPointEndpoints, ManniWatchApiClient>[] = [
-    {
-        endpointFn: 'createStopPointInfoEndpoint',
-        innerMethod: 'getStopPointInfo',
-    },
-];
-describe('endpoints/stop-point.ts', (): void => {
-    describe('StopPointEndpoints', (): void => {
-        const apiClient: ManniWatchApiClient = new ManniWatchApiClient('https://test.url/');
+import * as supertest from 'supertest';
+import { SUCCESS_RESPONSE, SUCCESS_RESPONSE_LENGTH } from './common-test.spec';
+import { createStopPointRouter } from './stop-point';
+const testIds: string[] = ['-12883', 'kasd'];
+describe('endpoints/trip.ts', (): void => {
+    describe('createTripRouter', (): void => {
+        let app: express.Express;
         let promiseStub: sinon.SinonStub;
+        let getStopPointInfoStub: sinon.SinonStub;
+        let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
         before((): void => {
             promiseStub = sinon.stub(prom, 'promiseToResponse');
-            promiseStub.resolves(true);
+            getStopPointInfoStub = sinon.stub();
+            apiClientStub = sinon.createStubInstance(ManniWatchApiClient, {
+                getStopPointInfo: getStopPointInfoStub as any,
+            });
         });
 
+        beforeEach((): void => {
+            const route: express.Router = createStopPointRouter(apiClientStub as any);
+            app = express();
+            app.use('/stopPoint', route);
+        });
         afterEach('test and reset promise stub', (): void => {
             expect(promiseStub.callCount).to.equal(1);
             promiseStub.resetHistory();
+            getStopPointInfoStub.resetHistory();
         });
-
         after((): void => {
             promiseStub.restore();
         });
-        testEndpoints.forEach((testEndpoint: any): void => {
-            describe(testEndpoint.endpointFn + '(client)', (): void => {
-                const methodStubResponse: any = {
-                    method: true,
-                    response: 'test',
-                    stub: 29,
-                };
-                const req: any = {
-                    params: {
-                        id: 95482,
-                    },
-                };
-                const res: any = {
-                    test: 'many',
-                };
-                const next: any = {
-                    next: true,
-                    value: 'test',
-                };
-                let methodStub: sinon.SinonStub;
-                before((): void => {
-                    methodStub = sinon.stub(apiClient, testEndpoint.innerMethod);
-                    methodStub.returns(methodStubResponse);
+        testIds.forEach((testId: string): void => {
+            const queryUrl: string = `/stopPoint/${testId}/info`;
+            it(`should query \'${queryUrl}\'`, (): Promise<void> => {
+                getStopPointInfoStub.resolves(SUCCESS_RESPONSE);
+                promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
+                    source
+                        .then((responseObject: any): void => {
+                            res.json(responseObject);
+                        });
                 });
-                afterEach('test and reset stubs', (): void => {
-                    expect(methodStub.callCount).to.equal(1);
-                    methodStub.resetHistory();
-                });
-                after((): void => {
-                    methodStub.restore();
-                });
-                it('should pass on the provided parameters', (): void => {
-                    const endpoint: express.RequestHandler = StopPointEndpoints[testEndpoint.endpointFn](apiClient);
-                    endpoint(req, res, next);
-                    expect(methodStub.callCount).to.equal(1);
-                    expect(methodStub.getCall(0).args).to.deep.equal([
-                        req.params.id,
-                    ]);
-                });
-                it('should call inner methods correclty', (): void => {
-                    const endpoint: express.RequestHandler = StopPointEndpoints[testEndpoint.endpointFn](apiClient);
-                    endpoint(req, res, next);
-                    expect(promiseStub.callCount).to.equal(1);
-                    expect(promiseStub.getCall(0).args).to.deep.equal([
-                        methodStubResponse,
-                        res,
-                        next,
-                    ]);
-                });
+                return supertest(app)
+                    .get(queryUrl)
+                    .expect('Content-Type', /json/)
+                    .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
+                    .expect(200, SUCCESS_RESPONSE)
+                    .then((res: supertest.Response): void => {
+                        expect(apiClientStub.getStopPointInfo.callCount)
+                            .to.equal(1, 'getStopPointInfo should only be called once');
+                        expect(apiClientStub.getStopPointInfo.getCall(0).args)
+                            .to.deep.equal([testId]);
+                    });
             });
         });
     });
