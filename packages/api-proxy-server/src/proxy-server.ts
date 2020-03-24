@@ -2,11 +2,10 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-server
  */
 
+import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { createApiProxyRouter } from '@manniwatch/api-proxy-router';
+import { ServerError } from '@manniwatch/express-utils';
 import * as express from 'express';
-import * as helmet from 'helmet';
-import { Server } from 'http';
-import { resolve as pathResolve } from 'path';
 export const api404Handler: express.RequestHandler = (req: express.Request,
     res: express.Response,
     next: express.NextFunction): void => {
@@ -22,50 +21,24 @@ export const serverErrorHandler: express.ErrorRequestHandler = (err: any,
     res: express.Response,
     next: express.NextFunction): void => {
     // tslint:disable-next-line:no-console
-    console.error(err);
-    res.status(500).json({ error: true });
+    if (err instanceof ServerError || (err.statusCode && err.message)) {
+        res.status(err.statusCode).json({
+            error: true,
+            message: err.message,
+        });
+    } else {
+        res.status(500).json({
+            error: true,
+            message: 'Unspecified error occured',
+        });
+    }
 };
-export class ManniWatchProxyServer {
-    private app: express.Application;
-    private server: Server;
-    private readonly ngModulePath: string = pathResolve(__dirname +
-        './../node_modules/@manniwatch/client-ng/dist/client-ng');
-    constructor(public readonly endpoint: string,
-        public readonly port: number) {
-        this.app = express();
-        this.app.use(helmet.contentSecurityPolicy({
-            directives: {
-                connectSrc: ['\'self\'',
-                    'https://c.tile.openstreetmap.org',
-                    'https://b.tile.openstreetmap.org',
-                    'https://a.tile.openstreetmap.org'],
-                defaultSrc: ['\'self\''],
-                imgSrc: ['\'self\'',
-                    'https://c.tile.openstreetmap.org',
-                    'https://b.tile.openstreetmap.org',
-                    'https://a.tile.openstreetmap.org',
-                    'data:'],
-                scriptSrc: ['\'self\'', '\'unsafe-inline\''],
-                styleSrc: ['\'self\'', '\'unsafe-inline\''],
-            },
-        }));
-        this.app.use('/api', createApiProxyRouter(endpoint));
-        this.app.use('/api', api404Handler);
-        this.app.use(express.static(this.ngModulePath));
-        this.app.get('/*', (req: express.Request, res: express.Response): void => {
-            res.status(404).sendFile(this.ngModulePath + '/index.html');
-        });
-        this.app.use(serverErrorHandler);
-    }
 
-    public start(): void {
-        this.server = this.app.listen(this.port);
-    }
-
-    public stop(): void {
-        this.server.close((err: any): void => {
-            // tslint:disable-next-line:no-console
-            console.log('Server closed', err);
-        });
-    }
-}
+export const createProxyServer: (clientOrEndpoint: ManniWatchApiClient) => express.Application =
+    (clientOrEndpoint: ManniWatchApiClient): express.Application => {
+        const app: express.Application = express();
+        app.use('/api', createApiProxyRouter(clientOrEndpoint));
+        app.use('/api', api404Handler);
+        app.use(serverErrorHandler);
+        return app;
+    };
