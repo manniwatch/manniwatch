@@ -3,13 +3,22 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import { promiseToResponse } from '@manniwatch/express-utils';
+import * as prom from '@manniwatch/express-utils';
 import * as express from 'express';
 
-export class TripEndpoints {
-    public static createTripRouteEndpoint(client: ManniWatchApiClient): express.RequestHandler {
-        return (req: express.Request, res: express.Response, next: express.NextFunction): void => {
-            promiseToResponse(client.getRouteByTripId(req.params.id), res, next);
-        };
-    }
-}
+export const createTripRouter: (apiClient: ManniWatchApiClient) => express.Router =
+    (apiClient: ManniWatchApiClient): express.Router => {
+        const router: express.Router = express.Router();
+        /**
+         * @api {get} /trip/:id/route Request Vehicle Route
+         * @apiName GetTripRoute
+         * @apiGroup Trip
+         *
+         * @apiParam {String} id Vehicle id
+         * @apiVersion 0.1.0
+         */
+        router.get('/:id([a-z0-9A-Z\-\+]+)/route', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
+            prom.promiseToResponse(apiClient.getRouteByTripId(req.params.id), res, next);
+        });
+        return router;
+    };

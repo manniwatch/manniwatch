@@ -3,7 +3,8 @@
  */
 
 export { createGeoRouter } from './geo';
-export * from './stop';
-export * from './trip';
-export * from './stop-point';
-export * from './vehicle';
+export { createStopRouter } from './stop';
+export { createTripRouter } from './trip';
+export { createStopPointRouter } from './stop-point';
+export { createVehicleRouter } from './vehicle';
+export { createSettingsRouter } from './settings';
