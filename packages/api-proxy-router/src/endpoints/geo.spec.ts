@@ -161,11 +161,14 @@ describe('endpoints/geo.ts', (): void => {
             });
         });
         afterEach((): void => {
-            expect(validateStubParent.callCount).to.equal(2, 'validate method should be called twice');
+            expect(validateStubParent.callCount).to.equal(3, 'validate method should be called twice');
             expect(validateStubParent.getCall(0).args).to.deep.equal([{
                 query: geoFenceSchema,
             }]);
             expect(validateStubParent.getCall(1).args).to.deep.equal([{
+                query: geoFenceSchema,
+            }]);
+            expect(validateStubParent.getCall(2).args).to.deep.equal([{
                 query: getVehicleLocationSchema,
             }]);
             sandbox.reset();
@@ -187,6 +190,75 @@ describe('endpoints/geo.ts', (): void => {
                     expect(routeErrorStub.callCount).to.equal(0);
                     done();
                 });
+        });
+        describe('/stopPoints', (): void => {
+            afterEach((): void => {
+                expect(vehicleValidateStub.callCount).to.equal(0, 'vehicle schema shouldn\'t be evaluated against this route');
+                expect(geoFenceValidateStub.callCount).to.equal(1, 'geo fence validation should only happen once');
+            });
+            describe('resolves', (): void => {
+                beforeEach((): void => {
+                    geoFenceValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
+                        next();
+                    });
+                });
+                validCoordinates.forEach((testCoordinate: TestIBoundingBox): void => {
+                    const basePath: string = '/stopPoints' +
+                        '?bottom=' + testCoordinate.bottom +
+                        '&top=' + testCoordinate.top +
+                        '&left=' + testCoordinate.left +
+                        '&right=' + testCoordinate.right;
+                    it('should query the stops with \'' + basePath + '\'', (): Promise<void> => {
+                        stubClient.getStopPointLocations.returns(delayPromise(SUCCESS_RESPONSE) as any);
+                        return supertest(app)
+                            .get(basePath)
+                            .expect('Content-Type', /json/)
+                            .expect(200, SUCCESS_RESPONSE)
+                            .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
+                            .then((res: supertest.Response): void => {
+                                expect(routeErrorStub.callCount).to.equal(0);
+                                expect(stubClient.getStopPointLocations.callCount)
+                                    .to.equal(1, 'getStopPointLocations should only be called once');
+                                expect(stubClient.getStopPointLocations.args).to.deep.equal([[
+                                    testCoordinate,
+                                ]]);
+                            });
+                    });
+                });
+            });
+            describe('rejects', (): void => {
+                beforeEach((): void => {
+                    geoFenceValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
+                        next(new expressUtils.ServerError(1234, 'Caught by schema'));
+                    });
+                });
+                afterEach((): void => {
+                    expect(stubClient.getStopPointLocations.callCount).to.equal(0, 'proxy method should never be called');
+                });
+                validCoordinates.forEach((testCoordinate: TestIBoundingBox): void => {
+                    const basePath: string = '/stopPoints' +
+                        '?bottom=' + testCoordinate.bottom +
+                        '&top=' + testCoordinate.top +
+                        '&left=' + testCoordinate.left +
+                        '&right=' + testCoordinate.right;
+                    it('should reject \'' + basePath + '\'', (): Promise<void> => {
+                        stubClient.getStopLocations.returns(delayPromise(SUCCESS_RESPONSE) as any);
+                        return supertest(app)
+                            .get(basePath)
+                            .expect('Content-Type', /json/)
+                            .expect(501, NOT_FOUND_RESPONSE)
+                            .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
+                            .then((res: supertest.Response): void => {
+                                expect(routeErrorStub.callCount).to.equal(1, 'error handler should be called');
+                                const testError: expressUtils.ServerError = routeErrorStub.getCall(0).args[0];
+                                expect(testError.message)
+                                    .to.equal('Caught by schema');
+                                expect(testError.statusCode)
+                                    .to.equal(1234);
+                            });
+                    });
+                });
+            });
         });
         describe('/stops', (): void => {
             afterEach((): void => {
