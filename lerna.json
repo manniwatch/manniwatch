@@ -5,12 +5,6 @@
   "version": "0.3.4",
   "command": {
     "publish": {
-      "ignoreChanges": [
-        "ignored-file",
-        "*.md",
-        "tslint.json",
-        "tsconfig.json"
-      ],
       "message": "chore(release): publish %s"
     },
     "version": {
@@ -18,5 +12,14 @@
       "changelogPreset": "conventional-changelog-angular",
       "message": "chore(release): publish %s"
     }
-  }
+  },
+  "ignoreChanges": [
+    "ignored-file",
+    "**/*.md",
+    "**/tslint.json",
+    "**/tsconfig.json",
+    "*.md",
+    "tslint.json",
+    "tsconfig.json"
+  ]
 }

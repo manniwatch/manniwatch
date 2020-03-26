@@ -1,5 +1,6 @@
 {
   "name": "@manniwatch/client-ng",
+  "description": "Angular Client for Manniwatch",
   "version": "0.3.4",
   "scripts": {
     "ng": "ng",

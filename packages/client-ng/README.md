@@ -1,3 +1,8 @@
 # Client Ng
 
 [![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg?flag=ClientNg)](https://codecov.io/gh/manniwatch/manniwatch/manniwatch/master/packages/client-ng) [![npm version](https://badge.fury.io/js/%40manniwatch%2Fclient-ng.svg)](https://badge.fury.io/js/%40manniwatch%2Fclient-ng) [![dependencies Status](https://david-dm.org/manniwatch/manniwatch/status.svg?path=packages/client-ng)](https://david-dm.org/manniwatch/manniwatch?path=packages/client-ng) [![devDependencies Status](https://david-dm.org/manniwatch/manniwatch/dev-status.svg?path=packages/client-ng)](https://david-dm.org/manniwatch/manniwatch?path=packages/client-ng&type=dev)
+
+
+## Angular Client for Manniwatch
+
+Either used within a webbrowser or via the desktop client.
