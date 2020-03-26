@@ -39,6 +39,7 @@ jobs:
   test_lint:
     runs-on: ubuntu-latest
     name: Test ${{ matrix.test_method }}
+    needs: test_build
     strategy:
       matrix:
         test_method: ['lint', 'docs']
