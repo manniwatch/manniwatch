@@ -25,6 +25,11 @@ jobs:
           npx lerna bootstrap --ci
       - name: Run Build
         run: npm run build
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: build_files
+          path: ./packages/*/dist
       - name: Run Test
         run: npm run test:coverage --no-sort
       - name: Upload coverage to Codecov
