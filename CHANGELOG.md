@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.4](https://github.com/manniwatch/manniwatch/compare/v0.3.3...v0.3.4) (2020-03-26)
+
+
+### Bug Fixes
+
+* **deps:** bump @angular/cdk from 9.1.3 to 9.2.0 ([a10659a](https://github.com/manniwatch/manniwatch/commit/a10659aa58a6dd495dfdecac866e87df31d5122b))
+* **deps:** bump @angular/common from 9.0.7 to 9.1.0 ([a3bdf31](https://github.com/manniwatch/manniwatch/commit/a3bdf31b3f79fe439e4dac20ff496d5ac48d6fc7))
+* **deps:** bump @angular/localize from 9.0.7 to 9.1.0 ([c368478](https://github.com/manniwatch/manniwatch/commit/c36847894cbb23329aab0e7d2ffc23367bb9d10a))
+* **deps:** bump @angular/material from 9.1.3 to 9.2.0 ([2f3cd93](https://github.com/manniwatch/manniwatch/commit/2f3cd93bbdba14780af076e5ba9003f06beda990))
+* **deps:** bump angular to 9.1.0 ([#124](https://github.com/manniwatch/manniwatch/issues/124)) ([32677a9](https://github.com/manniwatch/manniwatch/commit/32677a995e440ac6cdd50dfd5de183f0ee2029d4))
+
+
+
+
+
+
 ## [0.3.3](https://github.com/manniwatch/manniwatch/compare/v0.3.2...v0.3.3) (2020-03-24)
 
 
