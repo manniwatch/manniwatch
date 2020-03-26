@@ -2,9 +2,9 @@ name: Test
 on: [push,pull_request]
 
 jobs:
-  test_suite:
+  test_build:
     runs-on: ubuntu-latest
-    name: Test
+    name: Build and Test
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -31,7 +31,29 @@ jobs:
         run: ./codecov_upload.sh
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      - name: Run Lint
-        run: npm run lint --no-sort
-      - name: Run Docs
-        run: npm run docs --no-sort
+  test_lint:
+    runs-on: ubuntu-latest
+    name: Test ${{ matrix.test_method }}
+    strategy:
+      matrix:
+        test_method: ['lint', 'docs']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Setup Cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install Deps
+        run: |
+          npm ci
+          npx lerna bootstrap --ci
+      - name: Run ${{ matrix.test_method }}
+        run: npm run ${{ matrix.test_method }} --no-sort
