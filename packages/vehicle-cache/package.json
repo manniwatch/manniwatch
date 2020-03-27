@@ -21,7 +21,9 @@
         "rxjs": "~6.5.4"
     },
     "devDependencies": {
-        "mocha": "~7.1.1"
+        "mocha": "~7.1.1",
+        "tslint": "~6.1.0",
+        "typescript": "~3.8.3"
     },
     "files": [
         "dist/*",
