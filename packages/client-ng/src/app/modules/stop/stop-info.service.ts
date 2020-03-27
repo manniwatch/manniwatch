@@ -5,9 +5,10 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IStopLocation, IStopPassage } from '@manniwatch/api-types';
+import { ApiService } from 'core';
 import { combineLatest, from, interval, Observable } from 'rxjs';
 import { first, flatMap, map, startWith, switchMap } from 'rxjs/operators';
-import { ApiService, StopPointService } from 'src/app/services';
+import { StopPointService } from 'src/app/services';
 
 export interface IStatus {
     lastUpdate: Date;
@@ -18,8 +19,8 @@ export interface IStatus {
 export class StopInfoService {
     public readonly statusObservable: Observable<IStatus>;
     constructor(private route: ActivatedRoute,
-                private apiService: ApiService,
-                private stopService: StopPointService) {
+        private apiService: ApiService,
+        private stopService: StopPointService) {
         const stopFromResolver: Observable<IStopPassage> = this.route.data
             .pipe(map((data: any): IStopPassage =>
                 data.stopInfo));

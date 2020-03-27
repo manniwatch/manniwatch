@@ -4,9 +4,8 @@
 
 import { async, TestBed } from '@angular/core/testing';
 import { from, throwError } from 'rxjs';
-import { ApiService } from './api.service';
+import { ApiService } from './base-api.service';
 import { SettingsService } from './settings.service';
-// import * as sinon from "sinon";
 
 describe('src/app/services/settings.service', (): void => {
     describe('SettingsService', (): void => {

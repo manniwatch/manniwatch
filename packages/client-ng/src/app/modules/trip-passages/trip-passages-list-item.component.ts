@@ -14,7 +14,7 @@ import { VEHICLE_STATUS } from '@manniwatch/api-types/dist/vehicle-status';
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-trip-passages-list-item',
     styleUrls: ['./trip-passages-list-item.component.scss'],
-    templateUrl: './trip-passages-list-item.component.pug',
+    templateUrl: './trip-passages-list-item.component.html',
 })
 export class TripPassagesListItemComponent {
     @Input()

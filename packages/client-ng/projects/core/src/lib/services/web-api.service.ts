@@ -3,7 +3,7 @@
  */
 
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import {
     ISettings,
     IStopInfo,
@@ -15,19 +15,19 @@ import {
     IVehicleLocationList,
     IVehiclePathInfo,
 } from '@manniwatch/api-types';
-import { Extent } from 'ol/extent';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { environment } from 'src/environments';
-import { ApiService, TripInfoWithId } from './api.service';
+import { ApiService, IBounds, TripInfoWithId } from './base-api.service';
+import { API_SERVICE_ENDPOINT } from './constants';
 
 @Injectable()
-export class NginxApiService implements ApiService {
+export class WebApiService implements ApiService {
 
-    public constructor(public http: HttpClient) { }
+    public constructor(public http: HttpClient,
+        @Inject(API_SERVICE_ENDPOINT) public apiServiceEndpoint: string) { }
 
     public baseUrl(): string {
-        return environment.apiEndpoint.endsWith('\/') ? environment.apiEndpoint : (environment.apiEndpoint + '\/');
+        return this.apiServiceEndpoint.endsWith('\/') ? this.apiServiceEndpoint : (this.apiServiceEndpoint + '\/');
     }
 
     public getTripPassages(tripId: string): Observable<TripInfoWithId> {
@@ -67,7 +67,7 @@ export class NginxApiService implements ApiService {
         });
     }
 
-    public getStopLocations(bounds?: Extent): Observable<IStopLocations> {
+    public getStopLocations(bounds?: IBounds): Observable<IStopLocations> {
         if (bounds) {
             return this.http.get<IStopLocations>(this.baseUrl() + 'geo/stops', {
                 params: {
@@ -81,7 +81,7 @@ export class NginxApiService implements ApiService {
         return this.http.get<IStopLocations>(this.baseUrl() +
             'geo/stops?left=-648000000&bottom=-324000000&right=648000000&top=324000000');
     }
-    public getStopPointLocations(bounds?: Extent): Observable<IStopPointLocations> {
+    public getStopPointLocations(bounds?: IBounds): Observable<IStopPointLocations> {
         if (bounds) {
             return this.http.get<IStopPointLocations>(this.baseUrl() + 'geo/stopPoints', {
                 params: {

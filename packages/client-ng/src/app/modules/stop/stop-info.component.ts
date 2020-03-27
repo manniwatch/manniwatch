@@ -15,7 +15,7 @@ export interface IData {
     providers: [StopInfoService],
     selector: 'app-stop-info',
     styleUrls: ['./stop-info.component.scss'],
-    templateUrl: './stop-info.component.pug',
+    templateUrl: './stop-info.component.html',
 
 })
 export class StopInfoComponent {

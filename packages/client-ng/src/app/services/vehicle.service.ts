@@ -8,9 +8,9 @@ import {
     IVehicleLocationList,
     VehicleLocations,
 } from '@manniwatch/api-types';
+import { ApiService } from 'core';
 import { concat, from, of, BehaviorSubject, Observable } from 'rxjs';
 import { catchError, debounceTime, flatMap, map } from 'rxjs/operators';
-import { ApiService } from './api.service';
 
 export type TimestampedVehicleLocation = IVehicleLocation & {
     lastUpdate: number,

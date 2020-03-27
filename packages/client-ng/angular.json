@@ -63,6 +63,16 @@
               ],
               "serviceWorker": true,
               "ngswConfigPath": "ngsw-config.json"
+            },
+            "electron": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.electron.ts"
+                }
+              ],
+              "outputPath": "dist/manniwatch-electron",
+              "serviceWorker": false
             }
           }
         },
@@ -124,6 +134,126 @@
             "production": {
               "devServerTarget": "manniwatch:serve:production"
             }
+          }
+        }
+      }
+    },
+    "core": {
+      "projectType": "library",
+      "root": "projects/core",
+      "sourceRoot": "projects/core/src",
+      "prefix": "core",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/core/tsconfig.lib.json",
+            "project": "projects/core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/core/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/core/src/test.ts",
+            "tsConfig": "projects/core/tsconfig.spec.json",
+            "karmaConfig": "projects/core/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/core/tsconfig.lib.json",
+              "projects/core/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ol-map": {
+      "projectType": "library",
+      "root": "projects/ol-map",
+      "sourceRoot": "projects/ol-map/src",
+      "prefix": "ol-map",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ol-map/tsconfig.lib.json",
+            "project": "projects/ol-map/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ol-map/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ol-map/src/test.ts",
+            "tsConfig": "projects/ol-map/tsconfig.spec.json",
+            "karmaConfig": "projects/ol-map/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ol-map/tsconfig.lib.json",
+              "projects/ol-map/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lib-route-stop": {
+      "projectType": "library",
+      "root": "projects/lib-route-stop",
+      "sourceRoot": "projects/lib-route-stop/src",
+      "prefix": "mwl-route-stop",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lib-route-stop/tsconfig.lib.json",
+            "project": "projects/lib-route-stop/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lib-route-stop/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lib-route-stop/src/test.ts",
+            "tsConfig": "projects/lib-route-stop/tsconfig.spec.json",
+            "karmaConfig": "projects/lib-route-stop/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lib-route-stop/tsconfig.lib.json",
+              "projects/lib-route-stop/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }

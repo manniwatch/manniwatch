@@ -2,12 +2,12 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
+import { TripInfoWithId } from 'core';
 import { of, throwError, Observable } from 'rxjs';
 import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { delay } from 'rxjs/operators';
 import { TestScheduler } from 'rxjs/testing';
-import { TripInfoWithId } from 'src/app/services';
 import { VehicleMapHeaderService } from './vehicle-map-header.service';
 describe('src/app/modules/common/map-header-box/vehicle-map-header.service.ts', (): void => {
     describe('VehicleMapHeaderService', (): void => {

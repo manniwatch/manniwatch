@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 import { ISettings } from '@manniwatch/api-types';
 import { from, Observable, Subscriber, Subscription } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { ApiService } from './api.service';
+import { ApiService } from './base-api.service';
 
 // tslint:disable:max-classes-per-file
 export class SettingsLoadSubscriber extends Subscriber<void> {

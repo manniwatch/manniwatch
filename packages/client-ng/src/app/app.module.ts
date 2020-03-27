@@ -11,6 +11,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { ApiService, ElectronApiService, SettingsService, WebApiService } from 'core';
+import { API_SERVICE_ENDPOINT } from 'projects/core/src/lib/services/constants';
 import { environment } from '../environments';
 import { AppErrorHandler } from './app-error-handler';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,10 +20,7 @@ import { AppComponent } from './app.component';
 import { MainMapModule } from './modules/main-map';
 import { MainToolbarModule } from './modules/main-toolbar/main-toolbar.module';
 import { SidebarModule } from './modules/sidebar/sidebar.module';
-import { ApiService } from './services';
 import { AppNotificationService } from './services/app-notification.service';
-import { NginxApiService } from './services/nginx-api.service';
-import { SettingsService } from './services/settings.service';
 import { StopPointService } from './services/stop-point.service';
 import { UserLocationService } from './services/user-location.service';
 
@@ -68,7 +67,11 @@ const moduleImports: any[] = [
         },
         {
             provide: ApiService,
-            useClass: NginxApiService,
+            useClass: environment.apiService === 'electron' ? ElectronApiService : WebApiService,
+        },
+        {
+            provide: API_SERVICE_ENDPOINT,
+            useValue: environment.apiService,
         },
     ],
 })

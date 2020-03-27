@@ -12,7 +12,6 @@ import Stroke from 'ol/style/Stroke';
 import Style, { StyleFunction, StyleLike } from 'ol/style/Style';
 import Text from 'ol/style/Text';
 import { FeatureLike } from 'ol/Feature';
-
 const DEFAULT_STYLES: { [key: string]: StyleLike; } = {
     icon: new Style({
         image: new Icon({
@@ -119,8 +118,9 @@ const DEFAULT_STYLES: { [key: string]: StyleLike; } = {
     },
 };
 export type TrapezeCoord = { lat: number, lon: number } | { latitude: number, longitude: number };
-export class OlUtil {
 
+// @dynamic
+export class OlUtil {
     public static createVehicleMarkerStyle(selected: boolean = false): StyleFunction {
         return (p0: FeatureLike, p1: number): Style => {
             const vehicle: IVehicleLocation = p0.get('vehicle');

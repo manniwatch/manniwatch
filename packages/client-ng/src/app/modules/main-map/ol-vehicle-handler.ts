@@ -5,6 +5,7 @@
 import { NgZone } from '@angular/core';
 import { IVehicleLocation, IVehicleLocationList } from '@manniwatch/api-types';
 import { Feature, Map as OlMap } from 'ol';
+import { OlUtil } from 'ol-map';
 import Point from 'ol/geom/Point';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
@@ -12,7 +13,6 @@ import { Subscription } from 'rxjs';
 import { distinctUntilChanged, pluck } from 'rxjs/operators';
 import { runOutsideZone } from 'src/app/rxjs-util/run-outside-zone';
 import { TimestampedVehicleLocation } from 'src/app/services';
-import { OlUtil } from '../common/openlayers';
 import { OlMainMapDirective } from './ol-main-map.directive';
 export class OlVehicleHandler {
 

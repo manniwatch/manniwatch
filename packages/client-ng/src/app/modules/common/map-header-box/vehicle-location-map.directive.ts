@@ -4,15 +4,15 @@
 
 import { Directive, ElementRef, NgZone, OnDestroy } from '@angular/core';
 import { IVehicleLocation, IVehiclePathInfo, IWayPoint } from '@manniwatch/api-types';
+import { SettingsService } from 'core';
 import { Feature, Map as OlMap } from 'ol';
+import { OlUtil } from 'ol-map';
 import { Coordinate } from 'ol/coordinate';
 import LineString from 'ol/geom/LineString';
 import Point from 'ol/geom/Point';
 import { Subscription } from 'rxjs';
 import { debounceTime, tap } from 'rxjs/operators';
 import { runOutsideZone } from 'src/app/rxjs-util/run-outside-zone';
-import { SettingsService } from 'src/app/services/settings.service';
-import { OlUtil } from '../openlayers';
 import { HeaderMapDirective } from './header-map.directive';
 import { IStatus, VehicleMapHeaderService } from './vehicle-map-header.service';
 

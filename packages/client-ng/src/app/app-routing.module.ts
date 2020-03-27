@@ -14,7 +14,7 @@ const appRoutes: Routes = [
     },
     {
         // tslint:disable-next-line:typedef
-        loadChildren: () => import('./modules/stop/stop.module').then((m) => m.StopModule),
+        loadChildren: () => import('lib-route-stop').then((m) => m.StopModule),
         path: 'stop',
     },
     {

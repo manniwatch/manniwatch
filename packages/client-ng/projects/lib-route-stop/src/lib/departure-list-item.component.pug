@@ -1,0 +1,5 @@
+<a mat-list-item="mat-list-item" [routerLink]="['/passages', departure.tripId]" role="listitem">
+    <mat-icon matListIcon="matListIcon" title="{{status}}">{{statusIcon}}</mat-icon><span class="pattern-text" *ngIf="delay!==false" [ngClass]="{'late':(delay&gt;0),'early':(delay&lt;0)}">{{delay}}</span>
+    <h3 matLine="matLine">{{ departure?.patternText }} {{ departure?.direction }}</h3>
+    <p matLine="matLine"><span title="Planned: {{departure?.plannedTime}}">{{time}}</span></p>
+</a>

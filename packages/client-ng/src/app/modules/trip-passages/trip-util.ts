@@ -2,9 +2,9 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
+import { TripInfoWithId } from 'core';
 import { of, Observable, OperatorFunction } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { TripInfoWithId } from 'src/app/services';
 
 export enum UpdateStatus {
     LOADING = 1,

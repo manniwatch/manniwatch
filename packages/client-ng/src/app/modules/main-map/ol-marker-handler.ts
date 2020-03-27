@@ -5,13 +5,13 @@
 import { NgZone } from '@angular/core';
 import { IStopLocation, IStopPointLocation } from '@manniwatch/api-types';
 import { Map as OlMap } from 'ol';
+import { OlUtil } from 'ol-map';
 import Point from 'ol/geom/Point';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import Feature from 'ol/Feature';
 import { combineLatest, Observable, Subscription } from 'rxjs';
 import { startWith, take } from 'rxjs/operators';
-import { OlUtil } from '../common/openlayers';
 import { OlMainMapDirective } from './ol-main-map.directive';
 export class OlMarkerHandler {
 

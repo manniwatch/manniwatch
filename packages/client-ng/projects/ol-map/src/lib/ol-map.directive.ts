@@ -3,13 +3,13 @@
  */
 
 import { AfterViewInit, ElementRef, NgZone, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { SettingsService } from 'core';
 import { Collection, Map, View } from 'ol';
 import { defaults, Interaction } from 'ol/interaction';
 import TileLayer from 'ol/layer/Tile';
 import { fromLonLat } from 'ol/proj';
 import XYZ from 'ol/source/XYZ';
 import { Subscription } from 'rxjs';
-import { SettingsService } from 'src/app/services/settings.service';
 
 export abstract class OlMapComponent implements AfterViewInit, OnDestroy, OnChanges {
 

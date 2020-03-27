@@ -1,0 +1,14 @@
+{
+  "name": "ol-map",
+  "version": "0.0.1",
+  "devDependencies": {
+    "@types/ol": "~6.2.0",
+    "ol": "~6.2.1"
+  },
+  "peerDependencies": {
+    "@angular/common": "^9.1.0",
+    "@angular/core": "^9.1.0",
+    "ol": "~6.2.1",
+    "tslib": "^1.10.0"
+  }
+}

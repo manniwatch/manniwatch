@@ -5,9 +5,10 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IActualDeparture, IRoute, IStopPassage, IStopPointLocation } from '@manniwatch/api-types';
+import { ApiService } from 'core';
 import { combineLatest, merge, timer, Observable, Subject } from 'rxjs';
 import { distinctUntilChanged, flatMap, map, shareReplay, switchMap, tap } from 'rxjs/operators';
-import { ApiService, StopPointService } from 'src/app/services';
+import { StopPointService } from 'src/app/services';
 
 export interface IStatus {
     location?: IStopPointLocation;

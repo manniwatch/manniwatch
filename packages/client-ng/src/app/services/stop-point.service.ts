@@ -4,9 +4,9 @@
 
 import { Injectable } from '@angular/core';
 import { IStopLocation, IStopLocations, IStopPointLocation, IStopPointLocations } from '@manniwatch/api-types';
+import { ApiService } from 'core';
 import { Observable, Subscriber } from 'rxjs';
 import { debounceTime, map, retryWhen, shareReplay, tap, withLatestFrom } from 'rxjs/operators';
-import { ApiService } from './api.service';
 import { AppNotificationService } from './app-notification.service';
 
 // tslint:disable:max-classes-per-file

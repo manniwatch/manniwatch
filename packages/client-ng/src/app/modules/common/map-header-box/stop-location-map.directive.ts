@@ -5,11 +5,11 @@
 import { Location } from '@angular/common';
 import { Directive, ElementRef, Input, NgZone, OnChanges, SimpleChanges } from '@angular/core';
 import { IStopLocation, IStopPointLocation } from '@manniwatch/api-types';
+import { SettingsService } from 'core';
 import { Feature, Map as OlMap } from 'ol';
+import { OlUtil } from 'ol-map';
 import { Coordinate } from 'ol/coordinate';
 import Point from 'ol/geom/Point';
-import { SettingsService } from 'src/app/services/settings.service';
-import { OlUtil } from '../openlayers';
 import { HeaderMapDirective } from './header-map.directive';
 
 type StopTypes = IStopPointLocation | IStopLocation;
@@ -24,9 +24,9 @@ export class StopLocationHeaderMapDirective extends HeaderMapDirective implement
     public stop?: StopTypes;
     private stopMarker: Feature;
     constructor(elRef: ElementRef,
-                zone: NgZone,
-                settingsService: SettingsService,
-                public locationService: Location) {
+        zone: NgZone,
+        settingsService: SettingsService,
+        public locationService: Location) {
         super(elRef, zone, settingsService);
     }
 

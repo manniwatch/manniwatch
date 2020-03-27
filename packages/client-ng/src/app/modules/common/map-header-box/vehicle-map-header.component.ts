@@ -3,7 +3,7 @@
  */
 
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { TripInfoWithId } from 'src/app/services';
+import { TripInfoWithId } from 'core';
 import { MapHeaderDirective } from './map-header.component';
 import { VehicleMapHeaderService } from './vehicle-map-header.service';
 
@@ -14,7 +14,7 @@ import { VehicleMapHeaderService } from './vehicle-map-header.service';
     ],
     selector: 'app-vehicle-map-header',
     styleUrls: ['./map-header.component.scss'],
-    templateUrl: './vehicle-map-header.component.pug',
+    templateUrl: './vehicle-map-header.component.html',
 })
 export class VehicleMapHeaderBoxComponent extends MapHeaderDirective {
 

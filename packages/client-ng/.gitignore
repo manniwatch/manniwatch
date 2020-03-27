@@ -44,3 +44,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Exclude html generated from pug
+src/app/**/*.html
+projects/*/src/**/*.html
