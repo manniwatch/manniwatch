@@ -7,7 +7,9 @@
     "@types/node": "~13.9.4",
     "@types/sinon": "~7.5.2",
     "chai": "~4.2.0",
+    "commitizen": "^4.0.3",
     "conventional-changelog-angular": "^5.0.6",
+    "cz-conventional-changelog": "^3.1.0",
     "lerna": "~3.20.2",
     "mocha": "~7.1.1",
     "nyc": "~15.0.0",
@@ -52,5 +54,10 @@
     "instrument": true,
     "all": true
   },
-  "dependencies": {}
+  "dependencies": {},
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
