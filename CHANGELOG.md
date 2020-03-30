@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/manniwatch/manniwatch/compare/v0.3.5...v0.4.0) (2020-03-30)
+
+
+### Bug Fixes
+
+* **api-proxy-router:** fix routes for settings and stopPoints ([#142](https://github.com/manniwatch/manniwatch/issues/142)) ([f3a1909](https://github.com/manniwatch/manniwatch/commit/f3a1909692441f969194f5fa6f40fa04a158ed8b))
+* **api-types:** export missing VEHICLE_STATUS from module ([855eb9f](https://github.com/manniwatch/manniwatch/commit/855eb9fb145f3b2e962bc7eecdcf590d5de33f3f))
+
+
+### Features
+
+* **api-proxy-router:** add stopPointLocations endpoint ([#131](https://github.com/manniwatch/manniwatch/issues/131)) ([e67de7e](https://github.com/manniwatch/manniwatch/commit/e67de7e53e64c70812f9bc9197b140c5e6034bce))
+
+
+
+
+
 ## [0.3.5](https://github.com/manniwatch/manniwatch/compare/v0.3.4...v0.3.5) (2020-03-26)
 
 **Note:** Version bump only for package root

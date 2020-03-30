@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/manniwatch/manniwatch/compare/v0.3.5...v0.4.0) (2020-03-30)
+
+
+### Bug Fixes
+
+* **api-types:** export missing VEHICLE_STATUS from module ([855eb9f](https://github.com/manniwatch/manniwatch/commit/855eb9fb145f3b2e962bc7eecdcf590d5de33f3f))
+
+
+
+
+
 ## [0.3.4](https://github.com/manniwatch/manniwatch/compare/v0.3.3...v0.3.4) (2020-03-26)
 
 **Note:** Version bump only for package @manniwatch/api-types

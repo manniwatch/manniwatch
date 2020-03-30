@@ -1,6 +1,6 @@
 {
     "name": "@manniwatch/vehicle-cache",
-    "version": "0.3.4",
+    "version": "0.4.0",
     "description": "Caching for vehicle locations",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -16,8 +16,8 @@
         "prepublishOnly": "npm run test && npm run docs && npm run build"
     },
     "dependencies": {
-        "@manniwatch/api-client": "^0.3.4",
-        "@manniwatch/api-types": "^0.3.4",
+        "@manniwatch/api-client": "^0.4.0",
+        "@manniwatch/api-types": "^0.4.0",
         "rxjs": "~6.5.4"
     },
     "devDependencies": {
