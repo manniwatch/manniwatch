@@ -75,6 +75,25 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
                 }), res, next);
             });
         /**
+         * @api {get} /geo/stopPoints Request stop locations
+         * @apiName StopPointLocations
+         * @apiGroup Geo
+         *
+         * @apiVersion 0.4.0
+         */
+        router.get('/stopPoints',
+            util.validateRequest({
+                query: geoFenceSchema,
+            }),
+            (req: express.Request, res: express.Response, next: express.NextFunction): void => {
+                util.promiseToResponse(apiClient.getStopPointLocations({
+                    bottom: req.query.bottom,
+                    left: req.query.left,
+                    right: req.query.right,
+                    top: req.query.top,
+                }), res, next);
+            });
+        /**
          * @api {get} /geo/vehicles Request vehicle locations
          * @apiName GetVehicleLocations
          * @apiGroup Geo

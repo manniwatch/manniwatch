@@ -20,7 +20,7 @@ export const createApiProxyRouter: (endpoint: string | ManniWatchApiClient) => e
     route.use('/trip', endpoints.createTripRouter(apiClient));
     route.use('/vehicle', endpoints.createVehicleRouter(apiClient));
     route.use('/stop', endpoints.createStopRouter(apiClient));
-    route.get('/stopPoint', endpoints.createStopPointRouter(apiClient));
-    route.get('/settings', endpoints.createSettingsRouter(apiClient));
+    route.use('/stopPoint', endpoints.createStopPointRouter(apiClient));
+    route.use('/settings', endpoints.createSettingsRouter(apiClient));
     return route;
 };

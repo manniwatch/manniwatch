@@ -13,3 +13,4 @@ export * from './trip-route';
 export * from './type-util';
 export * from './stop-locations';
 export * from './stop-point-locations';
+export * from './vehicle-status';
