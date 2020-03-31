@@ -2,25 +2,31 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-vehicle-sse
  */
 
-import { ManniWatchApiClient } from '@manniwatch/api-client';
-import * as express from 'express';
-import * as endpoints from './endpoints';
+import { Request, Response, RequestHandler, NextFunction } from 'express';
+import { Observable, Subscription } from 'rxjs';
 
-/**
- *
- * @param endpoint example: http://test.domain/
- */
-export const createApiProxyRouter: (endpoint: string | ManniWatchApiClient) => express.Router = (endpoint: string): express.Router => {
-    const apiClient: ManniWatchApiClient = (typeof endpoint === 'string') ?
-        new ManniWatchApiClient(endpoint) :
-        endpoint;
-    const route: express.Router = express.Router();
+export interface ISseEvent {
+    id: string,
+    type: string,
+    data: string,
+}
+export const createSseStreamHandler: (obs: Observable<ISseEvent>) => RequestHandler =
+    (inputObservable: Observable<ISseEvent>): RequestHandler => {
+        return (req: Request, res: Response, next: NextFunction): void => {
+            res.type('text/event-stream');
+            res.set('Cache-Control', 'no-cache');
+            res.set('X-Accel-Buffering', 'no');
+            const subscription: Subscription = inputObservable.subscribe((data: ISseEvent): void => {
+                res.write(`id: ${data.id}\n`);
+                res.write(`event: ${data.type}\n`);
+                // res.write(`retry: 10000\n`);
+                res.write(`data: ${data.data}\n\n`);
+            }, (err?: any): void => {
 
-    route.use('/geo', endpoints.createGeoRouter(apiClient));
-    route.use('/trip', endpoints.createTripRouter(apiClient));
-    route.use('/vehicle', endpoints.createVehicleRouter(apiClient));
-    route.use('/stop', endpoints.createStopRouter(apiClient));
-    route.use('/stopPoint', endpoints.createStopPointRouter(apiClient));
-    route.use('/settings', endpoints.createSettingsRouter(apiClient));
-    return route;
-};
+            }, (): void => {
+                res.end();
+            });
+            res.on('close', subscription.unsubscribe);
+            res.on('error', subscription.unsubscribe);
+        };
+    };
