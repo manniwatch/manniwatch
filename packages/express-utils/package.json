@@ -43,7 +43,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@types/express": "~4.17.3",
+    "@types/express": "~4.17.4",
     "@types/request-promise-native": "^1.0.17",
     "apidoc": "~0.20.1",
     "express": "~4.17.1",
