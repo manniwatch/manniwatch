@@ -1,0 +1,3 @@
+# ApiVehicleSse
+
+[![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg?flag=ApiVehicleSse)](https://codecov.io/gh/manniwatch/manniwatch/manniwatch/master/packages/api-vehicle-sse) [![npm version](https://badge.fury.io/js/%40manniwatch%2Fapi-vehicle-sse.svg)](https://badge.fury.io/js/%40manniwatch%2Fapi-vehicle-sse) [![dependencies Status](https://david-dm.org/manniwatch/manniwatch/status.svg?path=packages/api-vehicle-sse)](https://david-dm.org/manniwatch/manniwatch?path=packages/api-vehicle-sse) [![devDependencies Status](https://david-dm.org/manniwatch/manniwatch/dev-status.svg?path=packages/api-vehicle-sse)](https://david-dm.org/manniwatch/manniwatch?path=packages/api-vehicle-sse&type=dev)
