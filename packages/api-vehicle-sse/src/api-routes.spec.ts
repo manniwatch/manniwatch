@@ -2,66 +2,21 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-vehicle-sse
  */
 
-import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { expect } from 'chai';
 import * as express from 'express';
 import 'mocha';
 import * as sinon from 'sinon';
 import * as supertest from 'supertest';
-import { createApiProxyRouter } from './api-routes';
-import * as endpoints from './endpoints';
-import {
-    createTestErrorRequestHandler,
-    NOT_FOUND_RESPONSE,
-    NOT_FOUND_RESPONSE_LENGTH,
-} from './endpoints/common-test.spec';
+import { createSseStreamHandler, ISseEvent } from './api-routes';
+import { Subject } from 'rxjs';
 
 // tslint:disable:no-unused-expression
-interface ITestEndpoint {
-    endpointName: string;
-    path: string;
-}
-const testEndpoints: ITestEndpoint[] = [{
-    endpointName: 'createGeoRouter',
-    path: '/geo',
-},
-{
-    endpointName: 'createTripRouter',
-    path: '/trip',
-},
-{
-    endpointName: 'createVehicleRouter',
-    path: '/vehicle',
-},
-{
-    endpointName: 'createStopRouter',
-    path: '/stop',
-},
-{
-    endpointName: 'createStopPointRouter',
-    path: '/stopPoint',
-},
-{
-    endpointName: 'createSettingsRouter',
-    path: '/settings',
-}];
 describe('api-routes.ts', (): void => {
-    describe('createApiProxyRouter()', (): void => {
+    describe('createApiProxyRouter()', function (): void {
+        this.timeout(10000);
         let sandbox: sinon.SinonSandbox;
-        const routerKeys: string[] = Object.keys(endpoints);
-        const endpointStubs: { [key: string]: sinon.SinonStub } = {};
         before((): void => {
             sandbox = sinon.createSandbox();
-            for (const key of routerKeys) {
-                endpointStubs[key] = sandbox.stub(endpoints, key as any);
-                endpointStubs[key].callsFake((): express.RequestHandler => {
-                    return (req: express.Request, res: express.Response, next: express.NextFunction): void => {
-                        res.json({
-                            name: key,
-                        });
-                    };
-                });
-            }
         });
         afterEach((): void => {
             sandbox.resetHistory();
@@ -69,70 +24,56 @@ describe('api-routes.ts', (): void => {
         after((): void => {
             sandbox.restore();
         });
-        it('should setup with a string as endpoint', (): void => {
-            const route: express.Router = createApiProxyRouter(new ManniWatchApiClient('https://localhost:12/'));
-            expect(route).to.not.be.undefined;
-            for (const key of routerKeys) {
-                const arg: ManniWatchApiClient = endpointStubs[key].getCall(0).args[0];
-                expect(arg.endpoint).to.equal('https://localhost:12/',
-                    `endpoint ${key} should be created with a correct instance`);
-            }
-        });
-        it('should setup with a client instance as endpoint', (): void => {
-            const route: express.Router = createApiProxyRouter('https://localhost:12345/');
-            expect(route).to.not.be.undefined;
-            for (const key of routerKeys) {
-                const arg: ManniWatchApiClient = endpointStubs[key].getCall(0).args[0];
-                expect(arg.endpoint).to.equal('https://localhost:12345/',
-                    `endpoint ${key} should be created with a correct instance`);
-            }
-        });
         describe('setup inner routes', (): void => {
             let app: express.Express;
             let routeErrorSpy: sinon.SinonSpy;
+            const testSubject: Subject<ISseEvent> = new Subject();
             before((): void => {
                 routeErrorSpy = sinon.spy();
             });
             beforeEach((): void => {
-                const route: express.Router = createApiProxyRouter('https://localhost:12345/');
                 app = express();
-                app.use(route);
-                app.use((req: express.Request, res: express.Response, next: express.NextFunction): void => {
-                    res.status(404);
-                    res.json(NOT_FOUND_RESPONSE);
-                });
-                app.use(createTestErrorRequestHandler(routeErrorSpy));
+                app.use(createSseStreamHandler(testSubject));
             });
             afterEach((): void => {
                 routeErrorSpy.resetHistory();
             });
             describe('test testing setup', (): void => {
-                it('should use the 404 handler', (): Promise<void> => {
-                    return supertest(app)
+                it('should respond with whole array', (done: Mocha.Done): void => {
+                    supertest(app)
                         .get('/unknown/route')
-                        .expect('Content-Type', /json/)
-                        .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
-                        .expect(404)
+                        .expect('Content-Type', /^text\/event-stream/)
+                        .expect(200, 'id: 0\nevent: any\ndata: 0\n\n' +
+                            'id: 1\nevent: any\ndata: 1\n\n' +
+                            'id: 2\nevent: any\ndata: 2\n\n' +
+                            'id: 3\nevent: any\ndata: 3\n\n' +
+                            'id: 4\nevent: any\ndata: 4\n\n')
                         .then((res: supertest.Response): void => {
                             expect(routeErrorSpy.callCount).to.equal(0);
-                            expect(res.body).to.deep.equal(NOT_FOUND_RESPONSE);
+                            done();
+                        })
+                        .catch(done);
+                    for (let i: number = 0; i < 5; i++) {
+                        testSubject.next({
+                            data: '' + i,
+                            id: '' + i,
+                            type: 'any',
                         });
+                    }
+                    testSubject.complete();
                 });
-                it('should use the error handler', (): void => {
-                    it('needs implementation');
-                });
-            });
-            describe('test endpoints', (): void => {
-                testEndpoints.forEach((testEndpoint: ITestEndpoint): void => {
-                    it(`should query \'${testEndpoint.path}\' successfully`, (): Promise<void> => {
-                        return supertest(app)
-                            .get(testEndpoint.path)
-                            .expect('Content-Type', /json/)
-                            .expect(200, { name: testEndpoint.endpointName })
-                            .then((res: supertest.Response): void => {
-                                expect(routeErrorSpy.callCount).to.equal(0);
-                            });
+                it('should use the 404 handler', (done: Mocha.Done): void => {
+                    const a: supertest.Test = supertest(app)
+                        .get('/unknown/route')
+                        .expect('Content-Type', /^text\/event-stream/)
+                        .expect(200);
+                    a.end((resp: supertest.Response): void => {
+                        done();
                     });
+                    setTimeout((): void => {
+                        a.abort();
+                        expect(testSubject.isStopped).to.be.true;
+                    }, 1500);
                 });
             });
         });
