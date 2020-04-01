@@ -1,9 +1,9 @@
 /*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
+ * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
  */
 
 import { ManniWatchApiClient, PositionType } from '@manniwatch/api-client';
-import { IVehicleLocation, IVehicleLocationList } from '@manniwatch/api-types';
+import { IVehicleLocationList } from '@manniwatch/api-types';
 import { defer, from, of, BehaviorSubject, Observable } from 'rxjs';
 import { concatMap, delay, retryWhen, share, switchMap, tap } from 'rxjs/operators';
 export class VehicleCache {
@@ -14,13 +14,6 @@ export class VehicleCache {
     }
     private lastUpdateSubject: BehaviorSubject<number> = new BehaviorSubject(0);
     public polling: boolean = true;
-    public getVehicle(id: string): IVehicleLocation {
-        return undefined as any;
-    }
-
-    public watch(cb: IVehicleLocation): void {
-    }
-
     public safeQueryData(lastUpdate: number): Observable<IVehicleLocationList> {
         const networkRequest: Observable<IVehicleLocationList> = defer((): Observable<IVehicleLocationList> => {
             return from(this.client.getVehicleLocations(this.positionType, lastUpdate));
@@ -43,6 +36,14 @@ export class VehicleCache {
             switchMap((lastUpdate: number): Observable<IVehicleLocationList> => this.safeQueryData(lastUpdate)),
             tap((response: IVehicleLocationList): void => this.lastUpdateSubject.next(response.lastUpdate)),
             share());
+    }
+
+    public start(): void {
+
+    }
+
+    public stop(): void {
+
     }
 
 }
