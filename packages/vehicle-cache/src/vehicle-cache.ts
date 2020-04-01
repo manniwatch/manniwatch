@@ -2,12 +2,14 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
-import { ManniWatchApiClient } from '@manniwatch/api-client';
+import { ManniWatchApiClient, PositionType } from '@manniwatch/api-client';
 import { IVehicleLocation, IVehicleLocationList } from '@manniwatch/api-types';
 import { defer, from, of, BehaviorSubject, Observable } from 'rxjs';
 import { concatMap, delay, retryWhen, share, switchMap, tap } from 'rxjs/operators';
 export class VehicleCache {
-    public constructor(public client: ManniWatchApiClient, public readonly queryDelay: number = 15000) {
+    public constructor(public client: ManniWatchApiClient,
+        public readonly queryDelay: number = 15000,
+        public readonly positionType: PositionType = 'RAW') {
 
     }
     private lastUpdateSubject: BehaviorSubject<number> = new BehaviorSubject(0);
@@ -21,7 +23,7 @@ export class VehicleCache {
 
     public safeQueryData(lastUpdate: number): Observable<IVehicleLocationList> {
         const networkRequest: Observable<IVehicleLocationList> = defer((): Observable<IVehicleLocationList> => {
-            return from(this.client.getVehicleLocations('RAW', lastUpdate));
+            return from(this.client.getVehicleLocations(this.positionType, lastUpdate));
         });
         return networkRequest
             .pipe(retryWhen((errors: Observable<any>): Observable<any> => {
