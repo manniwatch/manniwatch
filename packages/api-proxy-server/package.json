@@ -54,7 +54,7 @@
     "@types/helmet": "~0.0.45",
     "apidoc": "~0.20.1",
     "supertest": "~4.0.2",
-    "tslint": "~6.1.0",
+    "tslint": "~6.1.1",
     "typescript": "~3.8.3"
   }
 }
