@@ -7,7 +7,7 @@
     "private": false,
     "scripts": {
         "build": "tsc",
-        "test": "mocha --config ../../.mocharc.yml",
+        "test": "mocha --config ../../.mocharc.yml --inspect",
         "test:watch": "mocha --config ../../.mocharc.yml --watch",
         "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
         "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
