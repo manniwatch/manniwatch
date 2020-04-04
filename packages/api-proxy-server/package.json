@@ -50,11 +50,11 @@
     "nconf": "~0.10.0"
   },
   "devDependencies": {
-    "@types/express": "~4.17.3",
+    "@types/express": "~4.17.4",
     "@types/helmet": "~0.0.45",
     "apidoc": "~0.20.1",
     "supertest": "~4.0.2",
-    "tslint": "~6.1.0",
+    "tslint": "~6.1.1",
     "typescript": "~3.8.3"
   }
 }
