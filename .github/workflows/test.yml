@@ -38,8 +38,8 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     name: Deploy Documentation
-    if: github.event_name == 'push' # && github.ref == 'refs/heads/master'
-    #needs: test_suite
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs: test_suite
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
