@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/manniwatch/manniwatch/compare/v0.4.0...v0.4.1) (2020-04-04)
+
+
+### Bug Fixes
+
+* **deps:** bump jsonschema from 1.2.5 to 1.2.6 ([2f4f59f](https://github.com/manniwatch/manniwatch/commit/2f4f59f3e458c34ec29e67070b9dc61876519712))
+* **deps:** bump rxjs from 6.5.4 to 6.5.5 ([a4a3dd7](https://github.com/manniwatch/manniwatch/commit/a4a3dd741f19531b820fb934ebe1e3ecf65b6aa0))
+
+
+
+
+
+
 # [0.4.0](https://github.com/manniwatch/manniwatch/compare/v0.3.5...v0.4.0) (2020-03-30)
 
 
