@@ -55,7 +55,7 @@
     "material-design-icons": "~3.0.1",
     "moment": "~2.24.0",
     "ng-cli-pug-loader": "~0.2.2",
-    "ol": "~6.2.1",
+    "ol": "~6.3.0",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.3"
