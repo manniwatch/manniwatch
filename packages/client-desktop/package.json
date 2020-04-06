@@ -51,9 +51,9 @@
     "mocha": "~7.1.1",
     "nyc": "~15.0.1",
     "pug-cli": "~1.0.0-alpha6",
-    "ts-node": "~8.8.1",
+    "ts-node": "~8.8.2",
     "tslint": "~6.1.1",
-    "typedoc": "~0.17.3",
+    "typedoc": "~0.17.4",
     "typescript": "~3.8.3"
   },
   "dependencies": {
