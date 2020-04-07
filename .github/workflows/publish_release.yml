@@ -14,6 +14,16 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12'
+      - name: Setup Cache
+        uses: actions/cache@master
+        with:
+          path: |
+            ~/.npm
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: Install Packages
         run: |
           npm ci
@@ -35,6 +45,16 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12'
+      - name: Setup Cache
+        uses: actions/cache@master
+        with:
+          path: |
+            ~/.npm
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: Install Packages
         run: |
           npm ci
