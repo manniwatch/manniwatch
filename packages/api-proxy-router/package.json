@@ -50,7 +50,7 @@
     "jsonschema": "~1.2.6"
   },
   "devDependencies": {
-    "@types/express": "~4.17.4",
+    "@types/express": "~4.17.5",
     "@types/helmet": "~0.0.45",
     "@types/request-promise-native": "^1.0.17",
     "@types/supertest": "~2.0.8",
