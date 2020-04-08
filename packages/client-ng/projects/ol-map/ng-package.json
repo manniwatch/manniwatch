@@ -1,0 +1,21 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/ol-map",
+  "whitelistedNonPeerDependencies": [],
+  "lib": {
+    "entryFile": "src/public-api.ts",
+    "umdModuleIds": {
+      "ol": "ol",
+      "ol/interaction": "ol/interaction",
+      "ol/layer/Tile": "ol/layer/Tile",
+      "ol/proj": "ol/proj",
+      "ol/style/Circle": "ol/style/Circle",
+      "ol/source/XYZ": "ol/source/XYZ",
+      "ol/style/Fill": "ol/style/Fill",
+      "ol/style/Icon": "ol/style/Icon",
+      "ol/style/Style": "ol/style/Style",
+      "ol/style/Text": "ol/style/Text",
+      "ol/style/Stroke": "ol/style/Stroke"
+    }
+  }
+}

@@ -3,12 +3,12 @@
  */
 
 import { Directive, ElementRef, HostBinding, NgZone } from '@angular/core';
+import { SettingsService } from 'core';
 import { Map as OlMap } from 'ol';
+import { OlMapComponent } from 'ol-map';
 import { Coordinate } from 'ol/coordinate';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
-import { SettingsService } from 'src/app/services/settings.service';
-import { OlMapComponent } from '../openlayers';
 
 /**
  * Directive displaying a map with the StopLocation
@@ -22,8 +22,8 @@ export abstract class HeaderMapDirective extends OlMapComponent {
     protected readonly markerLayer: VectorLayer = undefined;
 
     constructor(elRef: ElementRef,
-                zone: NgZone,
-                settingsService: SettingsService) {
+        zone: NgZone,
+        settingsService: SettingsService) {
         super(elRef, zone, settingsService);
         this.markerVectorSource = new VectorSource();
         this.markerLayer = new VectorLayer({

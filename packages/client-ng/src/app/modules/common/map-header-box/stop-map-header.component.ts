@@ -13,7 +13,7 @@ import { StopLocationHeaderMapDirective } from './stop-location-map.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-stop-map-header',
     styleUrls: ['./map-header.component.scss'],
-    templateUrl: './stop-map-header.component.pug',
+    templateUrl: './stop-map-header.component.html',
 })
 export class StopMapHeaderComponent extends MapHeaderDirective {
 

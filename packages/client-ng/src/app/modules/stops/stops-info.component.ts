@@ -8,7 +8,7 @@ import { IStopLocation } from '@manniwatch/api-types';
 @Component({
     selector: 'app-stops-info',
     styleUrls: ['./stops-info.component.scss'],
-    templateUrl: './stops-info.component.pug',
+    templateUrl: './stops-info.component.html',
 })
 export class StopsInfoComponent {
     private mStops: IStopLocation[] = [];

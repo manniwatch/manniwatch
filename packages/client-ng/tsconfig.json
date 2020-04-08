@@ -19,7 +19,21 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "core": [
+        "dist/core/core",
+        "dist/core"
+      ],
+      "ol-map": [
+        "dist/ol-map/ol-map",
+        "dist/ol-map"
+      ],
+      "lib-route-stop": [
+        "dist/lib-route-stop/lib-route-stop",
+        "dist/lib-route-stop"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

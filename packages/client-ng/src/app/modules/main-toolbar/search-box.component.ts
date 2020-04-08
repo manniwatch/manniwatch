@@ -10,7 +10,7 @@ import { debounceTime, filter, startWith } from 'rxjs/operators';
 @Component({
     selector: 'app-toolbar-search',
     styleUrls: ['./search-box.component.scss'],
-    templateUrl: './search-box.component.pug',
+    templateUrl: './search-box.component.html',
 })
 export class ToolbarSearchBoxComponent implements OnInit, OnDestroy {
 

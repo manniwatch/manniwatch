@@ -3,9 +3,9 @@
  */
 
 import { async, TestBed } from '@angular/core/testing';
+import { ApiService } from 'core';
 import { of, throwError, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { ApiService } from 'src/app/services';
 import { TripPassagesResolver } from './trip-passages.resolver';
 import { TripPassagesUtil } from './trip-util';
 

@@ -10,7 +10,7 @@ import {
 @Component({
     selector: 'app-route-list',
     styleUrls: ['./route-list.component.scss'],
-    templateUrl: './route-list.component.pug',
+    templateUrl: './route-list.component.html',
 })
 export class RouteListComponent {
 

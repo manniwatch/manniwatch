@@ -10,7 +10,7 @@ import { StopPointInfoService } from './stop-point-info.service';
     providers: [StopPointInfoService],
     selector: 'app-stop-point-info',
     styleUrls: ['./stop-point-info.component.scss'],
-    templateUrl: './stop-point-info.component.pug',
+    templateUrl: './stop-point-info.component.html',
 
 })
 export class StopPointInfoComponent {

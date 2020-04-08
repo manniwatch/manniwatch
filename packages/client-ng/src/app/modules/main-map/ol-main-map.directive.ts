@@ -6,7 +6,9 @@ import { Location } from '@angular/common';
 import { Directive, ElementRef, NgZone, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { IStopLocation, IStopPointLocation, IVehicleLocation } from '@manniwatch/api-types';
+import { ApiService, SettingsService } from 'core';
 import { Map as OLMap } from 'ol';
+import { OlMapComponent, OlUtil } from 'ol-map';
 import * as OlCondition from 'ol/events/condition';
 import { Select } from 'ol/interaction';
 import { SelectEvent } from 'ol/interaction/Select';
@@ -14,12 +16,10 @@ import Style from 'ol/style/Style';
 import Feature, { FeatureLike } from 'ol/Feature';
 import { Subscription } from 'rxjs';
 import { VehicleService } from 'src/app/services';
-import { SettingsService } from 'src/app/services/settings.service';
 import { StopPointService } from '../../services/stop-point.service';
-import { OlMapComponent, OlUtil } from '../common/openlayers';
-import { ApiService } from './../../services';
 import { OlMarkerHandler } from './ol-marker-handler';
 import { OlVehicleHandler } from './ol-vehicle-handler';
+
 @Directive({
     selector: 'map[appOlMainMap]',
 })

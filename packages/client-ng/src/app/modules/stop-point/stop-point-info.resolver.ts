@@ -6,9 +6,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { IStopPassage } from '@manniwatch/api-types';
+import { ApiService } from 'core';
 import { EMPTY, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { ApiService } from '../../services';
 
 /**
  * Resolves information for a stop provided in the route parameter 'stopId'
