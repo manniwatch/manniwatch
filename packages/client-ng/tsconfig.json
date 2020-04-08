@@ -21,9 +21,9 @@
       "dom"
     ],
     "paths": {
-      "core": [
-        "dist/core/core",
-        "dist/core"
+      "lib-core": [
+        "dist/lib-core/core",
+        "dist/lib-core"
       ],
       "ol-map": [
         "dist/ol-map/ol-map",

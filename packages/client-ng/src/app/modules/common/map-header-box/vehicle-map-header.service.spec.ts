@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { TripInfoWithId } from 'core';
+import { TripInfoWithId } from 'lib-core';
 import { of, throwError, Observable } from 'rxjs';
 import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';

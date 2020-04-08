@@ -8,7 +8,7 @@ import {
     Input,
 } from '@angular/core';
 import { ITripPassage } from '@manniwatch/api-types';
-import { TripInfoWithId } from 'core';
+import { TripInfoWithId } from 'lib-core';
 
 /**
  * List of Departures Component

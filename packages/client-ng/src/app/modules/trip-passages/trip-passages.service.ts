@@ -5,7 +5,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Data } from '@angular/router';
 import { ITripPassages } from '@manniwatch/api-types';
-import { ApiService } from 'core';
+import { ApiService } from 'lib-core';
 import { merge, timer, BehaviorSubject, Observable, Subject } from 'rxjs';
 import { flatMap, map, scan, switchMap, take, tap } from 'rxjs/operators';
 import { IPassageStatus, TripPassagesUtil, UpdateStatus } from './trip-util';

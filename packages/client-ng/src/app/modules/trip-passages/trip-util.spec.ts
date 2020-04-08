@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { TripInfoWithId } from 'core';
+import { TripInfoWithId } from 'lib-core';
 import { of, throwError } from 'rxjs';
 import { map, toArray } from 'rxjs/operators';
 import { IPassageStatus, TripPassagesUtil, UpdateStatus } from './trip-util';

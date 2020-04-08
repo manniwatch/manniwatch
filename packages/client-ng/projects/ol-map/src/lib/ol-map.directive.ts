@@ -3,7 +3,7 @@
  */
 
 import { AfterViewInit, ElementRef, NgZone, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
-import { SettingsService } from 'core';
+import { SettingsService } from 'lib-core';
 import { Collection, Map, View } from 'ol';
 import { defaults, Interaction } from 'ol/interaction';
 import TileLayer from 'ol/layer/Tile';

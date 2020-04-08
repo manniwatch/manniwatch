@@ -4,7 +4,7 @@
 
 import { Injectable } from '@angular/core';
 import { IVehiclePathInfo } from '@manniwatch/api-types';
-import { ApiService, TripInfoWithId } from 'core';
+import { ApiService, TripInfoWithId } from 'lib-core';
 import { combineLatest, of, BehaviorSubject, Observable } from 'rxjs';
 import { auditTime, catchError, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 import { TimestampedVehicleLocation, VehicleService } from 'src/app/services';

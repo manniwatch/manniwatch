@@ -12,7 +12,7 @@ import {
   ITripPassages,
 } from '@manniwatch/api-types';
 import { VEHICLE_STATUS } from '@manniwatch/api-types/dist/vehicle-status';
-import { TripInfoWithId } from 'core';
+import { TripInfoWithId } from 'lib-core';
 import { TripPassagesListComponent } from './trip-passages-list.component';
 
 // tslint:disable:max-classes-per-file

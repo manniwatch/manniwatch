@@ -3,7 +3,7 @@
  */
 
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { TripInfoWithId } from 'core';
+import { TripInfoWithId } from 'lib-core';
 import { MapHeaderDirective } from './map-header.component';
 import { VehicleMapHeaderService } from './vehicle-map-header.service';
 

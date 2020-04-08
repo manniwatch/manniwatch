@@ -8,7 +8,7 @@ import {
     IVehicleLocationList,
     VehicleLocations,
 } from '@manniwatch/api-types';
-import { ApiService } from 'core';
+import { ApiService } from 'lib-core';
 import { concat, from, of, BehaviorSubject, Observable } from 'rxjs';
 import { catchError, debounceTime, flatMap, map } from 'rxjs/operators';
 

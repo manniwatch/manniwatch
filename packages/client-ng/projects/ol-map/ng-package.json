@@ -6,17 +6,17 @@
     "entryFile": "src/public-api.ts",
     "umdModuleIds": {
       "ol": "ol",
-      "ol/interaction": "ol/interaction",
-      "ol/layer/Tile": "ol/layer/Tile",
-      "ol/proj": "ol/proj",
-      "ol/style/Circle": "ol/style/Circle",
-      "ol/source/XYZ": "ol/source/XYZ",
-      "ol/style/Fill": "ol/style/Fill",
-      "ol/style/Icon": "ol/style/Icon",
-      "ol/style/Style": "ol/style/Style",
-      "ol/style/Text": "ol/style/Text",
-      "ol/style/Stroke": "ol/style/Stroke",
-      "core": "core"
+      "ol/proj": "ol.proj",
+      "ol/style/Circle": "ol.style.Circle",
+      "ol/source/XYZ": "ol.source.XYZ",
+      "ol/style/Fill": "ol.style.Fill",
+      "ol/style/Icon": "ol.style.Icon",
+      "ol/style/Style": "ol.style.Style",
+      "ol/style/Text": "ol.style.Text",
+      "ol/style/Stroke": "ol.style.Stroke",
+      "ol/interaction": "ol.interaction",
+      "ol/layer/Tile": "ol.layer.Tile",
+      "lib-core": "lib-core"
     }
   }
 }

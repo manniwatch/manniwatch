@@ -4,7 +4,9 @@
   "lib": {
     "entryFile": "src/public-api.ts",
     "umdModuleIds": {
-      "moment": "moment"
+      "moment": "momentNs",
+      "@manniwatch/api-types": "@manniwatch.api-types",
+      "lib-core": "lib-core"
     }
   }
 }

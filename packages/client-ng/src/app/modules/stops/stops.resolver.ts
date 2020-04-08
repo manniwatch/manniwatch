@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { IStopLocations } from '@manniwatch/api-types';
-import { ApiService } from 'core';
+import { ApiService } from 'lib-core';
 import { throwError, EMPTY, Observable } from 'rxjs';
 import { catchError, retryWhen } from 'rxjs/operators';
 import { retryDialogStrategy } from 'src/app/rxjs-util';

@@ -4,7 +4,7 @@
 
 import { Injectable } from '@angular/core';
 import { IStopLocation, IStopLocations, IStopPointLocation, IStopPointLocations } from '@manniwatch/api-types';
-import { ApiService } from 'core';
+import { ApiService } from 'lib-core';
 import { Observable, Subscriber } from 'rxjs';
 import { debounceTime, map, retryWhen, shareReplay, tap, withLatestFrom } from 'rxjs/operators';
 import { AppNotificationService } from './app-notification.service';

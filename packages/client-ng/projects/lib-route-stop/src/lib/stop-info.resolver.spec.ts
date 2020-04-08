@@ -4,7 +4,7 @@
 
 import { async, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { ApiService } from 'core';
+import { ApiService } from 'lib-core';
 import { from, throwError, Observable } from 'rxjs';
 import { StopInfoResolver } from './stop-info.resolver';
 // import * as sinon from "sinon";

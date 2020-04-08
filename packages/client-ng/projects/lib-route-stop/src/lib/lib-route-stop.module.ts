@@ -11,7 +11,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { DepartureListItemComponent } from './departure-list-item.component';
 import { DepartureListComponent } from './departure-list.component';
-import { StopMapHeaderComponent } from './map-header';
+import { StopMapHeaderComponent } from './map-header/stop-map-header.component';
 import { RouteListComponent } from './route-list.component';
 import { StopInfoComponent } from './stop-info.component';
 import { StopInfoResolver } from './stop-info.resolver';

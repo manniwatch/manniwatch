@@ -4,7 +4,7 @@
 
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { ApiService } from 'core';
+import { ApiService } from 'lib-core';
 import { Observable } from 'rxjs';
 import { IPassageStatus, TripPassagesUtil } from './trip-util';
 

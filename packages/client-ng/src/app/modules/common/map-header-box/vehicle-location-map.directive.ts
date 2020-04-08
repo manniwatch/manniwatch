@@ -4,7 +4,7 @@
 
 import { Directive, ElementRef, NgZone, OnDestroy } from '@angular/core';
 import { IVehicleLocation, IVehiclePathInfo, IWayPoint } from '@manniwatch/api-types';
-import { SettingsService } from 'core';
+import { SettingsService } from 'lib-core';
 import { Feature, Map as OlMap } from 'ol';
 import { OlUtil } from 'ol-map';
 import { Coordinate } from 'ol/coordinate';

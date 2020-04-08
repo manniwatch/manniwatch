@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
 import { Directive, ElementRef, NgZone, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { IStopLocation, IStopPointLocation, IVehicleLocation } from '@manniwatch/api-types';
-import { ApiService, SettingsService } from 'core';
+import { ApiService, SettingsService } from 'lib-core';
 import { Map as OLMap } from 'ol';
 import { OlMapComponent, OlUtil } from 'ol-map';
 import * as OlCondition from 'ol/events/condition';

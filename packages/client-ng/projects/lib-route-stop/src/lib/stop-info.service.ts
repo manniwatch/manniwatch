@@ -5,7 +5,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IStopLocation, IStopPassage } from '@manniwatch/api-types';
-import { ApiService, StopPointService } from 'core';
+import { ApiService, StopPointService } from 'lib-core';
 import { combineLatest, from, interval, Observable } from 'rxjs';
 import { first, flatMap, map, startWith, switchMap } from 'rxjs/operators';
 

@@ -3,7 +3,7 @@
  */
 
 import { Directive, ElementRef, HostBinding, NgZone } from '@angular/core';
-import { SettingsService } from 'core';
+import { SettingsService } from 'lib-core';
 import { Map as OlMap } from 'ol';
 import { OlMapComponent } from 'ol-map';
 import { Coordinate } from 'ol/coordinate';
