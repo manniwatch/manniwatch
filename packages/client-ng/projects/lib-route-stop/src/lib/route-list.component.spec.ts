@@ -33,7 +33,7 @@ export class TestMatListComponent {
 }
 
 @Component({
-    template: '<app-route-list [routes]="testData"></app-route-list>',
+    template: '<mwlr-stop-route-list [routes]="testData"></mwlr-stop-route-list>',
 })
 export class TestParentComponent {
     public testData: any[];
@@ -41,7 +41,7 @@ export class TestParentComponent {
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
 
-describe('src/modules/stop/route-list.component.ts', (): void => {
+describe('projects/lib-route-stop/src/lib/route-list.component.ts', (): void => {
     describe('RouteListComponent', (): void => {
         beforeEach(async((): void => {
             TestBed.configureTestingModule({

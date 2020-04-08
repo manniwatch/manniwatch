@@ -27,7 +27,7 @@ export class TestDepartureListItemComponent {
 
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
-describe('src/app/modules/stop/departure-list.component', (): void => {
+describe('projects/lib-route-stop/src/lib/departure-list.component', (): void => {
   describe('DepartureListComponent', (): void => {
     beforeEach(async((): void => {
       TestBed.configureTestingModule({

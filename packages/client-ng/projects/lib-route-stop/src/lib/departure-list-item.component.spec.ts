@@ -32,7 +32,7 @@ export class TestRouterLinkDirective {
 
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
-describe('src/app/modules/stop/departure-list-item.component', (): void => {
+describe('projects/lib-route-stop/src/lib/departure-list-item.component', (): void => {
   describe('DepartureListItemComponent', (): void => {
     beforeEach(async((): void => {
       TestBed.configureTestingModule({
