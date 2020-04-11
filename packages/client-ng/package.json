@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "npm run build:pug && npm run build:projects && ng build",
-    "build:projects": "ng build core --prod && ng build ol-map --prod && ng build lib-route-stop --prod",
+    "build:projects": "ng build lib-core --prod && ng build ol-map --prod && ng build lib-route-stop --prod",
     "build:pug": "pug ./src/app --doctype html && pug ./projects --doctype html",
     "build:pug:pretty": "pug ./src/app --doctype html --pretty && pug ./projects --doctype html --pretty",
     "test": "ng test --watch=false --browsers=ChromeHeadless",
