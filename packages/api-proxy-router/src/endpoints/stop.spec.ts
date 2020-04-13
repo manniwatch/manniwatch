@@ -11,6 +11,7 @@ import * as sinon from 'sinon';
 import * as supertest from 'supertest';
 import {
     createTestErrorRequestHandler,
+    testStopModes,
     NOT_FOUND_RESPONSE,
     NOT_FOUND_RESPONSE_LENGTH,
     SUCCESS_RESPONSE,
@@ -62,7 +63,7 @@ describe('endpoints/trip.ts', (): void => {
             promiseStub.restore();
             validateStub.restore();
         });
-        describe('query \'/trip/:id/route\'', (): void => {
+        describe('query \'/stop/:id/route\'', (): void => {
             afterEach((): void => {
                 expect(promiseStub.callCount).to.equal(1);
                 expect(errorSpy.callCount).to.equal(0, 'No route error should occur');
@@ -94,7 +95,7 @@ describe('endpoints/trip.ts', (): void => {
                 });
             });
         });
-        describe('query \'/trip/:id/passages\'', (): void => {
+        describe('query \'/stop/:id/passages\'', (): void => {
             afterEach((): void => {
                 expect(validateStubHandler.callCount).to.equal(1, 'should be called once');
                 expect(apiClientStub.getStopInfo.callCount)
@@ -131,6 +132,47 @@ describe('endpoints/trip.ts', (): void => {
                                     .to.deep.equal([testId, undefined, undefined, undefined]);
                             });
                     });
+                    testStopModes
+                        .forEach((testStopMode?: string): void => {
+                            [undefined, 20, 3948]
+                                .forEach((testStartTime: number | undefined): void => {
+                                    [undefined, 842, 128]
+                                        .forEach((testTimeFrame: number | undefined): void => {
+                                            let queryPath: string = queryUrl + '?';
+                                            if (testStopMode) {
+                                                queryPath += 'mode=' + testStopMode + '&';
+                                            }
+                                            if (testStartTime) {
+                                                queryPath += 'startTime=' + testStartTime + '&';
+                                            }
+                                            if (testTimeFrame) {
+                                                queryPath += 'timeFrame=' + testTimeFrame + '&';
+                                            }
+                                            it(`should query \'${queryPath}\'`, (): Promise<void> => {
+                                                getStopPassagesStub.resolves(SUCCESS_RESPONSE);
+                                                promiseStub.callsFake((source: Promise<any>,
+                                                    res: express.Response,
+                                                    next: express.NextFunction): void => {
+                                                    source
+                                                        .then((responseObject: any): void => {
+                                                            res.json(responseObject);
+                                                        });
+                                                });
+                                                return supertest(app)
+                                                    .get(queryPath)
+                                                    .expect('Content-Type', /json/)
+                                                    .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
+                                                    .expect(200, SUCCESS_RESPONSE)
+                                                    .then((res: supertest.Response): void => {
+                                                        expect(apiClientStub.getStopPassages.callCount)
+                                                            .to.equal(1, 'getStopPassages should only be called once');
+                                                        expect(apiClientStub.getStopPassages.getCall(0).args)
+                                                            .to.deep.equal([testId, testStopMode, testStartTime, testTimeFrame]);
+                                                    });
+                                            });
+                                        });
+                                });
+                        });
                 });
             });
             describe('query validation does not pass', (): void => {
