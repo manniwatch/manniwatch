@@ -39,7 +39,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@angular/animations": "~9.1.1",
+    "@angular/animations": "~9.1.2",
     "@angular/cdk": "~9.2.1",
     "@angular/common": "~9.1.2",
     "@angular/compiler": "~9.1.1",
