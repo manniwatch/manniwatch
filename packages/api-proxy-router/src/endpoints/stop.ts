@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
-import { ManniWatchApiClient } from '@manniwatch/api-client';
+import { ManniWatchApiClient, StopMode } from '@manniwatch/api-client';
 import * as prom from '@manniwatch/express-utils';
 import * as express from 'express';
 import { Schema } from 'jsonschema';
@@ -48,10 +48,19 @@ export const createStopRouter: (apiClient: ManniWatchApiClient) => express.Route
         router.get('/:id([a-z0-9A-Z\-\+]+)/passages',
             prom.validateRequest({ query: passagesSchema }),
             (req: express.Request, res: express.Response, next: express.NextFunction): void => {
+                const mode: StopMode = req.query.mode as StopMode || undefined;
+                // tslint:disable-next-line:triple-equals
+                const startTime: number | undefined = req.query.startTime == undefined ?
+                    undefined :
+                    parseInt(req.query.startTime as string, 10);
+                // tslint:disable-next-line:triple-equals
+                const timeFrame: number | undefined = req.query.timeFrame == undefined ?
+                    undefined :
+                    parseInt(req.query.timeFrame as string, 10);
                 prom.promiseToResponse(apiClient.getStopPassages(req.params.id,
-                    req.query.mode,
-                    req.query.startTime,
-                    req.query.timeFrame), res, next);
+                    mode,
+                    startTime,
+                    timeFrame), res, next);
             });
         /**
          * @api {get} /stop/:id/info Request Stop Info

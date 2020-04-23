@@ -15,30 +15,38 @@ coverage:
       api-types:
         flags:
           - ApiTypes
+        threshold: 5%
       client-ng:
         flags:
           - ClientNg
       client-desktop:
         flags:
           - ClientDesktop
+        threshold: 5%
       api-client:
         flags:
           - ApiClient
+        threshold: 5%
       api-proxy-router:
         flags:
           - ApiProxyRouter
+        threshold: 5%
       api-proxy-server:
         flags:
           - ApiProxyServer
+        threshold: 5%
       vehicle-cache:
         flags:
           - VehicleCache
+        threshold: 5%
       vehicle-location-diff:
         flags:
           - VehicleLocationDiff
+        threshold: 5%
       express-utils:
         flags:
           - ExpressUtils
+        threshold: 5%
 parsers:
   javascript:
     enable_partials: yes
@@ -53,3 +61,32 @@ comment:
   layout: "reach,diff,flags,tree"
   behavior: default
   require_changes: no
+
+flags:
+  ApiClient:
+    paths:
+      - packages/api-client/src
+  ClientNg:
+    paths:
+      - packages/client-ng/src
+  ClientDesktop:
+    paths:
+      - packages/client-desktop/src
+  ApiProxyRouter:
+    paths:
+      - packages/api-proxy-router/src
+  ApiProxyServer:
+    paths:
+      - packages/api-proxy-server/src
+  ApiTypes:
+    paths:
+      - packages/api-types/src
+  ExpressUtils:
+    paths:
+      - packages/express-utils/src
+  VehicleCache:
+    paths:
+      - packages/vehicle-cache/src
+  VehicleLocationDiff:
+    paths:
+      - packages/vehicle-location-diff/src

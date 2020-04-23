@@ -2,6 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
+import { StopMode } from '@manniwatch/api-client';
 import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
 
 /**
@@ -40,3 +41,5 @@ export const createTestErrorRequestHandler: (innerSpy: sinon.SinonSpy) => ErrorR
             res.json(NOT_FOUND_RESPONSE);
         };
     };
+
+export const testStopModes: (StopMode | undefined)[] = ['arrival', 'departure', undefined];

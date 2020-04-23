@@ -20,6 +20,15 @@ const validCoordinates: TestIBoundingBox[] = [
     { bottom: '500', left: '-1000', right: '1000', top: '1000' },
     { bottom: '-1000', left: '500', right: '1000', top: '1000' },
 ];
+const validCoordinatesNumbers: { [key in keyof IBoundingBox]: number }[] =
+    validCoordinates.map((val: TestIBoundingBox): { [key in keyof IBoundingBox]: number } => {
+        return {
+            bottom: parseInt(val.bottom, 10),
+            left: parseInt(val.left, 10),
+            right: parseInt(val.right, 10),
+            top: parseInt(val.top, 10),
+        };
+    });
 const positionTypes: PositionType[] = ['RAW', 'CORRECTED'];
 const lastUpdates: string[] = ['22929299292', '2938'];
 type TestIBoundingBox = { [key in keyof IBoundingBox]: string };
@@ -202,7 +211,7 @@ describe('endpoints/geo.ts', (): void => {
                         next();
                     });
                 });
-                validCoordinates.forEach((testCoordinate: TestIBoundingBox): void => {
+                validCoordinates.forEach((testCoordinate: TestIBoundingBox, idx: number): void => {
                     const basePath: string = '/stopPoints' +
                         '?bottom=' + testCoordinate.bottom +
                         '&top=' + testCoordinate.top +
@@ -220,7 +229,7 @@ describe('endpoints/geo.ts', (): void => {
                                 expect(stubClient.getStopPointLocations.callCount)
                                     .to.equal(1, 'getStopPointLocations should only be called once');
                                 expect(stubClient.getStopPointLocations.args).to.deep.equal([[
-                                    testCoordinate,
+                                    validCoordinatesNumbers[idx],
                                 ]]);
                             });
                     });
@@ -271,7 +280,7 @@ describe('endpoints/geo.ts', (): void => {
                         next();
                     });
                 });
-                validCoordinates.forEach((testCoordinate: TestIBoundingBox): void => {
+                validCoordinates.forEach((testCoordinate: TestIBoundingBox, idx: number): void => {
                     const basePath: string = '/stops' +
                         '?bottom=' + testCoordinate.bottom +
                         '&top=' + testCoordinate.top +
@@ -289,7 +298,7 @@ describe('endpoints/geo.ts', (): void => {
                                 expect(stubClient.getStopLocations.callCount)
                                     .to.equal(1, 'getStopLocations should only be called once');
                                 expect(stubClient.getStopLocations.args).to.deep.equal([[
-                                    testCoordinate,
+                                    validCoordinatesNumbers[idx],
                                 ]]);
                             });
                     });
@@ -360,8 +369,10 @@ describe('endpoints/geo.ts', (): void => {
                                     expect(routeErrorStub.callCount).to.equal(0);
                                     expect(stubClient.getVehicleLocations.callCount)
                                         .to.equal(1, 'getVehicleLocations should only be called once');
+                                    const expectedLastUpdate: number | undefined = testLastUpdate ?
+                                        parseInt(testLastUpdate, 10) : undefined;
                                     expect(stubClient.getVehicleLocations.args).to.deep.equal([[
-                                        testPositionType || 'RAW', testLastUpdate,
+                                        testPositionType || 'RAW', expectedLastUpdate,
                                     ]]);
                                 });
                         });

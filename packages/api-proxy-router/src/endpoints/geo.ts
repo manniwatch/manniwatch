@@ -68,10 +68,10 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
             }),
             (req: express.Request, res: express.Response, next: express.NextFunction): void => {
                 util.promiseToResponse(apiClient.getStopLocations({
-                    bottom: req.query.bottom,
-                    left: req.query.left,
-                    right: req.query.right,
-                    top: req.query.top,
+                    bottom: parseInt(req.query.bottom as string, 10),
+                    left: parseInt(req.query.left as string, 10),
+                    right: parseInt(req.query.right as string, 10),
+                    top: parseInt(req.query.top as string, 10),
                 }), res, next);
             });
         /**
@@ -87,10 +87,10 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
             }),
             (req: express.Request, res: express.Response, next: express.NextFunction): void => {
                 util.promiseToResponse(apiClient.getStopPointLocations({
-                    bottom: req.query.bottom,
-                    left: req.query.left,
-                    right: req.query.right,
-                    top: req.query.top,
+                    bottom: parseInt(req.query.bottom as string, 10),
+                    left: parseInt(req.query.left as string, 10),
+                    right: parseInt(req.query.right as string, 10),
+                    top: parseInt(req.query.top as string, 10),
                 }), res, next);
             });
         /**
@@ -106,8 +106,10 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
             }),
             (req: express.Request, res: express.Response, next: express.NextFunction): void => {
                 // tslint:disable-next-line:triple-equals
-                const positionType: PositionType = req.query.positionType != undefined ? req.query.positionType : 'RAW';
-                const lastUpdate: string | number = req.query.lastUpdate;
+                const positionType: PositionType = (req.query.positionType as PositionType) || 'RAW';
+                const lastUpdate: number | undefined = req.query.lastUpdate ?
+                    parseInt(req.query.lastUpdate as string, 10) :
+                    undefined;
                 util.promiseToResponse(apiClient.getVehicleLocations(positionType, lastUpdate), res, next);
             });
         return router;
