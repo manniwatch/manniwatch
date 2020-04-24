@@ -44,3 +44,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Pug Files
+/src/**/*.html
+/src/*.html
