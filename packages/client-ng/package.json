@@ -55,7 +55,6 @@
     "@manniwatch/api-types": "^0.4.1",
     "material-design-icons": "~3.0.1",
     "moment": "~2.24.0",
-    "ng-cli-pug-loader": "~0.2.2",
     "ol": "~6.3.1",
     "rxjs": "~6.5.5",
     "tslib": "~1.11.1",
@@ -83,7 +82,6 @@
     "protractor": "~5.4.4",
     "pug": "~2.0.4",
     "pug-cli": "~1.0.0-alpha6",
-    "pug-loader": "~2.4.0",
     "ts-node": "~8.9.0",
     "tslint": "~6.1.1",
     "typescript": "~3.7.5"
