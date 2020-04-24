@@ -17,7 +17,7 @@ import { TripInfoWithId } from 'src/app/services';
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-trip-passages-list',
     styleUrls: ['./trip-passages-list.component.scss'],
-    templateUrl: './trip-passages-list.component.pug',
+    templateUrl: './trip-passages-list.component.html',
 })
 export class TripPassagesListComponent {
     @Input()

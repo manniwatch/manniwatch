@@ -17,7 +17,7 @@ import {
     ],
     selector: 'app-trip-passages',
     styleUrls: ['./trip-passages.component.scss'],
-    templateUrl: './trip-passages.component.pug',
+    templateUrl: './trip-passages.component.html',
 })
 export class TripPassagesComponent {
 

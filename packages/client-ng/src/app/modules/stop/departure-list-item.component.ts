@@ -14,7 +14,7 @@ import * as moment from 'moment';
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-departure-list-item',
     styleUrls: ['./departure-list-item.component.scss'],
-    templateUrl: './departure-list-item.component.pug',
+    templateUrl: './departure-list-item.component.html',
 })
 export class DepartureListItemComponent {
 

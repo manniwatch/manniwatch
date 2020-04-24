@@ -36,7 +36,7 @@ export class RouteLoadingSubscriber extends Subscriber<Event> {
 @Component({
     selector: 'app-route-loading-indicator',
     styleUrls: ['./route-loading-indicator.component.scss'],
-    templateUrl: './route-loading-indicator.component.pug',
+    templateUrl: './route-loading-indicator.component.html',
 })
 export class RouteLoadingIndicatorComponent implements OnInit, OnDestroy {
 
