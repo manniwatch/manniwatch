@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { IDeparture } from '@manniwatch/api-types';
 import { VEHICLE_STATUS } from '@manniwatch/api-types/dist/vehicle-status';
-import * as moment from 'moment';
+import { differenceInMinutes, parse } from 'date-fns';
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-departure-list-item',
@@ -102,9 +102,9 @@ export class DepartureListItemComponent {
     public calculateDelay(data: IDeparture): false | number {
         if (data && data.actualTime && data.plannedTime) {
             if (data.actualTime !== data.plannedTime) {
-                const actual: moment.Moment = moment(data.actualTime, 'HH:mm');
-                const planned: moment.Moment = moment(data.plannedTime, 'HH:mm');
-                let diffMinutes: number = moment.duration(actual.diff(planned)).asMinutes();
+                const actual: Date = parse(data.actualTime, 'HH:mm', new Date());
+                const planned: Date = parse(data.plannedTime, 'HH:mm', new Date());
+                let diffMinutes: number = differenceInMinutes(actual, planned);
                 if (diffMinutes > 60 * 12) {
                     diffMinutes -= 60 * 24;
                 } else if (diffMinutes < - 60 * 12) {
