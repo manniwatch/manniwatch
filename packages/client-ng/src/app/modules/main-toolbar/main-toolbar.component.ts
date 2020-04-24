@@ -26,7 +26,7 @@ export class NavigationSubscriber extends Subscriber<RouterEvent> {
 @Component({
     selector: 'app-main-toolbar',
     styleUrls: ['./main-toolbar.component.scss'],
-    templateUrl: './main-toolbar.component.pug',
+    templateUrl: './main-toolbar.component.html',
 })
 export class MainToolbarComponent {
 
@@ -44,7 +44,7 @@ export class MainToolbarComponent {
     private mSearchOpen: boolean = false;
 
     constructor(private sidebarService: SidebarService,
-                private router: Router) {
+        private router: Router) {
         this.router.events.subscribe(new NavigationSubscriber(this));
     }
 
