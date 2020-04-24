@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "npm run build:pug && ng build",
     "build:pug": "pug ./src --doctype html",
     "test": "ng test --watch=false --browsers=ChromeHeadless",
     "test:coverage": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
