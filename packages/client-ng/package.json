@@ -16,7 +16,9 @@
     "postinstall": "npm run build:pug",
     "docs": "npx compodoc -p tsconfig.app.json -d ./docs",
     "prepare": "node ./scripts/prepare.js",
-    "prepublishOnly": "npm run test && npm run docs && npm run build"
+    "prepublishOnly": "npm run test && npm run docs && npm run build",
+    "build:stats": "ng build --stats-json",
+    "analyze": "webpack-bundle-analyzer dist/manniwatch/stats-es2015.json"
   },
   "private": false,
   "homepage": "https://manniwatch.github.io/manniwatch/",
@@ -84,6 +86,7 @@
     "pug-cli": "~1.0.0-alpha6",
     "ts-node": "~8.9.0",
     "tslint": "~6.1.1",
-    "typescript": "~3.7.5"
+    "typescript": "~3.7.5",
+    "webpack-bundle-analyzer": "~3.7.0"
   }
 }
