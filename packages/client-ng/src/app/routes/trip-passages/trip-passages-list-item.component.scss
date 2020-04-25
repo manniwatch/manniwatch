@@ -1,0 +1,21 @@
+mat-icon[matListIcon]::after {
+    content:"directions_bus"
+}
+:host-context(.departed) {
+    a{
+        opacity:0.75 !important;
+        background-color: rgba(0,0,0,0.1);
+    }
+    mat-icon[matListIcon]::after {
+        content:"transfer_within_a_station"
+    }
+}
+
+:host-context(.stopping) {
+    a{
+        background-color: rgba(0,255,0,0.1);
+    }
+    mat-icon[matListIcon]::after {
+        content:"departure_board"
+    }
+}
