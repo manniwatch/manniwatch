@@ -57,7 +57,7 @@
     "apidoc": "~0.22.0",
     "request-promise-native": "^1.0.8",
     "supertest": "~4.0.2",
-    "tslint": "~6.1.1",
+    "tslint": "~6.1.2",
     "typescript": "~3.8.3"
   },
   "peerDependencies": {
