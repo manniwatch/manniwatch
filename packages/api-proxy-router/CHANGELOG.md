@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/manniwatch/manniwatch/compare/v0.4.3...v0.5.0) (2020-04-28)
+
+
+### Features
+
+* **api-proxy-router:** add trip/:id/passages route ([#241](https://github.com/manniwatch/manniwatch/issues/241)) ([4677a2e](https://github.com/manniwatch/manniwatch/commit/4677a2e5f32b20ce2b0a4a7c9225cfe130d0f977))
+
+
+
+
+
 ## [0.4.3](https://github.com/manniwatch/manniwatch/compare/v0.4.2...v0.4.3) (2020-04-23)
 
 **Note:** Version bump only for package @manniwatch/api-proxy-router
