@@ -8,7 +8,7 @@ import { environment } from 'src/environments';
 @Component({
     selector: 'app-sidebar',
     styleUrls: ['./sidebar.component.scss'],
-    templateUrl: './sidebar.component.pug',
+    templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent {
     public constructor(private sidebarService: SidebarService) {

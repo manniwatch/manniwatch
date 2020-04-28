@@ -61,7 +61,7 @@ export class OlMainMapDirective extends OlMapComponent implements OnDestroy {
         this.mapSelectInteraction = new Select({
             condition: OlCondition.click,
             multi: false,
-            style: (p0: FeatureLike, p1: number): Style | Style[] => {
+            style: (p0: FeatureLike, p1: number): Style | Style[] | void => {
                 switch (p0.get('type')) {
                     case 'vehicle':
                         return OlUtil.createVehicleMarkerStyle(true)(p0, p1);

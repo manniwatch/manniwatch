@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
 @Component({
     selector: 'app-search',
     styleUrls: ['./search.component.scss'],
-    templateUrl: './search.component.pug',
+    templateUrl: './search.component.html',
 })
 export class SearchComponent implements OnInit, OnDestroy {
 

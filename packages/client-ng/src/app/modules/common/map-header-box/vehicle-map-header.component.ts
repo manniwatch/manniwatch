@@ -14,7 +14,7 @@ import { VehicleMapHeaderService } from './vehicle-map-header.service';
     ],
     selector: 'app-vehicle-map-header',
     styleUrls: ['./map-header.component.scss'],
-    templateUrl: './vehicle-map-header.component.pug',
+    templateUrl: './vehicle-map-header.component.html',
 })
 export class VehicleMapHeaderBoxComponent extends MapHeaderDirective {
 
