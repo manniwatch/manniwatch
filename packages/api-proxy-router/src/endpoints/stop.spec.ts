@@ -19,7 +19,7 @@ import {
 } from './common-test.spec';
 import { createStopRouter, passagesSchema } from './stop';
 const testIds: string[] = ['-12883', 'kasd'];
-describe('endpoints/trip.ts', (): void => {
+describe('endpoints/stop.ts', (): void => {
     describe('createTripRouter', (): void => {
         let app: express.Express;
         let promiseStub: sinon.SinonStub;
