@@ -3,14 +3,13 @@
  */
 
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { IActualDeparture, IRoute, IStopPassage, IStopPointLocation } from '@manniwatch/api-types';
-import { combineLatest, merge, timer, Observable, Subject, Observer, interval } from 'rxjs';
-import { distinctUntilChanged, flatMap, map, shareReplay, switchMap, tap, startWith } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { IStopPassage, IStopPointLocation } from '@manniwatch/api-types';
+import { interval, Observable } from 'rxjs';
+import { map, startWith, switchMap } from 'rxjs/operators';
+import { IStaticMapData } from 'src/app/modules/openlayers';
 import { ApiService } from 'src/app/services';
 import { StopPointService } from 'src/app/services';
-import { IStaticMapData } from 'src/app/modules/openlayers';
-import { OlUtil } from 'src/app/util/ol';
 
 export interface IStatus {
     location?: IStopPointLocation;

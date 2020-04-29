@@ -2,11 +2,11 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { ChangeDetectionStrategy, Component, OnInit, OnDestroy } from '@angular/core';
-import { StopPointInfoService } from './stop-point-info.service';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { IStopPassage } from '@manniwatch/api-types';
 import { Subscription } from 'rxjs';
 import { IStaticMapData } from 'src/app/modules/openlayers';
-import { IStopPointInfo, IStopPassage } from '@manniwatch/api-types';
+import { StopPointInfoService } from './stop-point-info.service';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.Default,
