@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/manniwatch/manniwatch/compare/v0.6.0...v0.6.1) (2020-04-29)
+
+
+### Bug Fixes
+
+* **api-client:** fix request error in getStopPointPassages ([#249](https://github.com/manniwatch/manniwatch/issues/249)) ([f0ca924](https://github.com/manniwatch/manniwatch/commit/f0ca924e436335996d6f0f573008e31f19d3b83b)), closes [#248](https://github.com/manniwatch/manniwatch/issues/248)
+
+
+
+
+
 # [0.6.0](https://github.com/manniwatch/manniwatch/compare/v0.5.1...v0.6.0) (2020-04-29)
 
 
