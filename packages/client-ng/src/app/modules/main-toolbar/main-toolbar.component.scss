@@ -1,5 +1,5 @@
 .fill-remaining-space {
-    /* This fills the remaining space, by using flexbox. 
+    /* This fills the remaining space, by using flexbox.
        Every toolbar row uses a flexbox row layout. */
     flex: 1 1 auto;
 }
@@ -18,16 +18,6 @@ button.sidebar-toggle{
     display:block;
 }
 
-@media (max-width: 439px){
-    .navigation-closeable{
-        button.close{
-            display:none;
-        }
-        mat-divider.close-divider{
-            display:none;
-        }
-    }
-}
 button.close{
     display:none;
     ::after{

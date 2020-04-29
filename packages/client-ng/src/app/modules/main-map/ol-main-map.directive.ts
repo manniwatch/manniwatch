@@ -13,11 +13,11 @@ import { SelectEvent } from 'ol/interaction/Select';
 import Style from 'ol/style/Style';
 import Feature, { FeatureLike } from 'ol/Feature';
 import { Subscription } from 'rxjs';
+import { OlMapComponent } from 'src/app/modules/openlayers';
+import { ApiService, SettingsService } from 'src/app/services';
 import { VehicleService } from 'src/app/services';
-import { SettingsService } from 'src/app/services/settings.service';
+import { OlUtil } from 'src/app/util/ol';
 import { StopPointService } from '../../services/stop-point.service';
-import { OlMapComponent, OlUtil } from '../common/openlayers';
-import { ApiService } from './../../services';
 import { OlMarkerHandler } from './ol-marker-handler';
 import { OlVehicleHandler } from './ol-vehicle-handler';
 @Directive({
