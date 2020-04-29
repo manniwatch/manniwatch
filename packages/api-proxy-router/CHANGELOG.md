@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/manniwatch/manniwatch/compare/v0.5.1...v0.6.0) (2020-04-29)
+
+
+### Features
+
+* **api-proxy-router:** add stopPoint/:id/passages route ([#246](https://github.com/manniwatch/manniwatch/issues/246)) ([776664c](https://github.com/manniwatch/manniwatch/commit/776664c6392f4bf607a39d5dd939cc502cce4e9e)), closes [#245](https://github.com/manniwatch/manniwatch/issues/245)
+
+
+
+
+
 # [0.5.0](https://github.com/manniwatch/manniwatch/compare/v0.4.3...v0.5.0) (2020-04-28)
 
 
