@@ -11,7 +11,7 @@ import VectorSource from 'ol/source/Vector';
 import Feature from 'ol/Feature';
 import { combineLatest, Observable, Subscription } from 'rxjs';
 import { startWith, take } from 'rxjs/operators';
-import { OlUtil } from '../common/openlayers';
+import { OlUtil } from 'src/app/util/ol';
 import { OlMainMapDirective } from './ol-main-map.directive';
 export class OlMarkerHandler {
 

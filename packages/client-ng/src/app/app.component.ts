@@ -4,7 +4,7 @@
 
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav, MatSidenavContainer } from '@angular/material/sidenav';
-import { SidebarService } from './services/sidebar.service';
+import { SidebarService } from 'src/app/modules/sidebar';
 @Component({
     selector: 'app-root',
     styleUrls: ['./app.component.scss'],

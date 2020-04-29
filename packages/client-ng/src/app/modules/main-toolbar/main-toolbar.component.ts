@@ -5,7 +5,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router, RouterEvent } from '@angular/router';
 import { Subscriber } from 'rxjs';
-import { SidebarService } from 'src/app/services/sidebar.service';
+import { SidebarService } from 'src/app/modules/sidebar';
 import { ToolbarSearchBoxComponent } from './search-box.component';
 
 // tslint:disable:max-classes-per-file

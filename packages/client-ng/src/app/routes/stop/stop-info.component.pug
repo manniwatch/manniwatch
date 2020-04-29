@@ -1,0 +1,7 @@
+app-header-box([title]="stopPassage?.stopName")
+    map(appOlStatic,[mapData]="headerMapData")
+mat-tab-group(mat-stretch-tabs,dynamicHeight)
+    mat-tab(i18n-label="tab header departures|Departures@@departures",label="Departures")
+        app-departure-list([departures]="stopPassage?.actual")
+    mat-tab(i18n-label="tab header routes|Routes@@Routes",label="Routes")
+        app-route-list([routes]="stopPassage?.routes")

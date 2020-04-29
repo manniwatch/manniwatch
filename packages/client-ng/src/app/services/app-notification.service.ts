@@ -3,9 +3,7 @@
  */
 
 import { Injectable } from '@angular/core';
-import { MatSnackBar, MatSnackBarDismiss } from '@angular/material/snack-bar';
-import { zip, Observable, Subject } from 'rxjs';
-import { flatMap, map, startWith } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
 
 /**
  * Notification Type
@@ -58,33 +56,7 @@ export class AppNotificationService {
      * Subject for replaying notifcations
      */
     private notificationSubject: Subject<IAppNotification> = new Subject();
-    private notificationClosedSubject: Subject<void> = new Subject();
-    constructor(private matSnackBar: MatSnackBar) {
-        this.createNotificationQueueObservable()
-            .subscribe((value: IAppNotificationDismiss): void => {
-                this.notificationClosedSubject.next();
-            });
-    }
-
-    /**
-     * Creates an observable that returns the displayed Notification after it was viewed
-     */
-    public createNotificationQueueObservable(): Observable<IAppNotificationDismiss> {
-        return zip(this.notificationSubject, this.notificationClosedSubject
-            // tslint:disable-next-line:deprecation
-            .pipe(startWith<undefined>(undefined)))
-            .pipe(
-                map((value: [IAppNotification, void]): IAppNotification => value[0]),
-                flatMap((noti: IAppNotification): Observable<IAppNotificationDismiss> =>
-                    this.matSnackBar.open(noti.title, undefined, {
-                        announcementMessage: noti.title,
-                        duration: 2000,
-                    }).afterDismissed()
-                        .pipe(map((dismissNotice: MatSnackBarDismiss): IAppNotificationDismiss =>
-                            ({
-                                dismissedByAction: dismissNotice.dismissedByAction,
-                                notification: noti,
-                            })))));
+    constructor() {
     }
 
     /**

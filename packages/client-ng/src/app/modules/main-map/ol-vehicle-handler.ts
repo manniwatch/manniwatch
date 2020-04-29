@@ -10,9 +10,9 @@ import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import { Subscription } from 'rxjs';
 import { distinctUntilChanged, pluck } from 'rxjs/operators';
-import { runOutsideZone } from 'src/app/rxjs-util/run-outside-zone';
 import { TimestampedVehicleLocation } from 'src/app/services';
-import { OlUtil } from '../common/openlayers';
+import { OlUtil } from 'src/app/util/ol';
+import { runOutsideZone } from 'src/app/util/rxjs';
 import { OlMainMapDirective } from './ol-main-map.directive';
 export class OlVehicleHandler {
 

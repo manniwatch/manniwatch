@@ -13,10 +13,16 @@ import {
     IVehicleLocationList,
     IVehiclePathInfo,
 } from '@manniwatch/api-types';
-import { Extent } from 'ol/extent';
 import { Observable } from 'rxjs';
 
 export type TripInfoWithId = ITripPassages & { tripId: string };
+export interface IBounds {
+    bottom: number;
+    left: number;
+    right: number;
+    top: number;
+}
+
 export abstract class ApiService {
 
     abstract baseUrl(): string;
@@ -29,7 +35,7 @@ export abstract class ApiService {
     abstract getStopPointPassages(stopPointId: string): Observable<IStopPassage>;
     abstract getVehicleLocations(lastUpdate: number): Observable<IVehicleLocationList>;
     abstract getVehicleLocation(vehicleId: string, lastUpdate: number): Observable<IVehicleLocation>;
-    abstract getStopLocations(bounds?: Extent): Observable<IStopLocations>;
-    abstract getStopPointLocations(bounds?: Extent): Observable<IStopPointLocations>;
+    abstract getStopLocations(bounds?: IBounds): Observable<IStopLocations>;
+    abstract getStopPointLocations(bounds?: IBounds): Observable<IStopPointLocations>;
     abstract getSettings(): Observable<ISettings>;
 }
