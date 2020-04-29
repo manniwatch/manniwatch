@@ -222,13 +222,13 @@ export class ManniWatchApiClient {
      * @param timeFrame time frame from startTime in minutes
      * @since 3.0.0
      */
-    public getStopPointPassages(stopId: string,
+    public getStopPointPassages(stopPointId: string,
         mode: StopMode = 'departure',
         startTime?: number,
         timeFrame?: number): reqp.RequestPromise<IStopPassage> {
         const formData: { [key: string]: any } = {
             mode,
-            stop: stopId,
+            stopPoint: stopPointId,
         };
         // tslint:disable-next-line:triple-equals
         if (startTime != undefined) {

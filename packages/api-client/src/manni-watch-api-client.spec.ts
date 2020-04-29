@@ -363,7 +363,7 @@ describe('manni-watch-api-client.ts', (): void => {
                                 optionalTimes.forEach((testTimeFrame: any): void => {
                                     it('should query stop passages for ("' + testId + '","' + mode + '",'
                                         + testStartTime + ',' + testTimeFrame + ')', (): Promise<void> => {
-                                            let expectedFormBody: string = 'mode=' + mode + '&stop=' + testId;
+                                            let expectedFormBody: string = 'mode=' + mode + '&stopPoint=' + testId;
                                             // tslint:disable-next-line:triple-equals
                                             if (testStartTime != undefined) {
                                                 expectedFormBody += '&startTime=' + testStartTime;
@@ -387,7 +387,7 @@ describe('manni-watch-api-client.ts', (): void => {
                         });
                         it('should query stop passages for "' + testId + '" with default parameters', (): Promise<void> => {
                             const scope: nock.Scope = nock(testDomain)
-                                .post('/internetservice/services/passageInfo/stopPassages/stopPoint', 'mode=departure&stop=' + testId)
+                                .post('/internetservice/services/passageInfo/stopPassages/stopPoint', 'mode=departure&stopPoint=' + testId)
                                 .reply(200, testSuccessResponse);
                             return instance.getStopPointPassages(testId)
                                 .then((val: any): void => {
