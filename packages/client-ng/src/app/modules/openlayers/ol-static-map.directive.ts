@@ -17,7 +17,7 @@ export interface IStaticMapData {
     vehicles?: IVehicleLocation[];
     map: {
         blur?: boolean,
-        center: TrapezeCoord,
+        center?: TrapezeCoord,
         zoomLevel?: number,
     };
 }
