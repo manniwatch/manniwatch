@@ -4,7 +4,7 @@
 
 import { NgZone } from '@angular/core';
 import { IStopLocation, IStopPointLocation } from '@manniwatch/api-types';
-import { Map as OlMap } from 'ol';
+import { Map as OlMap, MapEvent } from 'ol';
 import Point from 'ol/geom/Point';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
@@ -13,6 +13,10 @@ import { combineLatest, Observable, Subscription } from 'rxjs';
 import { startWith, take } from 'rxjs/operators';
 import { OlUtil } from 'src/app/util/ol';
 import { OlMainMapDirective } from './ol-main-map.directive';
+import BaseEvent from 'ol/events/Event';
+import { toLonLat } from 'ol/proj';
+import { getBottomLeft, getTopRight } from 'ol/extent';
+import { runOutsideZone } from 'src/app/util/rxjs';
 export class OlMarkerHandler {
 
     /**
@@ -59,10 +63,31 @@ export class OlMarkerHandler {
         leafletMap.addLayer(this.stopPointMarkerLayer);
         this.loadSubscription =
             combineLatest([this.getStopLocations(), this.getStopPointLocations()])
+                .pipe(runOutsideZone(this.mainMap.zone))
                 .subscribe((result: [IStopLocation[], IStopPointLocation[]]): void => {
                     this.setStopPoints(result[1]);
                     this.setStops(result[0]);
                 });
+        leafletMap.on('moveend', (evt: MapEvent): void => {
+            //console.log(evt);
+            let map = evt.map;
+            let extent = map.getView().calculateExtent(map.getSize());
+            const [longitudeLeft, latitudeBottom] = toLonLat(getBottomLeft(extent));
+            const [longitudeRight, latitudeTop] = toLonLat(getTopRight(extent));
+            const longitude: any = {
+                max: Math.ceil(longitudeRight * 3600000),
+                min: Math.floor(longitudeLeft * 3600000),
+            };
+            const latitude: any = {
+                max: Math.ceil(latitudeTop * 3600000),
+                min: Math.floor(latitudeBottom * 3600000),
+            };
+            console.log(longitude, latitude);
+            /*
+            this.mainMap.stopService
+                .getStops(longitude, latitude)
+                .then(console.log);*/
+        })
     }
 
     public setStopPoints(stopPoints: IStopPointLocation[]): void {

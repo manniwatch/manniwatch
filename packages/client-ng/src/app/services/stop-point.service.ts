@@ -4,10 +4,11 @@
 
 import { Injectable } from '@angular/core';
 import { IStopLocation, IStopLocations, IStopPointLocation, IStopPointLocations } from '@manniwatch/api-types';
-import { Observable, Subscriber } from 'rxjs';
-import { debounceTime, map, retryWhen, shareReplay, tap, withLatestFrom } from 'rxjs/operators';
+import { from, of, Observable, Subscriber } from 'rxjs';
+import { debounceTime, map, retryWhen, shareReplay, tap, withLatestFrom, flatMap, first } from 'rxjs/operators';
 import { ApiService } from './api.service';
 import { AppNotificationService } from './app-notification.service';
+import { StopsDb } from './stops-db';
 
 // tslint:disable:max-classes-per-file
 export class StopPointLoadSubscriber extends Subscriber<IStopLocation[]> {
@@ -26,7 +27,7 @@ export class StopPointLoadSubscriber extends Subscriber<IStopLocation[]> {
     public complete(): void {
     }
 }
-
+export interface IMinMax { min: number; max: number; };
 /**
  * Service for caching and retrieving Stop Locations
  */
@@ -37,22 +38,110 @@ export class StopPointService {
 
     private mStopPointObservable: Observable<IStopPointLocation[]>;
     private mStopObservable: Observable<IStopLocation[]>;
+    private mStopStatusObservable: Observable<true>;
+    private mStopPointStatusObservable: Observable<true>;
+    public stopsDb: StopsDb;
     constructor(private api: ApiService,
         private notificationService: AppNotificationService) {
-        this.mStopObservable = this.setupLocationsPoll(this.api.getStopLocations()
-            .pipe(map((stops: IStopLocations): IStopLocation[] =>
-                stops.stops)));
-        this.mStopPointObservable = this.setupLocationsPoll(this.api.getStopPointLocations()
-            .pipe(map((stops: IStopPointLocations): IStopPointLocation[] =>
-                stops.stopPoints)));
+        this.stopsDb = new StopsDb();
+        this.mStopStatusObservable = this.createStatusObservable(this.getStopCount(), this.refreshStopTable());
+        this.mStopPointStatusObservable = this.createStatusObservable(this.getStopCount(), this.refreshStopPointTable());
+        this.mStopObservable = this.mStopStatusObservable
+            .pipe(flatMap((): Observable<IStopLocation[]> => {
+                const queryStops: Promise<IStopLocation[]> = this.stopsDb
+                    .stopLocations
+                    .toArray();
+                return from(queryStops);
+            }));
+        this.mStopPointObservable = this.mStopPointStatusObservable
+            .pipe(flatMap((): Observable<IStopPointLocation[]> => {
+                const queryStops: Promise<IStopPointLocation[]> = this.stopsDb
+                    .stopPointLocations
+                    .toArray();
+                return from(queryStops);
+            }));
     }
 
-    public setupLocationsPoll<T extends IStopLocation | IStopPointLocation>(pollObservable: Observable<T[]>): Observable<T[]> {
-        return pollObservable
-            .pipe(retryWhen((errors: Observable<any>): Observable<any> =>
-                errors
-                    .pipe(tap((err: any): void => this.notificationService.report(err)),
-                        debounceTime(5000))), shareReplay(1));
+    public createStatusObservable(countObservable: Observable<number>,
+        queryDataObservable: Observable<void>): Observable<true> {
+        return countObservable
+            .pipe(flatMap((stopCount: number): Observable<true> => {
+                if (stopCount > 0) {
+                    return of(true);
+                } else {
+                    return queryDataObservable
+                        .pipe(map((): true => {
+                            return true;
+                        }));
+                }
+            }), first((status: true): true => status), shareReplay(1));
+    }
+
+    public getStopCount(): Observable<number> {
+        const queryStopCount: Promise<number> = this.stopsDb.stopLocations.count();
+        return from(queryStopCount);
+    }
+
+    public getStopPointCount(): Observable<number> {
+        const queryStopCount: Promise<number> = this.stopsDb.stopPointLocations.count();
+        return from(queryStopCount);
+    }
+
+    public getStopsInBox(longitude: IMinMax, latitude: IMinMax): Observable<IStopLocation[]> {
+        const queryStops: Promise<IStopLocation[]> = this.stopsDb
+            .stopLocations
+            .where(['latitude', 'longitude'])
+            .between([latitude.min, longitude.min], [latitude.max, longitude.max], true, true)
+            .toArray();
+        return from(queryStops);
+    }
+
+    public refreshStopTable(): Observable<void> {
+        return this.api
+            .getStopLocations()
+            .pipe(map((stopList: IStopLocations): IStopLocation[] => {
+                return stopList.stops;
+            }),
+                flatMap((stops: IStopLocation[]): Observable<void> => {
+                    return this.updateStopDatabaseEntries(stops);
+                }));
+    }
+
+    public refreshStopPointTable(): Observable<void> {
+        return this.api
+            .getStopPointLocations()
+            .pipe(map((stopList: IStopPointLocations): IStopPointLocation[] => {
+                return stopList.stopPoints;
+            }),
+                flatMap((stops: IStopPointLocation[]): Observable<void> => {
+                    return this.updateStopPointDatabaseEntries(stops);
+                }));
+    }
+
+    public updateStopDatabaseEntries(stops: IStopLocation[]): Observable<void> {
+        return from(this.stopsDb.transaction('rw', this.stopsDb.stopLocations, async (): Promise<void> => {
+            await this.stopsDb.stopLocations.clear();
+            await this.stopsDb.stopLocations.bulkPut(stops);
+        }));
+    }
+
+    public updateStopPointDatabaseEntries(stops: IStopPointLocation[]): Observable<void> {
+        return from(this.stopsDb.transaction('rw', this.stopsDb.stopPointLocations, async (): Promise<void> => {
+            await this.stopsDb.stopPointLocations.clear();
+            await this.stopsDb.stopPointLocations.bulkPut(stops);
+        }));
+    }
+
+    public searchStop(searchPattern: string): Observable<IStopLocation[]> {
+        return this.mStopStatusObservable
+            .pipe(flatMap((): Observable<IStopLocation[]> => {
+                const query: Promise<IStopLocation[]> = this.stopsDb
+                    .stopLocations
+                    .filter((testStop: IStopLocation): boolean => {
+                        return testStop.name.toLowerCase().includes(searchPattern);
+                    }).toArray();
+                return from(query);
+            }));
     }
 
     public filterByObservable(filter: Observable<string>): Observable<IStopLocation> {
@@ -69,6 +158,7 @@ export class StopPointService {
                     return undefined;
                 }));
     }
+
     public filterStop(string: string): Observable<IStopLocation> {
         return this.stopObservable
             .pipe(map((stopLocations: IStopLocation[]): IStopLocation => {

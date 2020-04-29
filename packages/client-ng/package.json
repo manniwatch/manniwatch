@@ -1,99 +1,99 @@
 {
-  "name": "@manniwatch/client-ng",
-  "description": "Angular Client for Manniwatch",
-  "version": "0.11.1",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "npm run build:pug && ng build",
-    "build:pug": "pug ./src --doctype html",
-    "test": "ng test --watch=false --browsers=ChromeHeadless",
-    "test:coverage": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
-    "test:watch": "ng test",
-    "lint": "ng lint",
-    "lint:fix": "ng lint --fix",
-    "e2e": "ng e2e",
-    "postinstall": "npm run build:pug",
-    "docs": "npx compodoc -p tsconfig.app.json -d ./docs",
-    "prepare": "node ./scripts/prepare.js",
-    "prepublishOnly": "npm run test && npm run docs && npm run build",
-    "build:stats": "ng build --stats-json",
-    "analyze": "webpack-bundle-analyzer dist/manniwatch/stats-es2015.json"
-  },
-  "private": false,
-  "homepage": "https://manniwatch.github.io/manniwatch/",
-  "author": {
-    "name": "manniwatch",
-    "email": "manniwatch@users.noreply.github.com",
-    "url": "https://github.com/manniwatch"
-  },
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/manniwatch/manniwatch/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/manniwatch/manniwatch.git"
-  },
-  "engines": {
-    "node": ">=10.0.0"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "files": [
-    "dist/manniwatch/*",
-    "src/*"
-  ],
-  "dependencies": {
-    "@angular/animations": "~9.1.11",
-    "@angular/cdk": "~9.2.4",
-    "@angular/common": "~9.1.11",
-    "@angular/compiler": "~9.1.11",
-    "@angular/core": "~9.1.11",
-    "@angular/forms": "~9.1.11",
-    "@angular/localize": "~9.1.11",
-    "@angular/material": "~9.2.4",
-    "@angular/platform-browser": "~9.1.11",
-    "@angular/platform-browser-dynamic": "~9.1.11",
-    "@angular/router": "~9.1.9",
-    "@angular/service-worker": "~9.1.11",
-    "@manniwatch/api-types": "^0.11.0",
-    "date-fns": "~2.14.0",
-    "dexie": "^3.0.1",
-    "material-design-icons": "~3.0.1",
-    "ol": "~6.3.1",
-    "rxjs": "~6.5.5",
-    "tslib": "~2.0.0",
-    "zone.js": "~0.10.3"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "~0.901.7",
-    "@angular-devkit/build-ng-packagr": "~0.901.8",
-    "@angular/cli": "~9.1.8",
-    "@angular/compiler-cli": "~9.1.9",
-    "@angular/language-service": "~9.1.9",
-    "@compodoc/compodoc": "~1.1.11",
-    "@types/jasmine": "~3.5.10",
-    "@types/jasminewd2": "~2.0.8",
-    "@types/node": "~14.0.12",
-    "@types/ol": "~6.3.1",
-    "apply-loader": "~2.0.0",
-    "codelyzer": "~5.2.2",
-    "jasmine-core": "~3.5.0",
-    "jasmine-spec-reporter": "~5.0.2",
-    "karma": "~5.1.0",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage-istanbul-reporter": "~3.0.3",
-    "karma-jasmine": "~3.3.1",
-    "karma-jasmine-html-reporter": "~1.5.4",
-    "ng-packagr": "^9.1.5",
-    "protractor": "~7.0.0",
-    "pug": "~3.0.0",
-    "pug-cli": "~1.0.0-alpha6",
-    "ts-node": "~8.10.2",
-    "tslint": "~6.1.2",
-    "typescript": "~3.7.5",
-    "webpack-bundle-analyzer": "~3.8.0"
-  }
+	"name": "@manniwatch/client-ng",
+	"description": "Angular Client for Manniwatch",
+	"version": "0.11.1",
+	"scripts": {
+		"ng": "ng",
+		"start": "ng serve",
+		"build": "npm run build:pug && ng build",
+		"build:pug": "pug ./src --doctype html",
+		"test": "ng test --watch=false --browsers=ChromeHeadless",
+		"test:coverage": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
+		"test:watch": "ng test",
+		"lint": "ng lint",
+		"lint:fix": "ng lint --fix",
+		"e2e": "ng e2e",
+		"postinstall": "npm run build:pug",
+		"docs": "npx compodoc -p tsconfig.app.json -d ./docs",
+		"prepare": "node ./scripts/prepare.js",
+		"prepublishOnly": "npm run test && npm run docs && npm run build",
+		"build:stats": "ng build --stats-json",
+		"analyze": "webpack-bundle-analyzer dist/manniwatch/stats-es2015.json"
+	},
+	"private": false,
+	"homepage": "https://manniwatch.github.io/manniwatch/",
+	"author": {
+		"name": "manniwatch",
+		"email": "manniwatch@users.noreply.github.com",
+		"url": "https://github.com/manniwatch"
+	},
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/manniwatch/manniwatch/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/manniwatch/manniwatch.git"
+	},
+	"engines": {
+		"node": ">=10.0.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"files": [
+		"dist/manniwatch/*",
+		"src/*"
+	],
+	"dependencies": {
+		"@angular/animations": "~9.1.11",
+		"@angular/cdk": "~9.2.4",
+		"@angular/common": "~9.1.11",
+		"@angular/compiler": "~9.1.11",
+		"@angular/core": "~9.1.11",
+		"@angular/forms": "~9.1.11",
+		"@angular/localize": "~9.1.11",
+		"@angular/material": "~9.2.4",
+		"@angular/platform-browser": "~9.1.11",
+		"@angular/platform-browser-dynamic": "~9.1.11",
+		"@angular/router": "~9.1.9",
+		"@angular/service-worker": "~9.1.11",
+		"@manniwatch/api-types": "^0.11.0",
+		"date-fns": "~2.14.0",
+		"dexie": "~3.0.1",
+		"material-design-icons": "~3.0.1",
+		"ol": "~6.3.1",
+		"rxjs": "~6.5.5",
+		"tslib": "~2.0.0",
+		"zone.js": "~0.10.3"
+	},
+	"devDependencies": {
+		"@angular-devkit/build-angular": "~0.901.7",
+		"@angular-devkit/build-ng-packagr": "~0.901.8",
+		"@angular/cli": "~9.1.8",
+		"@angular/compiler-cli": "~9.1.9",
+		"@angular/language-service": "~9.1.9",
+		"@compodoc/compodoc": "~1.1.11",
+		"@types/jasmine": "~3.5.10",
+		"@types/jasminewd2": "~2.0.8",
+		"@types/node": "~14.0.12",
+		"@types/ol": "~6.3.1",
+		"apply-loader": "~2.0.0",
+		"codelyzer": "~5.2.2",
+		"jasmine-core": "~3.5.0",
+		"jasmine-spec-reporter": "~5.0.2",
+		"karma": "~5.1.0",
+		"karma-chrome-launcher": "~3.1.0",
+		"karma-coverage-istanbul-reporter": "~3.0.3",
+		"karma-jasmine": "~3.3.1",
+		"karma-jasmine-html-reporter": "~1.5.4",
+		"ng-packagr": "^9.1.5",
+		"protractor": "~7.0.0",
+		"pug": "~3.0.0",
+		"pug-cli": "~1.0.0-alpha6",
+		"ts-node": "~8.10.2",
+		"tslint": "~6.1.2",
+		"typescript": "~3.7.5",
+		"webpack-bundle-analyzer": "~3.8.0"
+	}
 }
