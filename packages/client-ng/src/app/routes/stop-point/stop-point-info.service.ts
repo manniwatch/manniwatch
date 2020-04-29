@@ -4,9 +4,10 @@
 
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IActualDeparture, IRoute, IStopPassage, IStopPointLocation } from '@manniwatch/api-types';
-import { combineLatest, merge, timer, Observable, Subject } from 'rxjs';
-import { distinctUntilChanged, flatMap, map, shareReplay, switchMap, tap } from 'rxjs/operators';
+import { IStopPassage, IStopPointLocation } from '@manniwatch/api-types';
+import { interval, Observable } from 'rxjs';
+import { map, startWith, switchMap } from 'rxjs/operators';
+import { IStaticMapData } from 'src/app/modules/openlayers';
 import { ApiService } from 'src/app/services';
 import { StopPointService } from 'src/app/services';
 
@@ -16,65 +17,42 @@ export interface IStatus {
 }
 @Injectable()
 export class StopPointInfoService {
-
-    public get actualPassagesObservable(): Observable<IActualDeparture[]> {
-        return this.passagesObservable
-            .pipe(map((data: IStopPassage): IActualDeparture[] =>
-                data.actual || []));
-    }
-    public get routesObservable(): Observable<IRoute[]> {
-        return this.passagesObservable
-            .pipe(map((data: IStopPassage): IRoute[] =>
-                data.routes || []), distinctUntilChanged((prev: IRoute[], curr: IRoute[]): boolean => {
-                    if (prev.length !== curr.length) {
-                        return false;
-                    }
-                    for (let i: number = 0; i < prev.length; i++) {
-                        if (prev[i].id !== curr[i].id) {
-                            return false;
-                        }
-                    }
-                    return true;
-                }));
-    }
-    public readonly statusObservable: Observable<IStatus>;
-    public readonly locationObservable: Observable<IStopPointLocation>;
-    public readonly passagesObservable: Observable<IStopPassage>;
-    private readonly mStatusSubject: Subject<string> = new Subject();
+    public readonly stopPassageObservable: Observable<IStopPassage>;
     constructor(private route: ActivatedRoute,
         private apiService: ApiService,
-        stopService: StopPointService) {
-        const stopPointIdObservable: Observable<string> = this.route.params
-            .pipe(map((params: any): string =>
-                params.stopPointId));
-        const resolverData: Observable<IStopPassage> = this.route.data
-            .pipe(map((data: any): IStopPassage =>
-                data.stopPoint));
-        const d: Observable<IStopPassage> = this.mStatusSubject
-            .pipe(switchMap((name: any): Observable<IStopPassage> =>
-                timer(5000).pipe(flatMap((): Observable<IStopPassage> =>
-                    this.apiService
-                        .getStopPointPassages(name))))) as Observable<IStopPassage>;
-        this.passagesObservable = merge(resolverData, d)
-            .pipe(tap((stop: IStopPassage): void => {
-                this.mStatusSubject.next(stop.stopShortName);
-            }), shareReplay(1));
-        this.locationObservable = combineLatest([stopPointIdObservable, stopService.stopPointObservable])
-            .pipe(map((data: [string, IStopPointLocation[]]): IStopPointLocation => {
-                const idx: number = data[1].findIndex((stp: IStopPointLocation): boolean =>
-                    stp.stopPoint === data[0]);
-                return idx >= 0 ? data[1][idx] : undefined;
-            }), distinctUntilChanged((x: IStopPointLocation, y: IStopPointLocation): boolean => {
-                if (x && y) {
-                    return x.id === y.id;
+        public stopService: StopPointService) {
+        this.stopPassageObservable = this.route.data.pipe(map((params: any): IStopPassage => {
+            return params.stopPoint;
+        }));
+    }
+    public createStopPassageRefreshObservable(): Observable<IStopPassage> {
+        return this.stopPassageObservable
+            .pipe(switchMap((value: IStopPassage): Observable<IStopPassage> => {
+                return interval(5000)
+                    .pipe(switchMap((): Observable<IStopPassage> =>
+                        this.apiService
+                            .getStopPointPassages(value.stopShortName)),
+                        startWith(value));
+            }));
+    }
+
+    public createStopPointLocationObservable(): Observable<IStaticMapData> {
+        return this.stopPassageObservable
+            .pipe(switchMap((stopPassage: IStopPassage): Observable<IStopPointLocation> => {
+                return this.stopService.watchStopPoint(stopPassage.stopShortName)
+                    .pipe(startWith<IStopPointLocation>(undefined as IStopPointLocation));
+            }), map((stop: IStopPointLocation): IStaticMapData => {
+                // tslint:disable-next-line:triple-equals
+                if (stop == undefined) {
+                    return { map: { blur: true } };
+                } else {
+                    return {
+                        map: {
+                            blur: false,
+                            center: stop,
+                        },
+                    };
                 }
-                return false;
-            }), shareReplay(1));
-        this.statusObservable = combineLatest([this.passagesObservable, this.locationObservable])
-            .pipe(map((val: [IStopPassage, IStopPointLocation]): IStatus =>
-                ({
-                    location: val[1],
-                    passages: val[0],
-                })), shareReplay(1));
+            }));
     }
 }

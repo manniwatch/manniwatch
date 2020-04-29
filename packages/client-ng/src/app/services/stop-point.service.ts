@@ -83,6 +83,20 @@ export class StopPointService {
             }));
     }
 
+    public watchStopPoint(stopPointId: string): Observable<IStopPointLocation> {
+        return this.stopPointObservable
+            .pipe(map((stopLocations: IStopPointLocation[]): IStopPointLocation => {
+                if (stopLocations) {
+                    const idx: number = stopLocations.findIndex((stop: IStopPointLocation): boolean =>
+                        stop.stopPoint === stopPointId);
+                    if (idx >= 0) {
+                        return stopLocations[idx];
+                    }
+                }
+                return undefined;
+            }));
+    }
+
     public get stopObservable(): Observable<IStopLocation[]> {
         return this.mStopObservable;
     }
