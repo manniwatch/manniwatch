@@ -7,7 +7,7 @@
     "@types/node": "~13.13.4",
     "@types/sinon": "~9.0.0",
     "chai": "~4.2.0",
-    "commitizen": "^4.0.4",
+    "commitizen": "^4.0.5",
     "conventional-changelog-angular": "^5.0.6",
     "cz-conventional-changelog": "^3.1.0",
     "fs-extra": "^9.0.0",
