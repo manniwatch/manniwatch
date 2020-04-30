@@ -10,6 +10,12 @@ import {
 } from '@angular/core';
 import { ITripPassage } from '@manniwatch/api-types';
 import { VEHICLE_STATUS } from '@manniwatch/api-types/dist/vehicle-status';
+import {
+    differenceInMinutes as dateDifferenceInMinutes,
+    format as dateFormat,
+    formatDistanceToNow as dateFormatDistanceToNow,
+    parse as dateParse,
+} from 'date-fns';
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-trip-passages-list-item',
@@ -29,4 +35,15 @@ export class TripPassagesListItemComponent {
         return this.passage ? this.passage.status === VEHICLE_STATUS.STOPPING : false;
     }
 
+    public get passageTime(): string {
+        if (this.passage) {
+            const planned: Date = dateParse(this.passage.actualTime, 'HH:mm', new Date());
+            const diff: number = dateDifferenceInMinutes(planned, new Date());
+            if (Math.abs(diff) < 15) {
+                return dateFormatDistanceToNow(planned, { addSuffix: true });
+            }
+            return dateFormat(planned, 'p');
+        }
+        return 'No departure time';
+    }
 }

@@ -3,6 +3,7 @@
  */
 
 import { Component, VERSION } from '@angular/core';
+import { environment } from 'src/environments';
 import { SidebarService } from './sidebar.service';
 
 @Component({
@@ -28,7 +29,7 @@ export class SidebarComponent {
      * @returns the package version
      */
     public get appVersion(): string {
-        return 'version';
+        return environment.version;
     }
 
     /**
