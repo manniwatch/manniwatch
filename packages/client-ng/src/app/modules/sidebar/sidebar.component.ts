@@ -5,6 +5,8 @@
 import { Component, VERSION } from '@angular/core';
 import { environment } from 'src/environments';
 import { SidebarService } from './sidebar.service';
+import { MatDialog } from '@angular/material/dialog';
+import { RequestUpdateDialogComponent } from '../request-update-dialog';
 
 @Component({
     selector: 'app-sidebar',
@@ -12,7 +14,8 @@ import { SidebarService } from './sidebar.service';
     templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent {
-    public constructor(private sidebarService: SidebarService) {
+    public constructor(private sidebarService: SidebarService,
+        public dialog: MatDialog) {
 
     }
 
@@ -38,5 +41,9 @@ export class SidebarComponent {
      */
     public get angularVersion(): string {
         return VERSION.full;
+    }
+
+    public checkForUpdate(): void {
+        this.dialog.open(RequestUpdateDialogComponent);
     }
 }
