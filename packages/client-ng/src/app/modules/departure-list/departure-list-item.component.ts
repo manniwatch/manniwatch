@@ -9,7 +9,13 @@ import {
 } from '@angular/core';
 import { IDeparture } from '@manniwatch/api-types';
 import { VEHICLE_STATUS } from '@manniwatch/api-types';
-import { differenceInMinutes, parse } from 'date-fns';
+import {
+    add,
+    differenceInMinutes,
+    format,
+    formatDistanceToNow,
+    parse,
+} from 'date-fns';
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-departure-list-item',
@@ -78,13 +84,18 @@ export class DepartureListItemComponent {
         return this.mDeparture.status;
     }
 
-    public convertTime(data: IDeparture): string {
-        const time: number = data.actualRelativeTime;
-        if (time > 300) {
-            return data.actualTime;
-        } else {
-            return Math.ceil(time / 60) + 'min';
+    public convertTime(departure: IDeparture): string {
+        if (departure) {
+            const planned: Date = add(new Date(), {
+                seconds: departure.actualRelativeTime,
+            });
+            const diff: number = differenceInMinutes(planned, new Date());
+            if (Math.abs(diff) < 15) {
+                return formatDistanceToNow(planned, { addSuffix: true });
+            }
+            return format(planned, 'p');
         }
+        return 'No departure time';
     }
 
     /**
