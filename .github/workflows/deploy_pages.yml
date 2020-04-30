@@ -1,0 +1,51 @@
+name: Deploy to Github Pages
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    name: Deploy App
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Setup Cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install
+        run: |
+          npm ci
+          npx lerna bootstrap --ci
+      - name: Build
+        run: |
+          npx lerna run build $(npx lerna ls --scope @manniwatch/client-ng --include-dependencies | grep -v '^@manniwatch/client-ng$' | xargs -n1 echo '--scope')
+          echo "${{ secrets.APP_DEPLOY_ENVIRONMENT }}" > "./packages/client-ng/src/environments/environment.ts"
+          echo "${{ secrets.APP_DEPLOY_ENVIRONMENT }}" > "./packages/client-ng/src/environments/environment.prod.ts"
+          npx lerna exec --scope=@manniwatch/client-ng -- ng build --prod
+          cp ./packages/client-ng/dist/manniwatch/index.html ./packages/client-ng/dist/manniwatch/404.html
+      - name: Install SSH Client
+        uses: webfactory/ssh-agent@v0.2.0
+        with:
+          ssh-private-key: ${{ secrets.APP_DEPLOY_KEY }}
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          SSH: true
+          BRANCH: master # The branch the action should deploy to.
+          FOLDER: packages/client-ng/dist/manniwatch # The folder the action should deploy.
+          REPOSITORY_NAME: manniwatch/manniwatch.github.io
+          TARGET_FOLDER: .
+          CLEAN: true
