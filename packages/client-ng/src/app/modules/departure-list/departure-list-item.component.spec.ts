@@ -4,6 +4,7 @@
 
 import { Component, Directive, Input } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import * as dateFns from 'date-fns';
 import { DepartureListItemComponent } from './departure-list-item.component';
 
 // tslint:disable:max-classes-per-file
@@ -121,35 +122,38 @@ describe('src/app/modules/stop/departure-list-item.component', (): void => {
         });
       });
       describe('convertTime(departure)', (): void => {
-        const passages: {
-          actualRelativeTime: number,
-          actualTime: string,
-          result: string,
-        }[] = [
-            {
-              actualRelativeTime: 500,
-              actualTime: '12:20',
-              result: '12:20',
-            },
-            {
-              actualRelativeTime: 300,
-              actualTime: '13:20',
-              result: '5min',
-            },
-            {
-              actualRelativeTime: 20,
-              actualTime: '14:20',
-              result: '1min',
-            },
-          ];
-        passages.forEach((value: any): void => {
-          it('should convert the object to "' + value.result + '\'', (): void => {
-            const testValue: any = {
-              actualRelativeTime: value.actualRelativeTime,
-              actualTime: value.actualTime,
-            };
-            expect(cmp.convertTime(testValue)).toEqual(value.result);
+        let testClock: jasmine.Clock;
+        const baseTime: Date = new Date(2013, 9, 23, 12, 12);
+        beforeEach((): void => {
+          testClock = jasmine.clock();
+          testClock.mockDate(baseTime);
+        });
+        afterEach((): void => {
+          testClock.uninstall();
+        });
+        it('should show a short time', (): void => {
+          const planned: Date = dateFns.add(baseTime, {
+            seconds: 2000,
           });
+          expect(cmp.convertTime({
+            actualRelativeTime: 2000,
+          } as any)).toEqual(dateFns.format(planned, 'p'));
+        });
+        it('should show a positive time delta', (): void => {
+          const planned: Date = dateFns.add(baseTime, {
+            seconds: 20,
+          });
+          expect(cmp.convertTime({
+            actualRelativeTime: 20,
+          } as any)).toEqual(dateFns.formatDistanceToNow(planned, { addSuffix: true }));
+        });
+        it('should show a negative time delta', (): void => {
+          const planned: Date = dateFns.add(baseTime, {
+            seconds: -500,
+          });
+          expect(cmp.convertTime({
+            actualRelativeTime: -500,
+          } as any)).toEqual(dateFns.formatDistanceToNow(planned, { addSuffix: true }));
         });
       });
       describe('calculateDelay(departure)', (): void => {
