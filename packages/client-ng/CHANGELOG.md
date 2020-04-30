@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.2](https://github.com/manniwatch/manniwatch/compare/v0.6.1...v0.6.2) (2020-04-30)
+
+
+### Bug Fixes
+
+* **client-ng:** fix duplicate manifest document header field ([#275](https://github.com/manniwatch/manniwatch/issues/275)) ([f2acf9f](https://github.com/manniwatch/manniwatch/commit/f2acf9f1968083ceebeb459390f31c3f21350f3b)), closes [#274](https://github.com/manniwatch/manniwatch/issues/274)
+* **client-ng:** fix missing sidebar version ([#276](https://github.com/manniwatch/manniwatch/issues/276)) ([04a4d03](https://github.com/manniwatch/manniwatch/commit/04a4d03feeb1d6786e60faed9f1eae7af4e417cb))
+* **client-ng:** fix stop point route ([#251](https://github.com/manniwatch/manniwatch/issues/251)) ([f91fbb1](https://github.com/manniwatch/manniwatch/commit/f91fbb147b119854570108263024404a4cd551af))
+* **deps:** bump @angular/animations from 9.1.3 to 9.1.4 ([#268](https://github.com/manniwatch/manniwatch/issues/268)) ([ac5f7b1](https://github.com/manniwatch/manniwatch/commit/ac5f7b16c14084d0512cff2684f4304e0011efd7))
+* **deps:** bump @angular/common from 9.1.3 to 9.1.4 ([#271](https://github.com/manniwatch/manniwatch/issues/271)) ([80d4bf6](https://github.com/manniwatch/manniwatch/commit/80d4bf6bab3c2b3780e3e5e059fc97fb6e3e476a))
+* **deps:** bump @angular/compiler from 9.1.3 to 9.1.4 ([#270](https://github.com/manniwatch/manniwatch/issues/270)) ([8dea46a](https://github.com/manniwatch/manniwatch/commit/8dea46ab023b2510b3960a2bec50e05477f6d0f2))
+* **deps:** bump @angular/core from 9.1.3 to 9.1.4 ([#264](https://github.com/manniwatch/manniwatch/issues/264)) ([22ca04e](https://github.com/manniwatch/manniwatch/commit/22ca04ea79e675f3bdee288083324e9274ff8c30))
+* **deps:** bump @angular/forms from 9.1.3 to 9.1.4 ([#262](https://github.com/manniwatch/manniwatch/issues/262)) ([822ba5a](https://github.com/manniwatch/manniwatch/commit/822ba5a9a58401316d8d02e951b6a9f2079d19dc))
+* **deps:** bump @angular/localize from 9.1.3 to 9.1.4 ([#260](https://github.com/manniwatch/manniwatch/issues/260)) ([7f58460](https://github.com/manniwatch/manniwatch/commit/7f5846036034a08ed6503b03df0d03960c956033))
+* **deps:** bump @angular/platform-browser from 9.1.3 to 9.1.4 ([#263](https://github.com/manniwatch/manniwatch/issues/263)) ([cbc8117](https://github.com/manniwatch/manniwatch/commit/cbc811797f0a98c62ca8225435be40f8961ee41c))
+* **deps:** bump @angular/platform-browser-dynamic from 9.1.3 to 9.1.4 ([#261](https://github.com/manniwatch/manniwatch/issues/261)) ([c342cbe](https://github.com/manniwatch/manniwatch/commit/c342cbea04ba7afb37501f04e53a9cceba18d24b))
+* **deps:** bump @angular/router from 9.1.3 to 9.1.4 ([#259](https://github.com/manniwatch/manniwatch/issues/259)) ([999734a](https://github.com/manniwatch/manniwatch/commit/999734a7387b91722eaf237763384416cd5ecbd6))
+* **deps:** bump @angular/service-worker from 9.1.3 to 9.1.4 ([#258](https://github.com/manniwatch/manniwatch/issues/258)) ([d9cb737](https://github.com/manniwatch/manniwatch/commit/d9cb73773300fa21f54f293807564ad7095ad60b))
+
+
+
+
+
+
 # [0.6.0](https://github.com/manniwatch/manniwatch/compare/v0.5.1...v0.6.0) (2020-04-29)
 
 **Note:** Version bump only for package @manniwatch/client-ng

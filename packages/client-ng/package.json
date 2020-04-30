@@ -1,7 +1,7 @@
 {
   "name": "@manniwatch/client-ng",
   "description": "Angular Client for Manniwatch",
-  "version": "0.6.0",
+  "version": "0.6.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
