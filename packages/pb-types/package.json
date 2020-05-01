@@ -1,0 +1,47 @@
+{
+  "name": "@manniwatch/pb-types",
+  "version": "0.6.2",
+  "description": "PB Types and helper for Trapeze Api",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": false,
+  "keywords": [
+    "api",
+    "types"
+  ],
+  "scripts": {
+    "build": "npm run prepare && npm run build:pbjs && npm run build:pbts",
+    "build:pbjs": "pbjs -t static-module -w es6 --force-number -o ./dist/index.js ./src/*.proto",
+    "build:pbts": "pbts -o ./dist/index.d.ts ./dist/index.js",
+    "prepare": "node ./scripts/mkdist.js",
+    "prepublishOnly": "npm run build"
+  },
+  "homepage": "https://manniwatch.github.io/manniwatch/",
+  "author": {
+    "name": "manniwatch",
+    "email": "manniwatch@users.noreply.github.com",
+    "url": "https://github.com/manniwatch"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/manniwatch/manniwatch/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manniwatch/manniwatch.git"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "files": [
+    "dist/*",
+    "src/*",
+    "!src/**/*.spec.ts"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "protobufjs": "~6.9.0"
+  }
+}
