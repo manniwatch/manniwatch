@@ -2,14 +2,13 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { Component, Input, DebugElement } from '@angular/core';
+import { Component, DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { RequestUpdateDialogComponent } from './request-update-dialog.component';
-import { By } from '@angular/platform-browser';
-import { RequestUpdateDialogService, SW_STATUS } from './request-update-dialog.service';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { By } from '@angular/platform-browser';
+import { BehaviorSubject } from 'rxjs';
+import { RequestUpdateDialogComponent } from './request-update-dialog.component';
+import { RequestUpdateDialogService, SW_STATUS } from './request-update-dialog.service';
 
 // tslint:disable:max-classes-per-file
 // tslint:disable:component-selector
@@ -37,7 +36,6 @@ class TestMatIconComponent {
 
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
-
 
 describe('src/app/modules/request-update-dialog/request-update-dialog.component.ts', (): void => {
     describe('RequestUpdateDialogComponent', (): void => {
@@ -77,7 +75,6 @@ describe('src/app/modules/request-update-dialog/request-update-dialog.component.
                     },
                 }).compileComponents();
         }));
-
 
         describe('layout', (): void => {
             let cmpFixture: ComponentFixture<RequestUpdateDialogComponent>;

@@ -3,10 +3,10 @@
  */
 
 import { Component, VERSION } from '@angular/core';
-import { environment } from 'src/environments';
-import { SidebarService } from './sidebar.service';
 import { MatDialog } from '@angular/material/dialog';
+import { environment } from 'src/environments';
 import { RequestUpdateDialogComponent } from '../request-update-dialog';
+import { SidebarService } from './sidebar.service';
 
 @Component({
     selector: 'app-sidebar',
