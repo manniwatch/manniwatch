@@ -47,6 +47,10 @@ coverage:
         flags:
           - ExpressUtils
         threshold: 5%
+      pb-converter:
+        flags:
+          - PbConverter
+        threshold: 5%
 parsers:
   javascript:
     enable_partials: yes
@@ -90,3 +94,6 @@ flags:
   VehicleLocationDiff:
     paths:
       - packages/vehicle-location-diff/src
+  PbConverter:
+    paths:
+      - packages/pb-converter/src

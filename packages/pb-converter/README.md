@@ -1,0 +1,3 @@
+# ApiTypes
+
+[![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg?flag=ApiTypes)](https://codecov.io/gh/manniwatch/manniwatch/tree/master/packages/api-types) [![npm version](https://badge.fury.io/js/%40manniwatch%2Fapi-types.svg)](https://badge.fury.io/js/%40manniwatch%2Fapi-types) [![dependencies Status](https://david-dm.org/manniwatch/manniwatch/status.svg?path=packages/api-types)](https://david-dm.org/manniwatch/manniwatch?path=packages/api-types) [![devDependencies Status](https://david-dm.org/manniwatch/manniwatch/dev-status.svg?path=packages/api-types)](https://david-dm.org/manniwatch/manniwatch?path=packages/api-types&type=dev)
