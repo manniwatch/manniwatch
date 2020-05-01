@@ -1,5 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/manniwatch
+ * Source https://github.com/manniwatch/manniwatch Package: pb-converter
  */
 
 export * from './convert-vehicle-location';
