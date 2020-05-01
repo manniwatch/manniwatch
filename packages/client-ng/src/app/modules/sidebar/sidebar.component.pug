@@ -1,21 +1,21 @@
 button(mat-icon-button,(click)="closeSidebar()")
     mat-icon close
-mat-list
+mat-action-list
     h3(matSubheader) Head
-    mat-list-item
+    mat-list-item(disabled="false")
         mat-icon(matListIcon) home
         h4(matLine) Home
         p(matLine) Home
-    mat-list-item
+    mat-list-item(disabled="false")
         mat-icon(matListIcon) place
         h4(matLine) Stops
         p(matLine) List of stops
-    mat-list-item
+    mat-list-item(disabled="false")
         mat-icon(matListIcon) warning
         h4(matLine) No Content yet
         p(matLine) New stuff to come?
     mat-divider
-    mat-list-item
+    mat-list-item(disabled="false")
         mat-icon(matListIcon) info
         h4(matLine) Version
         p(matLine) {{appVersion}}
@@ -23,10 +23,14 @@ mat-list
         mat-icon(matListIcon) info
         h4(matLine) Github
         p(matLine) The Projects Source Code
-    mat-list-item
+    mat-list-item(disabled="false")
         mat-icon(matListIcon) info
         h4(matLine) Angular Version
         p(matLine) {{angularVersion}}
+    button(mat-list-item,(click)="checkForUpdate()")
+        mat-icon(matListIcon) system_update_alt
+        h4(matLine) Check for Update
+        p(matLine) Check if an update is available
 .info-box
     span(title="App Version") App: {{appVersion}}
     span(title="Angular Version") Angular: {{angularVersion}}
