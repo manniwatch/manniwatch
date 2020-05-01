@@ -1,0 +1,7 @@
+package manniwatch;
+syntax = "proto3";
+
+message Location {
+    int64 latitude = 3;
+    int64 longitude = 4;
+}
