@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "build": "npm run prepare && npm run build:pbjs && npm run build:pbts",
-    "build:pbjs": "pbjs -t static-module -w es6 --force-number -o ./dist/index.js ./src/*.proto",
+    "build:pbjs": "pbjs -t static-module -w default --force-number -o ./dist/index.js ./src/*.proto",
     "build:pbts": "pbts -o ./dist/index.d.ts ./dist/index.js",
     "prepare": "node ./scripts/mkdist.js",
     "prepublishOnly": "npm run build"
