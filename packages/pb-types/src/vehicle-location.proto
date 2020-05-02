@@ -1,0 +1,18 @@
+package manniwatch;
+syntax = "proto3";
+import public "location.proto";
+message VehicleLocation {
+    string id = 1;
+    int64 timestamp = 2;
+    optional Location location = 3;
+    optional bool isDeleted = 4 [default = false];
+    enum Category {
+        OTHER = 0;
+        BUS = 1;
+        TRAM = 2;
+    }
+    optional Category category = 5 [default = OTHER];
+    optional float heading = 6;
+    optional string name = 7;
+    optional string tripId = 8;
+}

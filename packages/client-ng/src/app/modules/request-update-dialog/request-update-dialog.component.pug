@@ -1,0 +1,12 @@
+h2(mat-dialog-title) Check for Update
+mat-dialog-content([ngSwitch]="status")
+    div.loading-box(*ngSwitchCase="'loading'")
+        mat-spinner(diameter="30")
+        p(i18n="loading|indicates that something is loading@@loading") Loading…
+    p(*ngSwitchCase="'update_available'",i18n="loading|indicates that no update is available@@update_available") Update available!
+    p(*ngSwitchCase="'no_service_worker'",i18n="no service worker|indicates that service workers are not available@@no_service_worker") No Service worker! Your current Browser does not support or allow Service Workers.
+    p(*ngSwitchCase="'unknown_error'",i18n="no update|indicates that no update is available@@no_update_available") An unknown error occured.
+    p(*ngSwitchDefault,i18n="no update|indicates that no update is available@@no_update_available") No Update available!
+mat-dialog-actions
+    button(mat-button,mat-dialog-close) Close
+    button(mat-button,color="primary",*ngIf="status=='update_available'") Update

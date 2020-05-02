@@ -1,16 +1,19 @@
 {
-  "name": "@manniwatch/api-proxy-router",
-  "version": "0.6.1",
-  "description": "An express api router used to proxy requests to the upstream server",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "name": "@manniwatch/pb-converter",
+  "version": "0.6.0",
+  "description": "Api Types and helper for Trapeze Api",
+  "main": "dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "dist/commonjs/index.d.ts",
   "private": false,
+  "typings": "./dist/index.d.ts",
   "keywords": [
     "api",
     "types"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "rollup -c && npm run build:types",
+    "build:types": "npx tsc --project ./tsconfig.json --emitDeclarationOnly --declaration true --declarationDir ./dist",
     "test": "mocha --config ../../.mocharc.yml",
     "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
     "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
@@ -37,30 +40,22 @@
   },
   "files": [
     "dist/*",
-    "src/*"
+    "src/*",
+    "!src/**/*.spec.ts"
   ],
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
-    "@manniwatch/api-client": "^0.6.1",
-    "@manniwatch/api-types": "^0.6.0",
-    "@manniwatch/express-utils": "^0.6.0",
-    "express": "~4.17.1",
-    "jsonschema": "~1.2.6"
-  },
   "devDependencies": {
-    "@types/express": "~4.17.6",
-    "@types/helmet": "~0.0.46",
-    "@types/request-promise-native": "^1.0.17",
-    "@types/supertest": "~2.0.9",
-    "apidoc": "~0.22.0",
-    "request-promise-native": "^1.0.8",
-    "supertest": "~4.0.2",
+    "@rollup/plugin-commonjs": "~11.1.0",
+    "@rollup/plugin-node-resolve": "~7.1.3",
+    "@rollup/plugin-typescript": "~4.1.1",
+    "rollup": "~2.7.6",
     "tslint": "~6.1.2",
     "typescript": "~3.8.3"
   },
-  "peerDependencies": {
-    "request-promise-native": "^1.0.8"
+  "dependencies": {
+    "@manniwatch/api-types": "^0.6.0",
+    "@manniwatch/pb-types": "^0.6.2"
   }
 }
