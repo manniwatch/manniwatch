@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/manniwatch/manniwatch/compare/v0.6.2...v0.7.0) (2020-05-02)
+
+
+### Bug Fixes
+
+* **deps:** bump @angular/cdk from 9.2.1 to 9.2.2 ([#283](https://github.com/manniwatch/manniwatch/issues/283)) ([f891929](https://github.com/manniwatch/manniwatch/commit/f891929d3a389a1d5b302850dfe905ab0cd688bc))
+* **deps:** bump @angular/material from 9.2.1 to 9.2.2 ([#284](https://github.com/manniwatch/manniwatch/issues/284)) ([414623d](https://github.com/manniwatch/manniwatch/commit/414623d5a04d905fad57d25b9f22aeddd9a2080d))
+* **deps:** bump electron from 8.2.4 to 8.2.5 ([#282](https://github.com/manniwatch/manniwatch/issues/282)) ([8b81139](https://github.com/manniwatch/manniwatch/commit/8b811396353001567bfee54ff4442ffa0af8f737))
+* **pb-types:** fixes issues with build modules ([#287](https://github.com/manniwatch/manniwatch/issues/287)) ([04feb5b](https://github.com/manniwatch/manniwatch/commit/04feb5b9e596dbede52ffb6fc669ec8679c26ac1))
+
+
+### Features
+
+* **client-ng:** add service worker update dialog ([#281](https://github.com/manniwatch/manniwatch/issues/281)) ([0fbe0c6](https://github.com/manniwatch/manniwatch/commit/0fbe0c66c673d1b1018b2f5c309b789bcd814646))
+* **pb-converter:** add @manniwatch/pb-converter package ([#286](https://github.com/manniwatch/manniwatch/issues/286)) ([5d3d8e3](https://github.com/manniwatch/manniwatch/commit/5d3d8e3a613f866be93e4a9dca1df472ae4efe61))
+* **pb-converter:** add rollup lib build ([#291](https://github.com/manniwatch/manniwatch/issues/291)) ([ed65735](https://github.com/manniwatch/manniwatch/commit/ed6573515cb43e114aa1d2e842fd5bb7d415cc3f))
+* **pb-types:** add pb-types library ([#285](https://github.com/manniwatch/manniwatch/issues/285)) ([5ee049b](https://github.com/manniwatch/manniwatch/commit/5ee049bb4d0f278ffb57b1e7dbe65153dc127c62))
+
+
+
+
+
+
 ## [0.6.2](https://github.com/manniwatch/manniwatch/compare/v0.6.1...v0.6.2) (2020-04-30)
 
 

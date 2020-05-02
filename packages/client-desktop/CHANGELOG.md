@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/manniwatch/manniwatch/compare/v0.6.2...v0.7.0) (2020-05-02)
+
+
+### Bug Fixes
+
+* **deps:** bump electron from 8.2.4 to 8.2.5 ([#282](https://github.com/manniwatch/manniwatch/issues/282)) ([8b81139](https://github.com/manniwatch/manniwatch/commit/8b811396353001567bfee54ff4442ffa0af8f737))
+
+
+
+
+
+
 ## [0.6.2](https://github.com/manniwatch/manniwatch/compare/v0.6.1...v0.6.2) (2020-04-30)
 
 **Note:** Version bump only for package @manniwatch/client-desktop

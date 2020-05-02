@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/manniwatch/manniwatch/compare/v0.6.2...v0.7.0) (2020-05-02)
+
+
+### Bug Fixes
+
+* **deps:** bump @angular/cdk from 9.2.1 to 9.2.2 ([#283](https://github.com/manniwatch/manniwatch/issues/283)) ([f891929](https://github.com/manniwatch/manniwatch/commit/f891929d3a389a1d5b302850dfe905ab0cd688bc))
+* **deps:** bump @angular/material from 9.2.1 to 9.2.2 ([#284](https://github.com/manniwatch/manniwatch/issues/284)) ([414623d](https://github.com/manniwatch/manniwatch/commit/414623d5a04d905fad57d25b9f22aeddd9a2080d))
+
+
+### Features
+
+* **client-ng:** add service worker update dialog ([#281](https://github.com/manniwatch/manniwatch/issues/281)) ([0fbe0c6](https://github.com/manniwatch/manniwatch/commit/0fbe0c66c673d1b1018b2f5c309b789bcd814646))
+
+
+
+
+
+
 ## [0.6.2](https://github.com/manniwatch/manniwatch/compare/v0.6.1...v0.6.2) (2020-04-30)
 
 
