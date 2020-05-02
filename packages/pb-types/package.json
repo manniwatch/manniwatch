@@ -2,17 +2,18 @@
   "name": "@manniwatch/pb-types",
   "version": "0.6.2",
   "description": "PB Types and helper for Trapeze Api",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "private": false,
   "keywords": [
     "api",
     "types"
   ],
   "scripts": {
-    "build": "npm run prepare && npm run build:pbjs && npm run build:pbts",
-    "build:pbjs": "pbjs -t static-module -w default --force-number -o ./dist/index.js ./src/*.proto",
-    "build:pbts": "pbts -o ./dist/index.d.ts ./dist/index.js",
+    "build": "npm run prepare && npm run build:pbjs:es6 && npm run build:pbjs:cjs && npm run build:pbts",
+    "build:pbjs:es6": "pbjs -t static-module -w es6 --force-number -o ./dist/esm/index.js ./src/*.proto",
+    "build:pbjs:cjs": "pbjs -t static-module -w commonjs --force-number -o ./dist/cjs/index.js ./src/*.proto",
+    "build:pbts": "pbts -o ./dist/index.d.ts ./dist/cjs/index.js",
     "prepare": "node ./scripts/mkdist.js",
     "prepublishOnly": "npm run build"
   },
