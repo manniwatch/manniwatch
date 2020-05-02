@@ -2,17 +2,18 @@
   "name": "@manniwatch/pb-converter",
   "version": "0.6.0",
   "description": "Api Types and helper for Trapeze Api",
-  "main": "dist/commonjs/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
   "types": "dist/commonjs/index.d.ts",
   "private": false,
+  "typings": "./dist/index.d.ts",
   "keywords": [
     "api",
     "types"
   ],
   "scripts": {
-    "build": "npm run build:esm && npm run build:commonjs",
-    "build:esm": "tsc --module ES2015 --outDir ./dist/esm",
-    "build:commonjs": "tsc --outDir ./dist/commonjs",
+    "build": "rollup -c && npm run build:types",
+    "build:types": "npx tsc --project ./tsconfig.json --emitDeclarationOnly --declaration true --declarationDir ./dist",
     "test": "mocha --config ../../.mocharc.yml",
     "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
     "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
@@ -20,7 +21,6 @@
     "docs": "typedoc --options ../../typedoc.json",
     "prepublishOnly": "npm run test && npm run docs && npm run build"
   },
-  "module": "./dist/esm/entry.js",
   "homepage": "https://manniwatch.github.io/manniwatch/",
   "author": {
     "name": "manniwatch",
@@ -47,6 +47,10 @@
     "access": "public"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "~11.1.0",
+    "@rollup/plugin-node-resolve": "~7.1.3",
+    "@rollup/plugin-typescript": "~4.1.1",
+    "rollup": "~2.7.6",
     "tslint": "~6.1.2",
     "typescript": "~3.8.3"
   },
