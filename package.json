@@ -4,7 +4,7 @@
   "devDependencies": {
     "@types/chai": "~4.2.11",
     "@types/mocha": "~7.0.2",
-    "@types/node": "~13.13.4",
+    "@types/node": "~13.13.5",
     "@types/sinon": "~9.0.0",
     "chai": "~4.2.0",
     "commitizen": "^4.1.2",
