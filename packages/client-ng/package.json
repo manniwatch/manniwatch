@@ -56,7 +56,7 @@
     "@angular/material": "~9.2.2",
     "@angular/platform-browser": "~9.1.4",
     "@angular/platform-browser-dynamic": "~9.1.4",
-    "@angular/router": "~9.1.4",
+    "@angular/router": "~9.1.5",
     "@angular/service-worker": "~9.1.4",
     "@manniwatch/api-types": "^0.7.0",
     "date-fns": "~2.13.0",
