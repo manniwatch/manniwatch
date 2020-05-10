@@ -53,7 +53,7 @@
     "@angular/core": "~9.1.6",
     "@angular/forms": "~9.1.6",
     "@angular/localize": "~9.1.6",
-    "@angular/material": "~9.2.2",
+    "@angular/material": "~9.2.3",
     "@angular/platform-browser": "~9.1.6",
     "@angular/platform-browser-dynamic": "~9.1.6",
     "@angular/router": "~9.1.6",
