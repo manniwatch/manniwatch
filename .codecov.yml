@@ -13,43 +13,34 @@ coverage:
         threshold: 5%
         base: auto
       api-types:
-        flags:
-          - ApiTypes
+        paths: "packages/api-types/src/*"
         threshold: 5%
       client-ng:
-        flags:
-          - ClientNg
+        paths: "packages/client-ng/src/*"
+        threshold: 5%
       client-desktop:
-        flags:
-          - ClientDesktop
+        paths: "packages/client-desktop/src/*"
         threshold: 5%
       api-client:
-        flags:
-          - ApiClient
+        paths: "packages/api-client/src/*"
         threshold: 5%
       api-proxy-router:
-        flags:
-          - ApiProxyRouter
+        paths: "packages/api-proxy-router/src/*"
         threshold: 5%
       api-proxy-server:
-        flags:
-          - ApiProxyServer
+        paths: "packages/api-proxy-server/src/*"
         threshold: 5%
       vehicle-cache:
-        flags:
-          - VehicleCache
+        paths: "packages/vehicle-cache/src/*"
         threshold: 5%
       vehicle-location-diff:
-        flags:
-          - VehicleLocationDiff
+        paths: "packages/vehicle-location-diff/src/*"
         threshold: 5%
       express-utils:
-        flags:
-          - ExpressUtils
+        paths: "packages/express-utils/src/*"
         threshold: 5%
       pb-converter:
-        flags:
-          - PbConverter
+        paths: "packages/pb-converter/src/*"
         threshold: 5%
 parsers:
   javascript:
