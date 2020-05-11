@@ -49,3 +49,42 @@ jobs:
           REPOSITORY_NAME: manniwatch/manniwatch.github.io
           TARGET_FOLDER: .
           CLEAN: true
+  build-and-deploy-docs:
+    runs-on: ubuntu-latest
+    name: Deploy Documentation
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Setup Cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install and Build 🔧
+        run: |
+          npm ci
+          npx lerna bootstrap --ci
+          npx lerna run build
+          npx lerna run docs
+          node .github/workflows/prepare_docs_deploy.js
+      - name: Install SSH Client 🔑
+        uses: webfactory/ssh-agent@v0.2.0
+        with:
+          ssh-private-key: ${{ secrets.DOCS_DEPLOY_KEY }}
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          SSH: true
+          BRANCH: master # The branch the action should deploy to.
+          FOLDER: docs # The folder the action should deploy.
+          REPOSITORY_NAME: manniwatch/docs
+          TARGET_FOLDER: .
