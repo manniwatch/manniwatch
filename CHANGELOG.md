@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/manniwatch/manniwatch/compare/v0.7.0...v0.7.1) (2020-05-11)
+
+
+### Bug Fixes
+
+* **deps:** bump @angular/animations from 9.1.4 to 9.1.6 ([3141b85](https://github.com/manniwatch/manniwatch/commit/3141b85bd1aef5cc27a495110b73acd7065d5afd))
+* **deps:** bump @angular/cdk from 9.2.2 to 9.2.3 ([364fcfd](https://github.com/manniwatch/manniwatch/commit/364fcfd65757b6c1381145ffa20d8297df065e05))
+* **deps:** bump @angular/common from 9.1.4 to 9.1.6 ([3fabc8a](https://github.com/manniwatch/manniwatch/commit/3fabc8aa503b3798782c4766ed03742b7387f4cd))
+* **deps:** bump @angular/compiler from 9.1.4 to 9.1.6 ([f189a83](https://github.com/manniwatch/manniwatch/commit/f189a832c00eeae8b45368d85d69f8bc08b44353))
+* **deps:** bump @angular/core from 9.1.4 to 9.1.6 ([0953632](https://github.com/manniwatch/manniwatch/commit/0953632c012cb6bf4a8db302a38e53fe1cb6c8b3))
+* **deps:** bump @angular/forms from 9.1.4 to 9.1.6 ([1dc2518](https://github.com/manniwatch/manniwatch/commit/1dc251866b1c4bd908d755cffcbddf00f5471ffe))
+* **deps:** bump @angular/localize from 9.1.4 to 9.1.6 ([823145b](https://github.com/manniwatch/manniwatch/commit/823145b184f8bab330ca4ccb2f0c7a9f93415f6a))
+* **deps:** bump @angular/material from 9.2.2 to 9.2.3 ([52627c2](https://github.com/manniwatch/manniwatch/commit/52627c2fc7e4a676606a896a041f015601f466ed))
+* **deps:** bump @angular/platform-browser from 9.1.4 to 9.1.6 ([9c27d7a](https://github.com/manniwatch/manniwatch/commit/9c27d7ae9db5d7ecfccc15e4ead11cf8b06bca46))
+* **deps:** bump @angular/platform-browser-dynamic from 9.1.4 to 9.1.6 ([41c0d00](https://github.com/manniwatch/manniwatch/commit/41c0d008cb3e35432a1090ddaaa184e1e3250ab5))
+* **deps:** bump @angular/router from 9.1.4 to 9.1.6 ([8400c04](https://github.com/manniwatch/manniwatch/commit/8400c04f62c1d65c9575159e025d07a1dd1f8b17))
+* **deps:** bump @angular/service-worker from 9.1.4 to 9.1.6 ([b8bdb4f](https://github.com/manniwatch/manniwatch/commit/b8bdb4fc86a06a8cd7ddabdba0ae53dee10d4aa9))
+* **deps:** bump date-fns from 2.12.0 to 2.13.0 ([#305](https://github.com/manniwatch/manniwatch/issues/305)) ([9253a51](https://github.com/manniwatch/manniwatch/commit/9253a515603c8cd7c070e9cedd934a02a0fc8d7d))
+* **deps:** bump tslib from 1.11.1 to 1.11.2 ([#301](https://github.com/manniwatch/manniwatch/issues/301)) ([168f082](https://github.com/manniwatch/manniwatch/commit/168f082b037fc9959f721b77c07ef7a88991834b))
+
+
+
+
+
+
 # [0.7.0](https://github.com/manniwatch/manniwatch/compare/v0.6.2...v0.7.0) (2020-05-02)
 
 
