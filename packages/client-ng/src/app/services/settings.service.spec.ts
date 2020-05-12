@@ -3,7 +3,7 @@
  */
 
 import { async, TestBed } from '@angular/core/testing';
-import { from, throwError } from 'rxjs';
+import { environment } from 'src/environments';
 import { ApiService } from './api.service';
 import { SettingsService } from './settings.service';
 // import * as sinon from "sinon";
@@ -33,23 +33,11 @@ describe('src/app/services/settings.service', (): void => {
         afterEach((): void => {
             getSettingsSpy.calls.reset();
         });
-        describe('settings', (): void => {
-            describe('getter', (): void => {
-                it('should return private mSettings', (): void => {
-                    const testValue: any = {
-                        test1: true,
-                        test2: false,
-                    };
-                    (settingsService as any).mSettings = testValue;
-                    expect(settingsService.settings).toEqual(testValue);
-                });
-            });
-        });
         describe('getInitialMapZoom()', (): void => {
             interface ITestValue {
                 settings?: {
-                    INITIAL_LAT?: number,
-                    INITIAL_LON?: number,
+                    lat?: number,
+                    lon?: number,
                 };
                 out: {
                     lat: number,
@@ -75,7 +63,7 @@ describe('src/app/services/settings.service', (): void => {
                     lon: 0,
                 },
                 settings: {
-                    INITIAL_LAT: 20,
+                    lat: 20,
                 },
             }, {
                 out: {
@@ -83,7 +71,7 @@ describe('src/app/services/settings.service', (): void => {
                     lon: 0,
                 },
                 settings: {
-                    INITIAL_LON: 5005,
+                    lon: 5005,
                 },
             }, {
                 out: {
@@ -91,13 +79,13 @@ describe('src/app/services/settings.service', (): void => {
                     lon: 2039290 / 3600000,
                 },
                 settings: {
-                    INITIAL_LAT: 49383292,
-                    INITIAL_LON: 2039290,
+                    lat: 49383292,
+                    lon: 2039290,
                 },
             }];
             testValues.forEach((testValue: ITestValue): void => {
                 it('should return LatLon(' + testValue.out.lat + ',' + testValue.out.lon + ')', (): void => {
-                    (settingsService as any).mSettings = testValue.settings;
+                    (environment.map.center as any) = testValue.settings;
                     expect(settingsService.getInitialMapCenter()).toEqual([testValue.out.lon, testValue.out.lat]);
                 });
             });
@@ -123,44 +111,6 @@ describe('src/app/services/settings.service', (): void => {
                     }
                 });
             });
-        });
-        describe('load()', (): void => {
-            describe('should resolve on error in observable', (): void => {
-                beforeEach((): void => {
-                    getSettingsSpy.and.returnValue(throwError(false));
-                });
-                it('should resolve', (done: DoneFn): void => {
-                    settingsService.load()
-                        .then((result: any): void => {
-                            expect(getSettingsSpy.call.length).toEqual(1);
-                            expect(result).toEqual(undefined);
-                            expect((settingsService as any).mSettings).not.toBeDefined();
-                            done();
-                        })
-                        .catch(done.fail);
-                });
-            });
-
-            describe('should resolve on complete in observable', (): void => {
-                const testValue: any = {
-                    test: true,
-                    test1: 2,
-                };
-                beforeEach((): void => {
-                    getSettingsSpy.and.returnValue(from([testValue]));
-                });
-                it('should resolve', (done: DoneFn): void => {
-                    settingsService.load()
-                        .then((result: any): void => {
-                            expect(getSettingsSpy.call.length).toEqual(1);
-                            expect(result).toEqual(undefined);
-                            expect((settingsService as any).mSettings).toEqual(testValue);
-                            done();
-                        })
-                        .catch(done.fail);
-                });
-            });
-
         });
     });
 });
