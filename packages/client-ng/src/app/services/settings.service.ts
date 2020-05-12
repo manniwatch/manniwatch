@@ -3,10 +3,7 @@
  */
 
 import { Injectable } from '@angular/core';
-import { ISettings } from '@manniwatch/api-types';
-import { from, Observable, Subscriber, Subscription } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { ApiService } from './api.service';
+import { Subscriber } from 'rxjs';
 import { environment } from 'src/environments';
 
 // tslint:disable:max-classes-per-file
@@ -30,7 +27,6 @@ export class SettingsLoadSubscriber extends Subscriber<void> {
     { providedIn: 'root' },
 )
 export class SettingsService {
-
 
     constructor() {
 
