@@ -2,14 +2,14 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { Injectable } from '@angular/core';
+import { ApplicationRef, Injectable } from '@angular/core';
 import {
     IVehicleLocation,
     IVehicleLocationList,
     VehicleLocations,
 } from '@manniwatch/api-types';
 import { concat, from, of, BehaviorSubject, Observable } from 'rxjs';
-import { catchError, debounceTime, flatMap, map } from 'rxjs/operators';
+import { catchError, debounceTime, first, flatMap, map } from 'rxjs/operators';
 import { ApiService } from './api.service';
 
 export type TimestampedVehicleLocation = IVehicleLocation & {
@@ -98,18 +98,28 @@ type VehicleMap = Map<string, TimestampedVehicles>;
 })
 export class VehicleService {
     private state: BehaviorSubject<IData> = new BehaviorSubject({ lastUpdate: 0, vehicles: [] });
-    constructor(private api: ApiService) {
+    constructor(private api: ApiService,
+        appRef: ApplicationRef) {
+        appRef.isStable
+            .pipe(first((item: boolean): boolean => item),
+                flatMap((): Observable<IData> => this.createPoll()))
+            .subscribe((data: IData): void => {
+                this.state.next(data);
+            });
+    }
+
+    private createPoll(): Observable<IData> {
         const startValue: IData = {
             lastUpdate: 0,
             vehicles: [],
         };
-        concat(from([startValue]), this.state.pipe(debounceTime(10000)))
+        return concat(from([startValue]), this.state.pipe(debounceTime(10000)))
             .pipe(flatMap((previousData: IData): Observable<IData> =>
                 this.api.getVehicleLocations(previousData.lastUpdate)
                     .pipe(map((value: IVehicleLocationList): IData => {/*
-                        if(previousData.lastUpdate!==value.lastUpdate){
-                            console.log("New location data acquired",value.lastUpdate)
-                        }*/
+                    if(previousData.lastUpdate!==value.lastUpdate){
+                        console.log("New location data acquired",value.lastUpdate)
+                    }*/
                         const timestampedNewLocations: TimestampedVehicles[] =
                             value.vehicles
                                 .map((veh: IVehicleLocation): TimestampedVehicles =>
@@ -145,10 +155,7 @@ export class VehicleService {
                     }), catchError((err: any): Observable<IData> =>
                         of(Object.assign({
                             error: err,
-                        }, previousData))))))
-            .subscribe((data: IData): void => {
-                this.state.next(data);
-            });
+                        }, previousData))))));
     }
 
     public get getVehicles(): Observable<IData> {
