@@ -1,5 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~material-design-icons/iconfont/material-icons.css";
 @import "~ol/ol.css";
+
+@import './themes.scss';
+// Include the alternative theme styles inside of a block with a CSS class. You can make this
+// CSS class whatever you want. In this example, any component inside of an element with
+// `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
+
+
+@mixin candy-carousel-theme($theme) {
+    $background: map-get($theme, background);
+    $background-background: map-get($background, background);
+    div.overlay-box{
+        div.router-box{
+            > *:not(:first-child) {
+                background-color: $background-background;//mat-color($primary);
+                //@include $mat-dark-theme-background;
+            }
+        }
+    }
+}
+
+
+
+.manniwatch-theme {
+    @include angular-material-theme($manniwatch-light-theme);
+    @include candy-carousel-theme($manniwatch-light-theme);
+    @media (prefers-color-scheme: dark) {
+        @include angular-material-theme($manniwatch-dark-theme);
+        @include candy-carousel-theme($manniwatch-dark-theme);
+    }
+/*
+    @media (prefers-color-scheme: light) {
+        @include angular-material-theme($candy-app-theme);
+    }*/
+}
