@@ -54,7 +54,7 @@
     "ts-node": "~8.10.1",
     "tslint": "~6.1.2",
     "typedoc": "~0.17.6",
-    "typescript": "~3.8.3"
+    "typescript": "~3.9.2"
   },
   "dependencies": {
     "@manniwatch/api-proxy-router": "^0.7.1",
