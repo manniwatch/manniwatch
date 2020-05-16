@@ -135,7 +135,7 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', (): 
         it('layout should be updated with correct values with passage seq_num "' + testPassage.stop_seq_num + '"', (): void => {
           cmp.passage = testPassage;
           cmpFixture.detectChanges();
-          const titleElement: HTMLElement = cmpFixture.debugElement.query(By.css('h3')).nativeElement;
+          const titleElement: HTMLElement = cmpFixture.debugElement.query(By.css('h4')).nativeElement;
           expect(titleElement.innerText).toEqual(testPassage.stop.name);
           expect(routerLinkCmp.routerLink).toEqual(['/stop', testPassage.stop.shortName]);
         });

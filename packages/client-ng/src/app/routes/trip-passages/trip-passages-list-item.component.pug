@@ -1,7 +1,7 @@
 a(mat-list-item,[routerLink]="['/stop', passage?.stop?.shortName]",role="listitem")
     mat-icon(matListIcon,role="figure",i18n-aria-label="@@busStopIcon",aria-label="Bus stop icon")
-    h3(matLine,aria-label="Stop name",i18n-aria-label="@@stopName") {{passage?.stop?.name}}
-    p(matLine)
+    h4(matLine,aria-label="Stop name",i18n-aria-label="@@stopName").title {{passage?.stop?.name}}
+    p(matLine).subtitle
         span(role="timer") {{passageTime}}
             |
             span(class="demo-2",role="status") &nbsp;-- {{passage?.status}}

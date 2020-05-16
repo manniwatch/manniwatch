@@ -1,3 +1,7 @@
+@import '~@angular/material/theming';
+
+@import 'src/themes.scss';
+
 mat-icon[matListIcon]::after {
     content:"directions_bus"
 }
@@ -18,4 +22,21 @@ mat-icon[matListIcon]::after {
     mat-icon[matListIcon]::after {
         content:"place"
     }
+}
+
+$config: mat-typography-config();
+h4.title{
+    font-size: 16px !important;
+    font-family: mat-font-family($config);
+    font-weight: 700 !important;
+    opacity: 0.87;
+    // color:green;
+}
+p.subtitle{
+    font-size: 12px !important;
+    font-family: mat-font-family($config);
+    line-height:20px;
+    font-weight: 600 !important;
+    opacity: 0.6;
+    // color:red;
 }
