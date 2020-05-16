@@ -5,7 +5,14 @@
 import { VEHICLE_STATUS } from './vehicle-status';
 
 export interface ITripPassage {
-    actualTime: string;
+    /**
+     * the actual estimated time
+     */
+    actualTime?: string;
+    /**
+     * the planned time
+     */
+    plannedTime?: string;
     status: VEHICLE_STATUS;
     stop: {
         id: string;
