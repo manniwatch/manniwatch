@@ -37,9 +37,10 @@ export class TripPassagesListItemComponent {
 
     public get passageTime(): string {
         if (this.passage) {
+            // Maybe either of each is set but actualTime is prefered!
             const time: string = this.passage.actualTime || this.passage.plannedTime;
             if (time) {
-                const planned: Date = dateParse(this.passage.actualTime, 'HH:mm', new Date());
+                const planned: Date = dateParse(time, 'HH:mm', new Date());
                 const diff: number = dateDifferenceInMinutes(planned, new Date());
                 if (Math.abs(diff) < 15) {
                     return dateFormatDistanceToNow(planned, { addSuffix: true });
