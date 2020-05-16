@@ -62,7 +62,7 @@ app-main-toolbar{
     margin:$boxMarginVertical auto 0px auto;
     z-index: #{$overlayZIndex};
     border-radius: $searchBorderRadius;
-    border:1px solid rgb(87, 99, 207);
+    //border:1px solid rgb(87, 99, 207);
     @include mat-elevation(4);
     overflow: hidden;
 }
@@ -82,7 +82,6 @@ app-main-toolbar{
         width:#{$boxMaxWidth + (2 * $boxMarginHorizontal)};
     }
 }
-
 .overlay-box{
     display:block;
     z-index: #{$overlayZIndex - 1};
@@ -109,7 +108,6 @@ app-main-toolbar{
         bottom:0px;
         overflow:auto;
         ::ng-deep > *:not(:first-child) {
-            background-color:#F9F9F9;
             pointer-events:visible;
             height:100%;
             background-attachment: fixed;

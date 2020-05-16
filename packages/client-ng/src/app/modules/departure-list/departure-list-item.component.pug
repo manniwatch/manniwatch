@@ -1,6 +1,6 @@
 a(mat-list-item,[routerLink]="['/passages', departure.tripId]",role="listitem")
     mat-icon(matListIcon,title="{{status}}") {{statusIcon}}
     span.pattern-text(*ngIf="delay!==false",[ngClass]="{'late':(delay>0),'early':(delay<0)}") {{delay}}
-    h3(matLine) {{ departure?.patternText }} {{ departure?.direction }}
-    p(matLine)
+    h4(matLine).title {{ departure?.patternText }} {{ departure?.direction }}
+    p(matLine).subtitle
         span(title="Planned: {{departure?.plannedTime}}") {{time}}
