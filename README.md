@@ -13,3 +13,22 @@
 | [client-desktop](https://github.com/manniwatch/manniwatch/tree/master/packages/client-desktop) | [![npm version](https://badge.fury.io/js/%40manniwatch%2Fclient-desktop.svg)](https://badge.fury.io/js/%40manniwatch%2Fclient-desktop) | [![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg?flag=ClientDesktop)](https://codecov.io/gh/manniwatch/manniwatch/tree/master/packages/client-desktop) |
 | [vehicle-cache](https://github.com/manniwatch/manniwatch/tree/master/packages/vehicle-cache) | [![npm version](https://badge.fury.io/js/%40manniwatch%2Fvehicle-cache.svg)](https://badge.fury.io/js/%40manniwatch%2Fvehicle-cache) | [![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg?flag=VehicleCache)](https://codecov.io/gh/manniwatch/manniwatch/tree/master/packages/vehicle-cache) |
 | [express-utils](https://github.com/manniwatch/manniwatch/tree/master/packages/express-utils) | [![npm version](https://badge.fury.io/js/%40manniwatch%2Fexpress-utils.svg)](https://badge.fury.io/js/%40manniwatch%2Fexpress-utils) | [![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg?flag=ExpressUtils)](https://codecov.io/gh/manniwatch/manniwatch/tree/master/packages/express-utils) |
+
+## Build & Test
+Before you either do both run:
+
+    npm install
+    npx lerna bootstrap --no-ci
+    npm run build
+
+This project does use [lerna](https://github.com/lerna/lerna) so all common [commands](https://github.com/lerna/lerna/tree/master/commands) should work from the root directory!
+Due to packages depending on each other a build is **required** first before running tests!
+
+### Build & Test all packages
+
+    npm run build
+    npm run test
+
+### Build & Test a specific package
+    npx lerna run build --scope=@manniwatch/api-types
+    npx lerna run test --scope=@manniwatch/api-types
