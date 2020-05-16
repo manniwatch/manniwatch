@@ -37,12 +37,15 @@ export class TripPassagesListItemComponent {
 
     public get passageTime(): string {
         if (this.passage) {
-            const planned: Date = dateParse(this.passage.actualTime, 'HH:mm', new Date());
-            const diff: number = dateDifferenceInMinutes(planned, new Date());
-            if (Math.abs(diff) < 15) {
-                return dateFormatDistanceToNow(planned, { addSuffix: true });
+            const time: string = this.passage.actualTime || this.passage.plannedTime;
+            if (time) {
+                const planned: Date = dateParse(this.passage.actualTime, 'HH:mm', new Date());
+                const diff: number = dateDifferenceInMinutes(planned, new Date());
+                if (Math.abs(diff) < 15) {
+                    return dateFormatDistanceToNow(planned, { addSuffix: true });
+                }
+                return dateFormat(planned, 'p');
             }
-            return dateFormat(planned, 'p');
         }
         return 'No departure time';
     }
