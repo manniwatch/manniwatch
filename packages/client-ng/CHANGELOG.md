@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/manniwatch/manniwatch/compare/v0.8.0...v0.8.1) (2020-05-16)
+
+
+### Bug Fixes
+
+* **client-ng:** fix issue if no actualTime is provided on a passage ([#381](https://github.com/manniwatch/manniwatch/issues/381)) ([270635f](https://github.com/manniwatch/manniwatch/commit/270635fde269d063fddda743311d55109330ed04))
+* **client-ng:** replace duplicate html meta tags ([14ff5ad](https://github.com/manniwatch/manniwatch/commit/14ff5ad3e0702c8effbcf024eed80184760363f2))
+* **client-ng:** replace old html title with correct one ([9330708](https://github.com/manniwatch/manniwatch/commit/933070864e4adcae15c0366245a39c118c3c2584))
+* **client-ng:** style trip passage list items ([f352c02](https://github.com/manniwatch/manniwatch/commit/f352c02ad3b54182f607cb182f2eb674514b62cb)), closes [#376](https://github.com/manniwatch/manniwatch/issues/376)
+
+
+
+
+
+
 # [0.8.0](https://github.com/manniwatch/manniwatch/compare/v0.7.1...v0.8.0) (2020-05-16)
 
 

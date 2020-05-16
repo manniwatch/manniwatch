@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/manniwatch/manniwatch/compare/v0.8.0...v0.8.1) (2020-05-16)
+
+
+### Bug Fixes
+
+* **api-types:** add missing property 'plannedTime' to ITripPassages ([#379](https://github.com/manniwatch/manniwatch/issues/379)) ([ad3d4b5](https://github.com/manniwatch/manniwatch/commit/ad3d4b504c153033e866c44d8a69ad0625bbc49d)), closes [#377](https://github.com/manniwatch/manniwatch/issues/377)
+
+
+
+
+
+
 # [0.8.0](https://github.com/manniwatch/manniwatch/compare/v0.7.1...v0.8.0) (2020-05-16)
 
 **Note:** Version bump only for package @manniwatch/api-types
