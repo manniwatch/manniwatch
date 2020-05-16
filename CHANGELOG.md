@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/manniwatch/manniwatch/compare/v0.7.1...v0.8.0) (2020-05-16)
+
+
+### Bug Fixes
+
+* **deps:** bump @angular/animations from 9.1.6 to 9.1.7 ([07ef1a2](https://github.com/manniwatch/manniwatch/commit/07ef1a22ab90ccc115a17099621ffd4030764c93))
+* **deps:** bump @angular/common from 9.1.6 to 9.1.7 ([2877413](https://github.com/manniwatch/manniwatch/commit/2877413e762592f12843799521b8cb78f89e12ee))
+* **deps:** bump @angular/compiler from 9.1.6 to 9.1.7 ([a2e0ba8](https://github.com/manniwatch/manniwatch/commit/a2e0ba8bcad5b8a91f22eb3be8c34e0e655d3fae))
+* **deps:** bump @angular/core from 9.1.6 to 9.1.7 ([8d78c55](https://github.com/manniwatch/manniwatch/commit/8d78c5523c8621959af199ec5e108848d97d9604))
+* **deps:** bump @angular/forms from 9.1.6 to 9.1.7 ([1d1a589](https://github.com/manniwatch/manniwatch/commit/1d1a589ca2a2062e73851d633b54ad9dcc645ca1))
+* **deps:** bump @angular/localize from 9.1.6 to 9.1.7 ([2d686a0](https://github.com/manniwatch/manniwatch/commit/2d686a08ba77e5be79befbdef3a605eb7ddc769b))
+* **deps:** bump @angular/platform-browser from 9.1.6 to 9.1.7 ([5b62dfe](https://github.com/manniwatch/manniwatch/commit/5b62dfe4ce2c1dcc6e310f444d52026cefa88f96))
+* **deps:** bump @angular/platform-browser-dynamic from 9.1.6 to 9.1.7 ([43116a4](https://github.com/manniwatch/manniwatch/commit/43116a4524da002c3ff47f39e307ca989fced560))
+* **deps:** bump @angular/router from 9.1.6 to 9.1.7 ([a2a03ca](https://github.com/manniwatch/manniwatch/commit/a2a03ca0b5953feb5a99e050c1c1c940171b7b00))
+* **deps:** bump @angular/service-worker from 9.1.6 to 9.1.7 ([0f9acb2](https://github.com/manniwatch/manniwatch/commit/0f9acb214817e13f36754317c22a2aba11ce6569))
+* **deps:** bump electron from 8.2.5 to 8.3.0 ([6e40588](https://github.com/manniwatch/manniwatch/commit/6e40588cb8797064d800df269bcc1ea26219f07e))
+* **deps:** bump tslib from 1.11.2 to 1.12.0 ([dd5bc8a](https://github.com/manniwatch/manniwatch/commit/dd5bc8a937564ed1736fd3f75e6d8632fee51680))
+* **deps:** bump tslib from 1.12.0 to 1.13.0 ([e704725](https://github.com/manniwatch/manniwatch/commit/e704725bce008b37521516cb82e79d0e54af79a3))
+
+
+### Features
+
+* **client-ng:** change theme depending on browser 'prefers' css query ([#373](https://github.com/manniwatch/manniwatch/issues/373)) ([f9fbf53](https://github.com/manniwatch/manniwatch/commit/f9fbf53a457d7ec53565a242c9885c702d1d5ff4))
+* **client-ng:** defer refresh polling for fast FCP ([#350](https://github.com/manniwatch/manniwatch/issues/350)) ([f3f485e](https://github.com/manniwatch/manniwatch/commit/f3f485eeff28b32bcf034ae2a004884b8598784d))
+* **client-ng:** load map initial config from environment ([#342](https://github.com/manniwatch/manniwatch/issues/342)) ([113d42f](https://github.com/manniwatch/manniwatch/commit/113d42f109ea82a924961ec9e963a654de0e3b00))
+
+
+
+
+
+
 ## [0.7.1](https://github.com/manniwatch/manniwatch/compare/v0.7.0...v0.7.1) (2020-05-11)
 
 
