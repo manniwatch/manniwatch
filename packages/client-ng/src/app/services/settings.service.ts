@@ -3,10 +3,8 @@
  */
 
 import { Injectable } from '@angular/core';
-import { ISettings } from '@manniwatch/api-types';
-import { from, Observable, Subscriber, Subscription } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { ApiService } from './api.service';
+import { Subscriber } from 'rxjs';
+import { environment } from 'src/environments';
 
 // tslint:disable:max-classes-per-file
 export class SettingsLoadSubscriber extends Subscriber<void> {
@@ -30,42 +28,23 @@ export class SettingsLoadSubscriber extends Subscriber<void> {
 )
 export class SettingsService {
 
-    private mSettings: ISettings = undefined;
+    constructor() {
 
-    constructor(private apiService: ApiService) {
-
-    }
-
-    public get settings(): ISettings {
-        return this.mSettings;
     }
 
     public getInitialMapCenter(): [number, number] {
-        if (this.settings &&
-            this.settings.INITIAL_LAT &&
-            this.settings.INITIAL_LON) {
-            return [this.settings.INITIAL_LON / 3600000, this.settings.INITIAL_LAT / 3600000];
+        if (environment.map &&
+            environment.map.center &&
+            environment.map.center.lat &&
+            environment.map.center.lon) {
+            return [environment.map.center.lon / 3600000, environment.map.center.lat / 3600000];
         }
         return [0, 0];
     }
     public getInitialMapZoom(): number {
-        if (this.settings && this.settings.INITIAL_ZOOM) {
-            return this.settings.INITIAL_ZOOM;
+        if (environment.map) {
+            return environment.map.zoom;
         }
         return 13;
-    }
-
-    public load(): Promise<void> {
-        return new Promise((resolve: (arg: void) => void, reject: (err: any) => void): Subscription =>
-            this.apiService.getSettings()
-                .pipe(tap((value: ISettings): void => {
-                    this.mSettings = value;
-                }),
-                    map((value: ISettings): void => {
-                        return;
-                    }),
-                    catchError((err: any): Observable<any> =>
-                        from([undefined])))
-                .subscribe(new SettingsLoadSubscriber(resolve)));
     }
 }

@@ -3,7 +3,7 @@
  */
 
 import { HttpClientModule } from '@angular/common/http';
-import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -24,10 +24,6 @@ import { AppNotificationService } from './services/app-notification.service';
 import { StopPointService } from './services/stop-point.service';
 import { UserLocationService } from './services/user-location.service';
 
-export const SETTINGS_INITIALIZER: (appInitService: SettingsService) => () => Promise<void> =
-    (appInitService: SettingsService): () => Promise<void> =>
-        (): Promise<any> =>
-            appInitService.load();
 const moduleImports: any[] = [
     BrowserModule,
     HttpClientModule,
@@ -55,12 +51,6 @@ const moduleImports: any[] = [
         UserLocationService,
         SettingsService,
         AppNotificationService,
-        {
-            deps: [SettingsService],
-            multi: true,
-            provide: APP_INITIALIZER,
-            useFactory: SETTINGS_INITIALIZER,
-        },
         {
             provide: ErrorHandler,
             useClass: AppErrorHandler,
