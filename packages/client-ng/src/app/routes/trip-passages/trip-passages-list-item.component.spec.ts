@@ -7,6 +7,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ITripPassage } from '@manniwatch/api-types';
 import { VEHICLE_STATUS } from '@manniwatch/api-types/dist/vehicle-status';
+import {
+  format as dateFormat,
+  formatDistanceToNow as dateFormatDistanceToNow,
+} from 'date-fns';
 import { TripPassagesListItemComponent } from './trip-passages-list-item.component';
 // tslint:disable:max-classes-per-file
 // tslint:disable:component-selector
@@ -117,6 +121,44 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', (): 
         it('should return true for status being STOPPING', (): void => {
           cmp.passage = { status: VEHICLE_STATUS.STOPPING } as ITripPassage;
           expect(cmp.stopping).toBeTrue();
+        });
+      });
+      describe('passageTime', (): void => {
+        const testTime: Date = new Date(2013, 9, 23, 12, 0, 0, 0);
+        beforeEach((): void => {
+          jasmine.clock().install();
+          jasmine.clock().mockDate(testTime);
+        });
+        afterEach((): void => {
+          jasmine.clock().uninstall();
+        });
+        it('should return "No departure time" for no provided passage', (): void => {
+          cmp.passage = undefined;
+          expect(cmp.passageTime).toEqual('No departure time');
+        });
+        it('should return full time for provided plannedTime', (): void => {
+          cmp.passage = {
+            plannedTime: '14:00',
+          } as ITripPassage;
+          expect(cmp.passageTime).toEqual(dateFormat(new Date(2013, 9, 23, 14), 'p'));
+        });
+        it('should return "in 5 min" for provided plannedTime', (): void => {
+          cmp.passage = {
+            plannedTime: '12:05',
+          } as ITripPassage;
+          expect(cmp.passageTime).toEqual(dateFormatDistanceToNow(new Date(2013, 9, 23, 12, 5), { addSuffix: true }));
+        });
+        it('should return full time for provided actualTime', (): void => {
+          cmp.passage = {
+            actualTime: '15:00',
+          } as ITripPassage;
+          expect(cmp.passageTime).toEqual(dateFormat(new Date(2013, 9, 23, 15), 'p'));
+        });
+        it('should return "in 5 min" for provided actualTime', (): void => {
+          cmp.passage = {
+            actualTime: '12:03',
+          } as ITripPassage;
+          expect(cmp.passageTime).toEqual(dateFormatDistanceToNow(new Date(2013, 9, 23, 12, 3), { addSuffix: true }));
         });
       });
     });
