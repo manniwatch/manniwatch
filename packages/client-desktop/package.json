@@ -53,7 +53,7 @@
     "pug-cli": "~1.0.0-alpha6",
     "ts-node": "~8.10.1",
     "tslint": "~6.1.2",
-    "typedoc": "~0.17.6",
+    "typedoc": "~0.17.7",
     "typescript": "~3.8.3"
   },
   "dependencies": {
