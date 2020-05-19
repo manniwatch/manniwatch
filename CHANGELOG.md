@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.2](https://github.com/manniwatch/manniwatch/compare/v0.8.1...v0.8.2) (2020-05-19)
+
+
+### Bug Fixes
+
+* **deps:** bump date-fns from 2.13.0 to 2.14.0 ([#390](https://github.com/manniwatch/manniwatch/issues/390)) ([5234adf](https://github.com/manniwatch/manniwatch/commit/5234adfb40ceea222bd3b5f42e17fce02fc45445))
+* **deps:** bump electron from 8.3.0 to 9.0.0 ([3d40ec6](https://github.com/manniwatch/manniwatch/commit/3d40ec6f1c6bd68a5ba6cf56ded720cd311185b6))
+
+
+
+
+
+
 ## [0.8.1](https://github.com/manniwatch/manniwatch/compare/v0.8.0...v0.8.1) (2020-05-16)
 
 
