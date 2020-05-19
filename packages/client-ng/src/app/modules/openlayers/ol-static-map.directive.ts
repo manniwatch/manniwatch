@@ -77,7 +77,8 @@ export class OlStaticMapDirective extends OlMapComponent implements OnChanges {
         }
         NgZone.assertNotInAngularZone();
         this.blur = mapData.map.blur || false;
-        if (this.getMap()) {
+        // tslint:disable-next-line:triple-equals
+        if (this.getMap() && mapData.map.center != undefined) {
             this.panMapTo(OlUtil.convertArcMSToCoordinate(mapData.map.center), mapData.map.zoomLevel);
         }
         if (this.markerVectorSource.getFeatures().length > 0) {

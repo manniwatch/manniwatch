@@ -5,6 +5,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { OlMainMapDirective } from './ol-main-map.directive';
+import { OlMainMapService } from './ol-main-map.service';
 @NgModule({
     declarations: [
         OlMainMapDirective,
@@ -15,6 +16,9 @@ import { OlMainMapDirective } from './ol-main-map.directive';
     ],
     imports: [
         CommonModule,
+    ],
+    providers: [
+        OlMainMapService,
     ],
 })
 export class MainMapModule { }
