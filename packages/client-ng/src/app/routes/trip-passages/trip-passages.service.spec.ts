@@ -34,7 +34,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
             });
             describe('statusSubject should be set by route data', (): void => {
                 it('statusSubject should be initialized with route snapshot data', (doneFn: DoneFn): void => {
-                    const service: TripPassagesService = new TripPassagesService(testRoute, undefined, undefined);
+                    const service: TripPassagesService = new TripPassagesService(testRoute, undefined, undefined, undefined);
                     (service as any).statusSubject
                         .pipe(take(1))
                         .subscribe({
@@ -49,7 +49,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
             });
             describe('statusObservable ', (): void => {
                 it('should set statusObservable to value from createStatusObservable()', (doneFn: DoneFn): void => {
-                    const service: TripPassagesService = new TripPassagesService(testRoute, undefined, undefined);
+                    const service: TripPassagesService = new TripPassagesService(testRoute, undefined, undefined, undefined);
                     service.statusObservable
                         .pipe(take(1))
                         .subscribe({
@@ -85,7 +85,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                 const testApiService: any = {
                     getTripPassages: getTripPassagesSpy,
                 };
-                testService = new TripPassagesService(testRoute, testApiService, undefined);
+                testService = new TripPassagesService(testRoute, testApiService, undefined, undefined);
             });
             afterEach((): void => {
                 getTripPassagesSpy.calls.reset();
@@ -135,7 +135,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                     data: routeDataSubject,
                     snapshot: { data: initialRouteData },
                 };
-                testService = new TripPassagesService(testRoute, undefined, undefined);
+                testService = new TripPassagesService(testRoute, undefined, undefined, { isStable: of(true) } as any);
                 createStatusObservableSpy.and.callThrough();
                 createRefreshPollObservableSpy = spyOn(testService, 'createRefreshPollObservable');
             });
@@ -299,7 +299,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                 };
                 const testApiService: any = {
                 };
-                testService = new TripPassagesService(testRoute, testApiService, undefined);
+                testService = new TripPassagesService(testRoute, testApiService, undefined, undefined);
                 createDelayedPassageRequestSpy = spyOn(testService, 'createDelayedPassageRequest');
             });
             beforeEach((): void => {
