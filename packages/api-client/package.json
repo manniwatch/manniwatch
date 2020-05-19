@@ -1,6 +1,6 @@
 {
     "name": "@manniwatch/api-client",
-    "version": "0.8.1",
+    "version": "0.9.0",
     "description": "Node Client to consume the Api",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -15,7 +15,7 @@
         "prepublishOnly": "npm run test && npm run docs && npm run build"
     },
     "dependencies": {
-        "@manniwatch/api-types": "^0.8.1",
+        "@manniwatch/api-types": "^0.9.0",
         "request": "~2.88.2",
         "request-promise-native": "~1.0.8"
     },

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/manniwatch/manniwatch/compare/v0.8.2...v0.9.0) (2020-05-19)
+
+
+### Bug Fixes
+
+* **client-ng:** await app isStable before polling passages ([#401](https://github.com/manniwatch/manniwatch/issues/401)) ([735d083](https://github.com/manniwatch/manniwatch/commit/735d083881384b6240bb1769836147adb2212495))
+* **client-ng:** dont try to pan map if no center is provided ([148160f](https://github.com/manniwatch/manniwatch/commit/148160fdfdf69fbc17eb0c5d2744ad63c41041fd))
+* **deps:** bump @angular/cdk from 9.2.3 to 9.2.4 ([19bf79e](https://github.com/manniwatch/manniwatch/commit/19bf79e23ef60733739ef0bd9a02dc9f0e63c50a))
+* **deps:** bump @angular/material from 9.2.3 to 9.2.4 ([#393](https://github.com/manniwatch/manniwatch/issues/393)) ([699822d](https://github.com/manniwatch/manniwatch/commit/699822d86f64486b0a52b5ab124777840c5803ef))
+* **deps:** bump tslib from 1.13.0 to 2.0.0 ([f209668](https://github.com/manniwatch/manniwatch/commit/f20966897e37cf82599e48afd89a26dca1813844))
+
+
+### Features
+
+* **client-ng:** display route on vehicle hover ([#402](https://github.com/manniwatch/manniwatch/issues/402)) ([5b396b9](https://github.com/manniwatch/manniwatch/commit/5b396b9c8a3c896eeb0172ec874408c8deff6ce9)), closes [#400](https://github.com/manniwatch/manniwatch/issues/400)
+
+
+
+
+
+
 ## [0.8.2](https://github.com/manniwatch/manniwatch/compare/v0.8.1...v0.8.2) (2020-05-19)
 
 
