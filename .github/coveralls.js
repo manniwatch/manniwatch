@@ -85,6 +85,7 @@ const adjustLcovBasePath = (lcovFile, basePath) =>
     }
     const runId = process.env.GITHUB_RUN_ID;
     process.env.COVERALLS_SERVICE_JOB_ID = runId;
+    process.env.COVERALLS_PARALLEL = true;
 
     const projects = glob.sync('./packages/*/coverage/**/lcov.info');
     for (let project of projects) {
