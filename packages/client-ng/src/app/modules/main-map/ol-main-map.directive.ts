@@ -18,6 +18,7 @@ import { ApiService, SettingsService } from 'src/app/services';
 import { VehicleService } from 'src/app/services';
 import { OlUtil } from 'src/app/util/ol';
 import { StopPointService } from '../../services/stop-point.service';
+import { OlMainMapService } from './ol-main-map.service';
 import { OlMarkerHandler } from './ol-marker-handler';
 import { OlVehicleHandler } from './ol-vehicle-handler';
 @Directive({
@@ -54,6 +55,7 @@ export class OlMainMapDirective extends OlMapComponent implements OnDestroy {
         public location: Location,
         settings: SettingsService,
         public vehicleSerivce: VehicleService,
+        public mainMapService: OlMainMapService,
         zone: NgZone) {
         super(elRef, zone, settings);
         this.markerHandler = new OlMarkerHandler(this, 15);
