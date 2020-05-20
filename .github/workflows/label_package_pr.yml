@@ -15,5 +15,4 @@ jobs:
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           workspace: "packages" # (default)
-          name: "folder" # (default) / 'package.json'
           prefix: "pkg:"
