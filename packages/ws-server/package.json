@@ -23,6 +23,7 @@
         "@manniwatch/api-types": "^0.8.0",
         "@manniwatch/pb-converter": "^0.8.0",
         "@manniwatch/pb-types": "^0.8.0",
+        "@manniwatch/vehicle-cache": "^0.9.0",
         "@manniwatch/vehicle-location-diff": "^0.8.0",
         "immutable": "^4.0.0-rc.12",
         "rxjs": "^6.5.5",

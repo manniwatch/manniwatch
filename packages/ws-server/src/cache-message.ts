@@ -9,6 +9,7 @@ export enum CacheMessageType {
 }
 interface ICacheMessage {
     lastUpdate: number;
+    state: any;
     type: CacheMessageType;
 }
 export interface IErrorCacheMessage extends ICacheMessage {
