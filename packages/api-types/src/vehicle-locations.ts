@@ -2,6 +2,8 @@
  * Source https://github.com/manniwatch/manniwatch
  */
 
+import { VehicleCategory } from './type-util';
+
 /**
  * Base Vehicle Location.
  * Should only be used as generic for its child implementations
@@ -59,7 +61,7 @@ export interface IVehicleLocation extends IBaseVehicleLocation {
     /**
      * Kind of Vehicle
      */
-    category: string | 'bus' | 'tram';
+    category: VehicleCategory;
     color: string;
     /**
      * Heading of the vehicle in degrees
