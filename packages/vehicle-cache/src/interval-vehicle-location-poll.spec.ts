@@ -2,8 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
  */
 
-import { PositionType } from '@manniwatch/api-client';
-import { IVehicleLocationList } from '@manniwatch/api-types';
+import { IVehicleLocationList, PositionType } from '@manniwatch/api-types';
 import { expect } from 'chai';
 import 'mocha';
 import { of, Observable } from 'rxjs';
