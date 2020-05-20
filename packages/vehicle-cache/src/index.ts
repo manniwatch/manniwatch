@@ -1,5 +1,8 @@
 /*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
+ * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
  */
 
-export * from './vehicle-cache';
+export {
+    intervalVehicleLocationPoll,
+    QueryFactory,
+} from './interval-vehicle-location-poll';

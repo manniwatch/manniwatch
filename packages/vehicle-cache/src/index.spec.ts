@@ -1,5 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
+ * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
  */
 
 import { expect } from 'chai';
@@ -11,6 +11,6 @@ describe('index.ts', (): void => {
         // tslint:disable-next-line:no-unused-expression
         expect(instance).to.not.be.undefined;
         // tslint:disable-next-line:no-unused-expression
-        expect(instance.VehicleCache).to.not.be.undefined;
+        expect(instance.intervalVehicleLocationPoll).to.not.be.undefined;
     });
 });
