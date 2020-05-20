@@ -1,5 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
+ * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
@@ -7,16 +7,14 @@ import { IVehicleLocation, IVehicleLocationList } from '@manniwatch/api-types';
 import { defer, from, of, BehaviorSubject, Observable } from 'rxjs';
 import { concatMap, delay, retryWhen, share, switchMap, tap } from 'rxjs/operators';
 export class VehicleCache {
-    public constructor(public client: ManniWatchApiClient, public readonly queryDelay: number = 15000) {
-
+    public lastUpdateObservable: Observable<number>;
+    public constructor(public client: ManniWatchApiClient, public readonly throttleDelay: number = 15000) {
+        this.lastUpdateObservable = this.lastUpdateSubject.asObservable();
     }
     private lastUpdateSubject: BehaviorSubject<number> = new BehaviorSubject(0);
     public polling: boolean = true;
     public getVehicle(id: string): IVehicleLocation {
         return undefined as any;
-    }
-
-    public watch(cb: IVehicleLocation): void {
     }
 
     public safeQueryData(lastUpdate: number): Observable<IVehicleLocationList> {
@@ -25,7 +23,7 @@ export class VehicleCache {
         });
         return networkRequest
             .pipe(retryWhen((errors: Observable<any>): Observable<any> => {
-                return errors.pipe(delay(this.queryDelay * 2));
+                return errors.pipe(delay(this.throttleDelay * 2));
             }));
     }
 
@@ -35,7 +33,7 @@ export class VehicleCache {
                 if (index < 1) {
                     return of(lastUpdate);
                 } else {
-                    return of(lastUpdate).pipe(delay(this.queryDelay));
+                    return of(lastUpdate).pipe(delay(this.throttleDelay));
                 }
             }),
             switchMap((lastUpdate: number): Observable<IVehicleLocationList> => this.safeQueryData(lastUpdate)),

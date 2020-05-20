@@ -6,9 +6,9 @@
         "file-header": [
             true,
             {
-                "match": "Source https://github.com/manniwatch/manniwatch Package: api-proxy-router",
+                "match": "Source https://github.com/manniwatch/manniwatch Package: vehicle-cache",
                 "allow-single-line-comments": true,
-                "default": "Source https://github.com/manniwatch/manniwatch Package: api-proxy-router",
+                "default": "Source https://github.com/manniwatch/manniwatch Package: vehicle-cache",
                 "enforce-trailing-newline": false
             }
         ]
