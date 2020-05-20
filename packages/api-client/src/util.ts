@@ -5,6 +5,7 @@
 import {
     ISettings,
 } from '@manniwatch/api-types';
+
 export class Util {
     public static transformSettingsBody(body: string): ISettings {
         const bracketStart: number = body.indexOf('{');

@@ -2,7 +2,8 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
-import { IBoundingBox, ManniWatchApiClient, PositionType } from '@manniwatch/api-client';
+import { IBoundingBox, ManniWatchApiClient } from '@manniwatch/api-client';
+import { PositionType } from '@manniwatch/api-types';
 import * as expressUtils from '@manniwatch/express-utils';
 import { expect } from 'chai';
 import * as express from 'express';

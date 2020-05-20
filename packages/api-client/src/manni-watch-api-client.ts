@@ -12,6 +12,8 @@ import {
     ITripPassages,
     IVehicleLocationList,
     IVehiclePathInfo,
+    PositionType,
+    StopMode,
 } from '@manniwatch/api-types';
 import * as req from 'request';
 import * as reqp from 'request-promise-native';
@@ -19,8 +21,6 @@ import { Util } from './util';
 
 // tslint:disable-next-line:no-var-requires
 export const DEFAULT_USER_AGENT: string = 'ManniWatch Api Client/' + require('../package.json').version;
-export type StopMode = 'arrival' | 'departure';
-export type PositionType = 'CORRECTED' | 'RAW';
 export interface IBoundingBox {
     top: number;
     bottom: number;
