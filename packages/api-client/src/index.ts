@@ -5,8 +5,6 @@
 export {
     IBoundingBox,
     ManniWatchApiClient,
-    StopMode,
-    PositionType,
 } from './manni-watch-api-client';
 export {
     Util,
