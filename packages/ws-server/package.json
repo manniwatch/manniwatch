@@ -1,0 +1,60 @@
+{
+    "name": "@manniwatch/ws-server",
+    "version": "0.8.0",
+    "description": "",
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "types": "dist/index.d.ts",
+    "private": false,
+    "scripts": {
+        "build": "npm run build:cjs && npm run build:esm && npm run build:declaration",
+        "build:esm": "tsc --module es6 --outDir ./dist/esm",
+        "build:cjs": "tsc --module CommonJS --outDir ./dist/cjs",
+        "build:declaration": "tsc --emitDeclarationOnly true --declaration true",
+        "test": "mocha --config ../../.mocharc.yml",
+        "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
+        "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
+        "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json src/**/*.ts",
+        "docs": "typedoc --options ../../typedoc.json",
+        "prepublishOnly": "npm run test && npm run docs && npm run build"
+    },
+    "dependencies": {
+        "@manniwatch/api-client": "^0.8.0",
+        "@manniwatch/api-types": "^0.8.0",
+        "@manniwatch/pb-converter": "^0.8.0",
+        "@manniwatch/pb-types": "^0.8.0",
+        "@manniwatch/vehicle-location-diff": "^0.8.0",
+        "immutable": "^4.0.0-rc.12",
+        "rxjs": "^6.5.5",
+        "socket.io": "~2.3.0"
+    },
+    "devDependencies": {
+        "@types/socket.io": "^2.1.6",
+        "tslint": "~6.1.2",
+        "typescript": "~3.8.3"
+    },
+    "files": [
+        "dist/*",
+        "src/*"
+    ],
+    "homepage": "https://manniwatch.github.io/manniwatch/",
+    "author": {
+        "name": "manniwatch",
+        "email": "manniwatch@users.noreply.github.com",
+        "url": "https://github.com/manniwatch"
+    },
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/manniwatch/manniwatch/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/manniwatch/manniwatch.git"
+    },
+    "engines": {
+        "node": ">=10.0.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}
