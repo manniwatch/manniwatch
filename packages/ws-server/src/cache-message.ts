@@ -18,7 +18,7 @@ export interface IErrorCacheMessage extends ICacheMessage {
 }
 
 export interface IUpdateCacheMessage extends ICacheMessage {
-    diff: IVehicleLocationDiff;
+    diff: any;
     type: CacheMessageType.UPDATE;
 }
 

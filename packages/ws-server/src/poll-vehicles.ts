@@ -21,24 +21,30 @@ export const scanDiff = (initial?: CacheState): OperatorFunction<IVehicleLocatio
         return acc;
     }, initial as CacheState);
 };
-
+type PollUpdate = {
+    type: CacheMessageType.UPDATE;
+    locations: IVehicleLocationList;
+} | {
+    error: any;
+    type: CacheMessageType.ERROR;
+};
 export const createVehiclePollObservable = (client: ManniWatchApiClient): Observable<CacheMessage> => {
     const queryFac: QueryFactory = (pos: PositionType, timestamp: number): Observable<IVehicleLocationList> => {
         return from(client.getVehicleLocations(pos, timestamp));
     };
     return intervalVehicleLocationPoll(queryFac, 15000)
-        .pipe(map((veh: IVehicleLocationList): CacheMessage => {
+        .pipe(map((veh: IVehicleLocationList): PollUpdate => {
             return {
-                diff: undefined,
-                lastUpdate: veh.lastUpdate,
-                state: undefined,
+                locations: veh,
                 type: CacheMessageType.UPDATE,
             };
-        }), catchError((err: any, caught: Observable<CacheMessage>): Observable<CacheMessage> => {
-            return concat(of<CacheMessage>({
-                lastUpdate: veh.lastUpdate,
-                state: undefined,
+        }), catchError((err: any, caught: Observable<PollUpdate>): Observable<PollUpdate> => {
+            const errorMessage: PollUpdate = {
+                error: err,
                 type: CacheMessageType.ERROR,
-            }), caught);
+            };
+            return concat(of<PollUpdate>(errorMessage), caught);
+        }), map((upd: PollUpdate): CacheMessage => {
+            return undefined as any;
         }));
 }
