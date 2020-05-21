@@ -4,23 +4,29 @@
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { Server } from 'http';
-import { timer, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 import * as socketio from 'socket.io';
+import { CacheMessage } from './cache-message';
+import { createEndlessPollObservable, createVehicleUpdateStream } from './poll-vehicles';
 
 export class ManniwatchWsServer {
     public socketServer: socketio.Server;
+    private vehicleObservable: Observable<CacheMessage>;
     constructor(server: Server,
         client: ManniWatchApiClient) {
+        this.vehicleObservable = createEndlessPollObservable(client, 10000)
+            .pipe(createVehicleUpdateStream, shareReplay(1));
         this.socketServer = socketio(server, {
             serveClient: false,
         });
         this.socketServer.on('connection', (socket: socketio.Socket): void => {
-            const subscription: Subscription = timer(0, 1000)
+            const subscription: Subscription = this.vehicleObservable
                 .subscribe({
                     complete: (): void => {
                         socket.disconnect(true);
                     },
-                    next: (time: number): void => {
+                    next: (time: CacheMessage): void => {
                         socket.emit('vehicleUpdate', time);
                     },
                 });
