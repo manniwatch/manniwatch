@@ -1,7 +1,11 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: @manniwatch/ws-server
+ */
+
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { Server } from 'http';
+import { timer, Subscription } from 'rxjs';
 import * as socketio from 'socket.io';
-import { Subscription, timer } from 'rxjs';
 
 export class ManniwatchWsServer {
     public socketServer: socketio.Server;

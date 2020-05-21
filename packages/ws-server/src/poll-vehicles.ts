@@ -1,3 +1,7 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: @manniwatch/ws-server
+ */
+
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { IVehicleLocationList, PositionType } from '@manniwatch/api-types';
 import { intervalVehicleLocationPoll, QueryFactory } from '@manniwatch/vehicle-cache';

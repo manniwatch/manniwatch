@@ -1,5 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
+ * Source https://github.com/manniwatch/manniwatch Package: @manniwatch/ws-server
  */
 
 import { ITimestampedVehicleLocation } from '@manniwatch/vehicle-location-diff';
