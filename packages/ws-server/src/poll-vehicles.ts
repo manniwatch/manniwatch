@@ -1,26 +1,10 @@
-import { ITimestampedVehicleLocation, VehicleDiffHandler } from '@manniwatch/vehicle-location-diff';
-import { intervalVehicleLocationPoll, QueryFactory } from '@manniwatch/vehicle-cache';
-import { Map, List } from 'immutable';
-import { OperatorFunction, Observable, from, concat, of } from 'rxjs';
-import { scan, catchError, map } from 'rxjs/operators';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { IVehicleLocationList, PositionType } from '@manniwatch/api-types';
-import { CacheMessage, CacheMessageType, IErrorCacheMessage } from './cache-message';
-type CurrentState = Map<string, ITimestampedVehicleLocation>;
-export interface CacheState {
-    currentState: CurrentState;
-    lastChange: List<ITimestampedVehicleLocation>;
-}
-export const scanDiff = (initial?: CacheState): OperatorFunction<IVehicleLocationList, CacheState> => {
-    return scan((acc: CacheState, val: IVehicleLocationList): CacheState => {
-        const vehicleList: List<ITimestampedVehicleLocation> = List(VehicleDiffHandler.convert(val));
-        let state: CurrentState = acc.currentState || Map();
-        vehicleList.forEach((loc: ITimestampedVehicleLocation): void => {
-            state = state.set(loc.id, loc);
-        });
-        return acc;
-    }, initial as CacheState);
-};
+import { intervalVehicleLocationPoll, QueryFactory } from '@manniwatch/vehicle-cache';
+import { ITimestampedVehicleLocation, VehicleDiffHandler } from '@manniwatch/vehicle-location-diff';
+import { Observable, from, concat, of, timer, Observer, Subscription } from 'rxjs';
+import { scan, catchError, map, first, flatMap } from 'rxjs/operators';
+import { CacheMessage, CacheMessageType, ICacheState } from './cache-message';
 type PollUpdate = {
     type: CacheMessageType.UPDATE;
     locations: IVehicleLocationList;
@@ -28,11 +12,11 @@ type PollUpdate = {
     error: any;
     type: CacheMessageType.ERROR;
 };
-export const createVehiclePollObservable = (client: ManniWatchApiClient): Observable<CacheMessage> => {
+export const createEndlessPollObservable = (client: ManniWatchApiClient, pollInterval: number): Observable<PollUpdate> => {
     const queryFac: QueryFactory = (pos: PositionType, timestamp: number): Observable<IVehicleLocationList> => {
-        return from(client.getVehicleLocations(pos, timestamp));
+        return from(client.getVehicleLocations(pos, timestamp) as Promise<IVehicleLocationList>);
     };
-    return intervalVehicleLocationPoll(queryFac, 15000)
+    return intervalVehicleLocationPoll(queryFac, pollInterval)
         .pipe(map((veh: IVehicleLocationList): PollUpdate => {
             return {
                 locations: veh,
@@ -43,8 +27,39 @@ export const createVehiclePollObservable = (client: ManniWatchApiClient): Observ
                 error: err,
                 type: CacheMessageType.ERROR,
             };
-            return concat(of<PollUpdate>(errorMessage), caught);
-        }), map((upd: PollUpdate): CacheMessage => {
-            return undefined as any;
+            const delayedRetry: Observable<PollUpdate> = timer(pollInterval).pipe(first(), flatMap((): Observable<PollUpdate> => caught));
+            return concat(of<PollUpdate>(errorMessage), delayedRetry);
         }));
 }
+export const generateState = (oldState: ICacheState, updates: ITimestampedVehicleLocation[]): ICacheState => {
+    return updates.reduce((prev: ICacheState, cur: ITimestampedVehicleLocation): ICacheState => {
+        if (!(cur.id in oldState)) {
+            prev[cur.id] = cur;
+        } else if (prev[cur.id].lastUpdate <= cur.lastUpdate) {
+            prev[cur.id] = cur;
+        }
+        return prev;
+    }, oldState);
+}
+export const createVehicleUpdateStream = (source: Observable<PollUpdate>): Observable<CacheMessage> => {
+    return new Observable((observer: Observer<CacheMessage>): Subscription => {
+        return source.pipe(scan((acc: CacheMessage, val: PollUpdate, idx: number): CacheMessage => {
+            if (val.type === CacheMessageType.UPDATE) {
+                const changeList: ITimestampedVehicleLocation[] = VehicleDiffHandler.convert(val.locations);
+                const newState: ICacheState = generateState(acc.state, changeList);
+                return {
+                    diff: changeList,
+                    lastUpdate: val.locations.lastUpdate,
+                    state: newState,
+                    type: CacheMessageType.UPDATE,
+                }
+            }
+            return {
+                error: val.error,
+                lastUpdate: acc.lastUpdate,
+                state: acc.state,
+                type: CacheMessageType.ERROR,
+            };
+        })).subscribe(observer);
+    });
+};

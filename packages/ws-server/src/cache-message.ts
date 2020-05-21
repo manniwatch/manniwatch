@@ -2,14 +2,15 @@
  * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
  */
 
-import { IVehicleLocationDiff } from '@manniwatch/vehicle-location-diff';
+import { ITimestampedVehicleLocation } from '@manniwatch/vehicle-location-diff';
 export enum CacheMessageType {
     ERROR = 'error',
     UPDATE = 'update',
 }
+export interface ICacheState { [key: string]: ITimestampedVehicleLocation; }
 interface ICacheMessage {
     lastUpdate: number;
-    state: any;
+    state: ICacheState;
     type: CacheMessageType;
 }
 export interface IErrorCacheMessage extends ICacheMessage {
@@ -18,7 +19,7 @@ export interface IErrorCacheMessage extends ICacheMessage {
 }
 
 export interface IUpdateCacheMessage extends ICacheMessage {
-    diff: any;
+    diff: ITimestampedVehicleLocation[];
     type: CacheMessageType.UPDATE;
 }
 
