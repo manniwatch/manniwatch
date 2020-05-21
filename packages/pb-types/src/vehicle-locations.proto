@@ -1,6 +1,0 @@
-package manniwatch;
-syntax = "proto3";
-import public "vehicle-location.proto";
-message VehicleLocations {
-    repeated VehicleLocation locations = 1;
-}
