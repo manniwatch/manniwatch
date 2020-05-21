@@ -6,9 +6,10 @@ import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { IVehicleLocationList, PositionType } from '@manniwatch/api-types';
 import { intervalVehicleLocationPoll, QueryFactory } from '@manniwatch/vehicle-cache';
 import { ITimestampedVehicleLocation, VehicleDiffHandler } from '@manniwatch/vehicle-location-diff';
-import { Observable, from, concat, of, timer, Observer, Subscription } from 'rxjs';
-import { scan, catchError, map, first, flatMap } from 'rxjs/operators';
+import { concat, from, of, timer, Observable, Observer, Subscription } from 'rxjs';
+import { catchError, first, flatMap, map, scan } from 'rxjs/operators';
 import { CacheMessage, CacheMessageType, ICacheState } from './cache-message';
+
 type PollUpdate = {
     type: CacheMessageType.UPDATE;
     locations: IVehicleLocationList;
@@ -34,7 +35,7 @@ export const createEndlessPollObservable = (client: ManniWatchApiClient, pollInt
             const delayedRetry: Observable<PollUpdate> = timer(pollInterval).pipe(first(), flatMap((): Observable<PollUpdate> => caught));
             return concat(of<PollUpdate>(errorMessage), delayedRetry);
         }));
-}
+};
 export const generateState = (oldState: ICacheState, updates: ITimestampedVehicleLocation[]): ICacheState => {
     return updates.reduce((prev: ICacheState, cur: ITimestampedVehicleLocation): ICacheState => {
         if (!(cur.id in oldState)) {
@@ -44,7 +45,7 @@ export const generateState = (oldState: ICacheState, updates: ITimestampedVehicl
         }
         return prev;
     }, oldState);
-}
+};
 export const createVehicleUpdateStream = (source: Observable<PollUpdate>): Observable<CacheMessage> => {
     return new Observable((observer: Observer<CacheMessage>): Subscription => {
         return source.pipe(scan((acc: CacheMessage, val: PollUpdate, idx: number): CacheMessage => {
@@ -56,7 +57,7 @@ export const createVehicleUpdateStream = (source: Observable<PollUpdate>): Obser
                     lastUpdate: val.locations.lastUpdate,
                     state: newState,
                     type: CacheMessageType.UPDATE,
-                }
+                };
             }
             return {
                 error: val.error,
