@@ -51,7 +51,7 @@ export const createVehicleUpdateStream = (source: Observable<PollUpdate>): Obser
         return source.pipe(scan((acc: CacheMessage, val: PollUpdate, idx: number): CacheMessage => {
             if (val.type === CacheMessageType.UPDATE) {
                 const changeList: ITimestampedVehicleLocation[] = VehicleDiffHandler.convert(val.locations);
-                const newState: ICacheState = generateState(acc.state, changeList);
+                const newState: ICacheState = generateState(acc.state || {}, changeList);
                 return {
                     diff: changeList,
                     lastUpdate: val.locations.lastUpdate,
@@ -65,6 +65,11 @@ export const createVehicleUpdateStream = (source: Observable<PollUpdate>): Obser
                 state: acc.state,
                 type: CacheMessageType.ERROR,
             };
+        }, {
+            diff: [],
+            lastUpdate: 0,
+            state: {},
+            type: CacheMessageType.UPDATE,
         })).subscribe(observer);
     });
 };

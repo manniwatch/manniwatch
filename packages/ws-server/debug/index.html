@@ -1,7 +1,7 @@
 <script src="/socket.io/socket.io.js"></script>
 <script>
-    const socket = io('http://localhost');
-    socket.on('news', (data) => {
+    const socket = io('http://localhost:8080');
+    socket.on('vehicleUpdate', (data) => {
         console.log(data);
         socket.emit('my other event', { my: 'data' });
     });

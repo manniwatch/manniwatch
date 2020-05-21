@@ -3,6 +3,7 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
+import { } from '@manniwatch/pb-converter';
 import { Server } from 'http';
 import { Observable, Subscription } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
@@ -14,11 +15,12 @@ export class ManniwatchWsServer {
     public socketServer: socketio.Server;
     private vehicleObservable: Observable<CacheMessage>;
     constructor(server: Server,
-        client: ManniWatchApiClient) {
+        client: ManniWatchApiClient,
+        serveClient: boolean = false) {
         this.vehicleObservable = createEndlessPollObservable(client, 10000)
             .pipe(createVehicleUpdateStream, shareReplay(1));
         this.socketServer = socketio(server, {
-            serveClient: false,
+            serveClient,
         });
         this.socketServer.on('connection', (socket: socketio.Socket): void => {
             const subscription: Subscription = this.vehicleObservable
