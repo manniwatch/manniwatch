@@ -2,7 +2,8 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
-import { ManniWatchApiClient, StopMode } from '@manniwatch/api-client';
+import { ManniWatchApiClient } from '@manniwatch/api-client';
+import { StopMode } from '@manniwatch/api-types';
 import * as prom from '@manniwatch/express-utils';
 import * as express from 'express';
 import { Schema } from 'jsonschema';

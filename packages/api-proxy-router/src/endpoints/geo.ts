@@ -2,7 +2,8 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
-import { ManniWatchApiClient, PositionType } from '@manniwatch/api-client';
+import { ManniWatchApiClient } from '@manniwatch/api-client';
+import { PositionType } from '@manniwatch/api-types';
 import * as util from '@manniwatch/express-utils';
 import * as express from 'express';
 import * as jsonschema from 'jsonschema';

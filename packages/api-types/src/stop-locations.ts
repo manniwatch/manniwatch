@@ -2,6 +2,8 @@
  * Source https://github.com/manniwatch/manniwatch
  */
 
+import { VehicleCategory } from './type-util';
+
 /**
  * Information about the stop location
  * @since 1.1.0
@@ -11,7 +13,7 @@ export interface IStopLocation {
     /**
      * Type of vehicle
      */
-    category: string | 'bus';
+    category: VehicleCategory;
     /**
      * Stop Id
      */

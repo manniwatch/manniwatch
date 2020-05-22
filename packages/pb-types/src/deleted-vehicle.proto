@@ -6,12 +6,7 @@ import public "vehicle-category.proto";
 /**
  * Object containing information about a vehicles location
  */
-message VehicleLocation {
+message DeletedVehicle {
     string id = 1;
     int64 lastUpdate = 2;
-    optional Location location = 3;
-    optional VehicleCategory category = 4 [default = OTHER];
-    optional float heading = 5;
-    optional string name = 6;
-    optional string tripId = 7;
 }

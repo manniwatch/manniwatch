@@ -21,14 +21,19 @@ describe('convert-vehicle-locations.ts', (): void => {
         });
         it('should return an empty array if vehicles is an empty array', (): void => {
             expect(testObject.convertVehicleLocations({ vehicles: [], lastUpdate: 2000 })).to.deep.equal({
-                locations: [],
+                actual: [],
+                deleted: [],
             });
         });
         it('should convert provided vehicles', (): void => {
-            const testValues: any = [1, 2, 3];
+            const testValues: any = [1, 2, 3, { isDeleted: true, id: 4 }];
             convertCategoryStub.returnsArg(0);
             expect(testObject.convertVehicleLocations({ vehicles: testValues, lastUpdate: 2000 })).to.deep.equal({
-                locations: [1, 2, 3],
+                actual: [1, 2, 3],
+                deleted: [{
+                    id: 4,
+                    lastUpdate: 2000,
+                }],
             });
             expect(convertCategoryStub.args).to.deep.equal([[1, 2000], [2, 2000], [3, 2000]]);
         });

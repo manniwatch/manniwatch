@@ -2,11 +2,15 @@
     "name": "@manniwatch/vehicle-cache",
     "version": "0.9.0",
     "description": "Caching for vehicle locations",
-    "main": "dist/index.js",
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
     "types": "dist/index.d.ts",
     "private": false,
     "scripts": {
-        "build": "tsc",
+        "build": "npm run build:cjs && npm run build:esm && npm run build:types",
+        "build:esm": "tsc --module es6 --outDir ./dist/esm --project tsconfig.prod.json",
+        "build:cjs": "tsc --module CommonJS --outDir ./dist/cjs --project tsconfig.prod.json",
+        "build:types": "tsc --emitDeclarationOnly --declaration --outDir ./dist --project tsconfig.prod.json",
         "test": "mocha --config ../../.mocharc.yml",
         "test:watch": "mocha --config ../../.mocharc.yml --watch",
         "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
@@ -16,8 +20,8 @@
         "prepublishOnly": "npm run test && npm run docs && npm run build"
     },
     "dependencies": {
-        "@manniwatch/api-client": "^0.9.0",
         "@manniwatch/api-types": "^0.9.0",
+        "@manniwatch/vehicle-location-diff": "^0.9.0",
         "rxjs": "~6.5.5"
     },
     "devDependencies": {

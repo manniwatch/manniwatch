@@ -1,0 +1,8 @@
+package manniwatch;
+syntax = "proto3";
+
+enum VehicleCategory {
+    OTHER = 0;
+    BUS = 1;
+    TRAM = 2;
+}

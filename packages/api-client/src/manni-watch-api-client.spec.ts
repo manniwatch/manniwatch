@@ -7,13 +7,15 @@ import {
     IStopPointInfo,
     IStopPointLocations,
     IVehicleLocationList,
+    PositionType,
+    StopMode,
 } from '@manniwatch/api-types';
 import { expect } from 'chai';
 import 'mocha';
 import * as nock from 'nock';
 import * as reqp from 'request-promise-native';
 import * as sinon from 'sinon';
-import { IBoundingBox, ManniWatchApiClient, PositionType, StopMode } from './manni-watch-api-client';
+import { IBoundingBox, ManniWatchApiClient } from './manni-watch-api-client';
 import { Util } from './util';
 
 const testSuccessResponse: any = {

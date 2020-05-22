@@ -4,6 +4,7 @@
   "description": "PB Types and helper for Trapeze Api",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
   "private": false,
   "keywords": [
     "api",
@@ -13,7 +14,7 @@
     "build": "npm run prepare && npm run build:pbjs:es6 && npm run build:pbjs:cjs && npm run build:pbts",
     "build:pbjs:es6": "pbjs -t static-module -w es6 --force-number -o ./dist/esm/index.js ./src/*.proto",
     "build:pbjs:cjs": "pbjs -t static-module -w commonjs --force-number -o ./dist/cjs/index.js ./src/*.proto",
-    "build:pbts": "pbts -o ./dist/index.d.ts ./dist/cjs/index.js",
+    "build:pbts": "pbts -o ./dist/index.d.ts ./dist/esm/index.js",
     "prepare": "node ./scripts/mkdist.js",
     "prepublishOnly": "npm run build"
   },
