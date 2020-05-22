@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/manniwatch/manniwatch/compare/v0.9.0...v0.10.0) (2020-05-22)
+
+
+### Features
+
+* **pb-types:** update vehicle location types ([#446](https://github.com/manniwatch/manniwatch/issues/446)) ([f2637e6](https://github.com/manniwatch/manniwatch/commit/f2637e673045358dba7c7192f5bfa47530025dd5))
+
+
+
+
+
+
 # [0.9.0](https://github.com/manniwatch/manniwatch/compare/v0.8.2...v0.9.0) (2020-05-19)
 
 **Note:** Version bump only for package @manniwatch/pb-converter

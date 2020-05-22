@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/manniwatch/manniwatch/compare/v0.9.0...v0.10.0) (2020-05-22)
+
+
+### Bug Fixes
+
+* **deps:** bump @angular/animations from 9.1.7 to 9.1.8 ([f5db065](https://github.com/manniwatch/manniwatch/commit/f5db06561e33a78d73deeb12a35847753f7289b1))
+* **deps:** bump @angular/animations from 9.1.8 to 9.1.9 ([2c3d948](https://github.com/manniwatch/manniwatch/commit/2c3d948931d55e200ffbc72d62353b477188206d))
+* **deps:** bump @angular/common from 9.1.7 to 9.1.8 ([6fa7f5c](https://github.com/manniwatch/manniwatch/commit/6fa7f5cedcf19d68be70886ca8f5de9460a597ea))
+* **deps:** bump @angular/common from 9.1.8 to 9.1.9 ([744808c](https://github.com/manniwatch/manniwatch/commit/744808cd8412be28fa3e7f4041dfab2e19bd7904))
+* **deps:** bump @angular/compiler from 9.1.7 to 9.1.8 ([a134c5a](https://github.com/manniwatch/manniwatch/commit/a134c5ad7116bf0b10bdf696673e520edca342f3))
+* **deps:** bump @angular/compiler from 9.1.8 to 9.1.9 ([58ffb71](https://github.com/manniwatch/manniwatch/commit/58ffb7141f8ab8643bf43d86d3898560cc78d6b4))
+* **deps:** bump @angular/core from 9.1.7 to 9.1.8 ([1b949fc](https://github.com/manniwatch/manniwatch/commit/1b949fcd7b89ab706eb72ce703c2e28b001414dc))
+* **deps:** bump @angular/core from 9.1.8 to 9.1.9 ([#440](https://github.com/manniwatch/manniwatch/issues/440)) ([18a06d7](https://github.com/manniwatch/manniwatch/commit/18a06d7c34cb8305d8a564e55e699dc24f0b9aed))
+* **deps:** bump @angular/forms from 9.1.7 to 9.1.8 ([f474e5e](https://github.com/manniwatch/manniwatch/commit/f474e5e1113203d70bc7c02401ccd6f413f6afc0))
+* **deps:** bump @angular/forms from 9.1.8 to 9.1.9 ([2b78296](https://github.com/manniwatch/manniwatch/commit/2b78296c1a8516330a603840e067df1d289f040e))
+* **deps:** bump @angular/localize from 9.1.7 to 9.1.8 ([a81e2e3](https://github.com/manniwatch/manniwatch/commit/a81e2e377fbb75ddadcc16bd164a1af184d03800))
+* **deps:** bump @angular/localize from 9.1.8 to 9.1.9 ([7e14a65](https://github.com/manniwatch/manniwatch/commit/7e14a65b2980628401cc3a00f023aae187ee9679))
+* **deps:** bump @angular/platform-browser from 9.1.7 to 9.1.8 ([ef94ae5](https://github.com/manniwatch/manniwatch/commit/ef94ae5e8658e19fa8724b34914a158dbe61be13))
+* **deps:** bump @angular/platform-browser from 9.1.8 to 9.1.9 ([5ef9307](https://github.com/manniwatch/manniwatch/commit/5ef93071d5b6b69c9627a3b7c5e11e99466bf3f1))
+* **deps:** bump @angular/platform-browser-dynamic from 9.1.7 to 9.1.8 ([c349b3c](https://github.com/manniwatch/manniwatch/commit/c349b3cf624abee209efdfb6c1b57a87c6bfc34c))
+* **deps:** bump @angular/platform-browser-dynamic from 9.1.8 to 9.1.9 ([0575e8f](https://github.com/manniwatch/manniwatch/commit/0575e8f004918b7ae8f330fc97231d60a2845669))
+* **deps:** bump @angular/router from 9.1.7 to 9.1.8 ([7ea2d13](https://github.com/manniwatch/manniwatch/commit/7ea2d1333a1f5ed6512e0d4aef3543eaa8a74695))
+* **deps:** bump @angular/router from 9.1.8 to 9.1.9 ([03f1125](https://github.com/manniwatch/manniwatch/commit/03f112592e438b58d7663318281c4cb5651bdb5c))
+* **deps:** bump @angular/service-worker from 9.1.7 to 9.1.8 ([ec6914b](https://github.com/manniwatch/manniwatch/commit/ec6914bdc2a1b013e47a37e0bc246fe441a9b185))
+* **deps:** bump @angular/service-worker from 9.1.8 to 9.1.9 ([708241b](https://github.com/manniwatch/manniwatch/commit/708241be598a621c2b286a7f813ef80f997893f8))
+* **vehicle-cache:** fix typo in CommonJS module decleration ([#445](https://github.com/manniwatch/manniwatch/issues/445)) ([8e9e42c](https://github.com/manniwatch/manniwatch/commit/8e9e42c71d1bdeae33f774cd16875a1d7e794c5a))
+
+
+### Features
+
+* **api-types:** add PositionType and StopMode type defintions ([#413](https://github.com/manniwatch/manniwatch/issues/413)) ([baff480](https://github.com/manniwatch/manniwatch/commit/baff48071974ce2bcb4c7d0a58cff395706ca662)), closes [#412](https://github.com/manniwatch/manniwatch/issues/412) [#411](https://github.com/manniwatch/manniwatch/issues/411)
+* **pb-types:** update vehicle location types ([#446](https://github.com/manniwatch/manniwatch/issues/446)) ([f2637e6](https://github.com/manniwatch/manniwatch/commit/f2637e673045358dba7c7192f5bfa47530025dd5))
+* **vehicle-cache:** add intervalVehicleLocationPoll ([#51](https://github.com/manniwatch/manniwatch/issues/51)) ([85043c4](https://github.com/manniwatch/manniwatch/commit/85043c4f24d88aa3dacc1c34993280fe48eb3810))
+
+
+
+
+
+
 # [0.9.0](https://github.com/manniwatch/manniwatch/compare/v0.8.2...v0.9.0) (2020-05-19)
 
 

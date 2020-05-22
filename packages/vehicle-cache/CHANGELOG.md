@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/manniwatch/manniwatch/compare/v0.9.0...v0.10.0) (2020-05-22)
+
+
+### Bug Fixes
+
+* **vehicle-cache:** fix typo in CommonJS module decleration ([#445](https://github.com/manniwatch/manniwatch/issues/445)) ([8e9e42c](https://github.com/manniwatch/manniwatch/commit/8e9e42c71d1bdeae33f774cd16875a1d7e794c5a))
+
+
+### Features
+
+* **vehicle-cache:** add intervalVehicleLocationPoll ([#51](https://github.com/manniwatch/manniwatch/issues/51)) ([85043c4](https://github.com/manniwatch/manniwatch/commit/85043c4f24d88aa3dacc1c34993280fe48eb3810))
+
+
+
+
+
+
 # [0.9.0](https://github.com/manniwatch/manniwatch/compare/v0.8.2...v0.9.0) (2020-05-19)
 
 **Note:** Version bump only for package @manniwatch/vehicle-cache

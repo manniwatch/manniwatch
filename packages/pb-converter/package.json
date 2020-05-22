@@ -1,6 +1,6 @@
 {
   "name": "@manniwatch/pb-converter",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "Api Types and helper for Trapeze Api",
   "main": "dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -55,7 +55,7 @@
     "typescript": "~3.8.3"
   },
   "dependencies": {
-    "@manniwatch/api-types": "^0.9.0",
-    "@manniwatch/pb-types": "^0.9.0"
+    "@manniwatch/api-types": "^0.10.0",
+    "@manniwatch/pb-types": "^0.10.0"
   }
 }
