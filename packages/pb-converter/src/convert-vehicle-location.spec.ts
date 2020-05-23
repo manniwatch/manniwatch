@@ -41,16 +41,52 @@ describe('convert-vehicle-location.ts', (): void => {
             expect(convertCategoryStub.callCount).to.equal(1);
             expect(convertCategoryStub.getCall(0).args).to.deep.equal([TEST_VEHICLE_LOCATION.category]);
             expect(testResult).to.deep.equal({
-                category: 299,
-                heading: TEST_VEHICLE_LOCATION.heading,
+                details: {
+                    category: 299,
+                    heading: TEST_VEHICLE_LOCATION.heading,
+                    location: {
+                        latitude: TEST_VEHICLE_LOCATION.latitude,
+                        longitude: TEST_VEHICLE_LOCATION.longitude,
+                    },
+                    name: TEST_VEHICLE_LOCATION.name,
+                    tripId: TEST_VEHICLE_LOCATION.tripId,
+                },
                 id: TEST_VEHICLE_LOCATION.id,
                 lastUpdate: 1000,
-                location: {
-                    latitude: TEST_VEHICLE_LOCATION.latitude,
-                    longitude: TEST_VEHICLE_LOCATION.longitude,
+            });
+        });
+        it('should return all information if source has isDeleted set to undefined', (): void => {
+            const testLocation: IVehicleLocation = Object.assign({}, TEST_VEHICLE_LOCATION);
+            testLocation.isDeleted = undefined;
+            convertCategoryStub.returns(299);
+            const testResult: manniwatch.IVehicleLocation = testObject.convertVehicleLocation(testLocation, 1000);
+            expect(convertCategoryStub.callCount).to.equal(1);
+            expect(convertCategoryStub.getCall(0).args).to.deep.equal([TEST_VEHICLE_LOCATION.category]);
+            expect(testResult).to.deep.equal({
+                details: {
+                    category: 299,
+                    heading: TEST_VEHICLE_LOCATION.heading,
+                    location: {
+                        latitude: TEST_VEHICLE_LOCATION.latitude,
+                        longitude: TEST_VEHICLE_LOCATION.longitude,
+                    },
+                    name: TEST_VEHICLE_LOCATION.name,
+                    tripId: TEST_VEHICLE_LOCATION.tripId,
                 },
-                name: TEST_VEHICLE_LOCATION.name,
-                tripId: TEST_VEHICLE_LOCATION.tripId,
+                id: TEST_VEHICLE_LOCATION.id,
+                lastUpdate: 1000,
+            });
+        });
+        it('should return all information if source has isDeleted set to true', (): void => {
+            const testLocation: IVehicleLocation = Object.assign({}, TEST_VEHICLE_LOCATION);
+            testLocation.isDeleted = true as any;
+            convertCategoryStub.returns(299);
+            const testResult: manniwatch.IVehicleLocation = testObject.convertVehicleLocation(testLocation, 1000);
+            expect(convertCategoryStub.callCount).to.equal(0);
+            expect(testResult).to.deep.equal({
+                id: TEST_VEHICLE_LOCATION.id,
+                isDeleted: true,
+                lastUpdate: 1000,
             });
         });
     });
