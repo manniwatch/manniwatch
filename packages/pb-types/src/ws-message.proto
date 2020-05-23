@@ -1,0 +1,17 @@
+package manniwatch;
+syntax = "proto3";
+import public "vehicle-location-list.proto";
+
+/**
+ * Object containing information about a vehicles location
+ */
+message WsMessage {
+    message Error{
+        uint32 code = 1;
+        string message = 2;
+    }
+    oneof type {
+        Error error = 1;
+        VehicleLocationList vehicleLocations = 2;
+    }
+}
