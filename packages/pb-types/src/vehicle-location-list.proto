@@ -1,8 +1,6 @@
 package manniwatch;
 syntax = "proto3";
 import public "vehicle-location.proto";
-import public "deleted-vehicle.proto";
 message VehicleLocationList {
-    repeated VehicleLocation actual = 1;
-    repeated DeletedVehicle deleted = 2;
+    repeated VehicleLocation locations = 1;
 }
