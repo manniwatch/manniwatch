@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/manniwatch/manniwatch/compare/v0.10.1...v0.11.0) (2020-05-30)
+
+
+### Bug Fixes
+
+* **client-ng:** add openlayers map attribution ([#471](https://github.com/manniwatch/manniwatch/issues/471)) ([792d7b9](https://github.com/manniwatch/manniwatch/commit/792d7b9c06e8b7fe6991f0b330bce0a3183fac49)), closes [#469](https://github.com/manniwatch/manniwatch/issues/469)
+
+
+### Features
+
+* **pb-types:** new type structure ([#456](https://github.com/manniwatch/manniwatch/issues/456)) ([b252f97](https://github.com/manniwatch/manniwatch/commit/b252f97f1e873703540c4b5fb96ed507c35dca6b))
+
+
+
+
+
 ## [0.10.1](https://github.com/manniwatch/manniwatch/compare/v0.10.0...v0.10.1) (2020-05-22)
 
 **Note:** Version bump only for package root
