@@ -28,6 +28,8 @@ export abstract class OlMapComponent implements AfterViewInit, OnDestroy, OnChan
                 layers: [
                     new TileLayer({
                         source: new XYZ({
+                            attributions: '<a target="_blank" rel="noopener noreferrer" href="https://www.openstreetmap.org/copyright">©OpenStreetMap</a>-Contributors',
+                            attributionsCollapsible: false,
                             url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                         }),
                     }),
