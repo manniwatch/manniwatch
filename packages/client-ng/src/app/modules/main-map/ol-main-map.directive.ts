@@ -10,17 +10,21 @@ import { Map as OLMap } from 'ol';
 import * as OlCondition from 'ol/events/condition';
 import { Select } from 'ol/interaction';
 import { SelectEvent } from 'ol/interaction/Select';
+import BaseTileLayer from 'ol/layer/BaseTile';
 import Style from 'ol/style/Style';
 import Feature, { FeatureLike } from 'ol/Feature';
 import { Subscription } from 'rxjs';
 import { AbstractOlMapDirective } from 'src/app/modules/openlayers';
 import { ApiService, SettingsService } from 'src/app/services';
+import { GlobalMapService, OlMapComponent } from 'src/app/modules/openlayers';
+import { ApiService } from 'src/app/services';
 import { VehicleService } from 'src/app/services';
 import { OlUtil } from 'src/app/util/ol';
 import { StopPointService } from '../../services/stop-point.service';
 import { OlMainMapService } from './ol-main-map.service';
 import { OlMarkerHandler } from './ol-marker-handler';
 import { OlVehicleHandler } from './ol-vehicle-handler';
+
 @Directive({
     selector: 'map[appOlMainMap]',
 })
@@ -53,15 +57,28 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
         public router: Router,
         public stopService: StopPointService,
         public location: Location,
-        settings: SettingsService,
         public vehicleSerivce: VehicleService,
         public mainMapService: OlMainMapService,
-        zone: NgZone) {
-        super(elRef, zone, settings);
+        zone: NgZone,
+        public globalMapService: GlobalMapService) {
+        super(elRef, zone, globalMapService);
         this.markerHandler = new OlMarkerHandler(this, 15);
         this.vehicleHandler = new OlVehicleHandler(this);
         this.mapSelectInteraction = new Select({
             condition: OlCondition.click,
+            filter: (p0: FeatureLike, p1: BaseTileLayer): boolean => {
+                switch (p0.get('type')) {
+                    case 'vehicle':
+                    case 'stop':
+                    case 'stopPoint':
+                        return true;
+                    default:
+                        return false;
+                }
+            },
+            layers: (p0: BaseTileLayer): boolean => {
+                return !(p0 === this.backgroundMapLayer);
+            },
             multi: false,
             style: (p0: FeatureLike, p1: number): Style | Style[] | void => {
                 switch (p0.get('type')) {

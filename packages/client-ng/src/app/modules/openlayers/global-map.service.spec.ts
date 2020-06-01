@@ -5,11 +5,10 @@
 import { async, TestBed } from '@angular/core/testing';
 import { environment } from 'src/environments';
 import { ApiService } from './api.service';
-import { SettingsService } from './settings.service';
 // import * as sinon from "sinon";
 
-describe('src/app/services/settings.service', (): void => {
-    describe('SettingsService', (): void => {
+describe('src/app/modules/openlayers/global-map.service', (): void => {
+    describe('GlobalMapService', (): void => {
         let settingsService: SettingsService;
         let getSettingsSpy: jasmine.Spy<jasmine.Func>;
         beforeAll((): void => {

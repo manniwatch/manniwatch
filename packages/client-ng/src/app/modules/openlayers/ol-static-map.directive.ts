@@ -8,9 +8,9 @@ import { Feature, Map as OlMap } from 'ol';
 import Point from 'ol/geom/Point';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
-import { SettingsService } from 'src/app/services';
 import { OlUtil, TrapezeCoord } from 'src/app/util/ol';
 import { AbstractOlMapDirective } from './abstract-ol-map.directive';
+import { GlobalMapService } from './global-map.service';
 
 export interface IStaticMapData {
     stops?: IStopLocation[];
@@ -39,8 +39,8 @@ export class OlStaticMapDirective extends AbstractOlMapDirective implements OnCh
     public mapData: IStaticMapData;
     constructor(elRef: ElementRef,
         zone: NgZone,
-        settingsService: SettingsService) {
-        super(elRef, zone, settingsService);
+        globalMapService: GlobalMapService) {
+        super(elRef, zone, globalMapService);
         this.markerVectorSource = new VectorSource();
         this.markerLayer = new VectorLayer({
             source: this.markerVectorSource,

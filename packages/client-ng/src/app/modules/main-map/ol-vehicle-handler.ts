@@ -41,7 +41,9 @@ export class OlVehicleHandler {
         this.vehicleMarkerVectorSource = new VectorSource();
         this.vehicleRouteVectorSource = new VectorSource();
         this.vehicleMarkerLayer = new VectorLayer({
+            declutter: false,
             source: this.vehicleMarkerVectorSource,
+            zIndex: 1000,
         });
         this.vehicleRouteLayer = new VectorLayer({
             source: this.vehicleRouteVectorSource,

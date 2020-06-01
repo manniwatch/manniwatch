@@ -3,5 +3,6 @@
  */
 
 export { AbstractOlMapDirective } from './abstract-ol-map.directive';
+export { GlobalMapService } from './global-map.service';
 export { OlStaticMapDirective, IStaticMapData } from './ol-static-map.directive';
 export { OlStaticMapModule } from './ol-static-map.module';

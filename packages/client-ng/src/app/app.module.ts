@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MainToolbarModule } from 'src/app/modules/main-toolbar';
 import { SidebarModule } from 'src/app/modules/sidebar';
-import { ApiService, SettingsService } from 'src/app/services';
+import { ApiService } from 'src/app/services';
 import { environment } from '../environments';
 import { AppErrorHandler } from './app-error-handler';
 import { AppRoutingModule } from './app-routing.module';
@@ -49,7 +49,6 @@ const moduleImports: any[] = [
     providers: [
         StopPointService,
         UserLocationService,
-        SettingsService,
         AppNotificationService,
         {
             provide: ErrorHandler,
