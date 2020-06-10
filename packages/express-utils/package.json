@@ -45,7 +45,7 @@
   "devDependencies": {
     "@types/express": "~4.17.6",
     "@types/request-promise-native": "^1.0.17",
-    "apidoc": "~0.22.1",
+    "apidoc": "~0.23.0",
     "express": "~4.17.1",
     "jsonschema": "~1.2.6",
     "request-promise-native": "^1.0.8",
