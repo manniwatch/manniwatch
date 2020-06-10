@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.1](https://github.com/manniwatch/manniwatch/compare/v0.11.0...v0.11.1) (2020-06-10)
+
+
+### Bug Fixes
+
+* **deps:** bump electron from 9.0.0 to 9.0.1 ([84ac89c](https://github.com/manniwatch/manniwatch/commit/84ac89c11d8e68858a34814a301a67eca52d4519))
+* **deps:** bump electron from 9.0.1 to 9.0.2 ([adf2c65](https://github.com/manniwatch/manniwatch/commit/adf2c655c29ff76c401ac49e437c3059b0254c50))
+* **deps:** bump electron from 9.0.2 to 9.0.3 ([ea73cc1](https://github.com/manniwatch/manniwatch/commit/ea73cc1cd364aee1bfecea091781a871b4c45431))
+
+
+
+
+
+
 # [0.11.0](https://github.com/manniwatch/manniwatch/compare/v0.10.1...v0.11.0) (2020-05-30)
 
 **Note:** Version bump only for package @manniwatch/client-desktop

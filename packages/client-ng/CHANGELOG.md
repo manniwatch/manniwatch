@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.1](https://github.com/manniwatch/manniwatch/compare/v0.11.0...v0.11.1) (2020-06-10)
+
+
+### Bug Fixes
+
+* **deps:** [security] bump websocket-extensions from 0.1.3 to 0.1.4 ([6096db1](https://github.com/manniwatch/manniwatch/commit/6096db1f7dadce700499cd8288a058cb48a0d371))
+
+
+
+
+
+
 # [0.11.0](https://github.com/manniwatch/manniwatch/compare/v0.10.1...v0.11.0) (2020-05-30)
 
 
