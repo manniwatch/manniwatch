@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.2](https://github.com/manniwatch/manniwatch/compare/v0.11.1...v0.11.2) (2020-06-12)
+
+
+### Bug Fixes
+
+* **deps:** bump helmet from 3.22.0 to 3.22.1 ([#501](https://github.com/manniwatch/manniwatch/issues/501)) ([44c6f05](https://github.com/manniwatch/manniwatch/commit/44c6f056a50f4b0f7486fe571ad580be338a249b))
+
+
+
+
+
+
 ## [0.11.1](https://github.com/manniwatch/manniwatch/compare/v0.11.0...v0.11.1) (2020-06-10)
 
 **Note:** Version bump only for package @manniwatch/api-proxy-server

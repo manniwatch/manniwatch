@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.2](https://github.com/manniwatch/manniwatch/compare/v0.11.1...v0.11.2) (2020-06-12)
+
+
+### Bug Fixes
+
+* **deps:** bump @angular/animations from 9.1.9 to 9.1.11 ([#506](https://github.com/manniwatch/manniwatch/issues/506)) ([a49cf13](https://github.com/manniwatch/manniwatch/commit/a49cf136dd128ba44b5fc32a91046852004ce79b))
+* **deps:** bump @angular/common from 9.1.9 to 9.1.11 ([#502](https://github.com/manniwatch/manniwatch/issues/502)) ([9abf152](https://github.com/manniwatch/manniwatch/commit/9abf152f30306de211b299c385d552ad1adea165))
+* **deps:** bump @angular/forms from 9.1.10 to 9.1.11 ([#511](https://github.com/manniwatch/manniwatch/issues/511)) ([331b295](https://github.com/manniwatch/manniwatch/commit/331b29573d53ba06a1f734f5fb07be76317d6123))
+* **deps:** bump @angular/forms from 9.1.9 to 9.1.10 ([#499](https://github.com/manniwatch/manniwatch/issues/499)) ([e3d01bb](https://github.com/manniwatch/manniwatch/commit/e3d01bb4ecc4fcde06b0f0f2952bb1efffc1b1ff))
+* **deps:** bump @angular/localize from 9.1.9 to 9.1.11 ([#505](https://github.com/manniwatch/manniwatch/issues/505)) ([cc9657b](https://github.com/manniwatch/manniwatch/commit/cc9657bd9642d4a277fe7efa3d1d4c491595486f))
+* **deps:** bump @angular/platform-browser from 9.1.9 to 9.1.11 ([#507](https://github.com/manniwatch/manniwatch/issues/507)) ([14da5f7](https://github.com/manniwatch/manniwatch/commit/14da5f7362b9e34e3538a8aded0f1a131bb8d80f))
+* **deps:** bump @angular/platform-browser-dynamic from 9.1.9 to 9.1.10 ([#500](https://github.com/manniwatch/manniwatch/issues/500)) ([755bc3c](https://github.com/manniwatch/manniwatch/commit/755bc3c858c6728b64eb9a9d4e25249e95af4893))
+* **deps:** bump @angular/service-worker from 9.1.9 to 9.1.11 ([#504](https://github.com/manniwatch/manniwatch/issues/504)) ([bfcbe48](https://github.com/manniwatch/manniwatch/commit/bfcbe48aabf0f28280673c3a2534899c3513a05d))
+
+
+
+
+
+
 ## [0.11.1](https://github.com/manniwatch/manniwatch/compare/v0.11.0...v0.11.1) (2020-06-10)
 
 
