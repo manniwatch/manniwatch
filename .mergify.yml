@@ -1,0 +1,9 @@
+pull_request_rules:
+  - name: automatic merge dependabot PRs into dev
+    conditions:
+      - author~=^dependabot(|-preview)\[bot\]$
+      - status-success=Test
+      - base=dev
+    actions:
+      merge:
+        method: squash
