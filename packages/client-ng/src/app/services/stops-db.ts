@@ -3,13 +3,12 @@ import Dexie, { Transaction } from 'dexie';
 interface IStringMap { [key: string]: boolean; }
 type DatabaseLocations = IStopPointLocation | IStopLocation;
 type DatabaseLocationEntry = DatabaseLocations & { search_keys: string[] };
-const createSearchKeys: (source: string) => string[] = (source: string): string[] => {
+export const createSearchKeys: (source: string) => string[] = (source: string): string[] => {
     const allWordsIncludingDups: string[] = source.replace(/[^A-Za-zÄÖÜẞäöüß]+/gi, ' ').trim().split(' ');
     const wordSet: IStringMap = allWordsIncludingDups.reduce((prev: IStringMap, current: string): IStringMap => {
         prev[current] = true;
         return prev;
     }, {});
-    console.log(Object.keys(wordSet));
     return Object.keys(wordSet);
 };
 const createCallback: (primKey: string, obj: DatabaseLocations, transaction: Transaction) => void =

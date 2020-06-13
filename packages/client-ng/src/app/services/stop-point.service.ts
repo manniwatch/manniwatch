@@ -132,14 +132,14 @@ export class StopPointService {
         }));
     }
 
-    public searchStop(searchPattern: string): Observable<IStopLocation[]> {
+    public searchStop(searchPatterns: string[]): Observable<IStopLocation[]> {
         return this.mStopStatusObservable
             .pipe(flatMap((): Observable<IStopLocation[]> => {
                 const query: Promise<IStopLocation[]> = this.stopsDb
                     .stopLocations
-                    .filter((testStop: IStopLocation): boolean => {
-                        return testStop.name.toLowerCase().includes(searchPattern);
-                    }).toArray();
+                    .where('search_keys')
+                    .startsWithAnyOfIgnoreCase(searchPatterns)
+                    .distinct().toArray();
                 return from(query);
             }));
     }
