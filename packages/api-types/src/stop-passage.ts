@@ -73,12 +73,24 @@ export interface IRoute {
  * @since 0.5.0
  */
 export interface IStopPassage {
+    /**
+     * Actual/Future Departures
+     */
     actual: IActualDeparture[];
     directions: any[];
     firstPassageTime: number;
+    /**
+     * TODO: Need schema
+     */
     generalAlerts: any[];
     lastPassageTime: number;
+    /**
+     * Previous departures
+     */
     old: IDepartedDeparture[];
+    /**
+     * Routes served by this stop
+     */
     routes: IRoute[];
     /**
      * Human readable string of the stop
