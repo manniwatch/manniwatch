@@ -31,13 +31,25 @@ export interface IActualTripPassage extends ITripPassage {
 /**
  * Response from:
  * ```
- * end/asdf
+ * /internetservice/services/tripInfo/tripPassages
  * ```
  * @since 0.5.0
  */
 export interface ITripPassages {
+    /**
+     * Current/Future passages
+     */
     actual: IActualTripPassage[];
+    /**
+     * Previous departures
+     */
     old: IDepartedTripPassage[];
+    /**
+     * Directiontext
+     */
     directionText: string;
+    /**
+     * Route name
+     */
     routeName: string;
 }
