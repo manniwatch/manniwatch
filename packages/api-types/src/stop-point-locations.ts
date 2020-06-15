@@ -7,7 +7,7 @@ import { VehicleCategory } from './type-util';
 /**
  * Information about the stop location
  * @since 2.0.0
- * @category Cat1
+ * @category geo
  */
 export interface IStopPointLocation {
     /**
