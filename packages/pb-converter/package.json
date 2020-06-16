@@ -52,7 +52,7 @@
     "@rollup/plugin-typescript": "~4.1.2",
     "rollup": "~2.16.1",
     "tslint": "~6.1.2",
-    "typescript": "~3.8.3"
+    "typescript": "~3.9.5"
   },
   "dependencies": {
     "@manniwatch/api-types": "^0.11.0",

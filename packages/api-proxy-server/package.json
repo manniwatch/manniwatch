@@ -55,6 +55,6 @@
     "apidoc": "~0.23.0",
     "supertest": "~4.0.2",
     "tslint": "~6.1.2",
-    "typescript": "~3.8.3"
+    "typescript": "~3.9.5"
   }
 }
