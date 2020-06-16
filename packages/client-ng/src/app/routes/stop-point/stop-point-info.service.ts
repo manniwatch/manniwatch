@@ -49,13 +49,16 @@ export class StopPointInfoService {
             }), map((stop: IStopPointLocation): IStaticMapData => {
                 // tslint:disable-next-line:triple-equals
                 if (stop == undefined) {
-                    return { map: { blur: true } };
+                    return {
+                        map: { blur: true },
+                    };
                 } else {
                     return {
                         map: {
                             blur: false,
                             center: stop,
                         },
+                        stops: [stop],
                     };
                 }
             }));
