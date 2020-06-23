@@ -1,20 +1,41 @@
 import { IStopLocation, IStopPointLocation } from '@manniwatch/api-types';
 import Dexie, { Transaction } from 'dexie';
-interface IStringMap { [key: string]: boolean; }
+interface IStringMap { [key: string]: string; }
 type DatabaseLocations = IStopPointLocation | IStopLocation;
 type DatabaseLocationEntry = DatabaseLocations & { search_keys: string[] };
-export const createSearchKeys: (source: string) => string[] = (source: string): string[] => {
-    const allWordsIncludingDups: string[] = source.replace(/[^A-Za-zÄÖÜẞäöüß]+/gi, ' ').trim().split(' ');
-    const wordSet: IStringMap = allWordsIncludingDups.reduce((prev: IStringMap, current: string): IStringMap => {
-        prev[current] = true;
+
+/**
+ * Splits an input string into valid search terms
+ *
+ * @example
+ * // returns ['test','case']
+ * splitSearchKeys('test case 19');
+ * @param source String to split into search keys
+ * @returns Array of search keys
+ */
+export const splitSearchKeys: (source: string) => string[] = (source: string): string[] => {
+    const splitRegex: RegExp = /[^A-Za-zÄÖÜẞäöüß]+/gi;
+    /**
+     * Not deduplicated
+     */
+    const allTerms: string[] = source
+        .replace(splitRegex, ' ')
+        .trim()
+        .split(' ');
+    /**
+     * Map of search terms
+     */
+    const wordSet: IStringMap = allTerms.reduce((prev: IStringMap, current: string): IStringMap => {
+        prev[current.toLocaleLowerCase()] = current;
         return prev;
     }, {});
-    return Object.keys(wordSet);
+    return Object.values(wordSet);
 };
+
 const createCallback: (primKey: string, obj: DatabaseLocations, transaction: Transaction) => void =
     (primKey: string, obj: DatabaseLocations, transaction: Transaction): void => {
         if (typeof obj.name === 'string') {
-            (obj as any).search_keys = createSearchKeys(obj.name);
+            (obj as any).search_keys = splitSearchKeys(obj.name);
         }
     };
 const readCallback: (obj: DatabaseLocationEntry) => DatabaseLocationEntry = (obj: DatabaseLocationEntry): DatabaseLocationEntry => {
@@ -31,7 +52,7 @@ const updateCallback: (mod: Partial<DatabaseLocations>,
         transaction: Transaction): Partial<DatabaseLocationEntry> => {
         if (mod.hasOwnProperty('name')) {
             if (typeof mod.name === 'string') {
-                return { search_keys: createSearchKeys(mod.name) };
+                return { search_keys: splitSearchKeys(mod.name) };
             } else {
                 return { search_keys: [] };
             }

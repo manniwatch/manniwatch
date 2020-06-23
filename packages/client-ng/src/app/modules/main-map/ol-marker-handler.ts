@@ -4,18 +4,18 @@
 
 import { NgZone } from '@angular/core';
 import { IStopLocation, IStopPointLocation } from '@manniwatch/api-types';
-import { Map as OlMap, MapEvent } from 'ol';
+import { Map as OlMap, MapEvent, Map } from 'ol';
 import Point from 'ol/geom/Point';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import Feature from 'ol/Feature';
-import { combineLatest, Observable, Subscription } from 'rxjs';
-import { startWith, take } from 'rxjs/operators';
+import { combineLatest, Observable, Subscription, fromEvent } from 'rxjs';
+import { startWith, take, map, shareReplay, first, flatMap } from 'rxjs/operators';
 import { OlUtil } from 'src/app/util/ol';
 import { OlMainMapDirective } from './ol-main-map.directive';
 import BaseEvent from 'ol/events/Event';
 import { toLonLat } from 'ol/proj';
-import { getBottomLeft, getTopRight } from 'ol/extent';
+import { getBottomLeft, getTopRight, Extent } from 'ol/extent';
 import { runOutsideZone } from 'src/app/util/rxjs';
 export class OlMarkerHandler {
 
@@ -50,44 +50,53 @@ export class OlMarkerHandler {
         this.stopMarkerVectorSource = new VectorSource({
             features: [],
         });
-        const zoomBorder: number = leafletMap.getView().getResolutionForZoom(this.zoomBorder);
+        const adjustedZoomBorder: number = leafletMap.getView().getResolutionForZoom(this.zoomBorder);
         this.stopMarkerLayer = new VectorLayer({
-            minResolution: zoomBorder,
+            minResolution: adjustedZoomBorder,
             source: this.stopMarkerVectorSource,
         });
         this.stopPointMarkerLayer = new VectorLayer({
-            maxResolution: zoomBorder,
+            maxResolution: adjustedZoomBorder,
             source: this.stopPointMarkerVectorSource,
         });
         leafletMap.addLayer(this.stopMarkerLayer);
         leafletMap.addLayer(this.stopPointMarkerLayer);
-        this.loadSubscription =
-            combineLatest([this.getStopLocations(), this.getStopPointLocations()])
-                .pipe(runOutsideZone(this.mainMap.zone))
-                .subscribe((result: [IStopLocation[], IStopPointLocation[]]): void => {
-                    this.setStopPoints(result[1]);
-                    this.setStops(result[0]);
-                });
-        leafletMap.on('moveend', (evt: MapEvent): void => {
-            //console.log(evt);
-            let map = evt.map;
-            let extent = map.getView().calculateExtent(map.getSize());
-            const [longitudeLeft, latitudeBottom] = toLonLat(getBottomLeft(extent));
-            const [longitudeRight, latitudeTop] = toLonLat(getTopRight(extent));
-            const longitude: any = {
-                max: Math.ceil(longitudeRight * 3600000),
-                min: Math.floor(longitudeLeft * 3600000),
-            };
-            const latitude: any = {
-                max: Math.ceil(latitudeTop * 3600000),
-                min: Math.floor(latitudeBottom * 3600000),
-            };
-            console.log(longitude, latitude);
-            /*
-            this.mainMap.stopService
-                .getStops(longitude, latitude)
-                .then(console.log);*/
-        })
+        const sharedZoomEvent: Observable<number> = fromEvent(leafletMap, 'moveend')
+            .pipe(map((evt: MapEvent): number => {
+                return evt.map.getView().getZoom();
+            }), shareReplay(1));
+        sharedZoomEvent.pipe(first((zoom: number): boolean => {
+            return zoom < this.zoomBorder;
+        }), flatMap((): Observable<IStopLocation[]> => {
+            return this.getStopLocations();
+        }), runOutsideZone(this.mainMap.zone)).subscribe((stops: IStopLocation[]): void => {
+            console.log("stops", stops.length);
+            this.setStops(stops);
+        });
+        sharedZoomEvent.pipe(first((zoom: number): boolean => {
+            // Pull earlier to mitigate load delay and border step
+            return zoom >= this.zoomBorder - 1;
+        }), flatMap((): Observable<IStopPointLocation[]> => {
+            return this.getStopPointLocations();
+        }), runOutsideZone(this.mainMap.zone)).subscribe((stopPoints: IStopPointLocation[]): void => {
+            console.log("stopPoints", stopPoints.length);
+            this.setStopPoints(stopPoints);
+        });
+        /*const map: Map = evt.map;
+        const extent: Extent = map.getView().calculateExtent(map.getSize());
+        const [longitudeLeft, latitudeBottom] = toLonLat(getBottomLeft(extent));
+        const [longitudeRight, latitudeTop] = toLonLat(getTopRight(extent));
+        const longitude: any = {
+            max: Math.ceil(longitudeRight * 3600000),
+            min: Math.floor(longitudeLeft * 3600000),
+        };
+        const latitude: any = {
+            max: Math.ceil(latitudeTop * 3600000),
+            min: Math.floor(latitudeBottom * 3600000),
+        };
+        console.log(longitude, latitude);
+        */
+
     }
 
     public setStopPoints(stopPoints: IStopPointLocation[]): void {

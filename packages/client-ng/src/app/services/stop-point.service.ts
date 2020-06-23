@@ -2,32 +2,23 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { Injectable } from '@angular/core';
+import { Injectable, ApplicationRef } from '@angular/core';
 import { IStopLocation, IStopLocations, IStopPointLocation, IStopPointLocations } from '@manniwatch/api-types';
-import { from, of, Observable, Subscriber } from 'rxjs';
-import { debounceTime, map, retryWhen, shareReplay, tap, withLatestFrom, flatMap, first } from 'rxjs/operators';
+import { from, of, Observable, combineLatest } from 'rxjs';
+import { map, shareReplay, withLatestFrom, flatMap, first, startWith, catchError, filter } from 'rxjs/operators';
 import { ApiService } from './api.service';
-import { AppNotificationService } from './app-notification.service';
 import { StopsDb } from './stops-db';
 
-// tslint:disable:max-classes-per-file
-export class StopPointLoadSubscriber extends Subscriber<IStopLocation[]> {
-
-    public constructor(private service: StopPointService) {
-        super();
-    }
-
-    public next(stops: IStopLocation[]): void {
-        (this.service as any).mStopLocations = stops;
-    }
-
-    public error(err: any): void {
-    }
-
-    public complete(): void {
-    }
-}
 export interface IMinMax { min: number; max: number; };
+export enum LoadStatus {
+    LOADING = 0,
+    ERROR = 1,
+    SUCCESS = 2,
+}
+export interface IInitStatus {
+    stopsLoaded: LoadStatus;
+    stopPointsLoaded: LoadStatus;
+}
 /**
  * Service for caching and retrieving Stop Locations
  */
@@ -36,29 +27,35 @@ export interface IMinMax { min: number; max: number; };
 })
 export class StopPointService {
 
-    private mStopPointObservable: Observable<IStopPointLocation[]>;
-    private mStopObservable: Observable<IStopLocation[]>;
-    private mStopStatusObservable: Observable<true>;
-    private mStopPointStatusObservable: Observable<true>;
+    public readonly statusObservable: Observable<IInitStatus>;
+    public readonly statusStopObservable: Observable<true>;
     public stopsDb: StopsDb;
     constructor(private api: ApiService,
-        private notificationService: AppNotificationService) {
+        private appRef: ApplicationRef) {
         this.stopsDb = new StopsDb();
-        this.mStopStatusObservable = this.createStatusObservable(this.getStopCount(), this.refreshStopTable());
-        this.mStopPointStatusObservable = this.createStatusObservable(this.getStopCount(), this.refreshStopPointTable());
-        this.mStopObservable = this.mStopStatusObservable
-            .pipe(flatMap((): Observable<IStopLocation[]> => {
-                const queryStops: Promise<IStopLocation[]> = this.stopsDb
-                    .stopLocations
-                    .toArray();
-                return from(queryStops);
-            }));
-        this.mStopPointObservable = this.mStopPointStatusObservable
-            .pipe(flatMap((): Observable<IStopPointLocation[]> => {
-                const queryStops: Promise<IStopPointLocation[]> = this.stopsDb
-                    .stopPointLocations
-                    .toArray();
-                return from(queryStops);
+        this.statusObservable = this.appRef
+            .isStable
+            .pipe(flatMap((stable: boolean): Observable<IInitStatus> => {
+                const primeObservable = (obs: Observable<number>): Observable<LoadStatus> => {
+                    return obs.pipe(map((): LoadStatus => LoadStatus.SUCCESS),
+                        startWith(LoadStatus.LOADING),
+                        catchError((err: any): Observable<LoadStatus> => {
+                            return of(LoadStatus.ERROR);
+                        }));
+                };
+                const stops: Observable<LoadStatus> = primeObservable(this.populateStopsIfEmpty());
+                const stopPoints: Observable<LoadStatus> = primeObservable(this.populateStopPointsIfEmpty());
+                return combineLatest([stops, stopPoints])
+                    .pipe(map((statuses: [LoadStatus, LoadStatus]): IInitStatus => {
+                        return {
+                            stopPointsLoaded: statuses[1],
+                            stopsLoaded: statuses[0],
+                        };
+                    }));
+            }), shareReplay(1));
+        this.statusStopObservable = this.statusObservable
+            .pipe(filter((status: IInitStatus): boolean => {
+                return status.stopsLoaded === LoadStatus.SUCCESS;
             }));
     }
 
@@ -96,39 +93,73 @@ export class StopPointService {
         return from(queryStops);
     }
 
-    public refreshStopTable(): Observable<void> {
+    public refreshStopTable(): Observable<number> {
         return this.api
             .getStopLocations()
             .pipe(map((stopList: IStopLocations): IStopLocation[] => {
                 return stopList.stops;
             }),
-                flatMap((stops: IStopLocation[]): Observable<void> => {
+                flatMap((stops: IStopLocation[]): Observable<number> => {
                     return this.updateStopDatabaseEntries(stops);
                 }));
     }
 
-    public refreshStopPointTable(): Observable<void> {
+    public populateStopsIfEmpty(): Observable<number> {
+        return this.getStopCount()
+            .pipe(flatMap((stopCount: number): Observable<number> => {
+                if (stopCount > 0) {
+                    return of(stopCount);
+                } else {
+                    return this.refreshStopTable();
+                }
+            }));
+    }
+
+    public populateStopPointsIfEmpty(): Observable<number> {
+        return this.getStopPointCount()
+            .pipe(flatMap((stopCount: number): Observable<number> => {
+                if (stopCount > 0) {
+                    return of(stopCount);
+                } else {
+                    return this.refreshStopPointTable();
+                }
+            }));
+    }
+
+    public refreshStopPointTable(): Observable<number> {
         return this.api
             .getStopPointLocations()
             .pipe(map((stopList: IStopPointLocations): IStopPointLocation[] => {
                 return stopList.stopPoints;
             }),
-                flatMap((stops: IStopPointLocation[]): Observable<void> => {
+                flatMap((stops: IStopPointLocation[]): Observable<number> => {
                     return this.updateStopPointDatabaseEntries(stops);
                 }));
     }
 
-    public updateStopDatabaseEntries(stops: IStopLocation[]): Observable<void> {
-        return from(this.stopsDb.transaction('rw', this.stopsDb.stopLocations, async (): Promise<void> => {
+    /**
+     *
+     * @param stops stops to update in the database
+     * @returns Number of updated stops
+     */
+    public updateStopDatabaseEntries(stops: IStopLocation[]): Observable<number> {
+        return from(this.stopsDb.transaction('rw', this.stopsDb.stopLocations, async (): Promise<number> => {
             await this.stopsDb.stopLocations.clear();
             await this.stopsDb.stopLocations.bulkPut(stops);
+            return stops.length;
         }));
     }
 
-    public updateStopPointDatabaseEntries(stops: IStopPointLocation[]): Observable<void> {
-        return from(this.stopsDb.transaction('rw', this.stopsDb.stopPointLocations, async (): Promise<void> => {
+    /**
+     *
+     * @param stops stops to update in the database
+     * @returns Number of updated stops
+     */
+    public updateStopPointDatabaseEntries(stops: IStopPointLocation[]): Observable<number> {
+        return from(this.stopsDb.transaction('rw', this.stopsDb.stopPointLocations, async (): Promise<number> => {
             await this.stopsDb.stopPointLocations.clear();
             await this.stopsDb.stopPointLocations.bulkPut(stops);
+            return stops.length;
         }));
     }
 
@@ -139,7 +170,8 @@ export class StopPointService {
                     .stopLocations
                     .where('search_keys')
                     .startsWithAnyOfIgnoreCase(searchPatterns)
-                    .distinct().toArray();
+                    .distinct()
+                    .toArray();
                 return from(query);
             }));
     }
@@ -185,14 +217,6 @@ export class StopPointService {
                 }
                 return undefined;
             }));
-    }
-
-    public get stopObservable(): Observable<IStopLocation[]> {
-        return this.mStopObservable;
-    }
-
-    public get stopPointObservable(): Observable<IStopPointLocation[]> {
-        return this.mStopPointObservable;
     }
 
 }
