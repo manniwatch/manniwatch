@@ -8,8 +8,7 @@ import {
     HostBinding,
     Input,
 } from '@angular/core';
-import { ITripPassage } from '@manniwatch/api-types';
-import { VEHICLE_STATUS } from '@manniwatch/api-types/dist/vehicle-status';
+import { ITripPassage, VEHICLE_STATUS } from '@manniwatch/api-types';
 import {
     differenceInMinutes as dateDifferenceInMinutes,
     format as dateFormat,

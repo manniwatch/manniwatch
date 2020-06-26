@@ -7,8 +7,7 @@ import {
     Component,
     Input,
 } from '@angular/core';
-import { IDeparture } from '@manniwatch/api-types';
-import { VEHICLE_STATUS } from '@manniwatch/api-types';
+import { IDeparture, VEHICLE_STATUS } from '@manniwatch/api-types';
 import {
     add,
     differenceInMinutes,

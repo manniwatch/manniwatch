@@ -5,8 +5,7 @@
 import { ChangeDetectionStrategy, Component, Directive, Input } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ITripPassage } from '@manniwatch/api-types';
-import { VEHICLE_STATUS } from '@manniwatch/api-types/dist/vehicle-status';
+import { ITripPassage, VEHICLE_STATUS } from '@manniwatch/api-types';
 import {
   format as dateFormat,
   formatDistanceToNow as dateFormatDistanceToNow,
