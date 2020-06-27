@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { AfterViewInit, ElementRef, NgZone, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, NgZone, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { Collection, Map, View } from 'ol';
 import { Coordinate } from 'ol/coordinate';
 import { defaults, Interaction } from 'ol/interaction';
@@ -12,7 +12,8 @@ import XYZ from 'ol/source/XYZ';
 import { Subscription } from 'rxjs';
 import { SettingsService } from 'src/app/services';
 
-export abstract class OlMapComponent implements AfterViewInit, OnDestroy, OnChanges {
+@Directive()
+export abstract class AbstractOlMapDirective implements AfterViewInit, OnDestroy, OnChanges {
 
     private map: Map;
     private locationSubscription: Subscription;

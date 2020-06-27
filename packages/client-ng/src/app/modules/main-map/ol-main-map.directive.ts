@@ -13,7 +13,7 @@ import { SelectEvent } from 'ol/interaction/Select';
 import Style from 'ol/style/Style';
 import Feature, { FeatureLike } from 'ol/Feature';
 import { Subscription } from 'rxjs';
-import { OlMapComponent } from 'src/app/modules/openlayers';
+import { AbstractOlMapDirective } from 'src/app/modules/openlayers';
 import { ApiService, SettingsService } from 'src/app/services';
 import { VehicleService } from 'src/app/services';
 import { OlUtil } from 'src/app/util/ol';
@@ -27,7 +27,7 @@ import { OlVehicleHandler } from './ol-vehicle-handler';
 /**
  * Directive for the main background map
  */
-export class OlMainMapDirective extends OlMapComponent implements OnDestroy {
+export class OlMainMapDirective extends AbstractOlMapDirective implements OnDestroy {
     public readonly mapSelectInteraction: Select;
 
     /**

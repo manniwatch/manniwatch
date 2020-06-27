@@ -4,6 +4,9 @@
     "arrow-parens": false,
     "component-class-suffix": true,
     "contextual-lifecycle": true,
+    "deprecation": {
+      "severity": "warning"
+    },
     "directive-class-suffix": true,
     "directive-selector": [
       true,
