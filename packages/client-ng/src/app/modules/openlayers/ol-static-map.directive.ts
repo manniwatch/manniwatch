@@ -10,7 +10,7 @@ import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import { SettingsService } from 'src/app/services';
 import { OlUtil, TrapezeCoord } from 'src/app/util/ol';
-import { OlMapComponent } from './ol-map.directive';
+import { AbstractOlMapDirective } from './abstract-ol-map.directive';
 
 export interface IStaticMapData {
     stops?: IStopLocation[];
@@ -27,7 +27,7 @@ export interface IStaticMapData {
 @Directive({
     selector: 'map[appOlStatic]',
 })
-export class OlStaticMapDirective extends OlMapComponent implements OnChanges {
+export class OlStaticMapDirective extends AbstractOlMapDirective implements OnChanges {
 
     private readonly KEY_MAP_DATA: string = 'mapData';
     @HostBinding('class.no-location')

@@ -2,15 +2,19 @@
   "name": "@manniwatch/api-types",
   "version": "0.11.0",
   "description": "Api Types and helper for Trapeze Api",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
   "private": false,
   "keywords": [
     "api",
     "types"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "npm run build:esm && npm run build:cjs && npm run build:types",
+    "build:esm": "tsc --project ./tsconfig.json --module es2015 --outDir dist/esm",
+    "build:cjs": "tsc --project ./tsconfig.json --module commonjs --outDir dist/cjs",
+    "build:types": "tsc --project ./tsconfig.json  -d --declarationDir dist/types --declarationMap --emitDeclarationOnly",
     "test": "mocha --config ../../.mocharc.yml",
     "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
     "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
