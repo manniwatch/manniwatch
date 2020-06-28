@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/manniwatch/manniwatch/compare/v0.11.2...v0.12.0) (2020-06-28)
+
+
+### Bug Fixes
+
+* **client-ng:** VEHICLE_STATUS imports fixed ([#561](https://github.com/manniwatch/manniwatch/issues/561)) ([187f34f](https://github.com/manniwatch/manniwatch/commit/187f34f5f009012e88bc99e66c8427f08d167387))
+* **deps:** bump @angular/animations from 10.0.0 to 10.0.1 ([#567](https://github.com/manniwatch/manniwatch/issues/567)) ([7a74558](https://github.com/manniwatch/manniwatch/commit/7a745588de5b9907e1bd520c0459f122898aa795))
+* **deps:** bump @angular/animations from 9.1.11 to 10.0.0 ([#553](https://github.com/manniwatch/manniwatch/issues/553)) ([6451b64](https://github.com/manniwatch/manniwatch/commit/6451b642ac9270a5e4a337cf6cbc1412b0629dad))
+* **deps:** bump @angular/common from 10.0.0 to 10.0.1 ([#565](https://github.com/manniwatch/manniwatch/issues/565)) ([47dc4ee](https://github.com/manniwatch/manniwatch/commit/47dc4ee036c1687a70904d15005c00150f0ded91))
+* **deps:** bump @angular/compiler from 9.1.9 to 9.1.11 ([#520](https://github.com/manniwatch/manniwatch/issues/520)) ([a821f60](https://github.com/manniwatch/manniwatch/commit/a821f604bd75e671c9e2aa886e04aa15b6baa66f))
+* **deps:** bump @angular/core from 9.1.9 to 9.1.11 ([#519](https://github.com/manniwatch/manniwatch/issues/519)) ([e3818f5](https://github.com/manniwatch/manniwatch/commit/e3818f59e7e4fb70aec92fad41106e52961a94dc))
+* **deps:** bump @angular/forms from 10.0.0 to 10.0.1 ([#566](https://github.com/manniwatch/manniwatch/issues/566)) ([8f09f4e](https://github.com/manniwatch/manniwatch/commit/8f09f4e84a244cc3b41de5f53c4eb662b27cc97b))
+* **deps:** bump @angular/localize from 9.1.11 to 10.0.0 ([#551](https://github.com/manniwatch/manniwatch/issues/551)) ([fd29da9](https://github.com/manniwatch/manniwatch/commit/fd29da96739e110db63f8994e3b69a3bfd7fe8e9))
+* **deps:** bump @angular/platform-browser-dynamic from 10.0.0 to 10.0.1 ([#572](https://github.com/manniwatch/manniwatch/issues/572)) ([4305529](https://github.com/manniwatch/manniwatch/commit/4305529d1c31676b3d55b9eede2e6943bf43521b))
+* **deps:** bump @angular/platform-browser-dynamic from 9.1.10 to 9.1.11 ([#518](https://github.com/manniwatch/manniwatch/issues/518)) ([30be969](https://github.com/manniwatch/manniwatch/commit/30be9693ae0f3340f374bd107c5e10f81470681e))
+* **deps:** bump @angular/router from 10.0.0 to 10.0.1 ([#569](https://github.com/manniwatch/manniwatch/issues/569)) ([baccefc](https://github.com/manniwatch/manniwatch/commit/baccefc7c0304d701d164c7141975e0eb11771d0))
+* **deps:** bump @angular/router from 9.1.9 to 9.1.11 ([#535](https://github.com/manniwatch/manniwatch/issues/535)) ([c5b14da](https://github.com/manniwatch/manniwatch/commit/c5b14da0cd8f8e782bc45caf5fa849e2a45c9692))
+* **deps:** bump electron from 9.0.3 to 9.0.4 ([#530](https://github.com/manniwatch/manniwatch/issues/530)) ([a12ed81](https://github.com/manniwatch/manniwatch/commit/a12ed81c28f86677ae34533b9be77baeb352184d))
+* **deps:** bump electron from 9.0.4 to 9.0.5 ([#545](https://github.com/manniwatch/manniwatch/issues/545)) ([728a157](https://github.com/manniwatch/manniwatch/commit/728a157ef7f09cc323b0eccac736d72d2977c98b))
+* **deps:** bump helmet from 3.22.1 to 3.23.0 ([#523](https://github.com/manniwatch/manniwatch/issues/523)) ([3676606](https://github.com/manniwatch/manniwatch/commit/3676606638ee06d57d66e06bb8090f00b11b2beb))
+* **deps:** bump helmet from 3.23.0 to 3.23.1 ([#537](https://github.com/manniwatch/manniwatch/issues/537)) ([e2151ed](https://github.com/manniwatch/manniwatch/commit/e2151ed9232077c6e8cd077444ca8c92404d9cdc))
+* **deps:** bump helmet from 3.23.1 to 3.23.2 ([#548](https://github.com/manniwatch/manniwatch/issues/548)) ([a1173ec](https://github.com/manniwatch/manniwatch/commit/a1173ec2483348e54fff689a67db0f31ad777149))
+* **deps:** bump helmet from 3.23.2 to 3.23.3 ([#568](https://github.com/manniwatch/manniwatch/issues/568)) ([270330f](https://github.com/manniwatch/manniwatch/commit/270330f71f5174dc09a5807087a87bca50c560ce))
+* **deps:** update to angular 10 ([#557](https://github.com/manniwatch/manniwatch/issues/557)) ([9b3fcd3](https://github.com/manniwatch/manniwatch/commit/9b3fcd3bbeaa82d537a2fa2dd9bed091e67bd2ea)), closes [#564](https://github.com/manniwatch/manniwatch/issues/564)
+
+
+### Features
+
+* **api-types:** add es module build ([#560](https://github.com/manniwatch/manniwatch/issues/560)) ([494140e](https://github.com/manniwatch/manniwatch/commit/494140e370f3006ff22ab6d6393ecbc089f2d954))
+
+
+
+
+
+
 ## [0.11.2](https://github.com/manniwatch/manniwatch/compare/v0.11.1...v0.11.2) (2020-06-12)
 
 

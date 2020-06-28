@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/manniwatch/manniwatch/compare/v0.11.2...v0.12.0) (2020-06-28)
+
+
+### Bug Fixes
+
+* **deps:** bump helmet from 3.22.1 to 3.23.0 ([#523](https://github.com/manniwatch/manniwatch/issues/523)) ([3676606](https://github.com/manniwatch/manniwatch/commit/3676606638ee06d57d66e06bb8090f00b11b2beb))
+* **deps:** bump helmet from 3.23.0 to 3.23.1 ([#537](https://github.com/manniwatch/manniwatch/issues/537)) ([e2151ed](https://github.com/manniwatch/manniwatch/commit/e2151ed9232077c6e8cd077444ca8c92404d9cdc))
+* **deps:** bump helmet from 3.23.1 to 3.23.2 ([#548](https://github.com/manniwatch/manniwatch/issues/548)) ([a1173ec](https://github.com/manniwatch/manniwatch/commit/a1173ec2483348e54fff689a67db0f31ad777149))
+* **deps:** bump helmet from 3.23.2 to 3.23.3 ([#568](https://github.com/manniwatch/manniwatch/issues/568)) ([270330f](https://github.com/manniwatch/manniwatch/commit/270330f71f5174dc09a5807087a87bca50c560ce))
+
+
+
+
+
+
 ## [0.11.2](https://github.com/manniwatch/manniwatch/compare/v0.11.1...v0.11.2) (2020-06-12)
 
 
