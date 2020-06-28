@@ -7,10 +7,12 @@
     "types": "dist/types/index.d.ts",
     "private": false,
     "scripts": {
-        "build": "npm run build:esm && npm run build:cjs && npm run build:types",
+        "build": "npm run build:esm && npm run build:cjs && npm run build:types && npm run build:version",
         "build:esm": "tsc --project ./tsconfig.json --module es2015 --outDir dist/esm",
         "build:cjs": "tsc --project ./tsconfig.json --module commonjs --outDir dist/cjs",
         "build:types": "tsc --project ./tsconfig.json  -d --declarationDir dist/types --declarationMap --emitDeclarationOnly",
+        "build:version": "node ./scripts/replace_build_version.js",
+        "version": "npm run build:version",
         "test": "mocha --config ../../.mocharc.yml",
         "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
         "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
@@ -26,6 +28,7 @@
     "devDependencies": {
         "@types/request": "~2.48.5",
         "@types/request-promise-native": "~1.0.17",
+        "glob": "~7.1.6",
         "nock": "~12.0.3",
         "tslint": "~6.1.2",
         "typescript": "~3.8.3"
