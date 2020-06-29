@@ -92,7 +92,7 @@ describe('manni-watch-api-client.ts', (): void => {
                 getProxyStub.returns(undefined);
                 const scope: nock.Scope = nock(testDomain)
                     .get('/test/path')
-                    .matchHeader('User-Agent', /^ManniWatch Api Client\/[0-9]+\.[0-9]+\.[0-9]+/)
+                    .matchHeader('User-Agent', /^ManniWatch Api Client\/___PACKAGE_VERSION___/)
                     .reply(200, testSuccessResponse);
                 return instance.request(testOpts)
                     .then((val: any): void => {

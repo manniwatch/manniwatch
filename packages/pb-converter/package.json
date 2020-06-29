@@ -4,16 +4,16 @@
   "description": "Api Types and helper for Trapeze Api",
   "main": "dist/cjs/index.js",
   "module": "./dist/esm/index.js",
-  "types": "dist/commonjs/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "private": false,
-  "typings": "./dist/index.d.ts",
+  "typings": "dist/types/index.d.ts",
   "keywords": [
     "api",
     "types"
   ],
   "scripts": {
     "build": "rollup -c && npm run build:types",
-    "build:types": "npx tsc --project ./tsconfig.json --emitDeclarationOnly --declaration true --declarationDir ./dist",
+    "build:types": "tsc --project ./tsconfig.json  -d --declarationDir dist/types --declarationMap --emitDeclarationOnly",
     "test": "mocha --config ../../.mocharc.yml",
     "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
     "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
@@ -49,7 +49,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "~13.0.0",
     "@rollup/plugin-node-resolve": "~8.1.0",
-    "@rollup/plugin-typescript": "~5.0.0",
+    "@rollup/plugin-typescript": "~5.0.1",
     "rollup": "~2.18.1",
     "tslint": "~6.1.2",
     "typescript": "~3.8.3"
