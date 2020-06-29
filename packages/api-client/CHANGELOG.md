@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/manniwatch/manniwatch/compare/v0.12.1...v0.13.0) (2020-06-29)
+
+
+### Bug Fixes
+
+* **api-client:** remove spec files from distributed bundle ([#584](https://github.com/manniwatch/manniwatch/issues/584)) ([a8b78e6](https://github.com/manniwatch/manniwatch/commit/a8b78e6a5274f904412355f85b42e5d6263074f5))
+
+
+### Features
+
+* **api-client:** include es module with package ([#563](https://github.com/manniwatch/manniwatch/issues/563)) ([dc42b53](https://github.com/manniwatch/manniwatch/commit/dc42b53fed2f6a245083189796d8367876cc0eae))
+
+
+
+
+
+
 # [0.12.0](https://github.com/manniwatch/manniwatch/compare/v0.11.2...v0.12.0) (2020-06-28)
 
 **Note:** Version bump only for package @manniwatch/api-client
