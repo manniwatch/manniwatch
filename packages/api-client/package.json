@@ -29,7 +29,7 @@
         "@types/request": "~2.48.5",
         "@types/request-promise-native": "~1.0.17",
         "glob": "~7.1.6",
-        "nock": "~13.0.0",
+        "nock": "~13.0.1",
         "tslint": "~6.1.2",
         "typescript": "~3.8.3"
     },
