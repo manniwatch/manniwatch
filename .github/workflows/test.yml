@@ -3,15 +3,19 @@ on: [push,pull_request]
 
 jobs:
   test_suite:
-    runs-on: ubuntu-latest
-    name: Test
+    runs-on: ${{ matrix.os }}
+    name: Test - ${{ matrix.os }} - Node ${{ matrix.node }}
+    strategy:
+      matrix:
+        node: [10, 12]
+        os: [ubuntu-latest, windows-latest]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: ${{ matrix.node }}
       - name: Setup Cache
         uses: actions/cache@v1
         with:
@@ -27,12 +31,25 @@ jobs:
         run: npm run build
       - name: Run Test
         run: npm run test:coverage --no-sort
-      - name: Upload coverage to Codecov
-        run: |
-          node .github/coveralls.js
-        env:
-          COVERALLS_REPO_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+      - name: Merge Test Reports
+        run: npm run coverage:merge
+      - name: Upload Coverage to Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.github_token }}
+          flag-name: ${{ matrix.os }}_node${{ matrix.node }}
+          parallel: true
       - name: Run Lint
         run: npm run lint --no-sort
       - name: Run Docs
         run: npm run docs --no-sort
+  finish:
+    needs: test_suite
+    name: Finish Test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Coveralls Finished
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.github_token }}
+        parallel-finished: true

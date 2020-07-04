@@ -25,6 +25,7 @@
     "build": "lerna run build",
     "test": "lerna run test",
     "test:coverage": "lerna run test:coverage",
+    "coverage:merge": "node ./scripts/merge_coverage.js",
     "lint": "lerna run lint",
     "docs": "lerna run docs",
     "lint:fix": "lerna run lint:fix",
