@@ -3,15 +3,19 @@ on: [push,pull_request]
 
 jobs:
   test_suite:
-    runs-on: ubuntu-latest
-    name: Test
+    runs-on: ${{ matrix.os }}
+    name: Test - ${{ matrix.os }} - Node ${{ matrix.node }}
+    strategy:
+      matrix:
+        node: [10, 12]
+        os: [macos-latest, windows-latest]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: ${{ matrix.node }}
       - name: Setup Cache
         uses: actions/cache@v1
         with:
@@ -33,6 +37,7 @@ jobs:
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.github_token }}
+          flag-name: ${{ matrix.os }}_node${{ matrix.node }}
           parallel: true
       - name: Run Lint
         run: npm run lint --no-sort
