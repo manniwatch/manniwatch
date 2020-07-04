@@ -35,7 +35,11 @@ const htmlReport = reports.create('html', {
 const jsonReport = reports.create('json', {
     file: 'coverage-final.json'
 })
+const lcovReport = reports.create('lcovonly', {
+    file: 'lcov.info'
+})
 
 // call execute to synchronously create and write the report to disk
 jsonReport.execute(context);
 htmlReport.execute(context);
+lcovReport.execute(context);
