@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.1](https://github.com/manniwatch/manniwatch/compare/v0.13.0...v0.13.1) (2020-07-04)
+
+
+### Bug Fixes
+
+* **deps:** bump yargs from 15.3.1 to 15.4.0 ([#603](https://github.com/manniwatch/manniwatch/issues/603)) ([7d7e625](https://github.com/manniwatch/manniwatch/commit/7d7e625d7eeadab4fe98ecf00fe6ea8b1ee1f2f6))
+
+
+
+
+
+
 # [0.13.0](https://github.com/manniwatch/manniwatch/compare/v0.12.1...v0.13.0) (2020-06-29)
 
 **Note:** Version bump only for package @manniwatch/client-desktop
