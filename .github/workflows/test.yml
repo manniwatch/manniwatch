@@ -27,12 +27,24 @@ jobs:
         run: npm run build
       - name: Run Test
         run: npm run test:coverage --no-sort
-      - name: Upload coverage to Codecov
-        run: |
-          node .github/coveralls.js
-        env:
-          COVERALLS_REPO_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+      - name: Merge Test Reports
+        run: npm run coverage:merge
+      - name: Upload Coverage to Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.github_token }}
+          parallel: true
       - name: Run Lint
         run: npm run lint --no-sort
       - name: Run Docs
         run: npm run docs --no-sort
+  finish:
+    needs: test_suite
+    name: Finish Test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Coveralls Finished
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.github_token }}
+        parallel-finished: true
