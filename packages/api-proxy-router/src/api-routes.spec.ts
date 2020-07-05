@@ -45,15 +45,16 @@ const testEndpoints: ITestEndpoint[] = [{
     endpointName: 'createSettingsRouter',
     path: '/settings',
 }];
+type EndpointTypes = keyof typeof endpoints;
 describe('api-routes.ts', (): void => {
     describe('createApiProxyRouter()', (): void => {
         let sandbox: sinon.SinonSandbox;
-        const routerKeys: string[] = Object.keys(endpoints);
-        const endpointStubs: { [key: string]: sinon.SinonStub } = {};
+        const routerKeys: EndpointTypes[] = Object.keys(endpoints) as EndpointTypes[];
+        const endpointStubs: Record<EndpointTypes, sinon.SinonStub> = {} as any;
         before((): void => {
             sandbox = sinon.createSandbox();
             for (const key of routerKeys) {
-                endpointStubs[key] = sandbox.stub(endpoints, key as any);
+                endpointStubs[key] = sandbox.stub(endpoints, key);
                 endpointStubs[key].callsFake((): express.RequestHandler => {
                     return (req: express.Request, res: express.Response, next: express.NextFunction): void => {
                         res.json({
@@ -73,6 +74,7 @@ describe('api-routes.ts', (): void => {
             const route: express.Router = createApiProxyRouter(new ManniWatchApiClient('https://localhost:12/'));
             expect(route).to.not.be.undefined;
             for (const key of routerKeys) {
+                expect(endpointStubs[key].callCount).to.equal(1, 'should only be called once');
                 const arg: ManniWatchApiClient = endpointStubs[key].getCall(0).args[0];
                 expect(arg.endpoint).to.equal('https://localhost:12/',
                     `endpoint ${key} should be created with a correct instance`);
