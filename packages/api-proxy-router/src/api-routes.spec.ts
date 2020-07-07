@@ -6,9 +6,9 @@ import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { expect } from 'chai';
 import * as express from 'express';
 import 'mocha';
+import * as proxyquire from 'proxyquire';
 import * as sinon from 'sinon';
 import * as supertest from 'supertest';
-import { createApiProxyRouter } from './api-routes';
 import * as endpoints from './endpoints';
 import {
     createTestErrorRequestHandler,
@@ -51,10 +51,11 @@ describe('api-routes.ts', (): void => {
         let sandbox: sinon.SinonSandbox;
         const routerKeys: EndpointTypes[] = Object.keys(endpoints) as EndpointTypes[];
         const endpointStubs: Record<EndpointTypes, sinon.SinonStub> = {} as any;
+        let createApiProxyRouter: any;
         before((): void => {
             sandbox = sinon.createSandbox();
             for (const key of routerKeys) {
-                endpointStubs[key] = sandbox.stub(endpoints, key);
+                endpointStubs[key] = sandbox.stub();
                 endpointStubs[key].callsFake((): express.RequestHandler => {
                     return (req: express.Request, res: express.Response, next: express.NextFunction): void => {
                         res.json({
@@ -63,6 +64,9 @@ describe('api-routes.ts', (): void => {
                     };
                 });
             }
+            createApiProxyRouter = proxyquire('./api-routes', {
+                './endpoints': endpointStubs,
+            }).createApiProxyRouter;
         });
         afterEach((): void => {
             sandbox.resetHistory();
