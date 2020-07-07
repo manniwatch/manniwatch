@@ -16,3 +16,12 @@ pull_request_rules:
       - -author~=^dependabot(|-preview)\[bot\]$
     actions:
       delete_head_branch:
+  - name: label pull requests ci if in workflows
+    conditions:
+      - merged
+      - -head~=^(master|dev)$
+      - files~=^\.github/workflows
+    actions:
+      label:
+        add:
+          - ci
