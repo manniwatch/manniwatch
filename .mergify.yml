@@ -9,6 +9,18 @@ pull_request_rules:
         method: squash
         strict: smart+fasttrack
         strict_method: rebase
+  - name: merge PRs labeled ready-to-merge
+    conditions:
+      - status-success=Finish Test
+      - label=ready-to-merge
+    actions:
+      merge:
+        method: squash
+        strict: smart+fasttrack
+        strict_method: rebase
+      label:
+        remove:
+          - ready-to-merge
   - name: delete head branch on merged pull requests
     conditions:
       - merged
