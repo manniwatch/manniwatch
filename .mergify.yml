@@ -6,7 +6,7 @@ pull_request_rules:
       - base=dev
     actions:
       comment:
-        message: "@dependabot-bot merge"
+        message: "@dependabot squash and merge"
   - name: merge PRs labeled ready-to-merge
     conditions:
       - status-success=Finish Test
