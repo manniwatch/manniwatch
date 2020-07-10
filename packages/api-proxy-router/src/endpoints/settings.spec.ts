@@ -7,10 +7,10 @@ import * as prom from '@manniwatch/express-utils';
 import { expect } from 'chai';
 import * as express from 'express';
 import 'mocha';
+import * as proxyquire from 'proxyquire';
 import * as sinon from 'sinon';
 import * as supertest from 'supertest';
 import { SUCCESS_RESPONSE, SUCCESS_RESPONSE_LENGTH } from './common-test.spec';
-import { createSettingsRouter } from './settings';
 
 describe('endpoints/settings.ts', (): void => {
     describe('createSettingsRouter', (): void => {
@@ -18,12 +18,18 @@ describe('endpoints/settings.ts', (): void => {
         let promiseStub: sinon.SinonStub;
         let getSettingsStub: sinon.SinonStub;
         let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
+        let createSettingsRouter: any;
         before((): void => {
             promiseStub = sinon.stub(prom, 'promiseToResponse');
             getSettingsStub = sinon.stub();
             apiClientStub = sinon.createStubInstance(ManniWatchApiClient, {
                 getSettings: getSettingsStub as any,
             });
+            createSettingsRouter = proxyquire('./settings', {
+                '@manniwatch/express-utils': {
+                    promiseToResponse: promiseStub,
+                },
+            }).createSettingsRouter;
         });
 
         beforeEach((): void => {
