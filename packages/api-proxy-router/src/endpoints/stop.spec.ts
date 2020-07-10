@@ -20,7 +20,7 @@ import {
 import { createStopRouter, passagesSchema } from './stop';
 const testIds: string[] = ['-12883', 'kasd'];
 describe('endpoints/stop.ts', (): void => {
-    describe('createTripRouter', (): void => {
+    describe('createStopRouter', (): void => {
         let app: express.Express;
         let promiseStub: sinon.SinonStub;
         let getStopInfoStub: sinon.SinonStub;
