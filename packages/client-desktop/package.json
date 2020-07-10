@@ -53,8 +53,7 @@
     "pug-cli": "~1.0.0-alpha6",
     "ts-node": "~8.10.2",
     "tslint": "~6.1.2",
-    "typedoc": "~0.17.8",
-    "typescript": "~3.8.3"
+    "typedoc": "~0.17.8"
   },
   "dependencies": {
     "@manniwatch/api-proxy-router": "^0.13.1",

@@ -51,8 +51,7 @@
     "@rollup/plugin-node-resolve": "~8.1.0",
     "@rollup/plugin-typescript": "~5.0.1",
     "rollup": "~2.21.0",
-    "tslint": "~6.1.2",
-    "typescript": "~3.8.3"
+    "tslint": "~6.1.2"
   },
   "dependencies": {
     "@manniwatch/api-types": "^0.13.0",

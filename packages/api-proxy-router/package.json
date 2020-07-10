@@ -61,8 +61,7 @@
     "proxyquire": "~2.1.3",
     "request-promise-native": "~1.0.8",
     "supertest": "~4.0.2",
-    "tslint": "~6.1.2",
-    "typescript": "~3.9.2"
+    "tslint": "~6.1.2"
   },
   "peerDependencies": {
     "request-promise-native": "~1.0.8"
