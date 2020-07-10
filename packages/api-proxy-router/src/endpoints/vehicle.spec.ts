@@ -7,10 +7,10 @@ import * as prom from '@manniwatch/express-utils';
 import { expect } from 'chai';
 import * as express from 'express';
 import 'mocha';
+import * as proxyquire from 'proxyquire';
 import * as sinon from 'sinon';
 import * as supertest from 'supertest';
 import { SUCCESS_RESPONSE, SUCCESS_RESPONSE_LENGTH } from './common-test.spec';
-import { createVehicleRouter } from './vehicle';
 const testIds: string[] = ['-12883', 'kasd'];
 describe('endpoints/vehicle.ts', (): void => {
     describe('createVehicleRouter', (): void => {
@@ -18,12 +18,18 @@ describe('endpoints/vehicle.ts', (): void => {
         let promiseStub: sinon.SinonStub;
         let getRouteByVehicleIdStub: sinon.SinonStub;
         let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
+        let createVehicleRouter: any;
         before((): void => {
             promiseStub = sinon.stub(prom, 'promiseToResponse');
             getRouteByVehicleIdStub = sinon.stub();
             apiClientStub = sinon.createStubInstance(ManniWatchApiClient, {
                 getRouteByVehicleId: getRouteByVehicleIdStub as any,
             });
+            createVehicleRouter = proxyquire('./vehicle', {
+                '@manniwatch/express-utils': {
+                    promiseToResponse: promiseStub,
+                },
+            }).createVehicleRouter;
         });
 
         beforeEach((): void => {
