@@ -4,9 +4,12 @@ pull_request_rules:
       - author~=^dependabot(|-preview)\[bot\]$
       - status-success=Finish Test
       - base=dev
+      - -title~=\@angular\/
     actions:
-      comment:
-        message: "@dependabot squash and merge"
+      merge:
+        method: squash
+        strict: smart+fasttrack
+        strict_method: merge
   - name: merge PRs labeled ready-to-merge
     conditions:
       - status-success=Finish Test
