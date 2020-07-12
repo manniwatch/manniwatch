@@ -9,6 +9,7 @@ import * as express from 'express';
 import * as jsonschema from 'jsonschema';
 
 export const geoFenceSchema: jsonschema.Schema = {
+    id: 'geoFenceSchema',
     properties: {
         bottom: {
             id: 'bottom',
@@ -37,6 +38,7 @@ export const geoFenceSchema: jsonschema.Schema = {
 
 export const getVehicleLocationSchema: jsonschema.Schema = {
     additionalProperties: false,
+    id: 'getVehicleLocationSchema',
     properties: {
         lastUpdate: {
             description: 'unix timestamp in ms since epoch',

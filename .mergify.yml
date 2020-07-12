@@ -4,9 +4,12 @@ pull_request_rules:
       - author~=^dependabot(|-preview)\[bot\]$
       - status-success=Finish Test
       - base=dev
+      - -title~=\@angular\/
     actions:
-      comment:
-        message: "@dependabot squash and merge"
+      merge:
+        method: squash
+        strict: smart+fasttrack
+        strict_method: merge
   - name: merge PRs labeled ready-to-merge
     conditions:
       - status-success=Finish Test
@@ -16,15 +19,15 @@ pull_request_rules:
         method: squash
         strict: smart+fasttrack
         strict_method: rebase
-      label:
-        remove:
-          - ready-to-merge
   - name: delete head branch on merged pull requests
     conditions:
       - merged
       - -head~=^(master|dev)$
       - -author~=^dependabot(|-preview)\[bot\]$
     actions:
+      label:
+        remove:
+          - ready-to-merge
       delete_head_branch:
   - name: label pull requests ci if in workflows
     conditions:

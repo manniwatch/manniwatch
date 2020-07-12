@@ -43,15 +43,14 @@
     "access": "public"
   },
   "devDependencies": {
-    "@types/express": "~4.17.6",
+    "@types/express": "~4.17.7",
     "@types/request-promise-native": "^1.0.17",
     "apidoc": "~0.23.0",
     "express": "~4.17.1",
     "jsonschema": "~1.2.6",
     "request-promise-native": "^1.0.8",
     "supertest": "~4.0.2",
-    "tslint": "~6.1.2",
-    "typescript": "~3.8.3"
+    "tslint": "~6.1.2"
   },
   "peerDependencies": {
     "express": "~4.17.1",

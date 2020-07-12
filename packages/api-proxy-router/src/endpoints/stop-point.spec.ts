@@ -7,6 +7,7 @@ import * as prom from '@manniwatch/express-utils';
 import { expect } from 'chai';
 import * as express from 'express';
 import 'mocha';
+import * as proxyquire from 'proxyquire';
 import * as sinon from 'sinon';
 import * as supertest from 'supertest';
 import {
@@ -17,7 +18,7 @@ import {
     SUCCESS_RESPONSE,
     SUCCESS_RESPONSE_LENGTH,
 } from './common-test.spec';
-import { createStopPointRouter, passagesSchema } from './stop-point';
+import { passagesSchema } from './stop-point';
 const testIds: string[] = ['-12883', 'kasd'];
 describe('endpoints/stop-point.ts', (): void => {
     describe('createStopPointRouter', (): void => {
@@ -29,6 +30,7 @@ describe('endpoints/stop-point.ts', (): void => {
         let validateStub: sinon.SinonStub;
         let validateStubHandler: sinon.SinonStub;
         let errorSpy: sinon.SinonSpy;
+        let createStopPointRouter: any;
         before((): void => {
             validateStub = sinon.stub(prom, 'validateRequest');
             promiseStub = sinon.stub(prom, 'promiseToResponse');
@@ -41,6 +43,12 @@ describe('endpoints/stop-point.ts', (): void => {
                 getStopPointPassages: getStopPointPassagesStub as any,
             });
             validateStub.returns(validateStubHandler);
+            createStopPointRouter = proxyquire('./stop-point', {
+                '@manniwatch/express-utils': {
+                    promiseToResponse: promiseStub,
+                    validateRequest: validateStub,
+                },
+            }).createStopPointRouter;
         });
 
         beforeEach((): void => {

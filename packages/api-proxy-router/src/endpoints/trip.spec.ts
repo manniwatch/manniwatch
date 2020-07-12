@@ -3,10 +3,10 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import * as prom from '@manniwatch/express-utils';
 import { expect } from 'chai';
 import * as express from 'express';
 import 'mocha';
+import * as proxyquire from 'proxyquire';
 import * as sinon from 'sinon';
 import * as supertest from 'supertest';
 import {
@@ -16,7 +16,6 @@ import {
     SUCCESS_RESPONSE,
     SUCCESS_RESPONSE_LENGTH,
 } from './common-test.spec';
-import { createTripRouter } from './trip';
 const testIds: string[] = ['-12883', 'kasd'];
 describe('endpoints/trip.ts', (): void => {
     describe('createTripRouter', (): void => {
@@ -28,15 +27,22 @@ describe('endpoints/trip.ts', (): void => {
         let validateStubHandler: sinon.SinonStub;
         let sandbox: sinon.SinonSandbox;
         let errorSpy: sinon.SinonSpy;
+        let createTripRouter: any;
         before((): void => {
             sandbox = sinon.createSandbox();
-            promiseStub = sandbox.stub(prom, 'promiseToResponse');
-            validateStub = sandbox.stub(prom, 'validateRequest');
+            promiseStub = sandbox.stub();
+            validateStub = sandbox.stub();
             getRouteByTripIdStub = sinon.stub();
             errorSpy = sandbox.spy();
             apiClientStub = sandbox.createStubInstance(ManniWatchApiClient, {
                 getRouteByTripId: getRouteByTripIdStub as any,
             });
+            createTripRouter = proxyquire('./trip', {
+                '@manniwatch/express-utils': {
+                    promiseToResponse: promiseStub,
+                    validateRequest: validateStub,
+                },
+            }).createTripRouter;
         });
 
         beforeEach((): void => {
