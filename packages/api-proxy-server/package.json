@@ -50,7 +50,7 @@
     "nconf": "~0.10.0"
   },
   "devDependencies": {
-    "@types/express": "~4.17.6",
+    "@types/express": "~4.17.7",
     "@types/helmet": "~0.0.47",
     "apidoc": "~0.23.0",
     "supertest": "~4.0.2",
