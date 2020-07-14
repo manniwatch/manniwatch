@@ -25,6 +25,10 @@ jobs:
           changelog="${changelog//$'\n'/'%0A'}"
           changelog="${changelog//$'\r'/'%0D'}"
           echo ::set-output name=changelog::$changelog
+      - name: t
+        run: |
+          echo ${{ github.ref }}
+          echo $GITHUB_REF
       - name: Create Release
         id: create_release
         uses: actions/create-release@latest
