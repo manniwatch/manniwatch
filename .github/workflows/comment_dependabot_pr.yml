@@ -1,0 +1,20 @@
+name: Comment Dependabot PR
+on:
+  pull_request:
+    branches:
+      - 'dependabot/**'
+    types: [opened, edited, synchronize]
+
+jobs:
+  comment_pr:
+    name: Label Package PRs
+    runs-on: ubuntu-latest
+    if: github.GITHUB_ACTOR == 'dependabot'
+    steps:
+      - name: Comment on PR
+        uses: mshick/add-pr-comment@v1
+        with:
+          message: @dependabot-bot squash and merge
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+          allow-repeats: false # This is the default
