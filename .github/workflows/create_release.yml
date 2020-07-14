@@ -20,11 +20,7 @@ jobs:
         id: create-changelog
         run: |
           npm install -g conventional-changelog-cli
-          changelog=$(conventional-changelog --preset cli --release-count 2 -u false)
-          changelog="${changelog//'%'/'%25'}"
-          changelog="${changelog//$'\n'/'%0A'}"
-          changelog="${changelog//$'\r'/'%0D'}"
-          echo ::set-output name=changelog::$changelog
+          npx conventional-changelog --preset cli --release-count 2 -u false >> tmp_readme.md
       - name: Create Release
         id: create_release
         uses: actions/create-release@latest
@@ -33,6 +29,6 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          body: ${{ steps.create-changelog.outputs.changelog }}
+          body_path: ./tmp_readme.md
           draft: true
           prerelease: false
