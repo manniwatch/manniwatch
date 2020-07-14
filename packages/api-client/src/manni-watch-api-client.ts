@@ -20,7 +20,7 @@ import * as reqp from 'request-promise-native';
 import { Util } from './util';
 
 // tslint:disable-next-line:no-var-requires
-export const DEFAULT_USER_AGENT: string = 'ManniWatch Api Client/___PACKAGE_VERSION___';
+export const DEFAULT_USER_AGENT: string = 'ManniWatch Api Client/___BUILD_VERSION___';
 export interface IBoundingBox {
     top: number;
     bottom: number;
