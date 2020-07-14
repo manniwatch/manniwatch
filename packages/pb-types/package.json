@@ -44,6 +44,6 @@
     "access": "public"
   },
   "dependencies": {
-    "protobufjs": "~6.9.0"
+    "protobufjs": "~6.10.0"
   }
 }
