@@ -7,7 +7,7 @@
     "@rollup/plugin-replace": "^2.3.3",
     "@rollup/plugin-typescript": "~5.0.1",
     "@types/chai": "~4.2.11",
-    "@types/mocha": "~7.0.2",
+    "@types/mocha": "~8.0.0",
     "@types/node": "~14.0.23",
     "@types/sinon": "~9.0.4",
     "chai": "~4.2.0",
