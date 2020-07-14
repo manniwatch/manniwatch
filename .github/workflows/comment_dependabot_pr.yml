@@ -7,7 +7,7 @@ on:
 
 jobs:
   comment_pr:
-    name: Label Package PRs
+    name: Leave squash comment if PR by Dependabot
     runs-on: ubuntu-latest
     if: github.GITHUB_ACTOR == 'dependabot'
     steps:
