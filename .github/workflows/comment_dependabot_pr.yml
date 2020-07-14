@@ -1,8 +1,8 @@
 name: Comment Dependabot PR
 on:
   pull_request:
-    branches:
-      - 'dependabot/**'
+    #branches:
+    #  - 'dependabot/**'
     types: [opened, edited, synchronize]
 
 jobs:
