@@ -32,11 +32,11 @@ export interface IMapEnvironmentSettings {
         right: number,
         top: number,
     };
-    zoom: {
+    zoom?: {
         /**
          * default zoom level at start
          */
-        default?: number,
+        default: number,
         /**
          * minimum zoom level
          */
@@ -50,7 +50,7 @@ export interface IMapEnvironmentSettings {
      * Specify map data provider.
      * Vectors do support dark/light mode swtich
      */
-    tileProvider: TileProvider;
+    tileProvider?: TileProvider;
 }
 
 export interface IEnvironmentBase {

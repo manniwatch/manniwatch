@@ -13,7 +13,6 @@ export const environment: IEnvironmentBase = {
             lat: 0,
             lon: 0,
         },
-        zoom: 0,
     },
     production: true,
     pwa: false,

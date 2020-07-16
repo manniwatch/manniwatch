@@ -79,6 +79,7 @@ export class GlobalMapService {
                     }),
                 });
             case 'osm':
+            default:
                 return new TileLayer({
                     source: new OSM({
                         url: environment.map.tileProvider.url ??
