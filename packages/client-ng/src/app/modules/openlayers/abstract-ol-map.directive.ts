@@ -39,12 +39,7 @@ export abstract class AbstractOlMapDirective implements AfterViewInit, OnDestroy
             this.mBackgroundMapLayer = this.createMapLayer();
             this.map = new Map({
                 interactions: defaults(),
-                layers: [/*
-                    new TileLayer({
-                        source: new XYZ({
-                            url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                        }),
-                    }),*/
+                layers: [
                     this.mBackgroundMapLayer,
                 ],
                 target: this.elRef.nativeElement,
@@ -64,6 +59,7 @@ export abstract class AbstractOlMapDirective implements AfterViewInit, OnDestroy
                 .pipe(runOutsideZone(this.zone))
                 .subscribe((isDark: boolean): void => {
                     this.applyTheme(isDark);
+                    this.map.updateSize()
                 });
         });
 
@@ -71,21 +67,6 @@ export abstract class AbstractOlMapDirective implements AfterViewInit, OnDestroy
 
     public createMapLayer(): BaseTileLayer {
         return this.globalMapService.tileLayer;
-        /*
-        return new VectorTileLayer({
-            declutter: false,
-            source: new VectorTileSource({
-                attributions: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> ' +
-                    '© <a href="https://www.openstreetmap.org/copyright">' +
-                    'OpenStreetMap contributors</a>',
-                format: new MVT({
-                    // layers: ['background', 'water', 'building', 'road_oneway']
-
-                }),
-                maxZoom: 14,
-                url: 'https://d1u6l41epxe4hw.cloudfront.net/tiles/{z}/{x}/{y}.pbf',
-            }),
-        });*/
     }
 
     public applyTheme(dark: boolean): void {
@@ -111,6 +92,7 @@ export abstract class AbstractOlMapDirective implements AfterViewInit, OnDestroy
             });
         }
     }
+
     public ngOnChanges(changes: SimpleChanges): void {
         if (this.map) {
             this.map.updateSize();

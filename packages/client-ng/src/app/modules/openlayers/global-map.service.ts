@@ -56,8 +56,8 @@ export class GlobalMapService {
     }
 
     public get bounds(): Extent {
-        const topLeft: Coordinate = fromLonLat([environment.map?.bounds?.left ?? -180, environment.map?.bounds?.top ?? -90])
-        const bottomRight: Coordinate = fromLonLat([environment.map?.bounds?.right ?? -180, environment.map?.bounds?.bottom ?? -90])
+        const topLeft: Coordinate = fromLonLat([environment.map?.bounds?.left ?? -180, environment.map?.bounds?.top ?? -90]);
+        const bottomRight: Coordinate = fromLonLat([environment.map?.bounds?.right ?? -180, environment.map?.bounds?.bottom ?? -90]);
         return boundingExtent([topLeft, bottomRight]);
     }
 
@@ -70,10 +70,6 @@ export class GlobalMapService {
                         attributions: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> ' +
                             '© <a href="https://www.openstreetmap.org/copyright">' +
                             'OpenStreetMap contributors</a>',
-                        format: new MVT({
-                            // layers: ['background', 'water', 'building', 'road_oneway']
-
-                        }),
                         maxZoom: 14,
                         url: environment.map.tileProvider.url,
                     }),

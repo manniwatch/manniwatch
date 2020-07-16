@@ -17,9 +17,8 @@ import { Subscription } from 'rxjs';
 import { AbstractOlMapDirective } from 'src/app/modules/openlayers';
 import { GlobalMapService } from 'src/app/modules/openlayers';
 import { ApiService } from 'src/app/services';
-import { VehicleService } from 'src/app/services';
+import { StopPointService, VehicleService } from 'src/app/services';
 import { OlUtil } from 'src/app/util/ol';
-import { StopPointService } from '../../services/stop-point.service';
 import { OlMainMapService } from './ol-main-map.service';
 import { OlMarkerHandler } from './ol-marker-handler';
 import { OlVehicleHandler } from './ol-vehicle-handler';
@@ -114,7 +113,6 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
     }
 
     public onAfterSetView(map: OLMap): void {
-
         this.markerHandler.start(map);
         this.vehicleHandler.start(map);
         this.getMap().addInteraction(this.mapSelectInteraction);
@@ -134,6 +132,7 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
                 }
             }
         });
+        console.log(map.getLayers().getLength())
     }
 
     public ngOnDestroy(): void {
