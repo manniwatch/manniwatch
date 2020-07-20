@@ -1,8 +1,6 @@
-mat-nav-list.stoplist(role="list")
-    ng-container(*ngFor="let item of stops;let idx = index;")
-        mat-divider(*ngIf="hasHeader(idx)&&idx>0")
-        h3(*ngIf="hasHeader(idx)",mat-subheader) {{item.name.charAt(0)}}
-        a([routerLink]="['/stop', item.shortName]",title="{{item?.name}}")
-            mat-list-item(role="listitem")
-                mat-icon(mat-list-icon) place
-                h4(mat-line) {{item?.name}}
+mat-nav-list
+    h3(matSubheader) Appearance
+    a(mat-list-item,[routerLink]="['/settings','theme']",role="navigation")
+        mat-icon(matListIcon) color_lense
+        h4(matLine) Theme
+        p(matLine) Select your theme preference

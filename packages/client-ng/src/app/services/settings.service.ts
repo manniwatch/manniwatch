@@ -5,6 +5,7 @@
 import { Injectable } from '@angular/core';
 import { Subscriber } from 'rxjs';
 import { environment } from 'src/environments';
+import { Theme } from './theme';
 
 // tslint:disable:max-classes-per-file
 export class SettingsLoadSubscriber extends Subscriber<void> {
@@ -29,6 +30,10 @@ export class SettingsLoadSubscriber extends Subscriber<void> {
 export class SettingsService {
 
     constructor() {
+
+    }
+
+    public setTheme(theme: Theme): void {
 
     }
 

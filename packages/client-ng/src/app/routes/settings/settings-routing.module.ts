@@ -5,15 +5,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SettingsComponent } from './settings.component';
-import { SettingsResolver } from './settings.resolver';
+import { ThemeSelectorComponent } from './theme-selector';
 
-const tripPassagesRoute: Routes = [
+const settingsRoutes: Routes = [
+    {
+        component: ThemeSelectorComponent,
+        path: 'theme',
+    },
     {
         component: SettingsComponent,
         path: '',
-        resolve: {
-            stops: SettingsResolver,
-        },
     },
 ];
 
@@ -22,7 +23,7 @@ const tripPassagesRoute: Routes = [
         RouterModule,
     ],
     imports: [
-        RouterModule.forChild(tripPassagesRoute),
+        RouterModule.forChild(settingsRoutes),
     ],
 })
 export class SettingsRoutingModule { }
