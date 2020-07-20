@@ -34,8 +34,14 @@
         @include angular-material-theme($manniwatch-dark-theme);
         @include candy-carousel-theme($manniwatch-dark-theme);
     }
-/*
-    @media (prefers-color-scheme: light) {
-        @include angular-material-theme($candy-app-theme);
-    }*/
+}
+
+.manniwatch-theme[theme='dark'] {
+    @include angular-material-theme($manniwatch-dark-theme);
+    @include candy-carousel-theme($manniwatch-dark-theme);
+}
+
+.manniwatch-theme[theme='light'] {
+    @include angular-material-theme($manniwatch-light-theme);
+    @include candy-carousel-theme($manniwatch-light-theme);
 }
