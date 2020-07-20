@@ -7,7 +7,7 @@ import { Subscriber, BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { environment } from 'src/environments';
 import { createCssThemeWatcher } from './css-theme-watcher';
 import { Theme } from './theme';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 
 // tslint:disable:max-classes-per-file
 export class SettingsLoadSubscriber extends Subscriber<void> {
@@ -43,12 +43,33 @@ export class SettingsService {
                     return themes[1];
                 }
                 return themes[0];
-            }));
+            }), shareReplay(1));
+        this.updateBodyTheme();
+        this.themeObservable.subscribe((theme: Theme): void => {
+            this.setBodyTheme(theme);
+        });
     }
 
+    public updateBodyTheme(): void {
+        const bodyElement: HTMLElement = document.body;
+        this.setBodyTheme(this.getThemePreference());
+    }
+
+    protected setBodyTheme(theme: Theme): void {
+        const bodyElement: HTMLElement = document.body;
+        switch (theme) {
+            case Theme.DARK:
+                bodyElement.setAttribute('theme', 'dark');
+                break;
+            case Theme.LIGHT:
+                bodyElement.setAttribute('theme', 'light');
+                break;
+        }
+    }
     public setTheme(theme: Theme): void {
         this.themeSubject.next(theme);
         this.setThemePreference(theme);
+        this.setBodyTheme(theme);
     }
 
     /**
