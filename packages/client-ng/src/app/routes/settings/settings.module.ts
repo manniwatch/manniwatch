@@ -11,7 +11,6 @@ import { RouterModule } from '@angular/router';
 import { RetryDialogModule } from 'src/app/modules/common/retry-dialog';
 import { SettingsRoutingModule } from './settings-routing.module';
 import { SettingsComponent } from './settings.component';
-import { SettingsResolver } from './settings.resolver';
 /**
  * Stops lazy loaded Module
  */
@@ -28,8 +27,6 @@ import { SettingsResolver } from './settings.resolver';
         MatDialogModule,
         RouterModule,
     ],
-    providers: [
-        SettingsResolver,
-    ],
+    providers: [],
 })
 export class SettingsModule { }
