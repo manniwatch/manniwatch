@@ -12,7 +12,6 @@ import { SettingsService, Theme } from 'src/app/services';
 })
 export class ThemeSelectorComponent {
 
-
     public constructor(public settingsService: SettingsService) {
 
     }

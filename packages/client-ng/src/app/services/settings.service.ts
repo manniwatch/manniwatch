@@ -3,11 +3,11 @@
  */
 
 import { Injectable } from '@angular/core';
-import { Subscriber, BehaviorSubject, Observable, combineLatest } from 'rxjs';
+import { combineLatest, BehaviorSubject, Observable, Subscriber } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 import { environment } from 'src/environments';
 import { createCssThemeWatcher } from './css-theme-watcher';
 import { Theme } from './theme';
-import { map, shareReplay } from 'rxjs/operators';
 
 // tslint:disable:max-classes-per-file
 export class SettingsLoadSubscriber extends Subscriber<void> {
@@ -51,7 +51,6 @@ export class SettingsService {
     }
 
     public updateBodyTheme(): void {
-        const bodyElement: HTMLElement = document.body;
         this.setBodyTheme(this.getThemePreference());
     }
 
