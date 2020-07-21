@@ -5,60 +5,44 @@
 import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { SettingsComponent } from './settings.component';
+import { ThemeSelectorComponent } from './theme-selector.component';
 
 // tslint:disable:max-classes-per-file
 // tslint:disable:component-selector
 // tslint:disable:directive-selector
 @Component({
-    selector: 'mat-nav-list',
-    template: '<div></div>',
+    selector: 'mat-action-list',
+    template: '<ng-content></ng-content>',
 })
 class TestMatListComponent {
 }
 @Component({
-    selector: 'mat-list-item',
+    selector: 'button[mat-list-item]',
     template: '<div></div>',
 })
 class TestMatListItemComponent {
-}
-@Component({
-    selector: 'mat-divider',
-    template: '<div></div>',
-})
-class TestMatDividerComponent {
-}
-
-@Component({
-    selector: 'mat-icon',
-    template: '<div></div>',
-})
-class TestMatIconComponent {
-
 }
 
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
 
-describe('src/routes/settings/settings.component.ts', (): void => {
-    describe('SettingsComponent', (): void => {
-        let fixture: ComponentFixture<SettingsComponent>;
-        let app: SettingsComponent;
+describe('src/routes/settings/theme-selector/theme-selector.component.ts', (): void => {
+    describe('ThemeSelectorComponent', (): void => {
+        let fixture: ComponentFixture<ThemeSelectorComponent>;
+        let app: ThemeSelectorComponent;
         beforeEach(async((): void => {
             TestBed.configureTestingModule({
                 declarations: [
-                    SettingsComponent,
+                    ThemeSelectorComponent,
                     TestMatListComponent,
-                    TestMatDividerComponent,
                     TestMatListItemComponent,
-                    TestMatIconComponent,
                 ],
                 imports: [
                     RouterTestingModule,
                 ],
                 providers: [],
             }).compileComponents();
-            fixture = TestBed.createComponent(SettingsComponent);
+            fixture = TestBed.createComponent(ThemeSelectorComponent);
             app = fixture.debugElement.componentInstance;
         }));
 
