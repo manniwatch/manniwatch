@@ -12,16 +12,22 @@ import { ThemeSelectorComponent } from './theme-selector.component';
 // tslint:disable:component-selector
 // tslint:disable:directive-selector
 @Component({
-    selector: 'mat-action-list',
+    selector: 'mat-selection-list',
     template: '<ng-content></ng-content>',
 })
-class TestMatListComponent {
+class TestMatSelectionListComponent {
 }
 @Component({
-    selector: 'button[mat-list-item]',
-    template: '<div></div>',
+    selector: 'mat-list-option',
+    template: '<ng-content></ng-content>',
 })
-class TestMatListItemComponent {
+class TestMatListOptionComponent {
+}
+@Component({
+    selector: 'mat-icon',
+    template: '<ng-content></ng-content>',
+})
+class TestMatIconComponent {
 }
 
 // tslint:enable:component-selector
@@ -39,8 +45,9 @@ describe('src/routes/settings/theme-selector/theme-selector.component.ts', (): v
             TestBed.configureTestingModule({
                 declarations: [
                     ThemeSelectorComponent,
-                    TestMatListComponent,
-                    TestMatListItemComponent,
+                    TestMatSelectionListComponent,
+                    TestMatListOptionComponent,
+                    TestMatIconComponent,
                 ],
                 imports: [
                     RouterTestingModule,
