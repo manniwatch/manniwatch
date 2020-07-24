@@ -1,36 +1,24 @@
 button(mat-icon-button,(click)="closeSidebar()")
     mat-icon close
-mat-action-list
+mat-nav-list((click)="closeSidebar()")
     h3(matSubheader) Head
-    mat-list-item(disabled="false")
+    a(mat-list-item,[routerLink]="['/']",[queryParams]="{utm_source: 'sidebar'}",role="navigation")
         mat-icon(matListIcon) home
         h4(matLine) Home
         p(matLine) Home
-    mat-list-item(disabled="false")
+    a(mat-list-item,[routerLink]="['/stops']",role="navigation")
         mat-icon(matListIcon) place
         h4(matLine) Stops
         p(matLine) List of stops
-    mat-list-item(disabled="false")
-        mat-icon(matListIcon) warning
-        h4(matLine) No Content yet
-        p(matLine) New stuff to come?
     mat-divider
-    mat-list-item(disabled="false")
-        mat-icon(matListIcon) info
-        h4(matLine) Version
-        p(matLine) {{appVersion}}
-    mat-list-item((click)="openGithub()")
-        mat-icon(matListIcon) info
-        h4(matLine) Github
-        p(matLine) The Projects Source Code
-    mat-list-item(disabled="false")
-        mat-icon(matListIcon) info
-        h4(matLine) Angular Version
-        p(matLine) {{angularVersion}}
     button(mat-list-item,(click)="checkForUpdate()")
         mat-icon(matListIcon) system_update_alt
         h4(matLine) Check for Update
         p(matLine) Check if an update is available
+    a(mat-list-item,[routerLink]="['/settings']",role="navigation")
+        mat-icon(matListIcon) settings
+        h4(matLine) Settings
+        p(matLine) Change Settings
 .info-box
     span(title="App Version") App: {{appVersion}}
     span(title="Angular Version") Angular: {{angularVersion}}
