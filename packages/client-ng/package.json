@@ -46,11 +46,11 @@
     "src/*"
   ],
   "dependencies": {
-    "@angular/animations": "~10.0.4",
+    "@angular/animations": "~10.0.5",
     "@angular/cdk": "~10.1.0",
     "@angular/common": "~10.0.5",
-    "@angular/compiler": "~10.0.4",
-    "@angular/core": "~10.0.4",
+    "@angular/compiler": "~10.0.5",
+    "@angular/core": "~10.0.5",
     "@angular/forms": "~10.0.5",
     "@angular/localize": "~10.0.5",
     "@angular/material": "~10.1.0",
@@ -71,7 +71,7 @@
     "@angular-devkit/build-ng-packagr": "~0.1000.4",
     "@angular/cli": "~10.0.4",
     "@angular/compiler-cli": "~10.0.5",
-    "@angular/language-service": "~10.0.4",
+    "@angular/language-service": "~10.0.5",
     "@compodoc/compodoc": "~1.1.11",
     "@types/jasmine": "~3.5.11",
     "@types/jasminewd2": "~2.0.8",
