@@ -43,7 +43,7 @@
     "url": "https://github.com/manniwatch/manniwatch.git"
   },
   "devDependencies": {
-    "@types/chai": "~4.2.11",
+    "@types/chai": "~4.2.12",
     "@types/mocha": "~8.0.0",
     "@types/sinon": "~9.0.4",
     "asar": "~3.0.3",
