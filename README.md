@@ -1,7 +1,20 @@
-# ManniWatch
-![Test](https://github.com/manniwatch/manniwatch/workflows/Test/badge.svg?branch=master&event=push) [![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg)](https://codecov.io/gh/manniwatch/manniwatch/branch/master)
+<!-- ⚠️ This README has been generated from the file(s) "readme_blueprint.md" ⚠️-->
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)](#manniwatch)
 
-## Packages
+# ➤ ManniWatch
+<p align="center">
+		<a href="https://github.com/manniwatch/manniwatch/actions?query=workflow%3ATest+branch%3Amaster"><img alt="Test" src="https://github.com/manniwatch/manniwatch/workflows/Test/badge.svg?branch=master&event=push" height="20"/></a>
+<a href="https://codecov.io/gh/manniwatch/manniwatch/branch/master"><img alt="codecov" src="https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg" height="20"/></a>
+<a href="https://github.com/manniwatch/manniwatch/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/manniwatch/manniwatch?sort=semver" height="20"/></a>
+<a href="https://github.com/manniwatch/manniwatch/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/manniwatch/manniwatch" height="20"/></a>
+<a href="https://github.com/manniwatch/manniwatch"><img alt="David" src="https://img.shields.io/david/dev/manniwatch/manniwatch" height="20"/></a>
+<a href="https://github.com/manniwatch/manniwatch/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors-anon/manniwatch/manniwatch" height="20"/></a>
+	</p>
+
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)](#packages)
+
+## ➤ Packages
 | Package | NPM | Coverage |
 | --- | --- | --- |
 | [vehicle-location-diff](https://github.com/manniwatch/manniwatch/tree/master/packages/vehicle-location-diff) | [![npm version](https://badge.fury.io/js/%40manniwatch%2Fvehicle-location-diff.svg)](https://badge.fury.io/js/%40manniwatch%2Fvehicle-location-diff) | [![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg?flag=VehicleLocationDiff)](https://codecov.io/gh/manniwatch/manniwatch/tree/master/packages/vehicle-location-diff) |
@@ -14,7 +27,10 @@
 | [vehicle-cache](https://github.com/manniwatch/manniwatch/tree/master/packages/vehicle-cache) | [![npm version](https://badge.fury.io/js/%40manniwatch%2Fvehicle-cache.svg)](https://badge.fury.io/js/%40manniwatch%2Fvehicle-cache) | [![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg?flag=VehicleCache)](https://codecov.io/gh/manniwatch/manniwatch/tree/master/packages/vehicle-cache) |
 | [express-utils](https://github.com/manniwatch/manniwatch/tree/master/packages/express-utils) | [![npm version](https://badge.fury.io/js/%40manniwatch%2Fexpress-utils.svg)](https://badge.fury.io/js/%40manniwatch%2Fexpress-utils) | [![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg?flag=ExpressUtils)](https://codecov.io/gh/manniwatch/manniwatch/tree/master/packages/express-utils) |
 
-## Build & Test
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)](#build--test)
+
+## ➤ Build & Test
 Before you either do both run:
 
     npm install
