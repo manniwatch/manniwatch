@@ -9,6 +9,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json --silent true",
     "test": "mocha --config ../../.mocharc.yml",
     "test:watch": "mocha --config ../../.mocharc.yml --watch",
     "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
