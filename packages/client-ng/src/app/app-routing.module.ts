@@ -38,6 +38,11 @@ const appRoutes: Routes = [
         path: 'search',
     },
     {
+        // tslint:disable-next-line:typedef
+        loadChildren: () => import('./routes/settings').then((m) => m.SettingsModule),
+        path: 'settings',
+    },
+    {
         children: [
         ],
         path: '',

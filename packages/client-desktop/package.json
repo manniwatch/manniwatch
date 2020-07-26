@@ -9,6 +9,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json --silent true",
     "test": "mocha --config ../../.mocharc.yml",
     "test:watch": "mocha --config ../../.mocharc.yml --watch",
     "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
@@ -43,7 +44,7 @@
     "url": "https://github.com/manniwatch/manniwatch.git"
   },
   "devDependencies": {
-    "@types/chai": "~4.2.11",
+    "@types/chai": "~4.2.12",
     "@types/mocha": "~8.0.0",
     "@types/sinon": "~9.0.4",
     "asar": "~3.0.3",
@@ -59,7 +60,7 @@
     "@manniwatch/api-proxy-router": "^0.13.2",
     "@manniwatch/api-types": "^0.13.2",
     "@manniwatch/client-ng": "^0.13.3",
-    "electron": "~9.1.0",
+    "electron": "~9.1.1",
     "express": "~4.17.1",
     "helmet": "~3.23.3",
     "yargs": "~15.4.1"

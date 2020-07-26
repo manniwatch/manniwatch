@@ -7,23 +7,20 @@
     "types": "dist/types/index.d.ts",
     "private": false,
     "scripts": {
-        "build": "npm run build:esm && npm run build:cjs && npm run build:types && npm run build:version",
-        "build:esm": "tsc --project ./tsconfig.json --module es2015 --outDir dist/esm",
-        "build:cjs": "tsc --project ./tsconfig.json --module commonjs --outDir dist/cjs",
+        "build": "rollup -c ./rollup.config.js && npm run build:types",
         "build:types": "tsc --project ./tsconfig.json  -d --declarationDir dist/types --declarationMap --emitDeclarationOnly",
-        "build:version": "node ./scripts/replace_build_version.js",
-        "version": "npm run build:version",
+        "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json --silent true",
         "test": "mocha --config ../../.mocharc.yml",
         "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
-        "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
-        "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json src/**/*.ts",
+        "lint": "tslint -c tslint.json -p tsconfig.spec.json src/**/*.ts",
+        "lint:fix": "tslint --fix -c tslint.json -p tsconfig.spec.json src/**/*.ts",
         "docs": "typedoc --options ../../typedoc.json",
         "prepublishOnly": "npm run test && npm run docs && npm run build"
     },
     "dependencies": {
         "@manniwatch/api-types": "^0.13.2",
         "request": "~2.88.2",
-        "request-promise-native": "~1.0.8"
+        "request-promise-native": "~1.0.9"
     },
     "devDependencies": {
         "@types/request": "~2.48.5",

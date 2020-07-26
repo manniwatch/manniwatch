@@ -1,0 +1,13 @@
+mat-selection-list(multiple="false",(selectionChange)="onSelectionChange($event)")
+    mat-list-option([value]='1',[selected]="theme == 1")
+        mat-icon(matListIcon) bedtime
+        h3(matLine) Dark
+        p(matLine) Applies a darker theme
+    mat-list-option([value]='2',[selected]="theme == 2")
+        mat-icon(matListIcon) wb_sunny
+        h3(matLine) Light
+        p(matLine) Applies a lighter theme
+    mat-list-option([value]='0',[selected]="theme == 0")
+        mat-icon(matListIcon) {{theme == 1 ? 'bedtime' : 'wb_sunny'}}
+        h3(matLine) System Default ({{theme == 1 ? 'Dark' : 'Light'}})
+        p(matLine) Applies your system default theme.

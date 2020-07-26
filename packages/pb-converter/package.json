@@ -49,8 +49,8 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "~14.0.0",
     "@rollup/plugin-node-resolve": "~8.4.0",
-    "@rollup/plugin-typescript": "~5.0.1",
-    "rollup": "~2.21.0",
+    "@rollup/plugin-typescript": "~5.0.2",
+    "rollup": "~2.23.0",
     "tslint": "~6.1.2"
   },
   "dependencies": {

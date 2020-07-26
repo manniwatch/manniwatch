@@ -16,3 +16,7 @@ jobs:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           workspace: "packages" # (default)
           prefix: "pkg:"
+      - name: Label PRs
+        uses: actions/labeler@v2
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
