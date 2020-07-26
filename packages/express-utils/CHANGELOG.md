@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/manniwatch/manniwatch/compare/v0.13.3...v0.14.0) (2020-07-26)
+
+
+### Bug Fixes
+
+* **deps:** bump request-promise-native from 1.0.8 to 1.0.9 ([#707](https://github.com/manniwatch/manniwatch/issues/707)) ([9f0e57e](https://github.com/manniwatch/manniwatch/commit/9f0e57e0e3105315ec3fb4b3eed1abdff93d00c8))
+
+
+
+
+
+
 ## [0.13.2](https://github.com/manniwatch/manniwatch/compare/v0.13.1...v0.13.2) (2020-07-12)
 
 **Note:** Version bump only for package @manniwatch/express-utils

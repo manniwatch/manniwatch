@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/manniwatch/manniwatch/compare/v0.13.3...v0.14.0) (2020-07-26)
+
+
+### Bug Fixes
+
+* **deps:** bump protobufjs from 6.10.0 to 6.10.1 ([#677](https://github.com/manniwatch/manniwatch/issues/677)) ([b4b2c91](https://github.com/manniwatch/manniwatch/commit/b4b2c915199611653161eef426d5802d40cd6c70))
+
+
+
+
+
+
 ## [0.13.3](https://github.com/manniwatch/manniwatch/compare/v0.13.2...v0.13.3) (2020-07-14)
 
 
