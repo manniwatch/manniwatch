@@ -1,6 +1,4 @@
-# {{ pkg.name }}
+# {{ template:title }}
 {{ template:badges }}
-
-## {{ template:title }}
 
 {{ template:description }}
