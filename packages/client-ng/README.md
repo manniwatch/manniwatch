@@ -1,7 +1,7 @@
 <!-- ⚠️ This README has been generated from the file(s) "../package_readme_blueprint.md" ⚠️-->
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)](#-pkgname-)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)](#h1-aligncentermanniwatchclient-ngh1)
 
-# ➤ @manniwatch/client-ng
+# ➤ <h1 align="center">@manniwatch/client-ng</h1>
 <p align="center">
 		<a href="https://github.com/manniwatch/manniwatch/actions?query=workflow%3ATest+branch%3Amaster"><img alt="Test" src="https://github.com/manniwatch/manniwatch/workflows/Test/badge.svg?branch=master&event=push" height="20"/></a>
 <a href="https://codecov.io/gh/manniwatch/manniwatch/manniwatch/master/packages/client-ng"><img alt="codecov" src="https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg?flag=ClientNg" height="20"/></a>
@@ -13,11 +13,6 @@
 	</p>
 
 
-
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)](#h1-aligncentermanniwatchclient-ngh1)
-
-## ➤ <h1 align="center">@manniwatch/client-ng</h1>
-
 <p align="center">
   <b>Angular Client for Manniwatch</b></br>
   <sub><sub>
@@ -25,3 +20,14 @@
 
 <br />
 
+
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)](#install)
+
+## ➤ Install
+
+Run the following command to install the package:
+
+```
+npm install @manniwatch/client-ng
+```
