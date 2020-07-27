@@ -8,6 +8,7 @@
         "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json --silent true"
     },
     "devDependencies": {
+        "gulp": "~4.0.2",
         "gulp-cli": "~2.3.0"
     },
     "files": [
