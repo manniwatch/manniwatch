@@ -9,8 +9,9 @@
         "build": "tsc",
         "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json --silent true"
     },
-    "dependencies": {},
-    "devDependencies": {},
+    "devDependencies": {
+        "gulp-cli": "~2.3.0"
+    },
     "files": [
         "dist/*",
         "src/*"
