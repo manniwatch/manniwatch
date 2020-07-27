@@ -1,0 +1,38 @@
+{
+    "name": "@manniwatch/assets",
+    "version": "0.14.0",
+    "description": "Package holding shared assets for manniwatch",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "private": false,
+    "scripts": {
+        "build": "tsc",
+        "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json --silent true"
+    },
+    "dependencies": {},
+    "devDependencies": {},
+    "files": [
+        "dist/*",
+        "src/*"
+    ],
+    "homepage": "https://manniwatch.github.io/manniwatch/",
+    "author": {
+        "name": "manniwatch",
+        "email": "manniwatch@users.noreply.github.com",
+        "url": "https://github.com/manniwatch"
+    },
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/manniwatch/manniwatch/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/manniwatch/manniwatch.git"
+    },
+    "engines": {
+        "node": ">=10.0.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}
