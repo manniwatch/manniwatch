@@ -8,9 +8,10 @@
         "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json --silent true"
     },
     "devDependencies": {
-        "flat-map": "^1.0.0",
+        "flat-map": "~1.0.0",
         "gulp": "~4.0.2",
-        "gulp-cli": "~2.3.0"
+        "gulp-cli": "~2.3.0",
+        "gulp-scale-images": "~2.1.0"
     },
     "files": [
         "dist/*",
