@@ -9,7 +9,7 @@ import {
     VehicleLocations,
 } from '@manniwatch/api-types';
 import { concat, from, of, BehaviorSubject, Observable } from 'rxjs';
-import { catchError, debounceTime, first, flatMap, map } from 'rxjs/operators';
+import { catchError, debounceTime, first, map, mergeMap } from 'rxjs/operators';
 import { ApiService } from './api.service';
 
 export type TimestampedVehicleLocation = IVehicleLocation & {
@@ -102,7 +102,7 @@ export class VehicleService {
         appRef: ApplicationRef) {
         appRef.isStable
             .pipe(first((item: boolean): boolean => item),
-                flatMap((): Observable<IData> => this.createPoll()))
+                mergeMap((): Observable<IData> => this.createPoll()))
             .subscribe((data: IData): void => {
                 this.state.next(data);
             });
@@ -114,7 +114,7 @@ export class VehicleService {
             vehicles: [],
         };
         return concat(from([startValue]), this.state.pipe(debounceTime(10000)))
-            .pipe(flatMap((previousData: IData): Observable<IData> =>
+            .pipe(mergeMap((previousData: IData): Observable<IData> =>
                 this.api.getVehicleLocations(previousData.lastUpdate)
                     .pipe(map((value: IVehicleLocationList): IData => {/*
                     if(previousData.lastUpdate!==value.lastUpdate){
