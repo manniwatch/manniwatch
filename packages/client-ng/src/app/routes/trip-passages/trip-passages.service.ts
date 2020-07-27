@@ -6,7 +6,7 @@ import { ApplicationRef, Injectable } from '@angular/core';
 import { ActivatedRoute, Data } from '@angular/router';
 import { ITripPassages } from '@manniwatch/api-types';
 import { merge, timer, BehaviorSubject, Observable, Subject } from 'rxjs';
-import { first, flatMap, map, scan, switchMap, take, tap } from 'rxjs/operators';
+import { first, map, mergeMap, scan, switchMap, take, tap } from 'rxjs/operators';
 import { ApiService, TimestampedVehicleLocation, VehicleService } from 'src/app/services';
 import { IPassageStatus, TripPassagesUtil, UpdateStatus } from './trip-util';
 
@@ -26,7 +26,7 @@ export class TripPassagesService {
         const refreshObservable: Observable<IPassageStatus> = this.createRefreshPollObservable(statusSubject);
         return this.appRef.isStable
             .pipe(first(),
-                flatMap((): Observable<IPassageStatus> => {
+                mergeMap((): Observable<IPassageStatus> => {
                     return merge(this.route.data.pipe(map((data: Data): ITripPassages => data.tripPassages)), refreshObservable)
                         .pipe(scan((acc: IPassageStatus, val: IPassageStatus, idx: number): IPassageStatus => {
                             if (val.failures > 0) {
@@ -53,7 +53,7 @@ export class TripPassagesService {
     public createDelayedPassageRequest(tripId: string, refreshDelay: number): Observable<IPassageStatus> {
         return timer(refreshDelay)
             .pipe(take(1),
-                flatMap((): Observable<ITripPassages> => this.apiService.getTripPassages(tripId)),
+                mergeMap((): Observable<ITripPassages> => this.apiService.getTripPassages(tripId)),
                 TripPassagesUtil.convertResponse(tripId),
                 TripPassagesUtil.handleError(tripId));
     }
