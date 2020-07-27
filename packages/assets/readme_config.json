@@ -8,8 +8,8 @@
         },
         {
             "alt": "npm version",
-            "url": "https://badge.fury.io/js/%40manniwatch%2Fclient-ng",
-            "img": "https://badge.fury.io/js/%40manniwatch%2Fclient-ng.svg"
+            "url": "https://badge.fury.io/js/%40manniwatch%2Fassets",
+            "img": "https://badge.fury.io/js/%40manniwatch%2Fassets.svg"
         },
         {
             "alt": "GitHub license",
@@ -18,13 +18,13 @@
         },
         {
             "alt": "dependencies Status",
-            "url": "https://david-dm.org/manniwatch/manniwatch?path=packages/client-ng",
-            "img": "https://david-dm.org/manniwatch/manniwatch/status.svg?path=packages/client-ng"
+            "url": "https://david-dm.org/manniwatch/manniwatch?path=packages/assets",
+            "img": "https://david-dm.org/manniwatch/manniwatch/status.svg?path=packages/assets"
         },
         {
             "alt": "devDependencies Status",
-            "url": "https://david-dm.org/manniwatch/manniwatch?path=packages/client-ng&type=dev",
-            "img": "https://david-dm.org/manniwatch/manniwatch/dev-status.svg?path=packages/client-ng"
+            "url": "https://david-dm.org/manniwatch/manniwatch?path=packages/assets&type=dev",
+            "img": "https://david-dm.org/manniwatch/manniwatch/dev-status.svg?path=packages/assets"
         },
         {
             "alt": "GitHub contributors",
