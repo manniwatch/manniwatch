@@ -5,7 +5,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { flatMap, map, skipWhile } from 'rxjs/operators';
+import { map, mergeMap, skipWhile } from 'rxjs/operators';
 import { RetryDialogComponent } from '../modules/common/retry-dialog';
 
 export type ErrorItem = any | HttpErrorResponse;
@@ -23,7 +23,7 @@ export const retryDialogStrategy: RetryDialogStrategyFunc = (createDialog: Creat
     (errors: Observable<ErrorItem>): Observable<true> => {
         let dialogOpen: boolean = false;
         return errors.pipe(skipWhile((): boolean => dialogOpen),
-            flatMap((error: ErrorItem): Observable<true> => {
+            mergeMap((error: ErrorItem): Observable<true> => {
                 dialogOpen = true;
                 const dialogRef: CreateDialogFuncResponse = createDialog(error);
                 return dialogRef.afterClosed()

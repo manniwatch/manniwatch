@@ -4,7 +4,7 @@
 
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, EMPTY, Observable, Subscriber } from 'rxjs';
-import { catchError, debounceTime, flatMap } from 'rxjs/operators';
+import { catchError, debounceTime, mergeMap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root',
@@ -31,7 +31,7 @@ export class UserLocationService {
     public constructor() {
         this.locationErrorObservable
             .pipe(debounceTime(30000),
-                flatMap((val: PositionError): Observable<Position> =>
+                mergeMap((val: PositionError): Observable<Position> =>
                     this.createPositionRequest()),
                 catchError((err: any): Observable<any> => {
                     this.locationErrorSubject.next(err);

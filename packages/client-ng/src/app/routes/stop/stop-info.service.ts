@@ -6,7 +6,7 @@ import { ApplicationRef, Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IStopLocation, IStopPassage } from '@manniwatch/api-types';
 import { interval, Observable } from 'rxjs';
-import { first, flatMap, map, startWith, switchMap } from 'rxjs/operators';
+import { first, map, mergeMap, startWith, switchMap } from 'rxjs/operators';
 import { ApiService, StopPointService } from 'src/app/services';
 
 export interface IStatus {
@@ -29,7 +29,7 @@ export class StopInfoService {
 
     public createStopLocationObservable(): Observable<IStopLocation> {
         return this.stopInfoObservable
-            .pipe(flatMap((value: IStopPassage): Observable<IStopLocation> => {
+            .pipe(mergeMap((value: IStopPassage): Observable<IStopLocation> => {
                 return this.stopService.filterStop(value.stopShortName);
             }));
     }
@@ -39,7 +39,7 @@ export class StopInfoService {
             .pipe(switchMap((value: IStopPassage): Observable<IStopPassage> => {
                 return this.appRef
                     .isStable.pipe(first((state: boolean): boolean => state),
-                        flatMap((): Observable<IStopPassage> => {
+                        mergeMap((): Observable<IStopPassage> => {
                             return interval(10000)
                                 .pipe(switchMap((): Observable<IStopPassage> =>
                                     this.apiService

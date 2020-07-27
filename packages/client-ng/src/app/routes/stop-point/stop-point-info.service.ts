@@ -6,7 +6,7 @@ import { ApplicationRef, Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IStopPassage, IStopPointLocation } from '@manniwatch/api-types';
 import { interval, Observable } from 'rxjs';
-import { first, flatMap, map, startWith, switchMap } from 'rxjs/operators';
+import { first, map, mergeMap, startWith, switchMap } from 'rxjs/operators';
 import { IStaticMapData } from 'src/app/modules/openlayers';
 import { ApiService } from 'src/app/services';
 import { StopPointService } from 'src/app/services';
@@ -31,7 +31,7 @@ export class StopPointInfoService {
             .pipe(switchMap((value: IStopPassage): Observable<IStopPassage> => {
                 return this.appRef
                     .isStable.pipe(first((state: boolean): boolean => state),
-                        flatMap((): Observable<IStopPassage> => {
+                        mergeMap((): Observable<IStopPassage> => {
                             return interval(5000)
                                 .pipe(switchMap((): Observable<IStopPassage> =>
                                     this.apiService
