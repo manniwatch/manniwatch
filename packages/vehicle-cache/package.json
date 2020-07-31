@@ -22,7 +22,7 @@
     "dependencies": {
         "@manniwatch/api-types": "^0.14.0",
         "@manniwatch/vehicle-location-diff": "^0.14.0",
-        "rxjs": "~6.6.0"
+        "rxjs": "~6.6.2"
     },
     "devDependencies": {
         "mocha": "~8.0.1",

@@ -63,7 +63,7 @@
     "date-fns": "~2.15.0",
     "material-design-icons": "~3.0.1",
     "ol": "~6.4.1",
-    "rxjs": "~6.6.0",
+    "rxjs": "~6.6.2",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },
