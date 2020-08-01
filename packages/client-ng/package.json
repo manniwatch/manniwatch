@@ -62,7 +62,7 @@
     "@manniwatch/api-types": "^0.14.0",
     "date-fns": "~2.15.0",
     "material-design-icons": "~3.0.1",
-    "ol": "~6.4.1",
+    "ol": "~6.4.2",
     "rxjs": "~6.6.2",
     "tslib": "~2.0.0",
     "zone.js": "~0.10.3"
@@ -74,7 +74,7 @@
     "@angular/compiler-cli": "~10.0.7",
     "@angular/language-service": "~10.0.7",
     "@compodoc/compodoc": "~1.1.11",
-    "@types/jasmine": "~3.5.11",
+    "@types/jasmine": "~3.5.12",
     "@types/jasminewd2": "~2.0.8",
     "@types/node": "~14.0.26",
     "@types/ol": "~6.3.1",
