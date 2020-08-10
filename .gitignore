@@ -6,3 +6,4 @@ coverage/
 docs/
 **/*.lerna_backup
 .npmrc
+lerna-debug.log

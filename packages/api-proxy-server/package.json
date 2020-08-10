@@ -11,6 +11,7 @@
   ],
   "scripts": {
     "build": "tsc",
+    "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json --silent true",
     "test": "mocha --config ../../.mocharc.yml",
     "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
     "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
@@ -54,6 +55,6 @@
     "@types/helmet": "~0.0.47",
     "apidoc": "~0.24.0",
     "supertest": "~4.0.2",
-    "tslint": "~6.1.2"
+    "tslint": "~6.1.3"
   }
 }

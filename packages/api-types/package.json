@@ -49,6 +49,6 @@
     "access": "public"
   },
   "devDependencies": {
-    "tslint": "~6.1.2"
+    "tslint": "~6.1.3"
   }
 }

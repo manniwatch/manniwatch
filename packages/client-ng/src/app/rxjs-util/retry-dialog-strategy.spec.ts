@@ -3,7 +3,7 @@
  */
 
 import { from, merge, throwError, Observable, Subject } from 'rxjs';
-import { delay, flatMap, retryWhen, tap } from 'rxjs/operators';
+import { delay, mergeMap, retryWhen, tap } from 'rxjs/operators';
 import { retryDialogStrategy, RetryDialogStrategyFuncResponse } from './retry-dialog-strategy';
 
 describe('src/app/rxjs-util/retry-dialog-strategy.ts', (): void => {
@@ -70,7 +70,7 @@ describe('src/app/rxjs-util/retry-dialog-strategy.ts', (): void => {
                     let tries: number = 0;
                     from([1])
                         .pipe(
-                            flatMap((value: number): Observable<any> => {
+                            mergeMap((value: number): Observable<any> => {
                                 tries++;
                                 if (tries < 2) {
                                     return merge(throwError(testError), throwError(testError));
