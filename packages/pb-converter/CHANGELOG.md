@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.1](https://github.com/manniwatch/manniwatch/compare/v0.14.0...v0.14.1) (2020-08-10)
+
+**Note:** Version bump only for package @manniwatch/pb-converter
+
+
+
+
+
+
 # [0.14.0](https://github.com/manniwatch/manniwatch/compare/v0.13.3...v0.14.0) (2020-07-26)
 
 **Note:** Version bump only for package @manniwatch/pb-converter

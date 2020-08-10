@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.1](https://github.com/manniwatch/manniwatch/compare/v0.14.0...v0.14.1) (2020-08-10)
+
+
+### Bug Fixes
+
+* **deps:** bump electron from 9.1.1 to 9.1.2 ([#748](https://github.com/manniwatch/manniwatch/issues/748)) ([796a6ec](https://github.com/manniwatch/manniwatch/commit/796a6eced8072835c8bf64d78b5c8c684d60b74b))
+* **deps:** bump electron from 9.1.2 to 9.2.0 ([#797](https://github.com/manniwatch/manniwatch/issues/797)) ([9bf39dc](https://github.com/manniwatch/manniwatch/commit/9bf39dc60e39434f385756e75ab83b531f58e06d))
+
+
+
+
+
+
 # [0.14.0](https://github.com/manniwatch/manniwatch/compare/v0.13.3...v0.14.0) (2020-07-26)
 
 

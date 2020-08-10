@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.1](https://github.com/manniwatch/manniwatch/compare/v0.14.0...v0.14.1) (2020-08-10)
+
+
+### Bug Fixes
+
+* **deps:** bump @angular/cdk & @angular/material to 10.1.2 ([#779](https://github.com/manniwatch/manniwatch/issues/779)) ([3893ea6](https://github.com/manniwatch/manniwatch/commit/3893ea6f7a57650964239448d7d9ac4831e8656a))
+* **deps:** bump @angular/cdk from 10.1.0 to 10.1.1 ([#745](https://github.com/manniwatch/manniwatch/issues/745)) ([9166ba2](https://github.com/manniwatch/manniwatch/commit/9166ba255e7c85aac521bbd81fb283963b618452))
+* **deps:** bump @angular/core to 10.0.7 ([8a9588b](https://github.com/manniwatch/manniwatch/commit/8a9588baae2a3785f150b4adc97dca7950f73f3e))
+* **deps:** bump @angular/core to 10.0.8 ([#791](https://github.com/manniwatch/manniwatch/issues/791)) ([99cc900](https://github.com/manniwatch/manniwatch/commit/99cc9008b7435c8167e7f1a00dd2eb74926966dc))
+* **deps:** bump @angular/material from 10.1.0 to 10.1.1 ([#743](https://github.com/manniwatch/manniwatch/issues/743)) ([1adad8d](https://github.com/manniwatch/manniwatch/commit/1adad8dd3e50a3bf813e103d39f86d07b52434d2))
+* **deps:** bump electron from 9.1.1 to 9.1.2 ([#748](https://github.com/manniwatch/manniwatch/issues/748)) ([796a6ec](https://github.com/manniwatch/manniwatch/commit/796a6eced8072835c8bf64d78b5c8c684d60b74b))
+* **deps:** bump electron from 9.1.2 to 9.2.0 ([#797](https://github.com/manniwatch/manniwatch/issues/797)) ([9bf39dc](https://github.com/manniwatch/manniwatch/commit/9bf39dc60e39434f385756e75ab83b531f58e06d))
+* **deps:** bump ol from 6.3.1 to 6.4.0 ([#740](https://github.com/manniwatch/manniwatch/issues/740)) ([e3916a5](https://github.com/manniwatch/manniwatch/commit/e3916a549c5474159645a98b552aec430c72adba))
+* **deps:** bump ol from 6.4.0 to 6.4.1 ([#765](https://github.com/manniwatch/manniwatch/issues/765)) ([278e97b](https://github.com/manniwatch/manniwatch/commit/278e97bc0bcbfbc005fb22399a772cf0f319586a))
+* **deps:** bump ol from 6.4.1 to 6.4.2 ([#771](https://github.com/manniwatch/manniwatch/issues/771)) ([1db182e](https://github.com/manniwatch/manniwatch/commit/1db182e26216bff3f6d6b4574d767414b48b21aa))
+* **deps:** bump ol from 6.4.2 to 6.4.3 ([#798](https://github.com/manniwatch/manniwatch/issues/798)) ([0438cd4](https://github.com/manniwatch/manniwatch/commit/0438cd4067a1dd1a94ec6ef498988909108dacba))
+* **deps:** bump rxjs from 6.6.0 to 6.6.2 ([#768](https://github.com/manniwatch/manniwatch/issues/768)) ([5cb75e7](https://github.com/manniwatch/manniwatch/commit/5cb75e7f59569c47bccc0a9ce5f56d39043e3bde))
+* **deps:** bump tslib from 2.0.0 to 2.0.1 ([#795](https://github.com/manniwatch/manniwatch/issues/795)) ([2ad1b71](https://github.com/manniwatch/manniwatch/commit/2ad1b71a784764615dcf4b03175ab88e472c2ed7))
+* **deps:** update @angular/core to 10.0.6 ([#760](https://github.com/manniwatch/manniwatch/issues/760)) ([5e1c74e](https://github.com/manniwatch/manniwatch/commit/5e1c74ef6028a9472870bec8d275a1bbf74bcf1e))
+
+
+
+
+
+
 # [0.14.0](https://github.com/manniwatch/manniwatch/compare/v0.13.3...v0.14.0) (2020-07-26)
 
 
