@@ -12,36 +12,33 @@
 // `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
 
 
-@mixin candy-carousel-theme($theme) {
+@mixin manniwatch-base-theme($theme) {
     $background: map-get($theme, background);
     $background-background: map-get($background, background);
     div.overlay-box{
         div.router-box{
             > *:not(:first-child) {
-                background-color: $background-background;//mat-color($primary);
-                //@include $mat-dark-theme-background;
+                background-color: $background-background;
             }
         }
     }
+    background-color: $background-background;
 }
 
 
 
 .manniwatch-theme {
     @include angular-material-theme($manniwatch-light-theme);
-    @include candy-carousel-theme($manniwatch-light-theme);
+    @include manniwatch-base-theme($manniwatch-light-theme);
     @media (prefers-color-scheme: dark) {
-        @include angular-material-theme($manniwatch-dark-theme);
-        @include candy-carousel-theme($manniwatch-dark-theme);
+        @include manniwatch-base-theme($manniwatch-dark-theme);
     }
 }
-
 .manniwatch-theme[theme='dark'] {
-    @include angular-material-theme($manniwatch-dark-theme);
-    @include candy-carousel-theme($manniwatch-dark-theme);
+    @include angular-material-color($manniwatch-dark-theme);
+    @include manniwatch-base-theme($manniwatch-dark-theme);
 }
 
 .manniwatch-theme[theme='light'] {
-    @include angular-material-theme($manniwatch-light-theme);
-    @include candy-carousel-theme($manniwatch-light-theme);
+    @include manniwatch-base-theme($manniwatch-light-theme);
 }
