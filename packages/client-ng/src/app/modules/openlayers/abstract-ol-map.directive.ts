@@ -9,12 +9,15 @@ import { Coordinate } from 'ol/coordinate';
 import MVT from 'ol/format/MVT';
 import { defaults, Interaction } from 'ol/interaction';
 import BaseTileLayer from 'ol/layer/BaseTile';
+import TileLayer from 'ol/layer/Tile';
 import VectorTileLayer from 'ol/layer/VectorTile';
 import { fromLonLat } from 'ol/proj';
+import { OSM } from 'ol/source';
 import VectorTileSource from 'ol/source/VectorTile';
 import { Subscription } from 'rxjs';
 import { SettingsService, Theme } from 'src/app/services';
 import { runOutsideZone } from 'src/app/util/rxjs';
+import { environment } from 'src/environments';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 
 @Directive()
@@ -53,17 +56,25 @@ export abstract class AbstractOlMapDirective implements AfterViewInit, OnDestroy
     }
 
     public createMapLayer(): BaseTileLayer {
-        return new VectorTileLayer({
-            declutter: false,
-            source: new VectorTileSource({
-                attributions: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> ' +
-                    '© <a href="https://www.openstreetmap.org/copyright">' +
-                    'OpenStreetMap contributors</a>',
-                format: new MVT(),
-                maxZoom: 14,
-                url: 'https://d1u6l41epxe4hw.cloudfront.net/tiles/{z}/{x}/{y}.pbf',
-            }),
-        });
+        switch (environment.map.mapProvider.type) {
+            case 'vector':
+                return new VectorTileLayer({
+                    declutter: false,
+                    source: environment.map.mapProvider.source,
+                });
+            case 'osm':
+            default:
+                if (environment.map.mapProvider.source) {
+                    return new TileLayer({
+                        source: environment.map.mapProvider.source,
+                    });
+                }
+                return new TileLayer({
+                    source: new OSM({
+                        url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    }),
+                });
+        }
     }
 
     public panMapTo(panTo: Coordinate, zoom?: number): void {
