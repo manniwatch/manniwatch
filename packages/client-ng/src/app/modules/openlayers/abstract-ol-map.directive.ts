@@ -95,10 +95,10 @@ export abstract class AbstractOlMapDirective implements AfterViewInit, OnDestroy
      */
     public applyTheme(theme: Theme): void {
         NgZone.assertNotInAngularZone();
-        if (theme === Theme.DARK) {
-            stylefunction(this.mBackgroundMapLayer, DARK_THEME, 'openmaptiles');
-        } else {
-            stylefunction(this.mBackgroundMapLayer, LIGHT_THEME, 'openmaptiles');
+        if (environment.map.mapProvider?.type === 'vector') {
+            stylefunction(this.mBackgroundMapLayer,
+                theme === Theme.DARK ? DARK_THEME : LIGHT_THEME,
+                'openmaptiles');
         }
     }
 
