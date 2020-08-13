@@ -7,5 +7,6 @@ export {
     IEnvironmentBase,
     IOsmMapProvider,
     IVectorMapProvider,
+    MapProvider,
 } from './environment.base';
 export { environment } from './environment';
