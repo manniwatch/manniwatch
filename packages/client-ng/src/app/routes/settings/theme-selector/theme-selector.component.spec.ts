@@ -60,7 +60,9 @@ describe('src/routes/settings/theme-selector/theme-selector.component.ts', (): v
                     {
                         provide: SettingsService,
                         useValue: {
-                            setTheme: setThemeSpy,
+                            set theme(th: Theme) {
+                                setThemeSpy(th);
+                            },
                             get themeObservable(): any {
                                 return themeObservableSubscribeSpy();
                             },

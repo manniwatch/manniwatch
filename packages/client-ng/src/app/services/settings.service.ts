@@ -65,7 +65,18 @@ export class SettingsService {
                 break;
         }
     }
-    public setTheme(theme: Theme): void {
+
+    /**
+     * Returns the current theme
+     */
+    public get theme(): Theme {
+        return this.themeSubject.value;
+    }
+
+    /**
+     * Sets the current theme
+     */
+    public set theme(theme: Theme) {
         this.themeSubject.next(theme);
         this.setThemePreference(theme);
         this.setBodyTheme(theme);

@@ -20,12 +20,12 @@ export class ThemeSelectorComponent implements OnInit, OnDestroy {
 
     }
     public selectTheme(theme: Theme): void {
-        this.settingsService.setTheme(theme);
+        this.settingsService.theme = theme;
     }
 
     public onSelectionChange(change: MatSelectionListChange): void {
         const value: Theme = change.option.value;
-        this.settingsService.setTheme(value);
+        this.settingsService.theme = value;
     }
 
     public ngOnInit(): void {
