@@ -13,11 +13,10 @@ import TileLayer from 'ol/layer/Tile';
 import VectorTileLayer from 'ol/layer/VectorTile';
 import { fromLonLat } from 'ol/proj';
 import { OSM } from 'ol/source';
-import VectorTileSource from 'ol/source/VectorTile';
 import { Subscription } from 'rxjs';
 import { SettingsService, Theme } from 'src/app/services';
 import { runOutsideZone } from 'src/app/util/rxjs';
-import { environment } from 'src/environments';
+import { environment, IOsmMapProvider, MapProvider } from 'src/environments';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 
 @Directive()
@@ -69,6 +68,7 @@ export abstract class AbstractOlMapDirective implements AfterViewInit, OnDestroy
                         source: environment.map.mapProvider.source,
                     });
                 }
+                // TODO: Take initial theme and set correct one
                 return new TileLayer({
                     source: new OSM({
                         url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -95,10 +95,25 @@ export abstract class AbstractOlMapDirective implements AfterViewInit, OnDestroy
      */
     public applyTheme(theme: Theme): void {
         NgZone.assertNotInAngularZone();
-        if (environment.map.mapProvider?.type === 'vector') {
-            stylefunction(this.mBackgroundMapLayer,
-                theme === Theme.DARK ? DARK_THEME : LIGHT_THEME,
-                'openmaptiles');
+        const mapProvider: MapProvider = environment.map.mapProvider;
+        if (mapProvider?.type === 'vector') {
+            this.applyVectorTheme(theme);
+        } else {
+            this.applyTileTheme(theme, mapProvider);
+        }
+    }
+
+    public applyVectorTheme(theme: Theme): void {
+        stylefunction(this.mBackgroundMapLayer,
+            theme === Theme.DARK ? DARK_THEME : LIGHT_THEME,
+            'openmaptiles');
+    }
+
+    public applyTileTheme(theme: Theme, mapProvider: IOsmMapProvider): void {
+        if (mapProvider?.source_dark && theme === Theme.DARK) {
+            this.mBackgroundMapLayer.setSource(mapProvider.source_dark);
+        } else {
+            this.mBackgroundMapLayer.setSource(mapProvider.source);
         }
     }
 
