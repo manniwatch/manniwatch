@@ -6,7 +6,6 @@ import { AfterViewInit, Directive, ElementRef, NgZone, OnChanges, OnDestroy, Sim
 import { Collection, Map, View } from 'ol';
 import stylefunction from 'ol-mapbox-style/dist/stylefunction';
 import { Coordinate } from 'ol/coordinate';
-import MVT from 'ol/format/MVT';
 import { defaults, Interaction } from 'ol/interaction';
 import BaseTileLayer from 'ol/layer/BaseTile';
 import TileLayer from 'ol/layer/Tile';
