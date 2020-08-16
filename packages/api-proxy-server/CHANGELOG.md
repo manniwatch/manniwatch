@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/manniwatch/manniwatch/compare/v0.14.1...v0.15.0) (2020-08-16)
+
+
+### Bug Fixes
+
+* **deps:** bump helmet from 3.23.3 to 4.1.0 ([#837](https://github.com/manniwatch/manniwatch/issues/837)) ([6649591](https://github.com/manniwatch/manniwatch/commit/66495915b6607d767308472e7e02ecc9b6d43761))
+
+
+
+
+
+
 ## [0.14.1](https://github.com/manniwatch/manniwatch/compare/v0.14.0...v0.14.1) (2020-08-10)
 
 **Note:** Version bump only for package @manniwatch/api-proxy-server
