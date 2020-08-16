@@ -8,7 +8,7 @@
         "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json --silent true"
     },
     "devDependencies": {
-        "@donmahallem/gulp-sharp": "~0.1.1",
+        "@donmahallem/gulp-sharp": "~0.2.1",
         "@types/gulp": "~4.0.6",
         "del": "~5.1.0",
         "flat-map": "~1.0.0",
