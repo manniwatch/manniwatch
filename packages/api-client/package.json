@@ -15,7 +15,8 @@
         "lint": "tslint -c tslint.json -p tsconfig.spec.json src/**/*.ts",
         "lint:fix": "tslint --fix -c tslint.json -p tsconfig.spec.json src/**/*.ts",
         "docs": "typedoc --options ../../typedoc.json",
-        "prepublishOnly": "npm run test && npm run docs && npm run build"
+        "prepublishOnly": "npm run test && npm run docs && npm run build",
+        "version": "npm run build:readme && git add README.md"
     },
     "dependencies": {
         "@manniwatch/api-types": "^0.15.0",
