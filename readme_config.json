@@ -31,5 +31,7 @@
             "url": "https://github.com/manniwatch/manniwatch/graphs/contributors",
             "img": "https://img.shields.io/github/contributors-anon/manniwatch/manniwatch"
         }
-    ]
+    ],
+    "lineBreak": "\r\n",
+    "silent": true
 }
