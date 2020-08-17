@@ -29,7 +29,7 @@
   },
   "scripts": {
     "build": "lerna run build",
-    "build:readme": "npx @appnest/readme generate --input readme_blueprint.md --config readme_config.json --silent true && lerna run build:readme",
+    "build:readme": "npx @appnest/readme generate --input readme_blueprint.md --config readme_config.json",
     "test": "lerna run test",
     "test:coverage": "lerna run test:coverage",
     "coverage:merge": "node ./scripts/merge_coverage.js",
