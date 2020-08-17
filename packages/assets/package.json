@@ -5,7 +5,8 @@
     "private": false,
     "scripts": {
         "build": "gulp",
-        "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json --silent true"
+        "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
+        "version": "npm run build:readme && git add README.md"
     },
     "devDependencies": {
         "@donmahallem/gulp-sharp": "~0.3.0",
