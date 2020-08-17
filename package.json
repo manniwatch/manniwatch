@@ -29,15 +29,14 @@
   },
   "scripts": {
     "build": "lerna run build",
-    "build:readme": "npx @appnest/readme generate --input readme_blueprint.md --config readme_config.json --silent true && lerna run build:readme",
+    "build:readme": "npx @appnest/readme generate --input readme_blueprint.md --config readme_config.json",
     "test": "lerna run test",
     "test:coverage": "lerna run test:coverage",
     "coverage:merge": "node ./scripts/merge_coverage.js",
     "lint": "lerna run lint",
     "docs": "lerna run docs",
     "lint:fix": "lerna run lint:fix",
-    "version": "npm run build:readme",
-    "version-temp": "npx conventional-changelog --preset eslint --release-count 0 --outfile ./CHANGELOG.md --verbose && npx lerna exec --concurrency 1 --stream -- 'conventional-changelog --preset eslint --release-count 0 --pkg ./package.json --outfile ./CHANGELOG.md --verbose'"
+    "version": "npm run build:readme && git add README.md"
   },
   "nyc": {
     "include": [

@@ -7,7 +7,7 @@
     "start": "ng serve",
     "build": "npm run build:pug && ng build",
     "build:pug": "pug ./src --doctype html",
-    "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json --silent true",
+    "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
     "test": "ng test --watch=false --browsers=ChromeHeadless",
     "test:coverage": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
     "test:watch": "ng test",
@@ -19,7 +19,8 @@
     "prepare": "node ./scripts/prepare.js",
     "prepublishOnly": "npm run test && npm run docs && npm run build",
     "build:stats": "ng build --stats-json",
-    "analyze": "webpack-bundle-analyzer dist/manniwatch/stats-es2015.json"
+    "analyze": "webpack-bundle-analyzer dist/manniwatch/stats-es2015.json",
+    "version": "npm run build:readme && git add README.md"
   },
   "private": false,
   "homepage": "https://manniwatch.github.io/manniwatch/",
