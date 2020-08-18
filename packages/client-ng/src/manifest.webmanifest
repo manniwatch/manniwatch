@@ -46,6 +46,12 @@
       "src": "assets/shared/launcher/launcher_512w_512h.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "assets/shared/svg/app_icon_no_clip.svg",
+      "sizes": "108x108",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ]
 }
