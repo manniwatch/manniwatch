@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/manniwatch/manniwatch/compare/v0.15.0...v0.16.0) (2020-08-18)
+
+
+### Bug Fixes
+
+* **client-ng:** use shared package images in web manifest ([#856](https://github.com/manniwatch/manniwatch/issues/856)) ([e4cf289](https://github.com/manniwatch/manniwatch/commit/e4cf289e2a08046ebe11a0440f3614b34249f01d))
+* **deps:** bump @angular/core to 10.0.10 from 10.0.9 ([#850](https://github.com/manniwatch/manniwatch/issues/850)) ([a07641c](https://github.com/manniwatch/manniwatch/commit/a07641cfa8c8011abc02a8b42c7b13b0722c9a1b))
+
+
+### Features
+
+* **assets:** add @manniwatch/assets package ([#742](https://github.com/manniwatch/manniwatch/issues/742)) ([313c384](https://github.com/manniwatch/manniwatch/commit/313c38442921353dd0aaf344693b00d86174ddf9))
+* **assets:** distribute svgs in package ([#854](https://github.com/manniwatch/manniwatch/issues/854)) ([ad91089](https://github.com/manniwatch/manniwatch/commit/ad91089ff198475c3896b682227b1e4eb1d6034c))
+* **client-ng:** use assets from @manniwatch/assets ([#853](https://github.com/manniwatch/manniwatch/issues/853)) ([de97b81](https://github.com/manniwatch/manniwatch/commit/de97b8195fc54aa02b6ee53a091990ae6f7ae1e9))
+
+
+### Reverts
+
+* "build: add multiple paths to cache action" ([612a9a9](https://github.com/manniwatch/manniwatch/commit/612a9a940accbe99118a8423f030eebb4aa03338))
+
+
+
+
+
+
 # [0.15.0](https://github.com/manniwatch/manniwatch/compare/v0.14.1...v0.15.0) (2020-08-16)
 
 

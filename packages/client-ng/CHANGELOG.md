@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/manniwatch/manniwatch/compare/v0.15.0...v0.16.0) (2020-08-18)
+
+
+### Bug Fixes
+
+* **client-ng:** use shared package images in web manifest ([#856](https://github.com/manniwatch/manniwatch/issues/856)) ([e4cf289](https://github.com/manniwatch/manniwatch/commit/e4cf289e2a08046ebe11a0440f3614b34249f01d))
+* **deps:** bump @angular/core to 10.0.10 from 10.0.9 ([#850](https://github.com/manniwatch/manniwatch/issues/850)) ([a07641c](https://github.com/manniwatch/manniwatch/commit/a07641cfa8c8011abc02a8b42c7b13b0722c9a1b))
+
+
+### Features
+
+* **client-ng:** use assets from @manniwatch/assets ([#853](https://github.com/manniwatch/manniwatch/issues/853)) ([de97b81](https://github.com/manniwatch/manniwatch/commit/de97b8195fc54aa02b6ee53a091990ae6f7ae1e9))
+
+
+
+
+
+
 # [0.15.0](https://github.com/manniwatch/manniwatch/compare/v0.14.1...v0.15.0) (2020-08-16)
 
 
