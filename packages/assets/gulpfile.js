@@ -41,8 +41,14 @@ const clean = () => {
     return del(['dist/**', '!dist']);
 };
 
-const build = gulp.parallel(build_launcher_icons);
+const copy_svgs = () => {
+    return gulp.src('src/*.svg')
+        .pipe(gulp.dest('dist/svg'));
+};
+
+const build = gulp.parallel(build_launcher_icons, copy_svgs);
 exports.build_launcher_icons = build_launcher_icons;
+exports.copy_svgs = copy_svgs;
 exports.build = build;
 exports.clean = clean;
 exports.default = gulp.series(clean, build);
