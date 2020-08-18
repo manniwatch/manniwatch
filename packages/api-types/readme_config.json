@@ -1,5 +1,5 @@
 {
-    "line": "water",
+    "extend": "../../readme_config.json",
     "badges": [
         {
             "alt": "Test",
