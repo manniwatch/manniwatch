@@ -1,6 +1,6 @@
 {
     "name": "@manniwatch/api-client",
-    "version": "0.14.1",
+    "version": "0.15.0",
     "description": "Node Client to consume the Api",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
@@ -9,16 +9,17 @@
     "scripts": {
         "build": "rollup -c ./rollup.config.js && npm run build:types",
         "build:types": "tsc --project ./tsconfig.json  -d --declarationDir dist/types --declarationMap --emitDeclarationOnly",
-        "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json --silent true",
+        "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
         "test": "mocha --config ../../.mocharc.yml",
         "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
         "lint": "tslint -c tslint.json -p tsconfig.spec.json src/**/*.ts",
         "lint:fix": "tslint --fix -c tslint.json -p tsconfig.spec.json src/**/*.ts",
         "docs": "typedoc --options ../../typedoc.json",
-        "prepublishOnly": "npm run test && npm run docs && npm run build"
+        "prepublishOnly": "npm run test && npm run docs && npm run build",
+        "version": "npm run build:readme && git add README.md"
     },
     "dependencies": {
-        "@manniwatch/api-types": "^0.14.1",
+        "@manniwatch/api-types": "^0.15.0",
         "request": "~2.88.2",
         "request-promise-native": "~1.0.9"
     },

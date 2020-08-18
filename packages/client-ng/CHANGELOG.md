@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/manniwatch/manniwatch/compare/v0.14.1...v0.15.0) (2020-08-16)
+
+
+### Bug Fixes
+
+* **client-ng:** fix duplicate material theme css inclusion ([#818](https://github.com/manniwatch/manniwatch/issues/818)) ([6c6bdf0](https://github.com/manniwatch/manniwatch/commit/6c6bdf0728b9700cd94ffe59939e88fc3c09b161)), closes [#731](https://github.com/manniwatch/manniwatch/issues/731)
+* **deps:** bump @angular/core from 10.0.8 to 10.0.9 ([#824](https://github.com/manniwatch/manniwatch/issues/824)) ([ad05c39](https://github.com/manniwatch/manniwatch/commit/ad05c394616d70ad1a63276be3606d650396ea6b))
+* **deps:** update @angular/material from 10.1.2 to 10.1.3 ([#811](https://github.com/manniwatch/manniwatch/issues/811)) ([8439801](https://github.com/manniwatch/manniwatch/commit/84398018c52f885419265c12c5a4a8a5cd605258))
+
+
+### Features
+
+* **client-ng:** expose theme as getter from service ([#817](https://github.com/manniwatch/manniwatch/issues/817)) ([aac08f5](https://github.com/manniwatch/manniwatch/commit/aac08f505f6b2f217fdf99a95e3de9095b23f106)), closes [#816](https://github.com/manniwatch/manniwatch/issues/816)
+
+
+
+
+
+
 ## [0.14.1](https://github.com/manniwatch/manniwatch/compare/v0.14.0...v0.14.1) (2020-08-10)
 
 
