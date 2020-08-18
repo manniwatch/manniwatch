@@ -61,6 +61,7 @@
     "@angular/router": "~10.0.10",
     "@angular/service-worker": "~10.0.10",
     "@manniwatch/api-types": "^0.15.0",
+    "@manniwatch/assets": "^0.14.0",
     "date-fns": "~2.15.0",
     "material-design-icons": "~3.0.1",
     "ol": "~6.4.3",
