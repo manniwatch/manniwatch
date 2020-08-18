@@ -19,7 +19,10 @@ jobs:
       - name: Setup Cache
         uses: actions/cache@v2.1.0
         with:
-          path: ~/.npm
+          path: |
+            node_modules
+            */*/node_modules
+#            # ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
