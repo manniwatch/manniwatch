@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const flatMap = require('flat-map').default;
 const gulpSharp = require('@donmahallem/gulp-sharp').gulpSharp;
-const rename = require("gulp-rename");
+const rename = require('gulp-rename');
 
 const build_launcher_icons_mask = () => {
     const generateOutputFormats = (file, cb) => {
@@ -23,7 +23,7 @@ const build_launcher_icons_mask = () => {
     }
     return gulp.src('src/app_icon.svg')
         .pipe(rename({
-            basename: "launcher",
+            basename: 'launcher',
         }))
         .pipe(flatMap(generateOutputFormats))
         .pipe(gulpSharp({
@@ -55,7 +55,7 @@ const build_launcher_icons_no_mask = () => {
     }
     return gulp.src('src/app_icon_no_clip.svg')
         .pipe(rename({
-            basename: "launcher",
+            basename: 'launcher',
         }))
         .pipe(flatMap(generateOutputFormats))
         .pipe(gulpSharp({
