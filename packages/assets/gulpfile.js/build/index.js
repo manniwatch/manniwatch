@@ -1,9 +1,8 @@
 const gulp = require('gulp');
 const flatMap = require('flat-map').default;
-const del = require('del');
-const path = require('path');
 const gulpSharp = require('@donmahallem/gulp-sharp').gulpSharp;
-const rename = require("gulp-rename");
+const rename = require('gulp-rename');
+const svgmin = require('gulp-svgmin');
 
 const build_launcher_icons_mask = () => {
     const generateOutputFormats = (file, cb) => {
@@ -25,7 +24,7 @@ const build_launcher_icons_mask = () => {
     }
     return gulp.src('src/app_icon.svg')
         .pipe(rename({
-            basename: "launcher",
+            basename: 'launcher',
         }))
         .pipe(flatMap(generateOutputFormats))
         .pipe(gulpSharp({
@@ -57,7 +56,7 @@ const build_launcher_icons_no_mask = () => {
     }
     return gulp.src('src/app_icon_no_clip.svg')
         .pipe(rename({
-            basename: "launcher",
+            basename: 'launcher',
         }))
         .pipe(flatMap(generateOutputFormats))
         .pipe(gulpSharp({
@@ -69,12 +68,9 @@ const build_launcher_icons_no_mask = () => {
         .pipe(gulp.dest('dist/launcher/no_mask'));
 };
 
-const clean = () => {
-    return del(['dist/**', '!dist']);
-};
-
 const copy_svgs = () => {
     return gulp.src('src/*.svg')
+        .pipe(svgmin())
         .pipe(gulp.dest('dist/svg'));
 };
 const build_launcher_icons = gulp.parallel(build_launcher_icons_mask, build_launcher_icons_no_mask);
@@ -82,5 +78,4 @@ const build = gulp.parallel(build_launcher_icons, copy_svgs);
 exports.build_launcher_icons = build_launcher_icons;
 exports.copy_svgs = copy_svgs;
 exports.build = build;
-exports.clean = clean;
-exports.default = gulp.series(clean, build);
+module.exports = build
