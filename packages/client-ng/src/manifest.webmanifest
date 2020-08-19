@@ -8,44 +8,92 @@
   "start_url": "./",
   "icons": [
     {
-      "src": "assets/shared/launcher/launcher_72w_72h.png",
+      "src": "assets/shared/launcher/mask/launcher_72w_72h.png",
       "sizes": "72x72",
       "type": "image/png"
     },
     {
-      "src": "assets/shared/launcher/launcher_96w_96h.png",
+      "src": "assets/shared/launcher/mask/launcher_96w_96h.png",
       "sizes": "96x96",
       "type": "image/png"
     },
     {
-      "src": "assets/shared/launcher/launcher_128w_128h.png",
+      "src": "assets/shared/launcher/mask/launcher_128w_128h.png",
       "sizes": "128x128",
       "type": "image/png"
     },
     {
-      "src": "assets/shared/launcher/launcher_144w_144h.png",
+      "src": "assets/shared/launcher/mask/launcher_144w_144h.png",
       "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "assets/shared/launcher/launcher_152w_152h.png",
+      "src": "assets/shared/launcher/mask/launcher_152w_152h.png",
       "sizes": "152x152",
       "type": "image/png"
     },
     {
-      "src": "assets/shared/launcher/launcher_192w_192h.png",
+      "src": "assets/shared/launcher/mask/launcher_192w_192h.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "assets/shared/launcher/launcher_384w_384h.png",
+      "src": "assets/shared/launcher/mask/launcher_384w_384h.png",
       "sizes": "384x384",
       "type": "image/png"
     },
     {
-      "src": "assets/shared/launcher/launcher_512w_512h.png",
+      "src": "assets/shared/launcher/mask/launcher_512w_512h.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "assets/shared/launcher/no_mask/launcher_72w_72h.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/shared/launcher/no_mask/launcher_96w_96h.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/shared/launcher/no_mask/launcher_128w_128h.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/shared/launcher/no_mask/launcher_144w_144h.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/shared/launcher/no_mask/launcher_152w_152h.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/shared/launcher/no_mask/launcher_192w_192h.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/shared/launcher/no_mask/launcher_384w_384h.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/shared/launcher/no_mask/launcher_512w_512h.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "assets/shared/svg/app_icon_no_clip.svg",
