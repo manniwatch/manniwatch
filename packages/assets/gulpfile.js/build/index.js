@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const flatMap = require('flat-map').default;
 const gulpSharp = require('@donmahallem/gulp-sharp').gulpSharp;
 const rename = require('gulp-rename');
+const svgmin = require('gulp-svgmin');
 
 const build_launcher_icons_mask = () => {
     const generateOutputFormats = (file, cb) => {
@@ -69,6 +70,7 @@ const build_launcher_icons_no_mask = () => {
 
 const copy_svgs = () => {
     return gulp.src('src/*.svg')
+        .pipe(svgmin())
         .pipe(gulp.dest('dist/svg'));
 };
 const build_launcher_icons = gulp.parallel(build_launcher_icons_mask, build_launcher_icons_no_mask);
