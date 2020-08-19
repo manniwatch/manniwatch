@@ -7,7 +7,7 @@ pull_request_rules:
       merge:
         method: squash
         strict: smart+fasttrack
-        strict_method: rebase
+        strict_method: merge
   - name: delete head branch on merged pull requests
     conditions:
       - merged
