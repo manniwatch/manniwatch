@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/manniwatch/manniwatch/compare/v0.16.0...v0.17.0) (2020-08-19)
+
+
+### Bug Fixes
+
+* **client-ng:** fix icon webmanifest paths ([#864](https://github.com/manniwatch/manniwatch/issues/864)) ([dd063ec](https://github.com/manniwatch/manniwatch/commit/dd063ecc6eee2f24dc817eb683172e601cc26d40))
+* **deps:** bump electron from 9.2.0 to 9.2.1 ([#860](https://github.com/manniwatch/manniwatch/issues/860)) ([0ef369a](https://github.com/manniwatch/manniwatch/commit/0ef369ae62172e5dd4e390a8adf0be648e0c5012))
+
+
+### Features
+
+* **assets:** export mask and no mask launcher icons ([#859](https://github.com/manniwatch/manniwatch/issues/859)) ([f446f7f](https://github.com/manniwatch/manniwatch/commit/f446f7f8c5f02076d27fdb3434f38ce89cbfb51c))
+* **assets:** optimize distributed SVGs ([#865](https://github.com/manniwatch/manniwatch/issues/865)) ([b79af94](https://github.com/manniwatch/manniwatch/commit/b79af9498b38e2ebf5e848dcb5af453acacdb1bc))
+
+
+
+
+
+
 # [0.16.0](https://github.com/manniwatch/manniwatch/compare/v0.15.0...v0.16.0) (2020-08-18)
 
 

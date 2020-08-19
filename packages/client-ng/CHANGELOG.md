@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/manniwatch/manniwatch/compare/v0.16.0...v0.17.0) (2020-08-19)
+
+
+### Bug Fixes
+
+* **client-ng:** fix icon webmanifest paths ([#864](https://github.com/manniwatch/manniwatch/issues/864)) ([dd063ec](https://github.com/manniwatch/manniwatch/commit/dd063ecc6eee2f24dc817eb683172e601cc26d40))
+
+
+
+
+
+
 # [0.16.0](https://github.com/manniwatch/manniwatch/compare/v0.15.0...v0.16.0) (2020-08-18)
 
 
