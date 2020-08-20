@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - name: Setup Cache
-        uses: actions/cache@v2.1.0
+        uses: actions/cache@v2.1.1
         with:
           path: |
             node_modules
