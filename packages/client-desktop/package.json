@@ -46,7 +46,7 @@
   "devDependencies": {
     "@types/chai": "~4.2.12",
     "@types/mocha": "~8.0.3",
-    "@types/sinon": "~9.0.4",
+    "@types/sinon": "~9.0.5",
     "asar": "~3.0.3",
     "chai": "~4.2.0",
     "mocha": "~8.1.1",
