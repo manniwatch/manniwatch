@@ -60,7 +60,7 @@
     "@manniwatch/api-proxy-router": "^0.17.0",
     "@manniwatch/api-types": "^0.17.0",
     "@manniwatch/client-ng": "^0.17.0",
-    "electron": "~10.1.0",
+    "electron": "~10.1.1",
     "express": "~4.17.1",
     "helmet": "~4.1.0",
     "yargs": "~15.4.1"
