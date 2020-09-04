@@ -62,7 +62,7 @@
     "@angular/service-worker": "~10.1.0",
     "@manniwatch/api-types": "^0.17.0",
     "@manniwatch/assets": "^0.17.0",
-    "date-fns": "~2.15.0",
+    "date-fns": "~2.16.1",
     "material-design-icons": "~3.0.1",
     "ol": "~6.4.3",
     "rxjs": "~6.6.2",
