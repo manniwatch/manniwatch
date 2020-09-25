@@ -5,6 +5,7 @@ jobs:
   test_suite:
     runs-on: ${{ matrix.os }}
     name: Test - ${{ matrix.os }} - Node ${{ matrix.node }}
+    timeout-minutes: 30
     strategy:
       matrix:
         node: [10, 12]
