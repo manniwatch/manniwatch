@@ -10,7 +10,7 @@
     "@types/chai": "~4.2.12",
     "@types/mocha": "~8.0.3",
     "@types/node": "~14.0.26",
-    "@types/sinon": "~9.0.5",
+    "@types/sinon": "~9.0.6",
     "chai": "~4.2.0",
     "commitizen": "~4.2.1",
     "conventional-changelog-angular": "~5.0.11",
