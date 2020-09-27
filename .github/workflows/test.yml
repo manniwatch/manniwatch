@@ -5,6 +5,7 @@ jobs:
   test_suite:
     runs-on: ${{ matrix.os }}
     name: Test - ${{ matrix.os }} - Node ${{ matrix.node }}
+    timeout-minutes: 30
     strategy:
       matrix:
         node: [10, 12]
@@ -13,16 +14,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2.1.1
         with:
           node-version: ${{ matrix.node }}
+      - name: Get npm cache directory
+        id: npm-cache
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
       - name: Setup Cache
-        uses: actions/cache@v2.1.0
+        uses: actions/cache@v2.1.1
         with:
           path: |
+            ${{ steps.npm-cache.outputs.dir }}
             node_modules
             */*/node_modules
-#      ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
