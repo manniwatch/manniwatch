@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.1](https://github.com/manniwatch/manniwatch/compare/v0.17.0...v0.17.1) (2020-09-27)
+
+
+### Bug Fixes
+
+* **deps:** bump electron from 10.0.0 to 10.1.0 ([#913](https://github.com/manniwatch/manniwatch/issues/913)) ([b995fd6](https://github.com/manniwatch/manniwatch/commit/b995fd6dd3d164fc34fdb6a13907a944c3ef4005))
+* **deps:** bump electron from 10.1.0 to 10.1.1 ([#923](https://github.com/manniwatch/manniwatch/issues/923)) ([839823a](https://github.com/manniwatch/manniwatch/commit/839823ad5383b0b851b69890dd480bfa50e1ced0))
+* **deps:** bump electron from 10.1.1 to 10.1.2 ([#963](https://github.com/manniwatch/manniwatch/issues/963)) ([fc692c2](https://github.com/manniwatch/manniwatch/commit/fc692c2bb65c400a3f65c81e0f1705f2b13c62d7))
+* **deps:** bump electron from 9.2.1 to 10.0.0 ([#890](https://github.com/manniwatch/manniwatch/issues/890)) ([56a94bd](https://github.com/manniwatch/manniwatch/commit/56a94bdb10d14987bd06171f0d3b30c17abb5c2f))
+* **deps:** bump helmet from 4.1.0 to 4.1.1 ([#957](https://github.com/manniwatch/manniwatch/issues/957)) ([b921cf5](https://github.com/manniwatch/manniwatch/commit/b921cf5ffbfcb6fa50b678d802c729d8093df9b1))
+* **deps:** bump yargs from 15.4.1 to 16.0.0 ([#941](https://github.com/manniwatch/manniwatch/issues/941)) ([06db23e](https://github.com/manniwatch/manniwatch/commit/06db23e23046197027a2d5e672f2c17c4a82a1b5))
+* **deps:** bump yargs from 16.0.0 to 16.0.3 ([#942](https://github.com/manniwatch/manniwatch/issues/942)) ([380778e](https://github.com/manniwatch/manniwatch/commit/380778ec98b72a07bb3f7a454aaf0b6bbe895fd3))
+
+
+
+
+
+
 # [0.17.0](https://github.com/manniwatch/manniwatch/compare/v0.16.0...v0.17.0) (2020-08-19)
 
 

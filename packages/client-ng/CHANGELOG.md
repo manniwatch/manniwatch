@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.1](https://github.com/manniwatch/manniwatch/compare/v0.17.0...v0.17.1) (2020-09-27)
+
+
+### Bug Fixes
+
+* **deps:** bump @angular/core from 10.0.14 to 10.1.0 ([#928](https://github.com/manniwatch/manniwatch/issues/928)) ([ba79ec1](https://github.com/manniwatch/manniwatch/commit/ba79ec1cd198e6df0591fc301c5988c449513d8b))
+* **deps:** bump @angular/core from 10.1.0 to 10.1.1 ([#956](https://github.com/manniwatch/manniwatch/issues/956)) ([ee8c10d](https://github.com/manniwatch/manniwatch/commit/ee8c10d0677211d455f2368e0fa70374a02b369f))
+* **deps:** bump @angular/core from 10.1.1 to 10.1.2 ([#986](https://github.com/manniwatch/manniwatch/issues/986)) ([db0a52c](https://github.com/manniwatch/manniwatch/commit/db0a52c6aa572490a178bad36476994d952e2e31))
+* **deps:** bump @angular/core from 10.1.3 to 10.1.2 ([#1002](https://github.com/manniwatch/manniwatch/issues/1002)) ([6b708c7](https://github.com/manniwatch/manniwatch/commit/6b708c7e06805ca4c127b23af3250d24176734ee))
+* **deps:** bump @angular/core to 10.0.12 from 10.0.11 ([#896](https://github.com/manniwatch/manniwatch/issues/896)) ([bd5a993](https://github.com/manniwatch/manniwatch/commit/bd5a993c42fb94529b43297f90ce41b4eec7ef83))
+* **deps:** bump @angular/core to 10.0.14 from 10.0.12 ([#908](https://github.com/manniwatch/manniwatch/issues/908)) ([2f38628](https://github.com/manniwatch/manniwatch/commit/2f386288fec5fbc08a64b8f4d2a762097f72c11a))
+* **deps:** bump @angular/material from 10.1.3 to 10.2.0 ([#931](https://github.com/manniwatch/manniwatch/issues/931)) ([c83b397](https://github.com/manniwatch/manniwatch/commit/c83b3974f390106f573b5284daf510f4b10f589f))
+* **deps:** bump @angular/material from 10.2.0 to 10.2.2 ([#1007](https://github.com/manniwatch/manniwatch/issues/1007)) ([0e1e74e](https://github.com/manniwatch/manniwatch/commit/0e1e74ea4925a33f898d3f2f2b9d8466be674ebe))
+* **deps:** bump date-fns from 2.15.0 to 2.16.1 ([#919](https://github.com/manniwatch/manniwatch/issues/919)) ([ea1ded2](https://github.com/manniwatch/manniwatch/commit/ea1ded26f524beda5b66d806471ac5bf1714cd2f))
+* **deps:** bump rxjs from 6.6.2 to 6.6.3 ([#937](https://github.com/manniwatch/manniwatch/issues/937)) ([0c80c83](https://github.com/manniwatch/manniwatch/commit/0c80c83f6afa08da9e7d93020f571f07afbb6801))
+* **deps:** update @angular/core from 10.0.10 to 10.0.11 ([#874](https://github.com/manniwatch/manniwatch/issues/874)) ([bead271](https://github.com/manniwatch/manniwatch/commit/bead271af3ae16f3a4207560f2c3e522ab2d530b))
+
+
+
+
+
+
 # [0.17.0](https://github.com/manniwatch/manniwatch/compare/v0.16.0...v0.17.0) (2020-08-19)
 
 

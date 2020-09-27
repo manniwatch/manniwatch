@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.1](https://github.com/manniwatch/manniwatch/compare/v0.17.0...v0.17.1) (2020-09-27)
+
+
+### Bug Fixes
+
+* **deps:** bump jsonschema from 1.2.6 to 1.2.7 ([#1010](https://github.com/manniwatch/manniwatch/issues/1010)) ([41f26f9](https://github.com/manniwatch/manniwatch/commit/41f26f96ba86812d80ea1648956d2c635d593615))
+
+
+
+
+
+
 # [0.17.0](https://github.com/manniwatch/manniwatch/compare/v0.16.0...v0.17.0) (2020-08-19)
 
 **Note:** Version bump only for package @manniwatch/api-proxy-router
