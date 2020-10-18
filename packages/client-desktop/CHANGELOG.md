@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.2](https://github.com/manniwatch/manniwatch/compare/v0.17.1...v0.17.2) (2020-10-18)
+
+
+### Bug Fixes
+
+* **deps:** bump electron from 10.1.2 to 10.1.3 ([#1021](https://github.com/manniwatch/manniwatch/issues/1021)) ([9556392](https://github.com/manniwatch/manniwatch/commit/95563927f3282e676a66d4d2d7f6131c57a665c4))
+* **deps:** bump yargs from 16.0.3 to 16.1.0 ([#1093](https://github.com/manniwatch/manniwatch/issues/1093)) ([b3754c1](https://github.com/manniwatch/manniwatch/commit/b3754c129c76e66d95782a1c3ff63dcb45118d6e))
+
+
+
+
+
+
 ## [0.17.1](https://github.com/manniwatch/manniwatch/compare/v0.17.0...v0.17.1) (2020-09-27)
 
 

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.2](https://github.com/manniwatch/manniwatch/compare/v0.17.1...v0.17.2) (2020-10-18)
+
+
+### Bug Fixes
+
+* **deps:** bump jsonschema from 1.2.7 to 1.2.8 ([#1045](https://github.com/manniwatch/manniwatch/issues/1045)) ([f36e659](https://github.com/manniwatch/manniwatch/commit/f36e659c16fa714de0e1453d1a7a2ede7139d94b))
+* **deps:** bump jsonschema from 1.2.8 to 1.2.11 ([#1072](https://github.com/manniwatch/manniwatch/issues/1072)) ([e03b6f7](https://github.com/manniwatch/manniwatch/commit/e03b6f7141cf440fb8eae8c24fcbc916af53f710))
+
+
+
+
+
+
 ## [0.17.1](https://github.com/manniwatch/manniwatch/compare/v0.17.0...v0.17.1) (2020-09-27)
 
 
