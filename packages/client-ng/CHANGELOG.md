@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.2](https://github.com/manniwatch/manniwatch/compare/v0.17.1...v0.17.2) (2020-10-18)
+
+
+### Bug Fixes
+
+* **deps:** bump @angular/cli to 10.1.7 to 10.1.6 ([#1098](https://github.com/manniwatch/manniwatch/issues/1098)) ([ad17829](https://github.com/manniwatch/manniwatch/commit/ad1782984177c446b4aaac78590dda3b134a16fa))
+* **deps:** bump @angular/core from 10.1.4 to 10.1.5 ([#1075](https://github.com/manniwatch/manniwatch/issues/1075)) ([ad4df00](https://github.com/manniwatch/manniwatch/commit/ad4df0077adaadcd8b80aa2e4079b2c5697c739c))
+* **deps:** bump @angular/core from 10.1.5 to 10.1.6 ([#1096](https://github.com/manniwatch/manniwatch/issues/1096)) ([e9e7c5a](https://github.com/manniwatch/manniwatch/commit/e9e7c5ab8fb4d354ef31719953792de33e8682ad))
+* **deps:** bump @angular/core to 10.1.4 from 10.1.3 ([#1043](https://github.com/manniwatch/manniwatch/issues/1043)) ([4a291e4](https://github.com/manniwatch/manniwatch/commit/4a291e4e4cd4746b63dcfb3300be52e8296f13ac))
+* **deps:** bump @angular/material from 10.2.3 to 10.2.4 ([#1076](https://github.com/manniwatch/manniwatch/issues/1076)) ([9bd5c44](https://github.com/manniwatch/manniwatch/commit/9bd5c447c9733251e4f6435c724791a66eadf08b))
+* **deps:** bump @angular/material to 10.2.3 from 10.2.2 ([#1022](https://github.com/manniwatch/manniwatch/issues/1022)) ([6b1f7ab](https://github.com/manniwatch/manniwatch/commit/6b1f7abb87196e2d0b0de49198247f85e219a013))
+* **deps:** bump @angular/material to 10.2.5 from 10.2.4 ([#1097](https://github.com/manniwatch/manniwatch/issues/1097)) ([0076bf6](https://github.com/manniwatch/manniwatch/commit/0076bf6a7ce128797323c1e7f39d00d451486e6d))
+* **deps:** bump tslib from 2.0.1 to 2.0.3 ([#1069](https://github.com/manniwatch/manniwatch/issues/1069)) ([de7a702](https://github.com/manniwatch/manniwatch/commit/de7a702a5211cc2f732445b104eff7ece8ee279a))
+
+
+
+
+
+
 ## [0.17.1](https://github.com/manniwatch/manniwatch/compare/v0.17.0...v0.17.1) (2020-09-27)
 
 
