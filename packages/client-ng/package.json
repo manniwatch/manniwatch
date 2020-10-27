@@ -72,7 +72,7 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1001.7",
     "@angular-devkit/build-ng-packagr": "~0.1001.7",
-    "@angular/cli": "~10.1.7",
+    "@angular/cli": "~10.2.0",
     "@angular/compiler-cli": "~10.2.0",
     "@angular/language-service": "~10.2.0",
     "@compodoc/compodoc": "~1.1.11",
