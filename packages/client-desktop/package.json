@@ -62,7 +62,7 @@
     "@manniwatch/client-ng": "^0.17.2",
     "electron": "~10.1.5",
     "express": "~4.17.1",
-    "helmet": "~4.1.1",
+    "helmet": "~4.2.0",
     "yargs": "~16.1.0"
   }
 }
