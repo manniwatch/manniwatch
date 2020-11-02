@@ -63,7 +63,7 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
         this.mapSelectInteraction = new Select({
             condition: OlCondition.click,
             multi: false,
-            style: (p0: FeatureLike, p1: number): Style | Style[] | void => {
+            style: (p0: FeatureLike, p1: number): Style | Style[]  => {
                 switch (p0.get('type')) {
                     case 'vehicle':
                         return OlUtil.createVehicleMarkerStyle(true)(p0, p1);
