@@ -48,7 +48,7 @@
     "src/*"
   ],
   "dependencies": {
-    "@angular/animations": "~10.2.1",
+    "@angular/animations": "~10.2.3",
     "@angular/cdk": "~10.2.7",
     "@angular/common": "~10.2.1",
     "@angular/compiler": "~10.2.1",
