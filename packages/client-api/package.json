@@ -1,0 +1,53 @@
+{
+  "name": "@manniwatch/client-api",
+  "version": "0.17.2",
+  "description": "Shared Client Api Interfaces",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": false,
+  "keywords": [
+    "manniwatch"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "mocha --config ../../.mocharc.yml",
+    "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
+    "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
+    "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json src/**/*.ts",
+    "docs": "typedoc --options ../../typedoc.json",
+    "prepublishOnly": "npm run test && npm run docs && npm run build"
+  },
+  "homepage": "https://manniwatch.github.io/manniwatch/",
+  "author": {
+    "name": "donmahallem",
+    "email": "donmahallem@users.noreply.github.com",
+    "url": "https://github.com/donmahallem"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/manniwatch/manniwatch/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manniwatch/manniwatch.git"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "tslint": "~6.1.3"
+  },
+  "peerDependencies": {
+    "rxjs": "~6.6.3"
+  },
+  "dependencies": {
+    "@manniwatch/api-types": "~0.17.0"
+  }
+}

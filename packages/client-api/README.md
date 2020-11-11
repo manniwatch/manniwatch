@@ -1,0 +1,3 @@
+# Client Api
+
+[![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg?flag=ClientApi)](https://codecov.io/gh/manniwatch/manniwatch/manniwatch/master/packages/client-api) [![npm version](https://badge.fury.io/js/%40manniwatch%2Fclient-api.svg)](https://badge.fury.io/js/%40manniwatch%2Fclient-api) [![dependencies Status](https://david-dm.org/manniwatch/manniwatch/status.svg?path=packages/client-api)](https://david-dm.org/manniwatch/manniwatch?path=packages/client-api) [![devDependencies Status](https://david-dm.org/manniwatch/manniwatch/dev-status.svg?path=packages/client-api)](https://david-dm.org/manniwatch/manniwatch?path=packages/client-api&type=dev)
