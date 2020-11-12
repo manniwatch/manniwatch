@@ -77,7 +77,7 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
                 return !(p0 === this.backgroundMapLayer);
             },
             multi: false,
-            style: (p0: FeatureLike, p1: number): Style | Style[] | void => {
+            style: (p0: FeatureLike, p1: number): Style | Style[]  => {
                 switch (p0.get('type')) {
                     case 'vehicle':
                         return OlUtil.createVehicleMarkerStyle(true)(p0, p1);
