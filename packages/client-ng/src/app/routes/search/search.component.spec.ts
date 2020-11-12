@@ -3,7 +3,7 @@
  */
 
 import { Component, Input } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Title } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SearchComponent } from './search.component';
@@ -47,7 +47,7 @@ describe('src/modules/routing/search/search.component.ts', (): void => {
         beforeAll((): void => {
             getTitleSpy = jasmine.createSpy();
         });
-        beforeEach(async((): void => {
+        beforeEach(waitForAsync((): void => {
             TestBed.configureTestingModule({
                 declarations: [
                     SearchComponent,
@@ -74,7 +74,7 @@ describe('src/modules/routing/search/search.component.ts', (): void => {
             getTitleSpy.calls.reset();
         });
 
-        it('should create the component', async((): void => {
+        it('should create the component', waitForAsync((): void => {
             expect(cmp).toBeTruthy();
         }));
     });

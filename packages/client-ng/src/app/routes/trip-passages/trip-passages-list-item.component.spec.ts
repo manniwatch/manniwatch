@@ -3,7 +3,7 @@
  */
 
 import { ChangeDetectionStrategy, Component, Directive, Input } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ITripPassage, VEHICLE_STATUS } from '@manniwatch/api-types';
 import {
@@ -74,7 +74,7 @@ const testPassages: ITripPassage[] = [{
 }];
 describe('src/app/modules/trip-passages/trip-passages-list-item.component', (): void => {
   describe('TripPassagesListItemComponent', (): void => {
-    beforeEach(async((): void => {
+    beforeEach(waitForAsync((): void => {
       TestBed.configureTestingModule({
         declarations: [
           TripPassagesListItemComponent,

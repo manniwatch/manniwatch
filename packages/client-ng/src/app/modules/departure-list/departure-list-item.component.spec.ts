@@ -3,7 +3,7 @@
  */
 
 import { Component, Directive, Input } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as dateFns from 'date-fns';
 import { DepartureListItemComponent } from './departure-list-item.component';
 
@@ -35,7 +35,7 @@ export class TestRouterLinkDirective {
 // tslint:enable:directive-selector
 describe('src/app/modules/stop/departure-list-item.component', (): void => {
   describe('DepartureListItemComponent', (): void => {
-    beforeEach(async((): void => {
+    beforeEach(waitForAsync((): void => {
       TestBed.configureTestingModule({
         declarations: [
           DepartureListItemComponent,
@@ -45,7 +45,7 @@ describe('src/app/modules/stop/departure-list-item.component', (): void => {
         ],
       }).compileComponents();
     }));
-    it('should create the app', async((): void => {
+    it('should create the app', waitForAsync((): void => {
       const fixture: ComponentFixture<DepartureListItemComponent> = TestBed.createComponent(DepartureListItemComponent);
       const app: DepartureListItemComponent = fixture.debugElement.componentInstance;
       expect(app).toBeTruthy();

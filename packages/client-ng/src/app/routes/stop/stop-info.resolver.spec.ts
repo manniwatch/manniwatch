@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { from, throwError, Observable } from 'rxjs';
 import { ApiService } from 'src/app/services';
@@ -21,7 +21,7 @@ describe('src/app/modules/stop/stop-info.resolver', (): void => {
             navigateSpy = jasmine.createSpy();
             nextSpy = jasmine.createSpy();
         });
-        beforeEach(async((): void => {
+        beforeEach(waitForAsync((): void => {
             TestBed.configureTestingModule({
                 providers: [StopInfoResolver,
                     {

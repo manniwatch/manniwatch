@@ -3,7 +3,7 @@
  */
 
 import { Component, DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatDialogRef } from '@angular/material/dialog';
 import { By } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
@@ -46,7 +46,7 @@ describe('src/app/modules/request-update-dialog/request-update-dialog.component.
         const testDialogRef: any = {
 
         };
-        beforeEach(async((): void => {
+        beforeEach(waitForAsync((): void => {
             TestBed.configureTestingModule({
                 declarations: [
                     RequestUpdateDialogComponent,
@@ -79,14 +79,14 @@ describe('src/app/modules/request-update-dialog/request-update-dialog.component.
         describe('layout', (): void => {
             let cmpFixture: ComponentFixture<RequestUpdateDialogComponent>;
             let cmp: RequestUpdateDialogComponent;
-            beforeEach(async((): void => {
+            beforeEach(waitForAsync((): void => {
                 cmpFixture = TestBed.createComponent(RequestUpdateDialogComponent);
                 cmp = cmpFixture.debugElement.componentInstance;
             }));
-            it('should create the component', async((): void => {
+            it('should create the component', waitForAsync((): void => {
                 expect(cmp).toBeTruthy();
             }));
-            it('should display loading spinner if status equals "loading"', async(async (): Promise<void> => {
+            it('should display loading spinner if status equals "loading"', waitForAsync(async (): Promise<void> => {
                 statusSubject.next(SW_STATUS.LOADING);
                 cmpFixture.detectChanges();
                 statusSubject.next(SW_STATUS.LOADING);
@@ -95,7 +95,7 @@ describe('src/app/modules/request-update-dialog/request-update-dialog.component.
                 const debugElement: DebugElement = cmpFixture.debugElement.query(By.directive(TestMatSpinnerComponent));
                 expect(debugElement).toBeTruthy();
             }));
-            it('should display that no update is available', async(async (): Promise<void> => {
+            it('should display that no update is available', waitForAsync(async (): Promise<void> => {
                 statusSubject.next('unknown status' as any);
                 cmpFixture.detectChanges();
                 await cmpFixture.whenStable();

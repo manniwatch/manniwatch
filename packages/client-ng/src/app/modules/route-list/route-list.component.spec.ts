@@ -3,7 +3,7 @@
  */
 
 import { Component } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RouteListComponent } from './route-list.component';
@@ -43,7 +43,7 @@ export class TestParentComponent {
 
 describe('src/modules/stop/route-list.component.ts', (): void => {
     describe('RouteListComponent', (): void => {
-        beforeEach(async((): void => {
+        beforeEach(waitForAsync((): void => {
             TestBed.configureTestingModule({
                 declarations: [
                     RouteListComponent,
