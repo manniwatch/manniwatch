@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/manniwatch/manniwatch/compare/v0.17.2...v0.18.0) (2020-11-12)
+
+
+### Bug Fixes
+
+* **deps:** bump electron from 10.1.3 to 10.1.4 ([#1104](https://github.com/manniwatch/manniwatch/issues/1104)) ([a3c46b7](https://github.com/manniwatch/manniwatch/commit/a3c46b7cf18d763ae4fa724f6da69ff2d7581b5f))
+* **deps:** bump electron from 10.1.4 to 10.1.5 ([#1113](https://github.com/manniwatch/manniwatch/issues/1113)) ([612c2a9](https://github.com/manniwatch/manniwatch/commit/612c2a9cf03c5d4086c71ea56546baa4531a9652))
+* **deps:** bump helmet from 4.1.1 to 4.2.0 ([#1142](https://github.com/manniwatch/manniwatch/issues/1142)) ([ea65145](https://github.com/manniwatch/manniwatch/commit/ea65145e0513e5669afdc794cf6a3b91e02a41ab))
+
+
+
+
+
+
 ## [0.17.2](https://github.com/manniwatch/manniwatch/compare/v0.17.1...v0.17.2) (2020-10-18)
 
 

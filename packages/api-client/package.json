@@ -1,6 +1,6 @@
 {
     "name": "@manniwatch/api-client",
-    "version": "0.17.0",
+    "version": "0.18.0",
     "description": "Node Client to consume the Api",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
@@ -19,7 +19,7 @@
         "version": "npm run build:readme && git add README.md"
     },
     "dependencies": {
-        "@manniwatch/api-types": "^0.17.0",
+        "@manniwatch/api-types": "^0.18.0",
         "request": "~2.88.2",
         "request-promise-native": "~1.0.9"
     },

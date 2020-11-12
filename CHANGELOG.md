@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/manniwatch/manniwatch/compare/v0.17.2...v0.18.0) (2020-11-12)
+
+
+### Bug Fixes
+
+* **deps:** bump @angular/core from 10.1.6 to 10.2.0 ([#1121](https://github.com/manniwatch/manniwatch/issues/1121)) ([104fb4e](https://github.com/manniwatch/manniwatch/commit/104fb4e22695b26cc783cd46048b7764a189a9b2))
+* **deps:** bump @angular/core to 10.2.1 from 10.2.0 ([#1139](https://github.com/manniwatch/manniwatch/issues/1139)) ([ceec444](https://github.com/manniwatch/manniwatch/commit/ceec4445a8e80d911d3234298e8e129bfb69688a))
+* **deps:** bump @angular/core to 10.2.3 from 10.2.1 ([#1175](https://github.com/manniwatch/manniwatch/issues/1175)) ([c6efe9a](https://github.com/manniwatch/manniwatch/commit/c6efe9adea9b23742dfa35f55fd0c1cf84c91686))
+* **deps:** bump @angular/material from 10.2.5 to 10.2.6 ([#1138](https://github.com/manniwatch/manniwatch/issues/1138)) ([dc1f6c5](https://github.com/manniwatch/manniwatch/commit/dc1f6c51bd6db35145572aedd088a4a261267594))
+* **deps:** bump @angular/material to 10.2.7 from 10.2.6 ([#1148](https://github.com/manniwatch/manniwatch/issues/1148)) ([18bf2c9](https://github.com/manniwatch/manniwatch/commit/18bf2c9e2e5359fb5d4170fd52291fb6ccb45a57))
+* **deps:** bump electron from 10.1.3 to 10.1.4 ([#1104](https://github.com/manniwatch/manniwatch/issues/1104)) ([a3c46b7](https://github.com/manniwatch/manniwatch/commit/a3c46b7cf18d763ae4fa724f6da69ff2d7581b5f))
+* **deps:** bump electron from 10.1.4 to 10.1.5 ([#1113](https://github.com/manniwatch/manniwatch/issues/1113)) ([612c2a9](https://github.com/manniwatch/manniwatch/commit/612c2a9cf03c5d4086c71ea56546baa4531a9652))
+* **deps:** bump helmet from 4.1.1 to 4.2.0 ([#1142](https://github.com/manniwatch/manniwatch/issues/1142)) ([ea65145](https://github.com/manniwatch/manniwatch/commit/ea65145e0513e5669afdc794cf6a3b91e02a41ab))
+
+
+### Features
+
+* **client-ng:** dark theme map ([#687](https://github.com/manniwatch/manniwatch/issues/687)) ([f93b78c](https://github.com/manniwatch/manniwatch/commit/f93b78cc89346e1e49d3c2dc4ec038bb3795e818))
+
+
+
+
+
+
 ## [0.17.2](https://github.com/manniwatch/manniwatch/compare/v0.17.1...v0.17.2) (2020-10-18)
 
 
