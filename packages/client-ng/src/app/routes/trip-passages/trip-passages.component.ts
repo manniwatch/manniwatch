@@ -2,15 +2,15 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { IVehicleLocation } from '@manniwatch/api-types';
 import { Subscription } from 'rxjs';
 import { IStaticMapData } from 'src/app/modules/openlayers';
+import { runInsideZone } from 'src/app/util/rxjs';
 import { TripPassagesService } from './trip-passages.service';
 import {
     UpdateStatus,
 } from './trip-util';
-
 /**
  * Component displaying the TripPassages for a Trip
  */
@@ -27,11 +27,13 @@ export class TripPassagesComponent implements OnInit, OnDestroy {
     private subscriptions: Subscription[] = [];
     public headerMapData: IStaticMapData;
     public readonly STATUS_OPS: typeof UpdateStatus = UpdateStatus;
-    constructor(public readonly passageService: TripPassagesService) { }
+    constructor(public readonly zone: NgZone,
+        public readonly passageService: TripPassagesService) { }
 
     public ngOnInit(): void {
         this.subscriptions.push(this.passageService
             .createStopLocationObservable()
+            .pipe(runInsideZone(this.zone))
             .subscribe({
                 next: (stopLocation: IVehicleLocation): void => {
                     if (stopLocation) {
