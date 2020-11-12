@@ -3,7 +3,7 @@
  */
 
 import { Component, Directive, Input } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import * as dateFns from 'date-fns';
 import { DepartureListItemComponent } from './departure-list-item.component';
 

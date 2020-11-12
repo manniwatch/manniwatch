@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import { waitForAsync, TestBed } from '@angular/core/testing';
 import { of, throwError, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { ApiService } from 'src/app/services';
