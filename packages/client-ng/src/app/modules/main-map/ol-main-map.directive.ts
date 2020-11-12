@@ -10,6 +10,7 @@ import { Map as OLMap } from 'ol';
 import * as OlCondition from 'ol/events/condition';
 import { Select } from 'ol/interaction';
 import { SelectEvent } from 'ol/interaction/Select';
+import BaseTileLayer from 'ol/layer/BaseTile';
 import Style from 'ol/style/Style';
 import Feature, { FeatureLike } from 'ol/Feature';
 import { Subscription } from 'rxjs';
@@ -62,6 +63,19 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
         this.vehicleHandler = new OlVehicleHandler(this);
         this.mapSelectInteraction = new Select({
             condition: OlCondition.click,
+            filter: (p0: FeatureLike, p1: BaseTileLayer): boolean => {
+                switch (p0.get('type')) {
+                    case 'vehicle':
+                    case 'stop':
+                    case 'stopPoint':
+                        return true;
+                    default:
+                        return false;
+                }
+            },
+            layers: (p0: BaseTileLayer): boolean => {
+                return !(p0 === this.backgroundMapLayer);
+            },
             multi: false,
             style: (p0: FeatureLike, p1: number): Style | Style[]  => {
                 switch (p0.get('type')) {
@@ -98,7 +112,7 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
     }
 
     public onAfterSetView(map: OLMap): void {
-
+        super.onAfterSetView(map);
         this.markerHandler.start(map);
         this.vehicleHandler.start(map);
         this.getMap().addInteraction(this.mapSelectInteraction);
