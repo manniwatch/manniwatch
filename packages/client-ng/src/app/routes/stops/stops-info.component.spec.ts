@@ -3,7 +3,7 @@
  */
 
 import { Component } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StopsInfoComponent } from './stops-info.component';
@@ -45,7 +45,7 @@ describe('src/modules/stops/stops-info.component.ts', (): void => {
     describe('StopsInfoComponent', (): void => {
         let fixture: ComponentFixture<StopsInfoComponent>;
         let app: StopsInfoComponent;
-        beforeEach(async((): void => {
+        beforeEach(waitForAsync((): void => {
             TestBed.configureTestingModule({
                 declarations: [
                     StopsInfoComponent,
@@ -81,7 +81,7 @@ describe('src/modules/stops/stops-info.component.ts', (): void => {
             app = fixture.debugElement.componentInstance;
         }));
 
-        it('should create the app', async((): void => {
+        it('should create the app', waitForAsync((): void => {
             expect(app).toBeTruthy();
         }));
         describe('layout', (): void => {

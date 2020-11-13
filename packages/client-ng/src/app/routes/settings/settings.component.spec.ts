@@ -3,7 +3,7 @@
  */
 
 import { Component } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SettingsComponent } from './settings.component';
 
@@ -44,7 +44,7 @@ describe('src/routes/settings/settings.component.ts', (): void => {
     describe('SettingsComponent', (): void => {
         let fixture: ComponentFixture<SettingsComponent>;
         let app: SettingsComponent;
-        beforeEach(async((): void => {
+        beforeEach(waitForAsync((): void => {
             TestBed.configureTestingModule({
                 declarations: [
                     SettingsComponent,
@@ -62,7 +62,7 @@ describe('src/routes/settings/settings.component.ts', (): void => {
             app = fixture.debugElement.componentInstance;
         }));
 
-        it('should create the app', async((): void => {
+        it('should create the app', waitForAsync((): void => {
             expect(app).toBeTruthy();
         }));
         describe('layout', (): void => {

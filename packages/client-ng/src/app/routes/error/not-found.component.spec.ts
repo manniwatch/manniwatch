@@ -3,7 +3,7 @@
  */
 
 import { Component, DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NotFoundComponent } from './not-found.component';
@@ -50,7 +50,7 @@ describe('src/modules/error/not-found.component.ts', (): void => {
         let cmpFixture: ComponentFixture<NotFoundComponent>;
         let cmp: NotFoundComponent;
         let matListDebugElements: DebugElement[];
-        beforeEach(async((): void => {
+        beforeEach(waitForAsync((): void => {
             TestBed.configureTestingModule({
                 declarations: [
                     NotFoundComponent,
@@ -70,7 +70,7 @@ describe('src/modules/error/not-found.component.ts', (): void => {
             cmp = cmpFixture.debugElement.componentInstance;
             matListDebugElements = cmpFixture.debugElement.queryAll(By.css('mat-list-item'));
         }));
-        it('should create the app', async((): void => {
+        it('should create the app', waitForAsync((): void => {
             expect(cmp).toBeTruthy();
         }));
         it('should create the correct number of list items', (): void => {
