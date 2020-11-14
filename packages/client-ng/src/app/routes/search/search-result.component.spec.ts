@@ -3,7 +3,7 @@
  */
 
 import { Component, Input } from '@angular/core';
-import { async, TestBed } from '@angular/core/testing';
+import { waitForAsync, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StopPointService } from 'src/app/services';
 import { SearchResultResolver } from './search-result.resolver';
@@ -47,7 +47,7 @@ describe('src/modules/routing/search/search-result.resolver.ts', (): void => {
         beforeAll((): void => {
             stopLocationSpy = jasmine.createSpy();
         });
-        beforeEach(async((): void => {
+        beforeEach(waitForAsync((): void => {
             TestBed.configureTestingModule({
                 declarations: [
                     SearchComponent,
@@ -74,7 +74,7 @@ describe('src/modules/routing/search/search-result.resolver.ts', (): void => {
             stopLocationSpy.calls.reset();
         });
 
-        it('should create the component', async((): void => {
+        it('should create the component', waitForAsync((): void => {
             expect(testResolver).toBeTruthy();
         }));
     });

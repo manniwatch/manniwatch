@@ -3,7 +3,7 @@
  */
 
 import { Component, DebugElement, Directive, Input } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ITripPassages, IVehicleLocation } from '@manniwatch/api-types';
 import { Observable, Subject } from 'rxjs';
@@ -45,7 +45,7 @@ describe('src/app/routes/trip-passages/trip-passage.component', (): void => {
   describe('TripPassagesComponent', (): void => {
     const testStatusSubject: Subject<IPassageStatus> = new Subject();
     const testVehicleLocationSubject: Subject<IVehicleLocation> = new Subject();
-    beforeEach(async((): void => {
+    beforeEach(waitForAsync((): void => {
       TestBed.configureTestingModule({
         declarations: [
           TripPassagesComponent,

@@ -3,7 +3,7 @@
  */
 
 import { Component, Directive, EventEmitter, Input, Output } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StopPointService } from './../../services/stop-point.service';
@@ -66,7 +66,7 @@ class TestStopPointService {
 
 describe('src/modules/main-toolbar/search-box.component.ts', (): void => {
     describe('ToolbarSearchBoxComponent', (): void => {
-        beforeEach(async((): void => {
+        beforeEach(waitForAsync((): void => {
             TestBed.configureTestingModule({
                 declarations: [
                     ToolbarSearchBoxComponent,
@@ -88,7 +88,7 @@ describe('src/modules/main-toolbar/search-box.component.ts', (): void => {
             }).compileComponents();
         }));
 
-        it('should create the app', async((): void => {
+        it('should create the app', waitForAsync((): void => {
             const fixture: ComponentFixture<ToolbarSearchBoxComponent> = TestBed.createComponent(ToolbarSearchBoxComponent);
             const app: ToolbarSearchBoxComponent = fixture.debugElement.componentInstance;
             expect(app).toBeTruthy();

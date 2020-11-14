@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { async, TestBed } from '@angular/core/testing';
+import { waitForAsync, TestBed } from '@angular/core/testing';
 import { of, throwError, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { ApiService } from 'src/app/services';
@@ -27,7 +27,7 @@ describe('src/app/modules/trip-passages/trip-passages.resolver', (): void => {
             getTripPassagesSpy = jasmine.createSpy('getTripPassages');
             nextSpy = jasmine.createSpy('onNext');
         });
-        beforeEach(async((): void => {
+        beforeEach(waitForAsync((): void => {
             convertResponseStub.and.callFake((): any => convertResponseOperatorStub);
             handleErrorStub.and.callFake((): any => handleErrorOperatorStub);
             TestBed.configureTestingModule({

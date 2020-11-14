@@ -3,7 +3,7 @@
  */
 
 import { Component, Input } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IDeparture } from '@manniwatch/api-types';
 import { DepartureListComponent } from './departure-list.component';
 
@@ -29,7 +29,7 @@ export class TestDepartureListItemComponent {
 // tslint:enable:directive-selector
 describe('src/app/modules/stop/departure-list.component', (): void => {
   describe('DepartureListComponent', (): void => {
-    beforeEach(async((): void => {
+    beforeEach(waitForAsync((): void => {
       TestBed.configureTestingModule({
         declarations: [
           DepartureListComponent,
@@ -38,7 +38,7 @@ describe('src/app/modules/stop/departure-list.component', (): void => {
         ],
       }).compileComponents();
     }));
-    it('should create the app', async((): void => {
+    it('should create the app', waitForAsync((): void => {
       const fixture: ComponentFixture<DepartureListComponent> = TestBed.createComponent(DepartureListComponent);
       const app: DepartureListComponent = fixture.debugElement.componentInstance;
       expect(app).toBeTruthy();

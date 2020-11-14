@@ -3,7 +3,7 @@
  */
 
 import { DebugElement, Injectable } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -32,7 +32,7 @@ describe('src/modules/error/not-found-msg-switch.component.ts', (): void => {
         let cmp: NotFoundComponent;
         let testActivatedRoute: TestActivatedRoute;
         let infoBoxDebugElement: DebugElement;
-        beforeEach(async((): void => {
+        beforeEach(waitForAsync((): void => {
             TestBed.configureTestingModule({
                 declarations: [
                     NotFoundMessageSwitchComponent,
@@ -49,7 +49,7 @@ describe('src/modules/error/not-found-msg-switch.component.ts', (): void => {
             testActivatedRoute = TestBed.inject(ActivatedRoute) as any;
             infoBoxDebugElement = cmpFixture.debugElement.query(By.css('div.info'));
         }));
-        it('should create the app', async((): void => {
+        it('should create the app', waitForAsync((): void => {
             expect(cmp).toBeTruthy();
             expect(infoBoxDebugElement.componentInstance).toBeTruthy();
         }));

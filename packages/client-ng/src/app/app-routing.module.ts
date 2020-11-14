@@ -60,9 +60,10 @@ const appRoutes: Routes = [
         RouterModule.forRoot(
             appRoutes,
             {
-                enableTracing: false,
-                preloadingStrategy: AppPreloadingStrategy,
-            }, // <-- debugging purposes only
+    enableTracing: false,
+    preloadingStrategy: AppPreloadingStrategy,
+    relativeLinkResolution: 'legacy',
+}, // <-- debugging purposes only
         ),
     ],
     providers: [AppPreloadingStrategy],
