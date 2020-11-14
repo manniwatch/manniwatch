@@ -3,7 +3,7 @@
  */
 
 import { Component, Input } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IDeparture } from '@manniwatch/api-types';
 import { DepartureListComponent } from './departure-list.component';
 

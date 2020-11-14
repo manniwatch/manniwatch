@@ -3,7 +3,7 @@
  */
 
 import { ChangeDetectionStrategy, Component, Directive, Input } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ITripPassage, VEHICLE_STATUS } from '@manniwatch/api-types';
 import {

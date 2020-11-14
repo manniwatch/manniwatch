@@ -3,7 +3,7 @@
  */
 
 import { Component, DebugElement, Directive, Input } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ITripPassages, IVehicleLocation } from '@manniwatch/api-types';
 import { Observable, Subject } from 'rxjs';
