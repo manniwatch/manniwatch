@@ -58,7 +58,7 @@
     "@angular/material": "~10.2.7",
     "@angular/platform-browser": "~11.0.2",
     "@angular/platform-browser-dynamic": "~11.0.2",
-    "@angular/router": "~11.0.2",
+    "@angular/router": "~11.0.3",
     "@angular/service-worker": "~11.0.2",
     "@manniwatch/api-types": "^0.18.0",
     "@manniwatch/assets": "^0.18.0",
