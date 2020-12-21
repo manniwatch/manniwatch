@@ -65,7 +65,7 @@
     "date-fns": "~2.16.1",
     "material-design-icons": "~3.0.1",
     "ol": "~6.4.3",
-    "ol-mapbox-style": "~6.1.4",
+    "ol-mapbox-style": "~6.3.0",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
