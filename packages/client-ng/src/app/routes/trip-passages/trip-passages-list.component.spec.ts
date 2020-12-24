@@ -3,7 +3,7 @@
  */
 
 import { ChangeDetectionStrategy, Component, DebugElement, Input } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import {
   IActualTripPassage,
@@ -99,7 +99,7 @@ const testOldPassages: IDepartedTripPassage[] = [{
 }];
 describe('src/app/routes/trip-passages/trip-passages-list.component', (): void => {
   describe('TripPassagesListComponent', (): void => {
-    beforeEach(async((): void => {
+    beforeEach(waitForAsync((): void => {
       TestBed.configureTestingModule({
         declarations: [
           TripPassagesListComponent,

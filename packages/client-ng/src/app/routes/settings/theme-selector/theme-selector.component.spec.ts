@@ -3,7 +3,7 @@
  */
 
 import { Component } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NEVER } from 'rxjs';
 import { startWith } from 'rxjs/operators';
@@ -45,7 +45,7 @@ describe('src/routes/settings/theme-selector/theme-selector.component.ts', (): v
             setThemeSpy = jasmine.createSpy('setTheme');
             themeObservableSubscribeSpy = jasmine.createSpy('themeObservable.subscribe');
         });
-        beforeEach(async((): void => {
+        beforeEach(waitForAsync((): void => {
             TestBed.configureTestingModule({
                 declarations: [
                     ThemeSelectorComponent,
@@ -78,7 +78,7 @@ describe('src/routes/settings/theme-selector/theme-selector.component.ts', (): v
             themeObservableSubscribeSpy.calls.reset();
         });
 
-        it('should create the app', async((): void => {
+        it('should create the app', waitForAsync((): void => {
             expect(app).toBeTruthy();
         }));
         describe('layout', (): void => {
@@ -96,7 +96,7 @@ describe('src/routes/settings/theme-selector/theme-selector.component.ts', (): v
             describe('onSelectionChange', (): void => {
                 it('should call through to setTheme on settingservice', (): void => {
                     expect(setThemeSpy).not.toHaveBeenCalled();
-                    app.onSelectionChange({ option: { value: Theme.DARK } } as any);
+                    app.onSelectionChange({ options: [{ value: Theme.DARK }] } as any);
                     expect(setThemeSpy).toHaveBeenCalledTimes(1);
                     expect(setThemeSpy).toHaveBeenCalledWith(Theme.DARK);
                 });

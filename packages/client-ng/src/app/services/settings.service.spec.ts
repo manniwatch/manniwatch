@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { async, TestBed } from '@angular/core/testing';
+import { waitForAsync, TestBed } from '@angular/core/testing';
 import { environment } from 'src/environments';
 import { ApiService } from './api.service';
 import { SettingsService } from './settings.service';
@@ -15,7 +15,7 @@ describe('src/app/services/settings.service', (): void => {
         beforeAll((): void => {
             getSettingsSpy = jasmine.createSpy();
         });
-        beforeEach(async((): void => {
+        beforeEach(waitForAsync((): void => {
             TestBed.configureTestingModule({
                 providers: [
                     SettingsService,
