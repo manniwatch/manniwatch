@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.1](https://github.com/manniwatch/manniwatch/compare/v0.18.0...v0.18.1) (2020-12-24)
+
+
+### Bug Fixes
+
+* **client-ng:** upgrade to angular 11 ([#1185](https://github.com/manniwatch/manniwatch/issues/1185)) ([cdc64da](https://github.com/manniwatch/manniwatch/commit/cdc64da8a9718de0e8e2316f9bf24389f9a60aa2))
+* **deps:** bump @angular/core from 11.0.3 to 11.0.5 ([#1288](https://github.com/manniwatch/manniwatch/issues/1288)) ([5bb0632](https://github.com/manniwatch/manniwatch/commit/5bb06326d1fd2cf2282313aa3a498746e66ec1d4))
+* **deps:** bump @angular/core to 11.0.1 from 11.0.0 ([#1208](https://github.com/manniwatch/manniwatch/issues/1208)) ([8078ea1](https://github.com/manniwatch/manniwatch/commit/8078ea18530c02f7c4962a1bbfd299d536838657))
+* **deps:** bump @angular/core to 11.0.2 from 11.0.1 ([#1215](https://github.com/manniwatch/manniwatch/issues/1215)) ([a8764ef](https://github.com/manniwatch/manniwatch/commit/a8764ef10c7cb16e5aaebd8a51509e821e7b0648))
+* **deps:** bump @angular/core to 11.0.3 to 11.0.2 ([#1247](https://github.com/manniwatch/manniwatch/issues/1247)) ([57148fa](https://github.com/manniwatch/manniwatch/commit/57148fad4fa28c41a746801114ec25abbe0cbcd8))
+* **deps:** bump ol-mapbox-style from 6.1.2 to 6.1.4 ([#1188](https://github.com/manniwatch/manniwatch/issues/1188)) ([38d4937](https://github.com/manniwatch/manniwatch/commit/38d49371a0a4ce25168d20fb5aad223eccb74800))
+* **deps:** bump ol-mapbox-style from 6.1.4 to 6.3.0 ([#1293](https://github.com/manniwatch/manniwatch/issues/1293)) ([9db5d6d](https://github.com/manniwatch/manniwatch/commit/9db5d6d0326c4c00402cc61bae6406c87f45d9bf))
+
+
+
+
+
+
 # [0.18.0](https://github.com/manniwatch/manniwatch/compare/v0.17.2...v0.18.0) (2020-11-12)
 
 

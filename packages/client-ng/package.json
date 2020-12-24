@@ -1,7 +1,7 @@
 {
   "name": "@manniwatch/client-ng",
   "description": "Angular Client for Manniwatch",
-  "version": "0.18.0",
+  "version": "0.18.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -61,7 +61,7 @@
     "@angular/router": "~11.0.5",
     "@angular/service-worker": "~11.0.5",
     "@manniwatch/api-types": "^0.18.0",
-    "@manniwatch/assets": "^0.18.0",
+    "@manniwatch/assets": "^0.18.1",
     "date-fns": "~2.16.1",
     "material-design-icons": "~3.0.1",
     "ol": "~6.4.3",

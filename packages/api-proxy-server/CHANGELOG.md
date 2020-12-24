@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.1](https://github.com/manniwatch/manniwatch/compare/v0.18.0...v0.18.1) (2020-12-24)
+
+
+### Bug Fixes
+
+* **deps:** bump nconf from 0.10.0 to 0.11.0 ([#1220](https://github.com/manniwatch/manniwatch/issues/1220)) ([8f8e5b4](https://github.com/manniwatch/manniwatch/commit/8f8e5b41ac14750bc2be4eb5b2cc8423ddd36e15))
+
+
+
+
+
+
 # [0.18.0](https://github.com/manniwatch/manniwatch/compare/v0.17.2...v0.18.0) (2020-11-12)
 
 

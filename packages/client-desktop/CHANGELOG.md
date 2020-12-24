@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.1](https://github.com/manniwatch/manniwatch/compare/v0.18.0...v0.18.1) (2020-12-24)
+
+
+### Bug Fixes
+
+* **deps:** bump electron from 10.1.5 to 11.0.0 ([#1192](https://github.com/manniwatch/manniwatch/issues/1192)) ([70242f2](https://github.com/manniwatch/manniwatch/commit/70242f26531e2531960337100a53531f700be8f9))
+* **deps:** bump electron from 11.0.0 to 11.0.1 ([#1196](https://github.com/manniwatch/manniwatch/issues/1196)) ([6935560](https://github.com/manniwatch/manniwatch/commit/6935560d51ea951290556ccb1de909ecc7be95d3))
+* **deps:** bump electron from 11.0.1 to 11.0.3 ([#1222](https://github.com/manniwatch/manniwatch/issues/1222)) ([17a7602](https://github.com/manniwatch/manniwatch/commit/17a7602817d95fcdbf042025608c193ef1ebb621))
+* **deps:** bump electron from 11.0.3 to 11.1.1 ([#1295](https://github.com/manniwatch/manniwatch/issues/1295)) ([7cdee9d](https://github.com/manniwatch/manniwatch/commit/7cdee9db0f9a5bfc52d2670afa018b2adda5a51b))
+* **deps:** bump yargs from 16.1.0 to 16.1.1 ([#1190](https://github.com/manniwatch/manniwatch/issues/1190)) ([da7d594](https://github.com/manniwatch/manniwatch/commit/da7d59479891240b07f1fa769189037865daada5))
+* **deps:** bump yargs from 16.1.1 to 16.2.0 ([#1249](https://github.com/manniwatch/manniwatch/issues/1249)) ([50d3fb8](https://github.com/manniwatch/manniwatch/commit/50d3fb822087c05b8adac1613a7776a081a555e6))
+
+
+
+
+
+
 # [0.18.0](https://github.com/manniwatch/manniwatch/compare/v0.17.2...v0.18.0) (2020-11-12)
 
 
