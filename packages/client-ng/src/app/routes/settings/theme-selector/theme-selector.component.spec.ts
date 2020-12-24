@@ -96,7 +96,7 @@ describe('src/routes/settings/theme-selector/theme-selector.component.ts', (): v
             describe('onSelectionChange', (): void => {
                 it('should call through to setTheme on settingservice', (): void => {
                     expect(setThemeSpy).not.toHaveBeenCalled();
-                    app.onSelectionChange({ option: { value: Theme.DARK } } as any);
+                    app.onSelectionChange({ options: [{ value: Theme.DARK }] } as any);
                     expect(setThemeSpy).toHaveBeenCalledTimes(1);
                     expect(setThemeSpy).toHaveBeenCalledWith(Theme.DARK);
                 });
