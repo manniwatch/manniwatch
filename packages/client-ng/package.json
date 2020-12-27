@@ -19,7 +19,7 @@
     "prepare": "node ./scripts/prepare.js",
     "prepublishOnly": "npm run test && npm run docs && npm run build",
     "build:stats": "ng build --stats-json",
-    "analyze": "webpack-bundle-analyzer dist/manniwatch/stats-es2015.json",
+    "analyze": "webpack-bundle-analyzer dist/manniwatch/stats.json",
     "version": "npm run build:readme && git add README.md"
   },
   "private": false,
