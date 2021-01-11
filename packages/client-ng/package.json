@@ -51,7 +51,7 @@
     "@angular/animations": "~11.0.5",
     "@angular/cdk": "~10.2.7",
     "@angular/common": "~11.0.5",
-    "@angular/compiler": "~11.0.5",
+    "@angular/compiler": "~11.0.7",
     "@angular/core": "~11.0.5",
     "@angular/forms": "~11.0.5",
     "@angular/localize": "~11.0.5",
