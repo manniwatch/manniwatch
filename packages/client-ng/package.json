@@ -59,7 +59,7 @@
     "@angular/platform-browser": "~11.0.5",
     "@angular/platform-browser-dynamic": "~11.0.5",
     "@angular/router": "~11.0.5",
-    "@angular/service-worker": "~11.0.5",
+    "@angular/service-worker": "~11.0.7",
     "@manniwatch/api-types": "^0.18.0",
     "@manniwatch/assets": "^0.18.1",
     "date-fns": "~2.16.1",
