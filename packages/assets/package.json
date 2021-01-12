@@ -10,7 +10,7 @@
     },
     "devDependencies": {
         "@donmahallem/gulp-sharp": "~0.5.4",
-        "@types/gulp": "~4.0.7",
+        "@types/gulp": "~4.0.8",
         "del": "~6.0.0",
         "flat-map": "~1.0.0",
         "gulp": "~4.0.2",
