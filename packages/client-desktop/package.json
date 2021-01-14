@@ -15,7 +15,7 @@
     "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
     "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
     "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json src/**/*.ts",
-    "docs": "typedoc --options ../../typedoc.json",
+    "docs": "typedoc --options ./typedoc.json",
     "prepublishOnly": "npm run test && npm run docs && npm run build"
   },
   "files": [
@@ -53,8 +53,7 @@
     "nyc": "~15.1.0",
     "pug-cli": "~1.0.0-alpha6",
     "ts-node": "~9.1.1",
-    "tslint": "~6.1.3",
-    "typedoc": "~0.19.2"
+    "tslint": "~6.1.3"
   },
   "dependencies": {
     "@manniwatch/api-proxy-router": "^0.18.2",
