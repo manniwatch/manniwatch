@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.2](https://github.com/manniwatch/manniwatch/compare/v0.18.1...v0.18.2) (2021-01-14)
+
+
+### Bug Fixes
+
+* **deps:** bump jsonschema from 1.2.11 to 1.4.0 ([#1339](https://github.com/manniwatch/manniwatch/issues/1339)) ([9f05561](https://github.com/manniwatch/manniwatch/commit/9f055613bc21f7e228586ad3b1a89ad4f2932cf8))
+
+
+
+
+
+
 # [0.18.0](https://github.com/manniwatch/manniwatch/compare/v0.17.2...v0.18.0) (2020-11-12)
 
 **Note:** Version bump only for package @manniwatch/express-utils

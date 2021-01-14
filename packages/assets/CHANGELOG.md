@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.2](https://github.com/manniwatch/manniwatch/compare/v0.18.1...v0.18.2) (2021-01-14)
+
+**Note:** Version bump only for package @manniwatch/assets
+
+
+
+
+
+
 ## [0.18.1](https://github.com/manniwatch/manniwatch/compare/v0.18.0...v0.18.1) (2020-12-24)
 
 **Note:** Version bump only for package @manniwatch/assets

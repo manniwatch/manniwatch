@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.2](https://github.com/manniwatch/manniwatch/compare/v0.18.1...v0.18.2) (2021-01-14)
+
+
+### Bug Fixes
+
+* **client-ng:** fix analyze npm script command ([#1306](https://github.com/manniwatch/manniwatch/issues/1306)) ([fbaf839](https://github.com/manniwatch/manniwatch/commit/fbaf8390083eb0c4d62d8184658f132c0a5d6d48))
+* **deps:** bump @angular/core from 11.0.5 to 11.0.7 ([#1328](https://github.com/manniwatch/manniwatch/issues/1328)) ([9870d45](https://github.com/manniwatch/manniwatch/commit/9870d4594d0229f1b6863e27f70a15390d48ae2d))
+* **deps:** bump @angular/core to 11.0.8 from 11.0.7 ([#1334](https://github.com/manniwatch/manniwatch/issues/1334)) ([a2a8f53](https://github.com/manniwatch/manniwatch/commit/a2a8f530e339e6778254af195787eecd6d6009b2))
+* **deps:** bump @angular/material to 11.0.3 from 10.2.7 ([#1333](https://github.com/manniwatch/manniwatch/issues/1333)) ([292a83a](https://github.com/manniwatch/manniwatch/commit/292a83ae1917b95caa631a8884ad3b1b2ff32b85))
+* **deps:** bump ol from 6.4.3 to 6.5.0 ([#1309](https://github.com/manniwatch/manniwatch/issues/1309)) ([9e6e4da](https://github.com/manniwatch/manniwatch/commit/9e6e4dada35c096a2245b8b7a8a014e38fc0cc72))
+* **deps:** bump tslib from 2.0.3 to 2.1.0 ([#1316](https://github.com/manniwatch/manniwatch/issues/1316)) ([a0e7de3](https://github.com/manniwatch/manniwatch/commit/a0e7de3f757880292f8379fcd79bc434cea778a2))
+
+
+
+
+
+
 ## [0.18.1](https://github.com/manniwatch/manniwatch/compare/v0.18.0...v0.18.1) (2020-12-24)
 
 

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.2](https://github.com/manniwatch/manniwatch/compare/v0.18.1...v0.18.2) (2021-01-14)
+
+
+### Bug Fixes
+
+* **deps:** bump helmet from 4.2.0 to 4.3.1 ([#1310](https://github.com/manniwatch/manniwatch/issues/1310)) ([824493a](https://github.com/manniwatch/manniwatch/commit/824493a6346175485671b4e26af90b2150e50d11))
+* **deps:** bump nconf from 0.11.0 to 0.11.1 ([#1324](https://github.com/manniwatch/manniwatch/issues/1324)) ([f2f5bef](https://github.com/manniwatch/manniwatch/commit/f2f5bef51c17d64ede42c9c1deb3d8691bd4b775))
+
+
+
+
+
+
 ## [0.18.1](https://github.com/manniwatch/manniwatch/compare/v0.18.0...v0.18.1) (2020-12-24)
 
 
