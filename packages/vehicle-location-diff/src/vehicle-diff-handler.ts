@@ -35,7 +35,7 @@ export class VehicleDiffHandler {
     }
 
     public static diff(oldState: IVehicleLocationDiff | undefined, newState: ITimestampedVehicleLocation[]): IVehicleLocationDiff {
-        // tslint:disable-next-line:triple-equals
+        // eslint-disable-next-line eqeqeq
         if (oldState == undefined) {
             return newState.reduce((prev: IVehicleLocationDiff, curr: ITimestampedVehicleLocation): IVehicleLocationDiff => {
                 if (curr.isDeleted === true) {
@@ -51,21 +51,21 @@ export class VehicleDiffHandler {
                 removed: [],
             });
         }
-        const keysOld: VehicleHashMap = new Map();
+        const keysOld: VehicleHashMap = new Map<string, ITimestampedVehicleLocation>();
         oldState.added.reduce(vehicleMapReduce, keysOld);
         oldState.changed.reduce(vehicleMapReduce, keysOld);
         oldState.old.reduce(vehicleMapReduce, keysOld);
         oldState.removed.reduce(vehicleMapReduce, keysOld);
-        const keysNew: VehicleHashMap = newState.reduce(vehicleMapReduce, new Map());
+        const keysNew: VehicleHashMap = newState.reduce(vehicleMapReduce, new Map<string, ITimestampedVehicleLocation>());
         const changed: ITimestampedVehicleLocation[] = [];
         const removed: ITimestampedVehicleLocation[] = [];
         const added: ITimestampedVehicleLocation[] = [];
         const old: ITimestampedVehicleLocation[] = [];
-        const handled: Map<string, true> = new Map();
+        const handled: Map<string, true> = new Map<string, true>();
         for (const key of keysNew.keys()) {
             const newEntry: ITimestampedVehicleLocation = keysNew.get(key) as ITimestampedVehicleLocation;
             const oldEntry: ITimestampedVehicleLocation = keysOld.get(key) as ITimestampedVehicleLocation;
-            // tslint:disable-next-line:triple-equals
+            // eslint-disable-next-line eqeqeq
             if (oldEntry == undefined) {
                 handled.set(key, true);
                 if (newEntry.isDeleted) {
