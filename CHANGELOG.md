@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.4](https://github.com/manniwatch/manniwatch/compare/v0.18.3...v0.18.4) (2021-01-15)
+
+
+### Bug Fixes
+
+* **deps:** bump @angular/core from 11.0.8 to 11.0.9 ([#1352](https://github.com/manniwatch/manniwatch/issues/1352)) ([8ca13d9](https://github.com/manniwatch/manniwatch/commit/8ca13d907a6de948876beeba475fd4efbbc24591))
+* **deps:** bump @angular/core to 11.0.9 from 11.0.8 ([#1358](https://github.com/manniwatch/manniwatch/issues/1358)) ([7c29467](https://github.com/manniwatch/manniwatch/commit/7c294672ed38b4c491fb4f0b7c57f97ba495be39))
+* **deps:** bump @angular/material from 11.0.3 to 11.0.4 ([#1367](https://github.com/manniwatch/manniwatch/issues/1367)) ([0c26bce](https://github.com/manniwatch/manniwatch/commit/0c26bce2c5a9228b7a425a70b3e6b44b23267fef))
+
+
+### Reverts
+
+* **deps:** bump @angular/core from 11.0.8 to 11.0.9 ([#1352](https://github.com/manniwatch/manniwatch/issues/1352)) ([#1357](https://github.com/manniwatch/manniwatch/issues/1357)) ([0c544f0](https://github.com/manniwatch/manniwatch/commit/0c544f0238bbd45a12b4739d489cd1bce297e6d5))
+
+
+
+
+
+
 ## [0.18.3](https://github.com/manniwatch/manniwatch/compare/v0.18.2...v0.18.3) (2021-01-14)
 
 **Note:** Version bump only for package root

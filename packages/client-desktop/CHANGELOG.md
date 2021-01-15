@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.4](https://github.com/manniwatch/manniwatch/compare/v0.18.3...v0.18.4) (2021-01-15)
+
+**Note:** Version bump only for package @manniwatch/client-desktop
+
+
+
+
+
+
 ## [0.18.3](https://github.com/manniwatch/manniwatch/compare/v0.18.2...v0.18.3) (2021-01-14)
 
 **Note:** Version bump only for package @manniwatch/client-desktop

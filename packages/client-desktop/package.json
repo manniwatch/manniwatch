@@ -1,6 +1,6 @@
 {
   "name": "@manniwatch/client-desktop",
-  "version": "0.18.3",
+  "version": "0.18.4",
   "description": "An electron app to be used with manniwatch endpoints",
   "main": "./dist/main.js",
   "private": false,
@@ -58,7 +58,7 @@
   "dependencies": {
     "@manniwatch/api-proxy-router": "^0.18.3",
     "@manniwatch/api-types": "^0.18.0",
-    "@manniwatch/client-ng": "^0.18.3",
+    "@manniwatch/client-ng": "^0.18.4",
     "electron": "~11.2.0",
     "express": "~4.17.1",
     "helmet": "~4.3.1",
