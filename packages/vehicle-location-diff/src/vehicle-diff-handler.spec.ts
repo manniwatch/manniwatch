@@ -1,6 +1,4 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-location-diff
- */
+// Source https://github.com/manniwatch/manniwatch Package: vehicle-location-diff
 
 import { expect } from 'chai';
 import * as sinon from 'sinon';

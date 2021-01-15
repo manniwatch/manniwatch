@@ -1,6 +1,4 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-location-diff
- */
+// Source https://github.com/manniwatch/manniwatch Package: vehicle-location-diff
 
 import { IVehicleLocation, IVehicleLocationList } from '@manniwatch/api-types';
 
@@ -27,11 +25,9 @@ export class VehicleDiffHandler {
 
     public static convert(list: IVehicleLocationList): ITimestampedVehicleLocation[] {
         return list.vehicles
-            .map((loc: IVehicleLocation): ITimestampedVehicleLocation => {
-                return Object.assign({
-                    lastUpdate: list.lastUpdate,
-                }, loc);
-            });
+            .map((loc: IVehicleLocation): ITimestampedVehicleLocation => Object.assign({
+                lastUpdate: list.lastUpdate,
+            }, loc));
     }
 
     public static diff(oldState: IVehicleLocationDiff | undefined, newState: ITimestampedVehicleLocation[]): IVehicleLocationDiff {
