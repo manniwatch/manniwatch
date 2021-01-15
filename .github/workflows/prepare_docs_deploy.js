@@ -20,7 +20,7 @@ for (let dir of dirs) {
     }
     console.log("Create docs symlink", packageDocsDir);
     fsextra.copySync(packageDocsDir, path.join(outputDir, path.sep, dir));
-    README += `## [${dir}](http://manniwatch.github.io/docs/${dir}/)\n`;
+    README += `## [${dir}](http://manniwatch.github.io/docs/${dir}/index.html)\n`;
     README += `Docs for [${dir}](http://github.com/manniwatch/manniwatch/tree/master/packages/${dir}/)\n\n`;
 }
 
