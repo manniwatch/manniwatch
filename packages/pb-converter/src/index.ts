@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: pb-converter
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/pb-converter
+*/
 
 export * from './convert-vehicle-category';
 export * from './convert-vehicle-location';

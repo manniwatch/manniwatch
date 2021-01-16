@@ -8,6 +8,7 @@ Package: @manniwatch/api-types
  *
  * @since 1.0.0
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export enum VEHICLE_STATUS {
     /**
      * Vehicle is predicted to arrive

@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: pb-converter
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/pb-converter
+*/
 
 import { VehicleCategory } from '@manniwatch/api-types';
 import { manniwatch } from '@manniwatch/pb-types';

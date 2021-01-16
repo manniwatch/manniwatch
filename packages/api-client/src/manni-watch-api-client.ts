@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/api-client
+*/
 
 import {
     ISettings,
@@ -69,12 +70,12 @@ export class ManniWatchApiClient {
      */
     /**
      * Correct
+     *
      * @param positionType coordinate type
      * @param lastUpdate timestamp of last update
      */
     public getVehicleLocations(positionType: PositionType = 'CORRECTED',
-        lastUpdate?: string | number)
-        : reqp.RequestPromise<IVehicleLocationList> {
+        lastUpdate?: string | number): reqp.RequestPromise<IVehicleLocationList> {
         const options: req.OptionsWithUri = {
             method: 'GET',
             qs: {
