@@ -1,7 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-location-diff
- */
+// Source: https://github.com/manniwatch/manniwatch
+// Package: @manniwatch/vehicle-location-diff
 
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import { vehicleMapReduce, VehicleDiffHandler, VehicleHashMap } from './vehicle-diff-handler';
@@ -78,9 +78,9 @@ describe('vehicle-diff-handler', (): void => {
             });
         });
         describe('diff(oldState, newState)', (): void => {
-            // tslint:disable-next-line:no-null-keyword
+            // eslint-disable-next-line no-null/no-null
             [undefined, null].forEach((testUndefined: any): void => {
-                describe('old state is ' + testUndefined, (): void => {
+                describe(`old state is ${testUndefined}`, (): void => {
                     it('should convert an empty list correctly', (): void => {
                         const vehicles: ISimpleVehicle[] = [
                             { id: '1', isDeleted: true, lastUpdate: 2831 },
