@@ -14,8 +14,8 @@
         "test": "mocha --config ../../.mocharc.yml",
         "test:watch": "mocha --config ../../.mocharc.yml --watch",
         "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
-        "lint": "eslint -c tslint.json -p tsconfig.json src/**/*.ts",
-        "lint:fix": "eslint --fix -c tslint.json -p tsconfig.json src/**/*.ts",
+        "lint": "eslint src/**/*.ts",
+        "lint:fix": "eslint --fix src/**/*.ts",
         "docs": "typedoc --options ../../typedoc.json",
         "prepublishOnly": "npm run test && npm run docs && npm run build"
     },
