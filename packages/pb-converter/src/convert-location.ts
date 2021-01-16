@@ -5,7 +5,7 @@ Package: @manniwatch/pb-converter
 
 import { manniwatch } from '@manniwatch/pb-types';
 
-interface ILocDefinitions { lat?: number; lon?: number; latitude?: number; longitude?: number }
+export interface ILocDefinitions { lat?: number; lon?: number; latitude?: number; longitude?: number }
 export const convertLocation: (cat: ILocDefinitions) => manniwatch.ILocation | undefined =
     (cat: ILocDefinitions): manniwatch.ILocation | undefined => {
         if (cat.lat && cat.lon) {

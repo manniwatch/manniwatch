@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/api-proxy-router
+*/
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import * as prom from '@manniwatch/express-utils';

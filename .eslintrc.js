@@ -17,8 +17,7 @@ module.exports = {
     "env": {
         "browser": true,
         "es6": true,
-        "node": true,
-        "mocha": true
+        "node": true
     },
     "extends": [
         "eslint:recommended",
@@ -123,8 +122,7 @@ module.exports = {
           {
             "selector": "memberLike",
             "modifiers": ["private"],
-            "format": ["camelCase"],
-            "leadingUnderscore": "require"
+            "format": ["camelCase"]
           },
       
           {
@@ -133,7 +131,7 @@ module.exports = {
           }
         ],
         "@typescript-eslint/no-array-constructor": "error",
-        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-empty-function": "error",
         "@typescript-eslint/no-empty-interface": "error",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-extra-non-null-assertion": "error",
@@ -374,7 +372,13 @@ module.exports = {
     },
     "overrides": [
       {
+        "env": {
+            "mocha": true
+        },
         "files": ["*.spec.ts"],
+        "globals": {
+            "Mocha": "readonly"
+        },
         "rules": {
           "@typescript-eslint/no-unsafe-assignment":"off",
           "@typescript-eslint/no-unused-expressions":"off",

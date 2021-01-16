@@ -5,6 +5,7 @@ Package: @manniwatch/express-utils
 
 import { expect } from 'chai';
 import 'mocha';
+import { FullResponse } from 'request-promise-native';
 import * as sinon from 'sinon';
 import { promiseToResponse } from './promise-to-response';
 describe('promise-to-response.ts', (): void => {
@@ -54,7 +55,11 @@ describe('promise-to-response.ts', (): void => {
             });
         });
         describe('promise rejects', (): void => {
-            const testErrors: any[] = [
+            interface TestError{
+                error: Partial<Error&{statusCode: number}>;
+                response: Partial<FullResponse>;
+            }
+            const testErrors: TestError[] = [
                 {
                     error: {
                         message: 'another message',
@@ -72,7 +77,7 @@ describe('promise-to-response.ts', (): void => {
                 },
             ];
             describe('next parameter provided', (): void => {
-                testErrors.forEach((testError: any): void => {
+                testErrors.forEach((testError: TestError): void => {
                     it('should forward the error to the next function', (done: Mocha.Done): void => {
                         promiseToResponse(Promise.reject(testError.error), resObj, nextSpy);
                         setTimeout((): void => {
@@ -86,7 +91,7 @@ describe('promise-to-response.ts', (): void => {
                 });
             });
             describe('next parameter not provided', (): void => {
-                testErrors.forEach((testError: any): void => {
+                testErrors.forEach((testError: TestError): void => {
                     it('should forward the error to the next function', (done: Mocha.Done): void => {
                         promiseToResponse(Promise.reject(testError.error), resObj);
                         setTimeout((): void => {

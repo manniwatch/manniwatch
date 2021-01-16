@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: pb-converter
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/pb-converter
+*/
 
 import { IVehicleLocation } from '@manniwatch/api-types';
 import { manniwatch } from '@manniwatch/pb-types';
@@ -9,7 +10,7 @@ import 'mocha';
 import * as sinon from 'sinon';
 import * as convertVehicleCategory from './convert-vehicle-category';
 import * as testObject from './convert-vehicle-location';
-const TEST_VEHICLE_LOCATION: IVehicleLocation | any = {
+const TEST_VEHICLE_LOCATION: IVehicleLocation&{isDeleted?: boolean} = {
     category: 'bus',
     color: '#FF0000',
     heading: 29,

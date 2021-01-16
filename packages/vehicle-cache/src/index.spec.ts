@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/vehicle-cache
+*/
 
 import { expect } from 'chai';
 import 'mocha';

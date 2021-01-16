@@ -7,7 +7,7 @@ import { createVehicleDiff, IVehicleDiff } from './vehicle.service';
 describe('src/app/services/vehicle.service.ts', (): void => {
     describe('createVehicleDiff(oldVehicles, newVehicles)', (): void => {
         describe('oldVehicles is undefined', (): void => {
-            // tslint:disable-next-line:no-null-keyword
+            // eslint-disable-next-line no-null/no-null
             [undefined, null].forEach((testValue: any): void => {
                 it('should pass on new vehicles if olds are ' + testValue, (): void => {
                     const newVehicles: any[] = [

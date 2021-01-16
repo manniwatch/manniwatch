@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/vehicle-cache
+*/
 
 import { IVehicleLocationList, PositionType } from '@manniwatch/api-types';
 import { expect } from 'chai';
@@ -33,12 +34,10 @@ describe('interval-vehicle-location-poll', (): void => {
             testScheduler.run((helpers: RunHelpers): void => {
                 const { expectObservable } = helpers;
                 const foreverStream$: Observable<IVehicleLocationList> =
-                    intervalVehicleLocationPoll((mode: PositionType, lastUpdate: number): Observable<IVehicleLocationList> => {
-                        return of({
-                            lastUpdate: lastUpdate + 1000,
-                            vehicles: [],
-                        }).pipe(delay(1000));
-                    }, 10000);
+                    intervalVehicleLocationPoll((mode: PositionType, lastUpdate: number): Observable<IVehicleLocationList> => of({
+                        lastUpdate: lastUpdate + 1000,
+                        vehicles: [],
+                    }).pipe(delay(1000)), 10000);
                 // Omitting this arg may crash the test suite.
                 const unsub: string = '^ 50s !';
                 const unsub2: string = '25s ^ 9s !';

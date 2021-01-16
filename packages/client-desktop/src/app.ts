@@ -99,7 +99,7 @@ export class ManniWatchApp {
         this.mainWindow = new BrowserWindow(browserConfig);
         // register Token Interceptor
         this.setupNetworkInterceptors(this.mainWindow.webContents.session);
-        // tslint:disable-next-line:no-null-keyword
+        // eslint-disable-next-line no-null/no-null
         this.mainWindow.autoHideMenuBar = true;
         this.mainWindow.loadURL('http://localhost:' + this.config.port + '/index.html');
 

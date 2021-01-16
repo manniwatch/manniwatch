@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/api-proxy-router
+*/
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { PositionType } from '@manniwatch/api-types';
@@ -108,7 +109,7 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
                 query: getVehicleLocationSchema,
             }),
             (req: express.Request, res: express.Response, next: express.NextFunction): void => {
-                // tslint:disable-next-line:triple-equals
+                // eslint-disable-next-line eqeqeq
                 const positionType: PositionType = (req.query.positionType as PositionType) || 'RAW';
                 const lastUpdate: number | undefined = req.query.lastUpdate ?
                     parseInt(req.query.lastUpdate as string, 10) :

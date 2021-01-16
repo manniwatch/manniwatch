@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/api-client
+*/
 
 import { expect } from 'chai';
 import 'mocha';

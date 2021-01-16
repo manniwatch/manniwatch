@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: pb-converter
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/pb-converter
+*/
 
 import { expect } from 'chai';
 import 'mocha';
@@ -22,7 +23,7 @@ describe('convert-location.ts', (): void => {
             'lon',
         ].forEach((key: string): void => {
             it(`should return undefined if only "${key}" is provided`, (): void => {
-                const testObj: any = {};
+                const testObj: testObject.ILocDefinitions = {};
                 testObj[key] = 2939;
                 expect(testObject.convertLocation(testObj))
                     .to.deep.equal(undefined);

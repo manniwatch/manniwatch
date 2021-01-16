@@ -120,7 +120,7 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
       });
       describe('set - tripInfo', (): void => {
         it('should set passages to an empty array for null', (): void => {
-          // tslint:disable-next-line:no-null-keyword
+          // eslint-disable-next-line no-null/no-null
           cmp.tripInfo = null;
           expect(cmp.passages).toEqual([]);
         });
@@ -181,7 +181,7 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
         cmp = cmpFixture.componentInstance;
       });
       describe('hasPassages()', (): void => {
-        // tslint:disable-next-line:no-null-keyword
+        // eslint-disable-next-line no-null/no-null
         [undefined, null, [], 1, 'k'].forEach((testValue: any): void => {
           it('should return false for passages being "' + testValue + '"', (): void => {
             cmp.passages = testValue;

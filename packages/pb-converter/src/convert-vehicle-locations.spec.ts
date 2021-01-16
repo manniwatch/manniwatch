@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: pb-converter
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/pb-converter
+*/
 
 import { expect } from 'chai';
 import 'mocha';
@@ -20,14 +21,14 @@ describe('convert-vehicle-locations.ts', (): void => {
             convertCategoryStub.restore();
         });
         it('should return an empty array if vehicles is an empty array', (): void => {
-            expect(testObject.convertVehicleLocations({ vehicles: [], lastUpdate: 2000 })).to.deep.equal({
+            expect(testObject.convertVehicleLocations({ lastUpdate: 2000, vehicles: [] })).to.deep.equal({
                 locations: [],
             });
         });
         it('should convert provided vehicles', (): void => {
-            const testValues: any = [1, 2, 3, { isDeleted: true, id: 4 }];
+            const testValues: any = [1, 2, 3, { id: 4, isDeleted: true }];
             convertCategoryStub.returnsArg(0);
-            expect(testObject.convertVehicleLocations({ vehicles: testValues, lastUpdate: 2000 })).to.deep.equal({
+            expect(testObject.convertVehicleLocations({ lastUpdate: 2000, vehicles: testValues })).to.deep.equal({
                 locations: [1, 2, 3, { id: 4, isDeleted: true }],
             }, 'expected all locations to be converted');
             expect(convertCategoryStub.args).to.deep.equal([[1, 2000], [2, 2000], [3, 2000], [{ id: 4, isDeleted: true }, 2000]]);

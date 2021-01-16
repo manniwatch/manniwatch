@@ -10,11 +10,12 @@ export const convertValidationError: (error: ValidationError, type: string) => S
     (error: ValidationError, type: string): ServerError => {
         switch (error.name) {
             case 'required':
-                return new ServerError(400, 'Requires ' + type + ' parameter \'' + error.argument + '\'');
+                // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+                return new ServerError(400, `Requires ${type} parameter '${error.argument||'~unspecified~'}'`);
             case 'pattern':
             case 'type':
-                return new ServerError(400, 'Invalid ' + type + ' ' + error.name);
+                return new ServerError(400, `Invalid ${type} ${error.name}`);
             default:
-                return new ServerError(400, 'Invalid ' + type);
+                return new ServerError(400, `Invalid ${type}`);
         }
     };

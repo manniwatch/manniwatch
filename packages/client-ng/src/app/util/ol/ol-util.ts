@@ -63,7 +63,7 @@ const DEFAULT_STYLES: { [key: string]: StyleLike; } = {
     }),
     vehicle: (p0: FeatureLike, p1: number): Style => {
         const vehicle: IVehicleLocation = p0.get('vehicle');
-        // tslint:disable-next-line:triple-equals
+        // eslint-disable-next-line eqeqeq
         if (vehicle != undefined) {
             const rot: number = Math.PI / 180 * ((vehicle.heading + 270) % 360);
             return new Style({
@@ -95,7 +95,7 @@ const DEFAULT_STYLES: { [key: string]: StyleLike; } = {
     }),
     vehicle_selected: (p0: FeatureLike, p1: number): Style => {
         const vehicle: IVehicleLocation = p0.get('vehicle');
-        // tslint:disable-next-line:triple-equals
+        // eslint-disable-next-line eqeqeq
         if (vehicle != undefined) {
             const rot: number = Math.PI / 180 * ((vehicle.heading + 270) % 360);
             return new Style({
@@ -124,7 +124,7 @@ export class OlUtil {
     public static createVehicleMarkerStyle(selected: boolean = false): StyleFunction {
         return (p0: FeatureLike, p1: number): Style => {
             const vehicle: IVehicleLocation = p0.get('vehicle');
-            // tslint:disable-next-line:triple-equals
+            // eslint-disable-next-line eqeqeq
             if (vehicle != undefined) {
                 const rot: number = Math.PI / 180 * ((vehicle.heading + 270) % 360);
                 return new Style({
@@ -152,7 +152,7 @@ export class OlUtil {
         return selected ? DEFAULT_STYLES.stop_selected as Style : DEFAULT_STYLES.stop as Style;
     }
     public static createStyleByFeature(feature: FeatureLike): StyleLike {
-        // tslint:disable-next-line:triple-equals
+        // eslint-disable-next-line eqeqeq
         if (feature.get('type') != undefined) {
             return OlUtil.createStyleByType(feature.get('type'));
         }

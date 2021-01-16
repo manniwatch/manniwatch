@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/api-proxy-router
+*/
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { StopMode } from '@manniwatch/api-types';
@@ -50,11 +51,11 @@ export const createStopRouter: (apiClient: ManniWatchApiClient) => express.Route
             prom.validateRequest({ query: passagesSchema }),
             (req: express.Request, res: express.Response, next: express.NextFunction): void => {
                 const mode: StopMode = req.query.mode as StopMode || undefined;
-                // tslint:disable-next-line:triple-equals
+                // eslint-disable-next-line eqeqeq
                 const startTime: number | undefined = req.query.startTime == undefined ?
                     undefined :
                     parseInt(req.query.startTime as string, 10);
-                // tslint:disable-next-line:triple-equals
+                // eslint-disable-next-line eqeqeq
                 const timeFrame: number | undefined = req.query.timeFrame == undefined ?
                     undefined :
                     parseInt(req.query.timeFrame as string, 10);

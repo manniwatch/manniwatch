@@ -23,11 +23,14 @@ export const promiseToResponse: MethodType = <T>(prom: Promise<T> | RequestPromi
             if (next) {
                 next(err);
             } else {
-                const code: number = err.statusCode || 500;
-                res.status(code).json({
-                    error: true,
-                    statusCode: code,
-                });
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment
+                const code: number = err?.statusCode || 500;
+                res
+                    .status(code)
+                    .json({
+                        error: true,
+                        statusCode: code,
+                    });
             }
         });
 };

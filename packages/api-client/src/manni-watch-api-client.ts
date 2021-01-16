@@ -41,6 +41,7 @@ export class ManniWatchApiClient {
         this.httpClient = reqp.defaults({
             baseUrl: endpoint,
             headers: {
+                // eslint-disable-next-line @typescript-eslint/naming-convention
                 'User-Agent': DEFAULT_USER_AGENT,
             },
             json: true,
@@ -62,6 +63,7 @@ export class ManniWatchApiClient {
             proxy: this.getProxy(),
         };
         Object.assign(newReqOpts, reqOpts);
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
         return this.httpClient(newReqOpts);
     }
 
@@ -201,11 +203,11 @@ export class ManniWatchApiClient {
             mode,
             stop: stopId,
         };
-        // tslint:disable-next-line:triple-equals
+        // eslint-disable-next-line eqeqeq
         if (startTime != undefined) {
             Object.assign(formData, { startTime });
         }
-        // tslint:disable-next-line:triple-equals
+        // eslint-disable-next-line eqeqeq
         if (timeFrame != undefined) {
             Object.assign(formData, { timeFrame });
         }
@@ -231,11 +233,11 @@ export class ManniWatchApiClient {
             mode,
             stopPoint: stopPointId,
         };
-        // tslint:disable-next-line:triple-equals
+        // eslint-disable-next-line eqeqeq
         if (startTime != undefined) {
             Object.assign(formData, { startTime });
         }
-        // tslint:disable-next-line:triple-equals
+        // eslint-disable-next-line eqeqeq
         if (timeFrame != undefined) {
             Object.assign(formData, { timeFrame });
         }
@@ -282,9 +284,11 @@ export class ManniWatchApiClient {
     public getSettings(): reqp.RequestPromise<ISettings> {
         const options: reqp.OptionsWithUri = {
             headers: {
+                // eslint-disable-next-line @typescript-eslint/naming-convention
                 Accept: 'text/javascript',
             },
             method: 'GET',
+            // eslint-disable-next-line @typescript-eslint/unbound-method
             transform: Util.transformSettingsBody,
             uri: '/internetservice/settings',
         };

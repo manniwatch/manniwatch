@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/pb-converter
+*/
 
 import { expect } from 'chai';
 import 'mocha';

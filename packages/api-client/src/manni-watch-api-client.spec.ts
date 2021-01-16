@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/api-client
+*/
 
 import {
     IStopLocations,
@@ -314,22 +315,22 @@ describe('manni-watch-api-client.ts', (): void => {
                     });
                 });
                 describe('getStopPassages()', (): void => {
-                    // tslint:disable-next-line:no-null-keyword
+                    // eslint-disable-next-line no-null/no-null
                     const optionalTimes: any[] = [12598, null, undefined];
                     ['id1', 'id2'].forEach((testId: string): void => {
                         STOP_MODES.forEach((mode: StopMode): void => {
                             optionalTimes.forEach((testStartTime: any): void => {
                                 optionalTimes.forEach((testTimeFrame: any): void => {
-                                    it('should query stop passages for ("' + testId + '","' + mode + '",'
-                                        + testStartTime + ',' + testTimeFrame + ')', (): Promise<void> => {
-                                            let expectedFormBody: string = 'mode=' + mode + '&stop=' + testId;
-                                            // tslint:disable-next-line:triple-equals
+                                    it(`should query stop passages for ('${testId}','${mode}','${testStartTime}','${testTimeFrame}')`,
+                                        (): Promise<void> => {
+                                            let expectedFormBody: string = `mode=${mode}&stop=${testId}`;
+                                            // eslint-disable-next-line eqeqeq
                                             if (testStartTime != undefined) {
-                                                expectedFormBody += '&startTime=' + testStartTime;
+                                                expectedFormBody += `&startTime=${testStartTime}`;
                                             }
-                                            // tslint:disable-next-line:triple-equals
+                                            // eslint-disable-next-line eqeqeq
                                             if (testTimeFrame != undefined) {
-                                                expectedFormBody += '&timeFrame=' + testTimeFrame;
+                                                expectedFormBody += `&timeFrame=${testTimeFrame}`;
                                             }
                                             const scope: nock.Scope = nock(testDomain)
                                                 .post('/internetservice/services/passageInfo/stopPassages/stop',
@@ -357,22 +358,22 @@ describe('manni-watch-api-client.ts', (): void => {
                     });
                 });
                 describe('getStopPointPassages()', (): void => {
-                    // tslint:disable-next-line:no-null-keyword
+                    // eslint-disable-next-line no-null/no-null
                     const optionalTimes: any[] = [12598, null, undefined];
                     ['id1', 'id2'].forEach((testId: string): void => {
                         STOP_MODES.forEach((mode: StopMode): void => {
                             optionalTimes.forEach((testStartTime: any): void => {
                                 optionalTimes.forEach((testTimeFrame: any): void => {
-                                    it('should query stop passages for ("' + testId + '","' + mode + '",'
-                                        + testStartTime + ',' + testTimeFrame + ')', (): Promise<void> => {
-                                            let expectedFormBody: string = 'mode=' + mode + '&stopPoint=' + testId;
-                                            // tslint:disable-next-line:triple-equals
+                                    it(`should query stop passages for ('${testId}','${mode}',${testStartTime},${testTimeFrame})`,
+                                        (): Promise<void> => {
+                                            let expectedFormBody: string = `mode=${mode}&stopPoint=${testId}`;
+                                            // eslint-disable-next-line eqeqeq
                                             if (testStartTime != undefined) {
-                                                expectedFormBody += '&startTime=' + testStartTime;
+                                                expectedFormBody += `&startTime=${testStartTime}`;
                                             }
-                                            // tslint:disable-next-line:triple-equals
+                                            // eslint-disable-next-line eqeqeq
                                             if (testTimeFrame != undefined) {
-                                                expectedFormBody += '&timeFrame=' + testTimeFrame;
+                                                expectedFormBody += `&timeFrame=${testTimeFrame}`;
                                             }
                                             const scope: nock.Scope = nock(testDomain)
                                                 .post('/internetservice/services/passageInfo/stopPassages/stopPoint',
@@ -404,16 +405,16 @@ describe('manni-watch-api-client.ts', (): void => {
 
                     POS_TYPES.forEach((mode: PositionType): void => {
                         [10, 100, undefined].forEach((lastUpdate: any): void => {
-                            it('should query vehicles with positionType "' + mode + '" and lastUpdate ' + lastUpdate, (): Promise<void> => {
-                                // tslint:disable-next-line:triple-equals
+                            it(`should query vehicles with positionType '${mode}' and lastUpdate '${lastUpdate}`, (): Promise<void> => {
+                                // eslint-disable-next-line eqeqeq
                                 const expectedQueryParams: any = (lastUpdate == undefined) ? {
                                     colorType: 'ROUTE_BASED',
                                     positionType: mode,
                                 } : {
-                                        colorType: 'ROUTE_BASED',
-                                        lastUpdate,
-                                        positionType: mode,
-                                    };
+                                    colorType: 'ROUTE_BASED',
+                                    lastUpdate,
+                                    positionType: mode,
+                                };
                                 const scope: nock.Scope = nock(testDomain)
                                     .get('/internetservice/geoserviceDispatcher/services/vehicleinfo/vehicles')
                                     .query(expectedQueryParams)

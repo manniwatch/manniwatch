@@ -95,7 +95,7 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', (): 
         cmp = cmpFixture.componentInstance;
       });
       describe('departed', (): void => {
-        // tslint:disable-next-line:no-null-keyword
+        // eslint-disable-next-line no-null/no-null
         [null, undefined, { status: VEHICLE_STATUS.STOPPING }]
           .forEach((testValue: any): void => {
             it('should return false for :' + JSON.stringify(testValue), (): void => {
@@ -109,7 +109,7 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', (): 
         });
       });
       describe('stopping', (): void => {
-        // tslint:disable-next-line:no-null-keyword
+        // eslint-disable-next-line no-null/no-null
         [null, undefined, { status: VEHICLE_STATUS.DEPARTED }]
           .forEach((testValue: any): void => {
             it('should return false for :' + JSON.stringify(testValue), (): void => {

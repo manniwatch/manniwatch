@@ -47,7 +47,7 @@ export class StopPointInfoService {
                 return this.stopService.watchStopPoint(stopPassage.stopShortName)
                     .pipe(startWith<IStopPointLocation>(undefined as IStopPointLocation));
             }), map((stop: IStopPointLocation): IStaticMapData => {
-                // tslint:disable-next-line:triple-equals
+                // eslint-disable-next-line eqeqeq
                 if (stop == undefined) {
                     return { map: { blur: true } };
                 } else {
