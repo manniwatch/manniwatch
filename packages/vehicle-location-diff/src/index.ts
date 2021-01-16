@@ -1,4 +1,5 @@
-// Source https://github.com/manniwatch/manniwatch Package: vehicle-location-diff
+// Source: https://github.com/manniwatch/manniwatch
+// Package: @manniwatch/vehicle-location-diff
 
 export {
     ITimestampedVehicleLocation,

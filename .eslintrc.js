@@ -166,7 +166,12 @@ module.exports = {
         "for-direction": "error",
         "getter-return": "error",
         "guard-for-in": "error",
-        "header/header": [2, "line", "Source https://github.com/manniwatch/manniwatch", 2],
+        "header/header": [
+            2,
+            "line",
+            ["Source: https://github.com/manniwatch/manniwatch",
+                "Package: " + require(process.cwd() + '/package.json').name],
+            2],
         "id-blacklist": "error",
         "id-match": "error",
         "import/no-deprecated": "warn",
