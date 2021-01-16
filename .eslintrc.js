@@ -11,6 +11,8 @@ https://github.com/typescript-eslint/tslint-to-eslint-config/blob/master/docs/FA
 
 Happy linting! 💖
 */
+const path = require('path');
+
 module.exports = {
     "env": {
         "browser": true,
@@ -37,6 +39,7 @@ module.exports = {
         "@typescript-eslint",
         "@typescript-eslint/tslint"
     ],
+    "reportUnusedDisableDirectives": true,
     "rules": {
         "@typescript-eslint/adjacent-overload-signatures": "error",
         "@typescript-eslint/array-type": [
@@ -168,9 +171,9 @@ module.exports = {
         "guard-for-in": "error",
         "header/header": [
             2,
-            "line",
-            ["Source: https://github.com/manniwatch/manniwatch",
-                "Package: " + require(process.cwd() + '/package.json').name],
+            "block",
+            ["","Source: https://github.com/manniwatch/manniwatch",
+                "Package: " + require(path.join(process.cwd(),"package.json")).name,""],
             2],
         "id-blacklist": "error",
         "id-match": "error",
@@ -336,5 +339,16 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    "overrides": [
+      {
+        "files": ["*.spec.ts"],
+        "rules": {
+          "@typescript-eslint/no-unsafe-assignment":"off",
+          "@typescript-eslint/no-unused-expressions":"off",
+          "@typescript-eslint/restrict-template-expressions":"off",
+          "no-unused-expressions": "off"
+        }
+      }
+    ]
 };

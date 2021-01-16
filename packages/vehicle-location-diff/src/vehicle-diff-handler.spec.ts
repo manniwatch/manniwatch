@@ -1,7 +1,8 @@
-// Source: https://github.com/manniwatch/manniwatch
-// Package: @manniwatch/vehicle-location-diff
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/vehicle-location-diff
+*/
 
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import { vehicleMapReduce, VehicleDiffHandler, VehicleHashMap } from './vehicle-diff-handler';
