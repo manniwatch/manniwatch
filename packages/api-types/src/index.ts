@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/api-types
+*/
 
 export * from './vehicle-locations';
 export * from './vehicle-path-info';

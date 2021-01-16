@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: express-utils
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/express-utils
+*/
 
 import { NextFunction, Response } from 'express';
 import { FullResponse, RequestPromise } from 'request-promise-native';

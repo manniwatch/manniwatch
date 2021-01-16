@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: express-utils
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/express-utils
+*/
 
 import { expect } from 'chai';
 import 'mocha';
