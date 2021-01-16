@@ -27,6 +27,7 @@ type AnyCombination<T extends CountryCodes> = T[keyof T][];
  * @since 0.5.0
  */
 export interface ISettings {
+    /* eslint-disable @typescript-eslint/naming-convention */
     /**
      * eg. de en ar
      */
@@ -61,4 +62,6 @@ export interface ISettings {
     SHOW_SCHEDULE_COLUMN: boolean;
     SUPPRESS_COUNTDOWN_TIME_INCREMENT: boolean;
     TIMESLIDER_ENABLED: boolean;
+
+    /* eslint-enable @typescript-eslint/naming-convention */
 }

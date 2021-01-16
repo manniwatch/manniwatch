@@ -20,6 +20,7 @@ export interface ITripPassage {
         name: string;
         shortName: string;
     };
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     stop_seq_num: string;
 }
 
