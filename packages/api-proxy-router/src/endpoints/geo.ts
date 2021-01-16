@@ -109,7 +109,6 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
                 query: getVehicleLocationSchema,
             }),
             (req: express.Request, res: express.Response, next: express.NextFunction): void => {
-                // eslint-disable-next-line eqeqeq
                 const positionType: PositionType = (req.query.positionType as PositionType) || 'RAW';
                 const lastUpdate: number | undefined = req.query.lastUpdate ?
                     parseInt(req.query.lastUpdate as string, 10) :

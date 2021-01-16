@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/api-proxy-router
+*/
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import * as prom from '@manniwatch/express-utils';
@@ -18,13 +19,14 @@ describe('endpoints/vehicle.ts', (): void => {
         let promiseStub: sinon.SinonStub;
         let getRouteByVehicleIdStub: sinon.SinonStub;
         let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
-        let createVehicleRouter: any;
+        let createVehicleRouter: (client: typeof apiClientStub) => express.Router;
         before((): void => {
             promiseStub = sinon.stub(prom, 'promiseToResponse');
             getRouteByVehicleIdStub = sinon.stub();
             apiClientStub = sinon.createStubInstance(ManniWatchApiClient, {
                 getRouteByVehicleId: getRouteByVehicleIdStub as any,
             });
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             createVehicleRouter = proxyquire('./vehicle', {
                 '@manniwatch/express-utils': {
                     promiseToResponse: promiseStub,
@@ -33,7 +35,7 @@ describe('endpoints/vehicle.ts', (): void => {
         });
 
         beforeEach((): void => {
-            const route: express.Router = createVehicleRouter(apiClientStub as any);
+            const route: express.Router = createVehicleRouter(apiClientStub);
             app = express();
             app.use('/vehicle', route);
         });
@@ -49,10 +51,13 @@ describe('endpoints/vehicle.ts', (): void => {
             describe('query \'/vehicle/' + testId + '/route\'', (): void => {
                 it('should pass on the provided parameters', (): Promise<void> => {
                     getRouteByVehicleIdStub.resolves(SUCCESS_RESPONSE);
-                    promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
+                    promiseStub.callsFake((source: Promise<any>, res: express.Response): void => {
                         source
                             .then((responseObject: any): void => {
                                 res.json(responseObject);
+                            })
+                            .catch((err: any): void=>{
+                                res.json(err);
                             });
                     });
                     return supertest(app)
@@ -60,7 +65,7 @@ describe('endpoints/vehicle.ts', (): void => {
                         .expect('Content-Type', /json/)
                         .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
                         .expect(200, SUCCESS_RESPONSE)
-                        .then((res: supertest.Response): void => {
+                        .then((): void => {
                             expect(apiClientStub.getRouteByVehicleId.callCount)
                                 .to.equal(1, 'getSettings should only be called once');
                             expect(apiClientStub.getRouteByVehicleId.getCall(0).args)

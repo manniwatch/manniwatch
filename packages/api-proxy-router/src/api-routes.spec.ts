@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/api-proxy-router
+*/
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { expect } from 'chai';
@@ -51,19 +52,19 @@ describe('api-routes.ts', (): void => {
         let sandbox: sinon.SinonSandbox;
         const routerKeys: EndpointTypes[] = Object.keys(endpoints) as EndpointTypes[];
         const endpointStubs: Record<EndpointTypes, sinon.SinonStub> = {} as any;
-        let createApiProxyRouter: any;
+        let createApiProxyRouter: (client: ManniWatchApiClient|string) => express.Router;
         before((): void => {
             sandbox = sinon.createSandbox();
             for (const key of routerKeys) {
                 endpointStubs[key] = sandbox.stub();
-                endpointStubs[key].callsFake((): express.RequestHandler => {
-                    return (req: express.Request, res: express.Response, next: express.NextFunction): void => {
+                endpointStubs[key].callsFake((): express.RequestHandler =>
+                    (req: express.Request, res: express.Response): void => {
                         res.json({
                             name: key,
                         });
-                    };
-                });
+                    });
             }
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             createApiProxyRouter = proxyquire('./api-routes', {
                 './endpoints': endpointStubs,
             }).createApiProxyRouter;
@@ -103,7 +104,7 @@ describe('api-routes.ts', (): void => {
                 const route: express.Router = createApiProxyRouter('https://localhost:12345/');
                 app = express();
                 app.use(route);
-                app.use((req: express.Request, res: express.Response, next: express.NextFunction): void => {
+                app.use((req: express.Request, res: express.Response): void => {
                     res.status(404);
                     res.json(NOT_FOUND_RESPONSE);
                 });
@@ -113,32 +114,28 @@ describe('api-routes.ts', (): void => {
                 routeErrorSpy.resetHistory();
             });
             describe('test testing setup', (): void => {
-                it('should use the 404 handler', (): Promise<void> => {
-                    return supertest(app)
-                        .get('/unknown/route')
-                        .expect('Content-Type', /json/)
-                        .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
-                        .expect(404)
-                        .then((res: supertest.Response): void => {
-                            expect(routeErrorSpy.callCount).to.equal(0);
-                            expect(res.body).to.deep.equal(NOT_FOUND_RESPONSE);
-                        });
-                });
+                it('should use the 404 handler', (): Promise<void> => supertest(app)
+                    .get('/unknown/route')
+                    .expect('Content-Type', /json/)
+                    .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
+                    .expect(404)
+                    .then((res: supertest.Response): void => {
+                        expect(routeErrorSpy.callCount).to.equal(0);
+                        expect(res.body).to.deep.equal(NOT_FOUND_RESPONSE);
+                    }));
                 it('should use the error handler', (): void => {
                     it('needs implementation');
                 });
             });
             describe('test endpoints', (): void => {
                 testEndpoints.forEach((testEndpoint: ITestEndpoint): void => {
-                    it(`should query \'${testEndpoint.path}\' successfully`, (): Promise<void> => {
-                        return supertest(app)
-                            .get(testEndpoint.path)
-                            .expect('Content-Type', /json/)
-                            .expect(200, { name: testEndpoint.endpointName })
-                            .then((res: supertest.Response): void => {
-                                expect(routeErrorSpy.callCount).to.equal(0);
-                            });
-                    });
+                    it(`should query '${testEndpoint.path}' successfully`, (): Promise<void> => supertest(app)
+                        .get(testEndpoint.path)
+                        .expect('Content-Type', /json/)
+                        .expect(200, { name: testEndpoint.endpointName })
+                        .then((): void => {
+                            expect(routeErrorSpy.callCount).to.equal(0);
+                        }));
                 });
             });
         });

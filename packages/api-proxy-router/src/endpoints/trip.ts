@@ -32,6 +32,7 @@ export const createTripRouter: (apiClient: ManniWatchApiClient) => express.Route
          * @apiParam {String} id Vehicle id
          * @apiVersion 0.1.0
          */
+        // eslint-disable-next-line no-useless-escape
         router.get('/:id([a-z0-9A-Z\-\+]+)/route', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
             prom.promiseToResponse(apiClient.getRouteByTripId(req.params.id), res, next);
         });
@@ -44,6 +45,7 @@ export const createTripRouter: (apiClient: ManniWatchApiClient) => express.Route
          * @apiParam {String} id Vehicle id
          * @apiVersion 0.5.0
          */
+        // eslint-disable-next-line no-useless-escape
         router.get('/:id([a-z0-9A-Z\-\+]+)/passages',
             prom.validateRequest({ query: passagesSchema }),
             (req: express.Request, res: express.Response, next: express.NextFunction): void => {

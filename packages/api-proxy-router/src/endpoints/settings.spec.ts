@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/api-proxy-router
+*/
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import * as prom from '@manniwatch/express-utils';
@@ -18,13 +19,14 @@ describe('endpoints/settings.ts', (): void => {
         let promiseStub: sinon.SinonStub;
         let getSettingsStub: sinon.SinonStub;
         let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
-        let createSettingsRouter: any;
+        let createSettingsRouter: (client: typeof apiClientStub) => express.Router;
         before((): void => {
             promiseStub = sinon.stub(prom, 'promiseToResponse');
             getSettingsStub = sinon.stub();
             apiClientStub = sinon.createStubInstance(ManniWatchApiClient, {
                 getSettings: getSettingsStub as any,
             });
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             createSettingsRouter = proxyquire('./settings', {
                 '@manniwatch/express-utils': {
                     promiseToResponse: promiseStub,
@@ -33,7 +35,7 @@ describe('endpoints/settings.ts', (): void => {
         });
 
         beforeEach((): void => {
-            const route: express.Router = createSettingsRouter(apiClientStub as any);
+            const route: express.Router = createSettingsRouter(apiClientStub);
             app = express();
             app.use('/settings', route);
         });
@@ -52,7 +54,8 @@ describe('endpoints/settings.ts', (): void => {
                     source
                         .then((responseObject: any): void => {
                             res.json(responseObject);
-                        });
+                        })
+                        .catch(next);
                 });
                 return supertest(app)
                     .get('/settings')

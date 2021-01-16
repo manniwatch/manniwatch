@@ -47,6 +47,7 @@ export const createStopPointRouter: (apiClient: ManniWatchApiClient) => express.
          * @apiParam {String} [timeFrame]
          * @apiVersion 0.6.0
          */
+        // eslint-disable-next-line no-useless-escape
         router.get('/:id([a-z0-9A-Z\-\+]+)/passages',
             prom.validateRequest({ query: passagesSchema }),
             (req: express.Request, res: express.Response, next: express.NextFunction): void => {
@@ -72,6 +73,7 @@ export const createStopPointRouter: (apiClient: ManniWatchApiClient) => express.
          * @apiParam {String} id Stop Point ID
          * @apiVersion 1.5.0
          */
+        // eslint-disable-next-line no-useless-escape
         router.get('/:id([a-z0-9A-Z\-\+]+)/info', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
             prom.promiseToResponse(apiClient.getStopPointInfo(req.params.id), res, next);
         });

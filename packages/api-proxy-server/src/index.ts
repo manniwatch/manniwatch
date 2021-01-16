@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-server
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/api-proxy-server
+*/
 
 import { createApiProxyRouter } from '@manniwatch/api-proxy-router';
 import * as express from 'express';

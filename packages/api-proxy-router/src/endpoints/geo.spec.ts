@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/api-proxy-router
+*/
 
 import { IBoundingBox, ManniWatchApiClient } from '@manniwatch/api-client';
 import { PositionType } from '@manniwatch/api-types';
@@ -23,14 +24,12 @@ const validCoordinates: TestIBoundingBox[] = [
     { bottom: '-1000', left: '500', right: '1000', top: '1000' },
 ];
 const validCoordinatesNumbers: { [key in keyof IBoundingBox]: number }[] =
-    validCoordinates.map((val: TestIBoundingBox): { [key in keyof IBoundingBox]: number } => {
-        return {
-            bottom: parseInt(val.bottom, 10),
-            left: parseInt(val.left, 10),
-            right: parseInt(val.right, 10),
-            top: parseInt(val.top, 10),
-        };
-    });
+    validCoordinates.map((val: TestIBoundingBox): { [key in keyof IBoundingBox]: number } => ({
+        bottom: parseInt(val.bottom, 10),
+        left: parseInt(val.left, 10),
+        right: parseInt(val.right, 10),
+        top: parseInt(val.top, 10),
+    }));
 const positionTypes: PositionType[] = ['RAW', 'CORRECTED'];
 const lastUpdates: string[] = ['22929299292', '2938'];
 type TestIBoundingBox = { [key in keyof IBoundingBox]: string };
@@ -132,14 +131,14 @@ describe('endpoints/geo.ts', (): void => {
         let routeErrorStub: sinon.SinonStub;
         let sandbox: sinon.SinonSandbox;
         const NOT_FOUND_RESPONSE: any = { error: true, status: 404 };
-        const NOT_FOUND_RESPONSE_LENGTH: string = '' + JSON.stringify(NOT_FOUND_RESPONSE).length;
+        const NOT_FOUND_RESPONSE_LENGTH: string = `${JSON.stringify(NOT_FOUND_RESPONSE).length}`;
         const SUCCESS_RESPONSE: any = { error: false, status: 200 };
-        const SUCCESS_RESPONSE_LENGTH: string = '' + JSON.stringify(SUCCESS_RESPONSE).length;
+        const SUCCESS_RESPONSE_LENGTH: string = `${JSON.stringify(SUCCESS_RESPONSE).length}`;
         let stubClient: sinon.SinonStubbedInstance<ManniWatchApiClient>;
         let validateStubParent: sinon.SinonStub;
         let geoFenceValidateStub: sinon.SinonStub;
         let vehicleValidateStub: sinon.SinonStub;
-        let createGeoRouter: any;
+        let createGeoRouter: (client: typeof stubClient) => express.Router;
         before((): void => {
             sandbox = sinon.createSandbox();
             stubClient = sandbox.createStubInstance(ManniWatchApiClient);
@@ -147,6 +146,7 @@ describe('endpoints/geo.ts', (): void => {
             validateStubParent = sandbox.stub();
             geoFenceValidateStub = sandbox.stub();
             vehicleValidateStub = sandbox.stub();
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             createGeoRouter = proxyquire('./geo', {
                 '@manniwatch/express-utils': {
                     validateRequest: validateStubParent,
@@ -163,7 +163,7 @@ describe('endpoints/geo.ts', (): void => {
                     throw new Error('Unknown Schema');
                 }
             });
-            const route: express.Router = createGeoRouter(stubClient as any);
+            const route: express.Router = createGeoRouter(stubClient);
             app = express();
             app.use(route);
             app.use((req: express.Request, res: express.Response, next: express.NextFunction): void => {
@@ -205,8 +205,8 @@ describe('endpoints/geo.ts', (): void => {
                         return;
                     }
                     expect(routeErrorStub.callCount).to.equal(0);
-                    done();
-                });
+                })
+                .finally(done);
         });
         describe('/stopPoints', (): void => {
             afterEach((): void => {

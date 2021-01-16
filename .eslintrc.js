@@ -151,7 +151,7 @@ module.exports = {
         "@typescript-eslint/no-this-alias": "error",
         "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
         "@typescript-eslint/no-unused-expressions": "error",
-        "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/no-unused-vars": ["error", { "vars": "all", "args": "none", "ignoreRestSiblings": false }],
         "@typescript-eslint/no-use-before-define": "off",
         "@typescript-eslint/no-var-requires": "error",
         "@typescript-eslint/prefer-as-const": "error",
@@ -377,7 +377,8 @@ module.exports = {
         },
         "files": ["*.spec.ts"],
         "globals": {
-            "Mocha": "readonly"
+            "Mocha": "readonly",
+            "sinon": "readonly"
         },
         "rules": {
           "@typescript-eslint/no-unsafe-assignment":"off",

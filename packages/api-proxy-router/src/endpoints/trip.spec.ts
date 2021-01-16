@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/api-proxy-router
+*/
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { expect } from 'chai';
@@ -27,7 +28,7 @@ describe('endpoints/trip.ts', (): void => {
         let validateStubHandler: sinon.SinonStub;
         let sandbox: sinon.SinonSandbox;
         let errorSpy: sinon.SinonSpy;
-        let createTripRouter: any;
+        let createTripRouter: (client: typeof apiClientStub) => express.Router;
         before((): void => {
             sandbox = sinon.createSandbox();
             promiseStub = sandbox.stub();
@@ -37,6 +38,7 @@ describe('endpoints/trip.ts', (): void => {
             apiClientStub = sandbox.createStubInstance(ManniWatchApiClient, {
                 getRouteByTripId: getRouteByTripIdStub as any,
             });
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             createTripRouter = proxyquire('./trip', {
                 '@manniwatch/express-utils': {
                     promiseToResponse: promiseStub,
@@ -48,7 +50,7 @@ describe('endpoints/trip.ts', (): void => {
         beforeEach((): void => {
             validateStubHandler = sandbox.stub();
             validateStub.returns(validateStubHandler);
-            const route: express.Router = createTripRouter(apiClientStub as any);
+            const route: express.Router = createTripRouter(apiClientStub);
             app = express();
             app.use('/trip', route);
             app.use(createTestErrorRequestHandler(errorSpy));
@@ -60,13 +62,16 @@ describe('endpoints/trip.ts', (): void => {
             sandbox.restore();
         });
         testIds.forEach((testId: string): void => {
-            describe('query \'/trip/' + testId + '/route\'', (): void => {
+            describe(`query '/trip/${testId}/route'`, (): void => {
                 it('should pass on the provided parameters', (): Promise<void> => {
                     getRouteByTripIdStub.resolves(SUCCESS_RESPONSE);
-                    promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
+                    promiseStub.callsFake((source: Promise<any>, res: express.Response): void => {
                         source
                             .then((responseObject: any): void => {
                                 res.json(responseObject);
+                            })
+                            .catch((err: any): void=>{
+                                res.json(err);
                             });
                     });
                     return supertest(app)
@@ -74,7 +79,7 @@ describe('endpoints/trip.ts', (): void => {
                         .expect('Content-Type', /json/)
                         .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
                         .expect(200, SUCCESS_RESPONSE)
-                        .then((res: supertest.Response): void => {
+                        .then((): void => {
                             expect(apiClientStub.getRouteByTripId.callCount)
                                 .to.equal(1, 'getSettings should only be called once');
                             expect(apiClientStub.getRouteByTripId.getCall(0).args)
@@ -92,6 +97,7 @@ describe('endpoints/trip.ts', (): void => {
             describe('query validation passes', (): void => {
                 beforeEach((): void => {
                     validateStubHandler.callsFake((...args: any[]): void => {
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
                         args[2]();
                     });
                 });
@@ -100,13 +106,14 @@ describe('endpoints/trip.ts', (): void => {
                 });
                 testIds.forEach((testId: string): void => {
                     const queryUrl: string = `/trip/${testId}/passages`;
-                    it(`should query \'${queryUrl}\'`, (): Promise<void> => {
+                    it(`should query '${queryUrl}'`, (): Promise<void> => {
                         apiClientStub.getTripPassages.resolves(SUCCESS_RESPONSE);
                         promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                             source
                                 .then((responseObject: any): void => {
                                     res.json(responseObject);
-                                });
+                                })
+                                .catch(next);
                         });
                         return supertest(app)
                             .get(queryUrl)
@@ -122,13 +129,14 @@ describe('endpoints/trip.ts', (): void => {
                     });
                     ['departure', 'arrival'].forEach((testMode: string): void => {
                         const queryUrlWithParam: string = queryUrl + '?mode=' + testMode;
-                        it(`should query \'${queryUrlWithParam}\'`, (): Promise<void> => {
+                        it(`should query '${queryUrlWithParam}'`, (): Promise<void> => {
                             apiClientStub.getTripPassages.resolves(SUCCESS_RESPONSE);
                             promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                                 source
                                     .then((responseObject: any): void => {
                                         res.json(responseObject);
-                                    });
+                                    })
+                                    .catch(next);
                             });
                             return supertest(app)
                                 .get(queryUrlWithParam)
@@ -149,6 +157,7 @@ describe('endpoints/trip.ts', (): void => {
                 const testError: Error = new Error('test error');
                 beforeEach((): void => {
                     validateStubHandler.callsFake((...args: any[]): void => {
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
                         args[2](testError);
                     });
                 });
@@ -158,13 +167,14 @@ describe('endpoints/trip.ts', (): void => {
                 });
                 testIds.forEach((testId: string): void => {
                     const queryUrl: string = `/trip/${testId}/passages`;
-                    it(`should query \'${queryUrl}\'`, (): Promise<void> => {
+                    it(`should query '${queryUrl}'`, (): Promise<void> => {
                         apiClientStub.getTripPassages.resolves(SUCCESS_RESPONSE);
                         promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                             source
                                 .then((responseObject: any): void => {
                                     res.json(responseObject);
-                                });
+                                })
+                                .catch(next);
                         });
                         return supertest(app)
                             .get(queryUrl)

@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
- */
+/*
+Source: https://github.com/manniwatch/manniwatch
+Package: @manniwatch/api-proxy-router
+*/
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import * as prom from '@manniwatch/express-utils';
@@ -30,7 +31,7 @@ describe('endpoints/stop-point.ts', (): void => {
         let validateStub: sinon.SinonStub;
         let validateStubHandler: sinon.SinonStub;
         let errorSpy: sinon.SinonSpy;
-        let createStopPointRouter: any;
+        let createStopPointRouter: (client: typeof apiClientStub) => express.Router;
         before((): void => {
             validateStub = sinon.stub(prom, 'validateRequest');
             promiseStub = sinon.stub(prom, 'promiseToResponse');
@@ -43,6 +44,7 @@ describe('endpoints/stop-point.ts', (): void => {
                 getStopPointPassages: getStopPointPassagesStub as any,
             });
             validateStub.returns(validateStubHandler);
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             createStopPointRouter = proxyquire('./stop-point', {
                 '@manniwatch/express-utils': {
                     promiseToResponse: promiseStub,
@@ -52,7 +54,7 @@ describe('endpoints/stop-point.ts', (): void => {
         });
 
         beforeEach((): void => {
-            const route: express.Router = createStopPointRouter(apiClientStub as any);
+            const route: express.Router = createStopPointRouter(apiClientStub);
             app = express();
             app.use('/stopPoint', route);
             app.use(createTestErrorRequestHandler(errorSpy));
@@ -78,13 +80,14 @@ describe('endpoints/stop-point.ts', (): void => {
             });
             testIds.forEach((testId: string): void => {
                 const queryUrl: string = `/stopPoint/${testId}/info`;
-                it(`should query \'${queryUrl}\'`, (): Promise<void> => {
+                it(`should query '${queryUrl}'`, (): Promise<void> => {
                     getStopPointInfoStub.resolves(SUCCESS_RESPONSE);
                     promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                         source
                             .then((responseObject: any): void => {
                                 res.json(responseObject);
-                            });
+                            })
+                            .catch(next);
                     });
                     return supertest(app)
                         .get(queryUrl)
@@ -112,6 +115,7 @@ describe('endpoints/stop-point.ts', (): void => {
             describe('query validation passes', (): void => {
                 beforeEach((): void => {
                     validateStubHandler.callsFake((...args: any[]): void => {
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
                         args[2]();
                     });
                 });
@@ -120,13 +124,14 @@ describe('endpoints/stop-point.ts', (): void => {
                 });
                 testIds.forEach((testId: string): void => {
                     const queryUrl: string = `/stopPoint/${testId}/passages`;
-                    it(`should query \'${queryUrl}\'`, (): Promise<void> => {
+                    it(`should query '${queryUrl}'`, (): Promise<void> => {
                         getStopPointPassagesStub.resolves(SUCCESS_RESPONSE);
                         promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                             source
                                 .then((responseObject: any): void => {
                                     res.json(responseObject);
-                                });
+                                })
+                                .catch(next);
                         });
                         return supertest(app)
                             .get(queryUrl)
@@ -148,15 +153,15 @@ describe('endpoints/stop-point.ts', (): void => {
                                         .forEach((testTimeFrame: number | undefined): void => {
                                             let queryPath: string = queryUrl + '?';
                                             if (testStopMode) {
-                                                queryPath += 'mode=' + testStopMode + '&';
+                                                queryPath += `mode=${testStopMode}&`;
                                             }
                                             if (testStartTime) {
-                                                queryPath += 'startTime=' + testStartTime + '&';
+                                                queryPath += `startTime=${testStartTime}&`;
                                             }
                                             if (testTimeFrame) {
-                                                queryPath += 'timeFrame=' + testTimeFrame + '&';
+                                                queryPath += `timeFrame=${testTimeFrame}&`;
                                             }
-                                            it(`should query \'${queryPath}\'`, (): Promise<void> => {
+                                            it(`should query '${queryPath}'`, (): Promise<void> => {
                                                 getStopPointPassagesStub.resolves(SUCCESS_RESPONSE);
                                                 promiseStub.callsFake((source: Promise<any>,
                                                     res: express.Response,
@@ -164,7 +169,8 @@ describe('endpoints/stop-point.ts', (): void => {
                                                     source
                                                         .then((responseObject: any): void => {
                                                             res.json(responseObject);
-                                                        });
+                                                        })
+                                                        .catch(next);
                                                 });
                                                 return supertest(app)
                                                     .get(queryPath)
@@ -187,6 +193,7 @@ describe('endpoints/stop-point.ts', (): void => {
                 const testError: Error = new Error('test error');
                 beforeEach((): void => {
                     validateStubHandler.callsFake((...args: any[]): void => {
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
                         args[2](testError);
                     });
                 });
@@ -196,13 +203,14 @@ describe('endpoints/stop-point.ts', (): void => {
                 });
                 testIds.forEach((testId: string): void => {
                     const queryUrl: string = `/stopPoint/${testId}/passages`;
-                    it(`should query \'${queryUrl}\'`, (): Promise<void> => {
+                    it(`should query '${queryUrl}'`, (): Promise<void> => {
                         getStopPointPassagesStub.resolves(SUCCESS_RESPONSE);
                         promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                             source
                                 .then((responseObject: any): void => {
                                     res.json(responseObject);
-                                });
+                                })
+                                .catch(next);
                         });
                         return supertest(app)
                             .get(queryUrl)
