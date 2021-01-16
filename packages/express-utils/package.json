@@ -13,8 +13,8 @@
     "build": "tsc",
     "test": "mocha --config ../../.mocharc.yml",
     "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
-    "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
-    "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json src/**/*.ts",
+    "lint": "eslint -c tslint.json -p tsconfig.json src/**/*.ts",
+    "lint:fix": "eslint --fix -c tslint.json -p tsconfig.json src/**/*.ts",
     "docs": "typedoc --options ../../typedoc.json",
     "prepublishOnly": "npm run test && npm run docs && npm run build"
   },

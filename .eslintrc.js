@@ -15,7 +15,8 @@ module.exports = {
     "env": {
         "browser": true,
         "es6": true,
-        "node": true
+        "node": true,
+        "mocha": true
     },
     "extends": [
         "eslint:recommended",
@@ -165,7 +166,7 @@ module.exports = {
         "for-direction": "error",
         "getter-return": "error",
         "guard-for-in": "error",
-        "header/header":[2, "block", "Source https://github.com/manniwatch/manniwatch", 2],
+        "header/header": [2, "line", "Source https://github.com/manniwatch/manniwatch", 2],
         "id-blacklist": "error",
         "id-match": "error",
         "import/no-deprecated": "warn",
@@ -243,7 +244,7 @@ module.exports = {
         "no-import-assign": "error",
         "no-inner-declarations": "error",
         "no-invalid-regexp": "error",
-        "no-invalid-this": "off",
+        "no-invalid-this": ["error", { "capIsConstructor": false }],
         "no-irregular-whitespace": "error",
         "no-misleading-character-class": "error",
         "no-mixed-spaces-and-tabs": "error",
@@ -299,6 +300,7 @@ module.exports = {
         ],
         "radix": "error",
         "require-yield": "error",
+        "sort-keys": ["error", "asc", { "caseSensitive": true, "natural": false, "minKeys": 2 }],
         "spaced-comment": [
             "error",
             "always",
@@ -314,22 +316,7 @@ module.exports = {
             "error",
             {
                 "rules": {
-                    "file-header": [
-                        true,
-                        {
-                            "match": "Source https://github.com/manniwatch/manniwatch",
-                            "allow-single-line-comments": true,
-                            "default": "Source https://github.com/manniwatch/manniwatch",
-                            "enforce-trailing-newline": false
-                        }
-                    ],
                     "import-spacing": true,
-                    "object-literal-sort-keys": true,
-                    "static-this": true,
-                    "switch-final-break": [
-                        true,
-                        "always"
-                    ],
                     "typedef": [
                         true,
                         "call-signature",
@@ -340,14 +327,6 @@ module.exports = {
                         "variable-declaration",
                         "variable-declaration-ignore-function",
                         "member-variable-declaration"
-                    ],
-                    "whitespace": [
-                        true,
-                        "check-branch",
-                        "check-decl",
-                        "check-operator",
-                        "check-separator",
-                        "check-type"
                     ]
                 }
             }
