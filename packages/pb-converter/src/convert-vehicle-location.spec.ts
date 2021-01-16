@@ -10,12 +10,12 @@ import 'mocha';
 import * as sinon from 'sinon';
 import * as convertVehicleCategory from './convert-vehicle-category';
 import * as testObject from './convert-vehicle-location';
-const TEST_VEHICLE_LOCATION: IVehicleLocation&{isDeleted?: boolean} = {
+const TEST_VEHICLE_LOCATION: IVehicleLocation = {
     category: 'bus',
     color: '#FF0000',
     heading: 29,
     id: 'anytestid',
-    isDeleted: false,
+    isDeleted:undefined,
     latitude: 292,
     longitude: 928,
     name: 'Vehicle Name',

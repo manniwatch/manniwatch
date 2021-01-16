@@ -22,7 +22,7 @@ export const serverErrorHandler: express.ErrorRequestHandler = (err: any,
     req: express.Request,
     res: express.Response,
     next: express.NextFunction): void => {
-    // tslint:disable-next-line:no-console
+    // eslint-disable-next-line no-console
     console.error(err);
     res.status(500).json({ error: true });
 };
@@ -65,7 +65,7 @@ export class ManniWatchProxyServer {
 
     public stop(): void {
         this.server.close((err: any): void => {
-            // tslint:disable-next-line:no-console
+            // eslint-disable-next-line no-console
             console.log('Server closed', err);
         });
     }

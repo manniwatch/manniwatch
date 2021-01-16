@@ -19,6 +19,6 @@ app.use('/api', createApiProxyRouter(Config.endpoint));
 app.use(express.static('./../dist/static'));
 
 app.listen(Config.port, (): void => {
-    // tslint:disable-next-line:no-console
-    console.log('Example app listening on port ' + Config.port + ' with endpoint "' + Config.endpoint + '"!');
+    // eslint-disable-next-line no-console
+    console.log(`Example app listening on port ${Config.port} with endpoint '${Config.endpoint}'!`);
 });

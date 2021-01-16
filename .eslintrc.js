@@ -235,6 +235,7 @@ module.exports = {
         "no-console": [
             "error",
             {
+                /*
                 "allow": [
                     "log",
                     "warn",
@@ -255,7 +256,7 @@ module.exports = {
                     "profileEnd",
                     "timeStamp",
                     "context"
-                ]
+                ]*/
             }
         ],
         "no-const-assign": "error",

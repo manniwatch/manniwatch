@@ -193,21 +193,14 @@ describe('endpoints/geo.ts', (): void => {
         after((): void => {
             sandbox.restore();
         });
-        it('should use the 404 handler', (done: Mocha.Done): void => {
-            supertest(app)
-                .get('/unknown/route')
-                .expect('Content-Type', /json/)
-                .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
-                .expect(404, NOT_FOUND_RESPONSE)
-                .end((err: any, res: supertest.Response): void => {
-                    if (err) {
-                        done(err);
-                        return;
-                    }
-                    expect(routeErrorStub.callCount).to.equal(0);
-                })
-                .finally(done);
-        });
+        it('should use the 404 handler', (): Promise<void> => supertest(app)
+            .get('/unknown/route')
+            .expect('Content-Type', /json/)
+            .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
+            .expect(404, NOT_FOUND_RESPONSE)
+            .then(( res: supertest.Response): void => {
+                expect(routeErrorStub.callCount).to.equal(0);
+            }));
         describe('/stopPoints', (): void => {
             afterEach((): void => {
                 expect(vehicleValidateStub.callCount).to.equal(0, 'vehicle schema shouldn\'t be evaluated against this route');
