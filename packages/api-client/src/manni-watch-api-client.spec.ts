@@ -111,7 +111,7 @@ describe('manni-watch-api-client.ts', (): void => {
                 requestStub = sinon.stub(instance, 'request');
                 requestStub.callsFake((opts: AxiosRequestConfig): Promise<any> => {
                     return reqpDefault(opts)
-                        .then((data: AxiosResponse<any>):any => data.data);
+                        .then((data: AxiosResponse<any>): any => data.data);
                 });
             });
             afterEach((): void => {
@@ -324,11 +324,12 @@ describe('manni-watch-api-client.ts', (): void => {
                                 optionalTimes.forEach((testTimeFrame: any): void => {
                                     it('should query stop passages for ("' + testId + '","' + mode + '",'
                                         + testStartTime + ',' + testTimeFrame + ')', (): Promise<void> => {
-                                            let expectedFormBody: string = 'mode=' + mode + '&stop=' + testId;
+                                            let expectedFormBody: string = 'mode=' + mode;
                                             // tslint:disable-next-line:triple-equals
                                             if (testStartTime != undefined) {
                                                 expectedFormBody += '&startTime=' + testStartTime;
                                             }
+                                            expectedFormBody += '&stop=' + testId;
                                             // tslint:disable-next-line:triple-equals
                                             if (testTimeFrame != undefined) {
                                                 expectedFormBody += '&timeFrame=' + testTimeFrame;

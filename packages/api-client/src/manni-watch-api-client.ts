@@ -201,8 +201,8 @@ export class ManniWatchApiClient {
         const options: AxiosRequestConfig = {
             data: qs.stringify({
                 mode,
-                stop: stopId,
                 startTime: startTime || undefined,
+                stop: stopId,
                 timeFrame: timeFrame || undefined,
             }),
             method: 'POST',
