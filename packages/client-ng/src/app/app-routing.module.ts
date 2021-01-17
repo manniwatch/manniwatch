@@ -8,37 +8,37 @@ import { AppPreloadingStrategy } from './app-preloading-strategy';
 
 const appRoutes: Routes = [
     {
-        // tslint:disable-next-line:typedef
+        // eslint-disable-next-line 
         loadChildren: () => import('./routes/trip-passages').then((m) => m.TripPassagesModule),
         path: 'passages',
     },
     {
-        // tslint:disable-next-line:typedef
+        // eslint-disable-next-line 
         loadChildren: () => import('./routes/stop').then((m) => m.StopModule),
         path: 'stop',
     },
     {
-        // tslint:disable-next-line:typedef
+        // eslint-disable-next-line 
         loadChildren: () => import('./routes/stop-point').then((m) => m.StopPointModule),
         path: 'stopPoint',
     },
     {
-        // tslint:disable-next-line:typedef
+        // eslint-disable-next-line 
         loadChildren: () => import('./routes/stops').then((m) => m.StopsModule),
         path: 'stops',
     },
     {
-        // tslint:disable-next-line:typedef
+        // eslint-disable-next-line 
         loadChildren: () => import('./routes/error').then((m) => m.ErrorModule),
         path: 'error',
     },
     {
-        // tslint:disable-next-line:typedef
+        // eslint-disable-next-line 
         loadChildren: () => import('./routes/search').then((m) => m.SearchModule),
         path: 'search',
     },
     {
-        // tslint:disable-next-line:typedef
+        // eslint-disable-next-line
         loadChildren: () => import('./routes/settings').then((m) => m.SettingsModule),
         path: 'settings',
     },

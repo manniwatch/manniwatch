@@ -10,9 +10,9 @@ import { startWith } from 'rxjs/operators';
 import { SettingsService, Theme } from 'src/app/services';
 import { ThemeSelectorComponent } from './theme-selector.component';
 
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
+/* eslint-disable max-classes-per-file */
+/* eslint-disable @angular-eslint/component-selector */
+/* eslint-disable @angular-eslint/directive-selector */
 @Component({
     selector: 'mat-selection-list',
     template: '<ng-content></ng-content>',
@@ -32,8 +32,8 @@ class TestMatListOptionComponent {
 class TestMatIconComponent {
 }
 
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
+/* eslint-enable @angular-eslint/component-selector */
+/* eslint-enable @angular-eslint/directive-selector */
 
 describe('src/routes/settings/theme-selector/theme-selector.component.ts', (): void => {
     describe('ThemeSelectorComponent', (): void => {

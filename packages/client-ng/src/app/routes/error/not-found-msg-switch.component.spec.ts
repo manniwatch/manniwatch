@@ -12,9 +12,9 @@ import { ErrorType } from './error-type';
 import { NotFoundMessageSwitchComponent } from './not-found-msg-switch.component';
 import { NotFoundComponent } from './not-found.component';
 
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
+/* eslint-disable max-classes-per-file */
+/* eslint-disable @angular-eslint/component-selector */
+/* eslint-disable @angular-eslint/directive-selector */
 
 @Injectable()
 class TestActivatedRoute {
@@ -23,8 +23,8 @@ class TestActivatedRoute {
     }> = new BehaviorSubject({});
 }
 
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
+/* eslint-enable @angular-eslint/component-selector */
+/* eslint-enable @angular-eslint/directive-selector */
 
 describe('src/modules/error/not-found-msg-switch.component.ts', (): void => {
     describe('NotFoundMessageSwitchComponent', (): void => {

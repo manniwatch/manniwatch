@@ -17,5 +17,5 @@ platformBrowserDynamic().bootstrapModule(AppModule).then((): void => {
         navigator.serviceWorker.register('/ngsw-worker.js');
     }
 })
-    // tslint:disable:no-console
+    /* eslint-disable no-console */
     .catch((err: any): void => console.error(err));

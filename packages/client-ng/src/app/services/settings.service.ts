@@ -9,7 +9,7 @@ import { environment } from 'src/environments';
 import { createCssThemeWatcher } from './css-theme-watcher';
 import { Theme } from './theme';
 
-// tslint:disable:max-classes-per-file
+/* eslint-disable max-classes-per-file */
 export class SettingsLoadSubscriber extends Subscriber<void> {
     public constructor(private resolve: (arg: void) => void) {
         super();
@@ -17,7 +17,7 @@ export class SettingsLoadSubscriber extends Subscriber<void> {
 
     public error(err: any): void {
         this.resolve();
-        // tslint:disable-next-line:no-console
+        // eslint-disable-next-line no-console
         console.error(err);
     }
 

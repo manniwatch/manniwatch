@@ -11,9 +11,9 @@ import {
   formatDistanceToNow as dateFormatDistanceToNow,
 } from 'date-fns';
 import { TripPassagesListItemComponent } from './trip-passages-list-item.component';
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
+/* eslint-disable max-classes-per-file */
+/* eslint-disable @angular-eslint/component-selector */
+/* eslint-disable @angular-eslint/directive-selector */
 @Component({
   selector: 'mat-icon',
   template: '<ng-content></ng-content>',
@@ -41,8 +41,8 @@ export class TestParentComponent {
   public testPassage: ITripPassage;
 }
 
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
+/* eslint-enable @angular-eslint/component-selector */
+/* eslint-enable @angular-eslint/directive-selector */
 
 const testPassages: ITripPassage[] = [{
   actualTime: '12:20',

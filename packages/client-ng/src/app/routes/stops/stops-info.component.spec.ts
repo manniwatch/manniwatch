@@ -8,9 +8,9 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StopsInfoComponent } from './stops-info.component';
 
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
+/* eslint-disable max-classes-per-file */
+/* eslint-disable @angular-eslint/component-selector */
+/* eslint-disable @angular-eslint/directive-selector */
 @Component({
     selector: 'mat-nav-list',
     template: '<div></div>',
@@ -38,8 +38,8 @@ class TestMatIconComponent {
 
 }
 
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
+/* eslint-enable @angular-eslint/component-selector */
+/* eslint-enable @angular-eslint/directive-selector */
 
 describe('src/modules/stops/stops-info.component.ts', (): void => {
     describe('StopsInfoComponent', (): void => {

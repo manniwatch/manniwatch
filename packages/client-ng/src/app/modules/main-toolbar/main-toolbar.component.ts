@@ -8,7 +8,7 @@ import { Subscriber } from 'rxjs';
 import { SidebarService } from 'src/app/modules/sidebar';
 import { ToolbarSearchBoxComponent } from './search-box.component';
 
-// tslint:disable:max-classes-per-file
+/* eslint-disable max-classes-per-file */
 export class NavigationSubscriber extends Subscriber<RouterEvent> {
 
     public constructor(private toolbar: MainToolbarComponent) {
