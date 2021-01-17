@@ -26,6 +26,7 @@
     "devDependencies": {
         "@types/request": "~2.48.5",
         "@types/request-promise-native": "~1.0.17",
+        "axios": "~0.21.1",
         "glob": "~7.1.6",
         "nock": "~13.0.5",
         "tslint": "~6.1.3"
