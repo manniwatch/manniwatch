@@ -10,10 +10,10 @@ import {
     PositionType,
     StopMode,
 } from '@manniwatch/api-types';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { expect } from 'chai';
 import 'mocha';
 import * as nock from 'nock';
-import * as reqp from 'request-promise-native';
 import * as sinon from 'sinon';
 import { IBoundingBox, ManniWatchApiClient } from './manni-watch-api-client';
 import { Util } from './util';
@@ -86,8 +86,8 @@ describe('manni-watch-api-client.ts', (): void => {
                 getProxyStub.restore();
             });
             it('should return undefined if no proxy is defined', (): Promise<void> => {
-                const testOpts: reqp.OptionsWithUri = {
-                    uri: '/test/path',
+                const testOpts: AxiosRequestConfig = {
+                    url: '/test/path',
                 };
                 getProxyStub.returns(undefined);
                 const scope: nock.Scope = nock(testDomain)
@@ -104,13 +104,15 @@ describe('manni-watch-api-client.ts', (): void => {
         describe('api methods', (): void => {
 
             let requestStub: sinon.SinonStub;
-            const reqpDefault: reqp.RequestPromiseAPI = reqp.defaults({
-                baseUrl: testDomain,
-                json: true,
+            const reqpDefault: AxiosInstance = axios.create({
+                baseURL: testDomain,
             });
             beforeEach((): void => {
                 requestStub = sinon.stub(instance, 'request');
-                requestStub.callsFake((opts: reqp.OptionsWithUri): reqp.RequestPromise => reqpDefault(opts));
+                requestStub.callsFake((opts: AxiosRequestConfig): Promise<any> => {
+                    return reqpDefault(opts)
+                        .then((data: AxiosResponse<any>) => data.data);
+                });
             });
             afterEach((): void => {
                 requestStub.restore();
@@ -365,11 +367,12 @@ describe('manni-watch-api-client.ts', (): void => {
                                 optionalTimes.forEach((testTimeFrame: any): void => {
                                     it('should query stop passages for ("' + testId + '","' + mode + '",'
                                         + testStartTime + ',' + testTimeFrame + ')', (): Promise<void> => {
-                                            let expectedFormBody: string = 'mode=' + mode + '&stopPoint=' + testId;
+                                            let expectedFormBody: string = 'mode=' + mode;
                                             // tslint:disable-next-line:triple-equals
                                             if (testStartTime != undefined) {
                                                 expectedFormBody += '&startTime=' + testStartTime;
                                             }
+                                            expectedFormBody += '&stopPoint=' + testId;
                                             // tslint:disable-next-line:triple-equals
                                             if (testTimeFrame != undefined) {
                                                 expectedFormBody += '&timeFrame=' + testTimeFrame;
