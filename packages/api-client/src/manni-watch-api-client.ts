@@ -43,10 +43,6 @@ export class ManniWatchApiClient {
                 'User-Agent': DEFAULT_USER_AGENT,
             },
         });
-        this.httpClient.interceptors.request.use(config => {
-            console.log(config);
-            return config;
-        });
     }
 
     public getProxy(): string | undefined {

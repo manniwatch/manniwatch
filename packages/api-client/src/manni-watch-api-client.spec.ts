@@ -111,7 +111,7 @@ describe('manni-watch-api-client.ts', (): void => {
                 requestStub = sinon.stub(instance, 'request');
                 requestStub.callsFake((opts: AxiosRequestConfig): Promise<any> => {
                     return reqpDefault(opts)
-                        .then((data: AxiosResponse<any>) => data.data);
+                        .then((data: AxiosResponse<any>):any => data.data);
                 });
             });
             afterEach((): void => {
