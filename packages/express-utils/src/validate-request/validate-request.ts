@@ -11,7 +11,7 @@ export type ValidationSchemas = Schema & {
         body?: Schema;
         params?: Schema;
         query?: Schema;
-    }
+    },
 };
 export const validateRequest: (schemas: ValidationSchemas) => RequestHandler =
     (schemas: ValidationSchemas): RequestHandler => {

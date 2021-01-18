@@ -7,7 +7,7 @@ import { RequestHandler } from 'express';
 import 'mocha';
 import { Done } from 'mocha';
 import { ServerError } from '../server-error';
-import { ValidationSchemas, validateRequest } from './validate-request';
+import { validateRequest, ValidationSchemas } from './validate-request';
 
 const checkKeys: string[] = ['query', 'params', 'body'];
 // tslint:disable:no-unused-expression
@@ -23,7 +23,7 @@ describe('validate-request/validate-request.ts', (): void => {
         checkKeys.forEach((key: string): void => {
             it(`should check property '${key}' correctly`, (done: Done): void => {
                 const configObj: ValidationSchemas = {
-                    properties: {}
+                    properties: {},
                 };
                 configObj.properties[key] = {
                     properties: {
@@ -43,7 +43,7 @@ describe('validate-request/validate-request.ts', (): void => {
                 };
                 const validationResult: RequestHandler = validateRequest(configObj);
                 validationResult({
-                    [key]: { top: '123', bottom: '-123' }
+                    [key]: { top: '123', bottom: '-123' },
                 } as any, {} as any, (res?: any): void => {
                     expect(res).to.be.undefined;
                     done();
@@ -51,7 +51,7 @@ describe('validate-request/validate-request.ts', (): void => {
             });
             it(`should reject property '${key}' correctly`, (done: Done): void => {
                 const configObj: ValidationSchemas = {
-                    properties: {}
+                    properties: {},
                 };
                 configObj.properties[key] = {
                     properties: {
@@ -71,7 +71,7 @@ describe('validate-request/validate-request.ts', (): void => {
                 };
                 const validationResult: RequestHandler = validateRequest(configObj);
                 validationResult({
-                    [key]: { top: 'asdf', bottom: '-123' }
+                    [key]: { top: 'asdf', bottom: '-123' },
                 } as any, {} as any, (res?: any): void => {
                     expect(res).to.not.be.undefined;
                     expect(res).to.be.instanceOf(ServerError);
