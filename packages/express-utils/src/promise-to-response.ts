@@ -23,7 +23,7 @@ export const promiseToResponse: MethodType = <T>(prom: Promise<T>,
                 next(err);
             } else if (err.isAxiosError === true) {
                 const axiosError: AxiosError = err;
-                const code: number = axiosError?.response?.status || 500;
+                const code: number = axiosError.response?.status || 500;
                 res.status(code).json({
                     error: true,
                     statusCode: code,
