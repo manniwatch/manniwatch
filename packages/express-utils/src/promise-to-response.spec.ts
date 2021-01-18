@@ -69,6 +69,27 @@ describe('promise-to-response.ts', (): void => {
                         statusCode: 500,
                     },
                 },
+                {
+                    error: {
+                        isAxiosError: true,
+                        message: 'another message',
+                        status: 321,
+                    },
+                    response: {
+                        statusCode: 500,
+                    },
+                },
+                {
+                    error: {
+                        isAxiosError: true,
+                        response: {
+                            status: 123,
+                        },
+                    },
+                    response: {
+                        statusCode: 123,
+                    },
+                },
             ];
             describe('next parameter provided', (): void => {
                 testErrors.forEach((testError: any): void => {
