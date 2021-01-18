@@ -67,7 +67,7 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
          */
         router.get('/stops',
             util.validateRequest({
-                query: geoFenceSchema,
+                properties: { query: geoFenceSchema },
             }),
             (req: express.Request, res: express.Response, next: express.NextFunction): void => {
                 util.promiseToResponse(apiClient.getStopLocations({
@@ -86,7 +86,7 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
          */
         router.get('/stopPoints',
             util.validateRequest({
-                query: geoFenceSchema,
+                properties: { query: geoFenceSchema },
             }),
             (req: express.Request, res: express.Response, next: express.NextFunction): void => {
                 util.promiseToResponse(apiClient.getStopPointLocations({
@@ -105,7 +105,7 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
          */
         router.get('/vehicles',
             util.validateRequest({
-                query: getVehicleLocationSchema,
+                properties: { query: getVehicleLocationSchema },
             }),
             (req: express.Request, res: express.Response, next: express.NextFunction): void => {
                 // tslint:disable-next-line:triple-equals
