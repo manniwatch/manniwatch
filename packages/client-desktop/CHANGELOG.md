@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/manniwatch/manniwatch/compare/v0.18.4...v0.19.0) (2021-01-18)
+
+
+### Bug Fixes
+
+* **deps:** bump helmet from 4.3.1 to 4.4.0 ([#1380](https://github.com/manniwatch/manniwatch/issues/1380)) ([20a116b](https://github.com/manniwatch/manniwatch/commit/20a116b695420c06a802955e8c082a20c326c422))
+
+
+
+
+
+
 ## [0.18.4](https://github.com/manniwatch/manniwatch/compare/v0.18.3...v0.18.4) (2021-01-15)
 
 **Note:** Version bump only for package @manniwatch/client-desktop

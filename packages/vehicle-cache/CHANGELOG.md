@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/manniwatch/manniwatch/compare/v0.18.4...v0.19.0) (2021-01-18)
+
+**Note:** Version bump only for package @manniwatch/vehicle-cache
+
+
+
+
+
+
 ## [0.18.3](https://github.com/manniwatch/manniwatch/compare/v0.18.2...v0.18.3) (2021-01-14)
 
 **Note:** Version bump only for package @manniwatch/vehicle-cache

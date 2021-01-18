@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/manniwatch/manniwatch/compare/v0.18.4...v0.19.0) (2021-01-18)
+
+
+### Features
+
+* **api-client:** replace request with axios ([#1379](https://github.com/manniwatch/manniwatch/issues/1379)) ([b8d3a1c](https://github.com/manniwatch/manniwatch/commit/b8d3a1c95ebd7a90adeec8c401e3b1702adf4b48))
+
+
+
+
+
+
 ## [0.18.3](https://github.com/manniwatch/manniwatch/compare/v0.18.2...v0.18.3) (2021-01-14)
 
 **Note:** Version bump only for package @manniwatch/api-client

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/manniwatch/manniwatch/compare/v0.18.4...v0.19.0) (2021-01-18)
+
+
+### Bug Fixes
+
+* **deps:** bump helmet from 4.3.1 to 4.4.0 ([#1380](https://github.com/manniwatch/manniwatch/issues/1380)) ([20a116b](https://github.com/manniwatch/manniwatch/commit/20a116b695420c06a802955e8c082a20c326c422))
+* **deps:** bump ol-mapbox-style from 6.3.0 to 6.3.1 ([#1374](https://github.com/manniwatch/manniwatch/issues/1374)) ([3ce16ce](https://github.com/manniwatch/manniwatch/commit/3ce16ce279a1e03d13f45030655fda94c1c1a30a))
+
+
+### Features
+
+* **api-client:** replace request with axios ([#1379](https://github.com/manniwatch/manniwatch/issues/1379)) ([b8d3a1c](https://github.com/manniwatch/manniwatch/commit/b8d3a1c95ebd7a90adeec8c401e3b1702adf4b48))
+* **express-utils:** change validateQueryParameters Schema validation ([#1381](https://github.com/manniwatch/manniwatch/issues/1381)) ([8edd3a1](https://github.com/manniwatch/manniwatch/commit/8edd3a1e6dbd3e11d21783230f6e2c8d9ddd7e24))
+
+
+
+
+
+
 ## [0.18.4](https://github.com/manniwatch/manniwatch/compare/v0.18.3...v0.18.4) (2021-01-15)
 
 

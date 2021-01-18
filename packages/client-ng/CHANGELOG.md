@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/manniwatch/manniwatch/compare/v0.18.4...v0.19.0) (2021-01-18)
+
+
+### Bug Fixes
+
+* **deps:** bump ol-mapbox-style from 6.3.0 to 6.3.1 ([#1374](https://github.com/manniwatch/manniwatch/issues/1374)) ([3ce16ce](https://github.com/manniwatch/manniwatch/commit/3ce16ce279a1e03d13f45030655fda94c1c1a30a))
+
+
+
+
+
+
 ## [0.18.4](https://github.com/manniwatch/manniwatch/compare/v0.18.3...v0.18.4) (2021-01-15)
 
 
