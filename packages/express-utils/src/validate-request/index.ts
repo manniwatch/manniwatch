@@ -3,6 +3,6 @@
  */
 
 export {
-    IValidationSchemas,
+    ValidationSchemas,
     validateRequest,
 } from './validate-request';

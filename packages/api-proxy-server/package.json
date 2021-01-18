@@ -47,14 +47,14 @@
     "@manniwatch/api-proxy-router": "^0.18.3",
     "@manniwatch/api-types": "^0.18.0",
     "express": "~4.17.1",
-    "helmet": "~4.3.1",
+    "helmet": "~4.4.0",
     "nconf": "~0.11.1"
   },
   "devDependencies": {
     "@types/express": "~4.17.11",
     "@types/helmet": "~4.0.0",
     "apidoc": "~0.26.0",
-    "supertest": "~6.0.1",
+    "supertest": "~6.1.1",
     "tslint": "~6.1.3"
   }
 }

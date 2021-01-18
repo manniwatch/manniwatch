@@ -44,7 +44,7 @@ export const createTripRouter: (apiClient: ManniWatchApiClient) => express.Route
          * @apiVersion 0.5.0
          */
         router.get('/:id([a-z0-9A-Z\-\+]+)/passages',
-            prom.validateRequest({ query: passagesSchema }),
+            prom.validateRequest({ properties: { query: passagesSchema } }),
             (req: express.Request, res: express.Response, next: express.NextFunction): void => {
                 const departureMode: StopMode = req.query.mode as StopMode || 'departure';
                 prom.promiseToResponse(apiClient.getTripPassages(req.params.id, departureMode), res, next);

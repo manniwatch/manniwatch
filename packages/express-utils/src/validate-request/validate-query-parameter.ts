@@ -15,9 +15,9 @@ export const validateQueryParameter: (schema: Schema) => RequestHandler =
             } else {
                 const error: ValidationError = result.errors[0];
                 if (typeof error.schema === 'string') {
-                    next(new ServerError(400, 'Invalid query parameter \'' + error.schema + '\''));
+                    next(new ServerError(400, `Invalid query parameter '${error.schema}'`));
                 } else if (error.name === 'required') {
-                    next(new ServerError(400, 'Invalid query parameter \'' + error.argument + '\''));
+                    next(new ServerError(400, `Invalid query parameter '${error.argument}'`));
                 }
             }
         };

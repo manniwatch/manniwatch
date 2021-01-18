@@ -4,7 +4,7 @@
 
 import { IBoundingBox, ManniWatchApiClient } from '@manniwatch/api-client';
 import { PositionType } from '@manniwatch/api-types';
-import { IValidationSchemas, ServerError } from '@manniwatch/express-utils';
+import { ServerError, ValidationSchemas } from '@manniwatch/express-utils';
 import { expect } from 'chai';
 import * as express from 'express';
 import { validate, ValidatorResult } from 'jsonschema';
@@ -154,10 +154,10 @@ describe('endpoints/geo.ts', (): void => {
             }).createGeoRouter;
         });
         beforeEach((): void => {
-            validateStubParent.callsFake((schema: IValidationSchemas): sinon.SinonStub => {
-                if (schema.query?.id === 'geoFenceSchema') {
+            validateStubParent.callsFake((schema: ValidationSchemas): sinon.SinonStub => {
+                if (schema.properties.query?.id === 'geoFenceSchema') {
                     return geoFenceValidateStub;
-                } else if (schema.query?.id === 'getVehicleLocationSchema') {
+                } else if (schema.properties.query?.id === 'getVehicleLocationSchema') {
                     return vehicleValidateStub;
                 } else {
                     throw new Error('Unknown Schema');
@@ -180,13 +180,13 @@ describe('endpoints/geo.ts', (): void => {
         afterEach((): void => {
             expect(validateStubParent.callCount).to.equal(3, 'validate method should be called twice');
             expect(validateStubParent.getCall(0).args).to.deep.equal([{
-                query: geoFenceSchema,
+                properties: { query: geoFenceSchema },
             }]);
             expect(validateStubParent.getCall(1).args).to.deep.equal([{
-                query: geoFenceSchema,
+                properties: { query: geoFenceSchema },
             }]);
             expect(validateStubParent.getCall(2).args).to.deep.equal([{
-                query: getVehicleLocationSchema,
+                properties: { query: getVehicleLocationSchema },
             }]);
             sandbox.reset();
         });

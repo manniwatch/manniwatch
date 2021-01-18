@@ -59,7 +59,7 @@ describe('endpoints/stop-point.ts', (): void => {
         });
         afterEach('test and reset promise stub', (): void => {
             expect(validateStub.callCount).to.equal(1, 'validateRequest should be called once');
-            expect(validateStub.args[0]).to.deep.equal([{ query: passagesSchema }], 'should be called with correct schema');
+            expect(validateStub.args[0]).to.deep.equal([{ properties: { query: passagesSchema } }], 'should be called with correct schema');
             promiseStub.resetHistory();
             getStopPointInfoStub.reset();
             getStopPointPassagesStub.reset();
