@@ -15,8 +15,8 @@ import {
     PositionType,
     StopMode,
 } from '@manniwatch/api-types';
-import * as req from 'request';
-import * as reqp from 'request-promise-native';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import * as qs from 'qs';
 import { Util } from './util';
 
 // tslint:disable-next-line:no-var-requires
@@ -28,7 +28,7 @@ export interface IBoundingBox {
     right: number;
 }
 export class ManniWatchApiClient {
-    private httpClient: req.RequestAPI<reqp.RequestPromise<any>, reqp.RequestPromiseOptions, req.UriOptions>;
+    private httpClient: AxiosInstance;
     /**
      *
      * @param endpoint the endpoint base Url to query
@@ -37,12 +37,11 @@ export class ManniWatchApiClient {
     public constructor(public endpoint: string,
         public proxies?: string | string[],
         public randomUserAgent: boolean = false) {
-        this.httpClient = reqp.defaults({
-            baseUrl: endpoint,
+        this.httpClient = axios.create({
+            baseURL: endpoint,
             headers: {
                 'User-Agent': DEFAULT_USER_AGENT,
             },
-            json: true,
         });
     }
 
@@ -55,13 +54,16 @@ export class ManniWatchApiClient {
         return undefined;
     }
 
-    public request<T>(reqOpts: req.OptionsWithUri): reqp.RequestPromise<T> {
+    public request<T>(reqOpts: AxiosRequestConfig): Promise<T> {
         const newReqOpts: any = {
             headers: {},
             proxy: this.getProxy(),
         };
         Object.assign(newReqOpts, reqOpts);
-        return this.httpClient(newReqOpts);
+        return this.httpClient.request(reqOpts)
+            .then((data: AxiosResponse<T>): T => {
+                return data.data;
+            });
     }
 
     /**
@@ -74,15 +76,15 @@ export class ManniWatchApiClient {
      */
     public getVehicleLocations(positionType: PositionType = 'CORRECTED',
         lastUpdate?: string | number)
-        : reqp.RequestPromise<IVehicleLocationList> {
-        const options: req.OptionsWithUri = {
+        : Promise<IVehicleLocationList> {
+        const options: AxiosRequestConfig = {
             method: 'GET',
-            qs: {
+            params: {
                 colorType: 'ROUTE_BASED',
                 lastUpdate,
                 positionType,
             },
-            uri: '/internetservice/geoserviceDispatcher/services/vehicleinfo/vehicles',
+            url: '/internetservice/geoserviceDispatcher/services/vehicleinfo/vehicles',
         };
         return this.request(options);
     }
@@ -91,13 +93,13 @@ export class ManniWatchApiClient {
      * @param tripId tripId to query
      * @since 1.0.0
      */
-    public getRouteByTripId(tripId: string): reqp.RequestPromise<IVehiclePathInfo> {
-        const options: req.OptionsWithUri = {
+    public getRouteByTripId(tripId: string): Promise<IVehiclePathInfo> {
+        const options: AxiosRequestConfig = {
             method: 'POST',
-            qs: {
+            params: {
                 id: tripId,
             },
-            uri: '/internetservice/geoserviceDispatcher/services/pathinfo/trip',
+            url: '/internetservice/geoserviceDispatcher/services/pathinfo/trip',
         };
         return this.request(options);
     }
@@ -106,13 +108,13 @@ export class ManniWatchApiClient {
      * @param vehicleId the vehicleId
      * @since 1.0.0
      */
-    public getRouteByVehicleId(vehicleId: string): reqp.RequestPromise<IVehiclePathInfo> {
-        const options: req.OptionsWithUri = {
+    public getRouteByVehicleId(vehicleId: string): Promise<IVehiclePathInfo> {
+        const options: AxiosRequestConfig = {
             method: 'POST',
-            qs: {
+            params: {
                 id: vehicleId,
             },
-            uri: '/internetservice/geoserviceDispatcher/services/pathinfo/vehicle',
+            url: '/internetservice/geoserviceDispatcher/services/pathinfo/vehicle',
         };
         return this.request(options);
     }
@@ -122,14 +124,14 @@ export class ManniWatchApiClient {
      * @param routeId the route id
      * @since 3.0.0
      */
-    public getRouteByRouteId(routeId: string, direction: string): reqp.RequestPromise<IVehiclePathInfo> {
-        const options: req.OptionsWithUri = {
+    public getRouteByRouteId(routeId: string, direction: string): Promise<IVehiclePathInfo> {
+        const options: AxiosRequestConfig = {
             method: 'POST',
-            qs: {
+            params: {
                 direction,
                 id: routeId,
             },
-            uri: '/internetservice/geoserviceDispatcher/services/pathinfo/route',
+            url: '/internetservice/geoserviceDispatcher/services/pathinfo/route',
         };
         return this.request(options);
     }
@@ -143,11 +145,11 @@ export class ManniWatchApiClient {
         left: -648000000,
         right: 648000000,
         top: 324000000,
-    }): reqp.RequestPromise<IStopLocations> {
-        const options: req.OptionsWithUri = {
+    }): Promise<IStopLocations> {
+        const options: AxiosRequestConfig = {
             method: 'GET',
-            qs: box,
-            uri: '/internetservice/geoserviceDispatcher/services/stopinfo/stops',
+            params: box,
+            url: '/internetservice/geoserviceDispatcher/services/stopinfo/stops',
         };
         return this.request(options);
     }
@@ -161,11 +163,11 @@ export class ManniWatchApiClient {
         left: -648000000,
         right: 648000000,
         top: 324000000,
-    }): reqp.RequestPromise<IStopPointLocations> {
-        const options: req.OptionsWithUri = {
+    }): Promise<IStopPointLocations> {
+        const options: AxiosRequestConfig = {
             method: 'GET',
-            qs: box,
-            uri: '/internetservice/geoserviceDispatcher/services/stopinfo/stopPoints',
+            params: box,
+            url: '/internetservice/geoserviceDispatcher/services/stopinfo/stopPoints',
         };
         return this.request(options);
     }
@@ -174,14 +176,14 @@ export class ManniWatchApiClient {
      * @since 1.0.0
      */
     public getTripPassages(tripId: string,
-        mode: StopMode = 'departure'): reqp.RequestPromise<ITripPassages> {
-        const options: req.OptionsWithUri = {
-            form: {
+        mode: StopMode = 'departure'): Promise<ITripPassages> {
+        const options: AxiosRequestConfig = {
+            data: qs.stringify({
                 mode,
                 tripId,
-            },
+            }),
             method: 'POST',
-            uri: '/internetservice/services/tripInfo/tripPassages',
+            url: '/internetservice/services/tripInfo/tripPassages',
         };
         return this.request(options);
     }
@@ -195,23 +197,16 @@ export class ManniWatchApiClient {
     public getStopPassages(stopId: string,
         mode: StopMode = 'departure',
         startTime?: number,
-        timeFrame?: number): reqp.RequestPromise<IStopPassage> {
-        const formData: { [key: string]: any } = {
-            mode,
-            stop: stopId,
-        };
-        // tslint:disable-next-line:triple-equals
-        if (startTime != undefined) {
-            Object.assign(formData, { startTime });
-        }
-        // tslint:disable-next-line:triple-equals
-        if (timeFrame != undefined) {
-            Object.assign(formData, { timeFrame });
-        }
-        const options: req.OptionsWithUri = {
-            form: formData,
+        timeFrame?: number): Promise<IStopPassage> {
+        const options: AxiosRequestConfig = {
+            data: qs.stringify({
+                mode,
+                startTime: startTime || undefined,
+                stop: stopId,
+                timeFrame: timeFrame || undefined,
+            }),
             method: 'POST',
-            uri: '/internetservice/services/passageInfo/stopPassages/stop',
+            url: '/internetservice/services/passageInfo/stopPassages/stop',
         };
         return this.request(options);
     }
@@ -225,67 +220,56 @@ export class ManniWatchApiClient {
     public getStopPointPassages(stopPointId: string,
         mode: StopMode = 'departure',
         startTime?: number,
-        timeFrame?: number): reqp.RequestPromise<IStopPassage> {
-        const formData: { [key: string]: any } = {
-            mode,
-            stopPoint: stopPointId,
-        };
-        // tslint:disable-next-line:triple-equals
-        if (startTime != undefined) {
-            Object.assign(formData, { startTime });
-        }
-        // tslint:disable-next-line:triple-equals
-        if (timeFrame != undefined) {
-            Object.assign(formData, { timeFrame });
-        }
-        const options: req.OptionsWithUri = {
-            form: formData,
-            method: 'POST',
-            uri: '/internetservice/services/passageInfo/stopPassages/stopPoint',
-        };
-        return this.request(options);
-    }
-
-    /**
-     *
-     * @since 1.0.0
-     */
-    public getStopInfo(stopId: string): reqp.RequestPromise<IStopInfo> {
-        const options: req.OptionsWithUri = {
-            form: {
-                stop: stopId,
-            },
-            method: 'POST',
-            uri: '/internetservice/services/stopInfo/stop',
-        };
-        return this.request(options);
-    }
-
-    /**
-     *
-     * @since 1.0.0
-     */
-    public getStopPointInfo(stopPointId: string): reqp.RequestPromise<IStopPointInfo> {
-        const options: req.OptionsWithUri = {
-            form: {
+        timeFrame?: number): Promise<IStopPassage> {
+        const options: AxiosRequestConfig = {
+            data: qs.stringify({
+                mode,
+                startTime: startTime || undefined,
                 stopPoint: stopPointId,
-            },
+                timeFrame: timeFrame || undefined,
+            }),
             method: 'POST',
-            uri: '/internetservice/services/stopInfo/stopPoint',
+            url: '/internetservice/services/passageInfo/stopPassages/stopPoint',
+        };
+        return this.request(options);
+    }
+
+    /**
+     *
+     * @since 1.0.0
+     */
+    public getStopInfo(stopId: string): Promise<IStopInfo> {
+        const options: AxiosRequestConfig = {
+            data: qs.stringify({ stop: stopId }),
+            method: 'POST',
+            url: '/internetservice/services/stopInfo/stop',
+        };
+        return this.request(options);
+    }
+
+    /**
+     *
+     * @since 1.0.0
+     */
+    public getStopPointInfo(stopPointId: string): Promise<IStopPointInfo> {
+        const options: AxiosRequestConfig = {
+            data: qs.stringify({ stopPoint: stopPointId }),
+            method: 'POST',
+            url: '/internetservice/services/stopInfo/stopPoint',
         };
         return this.request(options);
     }
     /**
      * @since 1.3.0
      */
-    public getSettings(): reqp.RequestPromise<ISettings> {
-        const options: reqp.OptionsWithUri = {
+    public getSettings(): Promise<ISettings> {
+        const options: AxiosRequestConfig = {
             headers: {
                 Accept: 'text/javascript',
             },
             method: 'GET',
-            transform: Util.transformSettingsBody,
-            uri: '/internetservice/settings',
+            transformResponse: Util.transformSettingsBody,
+            url: '/internetservice/settings',
         };
         return this.request(options);
     }
