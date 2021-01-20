@@ -50,7 +50,7 @@
     "@rollup/plugin-commonjs": "~17.0.0",
     "@rollup/plugin-node-resolve": "~11.1.0",
     "@rollup/plugin-typescript": "~8.1.0",
-    "rollup": "~2.37.0",
+    "rollup": "~2.36.2",
     "tslint": "~6.1.3"
   },
   "dependencies": {
