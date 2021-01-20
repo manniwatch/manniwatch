@@ -16,7 +16,7 @@
     "conventional-changelog-angular": "~5.0.12",
     "coveralls": "~3.1.0",
     "cz-conventional-changelog": "~3.3.0",
-    "fs-extra": "~9.0.1",
+    "fs-extra": "~9.1.0",
     "lerna": "~3.22.1",
     "mocha": "~8.2.1",
     "nyc": "~15.1.0",
