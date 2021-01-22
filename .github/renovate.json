@@ -1,0 +1,23 @@
+{
+    "baseBranches": [
+        "dev"
+    ],
+    "extends": [
+        "config:base"
+    ],
+    "packageRules": [
+        {
+            "depTypeList": [
+                "devDependencies"
+            ],
+            "automerge": true
+        },
+        {
+            "depTypeList": [
+                "peerDependencies"
+            ],
+            "automerge": true,
+            "rangeStrategy": "replace"
+        }
+    ]
+}
