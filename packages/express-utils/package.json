@@ -53,6 +53,6 @@
   },
   "peerDependencies": {
     "express": "~4.17.1",
-    "jsonschema": "~1.2.11"
+    "jsonschema": "~1.4.0"
   }
 }
