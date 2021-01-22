@@ -1,6 +1,6 @@
 {
   "name": "@manniwatch/api-proxy-router",
-  "version": "0.18.3",
+  "version": "0.19.0",
   "description": "An express api router used to proxy requests to the upstream server",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -45,9 +45,9 @@
     "access": "public"
   },
   "dependencies": {
-    "@manniwatch/api-client": "^0.18.3",
-    "@manniwatch/api-types": "^0.18.0",
-    "@manniwatch/express-utils": "^0.18.3",
+    "@manniwatch/api-client": "^0.19.0",
+    "@manniwatch/api-types": "^0.19.0",
+    "@manniwatch/express-utils": "^0.19.0",
     "express": "~4.17.1",
     "jsonschema": "~1.4.0"
   },
