@@ -1,0 +1,3 @@
+# WsServer
+
+[![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg?flag=WsServer)](https://codecov.io/gh/manniwatch/manniwatch/manniwatch/master/packages/ws-server) [![npm version](https://badge.fury.io/js/%40manniwatch%2Fws-server.svg)](https://badge.fury.io/js/%40manniwatch%2Fws-server) [![dependencies Status](https://david-dm.org/manniwatch/manniwatch/status.svg?path=packages/ws-server)](https://david-dm.org/manniwatch/manniwatch?path=packages/ws-server) [![devDependencies Status](https://david-dm.org/manniwatch/manniwatch/dev-status.svg?path=packages/ws-server)](https://david-dm.org/manniwatch/manniwatch?path=packages/ws-server&type=dev)
