@@ -14,6 +14,21 @@
         },
         {
             "depTypeList": [
+                "dependencies"
+            ],
+            "updateTypes": [
+                "minor",
+                "patch",
+                "pin",
+                "digest",
+                "lockFileMaintenance",
+                "rollback",
+                "bump"
+            ],
+            "automerge": true
+        },
+        {
+            "depTypeList": [
                 "peerDependencies"
             ],
             "automerge": true,
