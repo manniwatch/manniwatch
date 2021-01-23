@@ -9,7 +9,7 @@ jobs:
     name: Publish Package to NPM
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Setup Node
         uses: actions/setup-node@v2.1.4
         with:
@@ -30,7 +30,7 @@ jobs:
     name: Publish Package to GITHUB
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Setup Node
         uses: actions/setup-node@v2.1.4
         with:
