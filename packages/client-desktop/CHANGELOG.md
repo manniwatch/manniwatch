@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.1](https://github.com/manniwatch/manniwatch/compare/v0.19.0...v0.19.1) (2021-01-23)
+
+
+### Bug Fixes
+
+* **deps:** bump helmet from 4.4.0 to 4.4.1 ([#1382](https://github.com/manniwatch/manniwatch/issues/1382)) ([47e9238](https://github.com/manniwatch/manniwatch/commit/47e9238ac106e7cb138bd44b1305f88c9424c1e6))
+
+
+### Reverts
+
+* Revert "chore: merge dev into master (#1383)" (#1391) ([5749fdf](https://github.com/manniwatch/manniwatch/commit/5749fdf84f5cd7838ea7ac661ff32a6b7c715ba1)), closes [#1383](https://github.com/manniwatch/manniwatch/issues/1383) [#1391](https://github.com/manniwatch/manniwatch/issues/1391)
+
+
+
+
+
+
 # [0.19.0](https://github.com/manniwatch/manniwatch/compare/v0.18.4...v0.19.0) (2021-01-18)
 
 

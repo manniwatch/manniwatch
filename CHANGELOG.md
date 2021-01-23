@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.1](https://github.com/manniwatch/manniwatch/compare/v0.19.0...v0.19.1) (2021-01-23)
+
+
+### Bug Fixes
+
+* **deps:** bump helmet from 4.4.0 to 4.4.1 ([#1382](https://github.com/manniwatch/manniwatch/issues/1382)) ([47e9238](https://github.com/manniwatch/manniwatch/commit/47e9238ac106e7cb138bd44b1305f88c9424c1e6))
+* **deps:** update angular monorepo ([#1410](https://github.com/manniwatch/manniwatch/issues/1410)) ([2c7903f](https://github.com/manniwatch/manniwatch/commit/2c7903f4f3bebc4c8f358d9782e63095f521a617))
+* **deps:** update angularmaterial monorepo to v11.1.0 ([#1411](https://github.com/manniwatch/manniwatch/issues/1411)) ([a3c9497](https://github.com/manniwatch/manniwatch/commit/a3c9497e2e74543684afb2ffb853a191a2479b7d))
+
+
+### Reverts
+
+* Revert "chore: merge dev into master (#1383)" (#1391) ([5749fdf](https://github.com/manniwatch/manniwatch/commit/5749fdf84f5cd7838ea7ac661ff32a6b7c715ba1)), closes [#1383](https://github.com/manniwatch/manniwatch/issues/1383) [#1391](https://github.com/manniwatch/manniwatch/issues/1391)
+
+
+
+
+
+
 # [0.19.0](https://github.com/manniwatch/manniwatch/compare/v0.18.4...v0.19.0) (2021-01-18)
 
 

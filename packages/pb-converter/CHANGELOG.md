@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.1](https://github.com/manniwatch/manniwatch/compare/v0.19.0...v0.19.1) (2021-01-23)
+
+
+### Reverts
+
+* Revert "chore: merge dev into master (#1383)" (#1391) ([5749fdf](https://github.com/manniwatch/manniwatch/commit/5749fdf84f5cd7838ea7ac661ff32a6b7c715ba1)), closes [#1383](https://github.com/manniwatch/manniwatch/issues/1383) [#1391](https://github.com/manniwatch/manniwatch/issues/1391)
+
+
+
+
+
+
 # [0.19.0](https://github.com/manniwatch/manniwatch/compare/v0.18.4...v0.19.0) (2021-01-18)
 
 **Note:** Version bump only for package @manniwatch/pb-converter
