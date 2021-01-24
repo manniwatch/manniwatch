@@ -30,8 +30,6 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-node${{ matrix.node }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node${{ matrix.node }}-npm
       - name: Install Deps
         run: |
           npm ci
