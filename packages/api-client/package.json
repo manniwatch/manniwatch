@@ -25,7 +25,6 @@
     },
     "devDependencies": {
         "@types/qs": "6.9.5",
-        "glob": "7.1.6",
         "nock": "13.0.6"
     },
     "files": [
