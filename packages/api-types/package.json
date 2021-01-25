@@ -49,7 +49,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "devDependencies": {
-    "tslint": "6.1.3"
-  }
+  "devDependencies": {}
 }
