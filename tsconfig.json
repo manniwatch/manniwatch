@@ -1,18 +1,22 @@
 {
+    "baseUrl": "./src",
     "compilerOptions": {
-        "target": "es2018",
-        "module": "commonjs",
-        "sourceMap": true,
         "declaration": true,
+        "forceConsistentCasingInFileNames": true,
+        "module": "commonjs",
         "moduleResolution": "node",
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitReturns": true,
+        "noUnusedLocals": true,
+        "sourceMap": true,
+        "strict": true,
         "strictNullChecks": true,
-        "noUnusedLocals": true
-    },
-    "typeAcquisition": {
-        "enable": true
+        "target": "es2018"
     },
     "exclude": [
         "node_modules"
     ],
-    "baseUrl": "./src"
+    "typeAcquisition": {
+        "enable": true
+    }
 }
