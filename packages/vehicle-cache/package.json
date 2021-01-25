@@ -24,9 +24,7 @@
         "@manniwatch/vehicle-location-diff": "^0.19.1",
         "rxjs": "~6.6.3"
     },
-    "devDependencies": {
-        "mocha": "8.2.1"
-    },
+    "devDependencies": {},
     "files": [
         "dist/*",
         "src/*"
