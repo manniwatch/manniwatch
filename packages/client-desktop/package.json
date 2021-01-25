@@ -49,7 +49,6 @@
     "@types/sinon": "9.0.10",
     "asar": "3.0.3",
     "chai": "4.2.0",
-    "mocha": "8.2.1",
     "nyc": "15.1.0",
     "pug-cli": "1.0.0-alpha6",
     "ts-node": "9.1.1"
