@@ -20,7 +20,7 @@ import * as qs from 'qs';
 import { Util } from './util';
 
 // tslint:disable-next-line:no-var-requires
-export const DEFAULT_USER_AGENT: string = 'ManniWatch Api Client/___BUILD_VERSION___';
+export const DEFAULT_USER_AGENT: string = 'ManniWatch Api Client/__BUILD_VERSION__';
 export interface IBoundingBox {
     top: number;
     bottom: number;
