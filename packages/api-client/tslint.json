@@ -6,9 +6,9 @@
         "file-header": [
             true,
             {
-                "match": "Source https://github.com/manniwatch/manniwatch",
+                "match": "Source https://github.com/manniwatch/manniwatch Package: api-client",
                 "allow-single-line-comments": true,
-                "default": "Source https://github.com/manniwatch/manniwatch",
+                "default": "Source https://github.com/manniwatch/manniwatch Package: api-client",
                 "enforce-trailing-newline": false
             }
         ]
