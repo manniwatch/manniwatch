@@ -45,5 +45,6 @@
   },
   "dependencies": {
     "protobufjs": "~6.10.2"
-  }
+  },
+  "devDependencies": {}
 }

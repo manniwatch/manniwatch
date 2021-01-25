@@ -1,5 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/manniwatch
+ * Source https://github.com/manniwatch/manniwatch Package: api-client
  */
 
 export {

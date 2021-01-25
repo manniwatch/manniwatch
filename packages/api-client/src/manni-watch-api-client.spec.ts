@@ -1,5 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/manniwatch
+ * Source https://github.com/manniwatch/manniwatch Package: api-client
  */
 
 import {
@@ -92,7 +92,7 @@ describe('manni-watch-api-client.ts', (): void => {
                 getProxyStub.returns(undefined);
                 const scope: nock.Scope = nock(testDomain)
                     .get('/test/path')
-                    .matchHeader('User-Agent', /^ManniWatch Api Client\/___BUILD_VERSION___/)
+                    .matchHeader('User-Agent', /^ManniWatch Api Client\/__BUILD_VERSION__/)
                     .reply(200, testSuccessResponse);
                 return instance.request(testOpts)
                     .then((val: any): void => {
