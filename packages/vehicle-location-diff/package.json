@@ -18,9 +18,7 @@
     "dependencies": {
         "@manniwatch/api-types": "^0.19.1"
     },
-    "devDependencies": {
-        "mocha": "8.2.1"
-    },
+    "devDependencies": {},
     "files": [
         "dist/*",
         "src/*"
