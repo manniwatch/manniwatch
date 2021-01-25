@@ -19,8 +19,7 @@
         "@manniwatch/api-types": "^0.19.1"
     },
     "devDependencies": {
-        "mocha": "8.2.1",
-        "tslint": "6.1.3"
+        "mocha": "8.2.1"
     },
     "files": [
         "dist/*",
