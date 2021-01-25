@@ -1,6 +1,6 @@
 {
   "name": "@manniwatch/pb-types",
-  "version": "0.19.1",
+  "version": "0.19.2",
   "description": "PB Types and helper for Trapeze Api",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -45,6 +45,5 @@
   },
   "dependencies": {
     "protobufjs": "~6.10.2"
-  },
-  "devDependencies": {}
+  }
 }

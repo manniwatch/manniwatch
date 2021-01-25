@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.2](https://github.com/manniwatch/manniwatch/compare/v0.19.1...v0.19.2) (2021-01-25)
+
+
+### Bug Fixes
+
+* **api-client:** fix BUILD_VERSION injection ([#1434](https://github.com/manniwatch/manniwatch/issues/1434)) ([4d28e42](https://github.com/manniwatch/manniwatch/commit/4d28e42214cb9aa203bdff6868e935f656756dc6))
+
+
+
+
+
+
 ## [0.19.1](https://github.com/manniwatch/manniwatch/compare/v0.19.0...v0.19.1) (2021-01-23)
 
 
