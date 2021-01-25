@@ -1,4 +1,7 @@
 {
+    "labels": [
+        "dependencies"
+    ],
     "baseBranches": [
         "dev"
     ],
@@ -9,6 +12,21 @@
         {
             "depTypeList": [
                 "devDependencies"
+            ],
+            "automerge": true
+        },
+        {
+            "depTypeList": [
+                "dependencies"
+            ],
+            "updateTypes": [
+                "minor",
+                "patch",
+                "pin",
+                "digest",
+                "lockFileMaintenance",
+                "rollback",
+                "bump"
             ],
             "automerge": true
         },
