@@ -44,11 +44,9 @@
     "url": "https://github.com/manniwatch/manniwatch.git"
   },
   "devDependencies": {
-    "@types/sinon": "9.0.10",
     "asar": "3.0.3",
     "nyc": "15.1.0",
-    "pug-cli": "1.0.0-alpha6",
-    "ts-node": "9.1.1"
+    "pug-cli": "1.0.0-alpha6"
   },
   "dependencies": {
     "@manniwatch/api-proxy-router": "^0.19.1",
