@@ -16,14 +16,14 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2.1.4
         with:
-          node-version: '12.x'
+          node-version: '12'
       - name: Setup Cache
         uses: actions/cache@v2.1.3
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node12-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-npm-
+            ${{ runner.os }}-node12-npm-
 
       - name: Install
         run: |
