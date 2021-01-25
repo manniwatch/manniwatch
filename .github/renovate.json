@@ -1,4 +1,7 @@
 {
+    "labels": [
+        "dependencies"
+    ],
     "baseBranches": [
         "dev"
     ],
