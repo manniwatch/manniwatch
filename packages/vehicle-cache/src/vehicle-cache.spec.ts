@@ -4,6 +4,8 @@
 
 import { expect } from 'chai';
 import 'mocha';
+import { Done } from 'mocha';
+import { tap } from 'rxjs/operators';
 import * as sinon from 'sinon';
 import { VehicleCache } from './vehicle-cache';
 
@@ -22,12 +24,12 @@ describe('vehicle-cache', (): void => {
             sandbox.reset();
         });
         it('should constantly poll', (): void => {
-            testCache.update({ id: "1" } as any);
-            testCache.update({ id: "2" } as any);
-            testCache.update({ id: "1", isDeleted: true } as any);
+            testCache.update({ id: '1' } as any);
+            testCache.update({ id: '2' } as any);
+            testCache.update({ id: '1', isDeleted: true } as any);
             expect(testCache.getState()).to.deep.equal([
-                { id: "2" }
-            ])
+                { id: '2' },
+            ]);
         });
         describe('check if close check is working', (): void => {
             const keys: (keyof VehicleCache)[] = ['update', 'updateMultiple', 'getState'];
@@ -41,6 +43,30 @@ describe('vehicle-cache', (): void => {
                     }).to.throw('The cache has been closed');
                 });
             });
-        })
+        });
+        describe('check delete event stream', (): void => {
+            let nextSpy: sinon.SinonSpy;
+            before((): void => {
+                nextSpy = sandbox.spy();
+            });
+            it(`should emit 'del' events`, (done: Done): void => {
+                testCache.eventObservable
+                    .pipe(tap({
+                        complete: (): void => {
+                            expect(nextSpy.callCount).to.equal(3);
+                            expect(nextSpy.args).to.deep.equal([
+                                [{ key: '1', type: 'update', location: { id: '1' } }],
+                                [{ key: '2', type: 'update', location: { id: '2' } }],
+                                [{ key: '1', type: 'delete', location: { id: '1' } }],
+                            ]);
+                        },
+                    }))
+                    .subscribe(nextSpy, done, done);
+                testCache.update({ id: '1' } as any);
+                testCache.update({ id: '2' } as any);
+                testCache.update({ id: '1', isDeleted: true } as any);
+                testCache.close();
+            });
+        });
     });
 });

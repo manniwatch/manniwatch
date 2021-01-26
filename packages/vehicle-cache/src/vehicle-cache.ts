@@ -1,32 +1,49 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
+ */
+
 import { IVehicleLocation, VehicleLocations } from '@manniwatch/api-types';
 import * as NodeCache from 'node-cache';
 import { Observable, Subject } from 'rxjs';
 import { share } from 'rxjs/operators';
 
-export interface CacheEvent {
-    type: 'delete' | 'update';
-    location: VehicleLocations;
+export enum CacheEventType {
+    DELETE = 'delete',
+    UPDATE = 'update',
+}
+export interface ICacheEvent {
+    key: string;
+    type: CacheEventType;
+    location?: VehicleLocations;
 }
 export class VehicleCache {
     private readonly nodeCache: NodeCache;
-    private readonly eventSubject: Subject<CacheEvent>;
-    public readonly eventObservable: Observable<CacheEvent>;
+    private readonly eventSubject: Subject<ICacheEvent>;
+    public readonly eventObservable: Observable<ICacheEvent>;
     private isClosed: boolean = false;
     public constructor(opts?: NodeCache.Options) {
         this.nodeCache = new NodeCache(opts);
         this.eventSubject = new Subject();
         this.eventObservable = this.eventSubject
             .pipe(share());
-        this.nodeCache.on('set', (item: CacheEvent): void => {
-            this.eventSubject.next(item);
+        this.nodeCache.on('set', (key: string, value: VehicleLocations): void => {
+            this.eventSubject.next({
+                key,
+                location: value,
+                type: CacheEventType.UPDATE,
+            });
         });
-        this.nodeCache.on('del', (item: CacheEvent): void => {
-            this.eventSubject.next(item);
+        this.nodeCache.on('del', (key: string, value: VehicleLocations): void => {
+            this.eventSubject.next({
+                key,
+                location: value,
+                type: CacheEventType.DELETE,
+            });
         });
     }
 
     private assertClosed(): void {
-        if (this.isClosed === true) {
+        if (this.isClosed) {
             throw new Error('The cache has been closed');
         }
     }
@@ -65,7 +82,7 @@ export class VehicleCache {
     public getState(): IVehicleLocation[] {
         this.assertClosed();
         const vehicles: { [key: string]: IVehicleLocation } = this.nodeCache.mget<IVehicleLocation>(this.nodeCache.keys());
-        return Object.entries(vehicles).map(vehicle => vehicle[1]);
+        return Object.entries(vehicles).map((vehicle: [string, IVehicleLocation]): IVehicleLocation => vehicle[1]);
     }
 
     public close(): void {
