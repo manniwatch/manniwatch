@@ -8,10 +8,11 @@ export interface CacheEvent {
     location: VehicleLocations;
 }
 export class VehicleCache {
-    private nodeCache: NodeCache;
-    private eventSubject: Subject<CacheEvent>;
+    private readonly nodeCache: NodeCache;
+    private readonly eventSubject: Subject<CacheEvent>;
     public readonly eventObservable: Observable<CacheEvent>;
-    public constructor(opts: NodeCache.Options) {
+    private isClosed: boolean = false;
+    public constructor(opts?: NodeCache.Options) {
         this.nodeCache = new NodeCache(opts);
         this.eventSubject = new Subject();
         this.eventObservable = this.eventSubject
@@ -24,7 +25,14 @@ export class VehicleCache {
         });
     }
 
+    private assertClosed(): void {
+        if (this.isClosed === true) {
+            throw new Error('The cache has been closed');
+        }
+    }
+
     public update(location: VehicleLocations): void {
+        this.assertClosed();
         if (location.isDeleted === true) {
             this.nodeCache.del(location.id);
         } else {
@@ -33,6 +41,7 @@ export class VehicleCache {
     }
 
     public updateMultiple(locations: VehicleLocations[]): void {
+        this.assertClosed();
         const deletedLocations: VehicleLocations[] = [];
         const updateLocations: VehicleLocations[] = [];
         locations.forEach((location: VehicleLocations): void => {
@@ -54,8 +63,14 @@ export class VehicleCache {
     }
 
     public getState(): IVehicleLocation[] {
+        this.assertClosed();
         const vehicles: { [key: string]: IVehicleLocation } = this.nodeCache.mget<IVehicleLocation>(this.nodeCache.keys());
         return Object.entries(vehicles).map(vehicle => vehicle[1]);
     }
 
+    public close(): void {
+        this.nodeCache.close();
+        this.eventSubject.complete();
+        this.isClosed = true;
+    }
 }
