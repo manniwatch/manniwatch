@@ -6,3 +6,6 @@ export {
     intervalVehicleLocationPoll,
     QueryFactory,
 } from './interval-vehicle-location-poll';
+export {
+    VehicleCache,
+} from './vehicle-cache';
