@@ -67,6 +67,22 @@ describe('vehicle-cache', (): void => {
                 testCache.update({ id: '1', isDeleted: true } as any);
                 testCache.close();
             });
+            it(`should emit 'del' events correctly for multi update`, (done: Done): void => {
+                testCache.eventObservable
+                    .pipe(tap({
+                        complete: (): void => {
+                            expect(nextSpy.callCount).to.equal(3);
+                            expect(nextSpy.args).to.deep.equal([
+                                [{ key: '1', type: 'update', location: { id: '1' } }],
+                                [{ key: '2', type: 'update', location: { id: '2' } }],
+                                [{ key: '1', type: 'delete', location: { id: '1' } }],
+                            ]);
+                        },
+                    }))
+                    .subscribe(nextSpy, done, done);
+                testCache.updateMultiple([{ id: '1' }, { id: '2' }, { id: '1', isDeleted: true }] as any[]);
+                testCache.close();
+            });
         });
     });
 });
