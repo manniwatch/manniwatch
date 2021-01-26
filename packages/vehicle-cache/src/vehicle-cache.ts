@@ -75,7 +75,7 @@ export class VehicleCache {
                     val: loc,
                 };
             }));
-        this.nodeCache.del(updateLocations
+        this.nodeCache.del(deletedLocations
             .map((loc: VehicleLocations): string => loc.id));
     }
 
