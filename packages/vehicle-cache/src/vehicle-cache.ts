@@ -16,12 +16,15 @@ export interface ICacheEvent {
     type: CacheEventType;
     location?: VehicleLocations;
 }
+
+type ModifiedCacheOptions = Omit<NodeCache.Options, 'enableLegacyCallbacks'>;
+
 export class VehicleCache {
     private readonly nodeCache: NodeCache;
     private readonly eventSubject: Subject<ICacheEvent>;
     public readonly eventObservable: Observable<ICacheEvent>;
     private isClosed: boolean = false;
-    public constructor(opts?: NodeCache.Options) {
+    public constructor(opts?: ModifiedCacheOptions) {
         this.nodeCache = new NodeCache(opts);
         this.eventSubject = new Subject();
         this.eventObservable = this.eventSubject
