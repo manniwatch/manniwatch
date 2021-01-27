@@ -52,7 +52,7 @@
     "express": "~4.17.1"
   },
   "dependencies": {
-    "@manniwatch/api-client": "^0.19.1",
+    "@manniwatch/api-client": "^0.19.2",
     "rxjs": "~6.6.3",
     "socket.io": "~3.1.0"
   }
