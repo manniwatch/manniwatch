@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.3](https://github.com/manniwatch/manniwatch/compare/v0.19.2...v0.19.3) (2021-01-27)
+
+
+### Bug Fixes
+
+* **deps:** fix [@manniwatch](https://github.com/manniwatch) dependency versions ([#1442](https://github.com/manniwatch/manniwatch/issues/1442)) ([21203aa](https://github.com/manniwatch/manniwatch/commit/21203aa95bfb251b77eae640b94783e69fb8eb9b))
+
+
+
+
+
+
 ## [0.19.2](https://github.com/manniwatch/manniwatch/compare/v0.19.1...v0.19.2) (2021-01-25)
 
 **Note:** Version bump only for package @manniwatch/client-ng

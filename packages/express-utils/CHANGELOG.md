@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.3](https://github.com/manniwatch/manniwatch/compare/v0.19.2...v0.19.3) (2021-01-27)
+
+**Note:** Version bump only for package @manniwatch/express-utils
+
+
+
+
+
+
 ## [0.19.2](https://github.com/manniwatch/manniwatch/compare/v0.19.1...v0.19.2) (2021-01-25)
 
 **Note:** Version bump only for package @manniwatch/express-utils
