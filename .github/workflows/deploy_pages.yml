@@ -35,6 +35,7 @@ jobs:
           echo "${{ secrets.APP_DEPLOY_ENVIRONMENT }}" > "./packages/client-ng/src/environments/environment.ts"
           echo "${{ secrets.APP_DEPLOY_ENVIRONMENT }}" > "./packages/client-ng/src/environments/environment.prod.ts"
           npx lerna run build --scope @manniwatch/client-ng --include-dependencies
+          npx lerna exec --scope=@manniwatch/client-ng -- ng build --prod --aot
           cp ./packages/client-ng/dist/manniwatch/index.html ./packages/client-ng/dist/manniwatch/404.html
       - name: Install SSH Client
         uses: webfactory/ssh-agent@v0.4.1
