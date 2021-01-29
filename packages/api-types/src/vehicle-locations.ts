@@ -89,6 +89,16 @@ export interface IVehicleLocation extends IBaseVehicleLocation {
     tripId: string;
 }
 
+/**
+ * Helper type extending VehicleLocation by a lastUpdate item
+ */
+export type TimestampVehicleLocation = VehicleLocations & {
+    /**
+     * lastUpdate attribute copied from server response
+     */
+    lastUpdate: number;
+};
+
 export type VehicleLocations = IDeletedVehicleLocation | IVehicleLocation;
 
 export interface IVehicleLocationList {
