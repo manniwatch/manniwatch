@@ -17,7 +17,7 @@ message VehicleLocation {
         optional string tripId = 5;
     }
     oneof type {
-        required bool isDeleted = 3 [default = true];
-        required Details details = 4;
+        bool isDeleted = 3 [default = true];
+        Details details = 4;
     }
 }
