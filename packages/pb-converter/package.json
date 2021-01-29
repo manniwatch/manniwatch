@@ -50,7 +50,7 @@
     "@rollup/plugin-commonjs": "17.0.0",
     "@rollup/plugin-node-resolve": "11.1.0",
     "@rollup/plugin-typescript": "8.1.0",
-    "rollup": "2.38.0"
+    "rollup": "2.38.1"
   },
   "dependencies": {
     "@manniwatch/api-types": "^0.19.2",
