@@ -13,13 +13,12 @@ export const pollVehicles = (client: ManniWatchApiClient, positionType: Position
                         status: PollResultStatus.SUCCESS,
                         result: response,
                     }
-                }),
-                    catchError((err: any): Observable<IPollError> => {
-                        return of({
-                            status: PollResultStatus.ERROR,
-                            error: err,
-                        });
-                    }))
+                }), catchError((err: any): Observable<IPollError> => {
+                    return of({
+                        status: PollResultStatus.ERROR,
+                        error: err,
+                    });
+                }))
         }));
     };
 }
