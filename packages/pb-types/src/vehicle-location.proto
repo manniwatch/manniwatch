@@ -7,8 +7,8 @@ import public "vehicle-category.proto";
  * Object containing information about a vehicles location
  */
 message VehicleLocation {
-    string id = 1;
-    int64 lastUpdate = 2;
+    required string id = 1;
+    required int64 lastUpdate = 2;
     message Details{
         optional Location location = 1;
         optional VehicleCategory category = 2 [default = OTHER];
@@ -17,7 +17,7 @@ message VehicleLocation {
         optional string tripId = 5;
     }
     oneof type {
-        bool isDeleted = 3 [default = true];
-        Details details = 4;
+        required bool isDeleted = 3 [default = true];
+        required Details details = 4;
     }
 }
