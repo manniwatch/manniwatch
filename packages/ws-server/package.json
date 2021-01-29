@@ -53,6 +53,7 @@
   },
   "dependencies": {
     "@manniwatch/api-client": "^0.19.2",
+    "@manniwatch/api-types": "^0.19.2",
     "@manniwatch/vehicle-cache": "^0.19.2",
     "rxjs": "~6.6.3",
     "socket.io": "~3.1.0"
