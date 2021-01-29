@@ -89,6 +89,10 @@ export interface IVehicleLocation extends IBaseVehicleLocation {
     tripId: string;
 }
 
+export type TimestampVehicleLocation = VehicleLocations & {
+    lastUpdate: number;
+};
+
 export type VehicleLocations = IDeletedVehicleLocation | IVehicleLocation;
 
 export interface IVehicleLocationList {
