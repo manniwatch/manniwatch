@@ -1,4 +1,4 @@
-import { from, NEVER, Observable, of, OperatorFunction } from "rxjs";
+import { from, Observable, of, OperatorFunction } from "rxjs";
 import { catchError, map, mergeMap } from "rxjs/operators";
 import { ManniWatchApiClient } from "@manniwatch/api-client";
 import { IPollError, IPollResponse, PollResult, PollResultStatus } from "./types";

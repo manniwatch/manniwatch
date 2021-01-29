@@ -2,21 +2,22 @@
  * Source https://github.com/manniwatch/manniwatch Package: ws-server
  */
 
+import { Subscription } from 'rxjs';
 import * as socketio from 'socket.io';
-export const handleSocket = (socket: socketio.Socket): void => {
-    console.log('Socket established', socket.id);
-    let timerId: any;
+import { VehicleCache } from '../../vehicle-cache/dist';
+export const handleSocket = (socket: socketio.Socket,
+    cacheClient: VehicleCache): void => {
+    let cacheSubscription: Subscription;
     socket.on('connect', (): void => {
-        console.log(socket.connected); // true
-        timerId = setInterval((): void => {
-            socket.send('yolo');
-        }, 1000);
-    });
-    socket.on('event', (data: any): void => {
-
+        cacheSubscription = cacheClient
+            .eventObservable
+            .subscribe({
+                next: (stat): void => {
+                    socket.send(stat);
+                }
+            })
     });
     socket.on('disconnect', (reason: string): void => {
-        console.log('disconnected', reason);
-        clearInterval(timerId);
+        cacheSubscription.unsubscribe();
     });
 };
