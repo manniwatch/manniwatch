@@ -21,6 +21,8 @@
     },
     "dependencies": {
         "@manniwatch/api-types": "^0.19.2",
+        "@manniwatch/pb-converter": "^0.19.2",
+        "@manniwatch/pb-types": "^0.19.2",
         "@manniwatch/vehicle-location-diff": "^0.19.2",
         "node-cache": "~5.1.2",
         "rxjs": "~6.6.3"
