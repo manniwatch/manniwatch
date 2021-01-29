@@ -20,6 +20,7 @@
         "prepublishOnly": "npm run test && npm run docs && npm run build"
     },
     "dependencies": {
+        "@manniwatch/api-client": "^0.19.2",
         "@manniwatch/api-types": "^0.19.2",
         "@manniwatch/pb-converter": "^0.19.2",
         "@manniwatch/pb-types": "^0.19.2",
