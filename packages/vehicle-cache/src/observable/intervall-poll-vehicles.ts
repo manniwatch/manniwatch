@@ -1,8 +1,11 @@
-import { ManniWatchApiClient } from "@manniwatch/api-client";
-import { IVehicleLocationList, PositionType } from "@manniwatch/api-types";
-import { concat, Observable, of, Subject, Subscriber, Subscription } from "rxjs";
-import { delay, switchMap, tap } from "rxjs/operators";
-import { convertPollResult, PollResult, } from "../operators";
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
+ */
+
+import { IVehicleLocationList } from '@manniwatch/api-types';
+import { concat, of, Observable, Subject, Subscriber, Subscription } from 'rxjs';
+import { delay, switchMap, tap } from 'rxjs/operators';
+import { convertPollResult, PollResult } from '../operators';
 
 export type QueryFactory = (lastUpdate: number) => Observable<IVehicleLocationList>;
 export const intervallPollVehicles = (queryFactory: QueryFactory, refreshInterval: number = 60000): Observable<PollResult> => {
@@ -21,9 +24,9 @@ export const intervallPollVehicles = (queryFactory: QueryFactory, refreshInterva
                         },
                         complete: (): void => {
                             updateSubject.next(lastUpdate);
-                        }
+                        },
                     }), convertPollResult());
             }))
             .subscribe(subscriber);
     });
-}
+};

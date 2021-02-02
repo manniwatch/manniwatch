@@ -12,14 +12,13 @@ import * as sinon from 'sinon';
 import { PollResult } from '../operators';
 import { intervallPollVehicles } from './intervall-poll-vehicles';
 
-
 const testParameter: any[] = [];
 [undefined, 1000].forEach((lastUpdate: any): any => {
     ['RAW', 'CORRECT', undefined].forEach((queryType: string): any => {
         testParameter.push({
-            lastUpdate: lastUpdate,
+            lastUpdate,
             type: queryType,
-        })
+        });
     });
 });
 
@@ -27,23 +26,23 @@ const testResponses: any = {
     d: {
         lastUpdate: 1000,
         vehicles: [{
-            id: '1'
+            id: '1',
         }],
     },
     e: {
         lastUpdate: 2000,
         vehicles: [{
-            id: '2'
+            id: '2',
         }],
     },
     f: {
         lastUpdate: 3000,
         vehicles: [{
-            id: '3'
+            id: '3',
         }, {
-            id: '4'
+            id: '4',
         }],
-    }
+    },
 };
 console.log(testParameter);
 describe('observable/intervall-poll-vehicles', (): void => {
@@ -81,7 +80,7 @@ describe('observable/intervall-poll-vehicles', (): void => {
                 const queryFacStub: sinon.SinonStub = sandbox.stub();
                 const coldTest: Observable<IVehicleLocationList> = cold<IVehicleLocationList>('---d--e|', testResponses);
                 queryFacStub.returns(coldTest);
-                let testObservable: Observable<PollResult> = intervallPollVehicles(queryFacStub, 100);
+                const testObservable: Observable<PollResult> = intervallPollVehicles(queryFacStub, 100);
                 expectObservable(testObservable, unsub).toBe('17ms a--b 103ms a--b 103ms a--b', testValues);
                 flush();
                 expect(queryFacStub.callCount).to.equal(3);
@@ -102,14 +101,14 @@ describe('observable/intervall-poll-vehicles', (): void => {
                     b: {
                         error: testError,
                         type: 'error',
-                    }
+                    },
                 };
                 const queryFacStub: sinon.SinonStub = sandbox.stub();
                 const coldTest: Observable<IVehicleLocationList> = cold<IVehicleLocationList>('---d--#',
                     testResponses,
                     testError);
                 queryFacStub.returns(coldTest);
-                let testObservable: Observable<PollResult> = intervallPollVehicles(queryFacStub, 100);
+                const testObservable: Observable<PollResult> = intervallPollVehicles(queryFacStub, 100);
                 expectObservable(testObservable, unsub).toBe('17ms a--b 102ms a--b 102ms a--b', testValues);
                 flush();
                 expect(queryFacStub.callCount).to.equal(3);
