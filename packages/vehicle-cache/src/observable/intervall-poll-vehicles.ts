@@ -4,12 +4,6 @@ import { concat, Observable, of, Subject, Subscriber, Subscription } from "rxjs"
 import { delay, switchMap, tap } from "rxjs/operators";
 import { convertPollResult, PollResult, } from "../operators";
 
-export interface IPollSettings {
-    client: ManniWatchApiClient,
-    type?: PositionType,
-    refreshInterval?: number
-}
-
 export type QueryFactory = (lastUpdate: number) => Observable<IVehicleLocationList>;
 export const intervallPollVehicles = (queryFactory: QueryFactory, refreshInterval: number = 60000): Observable<PollResult> => {
     return new Observable<PollResult>((subscriber: Subscriber<PollResult>): Subscription => {
