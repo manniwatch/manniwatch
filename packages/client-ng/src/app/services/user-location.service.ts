@@ -15,42 +15,42 @@ export class UserLocationService {
         return (navigator.geolocation) ? true : false;
     }
 
-    public get location(): Position {
+    public get location(): GeolocationPosition {
         return this.locationSubject.value;
     }
-    public get locationErrorObservable(): Observable<PositionError> {
+    public get locationErrorObservable(): Observable<GeolocationPositionError> {
         return this.locationErrorSubject.asObservable();
     }
-    public get locationObservable(): Observable<Position> {
+    public get locationObservable(): Observable<GeolocationPosition> {
         return this.locationSubject.asObservable();
     }
 
-    private locationErrorSubject: BehaviorSubject<PositionError> = new BehaviorSubject(undefined);
+    private locationErrorSubject: BehaviorSubject<GeolocationPositionError> = new BehaviorSubject(undefined);
 
-    private locationSubject: BehaviorSubject<Position> = new BehaviorSubject(undefined);
+    private locationSubject: BehaviorSubject<GeolocationPosition> = new BehaviorSubject(undefined);
     public constructor() {
         this.locationErrorObservable
             .pipe(debounceTime(30000),
-                mergeMap((val: PositionError): Observable<Position> =>
+                mergeMap((val: GeolocationPositionError): Observable<GeolocationPosition> =>
                     this.createPositionRequest()),
                 catchError((err: any): Observable<any> => {
                     this.locationErrorSubject.next(err);
                     return EMPTY;
                 }))
-            .subscribe((val: Position): void => {
+            .subscribe((val: GeolocationPosition): void => {
                 this.locationErrorSubject.next(undefined);
                 this.locationSubject.next(val);
             });
     }
 
-    public createPositionRequest(timeout: number = 10000, highAccuracy: boolean = false): Observable<Position> {
-        return new Observable<any>((subscriber: Subscriber<Position>): void => {
+    public createPositionRequest(timeout: number = 10000, highAccuracy: boolean = false): Observable<GeolocationPosition> {
+        return new Observable<any>((subscriber: Subscriber<GeolocationPosition>): void => {
 
-            const geoSuccess: (position: Position) => void = (position: Position): void => {
+            const geoSuccess: (position: GeolocationPosition) => void = (position: GeolocationPosition): void => {
                 subscriber.next(position);
                 subscriber.complete();
             };
-            const geoError: (error: PositionError) => void = (error: PositionError): void => {
+            const geoError: (error: GeolocationPositionError) => void = (error: GeolocationPositionError): void => {
                 subscriber.error(error);
             };
             navigator.geolocation.getCurrentPosition(geoSuccess, geoError, {
