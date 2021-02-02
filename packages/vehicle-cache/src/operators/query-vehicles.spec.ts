@@ -6,20 +6,19 @@ import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { IVehicleLocationList } from '@manniwatch/api-types';
 import { expect } from 'chai';
 import 'mocha';
-import { Observable, of } from 'rxjs';
+import { of, Observable } from 'rxjs';
 import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
 import * as sinon from 'sinon';
 import { queryVehiclesOperator } from './query-vehicles';
 
-
 const testParameter: any[] = [];
 [undefined, 1000].forEach((lastUpdate: any): any => {
     ['RAW', 'CORRECT', undefined].forEach((queryType: string): any => {
         testParameter.push({
-            lastUpdate: lastUpdate,
+            lastUpdate,
             type: queryType,
-        })
+        });
     });
 });
 
@@ -27,30 +26,29 @@ const testResponses: any = {
     d: {
         lastUpdate: 1000,
         vehicles: [{
-            id: '1'
+            id: '1',
         }],
     },
     e: {
         lastUpdate: 2000,
         vehicles: [{
-            id: '2'
+            id: '2',
         }],
     },
     f: {
         lastUpdate: 3000,
         vehicles: [{
-            id: '3'
+            id: '3',
         }, {
-            id: '4'
+            id: '4',
         }],
-    }
+    },
 };
-console.log(testParameter);
 const testSources: any = {
     d: testParameter[0],
     e: testParameter[1],
     f: testParameter[2],
-}
+};
 describe('operators/query-vehicles', (): void => {
     describe('queryVehiclesOperator', (): void => {
         let testScheduler: TestScheduler;

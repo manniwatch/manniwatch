@@ -17,23 +17,23 @@ describe('operators/convert-poll-result', (): void => {
             d: {
                 lastUpdate: 1000,
                 vehicles: [{
-                    id: '1'
+                    id: '1',
                 }],
             },
             e: {
                 lastUpdate: 2000,
                 vehicles: [{
-                    id: '2'
+                    id: '2',
                 }],
             },
             f: {
                 lastUpdate: 3000,
                 vehicles: [{
-                    id: '3'
+                    id: '3',
                 }, {
-                    id: '4'
+                    id: '4',
                 }],
-            }
+            },
         };
         let testScheduler: TestScheduler;
         let sandbox: sinon.SinonSandbox;

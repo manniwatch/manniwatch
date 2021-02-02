@@ -84,8 +84,10 @@ export class VehicleCache {
 
     public getState(): mannitypes.IVehicleLocation[] {
         this.assertClosed();
-        const vehicles: { [key: string]: mannitypes.IVehicleLocation } = this.nodeCache.mget<mannitypes.IVehicleLocation>(this.nodeCache.keys());
-        return Object.entries(vehicles).map((vehicle: [string, mannitypes.IVehicleLocation]): mannitypes.IVehicleLocation => vehicle[1]);
+        const vehicles: { [key: string]: mannitypes.IVehicleLocation } = this.
+            nodeCache.mget<mannitypes.IVehicleLocation>(this.nodeCache.keys());
+        return Object.entries(vehicles)
+            .map((vehicle: [string, mannitypes.IVehicleLocation]): mannitypes.IVehicleLocation => vehicle[1]);
     }
 
     public close(): void {

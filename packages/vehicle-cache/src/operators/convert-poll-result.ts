@@ -1,16 +1,19 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
+ */
 
-import { IVehicleLocationList } from "@manniwatch/api-types";
-import { Observable, of, OperatorFunction } from "rxjs";
-import { catchError, map } from "rxjs/operators";
+import { IVehicleLocationList } from '@manniwatch/api-types';
+import { of, Observable, OperatorFunction } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 export enum PollResultStats {
-    SUCCESS = "success",
-    TIMEOUT = "timeout",
-    ERROR = "error"
+    SUCCESS = 'success',
+    TIMEOUT = 'timeout',
+    ERROR = 'error',
 }
 export type PollResult = {
     type: PollResultStats.SUCCESS,
-    result: IVehicleLocationList
+    result: IVehicleLocationList,
 } | {
     type: PollResultStats.ERROR,
     error: any,
@@ -21,14 +24,14 @@ export const convertPollResult = (): OperatorFunction<IVehicleLocationList, Poll
         return source
             .pipe(map((inputList: IVehicleLocationList): PollResult => {
                 return {
-                    type: PollResultStats.SUCCESS,
                     result: inputList,
-                }
+                    type: PollResultStats.SUCCESS,
+                };
             }), catchError((error: any): Observable<PollResult> => {
                 return of({
-                    type: PollResultStats.ERROR,
                     error,
+                    type: PollResultStats.ERROR,
                 });
             }));
     };
-}
+};

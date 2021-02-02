@@ -16,14 +16,14 @@ export const intervallPollVehicles = (queryFactory: QueryFactory, refreshInterva
                 let lastUpdate: number = timestamp;
                 return queryFactory(timestamp)
                     .pipe(tap({
-                        next: (locs: IVehicleLocationList): void => {
-                            lastUpdate = locs.lastUpdate;
+                        complete: (): void => {
+                            updateSubject.next(lastUpdate);
                         },
                         error: (): void => {
                             updateSubject.next(lastUpdate);
                         },
-                        complete: (): void => {
-                            updateSubject.next(lastUpdate);
+                        next: (locs: IVehicleLocationList): void => {
+                            lastUpdate = locs.lastUpdate;
                         },
                     }), convertPollResult());
             }))
