@@ -10,7 +10,7 @@ import { Observable, of } from 'rxjs';
 import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
 import * as sinon from 'sinon';
-import { queryVehicles } from './query-vehicles';
+import { queryVehiclesOperator } from './query-vehicles';
 
 
 const testParameter: any[] = [];
@@ -52,7 +52,7 @@ const testSources: any = {
     f: testParameter[2],
 }
 describe('operators/query-vehicles', (): void => {
-    describe('queryVehicles', (): void => {
+    describe('queryVehiclesOperator', (): void => {
         let testScheduler: TestScheduler;
         let sandbox: sinon.SinonSandbox;
         let testApiClient: sinon.SinonStubbedInstance<ManniWatchApiClient>;
@@ -107,7 +107,7 @@ describe('operators/query-vehicles', (): void => {
                             e: testParameter[4],
                             f: testParameter[5],
                         })
-                            .pipe(queryVehicles(testApiClient as any));
+                            .pipe(queryVehiclesOperator(testApiClient as any));
                     // Omitting this arg may crash the test suite.
                     const unsub: string = '--------------^-------------!';
                     const testValues: any = {
@@ -127,7 +127,7 @@ describe('operators/query-vehicles', (): void => {
                     const { expectObservable, cold, flush } = helpers;
                     const foreverStream$: Observable<IVehicleLocationList> =
                         cold<IVehicleLocationList>('---d--e---f---|', testSources)
-                            .pipe(queryVehicles(testApiClient as any));
+                            .pipe(queryVehiclesOperator(testApiClient as any));
                     // Omitting this arg may crash the test suite.
                     const unsub: string = '--------------^-------------!';
                     const testValues: any = {
@@ -145,7 +145,7 @@ describe('operators/query-vehicles', (): void => {
                     const testError: Error = new Error('This is a test error');
                     const foreverStream$: Observable<IVehicleLocationList> =
                         cold<IVehicleLocationList>('---d--e--#-f---|', testSources, testError)
-                            .pipe(queryVehicles(testApiClient as any));
+                            .pipe(queryVehiclesOperator(testApiClient as any));
                     // Omitting this arg may crash the test suite.
                     const unsub: string = '--------------^----------------!';
                     const testValues: any = {
@@ -163,7 +163,7 @@ describe('operators/query-vehicles', (): void => {
                     const { expectObservable, hot } = helpers;
                     const foreverStream$: Observable<IVehicleLocationList> =
                         hot<IVehicleLocationList>('---d--e---f---|', testSources)
-                            .pipe(queryVehicles(testApiClient as any));
+                            .pipe(queryVehiclesOperator(testApiClient as any));
                     // Omitting this arg may crash the test suite.
                     const unsub: string = '-------^-------------!';
                     const testValues: any = {
@@ -178,7 +178,7 @@ describe('operators/query-vehicles', (): void => {
                     const testError: Error = new Error('This is a test error');
                     const foreverStream$: Observable<IVehicleLocationList> =
                         hot<IVehicleLocationList>('---d--e--#-f---|', testSources, testError)
-                            .pipe(queryVehicles(testApiClient as any));
+                            .pipe(queryVehiclesOperator(testApiClient as any));
                     // Omitting this arg may crash the test suite.
                     const unsub: string = '-----^-------------!';
                     const testValues: any = {

@@ -1,0 +1,1 @@
+export { IQuerySettings } from './query-settings';
