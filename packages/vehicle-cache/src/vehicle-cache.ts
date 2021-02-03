@@ -2,19 +2,18 @@
  * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
  */
 
-import { manniwatch as mannitypes } from '@manniwatch/pb-types';
 import * as NodeCache from 'node-cache';
 import { Observable, Subject } from 'rxjs';
 import { share } from 'rxjs/operators';
+import { CacheEntry } from './types';
 
 export enum CacheEventType {
     DELETE = 'delete',
     UPDATE = 'update',
 }
 export interface ICacheEvent {
-    key: string;
     type: CacheEventType;
-    location?: mannitypes.IVehicleLocation;
+    location?: CacheEntry;
 }
 
 type ModifiedCacheOptions = Omit<NodeCache.Options, 'enableLegacyCallbacks'>;
@@ -29,16 +28,14 @@ export class VehicleCache {
         this.eventSubject = new Subject();
         this.eventObservable = this.eventSubject
             .pipe(share());
-        this.nodeCache.on('set', (key: string, value: mannitypes.IVehicleLocation): void => {
+        this.nodeCache.on('set', (key: string, value: CacheEntry): void => {
             this.eventSubject.next({
-                key,
                 location: value,
                 type: CacheEventType.UPDATE,
             });
         });
-        this.nodeCache.on('del', (key: string, value: mannitypes.IVehicleLocation): void => {
+        this.nodeCache.on('del', (key: string, value: CacheEntry): void => {
             this.eventSubject.next({
-                key,
                 location: value,
                 type: CacheEventType.DELETE,
             });
@@ -51,7 +48,7 @@ export class VehicleCache {
         }
     }
 
-    public update(location: mannitypes.IVehicleLocation): void {
+    public update(location: CacheEntry): void {
         this.assertClosed();
         if (location.isDeleted === true) {
             this.nodeCache.del(location.id);
@@ -60,11 +57,11 @@ export class VehicleCache {
         }
     }
 
-    public updateMultiple(locations: mannitypes.IVehicleLocation[]): void {
+    public updateMultiple(locations: CacheEntry[]): void {
         this.assertClosed();
-        const deletedLocations: mannitypes.IVehicleLocation[] = [];
-        const updateLocations: mannitypes.IVehicleLocation[] = [];
-        locations.forEach((location: mannitypes.IVehicleLocation): void => {
+        const deletedLocations: CacheEntry[] = [];
+        const updateLocations: CacheEntry[] = [];
+        locations.forEach((location: CacheEntry): void => {
             if (location.isDeleted === true) {
                 deletedLocations.push(location);
             } else {
@@ -72,22 +69,22 @@ export class VehicleCache {
             }
         });
         this.nodeCache.mset(updateLocations
-            .map((loc: mannitypes.IVehicleLocation): NodeCache.ValueSetItem<mannitypes.IVehicleLocation> => {
+            .map((loc: CacheEntry): NodeCache.ValueSetItem<CacheEntry> => {
                 return {
                     key: loc.id,
                     val: loc,
                 };
             }));
         this.nodeCache.del(deletedLocations
-            .map((loc: mannitypes.IVehicleLocation): string => loc.id));
+            .map((loc: CacheEntry): string => loc.id));
     }
 
-    public getState(): mannitypes.IVehicleLocation[] {
+    public getState(): CacheEntry[] {
         this.assertClosed();
-        const vehicles: { [key: string]: mannitypes.IVehicleLocation } = this.
-            nodeCache.mget<mannitypes.IVehicleLocation>(this.nodeCache.keys());
+        const vehicles: { [key: string]: CacheEntry } = this.
+            nodeCache.mget<CacheEntry>(this.nodeCache.keys());
         return Object.entries(vehicles)
-            .map((vehicle: [string, mannitypes.IVehicleLocation]): mannitypes.IVehicleLocation => vehicle[1]);
+            .map((vehicle: [string, CacheEntry]): CacheEntry => vehicle[1]);
     }
 
     public close(): void {
