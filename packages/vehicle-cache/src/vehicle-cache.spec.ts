@@ -55,9 +55,9 @@ describe('vehicle-cache', (): void => {
                         complete: (): void => {
                             expect(nextSpy.callCount).to.equal(3);
                             expect(nextSpy.args).to.deep.equal([
-                                [{ key: '1', type: 'update', location: { id: '1' } }],
-                                [{ key: '2', type: 'update', location: { id: '2' } }],
-                                [{ key: '1', type: 'delete', location: { id: '1' } }],
+                                [{ type: 'update', location: { id: '1' } }],
+                                [{ type: 'update', location: { id: '2' } }],
+                                [{ type: 'delete', location: { id: '1' } }],
                             ]);
                         },
                     }))
@@ -73,9 +73,9 @@ describe('vehicle-cache', (): void => {
                         complete: (): void => {
                             expect(nextSpy.callCount).to.equal(3);
                             expect(nextSpy.args).to.deep.equal([
-                                [{ key: '1', type: 'update', location: { id: '1' } }],
-                                [{ key: '2', type: 'update', location: { id: '2' } }],
-                                [{ key: '1', type: 'delete', location: { id: '1' } }],
+                                [{ type: 'update', location: { id: '1' } }],
+                                [{ type: 'update', location: { id: '2' } }],
+                                [{ type: 'delete', location: { id: '1' } }],
                             ]);
                         },
                     }))
