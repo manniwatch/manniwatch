@@ -7,3 +7,4 @@ export {
     convertPollResult,
     PollResult,
 } from './convert-poll-result';
+export { convertToCacheEntry } from './convert-to-cache-entry';
