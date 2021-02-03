@@ -1,6 +1,6 @@
 import { from, NEVER, Observable, OperatorFunction } from "rxjs";
 import { catchError, mergeMap } from "rxjs/operators";
-import { ManniWatchApiClient } from "../../api-client/dist/types";
+import { ManniWatchApiClient } from "@manniwatch/api-client";
 
 export const kk = <T>(client: ManniWatchApiClient): OperatorFunction<T, any> => {
     return (source: Observable<T>): Observable<any> => {

@@ -2,13 +2,13 @@
  * Source https://github.com/manniwatch/manniwatch Package: ws-server
  */
 
-import { map, distinctUntilChanged, flatMap, mergeMap, switchMap } from 'rxjs/operators';
+import { VehicleCache } from '@manniwatch/vehicle-cache';
+import { map, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Server as HttpServer } from 'http';
 import * as socketio from 'socket.io';
 import { handleSocket } from './socket-handler';
-import { VehicleCache } from '../../vehicle-cache/dist';
 import { ConnectionTracker } from './connection-tracker';
-import { NEVER, Observable, OperatorFunction, timer } from 'rxjs';
+import { NEVER, Observable, timer } from 'rxjs';
 
 export class ManniWatchWsServer {
     private connectionTracker: ConnectionTracker = new ConnectionTracker();

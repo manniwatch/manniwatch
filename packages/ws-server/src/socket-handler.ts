@@ -4,7 +4,7 @@
 
 import { Subscription } from 'rxjs';
 import * as socketio from 'socket.io';
-import { VehicleCache } from '../../vehicle-cache/dist';
+import { VehicleCache } from '@manniwatch/vehicle-cache';
 export const handleSocket = (socket: socketio.Socket,
     cacheClient: VehicleCache): void => {
     let cacheSubscription: Subscription;
@@ -12,6 +12,8 @@ export const handleSocket = (socket: socketio.Socket,
         cacheSubscription = cacheClient
             .eventObservable
             .subscribe({
+                error: (): void => {
+                },
                 next: (stat): void => {
                     socket.send(stat);
                 }
