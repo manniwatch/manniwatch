@@ -6,16 +6,16 @@ import { IVehicleLocationList } from '@manniwatch/api-types';
 import { of, Observable, OperatorFunction } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
-export enum PollResultStats {
+export enum PollResultStatus {
     SUCCESS = 'success',
     TIMEOUT = 'timeout',
     ERROR = 'error',
 }
 export type PollResult = {
-    type: PollResultStats.SUCCESS,
+    type: PollResultStatus.SUCCESS,
     result: IVehicleLocationList,
 } | {
-    type: PollResultStats.ERROR,
+    type: PollResultStatus.ERROR,
     error: any,
 };
 
@@ -25,12 +25,12 @@ export const convertPollResult = (): OperatorFunction<IVehicleLocationList, Poll
             .pipe(map((inputList: IVehicleLocationList): PollResult => {
                 return {
                     result: inputList,
-                    type: PollResultStats.SUCCESS,
+                    type: PollResultStatus.SUCCESS,
                 };
             }), catchError((error: any): Observable<PollResult> => {
                 return of({
                     error,
-                    type: PollResultStats.ERROR,
+                    type: PollResultStatus.ERROR,
                 });
             }));
     };
