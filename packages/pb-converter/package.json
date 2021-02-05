@@ -46,12 +46,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "devDependencies": {
-    "@rollup/plugin-commonjs": "17.1.0",
-    "@rollup/plugin-node-resolve": "11.1.1",
-    "@rollup/plugin-typescript": "8.1.1",
-    "rollup": "2.38.5"
-  },
+  "devDependencies": {},
   "dependencies": {
     "@manniwatch/api-types": "^0.19.2",
     "@manniwatch/pb-types": "^0.19.2"
