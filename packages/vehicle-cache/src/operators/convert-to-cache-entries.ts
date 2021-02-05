@@ -17,7 +17,7 @@ export const convertToCacheEntries = (): OperatorFunction<IVehicleLocationList, 
                         return Object.assign({
                             lastUpdate: inputList.lastUpdate,
                         }, loc);
-                    })
+                    });
             }));
     };
 };
