@@ -3,7 +3,7 @@
  */
 
 import { createApiProxyRouter } from '@manniwatch/api-proxy-router';
-import * as express from 'express';
+import express from 'express';
 import { Config } from './config';
 const app: express.Application = express();
 
