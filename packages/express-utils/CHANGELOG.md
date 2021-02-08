@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/manniwatch/manniwatch/compare/v0.19.3...v0.20.0) (2021-02-08)
+
+
+### Bug Fixes
+
+* **tsconfig:** set esModuleInterop to true in global config ([#1486](https://github.com/manniwatch/manniwatch/issues/1486)) ([deee0f5](https://github.com/manniwatch/manniwatch/commit/deee0f56c702e88dc8d98840e00be3cf3e64bba5))
+
+
+
+
+
+
 ## [0.19.3](https://github.com/manniwatch/manniwatch/compare/v0.19.2...v0.19.3) (2021-01-27)
 
 **Note:** Version bump only for package @manniwatch/express-utils

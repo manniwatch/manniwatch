@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/manniwatch/manniwatch/compare/v0.19.3...v0.20.0) (2021-02-08)
+
+
+### Features
+
+* **api-types:** add TimestampVehicleLocation helper type ([#1451](https://github.com/manniwatch/manniwatch/issues/1451)) ([f95cff5](https://github.com/manniwatch/manniwatch/commit/f95cff51ee2e3e6d088776c7973d8b4d30bb9c37))
+
+
+
+
+
+
 ## [0.19.2](https://github.com/manniwatch/manniwatch/compare/v0.19.1...v0.19.2) (2021-01-25)
 
 **Note:** Version bump only for package @manniwatch/api-types

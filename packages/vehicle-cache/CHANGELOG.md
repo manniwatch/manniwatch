@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/manniwatch/manniwatch/compare/v0.19.3...v0.20.0) (2021-02-08)
+
+
+### Bug Fixes
+
+* **tsconfig:** set esModuleInterop to true in global config ([#1486](https://github.com/manniwatch/manniwatch/issues/1486)) ([deee0f5](https://github.com/manniwatch/manniwatch/commit/deee0f56c702e88dc8d98840e00be3cf3e64bba5))
+
+
+### Features
+
+* **vehicle-cache:** add better cache implementation ([#1441](https://github.com/manniwatch/manniwatch/issues/1441)) ([ad3123c](https://github.com/manniwatch/manniwatch/commit/ad3123c013a88b84d22fef1965b09e80247e76da))
+* **vehicle-cache:** add overall better vehicle caching helpers ([#1458](https://github.com/manniwatch/manniwatch/issues/1458)) ([e3db4ef](https://github.com/manniwatch/manniwatch/commit/e3db4eff949141a9300d45648beba53d9316e948))
+* **vehicle-cache:** add stream integration and event exposure ([#1467](https://github.com/manniwatch/manniwatch/issues/1467)) ([ff7197b](https://github.com/manniwatch/manniwatch/commit/ff7197bdf73f50fb660687bd7d66385744ffb28b))
+
+
+
+
+
+
 ## [0.19.2](https://github.com/manniwatch/manniwatch/compare/v0.19.1...v0.19.2) (2021-01-25)
 
 **Note:** Version bump only for package @manniwatch/vehicle-cache

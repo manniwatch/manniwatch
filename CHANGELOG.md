@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/manniwatch/manniwatch/compare/v0.19.3...v0.20.0) (2021-02-08)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v11.1.1 ([1eef72a](https://github.com/manniwatch/manniwatch/commit/1eef72a1a4224a0e5e5ddfab15fccb64f689879d))
+* **deps:** update angular monorepo to v11.1.2 ([259494b](https://github.com/manniwatch/manniwatch/commit/259494b8b83f6dc367d17d8aefeb04408da66172))
+* **deps:** update angularmaterial monorepo to v11.1.1 ([88c90ef](https://github.com/manniwatch/manniwatch/commit/88c90ef4ada9209bd5c8db6c190f8316f59d009a))
+* **deps:** update angularmaterial monorepo to v11.1.2 ([96faefe](https://github.com/manniwatch/manniwatch/commit/96faefe992b554b11a21dd9336f9ecb48780e542))
+* **deps:** update dependency date-fns to v2.17.0 ([1a807b1](https://github.com/manniwatch/manniwatch/commit/1a807b1f632a7b7a9e911ebd4fb73ed4eb3023a3))
+* **pb-types:** add required id to vehicle location ([#1454](https://github.com/manniwatch/manniwatch/issues/1454)) ([3f01303](https://github.com/manniwatch/manniwatch/commit/3f0130311f63a4cc61b8427907c5665956cfbaf0))
+* **tsconfig:** set esModuleInterop to true in global config ([#1486](https://github.com/manniwatch/manniwatch/issues/1486)) ([deee0f5](https://github.com/manniwatch/manniwatch/commit/deee0f56c702e88dc8d98840e00be3cf3e64bba5))
+
+
+### Features
+
+* **api-types:** add TimestampVehicleLocation helper type ([#1451](https://github.com/manniwatch/manniwatch/issues/1451)) ([f95cff5](https://github.com/manniwatch/manniwatch/commit/f95cff51ee2e3e6d088776c7973d8b4d30bb9c37))
+* **vehicle-cache:** add better cache implementation ([#1441](https://github.com/manniwatch/manniwatch/issues/1441)) ([ad3123c](https://github.com/manniwatch/manniwatch/commit/ad3123c013a88b84d22fef1965b09e80247e76da))
+* **vehicle-cache:** add overall better vehicle caching helpers ([#1458](https://github.com/manniwatch/manniwatch/issues/1458)) ([e3db4ef](https://github.com/manniwatch/manniwatch/commit/e3db4eff949141a9300d45648beba53d9316e948))
+* **vehicle-cache:** add stream integration and event exposure ([#1467](https://github.com/manniwatch/manniwatch/issues/1467)) ([ff7197b](https://github.com/manniwatch/manniwatch/commit/ff7197bdf73f50fb660687bd7d66385744ffb28b))
+
+
+
+
+
+
 ## [0.19.3](https://github.com/manniwatch/manniwatch/compare/v0.19.2...v0.19.3) (2021-01-27)
 
 

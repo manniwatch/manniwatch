@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/manniwatch/manniwatch/compare/v0.19.3...v0.20.0) (2021-02-08)
+
+
+### Bug Fixes
+
+* **pb-types:** add required id to vehicle location ([#1454](https://github.com/manniwatch/manniwatch/issues/1454)) ([3f01303](https://github.com/manniwatch/manniwatch/commit/3f0130311f63a4cc61b8427907c5665956cfbaf0))
+
+
+
+
+
+
 ## [0.19.2](https://github.com/manniwatch/manniwatch/compare/v0.19.1...v0.19.2) (2021-01-25)
 
 **Note:** Version bump only for package @manniwatch/pb-types

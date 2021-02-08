@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/manniwatch/manniwatch/compare/v0.19.3...v0.20.0) (2021-02-08)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v11.1.1 ([1eef72a](https://github.com/manniwatch/manniwatch/commit/1eef72a1a4224a0e5e5ddfab15fccb64f689879d))
+* **deps:** update angular monorepo to v11.1.2 ([259494b](https://github.com/manniwatch/manniwatch/commit/259494b8b83f6dc367d17d8aefeb04408da66172))
+* **deps:** update angularmaterial monorepo to v11.1.1 ([88c90ef](https://github.com/manniwatch/manniwatch/commit/88c90ef4ada9209bd5c8db6c190f8316f59d009a))
+* **deps:** update angularmaterial monorepo to v11.1.2 ([96faefe](https://github.com/manniwatch/manniwatch/commit/96faefe992b554b11a21dd9336f9ecb48780e542))
+* **deps:** update dependency date-fns to v2.17.0 ([1a807b1](https://github.com/manniwatch/manniwatch/commit/1a807b1f632a7b7a9e911ebd4fb73ed4eb3023a3))
+* **tsconfig:** set esModuleInterop to true in global config ([#1486](https://github.com/manniwatch/manniwatch/issues/1486)) ([deee0f5](https://github.com/manniwatch/manniwatch/commit/deee0f56c702e88dc8d98840e00be3cf3e64bba5))
+
+
+
+
+
+
 ## [0.19.3](https://github.com/manniwatch/manniwatch/compare/v0.19.2...v0.19.3) (2021-01-27)
 
 
