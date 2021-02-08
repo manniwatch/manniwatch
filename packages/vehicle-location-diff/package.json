@@ -7,13 +7,15 @@
     "private": false,
     "scripts": {
         "build": "tsc",
+        "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
         "test": "mocha --config ../../.mocharc.yml",
         "test:watch": "mocha --config ../../.mocharc.yml --watch",
         "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
         "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
         "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json src/**/*.ts",
         "docs": "typedoc --options ../../typedoc.json",
-        "prepublishOnly": "npm run test && npm run docs && npm run build"
+        "prepublishOnly": "npm run test && npm run docs && npm run build",
+        "version": "npm run build:readme && git add README.md"
     },
     "dependencies": {
         "@manniwatch/api-types": "^0.20.0"
