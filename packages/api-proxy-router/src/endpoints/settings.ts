@@ -4,7 +4,7 @@
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import * as prom from '@manniwatch/express-utils';
-import * as express from 'express';
+import express from 'express';
 
 export const createSettingsRouter: (apiClient: ManniWatchApiClient) => express.Router =
     (apiClient: ManniWatchApiClient): express.Router => {

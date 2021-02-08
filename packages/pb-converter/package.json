@@ -12,7 +12,7 @@
     "types"
   ],
   "scripts": {
-    "build": "rollup -c && npm run build:types",
+    "build": "rollup -c ./rollup.config.js && npm run build:types",
     "build:types": "tsc --project ./tsconfig.json  -d --declarationDir dist/types --declarationMap --emitDeclarationOnly",
     "test": "mocha --config ../../.mocharc.yml",
     "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
@@ -46,12 +46,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "devDependencies": {
-    "@rollup/plugin-commonjs": "17.0.0",
-    "@rollup/plugin-node-resolve": "11.1.0",
-    "@rollup/plugin-typescript": "8.1.0",
-    "rollup": "2.38.0"
-  },
+  "devDependencies": {},
   "dependencies": {
     "@manniwatch/api-types": "^0.19.2",
     "@manniwatch/pb-types": "^0.19.2"

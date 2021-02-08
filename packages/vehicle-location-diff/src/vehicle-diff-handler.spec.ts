@@ -3,7 +3,7 @@
  */
 
 import { expect } from 'chai';
-import * as sinon from 'sinon';
+import sinon from 'sinon';
 import { vehicleMapReduce, VehicleDiffHandler, VehicleHashMap } from './vehicle-diff-handler';
 
 interface ISimpleVehicle {

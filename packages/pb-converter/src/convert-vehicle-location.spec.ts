@@ -6,7 +6,7 @@ import { IVehicleLocation } from '@manniwatch/api-types';
 import { manniwatch } from '@manniwatch/pb-types';
 import { expect } from 'chai';
 import 'mocha';
-import * as sinon from 'sinon';
+import sinon from 'sinon';
 import * as convertVehicleCategory from './convert-vehicle-category';
 import * as testObject from './convert-vehicle-location';
 const TEST_VEHICLE_LOCATION: IVehicleLocation | any = {

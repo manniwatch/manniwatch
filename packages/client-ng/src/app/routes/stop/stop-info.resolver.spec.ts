@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { from, throwError, Observable } from 'rxjs';
 import { ApiService } from 'src/app/services';
 import { StopInfoResolver } from './stop-info.resolver';
-// import * as sinon from "sinon";
+// import sinon from "sinon";
 
 describe('src/app/modules/stop/stop-info.resolver', (): void => {
     describe('StopInfoResolver', (): void => {
