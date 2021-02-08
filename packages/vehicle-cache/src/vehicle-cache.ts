@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
  */
 
-import * as NodeCache from 'node-cache';
+import NodeCache from 'node-cache';
 import { Observable, Subject } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { CacheEntry } from './types';
