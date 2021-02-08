@@ -3,7 +3,7 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import * as express from 'express';
+import express from 'express';
 import * as endpoints from './endpoints';
 
 /**

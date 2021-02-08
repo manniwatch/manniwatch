@@ -5,7 +5,7 @@
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { StopMode } from '@manniwatch/api-types';
 import * as prom from '@manniwatch/express-utils';
-import * as express from 'express';
+import express from 'express';
 import { Schema } from 'jsonschema';
 
 export const passagesSchema: Schema = {

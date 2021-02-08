@@ -9,7 +9,7 @@ import { of, Observable } from 'rxjs';
 import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { delay } from 'rxjs/operators';
 import { TestScheduler } from 'rxjs/testing';
-import * as sinon from 'sinon';
+import sinon from 'sinon';
 import { intervalVehicleLocationPoll } from './interval-vehicle-location-poll';
 
 describe('interval-vehicle-location-poll', (): void => {

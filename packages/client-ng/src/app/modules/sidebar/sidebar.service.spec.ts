@@ -6,7 +6,7 @@ import { waitForAsync, TestBed } from '@angular/core/testing';
 import { BehaviorSubject } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { SidebarService } from './sidebar.service';
-// import * as sinon from "sinon";
+// import sinon from "sinon";
 describe('src/app/services/sidebar.service', (): void => {
     describe('SidebarService', (): void => {
         let sidebarService: SidebarService;

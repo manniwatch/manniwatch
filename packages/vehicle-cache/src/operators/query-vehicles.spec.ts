@@ -9,7 +9,7 @@ import 'mocha';
 import { of, Observable } from 'rxjs';
 import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
-import * as sinon from 'sinon';
+import sinon from 'sinon';
 import { queryVehiclesOperator } from './query-vehicles';
 
 const testParameter: any[] = [];

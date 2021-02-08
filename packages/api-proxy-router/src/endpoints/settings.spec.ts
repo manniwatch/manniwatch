@@ -5,11 +5,11 @@
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import * as prom from '@manniwatch/express-utils';
 import { expect } from 'chai';
-import * as express from 'express';
+import express from 'express';
 import 'mocha';
-import * as proxyquire from 'proxyquire';
-import * as sinon from 'sinon';
-import * as supertest from 'supertest';
+import proxyquire from 'proxyquire';
+import sinon from 'sinon';
+import supertest from 'supertest';
 import { SUCCESS_RESPONSE, SUCCESS_RESPONSE_LENGTH } from './common-test.spec';
 
 describe('endpoints/settings.ts', (): void => {

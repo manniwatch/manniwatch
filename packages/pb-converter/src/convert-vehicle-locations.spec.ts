@@ -4,7 +4,7 @@
 
 import { expect } from 'chai';
 import 'mocha';
-import * as sinon from 'sinon';
+import sinon from 'sinon';
 import * as convertVehicleLocation from './convert-vehicle-location';
 import * as testObject from './convert-vehicle-locations';
 describe('convert-vehicle-locations.ts', (): void => {
