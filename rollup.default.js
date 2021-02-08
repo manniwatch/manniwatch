@@ -26,7 +26,10 @@ export default (pkg) => {
         input: 'src/index.ts',
         output,
         external: [
-            ...Object.keys(pkg.dependencies || {})
+            ...Object.keys(pkg.dependencies || {}),
+            ...Object.keys(pkg.devDependencies || {}),
+            ...Object.keys(pkg.peerDependencies || {}),
+            ...Object.keys(pkg.optionalDependencies || {}),
         ],
         plugins: [
             nodeResolve(),
@@ -36,6 +39,7 @@ export default (pkg) => {
             replace({
                 __BUILD_DATE__: () => new Date(),
                 __BUILD_VERSION__: pkg.version,
+                __BUILD_PACKAGE_NAME__: pkg.name,
             })
         ]
     }
