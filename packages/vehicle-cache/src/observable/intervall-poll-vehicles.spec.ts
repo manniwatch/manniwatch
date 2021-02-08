@@ -8,7 +8,7 @@ import 'mocha';
 import { Observable } from 'rxjs';
 import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
-import * as sinon from 'sinon';
+import sinon from 'sinon';
 import { PollResult } from '../operators';
 import { intervallPollVehicles } from './intervall-poll-vehicles';
 

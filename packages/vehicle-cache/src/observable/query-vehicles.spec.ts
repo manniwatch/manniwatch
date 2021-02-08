@@ -9,7 +9,7 @@ import 'mocha';
 import { Observable } from 'rxjs';
 import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
-import * as sinon from 'sinon';
+import sinon from 'sinon';
 import { queryVehicles } from './query-vehicles';
 
 describe('observable/query-vehicles', (): void => {

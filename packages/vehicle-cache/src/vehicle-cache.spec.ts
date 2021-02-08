@@ -6,7 +6,7 @@ import { expect } from 'chai';
 import 'mocha';
 import { Done } from 'mocha';
 import { tap } from 'rxjs/operators';
-import * as sinon from 'sinon';
+import sinon from 'sinon';
 import { VehicleCache } from './vehicle-cache';
 
 describe('vehicle-cache', (): void => {

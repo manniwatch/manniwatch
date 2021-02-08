@@ -5,7 +5,7 @@
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { PositionType } from '@manniwatch/api-types';
 import * as util from '@manniwatch/express-utils';
-import * as express from 'express';
+import express from 'express';
 import * as jsonschema from 'jsonschema';
 
 export const geoFenceSchema: jsonschema.Schema = {

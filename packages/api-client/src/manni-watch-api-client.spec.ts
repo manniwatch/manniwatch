@@ -13,8 +13,8 @@ import {
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { expect } from 'chai';
 import 'mocha';
-import * as nock from 'nock';
-import * as sinon from 'sinon';
+import nock from 'nock';
+import sinon from 'sinon';
 import { IBoundingBox, ManniWatchApiClient } from './manni-watch-api-client';
 import { Util } from './util';
 

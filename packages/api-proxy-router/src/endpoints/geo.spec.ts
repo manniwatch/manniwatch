@@ -6,12 +6,12 @@ import { IBoundingBox, ManniWatchApiClient } from '@manniwatch/api-client';
 import { PositionType } from '@manniwatch/api-types';
 import { ServerError, ValidationSchemas } from '@manniwatch/express-utils';
 import { expect } from 'chai';
-import * as express from 'express';
+import express from 'express';
 import { validate, ValidatorResult } from 'jsonschema';
 import 'mocha';
-import * as proxyquire from 'proxyquire';
-import * as sinon from 'sinon';
-import * as supertest from 'supertest';
+import proxyquire from 'proxyquire';
+import sinon from 'sinon';
+import supertest from 'supertest';
 import { delayPromise } from './common-test.spec';
 import { geoFenceSchema, getVehicleLocationSchema } from './geo';
 

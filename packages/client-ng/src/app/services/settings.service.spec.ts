@@ -6,7 +6,7 @@ import { waitForAsync, TestBed } from '@angular/core/testing';
 import { environment } from 'src/environments';
 import { ApiService } from './api.service';
 import { SettingsService } from './settings.service';
-// import * as sinon from "sinon";
+// import sinon from "sinon";
 
 describe('src/app/services/settings.service', (): void => {
     describe('SettingsService', (): void => {

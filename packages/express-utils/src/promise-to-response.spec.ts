@@ -4,7 +4,7 @@
 
 import { expect } from 'chai';
 import 'mocha';
-import * as sinon from 'sinon';
+import sinon from 'sinon';
 import { promiseToResponse } from './promise-to-response';
 describe('promise-to-response.ts', (): void => {
     describe('promiseToResponse(prom,res)', (): void => {

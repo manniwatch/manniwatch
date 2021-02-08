@@ -3,7 +3,7 @@
  */
 
 import { createApiProxyRouter } from '@manniwatch/api-proxy-router';
-import * as express from 'express';
+import express from 'express';
 import * as helmet from 'helmet';
 import { Server } from 'http';
 import { resolve as pathResolve } from 'path';

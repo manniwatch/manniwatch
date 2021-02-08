@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-server
  */
 
-import * as nconf from 'nconf';
+import nconf from 'nconf';
 
 export class Config {
     private static sNconf: nconf.Provider;

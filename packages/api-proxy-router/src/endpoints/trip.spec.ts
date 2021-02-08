@@ -4,11 +4,11 @@
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { expect } from 'chai';
-import * as express from 'express';
+import express from 'express';
 import 'mocha';
-import * as proxyquire from 'proxyquire';
-import * as sinon from 'sinon';
-import * as supertest from 'supertest';
+import proxyquire from 'proxyquire';
+import sinon from 'sinon';
+import supertest from 'supertest';
 import {
     createTestErrorRequestHandler,
     NOT_FOUND_RESPONSE,
