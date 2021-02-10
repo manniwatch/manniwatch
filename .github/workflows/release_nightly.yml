@@ -1,0 +1,31 @@
+# This is a basic workflow that is manually triggered
+
+name: Publish Nightly Packages
+on:
+  schedule:
+    - cron: "0 5 * * *"
+
+jobs:
+  release_npm:
+    runs-on: ubuntu-latest
+    name: Publish Package to NPM
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: '14'
+      - name: Install Packages
+        run: |
+          npm ci
+          npx lerna bootstrap --ci
+      - name: Build Package
+        run: npm run build
+      - name: Test Package
+        run: npm run test
+      - name: Prepare Package
+        run: |
+          npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
+      - name: Upload Package
+        run: npx lerna publish --dist-tag next --canary -y
