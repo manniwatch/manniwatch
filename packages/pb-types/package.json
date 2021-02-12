@@ -15,8 +15,10 @@
     "build:pbjs:es6": "pbjs -t static-module -w es6 --force-number -o ./dist/esm/index.js ./src/*.proto",
     "build:pbjs:cjs": "pbjs -t static-module -w commonjs --force-number -o ./dist/cjs/index.js ./src/*.proto",
     "build:pbts": "pbts -o ./dist/index.d.ts ./dist/esm/index.js",
+    "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
     "prepare": "node ./scripts/mkdist.js",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "version": "npm run build:readme && git add README.md"
   },
   "homepage": "https://manniwatch.github.io/manniwatch/",
   "author": {
