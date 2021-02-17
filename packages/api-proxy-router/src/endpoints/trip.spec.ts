@@ -21,7 +21,6 @@ describe('endpoints/trip.ts', (): void => {
     describe('createTripRouter', (): void => {
         let app: express.Express;
         let promiseStub: sinon.SinonStub;
-        let getRouteByTripIdStub: sinon.SinonStub;
         let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
         let validateStub: sinon.SinonStub;
         let validateStubHandler: sinon.SinonStub;
@@ -32,13 +31,10 @@ describe('endpoints/trip.ts', (): void => {
             sandbox = sinon.createSandbox();
             promiseStub = sandbox.stub();
             validateStub = sandbox.stub();
-            getRouteByTripIdStub = sinon.stub();
             errorSpy = sandbox.spy();
-            apiClientStub = sandbox.createStubInstance(ManniWatchApiClient, {
-                getRouteByTripId: getRouteByTripIdStub as any,
-            });
+            apiClientStub = sandbox.createStubInstance(ManniWatchApiClient);
             createTripRouter = proxyquire('./trip', {
-                '@manniwatch/express-utils': {
+                '@donmahallem/turbo': {
                     promiseToResponse: promiseStub,
                     validateRequest: validateStub,
                 },
@@ -48,7 +44,7 @@ describe('endpoints/trip.ts', (): void => {
         beforeEach((): void => {
             validateStubHandler = sandbox.stub();
             validateStub.returns(validateStubHandler);
-            const route: express.Router = createTripRouter(apiClientStub as any);
+            const route: express.Router = createTripRouter(apiClientStub);
             app = express();
             app.use('/trip', route);
             app.use(createTestErrorRequestHandler(errorSpy));
@@ -62,7 +58,7 @@ describe('endpoints/trip.ts', (): void => {
         testIds.forEach((testId: string): void => {
             describe('query \'/trip/' + testId + '/route\'', (): void => {
                 it('should pass on the provided parameters', (): Promise<void> => {
-                    getRouteByTripIdStub.resolves(SUCCESS_RESPONSE);
+                    apiClientStub.getRouteByTripId.resolves(SUCCESS_RESPONSE);
                     promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                         source
                             .then((responseObject: any): void => {

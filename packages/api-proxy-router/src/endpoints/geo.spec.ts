@@ -2,18 +2,17 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
+import { RequestError } from '@donmahallem/turbo';
 import { IBoundingBox, ManniWatchApiClient } from '@manniwatch/api-client';
 import { PositionType } from '@manniwatch/api-types';
-import { ServerError, ValidationSchemas } from '@manniwatch/express-utils';
 import { expect } from 'chai';
 import express from 'express';
-import { validate, ValidatorResult } from 'jsonschema';
 import 'mocha';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 import supertest from 'supertest';
 import { delayPromise } from './common-test.spec';
-import { geoFenceSchema, getVehicleLocationSchema } from './geo';
+import { GEO_FENCE_SCHEMA, GET_VEHICLE_LOCATION_SCHEMA } from './schemas';
 
 const validCoordinates: TestIBoundingBox[] = [
     { bottom: '-1000', left: '-1000', right: '1000', top: '1000' },
@@ -35,98 +34,6 @@ const positionTypes: PositionType[] = ['RAW', 'CORRECTED'];
 const lastUpdates: string[] = ['22929299292', '2938'];
 type TestIBoundingBox = { [key in keyof IBoundingBox]: string };
 describe('endpoints/geo.ts', (): void => {
-    describe('geoFenceSchema', (): void => {
-        const parameters: string[] = ['top', 'bottom', 'right', 'left'];
-        const combinations: Partial<TestIBoundingBox>[] = [{}];
-        const paramMap: TestIBoundingBox = { bottom: '-1000', left: '-1000', right: '1000', top: '1000' };
-        for (let i: number = 0; i < 4; i++) {
-            const box1: Partial<TestIBoundingBox> = {};
-            box1[parameters[i]] = paramMap[parameters[i]];
-            combinations.push(box1);
-            for (let j: number = 0; j < 4; j++) {
-                if (i === j) {
-                    continue;
-                }
-                const box2: Partial<TestIBoundingBox> = {};
-                box2[parameters[i]] = paramMap[parameters[i]];
-                box2[parameters[j]] = paramMap[parameters[j]];
-                combinations.push(box2);
-                for (let k: number = 0; k < 4; k++) {
-                    if (i === k || j === k) {
-                        continue;
-                    }
-                    const box3: Partial<TestIBoundingBox> = {};
-                    box3[parameters[i]] = paramMap[parameters[i]];
-                    box3[parameters[j]] = paramMap[parameters[j]];
-                    box3[parameters[k]] = paramMap[parameters[k]];
-                    combinations.push(box3);
-                }
-            }
-        }
-        describe('reject', (): void => {
-            combinations.forEach((combi: Partial<TestIBoundingBox>): void => {
-                it('should reject: ' + JSON.stringify(combi), (): void => {
-                    const result: ValidatorResult = validate(combi, geoFenceSchema);
-                    // tslint:disable-next-line:no-unused-expression
-                    expect(result.valid, 'schema should not be valid').to.be.false;
-                });
-            });
-        });
-        describe('resolve', (): void => {
-            validCoordinates.forEach((combi: TestIBoundingBox): void => {
-                it('should resolve: ' + JSON.stringify(combi), (): void => {
-                    const result: ValidatorResult = validate(combi, geoFenceSchema);
-                    // tslint:disable-next-line:no-unused-expression
-                    expect(result.valid, 'schema should not be valid').to.be.true;
-                });
-            });
-        });
-    });
-    describe('getVehicleLocationSchema', (): void => {
-        describe('resolve', (): void => {
-            [...positionTypes, undefined].forEach((testPositionType: PositionType): void => {
-                [...lastUpdates, undefined].forEach((testLastUpdate: string): void => {
-                    const testInstance: any = {
-                        lastUpdate: testLastUpdate,
-                        positionType: testPositionType,
-                    };
-                    it('should resolve: ' + JSON.stringify(testInstance), (): void => {
-                        const result: ValidatorResult = validate(testInstance, getVehicleLocationSchema);
-                        // tslint:disable-next-line:no-unused-expression
-                        expect(result.valid, 'schema should be valid').to.be.true;
-                    });
-                });
-            });
-        });
-        describe('reject', (): void => {
-            [...positionTypes, undefined].forEach((testPositionType: PositionType): void => {
-                ['-12', 'l337'].forEach((testLastUpdate: string): void => {
-                    const testInstance: any = {
-                        lastUpdate: testLastUpdate,
-                        positionType: testPositionType,
-                    };
-                    it('should resolve: ' + JSON.stringify(testInstance), (): void => {
-                        const result: ValidatorResult = validate(testInstance, getVehicleLocationSchema);
-                        // tslint:disable-next-line:no-unused-expression
-                        expect(result.valid, 'schema should not be valid').to.be.false;
-                    });
-                });
-            });
-            ['tender', '4928'].forEach((testPositionType: PositionType): void => {
-                [...lastUpdates, undefined].forEach((testLastUpdate: string): void => {
-                    const testInstance: any = {
-                        lastUpdate: testLastUpdate,
-                        positionType: testPositionType,
-                    };
-                    it('should resolve: ' + JSON.stringify(testInstance), (): void => {
-                        const result: ValidatorResult = validate(testInstance, getVehicleLocationSchema);
-                        // tslint:disable-next-line:no-unused-expression
-                        expect(result.valid, 'schema should not be valid').to.be.false;
-                    });
-                });
-            });
-        });
-    });
     describe('createGeoRouter()', (): void => {
         let app: express.Express;
         let routeErrorStub: sinon.SinonStub;
@@ -148,16 +55,16 @@ describe('endpoints/geo.ts', (): void => {
             geoFenceValidateStub = sandbox.stub();
             vehicleValidateStub = sandbox.stub();
             createGeoRouter = proxyquire('./geo', {
-                '@manniwatch/express-utils': {
+                '@donmahallem/turbo': {
                     validateRequest: validateStubParent,
                 },
             }).createGeoRouter;
         });
         beforeEach((): void => {
-            validateStubParent.callsFake((schema: ValidationSchemas): sinon.SinonStub => {
-                if (schema.properties.query?.id === 'geoFenceSchema') {
+            validateStubParent.callsFake((type: string, schema: any): sinon.SinonStub => {
+                if (schema.$id === GEO_FENCE_SCHEMA.$id) {
                     return geoFenceValidateStub;
-                } else if (schema.properties.query?.id === 'getVehicleLocationSchema') {
+                } else if (schema.$id === GET_VEHICLE_LOCATION_SCHEMA.$id) {
                     return vehicleValidateStub;
                 } else {
                     throw new Error('Unknown Schema');
@@ -179,15 +86,9 @@ describe('endpoints/geo.ts', (): void => {
         });
         afterEach((): void => {
             expect(validateStubParent.callCount).to.equal(3, 'validate method should be called twice');
-            expect(validateStubParent.getCall(0).args).to.deep.equal([{
-                properties: { query: geoFenceSchema },
-            }]);
-            expect(validateStubParent.getCall(1).args).to.deep.equal([{
-                properties: { query: geoFenceSchema },
-            }]);
-            expect(validateStubParent.getCall(2).args).to.deep.equal([{
-                properties: { query: getVehicleLocationSchema },
-            }]);
+            expect(validateStubParent.getCall(0).args).to.deep.equal(['query', GEO_FENCE_SCHEMA]);
+            expect(validateStubParent.getCall(1).args).to.deep.equal(['query', GEO_FENCE_SCHEMA]);
+            expect(validateStubParent.getCall(2).args).to.deep.equal(['query', GET_VEHICLE_LOCATION_SCHEMA]);
             sandbox.reset();
         });
         after((): void => {
@@ -246,7 +147,7 @@ describe('endpoints/geo.ts', (): void => {
             describe('rejects', (): void => {
                 beforeEach((): void => {
                     geoFenceValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
-                        next(new ServerError(1234, 'Caught by schema'));
+                        next(new RequestError('Caught by schema', 1234));
                     });
                 });
                 afterEach((): void => {
@@ -267,10 +168,10 @@ describe('endpoints/geo.ts', (): void => {
                             .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
                             .then((res: supertest.Response): void => {
                                 expect(routeErrorStub.callCount).to.equal(1, 'error handler should be called');
-                                const testError: ServerError = routeErrorStub.getCall(0).args[0];
+                                const testError: RequestError = routeErrorStub.getCall(0).args[0];
                                 expect(testError.message)
                                     .to.equal('Caught by schema');
-                                expect(testError.statusCode)
+                                expect(testError.status)
                                     .to.equal(1234);
                             });
                     });
@@ -315,7 +216,7 @@ describe('endpoints/geo.ts', (): void => {
             describe('rejects', (): void => {
                 beforeEach((): void => {
                     geoFenceValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
-                        next(new ServerError(1234, 'Caught by schema'));
+                        next(new RequestError('Caught by schema', 1234));
                     });
                 });
                 afterEach((): void => {
@@ -336,10 +237,10 @@ describe('endpoints/geo.ts', (): void => {
                             .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
                             .then((res: supertest.Response): void => {
                                 expect(routeErrorStub.callCount).to.equal(1, 'error handler should be called');
-                                const testError: ServerError = routeErrorStub.getCall(0).args[0];
+                                const testError: RequestError = routeErrorStub.getCall(0).args[0];
                                 expect(testError.message)
                                     .to.equal('Caught by schema');
-                                expect(testError.statusCode)
+                                expect(testError.status)
                                     .to.equal(1234);
                             });
                     });
@@ -390,7 +291,7 @@ describe('endpoints/geo.ts', (): void => {
             describe('rejects', (): void => {
                 beforeEach((): void => {
                     vehicleValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
-                        next(new ServerError(4321, 'Caught by schema'));
+                        next(new RequestError('Caught by schema', 4321));
                     });
                 });
                 afterEach((): void => {
@@ -414,10 +315,10 @@ describe('endpoints/geo.ts', (): void => {
                                 .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
                                 .then((res: supertest.Response): void => {
                                     expect(routeErrorStub.callCount).to.equal(1, 'error handler should be called');
-                                    const testError: ServerError = routeErrorStub.getCall(0).args[0];
+                                    const testError: RequestError = routeErrorStub.getCall(0).args[0];
                                     expect(testError.message)
                                         .to.equal('Caught by schema');
-                                    expect(testError.statusCode)
+                                    expect(testError.status)
                                         .to.equal(4321);
                                 });
                         });

@@ -2,8 +2,8 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
+import * as prom from '@donmahallem/turbo';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import * as prom from '@manniwatch/express-utils';
 import express from 'express';
 
 export const createSettingsRouter: (apiClient: ManniWatchApiClient) => express.Router =

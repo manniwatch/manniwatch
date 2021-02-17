@@ -2,8 +2,8 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
+import * as prom from '@donmahallem/turbo';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import * as prom from '@manniwatch/express-utils';
 import { expect } from 'chai';
 import express from 'express';
 import 'mocha';
@@ -18,7 +18,7 @@ import {
     SUCCESS_RESPONSE,
     SUCCESS_RESPONSE_LENGTH,
 } from './common-test.spec';
-import { passagesSchema } from './stop-point';
+import { STOP_PASSAGES_SCHEMA } from './schemas';
 const testIds: string[] = ['-12883', 'kasd'];
 describe('endpoints/stop-point.ts', (): void => {
     describe('createStopPointRouter', (): void => {
@@ -44,7 +44,7 @@ describe('endpoints/stop-point.ts', (): void => {
             });
             validateStub.returns(validateStubHandler);
             createStopPointRouter = proxyquire('./stop-point', {
-                '@manniwatch/express-utils': {
+                '@donmahallem/turbo': {
                     promiseToResponse: promiseStub,
                     validateRequest: validateStub,
                 },
@@ -59,7 +59,7 @@ describe('endpoints/stop-point.ts', (): void => {
         });
         afterEach('test and reset promise stub', (): void => {
             expect(validateStub.callCount).to.equal(1, 'validateRequest should be called once');
-            expect(validateStub.args[0]).to.deep.equal([{ properties: { query: passagesSchema } }], 'should be called with correct schema');
+            expect(validateStub.args[0]).to.deep.equal(['query', STOP_PASSAGES_SCHEMA], 'should be called with correct schema');
             promiseStub.resetHistory();
             getStopPointInfoStub.reset();
             getStopPointPassagesStub.reset();
