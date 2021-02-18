@@ -19,7 +19,6 @@ export const GET_VEHICLE_LOCATION_SCHEMA: JSONSchemaType<IGeoLocationSchema> = {
             $ref: UINT_SCHEMA.$id!,
             default: '0',
             description: 'unix timestamp in ms since epoch',
-            nullable: true,
         },
         positionType: {
             $ref: POSITION_TYPE_SCHEMA.$id!,

@@ -2,61 +2,50 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
-import { StopMode } from '@manniwatch/api-types';
 import Ajv, { ValidateFunction } from 'ajv';
 import { expect } from 'chai';
 import 'mocha';
-import { STOP_PASSAGES_SCHEMA } from './stop-passages';
+import { GET_VEHICLE_LOCATION_SCHEMA } from './vehicle-location';
 
-const validOptions: StopMode[] = ['departure', 'arrival'];
 const validTestNumbers: (number | string)[] = [3, '2', '0', '+4'];
 const invalidTestNumbers: (number | string)[] = [-1, '-2'];
 // tslint:disable-next-line:no-unused-expression
-describe('endpoints/schema/stop-passages', (): void => {
+describe('endpoints/schema/vehicle-location', (): void => {
     let ajvInstance: Ajv;
     let validator: ValidateFunction;
     beforeEach('setup Ajv and validation function', (): void => {
         ajvInstance = new Ajv({ strict: true });
-        validator = ajvInstance.compile(STOP_PASSAGES_SCHEMA);
+        validator = ajvInstance.compile(GET_VEHICLE_LOCATION_SCHEMA);
     });
-    describe('STOP_PASSAGES_SCHEMA', (): void => {
-        describe('$root.mode', (): void => {
-            validOptions.forEach((mode: StopMode): void => {
-                it(`should accept '${mode}'`, (): void => {
-                    expect(validator({
-                        mode
-                    })).to.be.true;
-                });
-            });
-        });
-        describe('$root.timeFrame', (): void => {
+    describe('GET_VEHICLE_LOCATION_SCHEMA', (): void => {
+        describe('$root.lastUpdate', (): void => {
             validTestNumbers.forEach((testValue: any): void => {
                 it(`should pass for ${testValue}`, (): void => {
                     expect(validator({
-                        timeFrame: testValue,
+                        lastUpdate: testValue,
                     }), 'schema should be valid').to.be.true;
                 });
             });
             invalidTestNumbers.forEach((testValue: any): void => {
                 it(`should reject for ${testValue}`, (): void => {
                     expect(validator({
-                        timeFrame: testValue,
+                        lastUpdate: testValue,
                     }), 'schema should not be valid').to.be.false;
                 });
             });
         });
-        describe('$root.startTime', (): void => {
-            validTestNumbers.forEach((testValue: any): void => {
+        describe('$root.positionType', (): void => {
+            ['RAW', 'CORRECTED'].forEach((testValue: any): void => {
                 it(`should pass for ${testValue}`, (): void => {
                     expect(validator({
-                        startTime: testValue,
+                        positionType: testValue,
                     }), 'schema should be valid').to.be.true;
                 });
             });
-            invalidTestNumbers.forEach((testValue: any): void => {
+            [null, 'any'].forEach((testValue: any): void => {
                 it(`should reject for ${testValue}`, (): void => {
                     expect(validator({
-                        startTime: testValue,
+                        positionType: testValue,
                     }), 'schema should not be valid').to.be.false;
                 });
             });
