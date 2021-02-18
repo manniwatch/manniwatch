@@ -13,11 +13,11 @@ export interface ITripPassagesSchema {
 export const TRIP_PASSAGES_SCHEMA: JSONSchemaType<ITripPassagesSchema> = {
     additionalProperties: false,
     definitions: {
-        [STOP_MODE_SCHEMA.$id!]: STOP_MODE_SCHEMA,
+        [STOP_MODE_SCHEMA.$id]: STOP_MODE_SCHEMA,
     },
     properties: {
         mode: {
-            $ref: STOP_MODE_SCHEMA.$id!,
+            $ref: STOP_MODE_SCHEMA.$id,
         },
     },
     required: [],

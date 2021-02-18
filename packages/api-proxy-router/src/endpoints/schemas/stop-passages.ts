@@ -15,19 +15,19 @@ export interface IStopPassagesSchema {
 export const STOP_PASSAGES_SCHEMA: JSONSchemaType<IStopPassagesSchema> = {
     additionalProperties: false,
     definitions: {
-        [UINT_SCHEMA.$id!]: UINT_SCHEMA,
-        [STOP_MODE_SCHEMA.$id!]: STOP_MODE_SCHEMA,
+        [UINT_SCHEMA.$id]: UINT_SCHEMA,
+        [STOP_MODE_SCHEMA.$id]: STOP_MODE_SCHEMA,
     },
     properties: {
         mode: {
-            $ref: STOP_MODE_SCHEMA.$id!,
+            $ref: STOP_MODE_SCHEMA.$id,
         },
         startTime: {
-            $ref: UINT_SCHEMA.$id!,
+            $ref: UINT_SCHEMA.$id,
             description: 'startTime to query',
         },
         timeFrame: {
-            $ref: UINT_SCHEMA.$id!,
+            $ref: UINT_SCHEMA.$id,
             description: 'timeFrame to query',
         },
     },

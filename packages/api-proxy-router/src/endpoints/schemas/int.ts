@@ -2,9 +2,9 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
-import { JSONSchemaType } from 'ajv';
+import { RequireIdJSONSchemaType } from './util';
 
-export const INT_SCHEMA: JSONSchemaType<string | number> = {
+export const INT_SCHEMA: RequireIdJSONSchemaType<string | number> = {
     $id: '#manniwatch/int',
     anyOf: [
         {

@@ -15,20 +15,20 @@ export interface IGeoFenceSchema {
 export const GEO_FENCE_SCHEMA: JSONSchemaType<IGeoFenceSchema> = {
     $id: '#manniwatch/geo_fence',
     definitions: {
-        [INT_SCHEMA.$id!]: INT_SCHEMA,
+        [INT_SCHEMA.$id]: INT_SCHEMA,
     },
     properties: {
         bottom: {
-            $ref: INT_SCHEMA.$id!,
+            $ref: INT_SCHEMA.$id,
         },
         left: {
-            $ref: INT_SCHEMA.$id!,
+            $ref: INT_SCHEMA.$id,
         },
         right: {
-            $ref: INT_SCHEMA.$id!,
+            $ref: INT_SCHEMA.$id,
         },
         top: {
-            $ref: INT_SCHEMA.$id!,
+            $ref: INT_SCHEMA.$id,
         },
     },
     required: ['top', 'bottom', 'right', 'left'],

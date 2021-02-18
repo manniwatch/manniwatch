@@ -15,17 +15,17 @@ export const GET_VEHICLE_LOCATION_SCHEMA: JSONSchemaType<IGeoLocationSchema> = {
     $id: '#manniwatch/vehicle_location',
     additionalProperties: false,
     definitions: {
-        [UINT_SCHEMA.$id!]: UINT_SCHEMA,
-        [POSITION_TYPE_SCHEMA.$id!]: POSITION_TYPE_SCHEMA,
+        [UINT_SCHEMA.$id]: UINT_SCHEMA,
+        [POSITION_TYPE_SCHEMA.$id]: POSITION_TYPE_SCHEMA,
     },
     properties: {
         lastUpdate: {
-            $ref: UINT_SCHEMA.$id!,
+            $ref: UINT_SCHEMA.$id,
             default: '0',
             description: 'unix timestamp in ms since epoch',
         },
         positionType: {
-            $ref: POSITION_TYPE_SCHEMA.$id!,
+            $ref: POSITION_TYPE_SCHEMA.$id,
         },
     },
     required: [],

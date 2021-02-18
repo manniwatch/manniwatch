@@ -3,9 +3,9 @@
  */
 
 import { PositionType } from '@manniwatch/api-types';
-import { JSONSchemaType } from 'ajv';
+import { RequireIdJSONSchemaType } from './util';
 
-export const POSITION_TYPE_SCHEMA: JSONSchemaType<PositionType> = {
+export const POSITION_TYPE_SCHEMA: RequireIdJSONSchemaType<PositionType> = {
     $id: '#manniwatch/position_type',
     default: 'RAW',
     description: 'position type to query',
