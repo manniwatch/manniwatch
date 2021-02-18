@@ -26,7 +26,7 @@ describe('endpoints/settings.ts', (): void => {
                 getSettings: getSettingsStub as any,
             });
             createSettingsRouter = proxyquire('./settings', {
-                '@manniwatch/express-utils': {
+                '@donmahallem/turbo': {
                     promiseToResponse: promiseStub,
                 },
             }).createSettingsRouter;

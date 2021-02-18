@@ -44,7 +44,7 @@ describe('endpoints/stop.ts', (): void => {
             });
             validateStub.returns(validateStubHandler);
             createStopRouter = proxyquire('./stop', {
-                '@manniwatch/express-utils': {
+                '@donmahallem/turbo': {
                     promiseToResponse: promiseStub,
                     validateRequest: validateStub,
                 },

@@ -26,7 +26,7 @@ describe('endpoints/vehicle.ts', (): void => {
                 getRouteByVehicleId: getRouteByVehicleIdStub as any,
             });
             createVehicleRouter = proxyquire('./vehicle', {
-                '@manniwatch/express-utils': {
+                '@donmahallem/turbo': {
                     promiseToResponse: promiseStub,
                 },
             }).createVehicleRouter;
