@@ -9,6 +9,8 @@ import 'mocha';
 import { POSITION_TYPE_SCHEMA } from './position-type';
 
 const validOptions: PositionType[] = ['RAW', 'CORRECTED'];
+
+// tslint:disable:no-unused-expression
 describe('endpoints/schema/position-type', (): void => {
     let ajvInstance: Ajv;
     let validator: ValidateFunction;

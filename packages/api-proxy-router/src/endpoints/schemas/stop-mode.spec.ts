@@ -9,6 +9,8 @@ import 'mocha';
 import { STOP_MODE_SCHEMA } from './stop-mode';
 
 const validOptions: StopMode[] = ['departure', 'arrival'];
+
+// tslint:disable:no-unused-expression
 describe('endpoints/schema/stop-mode', (): void => {
     let ajvInstance: Ajv;
     let validator: ValidateFunction;

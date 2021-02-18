@@ -12,8 +12,8 @@ export interface IGeoLocationSchema {
     positionType?: PositionType;
 }
 export const GET_VEHICLE_LOCATION_SCHEMA: JSONSchemaType<IGeoLocationSchema> = {
-    additionalProperties: false,
     $id: '#manniwatch/vehicle_location',
+    additionalProperties: false,
     definitions: {
         [UINT_SCHEMA.$id!]: UINT_SCHEMA,
         [POSITION_TYPE_SCHEMA.$id!]: POSITION_TYPE_SCHEMA,

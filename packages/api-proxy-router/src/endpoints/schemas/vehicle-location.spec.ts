@@ -9,7 +9,8 @@ import { GET_VEHICLE_LOCATION_SCHEMA } from './vehicle-location';
 
 const validTestNumbers: (number | string)[] = [3, '2', '0', '+4'];
 const invalidTestNumbers: (number | string)[] = [-1, '-2'];
-// tslint:disable-next-line:no-unused-expression
+
+// tslint:disable:no-unused-expression
 describe('endpoints/schema/vehicle-location', (): void => {
     let ajvInstance: Ajv;
     let validator: ValidateFunction;
@@ -42,6 +43,7 @@ describe('endpoints/schema/vehicle-location', (): void => {
                     }), 'schema should be valid').to.be.true;
                 });
             });
+            // tslint:disable-next-line:no-null-keyword
             [null, 'any'].forEach((testValue: any): void => {
                 it(`should reject for ${testValue}`, (): void => {
                     expect(validator({

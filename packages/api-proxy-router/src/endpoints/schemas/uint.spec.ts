@@ -9,6 +9,8 @@ import { UINT_SCHEMA } from './uint';
 
 const validValues: (string | number)[] = ['1', '+0', '200', 0, 2, 5];
 const invalidValues: (string | number)[] = ['-1a', 'b', '-200.2', 0.39, -10];
+
+// tslint:disable:no-unused-expression
 describe('endpoints/schema/uint', (): void => {
     let ajvInstance: Ajv;
     let validator: ValidateFunction;

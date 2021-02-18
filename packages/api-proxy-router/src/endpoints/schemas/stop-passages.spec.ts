@@ -11,7 +11,8 @@ import { STOP_PASSAGES_SCHEMA } from './stop-passages';
 const validOptions: StopMode[] = ['departure', 'arrival'];
 const validTestNumbers: (number | string)[] = [3, '2', '0', '+4'];
 const invalidTestNumbers: (number | string)[] = [-1, '-2'];
-// tslint:disable-next-line:no-unused-expression
+
+// tslint:disable:no-unused-expression
 describe('endpoints/schema/stop-passages', (): void => {
     let ajvInstance: Ajv;
     let validator: ValidateFunction;
