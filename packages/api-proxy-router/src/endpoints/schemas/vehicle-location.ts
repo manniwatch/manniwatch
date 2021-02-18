@@ -1,7 +1,11 @@
-import { PositionType } from "@manniwatch/api-types";
-import { JSONSchemaType } from "ajv";
-import { POSITION_TYPE_SCHEMA } from "./position-type";
-import { UINT_SCHEMA } from "./uint";
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
+ */
+
+import { PositionType } from '@manniwatch/api-types';
+import { JSONSchemaType } from 'ajv';
+import { POSITION_TYPE_SCHEMA } from './position-type';
+import { UINT_SCHEMA } from './uint';
 
 export interface IGeoLocationSchema {
     lastUpdate?: string;

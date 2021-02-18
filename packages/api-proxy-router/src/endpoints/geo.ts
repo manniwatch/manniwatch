@@ -8,7 +8,6 @@ import { PositionType } from '@manniwatch/api-types';
 import express from 'express';
 import { GEO_FENCE_SCHEMA, GET_VEHICLE_LOCATION_SCHEMA } from './schemas';
 
-
 export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router =
     (apiClient: ManniWatchApiClient): express.Router => {
         const router: express.Router = express.Router();

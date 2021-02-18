@@ -1,4 +1,8 @@
-import { JSONSchemaType } from "ajv";
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
+ */
+
+import { JSONSchemaType } from 'ajv';
 
 export const UINT_SCHEMA: JSONSchemaType<string | number> = {
     $id: '#manniwatch/uint',
@@ -10,6 +14,6 @@ export const UINT_SCHEMA: JSONSchemaType<string | number> = {
         {
             minimum: 0,
             type: 'integer',
-        }
+        },
     ],
 } as any;

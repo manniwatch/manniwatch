@@ -1,5 +1,9 @@
-import { JSONSchemaType } from "ajv";
-import { INT_SCHEMA } from "./int";
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
+ */
+
+import { JSONSchemaType } from 'ajv';
+import { INT_SCHEMA } from './int';
 
 export interface IGeoFenceSchema {
     bottom: string;
@@ -7,7 +11,6 @@ export interface IGeoFenceSchema {
     right: string;
     top: string;
 }
-
 
 export const GEO_FENCE_SCHEMA: JSONSchemaType<IGeoFenceSchema> = {
     $id: '#manniwatch/geo_fence',

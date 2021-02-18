@@ -24,7 +24,7 @@ describe('endpoints/schema/stop-passages', (): void => {
             validOptions.forEach((mode: StopMode): void => {
                 it(`should accept '${mode}'`, (): void => {
                     expect(validator({
-                        mode
+                        mode,
                     })).to.be.true;
                 });
             });

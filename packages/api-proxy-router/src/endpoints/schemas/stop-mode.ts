@@ -1,5 +1,9 @@
-import { StopMode } from "@manniwatch/api-types";
-import { JSONSchemaType } from "ajv";
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
+ */
+
+import { StopMode } from '@manniwatch/api-types';
+import { JSONSchemaType } from 'ajv';
 
 export const STOP_MODE_SCHEMA: JSONSchemaType<StopMode> = {
     $id: '#manniwatch/stop_mode',
