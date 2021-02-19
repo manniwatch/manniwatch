@@ -3,6 +3,7 @@
  */
 
 import * as prom from '@donmahallem/turbo';
+import * as turboval from '@donmahallem/turbo-validate-request';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { expect } from 'chai';
 import express from 'express';
@@ -32,7 +33,7 @@ describe('endpoints/stop.ts', (): void => {
         let errorSpy: sinon.SinonSpy;
         let createStopRouter: any;
         before((): void => {
-            validateStub = sinon.stub(prom, 'validateRequest');
+            validateStub = sinon.stub(turboval, 'validateRequest');
             promiseStub = sinon.stub(prom, 'promiseToResponse');
             getStopInfoStub = sinon.stub();
             getStopPassagesStub = sinon.stub();
@@ -46,6 +47,8 @@ describe('endpoints/stop.ts', (): void => {
             createStopRouter = proxyquire('./stop', {
                 '@donmahallem/turbo': {
                     promiseToResponse: promiseStub,
+                },
+                '@donmahallem/turbo-validate-request': {
                     validateRequest: validateStub,
                 },
             }).createStopRouter;

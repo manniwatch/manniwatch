@@ -36,6 +36,8 @@ describe('endpoints/trip.ts', (): void => {
             createTripRouter = proxyquire('./trip', {
                 '@donmahallem/turbo': {
                     promiseToResponse: promiseStub,
+                },
+                '@donmahallem/turbo-validate-request': {
                     validateRequest: validateStub,
                 },
             }).createTripRouter;

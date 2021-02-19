@@ -55,7 +55,7 @@ describe('endpoints/geo.ts', (): void => {
             geoFenceValidateStub = sandbox.stub();
             vehicleValidateStub = sandbox.stub();
             createGeoRouter = proxyquire('./geo', {
-                '@donmahallem/turbo': {
+                '@donmahallem/turbo-validate-request': {
                     validateRequest: validateStubParent,
                 },
             }).createGeoRouter;

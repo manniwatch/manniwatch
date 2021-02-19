@@ -3,6 +3,7 @@
  */
 
 import * as prom from '@donmahallem/turbo';
+import * as turboval from '@donmahallem/turbo-validate-request';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { StopMode } from '@manniwatch/api-types';
 import Ajv from 'ajv';
@@ -33,7 +34,7 @@ export const createTripRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
          * @apiVersion 0.5.0
          */
         router.get('/:id([a-z0-9A-Z\-\+]+)/passages',
-            prom.validateRequest('query', TRIP_PASSAGES_SCHEMA, ajvInstance),
+            turboval.validateRequest('query', TRIP_PASSAGES_SCHEMA, ajvInstance),
             (req: express.Request, res: express.Response, next: express.NextFunction): void => {
                 const departureMode: StopMode = req.query.mode as StopMode || 'departure';
                 prom.promiseToResponse(apiClient.getTripPassages(req.params.id, departureMode), res, next);

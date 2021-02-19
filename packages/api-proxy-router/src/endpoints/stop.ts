@@ -3,6 +3,7 @@
  */
 
 import * as prom from '@donmahallem/turbo';
+import * as turboval from '@donmahallem/turbo-validate-request';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { StopMode } from '@manniwatch/api-types';
 import Ajv from 'ajv';
@@ -24,7 +25,7 @@ export const createStopRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
          * @apiVersion 0.1.0
          */
         router.get('/:id([a-z0-9A-Z\-\+]+)/passages',
-            prom.validateRequest('query', STOP_PASSAGES_SCHEMA),
+            turboval.validateRequest('query', STOP_PASSAGES_SCHEMA),
             (req: express.Request, res: express.Response, next: express.NextFunction): void => {
                 const mode: StopMode = req.query.mode as StopMode || undefined;
                 // tslint:disable-next-line:triple-equals
