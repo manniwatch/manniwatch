@@ -2,8 +2,9 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
+import * as prom from '@donmahallem/turbo';
+import * as turboval from '@donmahallem/turbo-validate-request';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import * as prom from '@manniwatch/express-utils';
 import { expect } from 'chai';
 import express from 'express';
 import 'mocha';
@@ -18,7 +19,7 @@ import {
     SUCCESS_RESPONSE,
     SUCCESS_RESPONSE_LENGTH,
 } from './common-test.spec';
-import { passagesSchema } from './stop';
+import { STOP_PASSAGES_SCHEMA } from './schemas';
 const testIds: string[] = ['-12883', 'kasd'];
 describe('endpoints/stop.ts', (): void => {
     describe('createStopRouter', (): void => {
@@ -32,7 +33,7 @@ describe('endpoints/stop.ts', (): void => {
         let errorSpy: sinon.SinonSpy;
         let createStopRouter: any;
         before((): void => {
-            validateStub = sinon.stub(prom, 'validateRequest');
+            validateStub = sinon.stub(turboval, 'validateRequest');
             promiseStub = sinon.stub(prom, 'promiseToResponse');
             getStopInfoStub = sinon.stub();
             getStopPassagesStub = sinon.stub();
@@ -44,8 +45,10 @@ describe('endpoints/stop.ts', (): void => {
             });
             validateStub.returns(validateStubHandler);
             createStopRouter = proxyquire('./stop', {
-                '@manniwatch/express-utils': {
+                '@donmahallem/turbo': {
                     promiseToResponse: promiseStub,
+                },
+                '@donmahallem/turbo-validate-request': {
                     validateRequest: validateStub,
                 },
             }).createStopRouter;
@@ -60,7 +63,7 @@ describe('endpoints/stop.ts', (): void => {
         afterEach('test and reset promise stub', (): void => {
             expect(validateStub.callCount).to.equal(1, 'validateRequest should be called once');
             expect(validateStub.args[0]).to.deep
-                .equal([{ properties: { query: passagesSchema } }], 'should be called with correct schema');
+                .equal(['query', STOP_PASSAGES_SCHEMA], 'should be called with correct schema');
             promiseStub.resetHistory();
             getStopInfoStub.reset();
             getStopPassagesStub.reset();

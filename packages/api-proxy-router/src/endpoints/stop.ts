@@ -2,38 +2,16 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
+import * as prom from '@donmahallem/turbo';
+import * as turboval from '@donmahallem/turbo-validate-request';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { StopMode } from '@manniwatch/api-types';
-import * as prom from '@manniwatch/express-utils';
+import Ajv from 'ajv';
 import express from 'express';
-import { Schema } from 'jsonschema';
+import { STOP_PASSAGES_SCHEMA } from './schemas';
 
-export const passagesSchema: Schema = {
-    additionalProperties: false,
-    properties: {
-        mode: {
-            description: 'unix timestamp in ms since epoch',
-            enum: ['departure', 'arrival'],
-            id: 'mode',
-            type: 'string',
-        },
-        startTime: {
-            description: 'startTime to query',
-            id: 'startTime',
-            pattern: '^\\d+$',
-            type: 'string',
-        },
-        timeFrame: {
-            description: 'timeFrame to query',
-            id: 'timeFrame',
-            pattern: '^\\d+$',
-            type: 'string',
-        },
-    },
-    type: 'object',
-};
-export const createStopRouter: (apiClient: ManniWatchApiClient) => express.Router =
-    (apiClient: ManniWatchApiClient): express.Router => {
+export const createStopRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Ajv) => express.Router =
+    (apiClient: ManniWatchApiClient, ajvInstance: Ajv = new Ajv()): express.Router => {
         const router: express.Router = express.Router();
         /**
          * @api {get} /stop/:id/passages Request Stop Passages
@@ -47,7 +25,7 @@ export const createStopRouter: (apiClient: ManniWatchApiClient) => express.Route
          * @apiVersion 0.1.0
          */
         router.get('/:id([a-z0-9A-Z\-\+]+)/passages',
-            prom.validateRequest({ properties: { query: passagesSchema } }),
+            turboval.validateRequest('query', STOP_PASSAGES_SCHEMA),
             (req: express.Request, res: express.Response, next: express.NextFunction): void => {
                 const mode: StopMode = req.query.mode as StopMode || undefined;
                 // tslint:disable-next-line:triple-equals

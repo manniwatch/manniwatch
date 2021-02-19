@@ -2,8 +2,8 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
+import * as prom from '@donmahallem/turbo';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import * as prom from '@manniwatch/express-utils';
 import { expect } from 'chai';
 import express from 'express';
 import 'mocha';
@@ -26,7 +26,7 @@ describe('endpoints/vehicle.ts', (): void => {
                 getRouteByVehicleId: getRouteByVehicleIdStub as any,
             });
             createVehicleRouter = proxyquire('./vehicle', {
-                '@manniwatch/express-utils': {
+                '@donmahallem/turbo': {
                     promiseToResponse: promiseStub,
                 },
             }).createVehicleRouter;
