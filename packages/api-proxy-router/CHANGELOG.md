@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.21.0](https://github.com/manniwatch/manniwatch/compare/v0.20.0...v0.21.0) (2021-02-20)
+
+
+### Bug Fixes
+
+* **deps:** update @donmahallem/turbo packages ([a83333d](https://github.com/manniwatch/manniwatch/commit/a83333dfdc8c82721507d017a5c470dfc5fc3bcf))
+* **deps:** update dependency @donmahallem/turbo to ~2.0.1 ([541e77a](https://github.com/manniwatch/manniwatch/commit/541e77a367bec843646714e2db6521252311b59f))
+* **deps:** update dependency @donmahallem/turbo-validate-request to ~0.1.1 ([4bba05a](https://github.com/manniwatch/manniwatch/commit/4bba05aa958d0a71b82264ea72d86f61a9cf27a6))
+
+
+### Features
+
+* replace and remove express-utils package ([#1523](https://github.com/manniwatch/manniwatch/issues/1523)) ([cc4a166](https://github.com/manniwatch/manniwatch/commit/cc4a166efc27ae293c011ed2811cee826412af63))
+
+
+
+
+
+
 # [0.20.0](https://github.com/manniwatch/manniwatch/compare/v0.19.3...v0.20.0) (2021-02-08)
 
 

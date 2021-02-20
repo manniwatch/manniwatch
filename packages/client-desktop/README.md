@@ -14,7 +14,7 @@
 
 
 <p align="center">
-  <b>An electron app to be used with manniwatch endpoints</b></br>
+  <b>An electron app that wraps the manniwatch web app</b></br>
   <sub><sub>
 </p>
 

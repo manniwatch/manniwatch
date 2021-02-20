@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.21.0](https://github.com/manniwatch/manniwatch/compare/v0.20.0...v0.21.0) (2021-02-20)
+
+
+### Bug Fixes
+
+* **deps:** update @donmahallem/turbo packages ([a83333d](https://github.com/manniwatch/manniwatch/commit/a83333dfdc8c82721507d017a5c470dfc5fc3bcf))
+* **deps:** update angular monorepo to v11.2.0 ([b89ae21](https://github.com/manniwatch/manniwatch/commit/b89ae2140fa975483fd647d7e133ba32a15b0eac))
+* **deps:** update angular monorepo to v11.2.1 ([09eceb3](https://github.com/manniwatch/manniwatch/commit/09eceb3485144cd1a418593e4670945fb370ce5a))
+* **deps:** update angularmaterial monorepo to v11.2.0 ([07d0770](https://github.com/manniwatch/manniwatch/commit/07d0770bf61f5df6c79f5b91394f86ee17ae243d))
+* **deps:** update angularmaterial monorepo to v11.2.1 ([a486acb](https://github.com/manniwatch/manniwatch/commit/a486acb846460e5b293803f06329f652d1c204af))
+* **deps:** update dependency @donmahallem/turbo to ~2.0.1 ([541e77a](https://github.com/manniwatch/manniwatch/commit/541e77a367bec843646714e2db6521252311b59f))
+* **deps:** update dependency @donmahallem/turbo-validate-request to ~0.1.1 ([4bba05a](https://github.com/manniwatch/manniwatch/commit/4bba05aa958d0a71b82264ea72d86f61a9cf27a6))
+* **deps:** update dependency electron to ~11.3.0 ([79b52eb](https://github.com/manniwatch/manniwatch/commit/79b52eb27f2ce6d1d61a8f1c78a999fa82c813c4))
+* **deps:** update dependency zone.js to v0.11.4 ([efbb353](https://github.com/manniwatch/manniwatch/commit/efbb3538bbd106bf6b9eb6eb1c244780c2a86864))
+* fix readme generation ([#1488](https://github.com/manniwatch/manniwatch/issues/1488)) ([ed71aa8](https://github.com/manniwatch/manniwatch/commit/ed71aa82718f4f5d3a39655402a6b8148f0a6fc1))
+
+
+### Features
+
+* **schemas:** add schemas package ([#1539](https://github.com/manniwatch/manniwatch/issues/1539)) ([20e5357](https://github.com/manniwatch/manniwatch/commit/20e5357bb2ab46e0cf8373e81e9c1e78248d9d7c))
+* replace and remove express-utils package ([#1523](https://github.com/manniwatch/manniwatch/issues/1523)) ([cc4a166](https://github.com/manniwatch/manniwatch/commit/cc4a166efc27ae293c011ed2811cee826412af63))
+
+
+
+
+
+
 # [0.20.0](https://github.com/manniwatch/manniwatch/compare/v0.19.3...v0.20.0) (2021-02-08)
 
 

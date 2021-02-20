@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.21.0](https://github.com/manniwatch/manniwatch/compare/v0.20.0...v0.21.0) (2021-02-20)
+
+
+### Bug Fixes
+
+* fix readme generation ([#1488](https://github.com/manniwatch/manniwatch/issues/1488)) ([ed71aa8](https://github.com/manniwatch/manniwatch/commit/ed71aa82718f4f5d3a39655402a6b8148f0a6fc1))
+
+
+
+
+
+
 # [0.20.0](https://github.com/manniwatch/manniwatch/compare/v0.19.3...v0.20.0) (2021-02-08)
 
 

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.21.0](https://github.com/manniwatch/manniwatch/compare/v0.20.0...v0.21.0) (2021-02-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency electron to ~11.3.0 ([79b52eb](https://github.com/manniwatch/manniwatch/commit/79b52eb27f2ce6d1d61a8f1c78a999fa82c813c4))
+* fix readme generation ([#1488](https://github.com/manniwatch/manniwatch/issues/1488)) ([ed71aa8](https://github.com/manniwatch/manniwatch/commit/ed71aa82718f4f5d3a39655402a6b8148f0a6fc1))
+
+
+
+
+
+
 # [0.20.0](https://github.com/manniwatch/manniwatch/compare/v0.19.3...v0.20.0) (2021-02-08)
 
 
