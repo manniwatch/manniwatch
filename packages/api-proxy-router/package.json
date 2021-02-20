@@ -51,6 +51,7 @@
     "@donmahallem/turbo-validate-request": "~0.1.2",
     "@manniwatch/api-client": "^0.21.0",
     "@manniwatch/api-types": "^0.21.0",
+    "@manniwatch/schemas": "^0.21.0",
     "ajv": "~7.1.1"
   },
   "devDependencies": {
