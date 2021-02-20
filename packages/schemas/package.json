@@ -1,0 +1,58 @@
+{
+  "name": "@manniwatch/schemas",
+  "version": "0.20.0",
+  "description": "An express api router used to proxy requests to the upstream server",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "private": false,
+  "keywords": [
+    "api",
+    "types"
+  ],
+  "scripts": {
+    "build": "rollup -c ./rollup.config.js && npm run build:types",
+    "build:types": "tsc --project ./tsconfig.json  -d --declarationDir dist/types --declarationMap --emitDeclarationOnly",
+    "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
+    "test": "mocha --config ../../.mocharc.yml",
+    "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
+    "lint": "tslint -c tslint.json -p tsconfig.spec.json src/**/*.ts",
+    "lint:fix": "tslint --fix -c tslint.json -p tsconfig.spec.json src/**/*.ts",
+    "docs": "typedoc --options ../../typedoc.json",
+    "prepublishOnly": "npm run test && npm run docs && npm run build",
+    "version": "npm run build:readme && git add README.md"
+  },
+  "homepage": "https://manniwatch.github.io/manniwatch/",
+  "author": {
+    "name": "donmahallem",
+    "email": "donmahallem@users.noreply.github.com",
+    "url": "https://github.com/donmahallem"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/manniwatch/manniwatch/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manniwatch/manniwatch.git"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "ajv": "7.1.1"
+  },
+  "peerDependencies": {
+    "ajv": "^7.1.0"
+  },
+  "dependencies": {
+    "@manniwatch/api-types": "^0.20.0"
+  }
+}
