@@ -6,9 +6,9 @@
         "file-header": [
             true,
             {
-                "match": "Source https://github.com/manniwatch/manniwatch Package: express-utils",
+                "match": "Source https://github.com/manniwatch/manniwatch Package: schemas",
                 "allow-single-line-comments": true,
-                "default": "Source https://github.com/manniwatch/manniwatch Package: express-utils",
+                "default": "Source https://github.com/manniwatch/manniwatch Package: schemas",
                 "enforce-trailing-newline": false
             }
         ]

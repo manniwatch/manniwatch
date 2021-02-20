@@ -47,11 +47,11 @@
     "access": "public"
   },
   "dependencies": {
+    "@donmahallem/turbo": "~2.0.1",
+    "@donmahallem/turbo-validate-request": "~0.1.1",
     "@manniwatch/api-client": "^0.20.0",
     "@manniwatch/api-types": "^0.20.0",
-    "@manniwatch/express-utils": "^0.20.0",
-    "express": "~4.17.1",
-    "jsonschema": "~1.4.0"
+    "ajv": "~7.1.1"
   },
   "devDependencies": {
     "@types/express": "4.17.11",
@@ -60,7 +60,11 @@
     "@types/supertest": "2.0.10",
     "apidoc": "0.26.0",
     "axios": "0.21.1",
+    "express": "4.17.1",
     "proxyquire": "2.1.3",
     "supertest": "6.1.3"
+  },
+  "peerDependencies": {
+    "express": "~4.17.0"
   }
 }

@@ -2,26 +2,16 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
  */
 
+import * as prom from '@donmahallem/turbo';
+import * as turboval from '@donmahallem/turbo-validate-request';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { StopMode } from '@manniwatch/api-types';
-import * as prom from '@manniwatch/express-utils';
+import Ajv from 'ajv';
 import express from 'express';
-import { Schema } from 'jsonschema';
+import { TRIP_PASSAGES_SCHEMA } from './schemas';
 
-export const passagesSchema: Schema = {
-    additionalProperties: false,
-    properties: {
-        mode: {
-            description: 'departure mode',
-            enum: ['departure', 'arrival'],
-            id: 'mode',
-            type: 'string',
-        },
-    },
-    type: 'object',
-};
-export const createTripRouter: (apiClient: ManniWatchApiClient) => express.Router =
-    (apiClient: ManniWatchApiClient): express.Router => {
+export const createTripRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Ajv) => express.Router =
+    (apiClient: ManniWatchApiClient, ajvInstance: Ajv = new Ajv()): express.Router => {
         const router: express.Router = express.Router();
         /**
          * @api {get} /trip/:id/route Request Vehicle Route
@@ -44,7 +34,7 @@ export const createTripRouter: (apiClient: ManniWatchApiClient) => express.Route
          * @apiVersion 0.5.0
          */
         router.get('/:id([a-z0-9A-Z\-\+]+)/passages',
-            prom.validateRequest({ properties: { query: passagesSchema } }),
+            turboval.validateRequest('query', TRIP_PASSAGES_SCHEMA, ajvInstance),
             (req: express.Request, res: express.Response, next: express.NextFunction): void => {
                 const departureMode: StopMode = req.query.mode as StopMode || 'departure';
                 prom.promiseToResponse(apiClient.getTripPassages(req.params.id, departureMode), res, next);
