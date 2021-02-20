@@ -5,6 +5,7 @@
 import * as prom from '@donmahallem/turbo';
 import * as turboval from '@donmahallem/turbo-validate-request';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
+import { STOP_PASSAGES_SCHEMA } from '@manniwatch/schemas';
 import { expect } from 'chai';
 import express from 'express';
 import 'mocha';
@@ -19,7 +20,6 @@ import {
     SUCCESS_RESPONSE,
     SUCCESS_RESPONSE_LENGTH,
 } from './common-test.spec';
-import { STOP_PASSAGES_SCHEMA } from './schemas';
 const testIds: string[] = ['-12883', 'kasd'];
 describe('endpoints/stop.ts', (): void => {
     describe('createStopRouter', (): void => {
