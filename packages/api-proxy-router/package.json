@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "@donmahallem/turbo": "~2.0.1",
-    "@donmahallem/turbo-validate-request": "~0.1.1",
+    "@donmahallem/turbo-validate-request": "~0.1.2",
     "@manniwatch/api-client": "^0.20.0",
     "@manniwatch/api-types": "^0.20.0",
     "ajv": "~7.1.1"
