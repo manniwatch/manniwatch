@@ -5,6 +5,7 @@
 import { RequestError } from '@donmahallem/turbo';
 import { IBoundingBox, ManniWatchApiClient } from '@manniwatch/api-client';
 import { PositionType } from '@manniwatch/api-types';
+import { GEO_FENCE_SCHEMA, GET_VEHICLE_LOCATION_SCHEMA } from '@manniwatch/schemas';
 import { expect } from 'chai';
 import express from 'express';
 import 'mocha';
@@ -12,7 +13,6 @@ import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 import supertest from 'supertest';
 import { delayPromise } from './common-test.spec';
-import { GEO_FENCE_SCHEMA, GET_VEHICLE_LOCATION_SCHEMA } from './schemas';
 
 const validCoordinates: TestIBoundingBox[] = [
     { bottom: '-1000', left: '-1000', right: '1000', top: '1000' },
