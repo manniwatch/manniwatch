@@ -1,6 +1,6 @@
 {
   "name": "@manniwatch/api-router",
-  "version": "0.19.3",
+  "version": "0.21.0",
   "description": "An express api router used to requests to the upstream server",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -45,9 +45,10 @@
     "access": "public"
   },
   "dependencies": {
-    "@manniwatch/api-client": "^0.19.2",
-    "@manniwatch/api-types": "^0.19.2",
-    "@manniwatch/express-utils": "^0.19.3",
+    "@donmahallem/turbo": "~2.1.0",
+    "@donmahallem/turbo-validate-request": "~0.1.2",
+    "@manniwatch/api-client": "^0.21.0",
+    "@manniwatch/api-types": "^0.21.0",
     "express": "~4.17.1",
     "jsonschema": "~1.4.0"
   },
