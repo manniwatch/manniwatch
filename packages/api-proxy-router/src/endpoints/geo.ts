@@ -6,8 +6,8 @@ import * as turbo from '@donmahallem/turbo';
 import * as turboval from '@donmahallem/turbo-validate-request';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { PositionType } from '@manniwatch/api-types';
+import { GEO_FENCE_SCHEMA, GET_VEHICLE_LOCATION_SCHEMA } from '@manniwatch/schemas';
 import express from 'express';
-import { GEO_FENCE_SCHEMA, GET_VEHICLE_LOCATION_SCHEMA } from './schemas';
 
 export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router =
     (apiClient: ManniWatchApiClient): express.Router => {
