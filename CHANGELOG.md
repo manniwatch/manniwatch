@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.1](https://github.com/manniwatch/manniwatch/compare/v0.21.0...v0.21.1) (2021-02-24)
+
+
+### Bug Fixes
+
+* **api-proxy-router:** use @manniwatch/schemas ([#1545](https://github.com/manniwatch/manniwatch/issues/1545)) ([5da31d2](https://github.com/manniwatch/manniwatch/commit/5da31d24fb7108897a35269851e365eb3c32c4e9))
+* **deps:** update @donmahallem/turbo packages ([37d9bca](https://github.com/manniwatch/manniwatch/commit/37d9bcab2938cb05f3e78273bbf4105602b69734))
+* **deps:** update angular monorepo to v11.2.2 ([8023b4b](https://github.com/manniwatch/manniwatch/commit/8023b4b86085190d6c579191d26e8d3fcf40a4f8))
+* **schemas:** export IGeoLocationSchema ([0aa5e10](https://github.com/manniwatch/manniwatch/commit/0aa5e102a2877651a3fe532b6c8354246057dbe8))
+
+
+
+
+
+
 # [0.21.0](https://github.com/manniwatch/manniwatch/compare/v0.20.0...v0.21.0) (2021-02-20)
 
 

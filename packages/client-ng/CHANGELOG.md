@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.1](https://github.com/manniwatch/manniwatch/compare/v0.21.0...v0.21.1) (2021-02-24)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v11.2.2 ([8023b4b](https://github.com/manniwatch/manniwatch/commit/8023b4b86085190d6c579191d26e8d3fcf40a4f8))
+
+
+
+
+
+
 # [0.21.0](https://github.com/manniwatch/manniwatch/compare/v0.20.0...v0.21.0) (2021-02-20)
 
 
