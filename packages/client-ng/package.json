@@ -90,7 +90,7 @@
     "karma-jasmine-html-reporter": "1.5.4",
     "ng-packagr": "11.2.4",
     "protractor": "7.0.0",
-    "pug": "3.0.0",
+    "pug": "3.0.2",
     "pug-cli": "1.0.0-alpha6",
     "tslib": "2.1.0",
     "webpack-bundle-analyzer": "4.4.0"
