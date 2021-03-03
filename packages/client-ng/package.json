@@ -8,6 +8,7 @@
     "build": "npm run build:pug && ng build",
     "build:pug": "pug ./src --doctype html",
     "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
+    "build:release": "ng build --prod --aot",
     "test": "ng test --watch=false --browsers=ChromeHeadless",
     "test:coverage": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
     "test:watch": "ng test",
