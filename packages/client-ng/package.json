@@ -63,7 +63,7 @@
     "@angular/service-worker": "11.2.4",
     "@manniwatch/api-types": "^0.21.1",
     "@manniwatch/assets": "^0.21.2",
-    "date-fns": "2.18.0",
+    "date-fns": "2.19.0",
     "material-design-icons": "3.0.1",
     "ol": "6.5.0",
     "ol-mapbox-style": "6.3.1",
