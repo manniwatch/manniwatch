@@ -98,7 +98,7 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', (): 
         // tslint:disable-next-line:no-null-keyword
         [null, undefined, { status: VEHICLE_STATUS.STOPPING }]
           .forEach((testValue: any): void => {
-            it('should return false for :' + JSON.stringify(testValue), (): void => {
+            it(`should return false for:${JSON.stringify(testValue)}`, (): void => {
               cmp.passage = testValue;
               expect(cmp.departed).toBeFalse();
             });
@@ -112,7 +112,7 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', (): 
         // tslint:disable-next-line:no-null-keyword
         [null, undefined, { status: VEHICLE_STATUS.DEPARTED }]
           .forEach((testValue: any): void => {
-            it('should return false for :' + JSON.stringify(testValue), (): void => {
+            it(`should return false for:${JSON.stringify(testValue)}`, (): void => {
               cmp.passage = testValue;
               expect(cmp.stopping).toBeFalse();
             });
@@ -173,7 +173,7 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', (): 
           .injector.get(TestRouterLinkDirective);
       });
       testPassages.forEach((testPassage: ITripPassage): void => {
-        it('layout should be updated with correct values with passage seq_num "' + testPassage.stop_seq_num + '"', (): void => {
+        it(`layout should be updated with correct values with passage seq_num "${testPassage.stop_seq_num}"`, (): void => {
           cmp.passage = testPassage;
           cmpFixture.detectChanges();
           const titleElement: HTMLElement = cmpFixture.debugElement.query(By.css('h4')).nativeElement;
@@ -192,7 +192,7 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', (): 
         cmp = parentFixture.debugElement.query(By.directive(TripPassagesListItemComponent)).componentInstance;
       });
       testPassages.forEach((testPassage: ITripPassage): void => {
-        it('layout should be updated with correct values with passage seq_num "' + testPassage.stop_seq_num + '"', (): void => {
+        it(`layout should be updated with correct values with passage seq_num "${testPassage.stop_seq_num}"`, (): void => {
           parentCmp.testPassage = testPassage;
           parentFixture.detectChanges();
           expect(cmp.passage).toEqual(testPassage);

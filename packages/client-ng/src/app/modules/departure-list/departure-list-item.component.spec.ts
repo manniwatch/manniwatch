@@ -104,7 +104,7 @@ describe('src/app/modules/stop/departure-list-item.component', (): void => {
       describe('time', (): void => {
         describe('getter', (): void => {
           testPassages.forEach((value: any): void => {
-            it('should convert the object to "' + value + '\'', (): void => {
+            it(`should convert the object to "${value}"`, (): void => {
               (cmp as any).mTime = value;
               expect(cmp.time).toEqual(value);
             });
@@ -114,7 +114,7 @@ describe('src/app/modules/stop/departure-list-item.component', (): void => {
       describe('delay', (): void => {
         describe('getter', (): void => {
           testPassages.forEach((value: any): void => {
-            it('should convert the object to "' + value + '\'', (): void => {
+            it(`should convert the object to "${value}"`, (): void => {
               (cmp as any).mDelay = value;
               expect(cmp.delay).toEqual(value);
             });
@@ -201,7 +201,7 @@ describe('src/app/modules/stop/departure-list-item.component', (): void => {
             },
           ];
         passages.forEach((value: any): void => {
-          it('should convert the "' + value.value + '" to "' + value.result + '\'', (): void => {
+          it(`should convert the "${value.value}" to "${value.result}"`, (): void => {
             expect(cmp.calculateDelay(value.value as any)).toEqual(value.result);
           });
         });

@@ -183,13 +183,13 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
       describe('hasPassages()', (): void => {
         // tslint:disable-next-line:no-null-keyword
         [undefined, null, [], 1, 'k'].forEach((testValue: any): void => {
-          it('should return false for passages being "' + testValue + '"', (): void => {
+          it(`should return false for passages being "${testValue}"`, (): void => {
             cmp.passages = testValue;
             expect(cmp.hasPassages()).toBeFalse();
           });
         });
         [[1], [1, 2]].forEach((testValue: any[]): void => {
-          it('should return true for ' + testValue.length + ' set passages', (): void => {
+          it(`should return true for ${testValue.length} set passage`, (): void => {
             cmp.passages = testValue;
             expect(cmp.hasPassages()).toBeTrue();
           });
@@ -208,7 +208,7 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
         let bodyText: string;
         [1, 2, 3].forEach((testNum: number): void => {
 
-          it('should display ' + testNum + ' all relavent items', (): void => {
+          it(`should display ${testNum} all relavent items`, (): void => {
             cmp.passages = testActualPassages.slice(0, testNum);
             cmpFixture.detectChanges();
             listItems = cmpFixture.debugElement

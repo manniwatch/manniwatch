@@ -22,7 +22,7 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
             it('should convert TripInfoWithId to an IPassageStatus', (doneFn: DoneFn): void => {
                 of(1, 2, 3)
                     .pipe(map((val: number): TripInfoWithId => ({
-                        tripId: '' + val,
+                        tripId: `${val}`,
                     } as TripInfoWithId)),
                         TripPassagesUtil.convertResponse(undefined),
                         toArray())
@@ -39,13 +39,13 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
                             }];
                             const testStatuses: IPassageStatus[] = testTrips
                                 .map((val: TripInfoWithId): IPassageStatus =>
-                                    ({
-                                        failures: 0,
-                                        status: UpdateStatus.LOADED,
-                                        timestamp: testTimestamp,
-                                        tripId: val.tripId,
-                                        tripInfo: val,
-                                    }));
+                                ({
+                                    failures: 0,
+                                    status: UpdateStatus.LOADED,
+                                    timestamp: testTimestamp,
+                                    tripId: val.tripId,
+                                    tripInfo: val,
+                                }));
                             expect(testResult).toEqual(testStatuses);
                         },
                     });
@@ -99,8 +99,8 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
             });
             describe('errors with status', (): void => {
                 [300, 400, 401, 404].forEach((testStatus: number): void => {
-                    it('should convert error without 5xx error status "' + testStatus + '"', (doneFn: DoneFn): void => {
-                        const testTripId: string = 'testTripId' + testStatus;
+                    it(`should convert error without 5xx error status "${testStatus}"`, (doneFn: DoneFn): void => {
+                        const testTripId: string = `testTripId${testStatus}`;
                         throwError({ status: testStatus })
                             .pipe(TripPassagesUtil.handleError(testTripId),
                                 toArray())
@@ -120,8 +120,8 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
                     });
                 });
                 [500, 521, 599].forEach((testStatus: number): void => {
-                    it('should convert error with 5xx error status "' + testStatus + '" to 500', (doneFn: DoneFn): void => {
-                        const testTripId: string = 'testTripId' + testStatus;
+                    it(`should convert error with 5xx error status "${testStatus}" to 500`, (doneFn: DoneFn): void => {
+                        const testTripId: string = `testTripId${testStatus}`;
                         throwError({ status: testStatus })
                             .pipe(TripPassagesUtil.handleError(testTripId),
                                 toArray())

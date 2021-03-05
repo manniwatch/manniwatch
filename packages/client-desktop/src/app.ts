@@ -75,7 +75,7 @@ export class ManniWatchApp {
         session.webRequest
             .onBeforeSendHeaders(filter, (details: Electron.OnBeforeSendHeadersListenerDetails, callback: (v: any) => void): void => {
                 // tslint:disable-next-line:no-string-literal
-                details.requestHeaders['Authorization'] = 'Bearer ' + this.secureToken;
+                details.requestHeaders['Authorization'] = `Bearer ${this.secureToken}`;
                 callback({ cancel: false, requestHeaders: details.requestHeaders });
             });
     }
@@ -85,7 +85,7 @@ export class ManniWatchApp {
 
         const browserConfig: BrowserWindowConstructorOptions = {
             height: 600,
-            icon: __dirname + '/../icon.png',
+            icon: `${__dirname}/../icon.png`,
             minHeight: 480,
             minWidth: 640,
             title: 'ManniWatchClient',
@@ -101,7 +101,7 @@ export class ManniWatchApp {
         this.setupNetworkInterceptors(this.mainWindow.webContents.session);
         // tslint:disable-next-line:no-null-keyword
         this.mainWindow.autoHideMenuBar = true;
-        this.mainWindow.loadURL('http://localhost:' + this.config.port + '/index.html');
+        this.mainWindow.loadURL(`http://localhost:${this.config.port}/index.html`);
 
         if (this.config.dev) {
             this.mainWindow.webContents.openDevTools({

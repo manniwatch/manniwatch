@@ -54,7 +54,7 @@ describe('geo-fence.ts', (): void => {
         });
         describe('reject', (): void => {
             combinations.forEach((testBoundingBox: Partial<TestIBoundingBox>): void => {
-                it('should reject: ' + JSON.stringify(testBoundingBox), (): void => {
+                it(`should reject: ${JSON.stringify(testBoundingBox)}`, (): void => {
                     // tslint:disable-next-line:no-unused-expression
                     expect(ajvValidationFunction(testBoundingBox), 'schema should not be valid').to.be.false;
                 });
@@ -62,7 +62,7 @@ describe('geo-fence.ts', (): void => {
         });
         describe('resolve', (): void => {
             validCoordinates.forEach((testBoundingBox: TestIBoundingBox): void => {
-                it('should resolve: ' + JSON.stringify(testBoundingBox), (): void => {
+                it(`should resolve: ${JSON.stringify(testBoundingBox)}`, (): void => {
                     // tslint:disable-next-line:no-unused-expression
                     expect(ajvValidationFunction(testBoundingBox), 'schema should not be valid').to.be.true;
                 });

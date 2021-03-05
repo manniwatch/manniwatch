@@ -149,15 +149,15 @@ describe('endpoints/stop-point.ts', (): void => {
                                 .forEach((testStartTime: number | undefined): void => {
                                     [undefined, 842, 128]
                                         .forEach((testTimeFrame: number | undefined): void => {
-                                            let queryPath: string = queryUrl + '?';
+                                            let queryPath: string = `${queryUrl}?`;
                                             if (testStopMode) {
-                                                queryPath += 'mode=' + testStopMode + '&';
+                                                queryPath += `mode=${testStopMode}&`;
                                             }
                                             if (testStartTime) {
-                                                queryPath += 'startTime=' + testStartTime + '&';
+                                                queryPath += `startTime=${testStartTime}&`;
                                             }
                                             if (testTimeFrame) {
-                                                queryPath += 'timeFrame=' + testTimeFrame + '&';
+                                                queryPath += `timeFrame=${testTimeFrame}&`;
                                             }
                                             it(`should query \'${queryPath}\'`, (): Promise<void> => {
                                                 getStopPointPassagesStub.resolves(SUCCESS_RESPONSE);

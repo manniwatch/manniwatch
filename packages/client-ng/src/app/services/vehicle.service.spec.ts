@@ -9,7 +9,7 @@ describe('src/app/services/vehicle.service.ts', (): void => {
         describe('oldVehicles is undefined', (): void => {
             // tslint:disable-next-line:no-null-keyword
             [undefined, null].forEach((testValue: any): void => {
-                it('should pass on new vehicles if olds are ' + testValue, (): void => {
+                it(`should pass on new vehicles if olds are ${testValue}`, (): void => {
                     const newVehicles: any[] = [
                         {
                             id: '1',

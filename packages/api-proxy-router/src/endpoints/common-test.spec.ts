@@ -31,9 +31,9 @@ export const delayPromise: <T>(resolveValue: T, delayMs?: number) => Promise<T> 
     };
 
 export const NOT_FOUND_RESPONSE: any = { error: true, status: 404 };
-export const NOT_FOUND_RESPONSE_LENGTH: string = '' + JSON.stringify(NOT_FOUND_RESPONSE).length;
+export const NOT_FOUND_RESPONSE_LENGTH: string = `${JSON.stringify(NOT_FOUND_RESPONSE).length}`;
 export const SUCCESS_RESPONSE: any = { error: false, status: 200 };
-export const SUCCESS_RESPONSE_LENGTH: string = '' + JSON.stringify(SUCCESS_RESPONSE).length;
+export const SUCCESS_RESPONSE_LENGTH: string = `${JSON.stringify(SUCCESS_RESPONSE).length}`;
 export const createTestErrorRequestHandler: (innerSpy: sinon.SinonSpy) => ErrorRequestHandler =
     (innerSpy: sinon.SinonSpy): ErrorRequestHandler => {
         return (err: any, req: Request, res: Response, next: NextFunction): void => {

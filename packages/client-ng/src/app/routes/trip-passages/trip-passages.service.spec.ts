@@ -94,7 +94,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                 createStatusObservableSpy.calls.reset();
             });
             [2, 5, 20].forEach((testDelay: number): void => {
-                it('should call getTripPassages after ' + testDelay + ' seconds', fakeAsync((): void => {
+                it(`should call getTripPassages after ${testDelay} seconds`, fakeAsync((): void => {
                     const testTripId: string = 'any test id';
                     convertResponseSpy.and.returnValue(map((a: any): any => Object.assign({ c: 2 }, a)));
                     handleErrorSpy.and.returnValue(map((a: any): any => Object.assign({ d: 3 }, a)));

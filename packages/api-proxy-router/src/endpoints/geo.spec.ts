@@ -39,9 +39,9 @@ describe('endpoints/geo.ts', (): void => {
         let routeErrorStub: sinon.SinonStub;
         let sandbox: sinon.SinonSandbox;
         const NOT_FOUND_RESPONSE: any = { error: true, status: 404 };
-        const NOT_FOUND_RESPONSE_LENGTH: string = '' + JSON.stringify(NOT_FOUND_RESPONSE).length;
+        const NOT_FOUND_RESPONSE_LENGTH: string = `${JSON.stringify(NOT_FOUND_RESPONSE).length}`;
         const SUCCESS_RESPONSE: any = { error: false, status: 200 };
-        const SUCCESS_RESPONSE_LENGTH: string = '' + JSON.stringify(SUCCESS_RESPONSE).length;
+        const SUCCESS_RESPONSE_LENGTH: string = `${JSON.stringify(SUCCESS_RESPONSE).length}`;
         let stubClient: sinon.SinonStubbedInstance<ManniWatchApiClient>;
         let validateStubParent: sinon.SinonStub;
         let geoFenceValidateStub: sinon.SinonStub;
@@ -121,12 +121,9 @@ describe('endpoints/geo.ts', (): void => {
                     });
                 });
                 validCoordinates.forEach((testCoordinate: TestIBoundingBox, idx: number): void => {
-                    const basePath: string = '/stopPoints' +
-                        '?bottom=' + testCoordinate.bottom +
-                        '&top=' + testCoordinate.top +
-                        '&left=' + testCoordinate.left +
-                        '&right=' + testCoordinate.right;
-                    it('should query the stops with \'' + basePath + '\'', (): Promise<void> => {
+                    const basePath: string = `/stopPoints?bottom=${testCoordinate.bottom}&top=${testCoordinate.top}`
+                        + `&left=${testCoordinate.left}&right=${testCoordinate.right}`;
+                    it(`should query the stops with '${basePath}'`, (): Promise<void> => {
                         stubClient.getStopPointLocations.returns(delayPromise(SUCCESS_RESPONSE) as any);
                         return supertest(app)
                             .get(basePath)
@@ -154,12 +151,9 @@ describe('endpoints/geo.ts', (): void => {
                     expect(stubClient.getStopPointLocations.callCount).to.equal(0, 'proxy method should never be called');
                 });
                 validCoordinates.forEach((testCoordinate: TestIBoundingBox): void => {
-                    const basePath: string = '/stopPoints' +
-                        '?bottom=' + testCoordinate.bottom +
-                        '&top=' + testCoordinate.top +
-                        '&left=' + testCoordinate.left +
-                        '&right=' + testCoordinate.right;
-                    it('should reject \'' + basePath + '\'', (): Promise<void> => {
+                    const basePath: string = `/stopPoints?bottom=${testCoordinate.bottom}&top=${testCoordinate.top}`
+                        + `&left=${testCoordinate.left}&right=${testCoordinate.right}`;
+                    it(`should reject '${basePath}'`, (): Promise<void> => {
                         stubClient.getStopLocations.returns(delayPromise(SUCCESS_RESPONSE) as any);
                         return supertest(app)
                             .get(basePath)
@@ -190,12 +184,9 @@ describe('endpoints/geo.ts', (): void => {
                     });
                 });
                 validCoordinates.forEach((testCoordinate: TestIBoundingBox, idx: number): void => {
-                    const basePath: string = '/stops' +
-                        '?bottom=' + testCoordinate.bottom +
-                        '&top=' + testCoordinate.top +
-                        '&left=' + testCoordinate.left +
-                        '&right=' + testCoordinate.right;
-                    it('should query the stops with \'' + basePath + '\'', (): Promise<void> => {
+                    const basePath: string = `/stops?bottom=${testCoordinate.bottom}&top=${testCoordinate.top}`
+                        + `&left=${testCoordinate.left}&right=${testCoordinate.right}`;
+                    it(`should query the stops with '${basePath}'`, (): Promise<void> => {
                         stubClient.getStopLocations.returns(delayPromise(SUCCESS_RESPONSE) as any);
                         return supertest(app)
                             .get(basePath)
@@ -223,12 +214,9 @@ describe('endpoints/geo.ts', (): void => {
                     expect(stubClient.getStopLocations.callCount).to.equal(0, 'proxy method should never be called');
                 });
                 validCoordinates.forEach((testCoordinate: TestIBoundingBox): void => {
-                    const basePath: string = '/stops' +
-                        '?bottom=' + testCoordinate.bottom +
-                        '&top=' + testCoordinate.top +
-                        '&left=' + testCoordinate.left +
-                        '&right=' + testCoordinate.right;
-                    it('should reject \'' + basePath + '\'', (): Promise<void> => {
+                    const basePath: string = `/stops?bottom=${testCoordinate.bottom}&top=${testCoordinate.top}`
+                        + `&left=${testCoordinate.left}&right=${testCoordinate.right}`;
+                    it(`should reject '${basePath}'`, (): Promise<void> => {
                         stubClient.getStopLocations.returns(delayPromise(SUCCESS_RESPONSE) as any);
                         return supertest(app)
                             .get(basePath)
@@ -262,12 +250,12 @@ describe('endpoints/geo.ts', (): void => {
                     [...positionTypes, undefined].forEach((testPositionType: PositionType): void => {
                         let basePath: string = '/vehicles';
                         if (testPositionType !== undefined) {
-                            basePath += '?positionType=' + testPositionType;
+                            basePath += `?positionType=${testPositionType}`;
                         }
                         if (testLastUpdate !== undefined) {
-                            basePath += ((testPositionType !== undefined) ? '&' : '?') + 'lastUpdate=' + testLastUpdate;
+                            basePath += `${((testPositionType !== undefined) ? '&' : '?')}lastUpdate=${testLastUpdate}`;
                         }
-                        it('should query the vehicles with \'' + basePath + '\'', (): Promise<void> => {
+                        it(`should query the vehicles with '${basePath}'`, (): Promise<void> => {
                             stubClient.getVehicleLocations.returns(delayPromise(SUCCESS_RESPONSE) as any);
                             return supertest(app)
                                 .get(basePath)
@@ -301,12 +289,12 @@ describe('endpoints/geo.ts', (): void => {
                     [...positionTypes, undefined].forEach((testPositionType: PositionType): void => {
                         let basePath: string = '/vehicles';
                         if (testPositionType !== undefined) {
-                            basePath += '?positionType=' + testPositionType;
+                            basePath += `?positionType=${testPositionType}`;
                         }
                         if (testLastUpdate !== undefined) {
-                            basePath += ((testPositionType !== undefined) ? '&' : '?') + 'lastUpdate=' + testLastUpdate;
+                            basePath += `${((testPositionType !== undefined) ? '&' : '?')}lastUpdate=${testLastUpdate}`;
                         }
-                        it('should query the vehicles with \'' + basePath + '\'', (): Promise<void> => {
+                        it(`should query the vehicles with '${basePath}'`, (): Promise<void> => {
                             stubClient.getVehicleLocations.returns(delayPromise(SUCCESS_RESPONSE) as any);
                             return supertest(app)
                                 .get(basePath)
