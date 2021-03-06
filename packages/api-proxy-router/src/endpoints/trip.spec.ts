@@ -58,7 +58,7 @@ describe('endpoints/trip.ts', (): void => {
             sandbox.restore();
         });
         testIds.forEach((testId: string): void => {
-            describe('query \'/trip/' + testId + '/route\'', (): void => {
+            describe(`query '/trip/${testId}/route'`, (): void => {
                 it('should pass on the provided parameters', (): Promise<void> => {
                     apiClientStub.getRouteByTripId.resolves(SUCCESS_RESPONSE);
                     promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
@@ -119,8 +119,8 @@ describe('endpoints/trip.ts', (): void => {
                             });
                     });
                     ['departure', 'arrival'].forEach((testMode: string): void => {
-                        const queryUrlWithParam: string = queryUrl + '?mode=' + testMode;
-                        it(`should query \'${queryUrlWithParam}\'`, (): Promise<void> => {
+                        const queryUrlWithParam: string = `${queryUrl}?mode=${testMode}`;
+                        it(`should query '${queryUrlWithParam}'`, (): Promise<void> => {
                             apiClientStub.getTripPassages.resolves(SUCCESS_RESPONSE);
                             promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                                 source

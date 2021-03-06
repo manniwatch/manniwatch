@@ -28,7 +28,7 @@ export const serverErrorHandler: express.ErrorRequestHandler = (err: any,
 export class ManniWatchProxyServer {
     private app: express.Application;
     private server: Server;
-    private readonly ngModulePath: string = pathResolve(__dirname +
+    private readonly ngModulePath: string = pathResolve(`${__dirname}` +
         './../node_modules/@manniwatch/client-ng/dist/client-ng');
     constructor(public readonly endpoint: string,
         public readonly port: number) {
@@ -53,7 +53,7 @@ export class ManniWatchProxyServer {
         this.app.use('/api', api404Handler);
         this.app.use(express.static(this.ngModulePath));
         this.app.get('/*', (req: express.Request, res: express.Response): void => {
-            res.status(404).sendFile(this.ngModulePath + '/index.html');
+            res.status(404).sendFile(`${this.ngModulePath}/index.html`);
         });
         this.app.use(serverErrorHandler);
     }

@@ -54,7 +54,7 @@ describe('src/modules/error/not-found-msg-switch.component.ts', (): void => {
             expect(infoBoxDebugElement.componentInstance).toBeTruthy();
         }));
         describe('error type is provided', (): void => {
-            describe('error type is ' + ErrorType.PASSAGE_NOT_FOUND, (): void => {
+            describe(`error type is ${ErrorType.PASSAGE_NOT_FOUND}`, (): void => {
                 beforeEach((): void => {
                     testActivatedRoute.queryParams.next({
                         type: ErrorType.PASSAGE_NOT_FOUND,
@@ -66,7 +66,7 @@ describe('src/modules/error/not-found-msg-switch.component.ts', (): void => {
                         .toEqual('The passage could not be found. It either expired or has yet to start.Please select another passage.');
                 });
             });
-            describe('error type is ' + ErrorType.VEHICLE_NOT_FOUND, (): void => {
+            describe(`error type is ${ErrorType.VEHICLE_NOT_FOUND}`, (): void => {
                 beforeEach((): void => {
                     testActivatedRoute.queryParams.next({
                         type: ErrorType.VEHICLE_NOT_FOUND,

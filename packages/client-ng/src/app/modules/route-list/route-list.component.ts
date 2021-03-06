@@ -32,7 +32,7 @@ export class RouteListComponent {
         if (time > 300) {
             return data.actualTime;
         } else {
-            return Math.ceil(time / 60) + 'min';
+            return `${Math.ceil(time / 60)}min`;
         }
     }
 

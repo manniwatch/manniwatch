@@ -23,8 +23,8 @@ export class ApiServer {
     private app: express.Application;
     private server: Server;
     private isRunning: boolean = false;
-    private readonly ngModulePath: string = pathResolve(__dirname +
-        './../node_modules/@manniwatch/client-ng/dist/client-ng');
+    private readonly ngModulePath: string = pathResolve(`${__dirname}` +
+        `./../node_modules/@manniwatch/client-ng/dist/client-ng`);
     /**
      * Api Server for the Api Wrapper
      * @param config Config to be used to start the server
@@ -54,7 +54,7 @@ export class ApiServer {
         this.app.get('/*', (req: express.Request, res: express.Response): void => {
             // tslint:disable-next-line:no-console
             console.info('Not found', req.path);
-            res.status(404).sendFile(this.ngModulePath + '/index.html');
+            res.status(404).sendFile(`${this.ngModulePath}/index.html`);
         });
         this.app.use(createErrorRequestHandler());
     }

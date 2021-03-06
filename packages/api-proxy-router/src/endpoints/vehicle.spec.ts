@@ -46,7 +46,7 @@ describe('endpoints/vehicle.ts', (): void => {
             promiseStub.restore();
         });
         testIds.forEach((testId: string): void => {
-            describe('query \'/vehicle/' + testId + '/route\'', (): void => {
+            describe(`query '/vehicle/${testId}/route'`, (): void => {
                 it('should pass on the provided parameters', (): Promise<void> => {
                     getRouteByVehicleIdStub.resolves(SUCCESS_RESPONSE);
                     promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
