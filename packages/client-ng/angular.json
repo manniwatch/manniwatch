@@ -68,6 +68,16 @@
               ],
               "serviceWorker": true,
               "ngswConfigPath": "ngsw-config.json"
+            },
+            "desktop": {
+              "fileReplacements": [
+                {
+                  "replace": "src/app/services/web-api.service.ts",
+                  "with": "src/app/services/electron-api.service.ts"
+                }
+              ],
+              "outputPath": "dist/desktop",
+              "tsConfig": "tsconfig.desktop.json"
             }
           }
         },
