@@ -80,7 +80,7 @@ describe('vehicle-diff-handler', (): void => {
         describe('diff(oldState, newState)', (): void => {
             // tslint:disable-next-line:no-null-keyword
             [undefined, null].forEach((testUndefined: any): void => {
-                describe('old state is ' + testUndefined, (): void => {
+                describe(`old state is ${testUndefined}`, (): void => {
                     it('should convert an empty list correctly', (): void => {
                         const vehicles: ISimpleVehicle[] = [
                             { id: '1', isDeleted: true, lastUpdate: 2831 },

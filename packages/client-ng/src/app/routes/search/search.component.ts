@@ -29,7 +29,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         this.searchParamSubscription = this.activatedRoute
             .queryParams.subscribe((value: Params): void => {
                 this.data = value.q ? value.q : '';
-                this.titleService.setTitle('Search - \"' + this.data + '\"');
+                this.titleService.setTitle(`Search - "${this.data}"`);
             });
         this.resultObservable = this.activatedRoute.data
             .pipe(map((val: Data): IStopLocation[] => {

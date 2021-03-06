@@ -90,8 +90,8 @@ describe('src/app/app-error-handler.ts', (): void => {
             const createError: (code: number) => HttpErrorResponse = (code: number): HttpErrorResponse =>
                 new HttpErrorResponse({
                     status: code,
-                    statusText: 'Status ' + code,
-                    url: 'http://test.com/' + code,
+                    statusText: `Status ${code}`,
+                    url: `http://test.com/${code}`,
                 });
             interface ITestHttpError {
                 error: HttpErrorResponse;
@@ -128,7 +128,7 @@ describe('src/app/app-error-handler.ts', (): void => {
                     isClientOfflineSpy.and.returnValue(true);
                 });
                 testHttpErrors.forEach((testError: ITestHttpError): void => {
-                    it('should notify that the client is offline for status: ' + testError.error.status, (): void => {
+                    it(`should notify that the client is offline for status: ${testError.error.status}`, (): void => {
                         handler.handleHttpErrorResponse(testError.error, notificationService);
                         expect(isClientOfflineSpy).toHaveBeenCalledTimes(1);
                         expect(notifySpy).toHaveBeenCalledTimes(1);
@@ -144,7 +144,7 @@ describe('src/app/app-error-handler.ts', (): void => {
                     isClientOfflineSpy.and.callFake((): boolean => false);
                 });
                 testHttpErrors.forEach((testError: ITestHttpError): void => {
-                    it('should propagate a server error for code: ' + testError.error.status, (): void => {
+                    it(`should propagate a server error for code: ${testError.error.status}`, (): void => {
                         handler.handleHttpErrorResponse(testError.error, notificationService);
                         expect(isClientOfflineSpy).toHaveBeenCalledTimes(1);
                         expect(notifySpy).toHaveBeenCalledTimes(1);

@@ -84,7 +84,7 @@ describe('src/app/services/settings.service', (): void => {
                 },
             }];
             testValues.forEach((testValue: ITestValue): void => {
-                it('should return LatLon(' + testValue.out.lat + ',' + testValue.out.lon + ')', (): void => {
+                it(`should return LatLon(${testValue.out.lat},${testValue.out.lon})`, (): void => {
                     (environment.map.center as any) = testValue.settings;
                     expect(settingsService.getInitialMapCenter()).toEqual([testValue.out.lon, testValue.out.lat]);
                 });
@@ -99,7 +99,7 @@ describe('src/app/services/settings.service', (): void => {
                 settings: boolean,
                 value?: number,
             }): void => {
-                it('should return zoom level ' + (testValue.value ? testValue.value : 20), (): void => {
+                it(`should return zoom level ${(testValue.value ? testValue.value : 20)}`, (): void => {
                     if (testValue.settings) {
                         (settingsService as any).mSettings = {
                             INITIAL_ZOOM: testValue.value,

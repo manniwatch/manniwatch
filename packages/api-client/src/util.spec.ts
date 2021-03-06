@@ -28,10 +28,10 @@ describe('util.ts', (): void => {
                 '',
             ];
             testObjects.forEach((testObject: any): void => {
-                describe('used with testObject: ' + JSON.stringify(testObject), (): void => {
+                describe(`used with testObject: ${JSON.stringify(testObject)}`, (): void => {
                     prefixes.forEach((prefix: string): void => {
                         suffixes.forEach((suffix: string): void => {
-                            it('should pass with prefix "' + prefix + '" and suffix "' + suffix + '"', (): void => {
+                            it(`should pass with prefix "${prefix}" and suffix "${suffix}"`, (): void => {
                                 const testBody: string = prefix + JSON.stringify(testObject) + suffix;
                                 expect(Util.transformSettingsBody(testBody)).to.deep.equal(testObject);
                             });
