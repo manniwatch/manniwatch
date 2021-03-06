@@ -23,6 +23,9 @@
     "analyze": "webpack-bundle-analyzer dist/manniwatch/stats.json",
     "version": "npm run build:readme && git add README.md"
   },
+  "browser": {
+    "fs": false
+  },
   "private": false,
   "homepage": "https://manniwatch.github.io/manniwatch/",
   "author": {
@@ -82,6 +85,7 @@
     "@types/ol": "6.4.2",
     "apply-loader": "2.0.0",
     "codelyzer": "6.0.1",
+    "electron": "12.0.0",
     "jasmine-core": "3.6.0",
     "jasmine-spec-reporter": "6.0.0",
     "karma": "6.1.1",
