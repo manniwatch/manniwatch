@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.3](https://github.com/manniwatch/manniwatch/compare/v0.21.2...v0.21.3) (2021-03-06)
+
+
+### Bug Fixes
+
+* **deps:** update @donmahallem/turbo packages ([02fd454](https://github.com/manniwatch/manniwatch/commit/02fd454139cb32bbd15bce7a193140d1f09a4b0c))
+
+
+
+
+
+
 ## [0.21.2](https://github.com/manniwatch/manniwatch/compare/v0.21.1...v0.21.2) (2021-03-03)
 
 **Note:** Version bump only for package @manniwatch/api-proxy-router
