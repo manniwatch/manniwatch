@@ -21,6 +21,6 @@ export type ApiService = { [k in ApiMethods]: ManniWatchApiClient[k] } & {
 };
 
 export interface IElectronInterface {
-    api: ApiService,
-    environment: IEnvironmentBase,
+    api: ApiService;
+    environment: IEnvironmentBase;
 }
