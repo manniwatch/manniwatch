@@ -21,9 +21,6 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments';
 import { ApiService } from './api.service';
 
-@Injectable({
-    providedIn: 'root',
-})
 export class WebApiService implements ApiService {
 
     public constructor(public http: HttpClient) { }
