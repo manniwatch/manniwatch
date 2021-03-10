@@ -15,7 +15,7 @@ type ApiMethods = Exclude<keyof ManniWatchApiClient, 'endpoint' |
     'randomUserAgent' |
     'getProxy' |
     'request' |
-    'getTripPassages'>
+    'getTripPassages'>;
 export type ApiService = { [k in ApiMethods]: ManniWatchApiClient[k] } & {
     getTripPassages(...args: Parameters<ManniWatchApiClient['getTripPassages']>): Promise<TripInfoWithId>,
 };
