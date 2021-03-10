@@ -24,7 +24,7 @@ export class ApiServer {
     private server: Server;
     private isRunning: boolean = false;
     private readonly ngModulePath: string = pathResolve(`${__dirname}` +
-        `./../node_modules/@manniwatch/client-ng/dist/client-ng`);
+        `./../node_modules/@manniwatch/client-ng/dist/desktop`);
     /**
      * Api Server for the Api Wrapper
      * @param config Config to be used to start the server

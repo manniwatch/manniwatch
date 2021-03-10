@@ -2,10 +2,13 @@
  * Source https://github.com/manniwatch/manniwatch
  */
 
+import { ManniWatchApiClient } from '@manniwatch/api-client';
 import * as crypto from 'crypto';
-import { app, BrowserWindow, BrowserWindowConstructorOptions } from 'electron';
-import { ApiServer } from './api-server';
+import { app, BrowserWindow, BrowserWindowConstructorOptions, protocol } from 'electron';
+import { join } from 'path';
+import { createApiHandler } from './api-handler';
 import { IConfig } from './cli-commands';
+import { createMwFileProtocolHandler } from './mw-file-protocol-handler';
 
 export class ManniWatchApp {
 
@@ -13,10 +16,6 @@ export class ManniWatchApp {
      * Main Window
      */
     private mainWindow: Electron.BrowserWindow;
-    /**
-     * Api Proxy Server
-     */
-    private apiServer: ApiServer;
     /**
      * Secure Token to be used for communication between the client and the local api
      */
@@ -27,11 +26,6 @@ export class ManniWatchApp {
      */
     public constructor(private readonly config: IConfig) {
         this.secureToken = this.createSecureToken();
-        this.apiServer = new ApiServer({
-            endpoint: config.endpoint.href,
-            port: config.port,
-            secret: this.secureToken,
-        });
     }
 
     /**
@@ -44,26 +38,30 @@ export class ManniWatchApp {
     /**
      * Inits the client and starts up the app
      */
-    public init(): Promise<void> {
-        return this.apiServer
-            .start()
-            .then((): void => {
+    public async init(): Promise<void> {
+        protocol.registerSchemesAsPrivileged([
+            {
+                scheme: 'mw', privileges: {
+                    bypassCSP: true,
+                    standard: true,
+                    secure: true,
+                }
+            }
+        ])
+        app.on('ready', this.createWindow.bind(this));
 
-                app.on('ready', this.createWindow.bind(this));
+        app.on('window-all-closed', (): void => {
+            if (process.platform !== 'darwin') {
+                app.quit();
+                //this.apiServer.stop();
+            }
+        });
 
-                app.on('window-all-closed', (): void => {
-                    if (process.platform !== 'darwin') {
-                        app.quit();
-                        this.apiServer.stop();
-                    }
-                });
-
-                app.on('activate', (): void => {
-                    if (this.mainWindow === null) {
-                        this.createWindow();
-                    }
-                });
-            });
+        app.on('activate', (): void => {
+            if (this.mainWindow === null) {
+                this.createWindow();
+            }
+        });
     }
 
     public setupNetworkInterceptors(session: Electron.Session): void {
@@ -75,6 +73,7 @@ export class ManniWatchApp {
         session.webRequest
             .onBeforeSendHeaders(filter, (details: Electron.OnBeforeSendHeadersListenerDetails, callback: (v: any) => void): void => {
                 // tslint:disable-next-line:no-string-literal
+                console.log("JJJ")
                 details.requestHeaders['Authorization'] = `Bearer ${this.secureToken}`;
                 callback({ cancel: false, requestHeaders: details.requestHeaders });
             });
@@ -82,7 +81,9 @@ export class ManniWatchApp {
 
     private createWindow(): void {
         // create the browser window.
-
+        createApiHandler(new ManniWatchApiClient(this.config.endpoint.toString()));
+        protocol.registerFileProtocol('mw', createMwFileProtocolHandler());
+        //protocol.registerHttpProtocol('mw', createMwHttpProtocolHandler());
         const browserConfig: BrowserWindowConstructorOptions = {
             height: 600,
             icon: `${__dirname}/../icon.png`,
@@ -90,9 +91,14 @@ export class ManniWatchApp {
             minWidth: 640,
             title: 'ManniWatchClient',
             webPreferences: {
-                allowRunningInsecureContent: true,
+                allowRunningInsecureContent: false,
                 javascript: true,
-                nodeIntegration: false,
+                nodeIntegration: true,
+                devTools: true,
+                webSecurity: true,
+                sandbox: true,
+                contextIsolation: true,
+                preload: join(app.getAppPath(), './../preload/prerender.js')
             },
             width: 800,
         };
@@ -100,8 +106,8 @@ export class ManniWatchApp {
         // register Token Interceptor
         this.setupNetworkInterceptors(this.mainWindow.webContents.session);
         // tslint:disable-next-line:no-null-keyword
-        this.mainWindow.autoHideMenuBar = true;
-        this.mainWindow.loadURL(`http://localhost:${this.config.port}/index.html`);
+        this.mainWindow.autoHideMenuBar = false;
+        this.mainWindow.loadURL(`mw://static/index.html`);
 
         if (this.config.dev) {
             this.mainWindow.webContents.openDevTools({
