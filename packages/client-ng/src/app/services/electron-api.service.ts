@@ -18,10 +18,11 @@ import { ApiService, IBounds, TripInfoWithId } from '@manniwatch/client-types';
 import { from, Observable } from 'rxjs';
 import { ApiService as RootApiService } from './api.service';
 
-export const ELECTRON_API = new InjectionToken<ApiService>('app.electron-api');
+export const ELECTRON_API: InjectionToken<ApiService> = new InjectionToken<ApiService>('app.electron-api');
 export class ElectronApiService implements RootApiService {
 
     public constructor(@Inject(ELECTRON_API) private readonly service: ApiService) {
+        // tslint:disable-next-line:triple-equals
         if (service == undefined) {
             throw new Error('No electron config provided');
         }
