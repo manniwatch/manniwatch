@@ -8,31 +8,27 @@ import {
     IStopLocations,
     IStopPassage,
     IStopPointLocations,
-    ITripPassages,
     IVehicleLocation,
     IVehicleLocationList,
     IVehiclePathInfo,
+    StopMode,
 } from '@manniwatch/api-types';
+import { IBounds, TripInfoWithId } from '@manniwatch/client-types';
 import { Observable } from 'rxjs';
 
-export type TripInfoWithId = ITripPassages & { tripId: string };
-export interface IBounds {
-    bottom: number;
-    left: number;
-    right: number;
-    top: number;
-}
-
 export abstract class ApiService {
-
-    abstract baseUrl(): string;
-
-    abstract getTripPassages(tripId: string): Observable<TripInfoWithId>;
+    abstract getTripPassages(tripId: string, mode?: StopMode): Observable<TripInfoWithId>;
     abstract getRouteByVehicleId(vehicleId: string): Observable<IVehiclePathInfo>;
     abstract getRouteByTripId(tripId: string): Observable<IVehiclePathInfo>;
     abstract getStopInfo(stopId: string): Observable<IStopInfo>;
-    abstract getStopPassages(stopId: string): Observable<IStopPassage>;
-    abstract getStopPointPassages(stopPointId: string): Observable<IStopPassage>;
+    abstract getStopPassages(stopId: string,
+        mode?: StopMode,
+        startTime?: number,
+        timeFrame?: number): Observable<IStopPassage>;
+    abstract getStopPointPassages(stopPointId: string,
+        mode?: StopMode,
+        startTime?: number,
+        timeFrame?: number): Observable<IStopPassage>;
     abstract getVehicleLocations(lastUpdate: number): Observable<IVehicleLocationList>;
     abstract getVehicleLocation(vehicleId: string, lastUpdate: number): Observable<IVehicleLocation>;
     abstract getStopLocations(bounds?: IBounds): Observable<IStopLocations>;

@@ -2,9 +2,9 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
+import { TripInfoWithId } from '@manniwatch/client-types';
 import { of, Observable, OperatorFunction } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { TripInfoWithId } from 'src/app/services';
 
 export enum UpdateStatus {
     LOADING = 1,
@@ -27,13 +27,13 @@ export interface IPassageStatus {
 export class TripPassagesUtil {
     public static convertResponse(tripId: string): OperatorFunction<TripInfoWithId, IPassageStatus> {
         return map((tripPassages: TripInfoWithId): IPassageStatus =>
-            ({
-                failures: 0,
-                status: UpdateStatus.LOADED,
-                timestamp: Date.now(),
-                tripId: tripPassages.tripId,
-                tripInfo: tripPassages,
-            }));
+        ({
+            failures: 0,
+            status: UpdateStatus.LOADED,
+            timestamp: Date.now(),
+            tripId: tripPassages.tripId,
+            tripInfo: tripPassages,
+        }));
     }
     public static handleError(tripId: string): OperatorFunction<any, IPassageStatus> {
         return catchError((err: any): Observable<IPassageStatus> => {

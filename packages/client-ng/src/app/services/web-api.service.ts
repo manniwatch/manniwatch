@@ -15,10 +15,11 @@ import {
     IVehicleLocationList,
     IVehiclePathInfo,
 } from '@manniwatch/api-types';
+import { IBounds, TripInfoWithId } from '@manniwatch/client-types';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments';
-import { ApiService, IBounds, TripInfoWithId } from './api.service';
+import { ApiService } from './api.service';
 
 @Injectable({
     providedIn: 'root',
