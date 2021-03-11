@@ -1,7 +1,11 @@
-import { Protocol, ProtocolRequest, ProtocolResponse } from "electron";
-import { existsSync, promises as fsp } from "fs";
-import { URL } from "url";
-import { basename, join, normalize, resolve } from "path";
+/*!
+ * Source https://github.com/manniwatch/manniwatch
+ */
+
+import { app, Protocol, ProtocolRequest, ProtocolResponse } from 'electron';
+import { existsSync, promises as fsp } from 'fs';
+import { basename, join, normalize, resolve } from 'path';
+import { URL } from 'url';
 
 const guessMimeType = (filepath: string): string | undefined => {
     const fileparts: string[] = basename(filepath).split('.');
@@ -16,41 +20,32 @@ const guessMimeType = (filepath: string): string | undefined => {
         }
     }
     return undefined;
-}
+};
 type HandlerType = Parameters<Protocol['registerFileProtocol']>[1];
 export const createMwFileProtocolHandler: () => HandlerType = (): HandlerType => {
-    const distType: string = normalize(`${__dirname}/../../node_modules/@manniwatch/client-ng/dist/manniwatch/`);
+    const distType: string = normalize(`${app.getAppPath()}/../static/`);
     if (!existsSync(distType)) {
         throw new Error(`Could not find dist folder '${distType}'`);
     }
     return async (request: ProtocolRequest, callback: (response: string | ProtocolResponse) => void): Promise<void> => {
-        //console.log(request);
         const parsedUrl: URL = new URL(request.url);
-        if (!(parsedUrl.protocol === 'mw:')) {
-            return;
-        }
-        if (!(parsedUrl.host === 'static')) {
-            return;
-        }
-
-        const normalizedPath: string = normalize(join(distType, parsedUrl.pathname));
-        //console.log(parsedUrl.protocol, parsedUrl.host, parsedUrl.pathname, guessMimeType(normalizedPath), normalizedPath);
-        try {
-            if ((await fsp.stat(normalizedPath)).isFile()) {
-                //console.info('y', normalizedPath);
-                callback({
-                    charset: 'UTF-8',
-                    path: normalizedPath,
-                    headers: {
-                        'Content-Type': guessMimeType(normalizedPath) as any,
-                    }
-                });
+        if (parsedUrl.protocol === 'mw:' && parsedUrl.host === 'static') {
+            const normalizedPath: string = normalize(join(distType, parsedUrl.pathname));
+            try {
+                if ((await fsp.stat(normalizedPath)).isFile()) {
+                    callback({
+                        charset: 'UTF-8',
+                        headers: {
+                            'Content-Type': guessMimeType(normalizedPath) as any,
+                        },
+                        path: normalizedPath,
+                    });
+                }
+                return;
+            } catch (err) {
+                console.error(err);
             }
-            return;
-        } catch (err) {
-
         }
-        callback({ path: resolve(distType, 'index.html') });
-
-    }
+        callback({ path: resolve(distType, 'index.html'), statusCode: 404 });
+    };
 };

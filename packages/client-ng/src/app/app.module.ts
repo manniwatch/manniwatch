@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule, Provider } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -42,21 +42,6 @@ const moduleImports: any[] = [
     }),
 ];
 
-const additionalProviders: Provider[] = [];
-if (isManniwatchDesktop()) {
-    additionalProviders.push({
-        provide: ELECTRON_API,
-        useValue: getManniwatchDesktopApi(),
-    }, {
-        provide: ApiService,
-        useClass: ElectronApiService,
-    });
-} else {
-    additionalProviders.push({
-        provide: ApiService,
-        useClass: WebApiService,
-    });
-}
 @NgModule({
     bootstrap: [AppComponent],
     declarations: [
@@ -72,7 +57,17 @@ if (isManniwatchDesktop()) {
             provide: ErrorHandler,
             useClass: AppErrorHandler,
         },
-        ...additionalProviders,
+        {
+            deps: [HttpClient],
+            provide: ApiService,
+            useFactory: (http: HttpClient) => {
+                if (isManniwatchDesktop()) {
+                    return new ElectronApiService(getManniwatchDesktopApi());
+                } else {
+                    return new WebApiService(http);
+                }
+            },
+        }
     ],
 })
 export class AppModule { }

@@ -14,11 +14,11 @@ import {
     PositionType,
 } from '@manniwatch/api-types';
 import {
-    ApiService, IBounds, TripInfoWithId
+    ApiService, IBounds, TripInfoWithId,
 } from '@manniwatch/client-types';
 import { ipcRenderer } from 'electron';
 
-export const ManniwatchApi: ApiService = {
+export const manniwatchApi: ApiService = {
 
     getTripPassages(tripId: string, mode: string = 'departure'): Promise<TripInfoWithId> {
         return ipcRenderer.invoke('api/trip/passages', tripId, mode);
@@ -66,5 +66,5 @@ export const ManniwatchApi: ApiService = {
 
     getSettings(): Promise<ISettings> {
         return ipcRenderer.invoke('api/settings');
-    }
-}
+    },
+};

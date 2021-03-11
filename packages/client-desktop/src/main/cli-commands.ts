@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch
  */
 
-import { Command } from 'commander';
+import commander from 'commander';
 
 export interface IConfig {
     endpoint: URL;
@@ -11,22 +11,22 @@ export interface IConfig {
 export type ArgsCallback = (config: IConfig) => void;
 export const parseArgs: (cb: ArgsCallback) => void = (cb: ArgsCallback): void => {
     // tslint:disable-next-line:no-unused-expression
-    const cmd = new Command();
-    cmd.version('0.1.0')
+    const cmd: commander.Command = new commander.Command('Run Manniwatch');
+    cmd
+        .version('0.1.0')
         .arguments('<endpoint>')
-        .description('test command', {
-            endpoint: 'user to login'
+        .description('default', {
+            endpoint: 'endpoint to query for data',
         })
-        .option('-d, --debug', 'Debug', false)
-        .action((endpoint, options, command) => {
+        .option('-d, --debug', 'Enables debug mode', false)
+        .action((endpoint: string, options: { debug: boolean }, command: commander.Command): void => {
             if (options.debug) {
                 console.error('Called %s with options %o', command.name(), options);
             }
-            const title = options.title ? `${options.title} ` : '';
-            console.log(`Thank-you ${title}${endpoint}`, options);
+            console.log(`Uses ${endpoint}`, options);
             cb({
-                endpoint: new URL(endpoint),
                 dev: options.debug,
+                endpoint: new URL(endpoint),
             });
         })
         .parse();
