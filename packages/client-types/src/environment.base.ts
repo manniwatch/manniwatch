@@ -12,11 +12,11 @@ export interface IVectorMapProvider {
 
 export interface IOsmMapProvider {
     type: 'osm';
-    source?: OsmOption;
+    options?: OsmOption;
     /**
      * Dark Theme Map Tiles
      */
-    source_dark?: OsmOption;
+    options_dark?: OsmOption;
 }
 
 export type MapProvider = IVectorMapProvider | IOsmMapProvider;
