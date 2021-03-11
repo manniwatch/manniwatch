@@ -37,5 +37,4 @@ export interface IEnvironmentBase {
     };
     readonly production: boolean;
     readonly pwa?: boolean;
-    readonly version: string;
 }
