@@ -9,7 +9,7 @@ import {
     NgZone,
     OnChanges,
     OnDestroy,
-    SimpleChanges
+    SimpleChanges,
 } from '@angular/core';
 import { IOsmMapProvider, MapProvider } from '@manniwatch/client-types/dist/types/environment.base';
 import { Collection, Map, View } from 'ol';

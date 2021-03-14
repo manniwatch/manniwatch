@@ -3,7 +3,7 @@
  */
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ErrorHandler, NgModule, Provider } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MainToolbarModule } from 'src/app/modules/main-toolbar';
 import { SidebarModule } from 'src/app/modules/sidebar';
-import { ApiService, ElectronApiService, ELECTRON_API, SettingsService } from 'src/app/services';
+import { ApiService, ElectronApiService, SettingsService } from 'src/app/services';
 import { environment } from '../environments';
 import { AppErrorHandler } from './app-error-handler';
 import { AppRoutingModule } from './app-routing.module';
@@ -60,14 +60,14 @@ const moduleImports: any[] = [
         {
             deps: [HttpClient],
             provide: ApiService,
-            useFactory: (http: HttpClient) => {
+            useFactory: (http: HttpClient): ApiService => {
                 if (isManniwatchDesktop()) {
                     return new ElectronApiService(getManniwatchDesktopApi());
                 } else {
                     return new WebApiService(http);
                 }
             },
-        }
+        },
     ],
 })
 export class AppModule { }

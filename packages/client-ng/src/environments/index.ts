@@ -4,16 +4,16 @@
 
 import { all as merge } from 'deepmerge';
 import { getManniwatchDesktopEnvironment } from 'src/app/util/electron';
-import { Environment } from './environment.base';
-import { environment as compileEnvironment } from './environment';
 import { APP_VERSION } from './app-version';
+import { environment as compileEnvironment } from './environment';
+import { Environment } from './environment.base';
 
 const sourceEnvironments: any[] = [
     compileEnvironment,
     getManniwatchDesktopEnvironment(),
     {
         version: APP_VERSION,
-    }
+    },
 ];
 
 export const environment: Environment = merge<Environment>(sourceEnvironments) as any;

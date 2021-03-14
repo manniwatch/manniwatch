@@ -12,19 +12,18 @@ import {
     IVehicleLocation,
     IVehicleLocationList,
     IVehiclePathInfo,
-    PositionType,
     StopMode,
 } from '@manniwatch/api-types';
 import { ApiService, IBounds, TripInfoWithId } from '@manniwatch/client-types';
-import { EMPTY, from, Observable } from 'rxjs';
+import { from, EMPTY, Observable } from 'rxjs';
 import { getManniwatchDesktopApi } from '../util/electron';
 import { ApiService as RootApiService } from './api.service';
 
 export const ELECTRON_API: InjectionToken<ApiService> = new InjectionToken<ApiService>('app.electron-api', {
-    providedIn: 'root',
     factory: (): ApiService => {
         return getManniwatchDesktopApi();
-    }
+    },
+    providedIn: 'root',
 });
 export class ElectronApiService implements RootApiService {
 
@@ -70,11 +69,10 @@ export class ElectronApiService implements RootApiService {
     }
 
     public getVehicleLocation(vehicleId: string, lastUpdate: number = 0): Observable<IVehicleLocation> {
-        return EMPTY;//from(this.service.getVehicleLocation(vehicleId, lastUpdate));
+        return EMPTY; // from(this.service.getVehicleLocation(vehicleId, lastUpdate));
     }
 
     public getStopLocations(bounds?: IBounds): Observable<IStopLocations> {
-        console.log("JJJ");
         return from(this.service.getStopLocations(bounds));
     }
 

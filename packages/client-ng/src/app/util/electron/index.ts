@@ -4,10 +4,11 @@
 import { ApiService, IElectronInterface, IEnvironmentBase } from '@manniwatch/client-types';
 
 declare global {
+    // tslint:disable-next-line:interface-name
     interface Window {
         electron?: {
             manniwatch?: IElectronInterface;
-        }
+        };
     }
 }
 export const isManniwatchDesktop = (): boolean => {
