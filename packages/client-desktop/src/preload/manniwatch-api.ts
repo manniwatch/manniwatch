@@ -1,5 +1,5 @@
 /*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ * Source https://github.com/manniwatch/manniwatch Package: client-desktop
  */
 
 import {
