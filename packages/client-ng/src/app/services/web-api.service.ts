@@ -3,6 +3,7 @@
  */
 
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import {
     ISettings,
     IStopInfo,
@@ -20,6 +21,7 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments';
 import { ApiService } from './api.service';
 
+@Injectable()
 export class WebApiService implements ApiService {
 
     public constructor(public http: HttpClient) { }

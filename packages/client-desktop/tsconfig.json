@@ -2,7 +2,12 @@
     "extends": "../../tsconfig.json",
     "compilerOptions": {
         "outDir": "./dist",
-        "rootDir": "./src"
+        "rootDir": "./src",
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "target": "ES2018",
+        "declaration": true,
     },
     "include": [
         "./src"

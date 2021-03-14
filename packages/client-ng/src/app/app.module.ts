@@ -2,8 +2,8 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { HttpClientModule } from '@angular/common/http';
-import { ErrorHandler, NgModule, Provider } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MainToolbarModule } from 'src/app/modules/main-toolbar';
 import { SidebarModule } from 'src/app/modules/sidebar';
-import { ApiService, ElectronApiService, ELECTRON_API, SettingsService } from 'src/app/services';
+import { ApiService, ElectronApiService, SettingsService } from 'src/app/services';
 import { environment } from '../environments';
 import { AppErrorHandler } from './app-error-handler';
 import { AppRoutingModule } from './app-routing.module';
@@ -42,21 +42,6 @@ const moduleImports: any[] = [
     }),
 ];
 
-const additionalProviders: Provider[] = [];
-if (isManniwatchDesktop()) {
-    additionalProviders.push({
-        provide: ELECTRON_API,
-        useValue: getManniwatchDesktopApi(),
-    }, {
-        provide: ApiService,
-        useClass: ElectronApiService,
-    });
-} else {
-    additionalProviders.push({
-        provide: ApiService,
-        useClass: WebApiService,
-    });
-}
 @NgModule({
     bootstrap: [AppComponent],
     declarations: [
@@ -72,7 +57,17 @@ if (isManniwatchDesktop()) {
             provide: ErrorHandler,
             useClass: AppErrorHandler,
         },
-        ...additionalProviders,
+        {
+            deps: [HttpClient],
+            provide: ApiService,
+            useFactory: (http: HttpClient): ApiService => {
+                if (isManniwatchDesktop()) {
+                    return new ElectronApiService(getManniwatchDesktopApi());
+                } else {
+                    return new WebApiService(http);
+                }
+            },
+        },
     ],
 })
 export class AppModule { }
