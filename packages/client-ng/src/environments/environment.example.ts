@@ -2,8 +2,8 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import MVT from 'ol/format/MVT';
 import { IEnvironmentBase } from '@manniwatch/client-types';
+import MVT from 'ol/format/MVT';
 
 export const environment: IEnvironmentBase = {
     apiEndpoint: '/',
