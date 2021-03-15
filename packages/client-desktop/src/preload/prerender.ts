@@ -4,8 +4,10 @@
 
 import { IElectronInterface } from '@manniwatch/client-types';
 import { contextBridge } from 'electron';
+import { loadConfig, IConfig } from './../shared';
 import { manniwatchApi } from './manniwatch-api';
 
+const fileCfg: IConfig = loadConfig();
 const electronConfig: IElectronInterface = {
     api: manniwatchApi,
     environment: {
@@ -15,6 +17,7 @@ const electronConfig: IElectronInterface = {
                 lat: 195497852,
                 lon: 36428988,
             },
+            cf: fileCfg,
             /**
              * Map Provider to be used
              * Defaults to 'osm'

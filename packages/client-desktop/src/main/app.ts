@@ -5,8 +5,8 @@
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { app, protocol, BrowserWindow, BrowserWindowConstructorOptions } from 'electron';
 import { resolve } from 'path';
+import { IConfig } from './../shared';
 import { createApiHandler } from './api-handler';
-import { IConfig } from './cli-commands';
 import { createMwFileProtocolHandler } from './mw-file-protocol-handler';
 import { createMwTilesHttpProtocolHandler } from './mw-tiles-protocol-handler';
 

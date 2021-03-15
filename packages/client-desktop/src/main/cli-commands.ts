@@ -3,11 +3,8 @@
  */
 
 import commander from 'commander';
+import { IConfig } from './../shared';
 
-export interface IConfig {
-    endpoint: URL;
-    dev: boolean;
-}
 export type ArgsCallback = (config: IConfig) => void;
 export const parseArgs: (cb: ArgsCallback) => void = (cb: ArgsCallback): void => {
     // tslint:disable-next-line:no-unused-expression
