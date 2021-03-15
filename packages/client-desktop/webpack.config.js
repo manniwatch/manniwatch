@@ -18,6 +18,8 @@ const baseConfig = {
                 { loader: 'ts-loader' }
             ]
         }]
+    }, externals: {
+        'ajv': 'commonjs ajv',
     },
     output: {
         path: __dirname + '/src',
