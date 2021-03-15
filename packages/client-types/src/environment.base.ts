@@ -4,6 +4,7 @@
 
 import { Options as OsmOption } from 'ol/source/OSM';
 import { Options as VectorOptions } from 'ol/source/VectorTile';
+import { IMapCoordinate } from './map-coordinate';
 
 export interface IVectorMapProvider {
     type: 'vector';
@@ -24,10 +25,7 @@ export type MapProvider = IVectorMapProvider | IOsmMapProvider;
 export interface IEnvironmentBase {
     readonly apiEndpoint: string;
     readonly map?: {
-        center: {
-            lat: number;
-            lon: number;
-        };
+        center: IMapCoordinate;
         zoom: number;
         /**
          * Map Provider to be used
