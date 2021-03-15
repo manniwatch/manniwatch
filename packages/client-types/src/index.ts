@@ -24,3 +24,9 @@ export interface IElectronInterface {
     api: ApiService;
     environment: IEnvironmentBase;
 }
+
+export {
+    convertTo,
+    CoordinateFormat,
+    IMapCoordinate,
+} from './map-coordinate';
