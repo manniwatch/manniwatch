@@ -2,11 +2,15 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-desktop
  */
 
+import { IEnvironmentBase } from '@manniwatch/client-types';
 import { JSONSchemaType } from 'ajv';
 
 export interface IConfig {
-    endpoint: string;
+    map: {
+        center: Required<IEnvironmentBase['map']>,
+    };
     dev: boolean;
+    endpoint: string;
 }
 
 export const CONFIG_SCHEMA: JSONSchemaType<IConfig> = {
@@ -15,6 +19,7 @@ export const CONFIG_SCHEMA: JSONSchemaType<IConfig> = {
             type: 'boolean',
         },
         endpoint: {
+            default: '',
             type: 'string',
         },
     },
