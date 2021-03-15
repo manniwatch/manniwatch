@@ -23,7 +23,7 @@ export const parseArgs: (cb: ArgsCallback) => void = (cb: ArgsCallback): void =>
             console.log(`Uses ${endpoint}`, options);
             cb({
                 dev: options.debug,
-                endpoint: endpoint,
+                endpoint,
             });
         })
         .parse();
