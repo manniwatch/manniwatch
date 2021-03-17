@@ -3,10 +3,11 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import { app, protocol, BrowserWindow, BrowserWindowConstructorOptions } from 'electron';
+import { app, ipcMain, protocol, BrowserWindow, BrowserWindowConstructorOptions } from 'electron';
+import { IpcMainInvokeEvent } from 'electron/main';
 import { resolve } from 'path';
 import { createApiHandler } from './api-handler';
-import { IConfig } from './cli-commands';
+import { AppConfig } from './config/config';
 import { createMwFileProtocolHandler } from './mw-file-protocol-handler';
 import { createMwTilesHttpProtocolHandler } from './mw-tiles-protocol-handler';
 
@@ -20,7 +21,7 @@ export class ManniWatchApp {
      * Client APP
      * @param config Config to be setup
      */
-    public constructor(private readonly config: IConfig) {
+    public constructor(private readonly config: AppConfig) {
     }
 
     /**
@@ -64,7 +65,7 @@ export class ManniWatchApp {
 
     private createWindow(): void {
         // create the browser window.
-        createApiHandler(new ManniWatchApiClient(this.config.endpoint.toString()));
+        createApiHandler(new ManniWatchApiClient(this.config.endpoint));
         protocol.registerFileProtocol('mw', createMwFileProtocolHandler());
         protocol.registerHttpProtocol('tiles', createMwTilesHttpProtocolHandler());
         const browserConfig: BrowserWindowConstructorOptions = {
@@ -76,7 +77,7 @@ export class ManniWatchApp {
             webPreferences: {
                 allowRunningInsecureContent: false,
                 contextIsolation: true,
-                devTools: this.config.dev,
+                devTools: this.config.debug,
                 javascript: true,
                 nodeIntegration: true,
                 preload: resolve(`${app.getAppPath()}./../preload/prerender.js`),
@@ -90,7 +91,7 @@ export class ManniWatchApp {
         this.mainWindow.autoHideMenuBar = false;
         this.mainWindow.loadURL(`mw://static/index.html`);
 
-        if (this.config.dev) {
+        if (this.config.debug) {
             this.mainWindow.webContents.openDevTools({
                 mode: 'right',
             });
@@ -102,6 +103,35 @@ export class ManniWatchApp {
             // in an array if your app supports multi windows, this is the time
             // when you should delete the corresponding element.
             this.mainWindow = undefined as any;
+        });
+        ipcMain.handle('getEnvironment', (event: IpcMainInvokeEvent, ...args: any[]): void => {
+            event.returnValue = {
+                apiEndpoint: 'mwa://api',
+                map: {
+                    center: {
+                        lat: 195497852,
+                        lon: 36428988,
+                    },
+                    /**
+                     * Map Provider to be used
+                     * Defaults to 'osm'
+                     */
+                    mapProvider: {
+                        options: {
+                            // format: new MVT(),
+                            maxZoom: 14,
+                            /**
+                             * Please replace with correct url
+                             * This one doesnt work!
+                             */
+                            url: 'tiles://vector/{z}/{x}/{y}.pbf',
+                        },
+                        type: 'vector',
+                    },
+                    zoom: 10,
+                },
+                production: false,
+            };
         });
     }
 }

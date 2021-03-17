@@ -1,0 +1,71 @@
+{
+    "$id": "configschema",
+    "properties": {
+        "map": {
+            "properties": {
+                "center": {
+                    "additionalProperties": false,
+                    "default": {
+                        "lat": 0,
+                        "lon": 0
+                    },
+                    "nullable": true,
+                    "properties": {
+                        "format": {
+                            "default": "arcms",
+                            "enum": [
+                                "arcms",
+                                "arcs",
+                                "arcm",
+                                "arch"
+                            ],
+                            "nullable": true,
+                            "type": "string"
+                        },
+                        "lat": {
+                            "default": 0,
+                            "type": "number"
+                        },
+                        "lon": {
+                            "default": 0,
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "lat",
+                        "lon"
+                    ],
+                    "type": "object"
+                },
+                "type": {
+                    "default": "osm",
+                    "enum": [
+                        "vector",
+                        "osm"
+                    ],
+                    "nullable": true,
+                    "type": "string"
+                },
+                "url": {
+                    "default": "https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                    "oneOf": [
+                        {
+                            "nullable": true,
+                            "type": "string"
+                        },
+                        {
+                            "nullable": true,
+                            "type": "array"
+                        }
+                    ]
+                }
+            },
+            "required": [],
+            "type": "object"
+        }
+    },
+    "required": [
+        "map"
+    ],
+    "type": "object"
+}
