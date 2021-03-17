@@ -6,6 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "npm run build:pug && ng build",
+    "build:prod": "npm run build:pug && ng build --aot --prod",
     "build:pug": "pug ./src --doctype html",
     "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
     "build:release": "ng build --prod --aot",
@@ -18,7 +19,7 @@
     "postinstall": "npm run build:pug",
     "docs": "npx compodoc -p tsconfig.app.json -d ./docs",
     "prepare": "node ./scripts/prepare.js",
-    "prepublishOnly": "npm run test && npm run docs && npm run build",
+    "prepublishOnly": "npm run test && npm run docs && npm run build:prod",
     "build:stats": "ng build --stats-json",
     "analyze": "webpack-bundle-analyzer dist/manniwatch/stats.json",
     "version": "npm run build:readme && git add README.md"
