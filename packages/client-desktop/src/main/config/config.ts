@@ -2,12 +2,9 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-desktop
  */
 
-import { CoordinateFormat, IMapCoordinate } from '@manniwatch/client-types';
+import { CoordinateFormat, IEnvironmentBase, IMapCoordinate } from '@manniwatch/client-types';
+import { ICliConfig } from '../cli/cli-config';
 
-export interface IConfig {
-    dev: boolean;
-    endpoint: string;
-}
 interface IFileConfigMap {
     center?: IMapCoordinate<CoordinateFormat>;
     type?: string;
@@ -16,3 +13,7 @@ interface IFileConfigMap {
 export interface IFileConfig {
     map: IFileConfigMap;
 }
+export type AppConfig = Omit<ICliConfig, 'config'> & {
+    configs: string[],
+    environment: IEnvironmentBase,
+};

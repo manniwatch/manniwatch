@@ -3,6 +3,6 @@
  */
 
 import { appCallback } from './app-callback';
-import { parseArgs } from './cli-commands';
+import { handleCli } from './cli';
 
-parseArgs(appCallback);
+handleCli(appCallback);

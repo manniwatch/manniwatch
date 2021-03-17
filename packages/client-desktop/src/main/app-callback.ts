@@ -2,11 +2,11 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-desktop
  */
 
-import { IConfig } from './../shared';
 import { ManniWatchApp } from './app';
-import { ArgsCallback } from './cli-commands';
+import { ArgsCallback } from './cli/handle-cli';
+import { AppConfig } from './config/config';
 
-export const appCallback: ArgsCallback = (config: IConfig): void => {
+export const appCallback: ArgsCallback = (config: AppConfig): void => {
     const trapezeApp: ManniWatchApp = new ManniWatchApp(config);
     trapezeApp.init()
         .then((): void => {

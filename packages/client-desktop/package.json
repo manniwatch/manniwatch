@@ -10,6 +10,7 @@
   "type": "commonjs",
   "scripts": {
     "build": "webpack",
+    "build:prod": "webpack --mode=production",
     "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json --silent true",
     "test": "mocha --config ../../.mocharc.yml",
     "test:watch": "mocha --config ../../.mocharc.yml --watch",
@@ -64,8 +65,9 @@
     "@manniwatch/client-ng": "^0.21.3",
     "@manniwatch/client-types": "^0.21.1",
     "ajv": "~7.2.1",
-    "ajv-formats": "^1.5.1",
+    "ajv-formats": "~1.5.1",
     "commander": "~7.1.0",
+    "deepmerge": "~4.2.2",
     "electron": "~12.0.1",
     "ol": "~6.5.0"
   }
