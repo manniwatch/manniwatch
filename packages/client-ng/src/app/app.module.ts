@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MainToolbarModule } from 'src/app/modules/main-toolbar';
 import { SidebarModule } from 'src/app/modules/sidebar';
-import { ApiService, SettingsService } from 'src/app/services';
+import { ApiService, ElectronApiService, SettingsService } from 'src/app/services';
 import { environment } from '../environments';
 import { AppErrorHandler } from './app-error-handler';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +23,7 @@ import { WebApiService } from './services';
 import { AppNotificationService } from './services/app-notification.service';
 import { StopPointService } from './services/stop-point.service';
 import { UserLocationService } from './services/user-location.service';
+import { getManniwatchDesktopApi, isManniwatchDesktop } from './util/electron';
 
 const moduleImports: any[] = [
     BrowserModule,
@@ -40,6 +41,7 @@ const moduleImports: any[] = [
         enabled: environment.production && environment.pwa,
     }),
 ];
+
 @NgModule({
     bootstrap: [AppComponent],
     declarations: [
@@ -56,8 +58,15 @@ const moduleImports: any[] = [
             useClass: AppErrorHandler,
         },
         {
+            deps: [HttpClient],
             provide: ApiService,
-            useClass: WebApiService,
+            useFactory: (http: HttpClient): ApiService => {
+                if (isManniwatchDesktop()) {
+                    return new ElectronApiService(getManniwatchDesktopApi());
+                } else {
+                    return new WebApiService(http);
+                }
+            },
         },
     ],
 })

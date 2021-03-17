@@ -2,20 +2,31 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { AfterViewInit, Directive, ElementRef, NgZone, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import {
+    AfterViewInit,
+    Directive,
+    ElementRef,
+    NgZone,
+    OnChanges,
+    OnDestroy,
+    SimpleChanges,
+} from '@angular/core';
+import { IOsmMapProvider, MapProvider } from '@manniwatch/client-types/dist/types/environment.base';
 import { Collection, Map, View } from 'ol';
 import stylefunction from 'ol-mapbox-style/dist/stylefunction';
 import { Coordinate } from 'ol/coordinate';
+import MVT from 'ol/format/MVT';
 import { defaults, Interaction } from 'ol/interaction';
 import BaseTileLayer from 'ol/layer/BaseTile';
 import TileLayer from 'ol/layer/Tile';
 import VectorTileLayer from 'ol/layer/VectorTile';
 import { fromLonLat } from 'ol/proj';
 import { OSM } from 'ol/source';
+import VectorTileSource from 'ol/source/VectorTile';
 import { Subscription } from 'rxjs';
 import { SettingsService, Theme } from 'src/app/services';
 import { runOutsideZone } from 'src/app/util/rxjs';
-import { environment, IOsmMapProvider, MapProvider } from 'src/environments';
+import { environment } from 'src/environments';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 
 @Directive()
@@ -56,15 +67,16 @@ export abstract class AbstractOlMapDirective implements AfterViewInit, OnDestroy
     public createMapLayer(): BaseTileLayer {
         switch (environment.map.mapProvider.type) {
             case 'vector':
+                environment.map.mapProvider.options.format = new MVT();
                 return new VectorTileLayer({
                     declutter: false,
-                    source: environment.map.mapProvider.source,
+                    source: new VectorTileSource(environment.map.mapProvider.options),
                 });
             case 'osm':
             default:
-                if (environment.map.mapProvider.source) {
+                if (environment.map.mapProvider.options) {
                     return new TileLayer({
-                        source: environment.map.mapProvider.source,
+                        source: new OSM(environment.map.mapProvider.options),
                     });
                 }
                 // TODO: Take initial theme and set correct one
@@ -109,10 +121,10 @@ export abstract class AbstractOlMapDirective implements AfterViewInit, OnDestroy
     }
 
     public applyTileTheme(theme: Theme, mapProvider: IOsmMapProvider): void {
-        if (mapProvider?.source_dark && theme === Theme.DARK) {
-            this.mBackgroundMapLayer.setSource(mapProvider.source_dark);
+        if (mapProvider?.options_dark && theme === Theme.DARK) {
+            this.mBackgroundMapLayer.setSource(new OSM(mapProvider.options_dark));
         } else {
-            this.mBackgroundMapLayer.setSource(mapProvider.source);
+            this.mBackgroundMapLayer.setSource(new OSM(mapProvider.options));
         }
     }
 

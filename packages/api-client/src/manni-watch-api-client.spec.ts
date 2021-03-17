@@ -45,51 +45,17 @@ describe('manni-watch-api-client.ts', (): void => {
             nock.restore();
             nock.enableNetConnect();
         });
-        describe('getProxy()', (): void => {
-            let randomStub: sinon.SinonStub;
-            before((): void => {
-                randomStub = sinon.stub(Math, 'random');
-            });
-            afterEach((): void => {
-                randomStub.reset();
-            });
-            after((): void => {
-                randomStub.restore();
-            });
-            it('should return undefined if no proxy is defined', (): void => {
-                instance.proxies = undefined;
-                expect(instance.getProxy()).to.equal(undefined);
-                expect(randomStub.callCount).to.equal(0);
-            });
-            it('should return the defined proxy a string is provided', (): void => {
-                instance.proxies = 'testproxy';
-                expect(instance.getProxy()).to.equal('testproxy');
-                expect(randomStub.callCount).to.equal(0);
-            });
-            describe('proxy list provided', (): void => {
-                [['a', 0.25], ['b', 0.5], ['c', 0.9]].forEach((testValue: [string, number]): void => {
-                    it(`should return "${testValue[0]}" item from the provided proxy list`, (): void => {
-                        randomStub.returns(testValue[1]);
-                        instance.proxies = ['a', 'b', 'c'];
-                        expect(instance.getProxy()).to.equal(testValue[0]);
-                        expect(randomStub.callCount).to.equal(1);
-                    });
-                });
-            });
+        describe('constructor()', (): void => {
+            const testAxios: AxiosInstance = axios.create({ baseURL: 'testinstance' });
+            const testInstance: ManniWatchApiClient = new ManniWatchApiClient('test.url', testAxios);
+            expect(testInstance.endpoint).to.equal('test.url');
+            expect((testInstance as any).httpClient).to.equal(testAxios);
         });
         describe('request()', (): void => {
-            let getProxyStub: sinon.SinonStub;
-            beforeEach((): void => {
-                getProxyStub = sinon.stub(instance, 'getProxy');
-            });
-            afterEach((): void => {
-                getProxyStub.restore();
-            });
             it('should return undefined if no proxy is defined', (): Promise<void> => {
                 const testOpts: AxiosRequestConfig = {
                     url: '/test/path',
                 };
-                getProxyStub.returns(undefined);
                 const scope: nock.Scope = nock(testDomain)
                     .get('/test/path')
                     .matchHeader('User-Agent', /^ManniWatch Api Client\/__BUILD_VERSION__/)

@@ -7,8 +7,10 @@
   "bin": {
     "manniwatch": "./bin/client"
   },
+  "type": "commonjs",
   "scripts": {
-    "build": "tsc",
+    "build": "webpack",
+    "build:prod": "webpack --mode=production",
     "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json --silent true",
     "test": "mocha --config ../../.mocharc.yml",
     "test:watch": "mocha --config ../../.mocharc.yml --watch",
@@ -16,8 +18,9 @@
     "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
     "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json src/**/*.ts",
     "docs": "typedoc --options ./typedoc.json",
-    "prepublishOnly": "npm run test && npm run docs && npm run build",
-    "version": "npm run build:readme && git add README.md"
+    "prepublishOnly": "npm run test && npm run docs && npm run build:prod",
+    "version": "npm run build:readme && git add README.md",
+    "serve": "npm run build && npx electron dist/main/main.js"
   },
   "files": [
     "dist/*",
@@ -45,17 +48,27 @@
     "url": "https://github.com/manniwatch/manniwatch.git"
   },
   "devDependencies": {
+    "@types/ol": "6.4.2",
+    "@types/yargs": "16.0.0",
     "asar": "3.0.3",
+    "copy-webpack-plugin": "8.0.0",
     "nyc": "15.1.0",
-    "pug-cli": "1.0.0-alpha6"
+    "pug-cli": "1.0.0-alpha6",
+    "ts-loader": "8.0.18",
+    "webpack": "5.26.3",
+    "webpack-cli": "4.5.0",
+    "webpack-merge": "5.7.3"
   },
   "dependencies": {
-    "@manniwatch/api-proxy-router": "^0.21.3",
+    "@manniwatch/api-client": "^0.21.3",
     "@manniwatch/api-types": "^0.21.1",
     "@manniwatch/client-ng": "^0.21.3",
-    "electron": "~11.3.0",
-    "express": "~4.17.1",
-    "helmet": "~4.4.1",
-    "yargs": "~16.2.0"
+    "@manniwatch/client-types": "^0.21.1",
+    "ajv": "~7.2.1",
+    "ajv-formats": "~1.5.1",
+    "commander": "~7.1.0",
+    "deepmerge": "~4.2.2",
+    "electron": "~12.0.1",
+    "ol": "~6.5.0"
   }
 }

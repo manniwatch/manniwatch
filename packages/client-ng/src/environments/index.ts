@@ -2,11 +2,18 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-export {
-    BackendType,
-    IEnvironmentBase,
-    IOsmMapProvider,
-    IVectorMapProvider,
-    MapProvider,
-} from './environment.base';
-export { environment } from './environment';
+import { all as merge } from 'deepmerge';
+import { getManniwatchDesktopEnvironment } from 'src/app/util/electron';
+import { APP_VERSION } from './app-version';
+import { environment as compileEnvironment } from './environment';
+import { Environment } from './environment.base';
+
+const sourceEnvironments: any[] = [
+    compileEnvironment,
+    getManniwatchDesktopEnvironment(),
+    {
+        version: APP_VERSION,
+    },
+];
+
+export const environment: Environment = merge<Environment>(sourceEnvironments) as any;
