@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0](https://github.com/manniwatch/manniwatch/compare/v0.21.3...v0.22.0) (2021-03-17)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v11.2.5 ([#1622](https://github.com/manniwatch/manniwatch/issues/1622)) ([6e6eba2](https://github.com/manniwatch/manniwatch/commit/6e6eba2c0118fa27ee5c90a9286da0f7c5ca5543))
+* **deps:** update angularmaterial monorepo to v11.2.4 ([27dd9f1](https://github.com/manniwatch/manniwatch/commit/27dd9f18c9bbd0137504337445952755e00ecbce))
+* **deps:** update dependency ol-mapbox-style to v6.3.2 ([2ee1f5c](https://github.com/manniwatch/manniwatch/commit/2ee1f5c7d464c4fe0d6b7132cd60667443daaffc))
+
+
+### Features
+
+* **client-desktop:** use ipc instead of rest calls ([#1600](https://github.com/manniwatch/manniwatch/issues/1600)) ([942cd57](https://github.com/manniwatch/manniwatch/commit/942cd5700fc263d5dbd7159b21acf06b4437bc9d))
+* **client-ng:** add optional desktop build target ([#1598](https://github.com/manniwatch/manniwatch/issues/1598)) ([8e6017e](https://github.com/manniwatch/manniwatch/commit/8e6017e315fb6d3d96e4e9713ef23aca3878a1fe))
+* **client-ng:** implement @manniwatch/client-types ([#1619](https://github.com/manniwatch/manniwatch/issues/1619)) ([bcb1f88](https://github.com/manniwatch/manniwatch/commit/bcb1f88c1ac76384d2bd572044df815e2bd7bd0b))
+
+
+
+
+
+
 ## [0.21.3](https://github.com/manniwatch/manniwatch/compare/v0.21.2...v0.21.3) (2021-03-06)
 
 

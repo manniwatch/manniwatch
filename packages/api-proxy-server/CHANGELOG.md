@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0](https://github.com/manniwatch/manniwatch/compare/v0.21.3...v0.22.0) (2021-03-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency electron to v12 ([2ed152c](https://github.com/manniwatch/manniwatch/commit/2ed152cb714285335e0a41edb840da12e60a05d4))
+
+
+
+
+
+
 ## [0.21.3](https://github.com/manniwatch/manniwatch/compare/v0.21.2...v0.21.3) (2021-03-06)
 
 **Note:** Version bump only for package @manniwatch/api-proxy-server

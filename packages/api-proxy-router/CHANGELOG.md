@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0](https://github.com/manniwatch/manniwatch/compare/v0.21.3...v0.22.0) (2021-03-17)
+
+
+### Bug Fixes
+
+* **deps:** update @donmahallem/turbo packages ([db1b2ae](https://github.com/manniwatch/manniwatch/commit/db1b2aee779ce9fd449f5e4c24ce5def8626cae0))
+* **deps:** update dependency electron to v12 ([2ed152c](https://github.com/manniwatch/manniwatch/commit/2ed152cb714285335e0a41edb840da12e60a05d4))
+
+
+### Features
+
+* **client-desktop:** add config loading from file ([#1641](https://github.com/manniwatch/manniwatch/issues/1641)) ([1466cb1](https://github.com/manniwatch/manniwatch/commit/1466cb1e45f9581796530a194f64fce327b2e6e6))
+* **client-desktop:** use ipc instead of rest calls ([#1600](https://github.com/manniwatch/manniwatch/issues/1600)) ([942cd57](https://github.com/manniwatch/manniwatch/commit/942cd5700fc263d5dbd7159b21acf06b4437bc9d))
+
+
+
+
+
+
 ## [0.21.3](https://github.com/manniwatch/manniwatch/compare/v0.21.2...v0.21.3) (2021-03-06)
 
 

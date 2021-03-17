@@ -1,6 +1,6 @@
 {
   "name": "@manniwatch/client-desktop",
-  "version": "0.21.3",
+  "version": "0.22.0",
   "description": "An electron app that wraps the manniwatch web app",
   "main": "./dist/main.js",
   "private": false,
@@ -60,10 +60,10 @@
     "webpack-merge": "5.7.3"
   },
   "dependencies": {
-    "@manniwatch/api-client": "^0.21.3",
-    "@manniwatch/api-types": "^0.21.1",
-    "@manniwatch/client-ng": "^0.21.3",
-    "@manniwatch/client-types": "^0.21.1",
+    "@manniwatch/api-client": "^0.22.0",
+    "@manniwatch/api-types": "^0.22.0",
+    "@manniwatch/client-ng": "^0.22.0",
+    "@manniwatch/client-types": "^0.22.0",
     "ajv": "~7.2.1",
     "ajv-formats": "~1.5.1",
     "commander": "~7.1.0",

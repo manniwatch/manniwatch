@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0](https://github.com/manniwatch/manniwatch/compare/v0.21.3...v0.22.0) (2021-03-17)
+
+
+### Bug Fixes
+
+* **client-types:** remove unused properties from base environment ([#1631](https://github.com/manniwatch/manniwatch/issues/1631)) ([1c3f478](https://github.com/manniwatch/manniwatch/commit/1c3f4783d32923bfe4139b17891b077884420f53))
+* **deps:** update @donmahallem/turbo packages ([db1b2ae](https://github.com/manniwatch/manniwatch/commit/db1b2aee779ce9fd449f5e4c24ce5def8626cae0))
+* **deps:** update angular monorepo to v11.2.5 ([#1622](https://github.com/manniwatch/manniwatch/issues/1622)) ([6e6eba2](https://github.com/manniwatch/manniwatch/commit/6e6eba2c0118fa27ee5c90a9286da0f7c5ca5543))
+* **deps:** update angularmaterial monorepo to v11.2.4 ([27dd9f1](https://github.com/manniwatch/manniwatch/commit/27dd9f18c9bbd0137504337445952755e00ecbce))
+* **deps:** update dependency electron to ~12.0.1 ([#1629](https://github.com/manniwatch/manniwatch/issues/1629)) ([3039eec](https://github.com/manniwatch/manniwatch/commit/3039eec47c44f24595f467b34b1c72abf9b071c6))
+* **deps:** update dependency electron to v12 ([2ed152c](https://github.com/manniwatch/manniwatch/commit/2ed152cb714285335e0a41edb840da12e60a05d4))
+* **deps:** update dependency ol-mapbox-style to v6.3.2 ([2ee1f5c](https://github.com/manniwatch/manniwatch/commit/2ee1f5c7d464c4fe0d6b7132cd60667443daaffc))
+
+
+### Features
+
+* **api-client:** provide option to provice axios instance ([#1656](https://github.com/manniwatch/manniwatch/issues/1656)) ([739146d](https://github.com/manniwatch/manniwatch/commit/739146dee7f1c32b76f08ec1fb874f62ec862a8b))
+* **client-desktop:** add config loading from file ([#1641](https://github.com/manniwatch/manniwatch/issues/1641)) ([1466cb1](https://github.com/manniwatch/manniwatch/commit/1466cb1e45f9581796530a194f64fce327b2e6e6))
+* **client-desktop:** use ipc instead of rest calls ([#1600](https://github.com/manniwatch/manniwatch/issues/1600)) ([942cd57](https://github.com/manniwatch/manniwatch/commit/942cd5700fc263d5dbd7159b21acf06b4437bc9d))
+* **client-ng:** add optional desktop build target ([#1598](https://github.com/manniwatch/manniwatch/issues/1598)) ([8e6017e](https://github.com/manniwatch/manniwatch/commit/8e6017e315fb6d3d96e4e9713ef23aca3878a1fe))
+* **client-ng:** implement @manniwatch/client-types ([#1619](https://github.com/manniwatch/manniwatch/issues/1619)) ([bcb1f88](https://github.com/manniwatch/manniwatch/commit/bcb1f88c1ac76384d2bd572044df815e2bd7bd0b))
+* **client-types:** add client-types package ([#1616](https://github.com/manniwatch/manniwatch/issues/1616)) ([68d71fa](https://github.com/manniwatch/manniwatch/commit/68d71fad10e9630960718be02f07ac82ca765424))
+* **client-types:** add Coordinate helpers ([#1643](https://github.com/manniwatch/manniwatch/issues/1643)) ([f549b7d](https://github.com/manniwatch/manniwatch/commit/f549b7dd990890784d226b80862bf5fdb8ca7908))
+* **client-types:** add IElectronInterface ([#1621](https://github.com/manniwatch/manniwatch/issues/1621)) ([4e7bb48](https://github.com/manniwatch/manniwatch/commit/4e7bb48d9050eba40c991734c1fd34749c0e9764))
+
+
+
+
+
+
 ## [0.21.3](https://github.com/manniwatch/manniwatch/compare/v0.21.2...v0.21.3) (2021-03-06)
 
 

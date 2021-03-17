@@ -1,6 +1,6 @@
 {
   "name": "@manniwatch/client-types",
-  "version": "0.21.1",
+  "version": "0.22.0",
   "description": "Api Types and helper for Client Api",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -48,8 +48,8 @@
     "access": "public"
   },
   "devDependencies": {
-    "@manniwatch/api-client": "^0.21.3",
-    "@manniwatch/api-types": "^0.21.1",
+    "@manniwatch/api-client": "^0.22.0",
+    "@manniwatch/api-types": "^0.22.0",
     "@types/ol": "6.4.2",
     "ol": "6.5.0"
   },
