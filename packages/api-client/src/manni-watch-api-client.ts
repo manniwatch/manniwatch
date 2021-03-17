@@ -36,12 +36,17 @@ export class ManniWatchApiClient {
      */
     public constructor(public readonly endpoint: string,
         axiosInstance?: AxiosInstance) {
-        this.httpClient = axiosInstance ? axiosInstance : axios.create({
-            baseURL: endpoint,
-            headers: {
-                'User-Agent': DEFAULT_USER_AGENT,
-            },
-        });
+        if (axiosInstance) {
+            this.httpClient = axiosInstance;
+            this.httpClient.defaults.baseURL = endpoint;
+        } else {
+            this.httpClient = axios.create({
+                baseURL: endpoint,
+                headers: {
+                    'User-Agent': DEFAULT_USER_AGENT,
+                },
+            });
+        }
     }
 
     public request<T>(reqOpts: AxiosRequestConfig): Promise<T> {
