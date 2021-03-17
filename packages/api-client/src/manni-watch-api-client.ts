@@ -28,38 +28,28 @@ export interface IBoundingBox {
     right: number;
 }
 export class ManniWatchApiClient {
-    private httpClient: AxiosInstance;
+    private readonly httpClient: AxiosInstance;
     /**
      *
      * @param endpoint the endpoint base Url to query
      * @since 1.0.0
      */
-    public constructor(public endpoint: string,
-        public proxies?: string | string[],
-        public randomUserAgent: boolean = false) {
-        this.httpClient = axios.create({
-            baseURL: endpoint,
-            headers: {
-                'User-Agent': DEFAULT_USER_AGENT,
-            },
-        });
-    }
-
-    public getProxy(): string | undefined {
-        if (typeof this.proxies === 'string') {
-            return this.proxies;
-        } else if (Array.isArray(this.proxies)) {
-            return this.proxies[Math.floor(Math.random() * this.proxies.length)];
+    public constructor(public readonly endpoint: string,
+        axiosInstance?: AxiosInstance) {
+        if (axiosInstance) {
+            this.httpClient = axiosInstance;
+            this.httpClient.defaults.baseURL = endpoint;
+        } else {
+            this.httpClient = axios.create({
+                baseURL: endpoint,
+                headers: {
+                    'User-Agent': DEFAULT_USER_AGENT,
+                },
+            });
         }
-        return undefined;
     }
 
     public request<T>(reqOpts: AxiosRequestConfig): Promise<T> {
-        const newReqOpts: any = {
-            headers: {},
-            proxy: this.getProxy(),
-        };
-        Object.assign(newReqOpts, reqOpts);
         return this.httpClient.request(reqOpts)
             .then((data: AxiosResponse<T>): T => {
                 return data.data;
