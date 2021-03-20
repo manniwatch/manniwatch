@@ -52,7 +52,7 @@
     "@manniwatch/api-client": "^0.22.0",
     "@manniwatch/api-types": "^0.22.0",
     "@manniwatch/schemas": "^0.22.0",
-    "ajv": "~7.2.1"
+    "ajv": "~7.2.3"
   },
   "devDependencies": {
     "@types/express": "4.17.11",
