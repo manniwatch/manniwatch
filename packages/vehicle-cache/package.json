@@ -24,7 +24,7 @@
         "@manniwatch/api-types": "^0.22.0",
         "@manniwatch/vehicle-location-diff": "^0.22.0",
         "node-cache": "~5.1.2",
-        "rxjs": "~6.6.6"
+        "rxjs": "~6.6.7"
     },
     "files": [
         "dist/*",
