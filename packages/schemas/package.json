@@ -47,10 +47,10 @@
     "access": "public"
   },
   "devDependencies": {
-    "ajv": "7.2.4"
+    "ajv": "8.0.1"
   },
   "peerDependencies": {
-    "ajv": "^7.1.0"
+    "ajv": "^8.0.0"
   },
   "dependencies": {
     "@manniwatch/api-types": "^0.22.0"
