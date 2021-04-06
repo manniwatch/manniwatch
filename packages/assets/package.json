@@ -1,46 +1,46 @@
 {
-    "name": "@manniwatch/assets",
-    "version": "0.22.0",
-    "description": "Package holding shared assets for manniwatch",
-    "private": false,
-    "scripts": {
-        "build": "gulp",
-        "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
-        "version": "npm run build:readme && git add README.md"
-    },
-    "devDependencies": {
-        "@donmahallem/gulp-sharp": "1.0.5",
-        "@types/gulp": "4.0.8",
-        "del": "6.0.0",
-        "flat-map": "1.0.0",
-        "gulp": "4.0.2",
-        "gulp-cli": "2.3.0",
-        "gulp-rename": "2.0.0",
-        "gulp-svgmin": "3.0.0",
-        "sharp": "0.27.2"
-    },
-    "files": [
-        "dist/*",
-        "src/*"
-    ],
-    "homepage": "https://manniwatch.github.io/manniwatch/",
-    "author": {
-        "name": "donmahallem",
-        "email": "donmahallem@users.noreply.github.com",
-        "url": "https://github.com/donmahallem"
-    },
-    "license": "Apache-2.0",
-    "bugs": {
-        "url": "https://github.com/manniwatch/manniwatch/issues"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/manniwatch/manniwatch.git"
-    },
-    "engines": {
-        "node": ">=10.0.0"
-    },
-    "publishConfig": {
-        "access": "public"
-    }
+	"name": "@manniwatch/assets",
+	"version": "0.22.0",
+	"description": "Package holding shared assets for manniwatch",
+	"private": false,
+	"scripts": {
+		"build": "gulp",
+		"build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
+		"version": "npm run build:readme && git add README.md"
+	},
+	"devDependencies": {
+		"@donmahallem/gulp-sharp": "1.0.8",
+		"@types/gulp": "4.0.8",
+		"del": "6.0.0",
+		"flat-map": "1.0.0",
+		"gulp": "4.0.2",
+		"gulp-cli": "2.3.0",
+		"gulp-rename": "2.0.0",
+		"gulp-svgmin": "3.0.0",
+		"sharp": "0.28.1"
+	},
+	"files": [
+		"dist/*",
+		"src/*"
+	],
+	"homepage": "https://manniwatch.github.io/manniwatch/",
+	"author": {
+		"name": "donmahallem",
+		"email": "donmahallem@users.noreply.github.com",
+		"url": "https://github.com/donmahallem"
+	},
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/manniwatch/manniwatch/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/manniwatch/manniwatch.git"
+	},
+	"engines": {
+		"node": ">=10.0.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }

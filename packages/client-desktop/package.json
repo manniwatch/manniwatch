@@ -1,74 +1,73 @@
 {
-  "name": "@manniwatch/client-desktop",
-  "version": "0.22.0",
-  "description": "An electron app that wraps the manniwatch web app",
-  "main": "./dist/main.js",
-  "private": false,
-  "bin": {
-    "manniwatch": "./bin/client"
-  },
-  "type": "commonjs",
-  "scripts": {
-    "build": "webpack",
-    "build:prod": "webpack --mode=production",
-    "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json --silent true",
-    "test": "mocha --config ../../.mocharc.yml",
-    "test:watch": "mocha --config ../../.mocharc.yml --watch",
-    "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
-    "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
-    "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json src/**/*.ts",
-    "docs": "typedoc --options ./typedoc.json",
-    "prepublishOnly": "npm run test && npm run docs && npm run build:prod",
-    "version": "npm run build:readme && git add README.md",
-    "serve": "npm run build && npx electron dist/main/main.js"
-  },
-  "files": [
-    "dist/*",
-    "bin/*"
-  ],
-  "manniwatch": "./bin/manniwatch",
-  "engines": {
-    "node": ">=10.0.0"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "homepage": "https://manniwatch.github.io/manniwatch/",
-  "author": {
-    "name": "donmahallem",
-    "email": "donmahallem@users.noreply.github.com",
-    "url": "https://github.com/donmahallem"
-  },
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/manniwatch/manniwatch/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/manniwatch/manniwatch.git"
-  },
-  "devDependencies": {
-    "@types/ol": "6.4.2",
-    "@types/yargs": "16.0.0",
-    "asar": "3.0.3",
-    "copy-webpack-plugin": "8.0.0",
-    "nyc": "15.1.0",
-    "pug-cli": "1.0.0-alpha6",
-    "ts-loader": "8.0.18",
-    "webpack": "5.26.3",
-    "webpack-cli": "4.5.0",
-    "webpack-merge": "5.7.3"
-  },
-  "dependencies": {
-    "@manniwatch/api-client": "^0.22.0",
-    "@manniwatch/api-types": "^0.22.0",
-    "@manniwatch/client-ng": "^0.22.0",
-    "@manniwatch/client-types": "^0.22.0",
-    "ajv": "~7.2.1",
-    "ajv-formats": "~1.5.1",
-    "commander": "~7.1.0",
-    "deepmerge": "~4.2.2",
-    "electron": "~12.0.1",
-    "ol": "~6.5.0"
-  }
+	"name": "@manniwatch/client-desktop",
+	"version": "0.22.0",
+	"description": "An electron app that wraps the manniwatch web app",
+	"main": "./dist/main.js",
+	"private": false,
+	"bin": {
+		"manniwatch": "./bin/client"
+	},
+	"type": "commonjs",
+	"scripts": {
+		"build": "webpack",
+		"build:prod": "webpack --mode=production",
+		"build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json --silent true",
+		"test": "mocha --config ../../.mocharc.yml",
+		"test:watch": "mocha --config ../../.mocharc.yml --watch",
+		"test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
+		"lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
+		"lint:fix": "tslint --fix -c tslint.json -p tsconfig.json src/**/*.ts",
+		"docs": "typedoc --options ./typedoc.json",
+		"prepublishOnly": "npm run test && npm run docs && npm run build:prod",
+		"version": "npm run build:readme && git add README.md",
+		"serve": "npm run build && npx electron dist/main/main.js"
+	},
+	"files": [
+		"dist/*",
+		"bin/*"
+	],
+	"manniwatch": "./bin/manniwatch",
+	"engines": {
+		"node": ">=10.0.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"homepage": "https://manniwatch.github.io/manniwatch/",
+	"author": {
+		"name": "donmahallem",
+		"email": "donmahallem@users.noreply.github.com",
+		"url": "https://github.com/donmahallem"
+	},
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/manniwatch/manniwatch/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/manniwatch/manniwatch.git"
+	},
+	"devDependencies": {
+		"@types/ol": "6.4.2",
+		"asar": "3.0.3",
+		"copy-webpack-plugin": "8.1.0",
+		"nyc": "15.1.0",
+		"pug-cli": "1.0.0-alpha6",
+		"ts-loader": "8.1.0",
+		"webpack": "5.30.0",
+		"webpack-cli": "4.6.0",
+		"webpack-merge": "5.7.3"
+	},
+	"dependencies": {
+		"@manniwatch/api-client": "^0.22.0",
+		"@manniwatch/api-types": "^0.22.0",
+		"@manniwatch/client-ng": "^0.22.0",
+		"@manniwatch/client-types": "^0.22.0",
+		"ajv": "~8.0.5",
+		"ajv-formats": "~2.0.2",
+		"commander": "~7.2.0",
+		"deepmerge": "~4.2.2",
+		"electron": "~12.0.2",
+		"ol": "~6.5.0"
+	}
 }
