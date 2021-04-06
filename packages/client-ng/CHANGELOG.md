@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.1](https://github.com/manniwatch/manniwatch/compare/v0.22.0...v0.22.1) (2021-04-06)
+
+
+### Bug Fixes
+
+* **deps:** update angularmaterial monorepo to v11.2.5 ([#1658](https://github.com/manniwatch/manniwatch/issues/1658)) ([14e5c96](https://github.com/manniwatch/manniwatch/commit/14e5c9648ce7b1126cb193d5437e4bd97b3e1a38))
+* **deps:** update angularmaterial monorepo to v11.2.6 ([ebc5175](https://github.com/manniwatch/manniwatch/commit/ebc5175580675ea7df8dc19ebb3236f52da2b49f))
+* **deps:** update angularmaterial monorepo to v11.2.7 ([f9ca6fd](https://github.com/manniwatch/manniwatch/commit/f9ca6fd0688d164e77bf62ff073069414dcab514))
+* **deps:** update dependency rxjs to v6.6.7 ([914be07](https://github.com/manniwatch/manniwatch/commit/914be07e6725f40543d731230ab8836cbc5eb2a4))
+
+
+
+
+
+
 # [0.22.0](https://github.com/manniwatch/manniwatch/compare/v0.21.3...v0.22.0) (2021-03-17)
 
 

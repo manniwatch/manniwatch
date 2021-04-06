@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.1](https://github.com/manniwatch/manniwatch/compare/v0.22.0...v0.22.1) (2021-04-06)
+
+
+### Bug Fixes
+
+* **deps:** bump dependencies to ajv@8.0.0 ([#1726](https://github.com/manniwatch/manniwatch/issues/1726)) ([f8ed9f3](https://github.com/manniwatch/manniwatch/commit/f8ed9f350b02803520dc87f105ec5b0852341a2d))
+* **deps:** update @donmahallem/turbo packages ([19b29b3](https://github.com/manniwatch/manniwatch/commit/19b29b37c3cd6f65fe0571c50483f6c94ef1eeb9))
+* **deps:** update @donmahallem/turbo packages ([3ea2688](https://github.com/manniwatch/manniwatch/commit/3ea2688ced0dc0f36ec976824072d0df983304ad))
+* **deps:** update @donmahallem/turbo packages ([#1724](https://github.com/manniwatch/manniwatch/issues/1724)) ([bfaca10](https://github.com/manniwatch/manniwatch/commit/bfaca1090c785bedff2079d46307048436289245))
+* **deps:** update angularmaterial monorepo to v11.2.5 ([#1658](https://github.com/manniwatch/manniwatch/issues/1658)) ([14e5c96](https://github.com/manniwatch/manniwatch/commit/14e5c9648ce7b1126cb193d5437e4bd97b3e1a38))
+* **deps:** update angularmaterial monorepo to v11.2.6 ([ebc5175](https://github.com/manniwatch/manniwatch/commit/ebc5175580675ea7df8dc19ebb3236f52da2b49f))
+* **deps:** update angularmaterial monorepo to v11.2.7 ([f9ca6fd](https://github.com/manniwatch/manniwatch/commit/f9ca6fd0688d164e77bf62ff073069414dcab514))
+* **deps:** update dependency ajv-formats to ~1.6.0 ([e8a33e9](https://github.com/manniwatch/manniwatch/commit/e8a33e9e9da525e5aaa14939523abe9685c17f02))
+* **deps:** update dependency ajv-formats to ~2.0.1 ([79c4cc6](https://github.com/manniwatch/manniwatch/commit/79c4cc6eaa33aa31f2170cefdddb0c3e73fa11a3))
+* **deps:** update dependency ajv-formats to ~2.0.2 ([d2a511d](https://github.com/manniwatch/manniwatch/commit/d2a511d0e61c02e8961c90f3df809257e1ad59e7))
+* **deps:** update dependency commander to ~7.2.0 ([f43a124](https://github.com/manniwatch/manniwatch/commit/f43a124e2053c65c4d37eb46c3eee22d13dae31e))
+* **deps:** update dependency electron to ~12.0.2 ([#1691](https://github.com/manniwatch/manniwatch/issues/1691)) ([b80f74f](https://github.com/manniwatch/manniwatch/commit/b80f74f6f3c6af4ef380519a8554450f2a85488e))
+* **deps:** update dependency qs to ~6.10.0 ([88ca1f5](https://github.com/manniwatch/manniwatch/commit/88ca1f55d2944861f7d0575b65f0510b944230c8))
+* **deps:** update dependency qs to ~6.10.1 ([31cee05](https://github.com/manniwatch/manniwatch/commit/31cee051ef17daa7ee3ce618d8c060aafbd42d12))
+* **deps:** update dependency rxjs to v6.6.7 ([914be07](https://github.com/manniwatch/manniwatch/commit/914be07e6725f40543d731230ab8836cbc5eb2a4))
+
+
+
+
+
+
 # [0.22.0](https://github.com/manniwatch/manniwatch/compare/v0.21.3...v0.22.0) (2021-03-17)
 
 

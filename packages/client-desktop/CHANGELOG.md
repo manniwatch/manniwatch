@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.1](https://github.com/manniwatch/manniwatch/compare/v0.22.0...v0.22.1) (2021-04-06)
+
+
+### Bug Fixes
+
+* **deps:** bump dependencies to ajv@8.0.0 ([#1726](https://github.com/manniwatch/manniwatch/issues/1726)) ([f8ed9f3](https://github.com/manniwatch/manniwatch/commit/f8ed9f350b02803520dc87f105ec5b0852341a2d))
+* **deps:** update dependency ajv-formats to ~1.6.0 ([e8a33e9](https://github.com/manniwatch/manniwatch/commit/e8a33e9e9da525e5aaa14939523abe9685c17f02))
+* **deps:** update dependency ajv-formats to ~2.0.1 ([79c4cc6](https://github.com/manniwatch/manniwatch/commit/79c4cc6eaa33aa31f2170cefdddb0c3e73fa11a3))
+* **deps:** update dependency ajv-formats to ~2.0.2 ([d2a511d](https://github.com/manniwatch/manniwatch/commit/d2a511d0e61c02e8961c90f3df809257e1ad59e7))
+* **deps:** update dependency commander to ~7.2.0 ([f43a124](https://github.com/manniwatch/manniwatch/commit/f43a124e2053c65c4d37eb46c3eee22d13dae31e))
+* **deps:** update dependency electron to ~12.0.2 ([#1691](https://github.com/manniwatch/manniwatch/issues/1691)) ([b80f74f](https://github.com/manniwatch/manniwatch/commit/b80f74f6f3c6af4ef380519a8554450f2a85488e))
+
+
+
+
+
+
 # [0.22.0](https://github.com/manniwatch/manniwatch/compare/v0.21.3...v0.22.0) (2021-03-17)
 
 
