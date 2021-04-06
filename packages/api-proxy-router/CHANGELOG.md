@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.1](https://github.com/manniwatch/manniwatch/compare/v0.22.0...v0.22.1) (2021-04-06)
+
+
+### Bug Fixes
+
+* **deps:** bump dependencies to ajv@8.0.0 ([#1726](https://github.com/manniwatch/manniwatch/issues/1726)) ([f8ed9f3](https://github.com/manniwatch/manniwatch/commit/f8ed9f350b02803520dc87f105ec5b0852341a2d))
+* **deps:** update @donmahallem/turbo packages ([19b29b3](https://github.com/manniwatch/manniwatch/commit/19b29b37c3cd6f65fe0571c50483f6c94ef1eeb9))
+* **deps:** update @donmahallem/turbo packages ([3ea2688](https://github.com/manniwatch/manniwatch/commit/3ea2688ced0dc0f36ec976824072d0df983304ad))
+* **deps:** update @donmahallem/turbo packages ([#1724](https://github.com/manniwatch/manniwatch/issues/1724)) ([bfaca10](https://github.com/manniwatch/manniwatch/commit/bfaca1090c785bedff2079d46307048436289245))
+
+
+
+
+
+
 # [0.22.0](https://github.com/manniwatch/manniwatch/compare/v0.21.3...v0.22.0) (2021-03-17)
 
 

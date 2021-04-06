@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.1](https://github.com/manniwatch/manniwatch/compare/v0.22.0...v0.22.1) (2021-04-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency qs to ~6.10.0 ([88ca1f5](https://github.com/manniwatch/manniwatch/commit/88ca1f55d2944861f7d0575b65f0510b944230c8))
+* **deps:** update dependency qs to ~6.10.1 ([31cee05](https://github.com/manniwatch/manniwatch/commit/31cee051ef17daa7ee3ce618d8c060aafbd42d12))
+
+
+
+
+
+
 # [0.22.0](https://github.com/manniwatch/manniwatch/compare/v0.21.3...v0.22.0) (2021-03-17)
 
 
