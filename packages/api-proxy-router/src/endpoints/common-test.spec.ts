@@ -3,7 +3,7 @@
  */
 
 import { StopMode } from '@manniwatch/api-types';
-import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
+import express, { ErrorRequestHandler, NextFunction, Request, Response, Router } from 'express';
 
 /**
  * @hidden
@@ -43,3 +43,17 @@ export const createTestErrorRequestHandler: (innerSpy: sinon.SinonSpy) => ErrorR
     };
 
 export const testStopModes: (StopMode | undefined)[] = ['arrival', 'departure', undefined];
+
+export const createTestApp = (route: Router, errorSpy: sinon.SinonSpy): express.Application => {
+    const app: express.Application = express();
+    app.use(route);
+    app.use((req: express.Request, res: express.Response, next: express.NextFunction): void => {
+        res.status(404);
+        res.json(NOT_FOUND_RESPONSE);
+    });
+    app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction): void => {
+        errorSpy(err);
+        res.status(501).json(NOT_FOUND_RESPONSE);
+    });
+    return app;
+};

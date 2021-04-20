@@ -12,7 +12,7 @@ import 'mocha';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 import supertest from 'supertest';
-import { delayPromise } from './common-test.spec';
+import { createTestApp, delayPromise, NOT_FOUND_RESPONSE, NOT_FOUND_RESPONSE_LENGTH, SUCCESS_RESPONSE, SUCCESS_RESPONSE_LENGTH } from '../common-test.spec';
 
 const validCoordinates: TestIBoundingBox[] = [
     { bottom: '-1000', left: '-1000', right: '1000', top: '1000' },
@@ -35,26 +35,29 @@ const lastUpdates: string[] = ['22929299292', '2938'];
 type TestIBoundingBox = { [key in keyof IBoundingBox]: string };
 describe('endpoints/geo.ts', (): void => {
     describe('createGeoRouter()', (): void => {
-        let app: express.Express;
-        let routeErrorStub: sinon.SinonStub;
+        let app: express.Application;
+        let errorRouteSpy: sinon.SinonSpy;
         let sandbox: sinon.SinonSandbox;
-        const NOT_FOUND_RESPONSE: any = { error: true, status: 404 };
-        const NOT_FOUND_RESPONSE_LENGTH: string = `${JSON.stringify(NOT_FOUND_RESPONSE).length}`;
-        const SUCCESS_RESPONSE: any = { error: false, status: 200 };
-        const SUCCESS_RESPONSE_LENGTH: string = `${JSON.stringify(SUCCESS_RESPONSE).length}`;
         let stubClient: sinon.SinonStubbedInstance<ManniWatchApiClient>;
         let validateStubParent: sinon.SinonStub;
         let geoFenceValidateStub: sinon.SinonStub;
         let vehicleValidateStub: sinon.SinonStub;
+        let handlerStub: sinon.SinonStub;
         let createGeoRouter: any;
+        let createGetRequestHandlerStub: sinon.SinonStub;
         before((): void => {
             sandbox = sinon.createSandbox();
             stubClient = sandbox.createStubInstance(ManniWatchApiClient);
-            routeErrorStub = sandbox.stub();
+            errorRouteSpy = sandbox.spy();
             validateStubParent = sandbox.stub();
             geoFenceValidateStub = sandbox.stub();
             vehicleValidateStub = sandbox.stub();
-            createGeoRouter = proxyquire('./geo', {
+            createGetRequestHandlerStub = sandbox.stub();
+            handlerStub = sandbox.stub();
+            createGeoRouter = proxyquire('./create-geo-router', {
+                './vehicles': {
+                    createGetRequestHandler: createGetRequestHandlerStub,
+                },
                 '@donmahallem/turbo-validate-request': {
                     validateRequest: validateStubParent,
                 },
@@ -70,19 +73,12 @@ describe('endpoints/geo.ts', (): void => {
                     throw new Error('Unknown Schema');
                 }
             });
+            createGetRequestHandlerStub.returns(handlerStub);
+            handlerStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
+                res.json(SUCCESS_RESPONSE);
+            });
             const route: express.Router = createGeoRouter(stubClient as any);
-            app = express();
-            app.use(route);
-            app.use((req: express.Request, res: express.Response, next: express.NextFunction): void => {
-                res.status(404);
-                res.json(NOT_FOUND_RESPONSE);
-            });
-            app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction): void => {
-                routeErrorStub(err, req, res, next);
-            });
-            routeErrorStub.callsFake((err: any, req: express.Request, res: express.Response, next: express.NextFunction): void => {
-                res.status(501).json(NOT_FOUND_RESPONSE);
-            });
+            app = createTestApp(route, errorRouteSpy);
         });
         afterEach((): void => {
             expect(validateStubParent.callCount).to.equal(3, 'validate method should be called twice');
@@ -105,7 +101,7 @@ describe('endpoints/geo.ts', (): void => {
                         done(err);
                         return;
                     }
-                    expect(routeErrorStub.callCount).to.equal(0);
+                    expect(errorRouteSpy.callCount).to.equal(0);
                     done();
                 });
         });
@@ -131,7 +127,7 @@ describe('endpoints/geo.ts', (): void => {
                             .expect(200, SUCCESS_RESPONSE)
                             .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
                             .then((res: supertest.Response): void => {
-                                expect(routeErrorStub.callCount).to.equal(0);
+                                expect(errorRouteSpy.callCount).to.equal(0);
                                 expect(stubClient.getStopPointLocations.callCount)
                                     .to.equal(1, 'getStopPointLocations should only be called once');
                                 expect(stubClient.getStopPointLocations.args).to.deep.equal([[
@@ -161,8 +157,8 @@ describe('endpoints/geo.ts', (): void => {
                             .expect(501, NOT_FOUND_RESPONSE)
                             .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
                             .then((res: supertest.Response): void => {
-                                expect(routeErrorStub.callCount).to.equal(1, 'error handler should be called');
-                                const testError: RequestError = routeErrorStub.getCall(0).args[0];
+                                expect(errorRouteSpy.callCount).to.equal(1, 'error handler should be called');
+                                const testError: RequestError = errorRouteSpy.getCall(0).args[0];
                                 expect(testError.message)
                                     .to.equal('Caught by schema');
                                 expect(testError.status)
@@ -194,7 +190,7 @@ describe('endpoints/geo.ts', (): void => {
                             .expect(200, SUCCESS_RESPONSE)
                             .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
                             .then((res: supertest.Response): void => {
-                                expect(routeErrorStub.callCount).to.equal(0);
+                                expect(errorRouteSpy.callCount).to.equal(0);
                                 expect(stubClient.getStopLocations.callCount)
                                     .to.equal(1, 'getStopLocations should only be called once');
                                 expect(stubClient.getStopLocations.args).to.deep.equal([[
@@ -224,8 +220,8 @@ describe('endpoints/geo.ts', (): void => {
                             .expect(501, NOT_FOUND_RESPONSE)
                             .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
                             .then((res: supertest.Response): void => {
-                                expect(routeErrorStub.callCount).to.equal(1, 'error handler should be called');
-                                const testError: RequestError = routeErrorStub.getCall(0).args[0];
+                                expect(errorRouteSpy.callCount).to.equal(1, 'error handler should be called');
+                                const testError: RequestError = errorRouteSpy.getCall(0).args[0];
                                 expect(testError.message)
                                     .to.equal('Caught by schema');
                                 expect(testError.status)
@@ -245,6 +241,12 @@ describe('endpoints/geo.ts', (): void => {
                     vehicleValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
                         next();
                     });
+                    createGetRequestHandlerStub
+                        .callsFake((): express.RequestHandler => (req: express.Request,
+                            res: express.Response,
+                            next: express.NextFunction): void => {
+                            next();
+                        });
                 });
                 [...lastUpdates, undefined].forEach((testLastUpdate: string): void => {
                     [...positionTypes, undefined].forEach((testPositionType: PositionType): void => {
@@ -256,21 +258,20 @@ describe('endpoints/geo.ts', (): void => {
                             basePath += `${((testPositionType !== undefined) ? '&' : '?')}lastUpdate=${testLastUpdate}`;
                         }
                         it(`should query the vehicles with '${basePath}'`, (): Promise<void> => {
-                            stubClient.getVehicleLocations.returns(delayPromise(SUCCESS_RESPONSE) as any);
                             return supertest(app)
                                 .get(basePath)
                                 .expect('Content-Type', /json/)
                                 .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
                                 .expect(200, SUCCESS_RESPONSE)
                                 .then((res: supertest.Response): void => {
-                                    expect(routeErrorStub.callCount).to.equal(0);
-                                    expect(stubClient.getVehicleLocations.callCount)
-                                        .to.equal(1, 'getVehicleLocations should only be called once');
+                                    expect(errorRouteSpy.callCount).to.equal(0);
                                     const expectedLastUpdate: number | undefined = testLastUpdate ?
                                         parseInt(testLastUpdate, 10) : undefined;
-                                    expect(stubClient.getVehicleLocations.args).to.deep.equal([[
-                                        testPositionType || 'RAW', expectedLastUpdate,
-                                    ]]);
+                                    expect(handlerStub.callCount).to.equal(1, 'handler should only be called once');
+                                    expect(handlerStub.args[0][0].query).to.deep.equal({
+                                        lastUpdate: expectedLastUpdate || 0,
+                                        positionType: testPositionType || 'RAW',
+                                    });
                                 });
                         });
                     });
@@ -302,8 +303,8 @@ describe('endpoints/geo.ts', (): void => {
                                 .expect(501, NOT_FOUND_RESPONSE)
                                 .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
                                 .then((res: supertest.Response): void => {
-                                    expect(routeErrorStub.callCount).to.equal(1, 'error handler should be called');
-                                    const testError: RequestError = routeErrorStub.getCall(0).args[0];
+                                    expect(errorRouteSpy.callCount).to.equal(1, 'error handler should be called');
+                                    const testError: RequestError = errorRouteSpy.getCall(0).args[0];
                                     expect(testError.message)
                                         .to.equal('Caught by schema');
                                     expect(testError.status)
