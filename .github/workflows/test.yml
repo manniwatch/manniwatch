@@ -49,6 +49,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 200
       - name: Setup Node
         uses: actions/setup-node@v2.1.5
         with:
