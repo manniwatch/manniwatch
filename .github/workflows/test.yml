@@ -82,7 +82,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: ${{ matrix.package.name }}
           directory: ${{ matrix.package.location }}
-          name: Test-${{ matrix.os }}-Node${{ matrix.node }}-${{ matrix.package.name }}
+          name: Test
           fail_ci_if_error: false
           verbose: false
       - name: Run Lint
