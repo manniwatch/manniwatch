@@ -1,0 +1,12 @@
+comment:
+  layout: "reach, diff, flags, files"
+coverage:
+  status:
+    project:
+      api-types:
+        paths:
+          - packages/api-types/*
+flags:
+  api-types:
+    paths:
+      - packages/api-types/

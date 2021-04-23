@@ -48,3 +48,5 @@ Thumbs.db
 # Pug Files
 /src/**/*.html
 /src/*.html
+
+!.npmrc
