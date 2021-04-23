@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.2](https://github.com/manniwatch/manniwatch/compare/v0.22.1...v0.22.2) (2021-04-23)
+
+
+### Bug Fixes
+
+* **deps:** update @donmahallem/turbo packages ([b511003](https://github.com/manniwatch/manniwatch/commit/b511003a27d3f68402c7a5f9d67075eac30279b6))
+* **deps:** update @donmahallem/turbo packages ([be93ba6](https://github.com/manniwatch/manniwatch/commit/be93ba6bf4d09c8f6e5c1778db15f6728cecd67e))
+* **deps:** update @donmahallem/turbo packages ([4f7e405](https://github.com/manniwatch/manniwatch/commit/4f7e40597ff9ddf905b974bb11fd637f03cd6388))
+* **deps:** update angular monorepo to v11.2.11 ([c75de16](https://github.com/manniwatch/manniwatch/commit/c75de16f7f7bbe91068cf46d7a18771ad0eef33b))
+* **deps:** update angular monorepo to v11.2.9 ([#1657](https://github.com/manniwatch/manniwatch/issues/1657)) ([a6477bc](https://github.com/manniwatch/manniwatch/commit/a6477bcd9bbbd7f13fb8cfdfc39166c34fa93a54))
+* **deps:** update dependency date-fns to v2.20.2 ([d3f1103](https://github.com/manniwatch/manniwatch/commit/d3f1103c0b57ee2d5a87b2bde20f60d21380ff99))
+* **deps:** update dependency date-fns to v2.21.0 ([a1a9d4a](https://github.com/manniwatch/manniwatch/commit/a1a9d4a54af7795f810086765c8ed9e8a3b68031))
+* **deps:** update dependency electron to ~12.0.3 ([80fa0e4](https://github.com/manniwatch/manniwatch/commit/80fa0e4ad4d475e1fdcc458c181ebe05236bc09d))
+
+
+
+
+
+
 ## [0.22.1](https://github.com/manniwatch/manniwatch/compare/v0.22.0...v0.22.1) (2021-04-06)
 
 

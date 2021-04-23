@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.2](https://github.com/manniwatch/manniwatch/compare/v0.22.1...v0.22.2) (2021-04-23)
+
+
+### Bug Fixes
+
+* **deps:** update @donmahallem/turbo packages ([b511003](https://github.com/manniwatch/manniwatch/commit/b511003a27d3f68402c7a5f9d67075eac30279b6))
+* **deps:** update @donmahallem/turbo packages ([be93ba6](https://github.com/manniwatch/manniwatch/commit/be93ba6bf4d09c8f6e5c1778db15f6728cecd67e))
+* **deps:** update @donmahallem/turbo packages ([4f7e405](https://github.com/manniwatch/manniwatch/commit/4f7e40597ff9ddf905b974bb11fd637f03cd6388))
+* **deps:** update angular monorepo to v11.2.10 ([145666c](https://github.com/manniwatch/manniwatch/commit/145666ca5abfbed3e1498741975e4897163cedc0))
+* **deps:** update angular monorepo to v11.2.11 ([c75de16](https://github.com/manniwatch/manniwatch/commit/c75de16f7f7bbe91068cf46d7a18771ad0eef33b))
+* **deps:** update angular monorepo to v11.2.9 ([#1657](https://github.com/manniwatch/manniwatch/issues/1657)) ([a6477bc](https://github.com/manniwatch/manniwatch/commit/a6477bcd9bbbd7f13fb8cfdfc39166c34fa93a54))
+* **deps:** update angularmaterial monorepo to v11.2.10 ([b1075d6](https://github.com/manniwatch/manniwatch/commit/b1075d6a72740ebf9676c648602e9993434ac34f))
+* **deps:** update angularmaterial monorepo to v11.2.8 ([0450849](https://github.com/manniwatch/manniwatch/commit/04508495761a362420bb7750485ef60bddf83423))
+* **deps:** update angularmaterial monorepo to v11.2.9 ([6fbf408](https://github.com/manniwatch/manniwatch/commit/6fbf4089d0339b7243d9fb43572a1352250b5a1a))
+* **deps:** update dependency date-fns to v2.20.0 ([b72d7a2](https://github.com/manniwatch/manniwatch/commit/b72d7a2b40a38cea276c85180b5a9556c006198c))
+* **deps:** update dependency date-fns to v2.20.1 ([775de0d](https://github.com/manniwatch/manniwatch/commit/775de0d694ef4dd0053783627e39e402639f1fe2))
+* **deps:** update dependency date-fns to v2.20.2 ([d3f1103](https://github.com/manniwatch/manniwatch/commit/d3f1103c0b57ee2d5a87b2bde20f60d21380ff99))
+* **deps:** update dependency date-fns to v2.20.3 ([84eb8e4](https://github.com/manniwatch/manniwatch/commit/84eb8e47fb8e0998b35b2acb971e0391875da065))
+* **deps:** update dependency date-fns to v2.21.0 ([a1a9d4a](https://github.com/manniwatch/manniwatch/commit/a1a9d4a54af7795f810086765c8ed9e8a3b68031))
+* **deps:** update dependency date-fns to v2.21.1 ([56b19e0](https://github.com/manniwatch/manniwatch/commit/56b19e0740583cd1e799ea17ea6c6f70257cced2))
+* **deps:** update dependency electron to ~12.0.3 ([80fa0e4](https://github.com/manniwatch/manniwatch/commit/80fa0e4ad4d475e1fdcc458c181ebe05236bc09d))
+* **deps:** update dependency electron to ~12.0.4 ([a519149](https://github.com/manniwatch/manniwatch/commit/a51914987a457db5fb91f2304d3d118dc46c7c1d))
+* **deps:** update dependency electron to ~12.0.5 ([4624d18](https://github.com/manniwatch/manniwatch/commit/4624d1851ecc1a7b363dd3e4a53c624dfe65fd9b))
+* **deps:** update dependency helmet to ~4.5.0 ([c5511e0](https://github.com/manniwatch/manniwatch/commit/c5511e0dc6da86b1c9c14326299d16f830816a0d))
+
+
+
+
+
+
 ## [0.22.1](https://github.com/manniwatch/manniwatch/compare/v0.22.0...v0.22.1) (2021-04-06)
 
 
