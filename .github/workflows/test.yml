@@ -73,8 +73,6 @@ jobs:
         run: npx lerna run build --include-dependencies --scope=${{ matrix.package.name }}
       - name: Run Test
         run: npx lerna run test --scope=${{ matrix.package.name }}
-      - name: Merge Test Reports
-        run: npm run coverage:merge
       - name: Upload coverage to Codecov Monorepo
         uses: donmahallem/codecov-monorepo@release
         with:
