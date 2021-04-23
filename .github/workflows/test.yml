@@ -83,8 +83,8 @@ jobs:
           flags: ${{ matrix.package.name }}
           directory: ${{ matrix.package.location }}
           name: Test - ${{ matrix.os }} - Node ${{ matrix.node }} - ${{ matrix.package.name }}
-          fail_ci_if_error: true
-          verbose: true
+          fail_ci_if_error: false
+          verbose: false
       - name: Run Lint
         run: npx lerna run lint --scope=${{ matrix.package.name }}
       - name: Run Docs
