@@ -77,9 +77,14 @@ jobs:
       - name: Run Test
         run: npx lerna run test --scope=${{ matrix.package.name }}
       - name: Upload coverage to Codecov Monorepo
-        uses: donmahallem/codecov-monorepo@release
+        uses: codecov/codecov-action@v1.4.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          flags: ${{ matrix.package.name }}
+          directory: ${{ matrix.package.location }}
+          name: codecov-umbrella
+          fail_ci_if_error: true
+          verbose: true
       - name: Run Lint
         run: npx lerna run lint --scope=${{ matrix.package.name }}
       - name: Run Docs
