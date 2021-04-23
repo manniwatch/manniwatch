@@ -82,7 +82,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: ${{ matrix.package.name }}
           directory: ${{ matrix.package.location }}
-          name: codecov-umbrella
+          name: Test - ${{ matrix.os }} - Node ${{ matrix.node }} - ${{ matrix.package.name }}
           fail_ci_if_error: true
           verbose: true
       - name: Run Lint
