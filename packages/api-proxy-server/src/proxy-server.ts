@@ -58,14 +58,19 @@ export class ManniWatchProxyServer {
         this.app.use(serverErrorHandler);
     }
 
-    public start(): void {
-        this.server = this.app.listen(this.port);
+    public start(): Promise<void> {
+        return new Promise((resolve: () => void, reject: (err: any) => void): void => {
+            this.server = this.app.listen(this.port, (err?: any): void => {
+                err ? reject(err) : resolve();
+            });
+        });
     }
 
-    public stop(): void {
-        this.server.close((err: any): void => {
-            // tslint:disable-next-line:no-console
-            console.log('Server closed', err);
+    public stop(): Promise<void> {
+        return new Promise((resolve: () => void, reject: (err: any) => void): void => {
+            this.server.close((err: any): void => {
+                err ? reject(err) : resolve();
+            });
         });
     }
 }
