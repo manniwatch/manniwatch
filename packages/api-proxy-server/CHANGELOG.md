@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.23.0](https://github.com/manniwatch/manniwatch/compare/v0.22.2...v0.23.0) (2021-04-27)
+
+
+### Features
+
+* **api-proxy-server:** naive export of basic server ([#1808](https://github.com/manniwatch/manniwatch/issues/1808)) ([3077d61](https://github.com/manniwatch/manniwatch/commit/3077d61198db89440a7e5a0e584d042a07f3c89a))
+
+
+
+
+
+
 ## [0.22.2](https://github.com/manniwatch/manniwatch/compare/v0.22.1...v0.22.2) (2021-04-23)
 
 
