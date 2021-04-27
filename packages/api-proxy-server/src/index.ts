@@ -2,9 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: api-proxy-server
  */
 
-import { createApiProxyRouter } from '@manniwatch/api-proxy-router';
-import express from 'express';
-import { Config } from './config';
+/*
 const app: express.Application = express();
 
 app.use((req: express.Request,
@@ -21,3 +19,6 @@ app.listen(Config.port, (): void => {
     // tslint:disable-next-line:no-console
     console.log(`Example app listening on port ${Config.port} with endpoint "${Config.endpoint}"!`);
 });
+*/
+
+export { ManniWatchProxyServer } from './proxy-server';
