@@ -23,6 +23,8 @@ jobs:
       - name: Prepare Package
         run: |
           npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
+      - name: Test NPM Identity
+        run: npm whoami
       - name: Upload Package
         run: npx lerna publish from-git --yes
   release_github:
