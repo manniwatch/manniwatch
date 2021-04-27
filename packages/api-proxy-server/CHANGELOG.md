@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.24.0](https://github.com/manniwatch/manniwatch/compare/v0.23.0...v0.24.0) (2021-04-27)
+
+
+### Features
+
+* **api-proxy-server:** add Promise method to start and stop of server ([#1811](https://github.com/manniwatch/manniwatch/issues/1811)) ([2c635cf](https://github.com/manniwatch/manniwatch/commit/2c635cf07d2003d6ea1f481a75726b061dbbe8ac))
+
+
+
+
+
+
 # [0.23.0](https://github.com/manniwatch/manniwatch/compare/v0.22.2...v0.23.0) (2021-04-27)
 
 
