@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/manniwatch/manniwatch/compare/v0.24.0...v0.25.0) (2021-05-08)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v11.2.12 ([5dc7ec9](https://github.com/manniwatch/manniwatch/commit/5dc7ec9c3b01a42d2f92acf4f3110829247d7e28))
+* **deps:** update angular monorepo to v11.2.13 ([020d4db](https://github.com/manniwatch/manniwatch/commit/020d4db01b7839f4257d5272889665c171ed084d))
+* **deps:** update angularmaterial monorepo to v11.2.11 ([455a96b](https://github.com/manniwatch/manniwatch/commit/455a96b23c3c96d2a497727315aba13e5f4861fd))
+* **deps:** update angularmaterial monorepo to v11.2.12 ([2f2cfec](https://github.com/manniwatch/manniwatch/commit/2f2cfec871fc009bf42ca612fb03b839f58d8d32))
+* **deps:** update dependency date-fns to v2.21.2 ([1f2d4a2](https://github.com/manniwatch/manniwatch/commit/1f2d4a23224338a63f824d8fed2d84e8ce7c05ec))
+* **deps:** update dependency date-fns to v2.21.3 ([8eda972](https://github.com/manniwatch/manniwatch/commit/8eda97254a6be56f9d4f5c9819b015ecf8d32c5a))
+
+
+
+
+
+
 # [0.24.0](https://github.com/manniwatch/manniwatch/compare/v0.23.0...v0.24.0) (2021-04-27)
 
 **Note:** Version bump only for package @manniwatch/client-ng

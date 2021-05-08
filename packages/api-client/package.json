@@ -1,6 +1,6 @@
 {
     "name": "@manniwatch/api-client",
-    "version": "0.24.0",
+    "version": "0.25.0",
     "description": "Node Client to consume the Api",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
@@ -19,7 +19,7 @@
         "version": "npm run build:readme && git add README.md"
     },
     "dependencies": {
-        "@manniwatch/api-types": "^0.24.0",
+        "@manniwatch/api-types": "^0.25.0",
         "axios": "~0.21.0",
         "qs": "~6.10.1"
     },

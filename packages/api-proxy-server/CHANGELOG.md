@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/manniwatch/manniwatch/compare/v0.24.0...v0.25.0) (2021-05-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency helmet to ~4.6.0 ([cdf6413](https://github.com/manniwatch/manniwatch/commit/cdf64138c55a9c05dd972ec01a949bb8b85e5bea))
+
+
+### Features
+
+* **api-proxy-server:** add api only server module ([#1847](https://github.com/manniwatch/manniwatch/issues/1847)) ([ac3c5b5](https://github.com/manniwatch/manniwatch/commit/ac3c5b5147932a494f8f309fc19e8c4057dd0d26))
+
+
+
+
+
+
 # [0.24.0](https://github.com/manniwatch/manniwatch/compare/v0.23.0...v0.24.0) (2021-04-27)
 
 

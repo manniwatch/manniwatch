@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/manniwatch/manniwatch/compare/v0.24.0...v0.25.0) (2021-05-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency protobufjs to ~6.11.0 ([6c8d636](https://github.com/manniwatch/manniwatch/commit/6c8d636da68c3cf0d24789bb89ef2720da0867dc))
+* **deps:** update dependency protobufjs to ~6.11.1 ([acacd8c](https://github.com/manniwatch/manniwatch/commit/acacd8c83f9104ee42f97252102a8ab7055885ff))
+* **deps:** update dependency protobufjs to ~6.11.2 ([e234b4e](https://github.com/manniwatch/manniwatch/commit/e234b4e79ce1784504c74ad2cac5a86db6d730ee))
+
+
+
+
+
+
 # [0.24.0](https://github.com/manniwatch/manniwatch/compare/v0.23.0...v0.24.0) (2021-04-27)
 
 **Note:** Version bump only for package @manniwatch/pb-types

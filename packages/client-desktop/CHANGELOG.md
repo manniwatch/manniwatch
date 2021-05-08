@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/manniwatch/manniwatch/compare/v0.24.0...v0.25.0) (2021-05-08)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v11.2.12 ([5dc7ec9](https://github.com/manniwatch/manniwatch/commit/5dc7ec9c3b01a42d2f92acf4f3110829247d7e28))
+* **deps:** update angularmaterial monorepo to v11.2.11 ([455a96b](https://github.com/manniwatch/manniwatch/commit/455a96b23c3c96d2a497727315aba13e5f4861fd))
+* **deps:** update dependency ajv-formats to ~2.1.0 ([ca9d916](https://github.com/manniwatch/manniwatch/commit/ca9d916203712fba2e3a9284fc747ed8e5f05d59))
+* **deps:** update dependency date-fns to v2.21.3 ([8eda972](https://github.com/manniwatch/manniwatch/commit/8eda97254a6be56f9d4f5c9819b015ecf8d32c5a))
+* **deps:** update dependency electron to ~12.0.6 ([3ce015a](https://github.com/manniwatch/manniwatch/commit/3ce015a0a749c856dd0fc93565805a5c56205c32))
+* **deps:** update dependency electron to ~12.0.7 ([5f43d61](https://github.com/manniwatch/manniwatch/commit/5f43d6109d77a7c5935a5e8ab96dc28821723b57))
+* **deps:** update dependency protobufjs to ~6.11.0 ([6c8d636](https://github.com/manniwatch/manniwatch/commit/6c8d636da68c3cf0d24789bb89ef2720da0867dc))
+
+
+
+
+
+
 # [0.24.0](https://github.com/manniwatch/manniwatch/compare/v0.23.0...v0.24.0) (2021-04-27)
 
 **Note:** Version bump only for package @manniwatch/client-desktop
