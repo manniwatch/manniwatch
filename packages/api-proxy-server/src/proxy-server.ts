@@ -7,24 +7,9 @@ import express from 'express';
 import helmet from 'helmet';
 import { Server } from 'http';
 import { resolve as pathResolve } from 'path';
-export const api404Handler: express.RequestHandler = (req: express.Request,
-    res: express.Response,
-    next: express.NextFunction): void => {
-    res.status(404).json({
-        statusCode: 404,
-    });
-};
-/**
- * Common error catcher
- */
-export const serverErrorHandler: express.ErrorRequestHandler = (err: any,
-    req: express.Request,
-    res: express.Response,
-    next: express.NextFunction): void => {
-    // tslint:disable-next-line:no-console
-    console.error(err);
-    res.status(500).json({ error: true });
-};
+import { api404Handler } from './api-not-found-handler';
+import { serverErrorHandler } from './server-error-handler';
+
 export class ManniWatchProxyServer {
     private app: express.Application;
     private server: Server;
