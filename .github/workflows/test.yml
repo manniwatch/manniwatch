@@ -45,7 +45,7 @@ jobs:
       max-parallel: 4
       matrix:
         package: ${{ fromJson(needs.collect-packages.outputs.packages) }}
-        node: [10, 14]
+        node: [12, 14]
         os: [ubuntu-latest] #, windows-latest]
     steps:
       - name: Checkout
