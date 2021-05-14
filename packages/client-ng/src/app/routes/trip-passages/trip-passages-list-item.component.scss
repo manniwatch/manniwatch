@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import '~@angular/material/theming';
 
 @import 'src/themes.scss';
@@ -24,17 +25,17 @@ mat-icon[matListIcon]::after {
     }
 }
 
-$config: mat-typography-config();
+$config: mat.define-typography-config();
 h4.title{
     font-size: 16px !important;
-    font-family: mat-font-family($config);
+    font-family: mat.font-family($config);
     font-weight: 700 !important;
     opacity: 0.87;
     // color:green;
 }
 p.subtitle{
     font-size: 12px !important;
-    font-family: mat-font-family($config);
+    font-family: mat.font-family($config);
     line-height:20px;
     font-weight: 600 !important;
     opacity: 0.6;

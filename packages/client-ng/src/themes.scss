@@ -1,17 +1,18 @@
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
+//@import '~@angular/material/theming';
 
-//@include mat-core();
+//@include mat.core();
 // Define the default theme (same as the example above).
-$manniwatch-light-primary: mat-palette($mat-indigo);
-$manniwatch-light-accent:  mat-palette($mat-pink, A200, A100, A400);
-$manniwatch-light-theme:   mat-light-theme($manniwatch-light-primary, $manniwatch-light-accent);
+$manniwatch-light-primary: mat.define-palette(mat.$indigo-palette);
+$manniwatch-light-accent:  mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$manniwatch-light-theme:   mat.define-light-theme($manniwatch-light-primary, $manniwatch-light-accent);
 
 // Include the default theme styles.
-// @include angular-material-theme($candy-app-theme);
+// @include mat.all-component-themes($candy-app-theme);
 
 
 // Define an alternate dark theme.
-$manniwatch-dark-primary: mat-palette($mat-blue-grey);
-$manniwatch-dark-accent:  mat-palette($mat-amber, A200, A100, A400);
-$manniwatch-dark-warn:    mat-palette($mat-deep-orange);
-$manniwatch-dark-theme:   mat-dark-theme($manniwatch-dark-primary, $manniwatch-dark-accent, $manniwatch-dark-warn);
+$manniwatch-dark-primary: mat.define-palette(mat.$blue-grey-palette);
+$manniwatch-dark-accent:  mat.define-palette(mat.$amber-palette, A200, A100, A400);
+$manniwatch-dark-warn:    mat.define-palette(mat.$deep-orange-palette);
+$manniwatch-dark-theme:   mat.define-dark-theme($manniwatch-dark-primary, $manniwatch-dark-accent, $manniwatch-dark-warn);

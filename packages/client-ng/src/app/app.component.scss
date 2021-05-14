@@ -1,3 +1,5 @@
+@use '~@angular/material' as mat;
+
 :host {
     position: absolute;
     width: 100%;
@@ -49,8 +51,6 @@ mat-sidenav.main-nav {
     overflow: hidden;
 }
 
-@import '~@angular/material/theming';
-
 $searchBorderRadius: 8px;
 
 app-main-toolbar{
@@ -63,7 +63,7 @@ app-main-toolbar{
     z-index: #{$overlayZIndex};
     border-radius: $searchBorderRadius;
     //border:1px solid rgb(87, 99, 207);
-    @include mat-elevation(4);
+    @include mat.elevation(4);
     overflow: hidden;
 }
 @keyframes overlay-box-expand-animation {
@@ -115,7 +115,7 @@ app-main-toolbar{
             flex: 1;
             flex-direction: column;
             overflow-y: auto;
-            @include mat-elevation(4);
+            @include mat.elevation(4);
         }
     }
     @media (max-width: #{$boxMaxWidth + (2 * $boxMarginHorizontal)}) and (min-width: #{$boxMaxWidth + 1}){
