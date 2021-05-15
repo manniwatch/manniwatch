@@ -1,11 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
 // @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@use '~@angular/material' as mat;
 @import "~material-design-icons/iconfont/material-icons.css";
 @import "~ol/ol.css";
-@import '~@angular/material/theming';
+//@import '~@angular/material/theming';
 
-@include mat-core();
+@include mat.core();
 @import './themes.scss';
 // Include the alternative theme styles inside of a block with a CSS class. You can make this
 // CSS class whatever you want. In this example, any component inside of an element with
@@ -28,14 +29,14 @@
 
 
 .manniwatch-theme {
-    @include angular-material-theme($manniwatch-light-theme);
+    @include mat.all-component-themes($manniwatch-light-theme);
     @include manniwatch-base-theme($manniwatch-light-theme);
     @media (prefers-color-scheme: dark) {
         @include manniwatch-base-theme($manniwatch-dark-theme);
     }
 }
 .manniwatch-theme[theme='dark'] {
-    @include angular-material-color($manniwatch-dark-theme);
+    @include mat.all-component-colors($manniwatch-dark-theme);
     @include manniwatch-base-theme($manniwatch-dark-theme);
 }
 
