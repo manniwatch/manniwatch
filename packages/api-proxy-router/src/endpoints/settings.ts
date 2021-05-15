@@ -4,11 +4,16 @@
 
 import * as prom from '@donmahallem/turbo';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
+import { ISettings } from '@manniwatch/api-types';
+import { Mutex } from 'async-mutex';
 import express from 'express';
+import NodeCache from 'node-cache';
 
-export const createSettingsRouter: (apiClient: ManniWatchApiClient) => express.Router =
-    (apiClient: ManniWatchApiClient): express.Router => {
+const CACHE_KEY_SETTINGS: string = 'mw_settings';
+export const createSettingsRouter: (apiClient: ManniWatchApiClient, cache: NodeCache) => express.Router =
+    (apiClient: ManniWatchApiClient, cache: NodeCache): express.Router => {
         const router: express.Router = express.Router();
+        const settingsMutex: Mutex = new Mutex();
         /**
          * @api {get} /settings Request Trapeze Settings
          * @apiName GetSettings
@@ -17,7 +22,16 @@ export const createSettingsRouter: (apiClient: ManniWatchApiClient) => express.R
          * @apiVersion 0.1.0
          */
         router.get('', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
-            prom.promiseToResponse(apiClient.getSettings(), res, next);
+            const getSettings: Promise<ISettings> = settingsMutex.runExclusive(async (): Promise<ISettings> => {
+                const cacheContent: ISettings | undefined = cache.get(CACHE_KEY_SETTINGS);
+                if (cacheContent) {
+                    return cacheContent;
+                }
+                const retrievedSettings: ISettings = await apiClient.getSettings();
+                cache.set(CACHE_KEY_SETTINGS, retrievedSettings, 600);
+                return retrievedSettings;
+            });
+            prom.promiseToResponse(getSettings, res, next);
         });
         return router;
     };
