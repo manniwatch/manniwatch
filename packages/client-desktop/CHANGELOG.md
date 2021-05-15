@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.26.0](https://github.com/manniwatch/manniwatch/compare/v0.25.0...v0.26.0) (2021-05-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency rxjs to v7 ([cd711e8](https://github.com/manniwatch/manniwatch/commit/cd711e8ba034aad245b220378fe28795d0cacf22))
+
+
+
+
+
+
 # [0.25.0](https://github.com/manniwatch/manniwatch/compare/v0.24.0...v0.25.0) (2021-05-08)
 
 
