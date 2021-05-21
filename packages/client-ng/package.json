@@ -71,7 +71,7 @@
     "material-design-icons": "3.0.1",
     "ol": "6.5.0",
     "ol-mapbox-style": "6.3.2",
-    "rxjs": "7.0.1",
+    "rxjs": "7.1.0",
     "zone.js": "0.11.4"
   },
   "devDependencies": {
