@@ -14,6 +14,11 @@ export class ManniWatchApiProxyServer {
     constructor(public readonly endpoint: string,
         public readonly port: number) {
         this.app = express();
+        this.app.use((req: express.Request, res: express.Response, next: express.NextFunction): void => {
+            res.set({
+                'X-Powered-By': `Manniwatch-Api/__BUILD_VERSION__`,
+            });
+        });
         this.app.use('/api', createApiProxyRouter(endpoint));
         this.app.use(api404Handler);
         this.app.use(serverErrorHandler);
