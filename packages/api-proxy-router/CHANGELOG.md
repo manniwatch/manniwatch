@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.2](https://github.com/manniwatch/manniwatch/compare/v0.26.1...v0.26.2) (2021-05-27)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v12.0.1 ([dbb3e9a](https://github.com/manniwatch/manniwatch/commit/dbb3e9ad03cea4388a7d2f6f3b185b5b33ac4c3a))
+* **deps:** update angular monorepo to v12.0.2 ([5127065](https://github.com/manniwatch/manniwatch/commit/5127065cb559fdba5391224f1b43842de3fa437f))
+* **deps:** update dependency electron to ~12.0.9 ([f3c6d5f](https://github.com/manniwatch/manniwatch/commit/f3c6d5f90081cf68ba77132d44f65f8ad6537766))
+* **deps:** update dependency electron to v13 ([4506059](https://github.com/manniwatch/manniwatch/commit/45060594746bbe81d12d601336ebe48dd05c0a7a))
+
+
+
+
+
+
 ## [0.26.1](https://github.com/manniwatch/manniwatch/compare/v0.26.0...v0.26.1) (2021-05-18)
 
 
