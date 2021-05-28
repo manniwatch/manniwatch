@@ -66,7 +66,7 @@
     "@angular/service-worker": "12.0.2",
     "@manniwatch/api-types": "^0.26.0",
     "@manniwatch/assets": "^0.26.2",
-    "date-fns": "2.21.3",
+    "date-fns": "2.22.1",
     "deepmerge": "4.2.2",
     "material-design-icons": "3.0.1",
     "ol": "6.5.0",
