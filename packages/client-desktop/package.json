@@ -54,7 +54,7 @@
 		"nyc": "15.1.0",
 		"pug-cli": "1.0.0-alpha6",
 		"ts-loader": "9.2.2",
-		"webpack": "5.37.1",
+		"webpack": "5.38.1",
 		"webpack-cli": "4.7.0",
 		"webpack-merge": "5.7.3"
 	},
@@ -67,7 +67,7 @@
 		"ajv-formats": "~2.1.0",
 		"commander": "~7.2.0",
 		"deepmerge": "~4.2.2",
-		"electron": "~13.0.1",
+		"electron": "~13.1.0",
 		"ol": "~6.5.0"
 	}
 }
