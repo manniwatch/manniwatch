@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.3](https://github.com/manniwatch/manniwatch/compare/v0.26.2...v0.26.3) (2021-06-11)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v12.0.3 ([3fe1b60](https://github.com/manniwatch/manniwatch/commit/3fe1b60f858d6659f76947e5ffa3f7370d095232))
+* **deps:** update angularmaterial monorepo to v12.0.3 ([1d7a00e](https://github.com/manniwatch/manniwatch/commit/1d7a00e184c02007ae694d489f8101492b932d23))
+* **deps:** update dependency date-fns to v2.22.1 ([4d95b2d](https://github.com/manniwatch/manniwatch/commit/4d95b2dee43d68d6a7fafd55c6a26b5905041ed0))
+* **deps:** update dependency electron to ~13.1.0 ([82783a3](https://github.com/manniwatch/manniwatch/commit/82783a32ac93d5bc8f071b0f6fbcba085940d0d4))
+* **deps:** update dependency electron to ~13.1.1 ([65dbb26](https://github.com/manniwatch/manniwatch/commit/65dbb260bf86438aa533f12a755a7ce85c26a9a3))
+* **deps:** update dependency electron to ~13.1.2 ([6fbc2a2](https://github.com/manniwatch/manniwatch/commit/6fbc2a21ac7eb29c50047278c0e6f33028d07187))
+
+
+### Reverts
+
+* Revert "chore(deps): update dependency ajv to v8.5.0" (#1935) ([cb5b93b](https://github.com/manniwatch/manniwatch/commit/cb5b93bb3a2007cd491a7f5f073ece4032e5a189)), closes [#1935](https://github.com/manniwatch/manniwatch/issues/1935)
+
+
+
+
+
+
 ## [0.26.2](https://github.com/manniwatch/manniwatch/compare/v0.26.1...v0.26.2) (2021-05-27)
 
 

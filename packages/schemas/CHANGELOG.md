@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.3](https://github.com/manniwatch/manniwatch/compare/v0.26.2...v0.26.3) (2021-06-11)
+
+
+### Reverts
+
+* Revert "chore(deps): update dependency ajv to v8.5.0" (#1935) ([cb5b93b](https://github.com/manniwatch/manniwatch/commit/cb5b93bb3a2007cd491a7f5f073ece4032e5a189)), closes [#1935](https://github.com/manniwatch/manniwatch/issues/1935)
+
+
+
+
+
+
 ## [0.26.2](https://github.com/manniwatch/manniwatch/compare/v0.26.1...v0.26.2) (2021-05-27)
 
 **Note:** Version bump only for package @manniwatch/schemas
