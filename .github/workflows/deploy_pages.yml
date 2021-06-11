@@ -37,7 +37,7 @@ jobs:
           npx lerna run build:release --scope=@manniwatch/client-ng
           cp ./packages/client-ng/dist/manniwatch/index.html ./packages/client-ng/dist/manniwatch/404.html
       - name: Install SSH Client
-        uses: webfactory/ssh-agent@v0.5.2
+        uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.APP_DEPLOY_KEY }}
       - name: Deploy 🚀
@@ -77,7 +77,7 @@ jobs:
           npx lerna run docs
           node .github/workflows/prepare_docs_deploy.js
       - name: Install SSH Client 🔑
-        uses: webfactory/ssh-agent@v0.5.2
+        uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.DOCS_DEPLOY_KEY }}
       - name: Deploy 🚀
