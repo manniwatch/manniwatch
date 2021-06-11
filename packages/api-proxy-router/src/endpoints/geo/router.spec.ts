@@ -12,7 +12,7 @@ import 'mocha';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 import supertest from 'supertest';
-import { delayPromise } from './common-test.spec';
+import { delayPromise } from '../common-test.spec';
 
 const validCoordinates: TestIBoundingBox[] = [
     { bottom: '-1000', left: '-1000', right: '1000', top: '1000' },
@@ -33,7 +33,7 @@ const validCoordinatesNumbers: { [key in keyof IBoundingBox]: number }[] =
 const positionTypes: PositionType[] = ['RAW', 'CORRECTED'];
 const lastUpdates: string[] = ['22929299292', '2938'];
 type TestIBoundingBox = { [key in keyof IBoundingBox]: string };
-describe('endpoints/geo.ts', (): void => {
+describe('endpoints/geo/router.ts', (): void => {
     describe('createGeoRouter()', (): void => {
         let app: express.Express;
         let routeErrorStub: sinon.SinonStub;
@@ -54,7 +54,7 @@ describe('endpoints/geo.ts', (): void => {
             validateStubParent = sandbox.stub();
             geoFenceValidateStub = sandbox.stub();
             vehicleValidateStub = sandbox.stub();
-            createGeoRouter = proxyquire('./geo', {
+            createGeoRouter = proxyquire('./router', {
                 '@donmahallem/turbo-validate-request': {
                     validateRequest: validateStubParent,
                 },

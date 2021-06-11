@@ -4,5 +4,5 @@
 
 import { JSONSchemaType } from 'ajv';
 
-export type RequireIdJSONSchemaType<T, _partial extends boolean = false> =
-    JSONSchemaType<T, _partial> & { $id: string };
+export type RequireIdJSONSchemaType<T> =
+    JSONSchemaType<T> & { $id: string };
