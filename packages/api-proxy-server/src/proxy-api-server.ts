@@ -18,6 +18,7 @@ export class ManniWatchApiProxyServer {
             res.set({
                 'X-Powered-By': `Manniwatch-Api/__BUILD_VERSION__`,
             });
+            next();
         });
         this.app.use('/api', createApiProxyRouter(endpoint));
         this.app.use(api404Handler);
