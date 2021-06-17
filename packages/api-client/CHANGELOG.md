@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.4](https://github.com/manniwatch/manniwatch/compare/v0.26.3...v0.26.4) (2021-06-17)
+
+**Note:** Version bump only for package @manniwatch/api-client
+
+
+
+
+
+
 ## [0.26.3](https://github.com/manniwatch/manniwatch/compare/v0.26.2...v0.26.3) (2021-06-11)
 
 **Note:** Version bump only for package @manniwatch/api-client

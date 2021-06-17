@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.4](https://github.com/manniwatch/manniwatch/compare/v0.26.3...v0.26.4) (2021-06-17)
+
+
+### Bug Fixes
+
+* **api-proxy-server:** fix timeout issues with proxy-api-server ([1fadc4a](https://github.com/manniwatch/manniwatch/commit/1fadc4aacf5733c0970cde759c65b1f408a8576f))
+
+
+
+
+
+
 ## [0.26.3](https://github.com/manniwatch/manniwatch/compare/v0.26.2...v0.26.3) (2021-06-11)
 
 **Note:** Version bump only for package @manniwatch/api-proxy-server
