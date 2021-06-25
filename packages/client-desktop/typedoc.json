@@ -1,7 +1,0 @@
-{
-    "entryPoints":["./src"],
-    "exclude": [
-        "**/*.spec.ts"
-    ],
-    "out": "docs"
-}
