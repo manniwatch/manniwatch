@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.5](https://github.com/manniwatch/manniwatch/compare/v0.26.4...v0.26.5) (2021-06-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency nconf to ~0.11.3 ([ecf0642](https://github.com/manniwatch/manniwatch/commit/ecf0642b591a62bdedb31809537a362004174c5d))
+
+
+
+
+
+
 ## [0.26.4](https://github.com/manniwatch/manniwatch/compare/v0.26.3...v0.26.4) (2021-06-17)
 
 

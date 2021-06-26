@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.5](https://github.com/manniwatch/manniwatch/compare/v0.26.4...v0.26.5) (2021-06-26)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v12.1.0 ([b7b450a](https://github.com/manniwatch/manniwatch/commit/b7b450afffdf595761f5516a88ede340a8b18293))
+* **deps:** update angularmaterial monorepo to v12.1.0 ([9100c8d](https://github.com/manniwatch/manniwatch/commit/9100c8dcddb44204a7fd4db4b3bbc9a217346729))
+
+
+
+
+
+
 ## [0.26.4](https://github.com/manniwatch/manniwatch/compare/v0.26.3...v0.26.4) (2021-06-17)
 
 

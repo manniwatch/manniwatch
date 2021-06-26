@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.5](https://github.com/manniwatch/manniwatch/compare/v0.26.4...v0.26.5) (2021-06-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency commander to v8 ([dedfb8b](https://github.com/manniwatch/manniwatch/commit/dedfb8bbf94ef7684825abfac6af945ab96a09f0))
+* **deps:** update dependency electron to ~13.1.3 ([0160b38](https://github.com/manniwatch/manniwatch/commit/0160b381d7c625039732f783c18f86ac4944655a))
+* **deps:** update dependency electron to ~13.1.4 ([d91ded2](https://github.com/manniwatch/manniwatch/commit/d91ded24fffc6cd085266dfad675052b47a5b54a))
+
+
+
+
+
+
 ## [0.26.4](https://github.com/manniwatch/manniwatch/compare/v0.26.3...v0.26.4) (2021-06-17)
 
 
