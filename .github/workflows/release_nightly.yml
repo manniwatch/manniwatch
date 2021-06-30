@@ -15,7 +15,7 @@ jobs:
         with:
           ref: dev
       - name: Setup Node
-        uses: actions/setup-node@v2.1.5
+        uses: actions/setup-node@v2.2.0
         with:
           node-version: '14'
       - name: Install Packages
