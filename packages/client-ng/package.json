@@ -83,7 +83,7 @@
     "@compodoc/compodoc": "1.1.11",
     "@manniwatch/client-types": "^0.26.5",
     "@types/jasmine": "3.7.7",
-    "@types/jasminewd2": "2.0.9",
+    "@types/jasminewd2": "2.0.10",
     "@types/node": "14.17.4",
     "@types/ol": "6.5.2",
     "apply-loader": "2.0.0",
