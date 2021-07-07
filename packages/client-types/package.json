@@ -50,7 +50,7 @@
   "devDependencies": {
     "@manniwatch/api-client": "^0.26.5",
     "@manniwatch/api-types": "^0.26.5",
-    "@types/ol": "6.5.2",
+    "@types/ol": "6.5.3",
     "ol": "6.5.0"
   },
   "peerDependencies": {
