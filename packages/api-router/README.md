@@ -1,0 +1,3 @@
+# ApiRouter
+
+[![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg?flag=ApiRouter)](https://codecov.io/gh/manniwatch/manniwatch/manniwatch/master/packages/api-router) [![npm version](https://badge.fury.io/js/%40manniwatch%2Fapi-router.svg)](https://badge.fury.io/js/%40manniwatch%2Fapi-router) [![dependencies Status](https://david-dm.org/manniwatch/manniwatch/status.svg?path=packages/api-router)](https://david-dm.org/manniwatch/manniwatch?path=packages/api-router) [![devDependencies Status](https://david-dm.org/manniwatch/manniwatch/dev-status.svg?path=packages/api-router)](https://david-dm.org/manniwatch/manniwatch?path=packages/api-router&type=dev)
