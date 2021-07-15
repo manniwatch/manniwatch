@@ -47,7 +47,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "ajv": "8.6.1"
+    "ajv": "8.6.2"
   },
   "peerDependencies": {
     "ajv": "^8.0.0"
