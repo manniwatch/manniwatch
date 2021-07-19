@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.6](https://github.com/manniwatch/manniwatch/compare/v0.26.5...v0.26.6) (2021-07-19)
+
+**Note:** Version bump only for package @manniwatch/api-proxy-server
+
+
+
+
+
+
 ## [0.26.5](https://github.com/manniwatch/manniwatch/compare/v0.26.4...v0.26.5) (2021-06-26)
 
 

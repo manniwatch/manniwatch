@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.6](https://github.com/manniwatch/manniwatch/compare/v0.26.5...v0.26.6) (2021-07-19)
+
+
+### Bug Fixes
+
+* **deps:** update @donmahallem/turbo packages ([37e1a85](https://github.com/manniwatch/manniwatch/commit/37e1a85fbb28417e46d0d2d32daee2477e21ee28))
+* **deps:** update @donmahallem/turbo packages ([1e4d6a0](https://github.com/manniwatch/manniwatch/commit/1e4d6a0c5cf5a1fb4ded5d7ac5843b2b0a3b9275))
+* **deps:** update angular monorepo to v12.1.1 ([07aad71](https://github.com/manniwatch/manniwatch/commit/07aad718d6f9d272e1b856ca4bb61414637505a4))
+* **deps:** update angular monorepo to v12.1.2 ([03c8f3b](https://github.com/manniwatch/manniwatch/commit/03c8f3bc304a9713c3c130b32d16ed3f69dfbf1b))
+* **deps:** update angularmaterial monorepo to v12.1.1 ([9bbc201](https://github.com/manniwatch/manniwatch/commit/9bbc2012cab90542fcc4a85daac4b52bb2ca495b))
+* **deps:** update angularmaterial monorepo to v12.1.2 ([462197a](https://github.com/manniwatch/manniwatch/commit/462197aee1b20601ce70394bcf6ddf996b5b3377))
+* **deps:** update dependency electron to ~13.1.5 ([0676fde](https://github.com/manniwatch/manniwatch/commit/0676fde9d83614a19bc236e4cb9bacfa41e59993))
+* **deps:** update dependency electron to ~13.1.6 ([618733b](https://github.com/manniwatch/manniwatch/commit/618733b24993058723f017a431cc23c2dadfcd02))
+* **deps:** update dependency electron to ~13.1.7 ([dfa84d1](https://github.com/manniwatch/manniwatch/commit/dfa84d17968a49ed480b69a3750711f366af04ef))
+* **deps:** update dependency ol-mapbox-style to v6.4.1 ([705fd35](https://github.com/manniwatch/manniwatch/commit/705fd35a91fd8c3349e1a09c23abcb30c403e155))
+* **deps:** update dependency rxjs to v7.2.0 ([23813e8](https://github.com/manniwatch/manniwatch/commit/23813e86201124c749f6689a8f8bdd731f8e8d6e))
+
+
+
+
+
+
 ## [0.26.5](https://github.com/manniwatch/manniwatch/compare/v0.26.4...v0.26.5) (2021-06-26)
 
 

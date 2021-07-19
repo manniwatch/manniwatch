@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.6](https://github.com/manniwatch/manniwatch/compare/v0.26.5...v0.26.6) (2021-07-19)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v12.1.1 ([07aad71](https://github.com/manniwatch/manniwatch/commit/07aad718d6f9d272e1b856ca4bb61414637505a4))
+* **deps:** update angular monorepo to v12.1.2 ([03c8f3b](https://github.com/manniwatch/manniwatch/commit/03c8f3bc304a9713c3c130b32d16ed3f69dfbf1b))
+* **deps:** update angularmaterial monorepo to v12.1.1 ([9bbc201](https://github.com/manniwatch/manniwatch/commit/9bbc2012cab90542fcc4a85daac4b52bb2ca495b))
+* **deps:** update angularmaterial monorepo to v12.1.2 ([462197a](https://github.com/manniwatch/manniwatch/commit/462197aee1b20601ce70394bcf6ddf996b5b3377))
+* **deps:** update dependency ol-mapbox-style to v6.4.1 ([705fd35](https://github.com/manniwatch/manniwatch/commit/705fd35a91fd8c3349e1a09c23abcb30c403e155))
+* **deps:** update dependency rxjs to v7.2.0 ([23813e8](https://github.com/manniwatch/manniwatch/commit/23813e86201124c749f6689a8f8bdd731f8e8d6e))
+
+
+
+
+
+
 ## [0.26.5](https://github.com/manniwatch/manniwatch/compare/v0.26.4...v0.26.5) (2021-06-26)
 
 
