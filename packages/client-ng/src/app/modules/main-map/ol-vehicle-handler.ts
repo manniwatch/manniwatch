@@ -24,10 +24,10 @@ export class OlVehicleHandler {
     /**
      * Layer for the stop markers to be displayed on the map
      */
-    private vehicleMarkerLayer: VectorLayer;
-    private vehicleMarkerVectorSource: VectorSource;
-    private vehicleRouteLayer: VectorLayer;
-    private vehicleRouteVectorSource: VectorSource;
+    private vehicleMarkerLayer: VectorLayer<VectorSource<Point>>;
+    private vehicleMarkerVectorSource: VectorSource<Point>;
+    private vehicleRouteLayer: VectorLayer<VectorSource<LineString>>;
+    private vehicleRouteVectorSource: VectorSource<LineString>;
 
     private loadSubscription: Subscription;
     private mouseHoverSubscription: Subscription;
@@ -87,7 +87,7 @@ export class OlVehicleHandler {
             });
 
             const polyline: LineString = new LineString(locations);
-            const feature: Feature = new Feature(polyline);
+            const feature: Feature<LineString> = new Feature(polyline);
             feature.setStyle(new Style({
                 stroke: new Stroke({
                     color: [255, 111, 0, 0.8],
@@ -109,8 +109,8 @@ export class OlVehicleHandler {
         if (this.vehicleMarkerVectorSource.getFeatures().length > 0) {
             this.vehicleMarkerVectorSource.clear(true);
         }
-        const feats: Feature[] = stops.map((value: IVehicleLocation): Feature => {
-            const endMarker: Feature = new Feature({
+        const feats: Feature<Point>[] = stops.map((value: IVehicleLocation): Feature<Point> => {
+            const endMarker: Feature<Point> = new Feature<Point>({
                 geometry: new Point(OlUtil.convertArcMSToCoordinate(value)),
                 type: this.isVehicleSelected(value) ? 'vehicle_selected' : 'vehicle',
                 vehicle: value,

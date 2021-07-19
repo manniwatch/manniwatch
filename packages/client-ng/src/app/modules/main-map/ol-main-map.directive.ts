@@ -11,6 +11,7 @@ import * as OlCondition from 'ol/events/condition';
 import { Select } from 'ol/interaction';
 import { SelectEvent } from 'ol/interaction/Select';
 import BaseTileLayer from 'ol/layer/BaseTile';
+import { OSM, VectorTile } from 'ol/source';
 import Style from 'ol/style/Style';
 import Feature, { FeatureLike } from 'ol/Feature';
 import { Subscription } from 'rxjs';
@@ -22,6 +23,7 @@ import { StopPointService } from '../../services/stop-point.service';
 import { OlMainMapService } from './ol-main-map.service';
 import { OlMarkerHandler } from './ol-marker-handler';
 import { OlVehicleHandler } from './ol-vehicle-handler';
+import Point from 'ol/geom/Point';
 @Directive({
     selector: 'map[appOlMainMap]',
 })
@@ -63,7 +65,7 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
         this.vehicleHandler = new OlVehicleHandler(this);
         this.mapSelectInteraction = new Select({
             condition: OlCondition.click,
-            filter: (p0: FeatureLike, p1: BaseTileLayer): boolean => {
+            filter: (p0: FeatureLike, p1: BaseTileLayer<OSM | VectorTile>): boolean => {
                 switch (p0.get('type')) {
                     case 'vehicle':
                     case 'stop':
@@ -73,11 +75,11 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
                         return false;
                 }
             },
-            layers: (p0: BaseTileLayer): boolean => {
+            layers: (p0: BaseTileLayer<OSM | VectorTile>): boolean => {
                 return !(p0 === this.backgroundMapLayer);
             },
             multi: false,
-            style: (p0: FeatureLike, p1: number): Style | Style[]  => {
+            style: (p0: FeatureLike, p1: number): Style | Style[] => {
                 switch (p0.get('type')) {
                     case 'vehicle':
                         return OlUtil.createVehicleMarkerStyle(true)(p0, p1);
@@ -118,7 +120,7 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
         this.getMap().addInteraction(this.mapSelectInteraction);
         this.mapSelectInteraction.on('select', (e: SelectEvent): void => {
             if (e.selected.length > 0) {
-                const selectedFeature: Feature = e.selected[0];
+                const selectedFeature: Feature<Point> = e.selected[0];
                 switch (selectedFeature.get('type')) {
                     case 'stopPoint':
                         this.onClickStopPoint(selectedFeature.get('stopPoint'));

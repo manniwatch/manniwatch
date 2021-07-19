@@ -18,13 +18,13 @@ export class OlMarkerHandler {
     /**
      * Layer for the stop markers to be displayed on the map
      */
-    private stopMarkerLayer: VectorLayer = undefined;
+    private stopMarkerLayer: VectorLayer<VectorSource<Point>> = undefined;
     /**
      * Layer for the stop markers to be displayed on the map
      */
-    private stopPointMarkerLayer: VectorLayer = undefined;
-    private stopPointMarkerVectorSource: VectorSource = undefined;
-    private stopMarkerVectorSource: VectorSource = undefined;
+    private stopPointMarkerLayer: VectorLayer<VectorSource<Point>> = undefined;
+    private stopPointMarkerVectorSource: VectorSource<Point> = undefined;
+    private stopMarkerVectorSource: VectorSource<Point> = undefined;
     private loadSubscription: Subscription;
     public constructor(private mainMap: OlMainMapDirective,
         private readonly zoomBorder: number) {
@@ -70,8 +70,8 @@ export class OlMarkerHandler {
         if (this.stopPointMarkerVectorSource.getFeatures().length > 0) {
             this.stopPointMarkerVectorSource.clear(true);
         }
-        const feats: Feature[] = stopPoints.map((value: IStopPointLocation): Feature => {
-            const endMarker: Feature = new Feature({
+        const feats: Feature<Point>[] = stopPoints.map((value: IStopPointLocation): Feature<Point> => {
+            const endMarker: Feature<Point> = new Feature<Point>({
                 geometry: new Point(OlUtil.convertArcMSToCoordinate(value)),
                 stopPoint: value,
                 type: 'stopPoint',
@@ -89,8 +89,8 @@ export class OlMarkerHandler {
         if (this.stopMarkerVectorSource.getFeatures().length > 0) {
             this.stopMarkerVectorSource.clear(true);
         }
-        const feats: Feature[] = stops.map((value: IStopLocation): Feature => {
-            const endMarker: Feature = new Feature({
+        const feats: Feature<Point>[] = stops.map((value: IStopLocation): Feature<Point> => {
+            const endMarker: Feature<Point> = new Feature<Point>({
                 geometry: new Point(OlUtil.convertArcMSToCoordinate(value)),
                 stop: value,
                 type: 'stop',

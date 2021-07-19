@@ -121,7 +121,7 @@ const DEFAULT_STYLES: { [key: string]: StyleLike; } = {
 };
 export class OlUtil {
 
-    public static createVehicleMarkerStyle(selected: boolean = false): StyleFunction {
+    public static createVehicleMarkerStyle(selected: boolean = false): (p0: FeatureLike, p1: number) => Style {
         return (p0: FeatureLike, p1: number): Style => {
             const vehicle: IVehicleLocation = p0.get('vehicle');
             // tslint:disable-next-line:triple-equals

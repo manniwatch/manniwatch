@@ -32,8 +32,8 @@ export class OlStaticMapDirective extends AbstractOlMapDirective implements OnCh
     private readonly KEY_MAP_DATA: string = 'mapData';
     @HostBinding('class.no-location')
     public blur: boolean = false;
-    protected readonly markerVectorSource: VectorSource = undefined;
-    protected readonly markerLayer: VectorLayer = undefined;
+    protected readonly markerVectorSource: VectorSource<Point> = undefined;
+    protected readonly markerLayer: VectorLayer<VectorSource<Point>> = undefined;
 
     @Input()
     public mapData: IStaticMapData;
@@ -85,8 +85,8 @@ export class OlStaticMapDirective extends AbstractOlMapDirective implements OnCh
             this.markerVectorSource.clear(true);
         }
         if (mapData.stops) {
-            const feats: Feature[] = mapData.stops.map((value: IStopLocation): Feature => {
-                const endMarker: Feature = new Feature({
+            const feats: Feature<Point>[] = mapData.stops.map((value: IStopLocation): Feature<Point> => {
+                const endMarker: Feature<Point> = new Feature<Point>({
                     geometry: new Point(OlUtil.convertArcMSToCoordinate(value)),
                     stop: value,
                     type: 'stop',
@@ -97,8 +97,8 @@ export class OlStaticMapDirective extends AbstractOlMapDirective implements OnCh
             this.markerVectorSource.addFeatures(feats);
         }
         if (mapData.vehicles) {
-            const feats: Feature[] = mapData.vehicles.map((value: IVehicleLocation): Feature => {
-                const endMarker: Feature = new Feature({
+            const feats: Feature<Point>[] = mapData.vehicles.map((value: IVehicleLocation): Feature<Point> => {
+                const endMarker: Feature<Point> = new Feature<Point>({
                     geometry: new Point(OlUtil.convertArcMSToCoordinate(value)),
                     type: 'vehicle',
                     vehicle: value,
