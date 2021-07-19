@@ -21,8 +21,7 @@ import BaseTileLayer from 'ol/layer/BaseTile';
 import TileLayer from 'ol/layer/Tile';
 import VectorTileLayer from 'ol/layer/VectorTile';
 import { fromLonLat } from 'ol/proj';
-import { OSM } from 'ol/source';
-import VectorTileSource from 'ol/source/VectorTile';
+import { OSM, VectorTile } from 'ol/source';
 import { Subscription } from 'rxjs';
 import { SettingsService, Theme } from 'src/app/services';
 import { runOutsideZone } from 'src/app/util/rxjs';
@@ -34,7 +33,7 @@ export abstract class AbstractOlMapDirective implements AfterViewInit, OnDestroy
 
     private map: Map;
     private locationSubscription: Subscription;
-    private mBackgroundMapLayer: BaseTileLayer;
+    private mBackgroundMapLayer: BaseTileLayer<VectorTile | OSM>;
     private themeSubscription: Subscription;
     constructor(private elRef: ElementRef,
         public readonly zone: NgZone,
@@ -64,13 +63,13 @@ export abstract class AbstractOlMapDirective implements AfterViewInit, OnDestroy
         });
     }
 
-    public createMapLayer(): BaseTileLayer {
+    public createMapLayer(): BaseTileLayer<VectorTile | OSM> {
         switch (environment.map.mapProvider.type) {
             case 'vector':
                 environment.map.mapProvider.options.format = new MVT();
                 return new VectorTileLayer({
                     declutter: false,
-                    source: new VectorTileSource(environment.map.mapProvider.options),
+                    source: new VectorTile(environment.map.mapProvider.options),
                 });
             case 'osm':
             default:
@@ -128,7 +127,7 @@ export abstract class AbstractOlMapDirective implements AfterViewInit, OnDestroy
         }
     }
 
-    public get backgroundMapLayer(): BaseTileLayer {
+    public get backgroundMapLayer(): BaseTileLayer<VectorTile | OSM> {
         return this.mBackgroundMapLayer;
     }
 

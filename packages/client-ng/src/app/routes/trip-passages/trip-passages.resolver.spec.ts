@@ -79,7 +79,8 @@ describe('src/app/modules/trip-passages/trip-passages.resolver', (): void => {
                                 expect(getTripPassagesSpy)
                                     .toHaveBeenCalledTimes(1);
                                 expect(getTripPassagesSpy.calls.argsFor(0))
-                                    .toEqual([testId], 'getTripPassages should be called with the provided tripId');
+                                    .withContext('getTripPassages should be called with the provided tripId')
+                                    .toEqual([testId]);
                                 expect(nextSpy)
                                     .toHaveBeenCalledTimes(1);
                                 expect(nextSpy.calls.first().args[0]).toEqual(convertedResponse);
@@ -107,7 +108,8 @@ describe('src/app/modules/trip-passages/trip-passages.resolver', (): void => {
                                 expect(getTripPassagesSpy)
                                     .toHaveBeenCalledTimes(1);
                                 expect(getTripPassagesSpy.calls.argsFor(0))
-                                    .toEqual([testId], 'getTripPassages should be called with the provided tripId');
+                                    .withContext('getTripPassages should be called with the provided tripId')
+                                    .toEqual([testId]);
                                 expect(nextSpy)
                                     .toHaveBeenCalledTimes(1);
                                 expect(nextSpy.calls.first().args).toEqual([errorResponse]);

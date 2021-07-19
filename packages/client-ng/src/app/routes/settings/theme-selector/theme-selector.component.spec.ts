@@ -109,7 +109,7 @@ describe('src/routes/settings/theme-selector/theme-selector.component.ts', (): v
                     expect(themeObservableSubscribeSpy).toHaveBeenCalledTimes(0);
                     app.ngOnInit();
                     expect(themeObservableSubscribeSpy).toHaveBeenCalledTimes(1);
-                    expect(app.theme).toEqual(Theme.DARK as any, 'Expected theme to be set to dark');
+                    expect(app.theme).withContext('Expected theme to be set to dark').toEqual(Theme.DARK as any);
                 });
             });
             describe('ngOnDestroy', (): void => {

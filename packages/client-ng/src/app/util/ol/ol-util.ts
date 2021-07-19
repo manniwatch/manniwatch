@@ -9,7 +9,7 @@ import CircleStyle from 'ol/style/Circle';
 import Fill from 'ol/style/Fill';
 import Icon from 'ol/style/Icon';
 import Stroke from 'ol/style/Stroke';
-import Style, { StyleFunction, StyleLike } from 'ol/style/Style';
+import Style, { StyleLike } from 'ol/style/Style';
 import Text from 'ol/style/Text';
 import { FeatureLike } from 'ol/Feature';
 import { TrapezeCoord } from './trapeze-coord';
@@ -121,7 +121,7 @@ const DEFAULT_STYLES: { [key: string]: StyleLike; } = {
 };
 export class OlUtil {
 
-    public static createVehicleMarkerStyle(selected: boolean = false): StyleFunction {
+    public static createVehicleMarkerStyle(selected: boolean = false): (p0: FeatureLike, p1: number) => Style {
         return (p0: FeatureLike, p1: number): Style => {
             const vehicle: IVehicleLocation = p0.get('vehicle');
             // tslint:disable-next-line:triple-equals
