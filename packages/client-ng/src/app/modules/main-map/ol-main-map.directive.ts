@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { IStopLocation, IStopPointLocation, IVehicleLocation } from '@manniwatch/api-types';
 import { Map as OLMap } from 'ol';
 import * as OlCondition from 'ol/events/condition';
+import Point from 'ol/geom/Point';
 import { Select } from 'ol/interaction';
 import { SelectEvent } from 'ol/interaction/Select';
 import BaseTileLayer from 'ol/layer/BaseTile';
@@ -23,7 +24,6 @@ import { StopPointService } from '../../services/stop-point.service';
 import { OlMainMapService } from './ol-main-map.service';
 import { OlMarkerHandler } from './ol-marker-handler';
 import { OlVehicleHandler } from './ol-vehicle-handler';
-import Point from 'ol/geom/Point';
 @Directive({
     selector: 'map[appOlMainMap]',
 })
