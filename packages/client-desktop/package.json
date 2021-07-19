@@ -48,13 +48,13 @@
 		"url": "https://github.com/manniwatch/manniwatch.git"
 	},
 	"devDependencies": {
-		"@types/ol": "6.5.1",
+		"@types/ol": "6.5.3",
 		"asar": "3.0.3",
 		"copy-webpack-plugin": "9.0.1",
 		"nyc": "15.1.0",
 		"pug-cli": "1.0.0-alpha6",
 		"ts-loader": "9.2.3",
-		"webpack": "5.40.0",
+		"webpack": "5.45.1",
 		"webpack-cli": "4.7.2",
 		"webpack-merge": "5.8.0"
 	},
@@ -63,11 +63,11 @@
 		"@manniwatch/api-types": "^0.26.5",
 		"@manniwatch/client-ng": "^0.26.5",
 		"@manniwatch/client-types": "^0.26.5",
-		"ajv": "~8.6.0",
+		"ajv": "~8.6.2",
 		"ajv-formats": "~2.1.0",
 		"commander": "~8.0.0",
 		"deepmerge": "~4.2.2",
-		"electron": "~13.1.4",
-		"ol": "~6.5.0"
+		"electron": "~13.1.7",
+		"ol": "~6.6.1"
 	}
 }
