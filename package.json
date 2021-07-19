@@ -3,7 +3,7 @@
   "private": true,
   "devDependencies": {
     "@appnest/readme": "1.2.7",
-    "@donmahallem/rollup-config": "0.2.6",
+    "@donmahallem/rollup-config": "0.2.7",
     "@donmahallem/tslint-config": "0.1.3",
     "@rollup/plugin-commonjs": "19.0.1",
     "@rollup/plugin-node-resolve": "13.0.2",
