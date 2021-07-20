@@ -1,6 +1,6 @@
 {
   "name": "@manniwatch/schemas",
-  "version": "0.26.6",
+  "version": "0.27.0",
   "description": "An express api router used to proxy requests to the upstream server",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -53,6 +53,6 @@
     "ajv": "^8.0.0"
   },
   "dependencies": {
-    "@manniwatch/api-types": "^0.26.5"
+    "@manniwatch/api-types": "^0.27.0"
   }
 }

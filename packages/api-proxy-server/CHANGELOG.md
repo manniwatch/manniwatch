@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.27.0](https://github.com/manniwatch/manniwatch/compare/v0.26.6...v0.27.0) (2021-07-20)
+
+
+### Features
+
+* **api-proxy-server:** provide option to specify static file dir ([#2097](https://github.com/manniwatch/manniwatch/issues/2097)) ([ba0a461](https://github.com/manniwatch/manniwatch/commit/ba0a461d56bf9aa16b45d84683e97c405ae59bc8))
+
+
+
+
+
+
 ## [0.26.6](https://github.com/manniwatch/manniwatch/compare/v0.26.5...v0.26.6) (2021-07-19)
 
 **Note:** Version bump only for package @manniwatch/api-proxy-server

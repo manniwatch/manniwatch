@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.27.0](https://github.com/manniwatch/manniwatch/compare/v0.26.6...v0.27.0) (2021-07-20)
+
+**Note:** Version bump only for package @manniwatch/api-proxy-router
+
+
+
+
+
+
 ## [0.26.6](https://github.com/manniwatch/manniwatch/compare/v0.26.5...v0.26.6) (2021-07-19)
 
 
