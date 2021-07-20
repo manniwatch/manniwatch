@@ -6,17 +6,31 @@ import { createApiProxyRouter } from '@manniwatch/api-proxy-router';
 import express from 'express';
 import helmet from 'helmet';
 import { Server } from 'http';
-import { resolve as pathResolve } from 'path';
+import path from 'path';
 import { api404Handler } from './api-not-found-handler';
 import { serverErrorHandler } from './server-error-handler';
 
 export class ManniWatchProxyServer {
     private app: express.Application;
     private server: Server;
-    private readonly ngModulePath: string = pathResolve(`${__dirname}` +
-        './../node_modules/@manniwatch/client-ng/dist/client-ng');
+    private ngModulePath: string;
     constructor(public readonly endpoint: string,
-        public readonly port: number) {
+        public readonly port: number,
+        public readonly clientFiles?: string) {
+        // tslint:disable-next-line:triple-equals
+        if (clientFiles == undefined) {
+            // Check if @manniwatch/client-ng is installed
+            const modulePath: string = require.resolve('@manniwatch/client-ng');
+            if (modulePath) {
+                this.ngModulePath = path.resolve(path.join(path.dirname(modulePath), 'dist', 'client-ng'));
+            } else {
+                throw new Error('Could not find @manniwatch/client-ng installed');
+            }
+        } else {
+            this.ngModulePath = clientFiles;
+        }
+
+        // setup server
         this.app = express();
         this.app.use(helmet.contentSecurityPolicy({
             directives: {
