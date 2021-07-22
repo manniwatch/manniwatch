@@ -10,12 +10,13 @@ jobs:
     name: Label Package PRs
     runs-on: ubuntu-latest
     steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v2.3.4
       - name: Label the PR
-        uses: csi-lk/package-labeler@v1.0.1
+        uses: donmahallem/lerna-label@dev
         with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
-          workspace: "packages" # (default)
-          prefix: "pkg:"
+          github_secret: "${{ secrets.GITHUB_TOKEN }}"
+          prefix: "pkg"
       - name: Label PRs
         uses: actions/labeler@v3
         with:
