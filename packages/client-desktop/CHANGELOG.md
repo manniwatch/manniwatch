@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.1](https://github.com/manniwatch/manniwatch/compare/v0.27.0...v0.27.1) (2021-07-28)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v12.1.3 ([6533d4b](https://github.com/manniwatch/manniwatch/commit/6533d4b2942a8de00f73053e5e7013f722f1e25c))
+* **deps:** update dependency commander to ~8.1.0 ([8e174b2](https://github.com/manniwatch/manniwatch/commit/8e174b2bf97ebdcdce58ccf843412463cd66a2b9))
+* **deps:** update dependency date-fns to v2.23.0 ([83d6e97](https://github.com/manniwatch/manniwatch/commit/83d6e9707d49092b2a2e7cc08f29ad4de7cd2f98))
+
+
+
+
+
+
 # [0.27.0](https://github.com/manniwatch/manniwatch/compare/v0.26.6...v0.27.0) (2021-07-20)
 
 **Note:** Version bump only for package @manniwatch/client-desktop

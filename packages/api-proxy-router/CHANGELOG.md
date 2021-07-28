@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.1](https://github.com/manniwatch/manniwatch/compare/v0.27.0...v0.27.1) (2021-07-28)
+
+
+### Bug Fixes
+
+* **deps:** update @donmahallem/turbo packages ([32e9927](https://github.com/manniwatch/manniwatch/commit/32e99277c2ac46c91b526168f948c85c8b3cc29b))
+* **deps:** update @donmahallem/turbo packages ([097c2c0](https://github.com/manniwatch/manniwatch/commit/097c2c0f3e75b75a9125df3d824259e43c258c10))
+* **deps:** update @donmahallem/turbo packages ([24f7b3f](https://github.com/manniwatch/manniwatch/commit/24f7b3f7b7761c1bfcfe033376c660d255546cb3))
+* **deps:** update @donmahallem/turbo packages ([46906e2](https://github.com/manniwatch/manniwatch/commit/46906e2f59ec306a0d342cb2ac11cbfb5f968e8b))
+* **deps:** update angular monorepo to v12.1.3 ([6533d4b](https://github.com/manniwatch/manniwatch/commit/6533d4b2942a8de00f73053e5e7013f722f1e25c))
+* **deps:** update dependency date-fns to v2.23.0 ([83d6e97](https://github.com/manniwatch/manniwatch/commit/83d6e9707d49092b2a2e7cc08f29ad4de7cd2f98))
+
+
+
+
+
+
 # [0.27.0](https://github.com/manniwatch/manniwatch/compare/v0.26.6...v0.27.0) (2021-07-20)
 
 **Note:** Version bump only for package @manniwatch/api-proxy-router
