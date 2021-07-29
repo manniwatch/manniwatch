@@ -31,3 +31,7 @@ Due to packages depending on each other a build is **required** first before run
 ### Build & Test a specific package
     npx lerna run build --scope=@manniwatch/api-types
     npx lerna run test --scope=@manniwatch/api-types
+
+## Docker
+
+See [this repository](https://github.com/manniwatch/docker) for a Docker Container
