@@ -48,3 +48,10 @@ Due to packages depending on each other a build is **required** first before run
 ### Build & Test a specific package
     npx lerna run build --scope=@manniwatch/api-types
     npx lerna run test --scope=@manniwatch/api-types
+
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)](#docker)
+
+## ➤ Docker
+
+See [this repository](https://github.com/manniwatch/docker) for a Docker Container
