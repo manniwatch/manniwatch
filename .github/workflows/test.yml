@@ -83,6 +83,7 @@ jobs:
         uses: actions/download-artifact@v2.0.10
         with:
           name: build-${{matrix.node}}
+          path: ./packages
       - name: Run Test
         run: npx lerna run test:coverage
       - name: Retrieve Codecov Flag Name
@@ -175,6 +176,7 @@ jobs:
         uses: actions/download-artifact@v2.0.10
         with:
           name: build-${{matrix.node}}
+          path: ./packages
       - name: Display structure of downloaded files
         run: ls -R
       - name: Run Docs
