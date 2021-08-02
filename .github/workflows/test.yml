@@ -41,7 +41,7 @@ jobs:
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: build-${{matrix.node}}
+          name: build-${{matrix.os}}-${{matrix.node}}
           path: |
             packages/*/dist
   test_suite:
@@ -82,7 +82,7 @@ jobs:
       - name: Download Build artifacts
         uses: actions/download-artifact@v2.0.10
         with:
-          name: build-${{matrix.node}}
+          name: build-${{matrix.os}}-${{matrix.node}}
           path: ./packages
       - name: Run Test
         run: npx lerna run test:coverage
@@ -135,6 +135,11 @@ jobs:
         run: |
           npm ci
           npx lerna bootstrap --ci
+      - name: Download Build artifacts
+        uses: actions/download-artifact@v2.0.10
+        with:
+          name: build-${{matrix.os}}-${{matrix.node}}
+          path: ./packages
       - name: Run Lint
         run: npx lerna run lint
   docs_suite:
@@ -175,7 +180,7 @@ jobs:
       - name: Download Build artifacts
         uses: actions/download-artifact@v2.0.10
         with:
-          name: build-${{matrix.node}}
+          name: build-${{matrix.os}}-${{matrix.node}}
           path: ./packages
       - name: Display structure of downloaded files
         run: ls -R
