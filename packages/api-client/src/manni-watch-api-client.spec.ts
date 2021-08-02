@@ -264,27 +264,28 @@ describe('manni-watch-api-client.ts', (): void => {
                         STOP_MODES.forEach((mode: StopMode): void => {
                             optionalTimes.forEach((testStartTime: number): void => {
                                 optionalTimes.forEach((testTimeFrame: number): void => {
-                                    it(`should query stop passages for ("${testId}","${mode}",${testStartTime},${testTimeFrame})`, async (): Promise<void> => {
-                                        let expectedFormBody = `mode=${mode}`;
-                                        // tslint:disable-next-line:triple-equals
-                                        if (testStartTime != undefined) {
-                                            expectedFormBody += `&startTime=${testStartTime}`;
-                                        }
-                                        expectedFormBody += `&stop=${testId}`;
-                                        // tslint:disable-next-line:triple-equals
-                                        if (testTimeFrame != undefined) {
-                                            expectedFormBody += `&timeFrame=${testTimeFrame}`;
-                                        }
-                                        const scope: nock.Scope = nock(testDomain)
-                                            .post('/internetservice/services/passageInfo/stopPassages/stop', expectedFormBody)
-                                            .reply(200, testSuccessResponse);
-                                        return instance
-                                            .getStopPassages(testId, mode, testStartTime, testTimeFrame)
-                                            .then((val: any): void => {
-                                                expect(val).to.deep.equal(testSuccessResponse);
-                                                expect(scope.isDone()).to.eq(true, 'scope should be done');
-                                            });
-                                    });
+                                    it(`should query stop passages for ("${testId}","${mode}",${testStartTime},${testTimeFrame})`,
+                                        async (): Promise<void> => {
+                                            let expectedFormBody = `mode=${mode}`;
+                                            // tslint:disable-next-line:triple-equals
+                                            if (testStartTime != undefined) {
+                                                expectedFormBody += `&startTime=${testStartTime}`;
+                                            }
+                                            expectedFormBody += `&stop=${testId}`;
+                                            // tslint:disable-next-line:triple-equals
+                                            if (testTimeFrame != undefined) {
+                                                expectedFormBody += `&timeFrame=${testTimeFrame}`;
+                                            }
+                                            const scope: nock.Scope = nock(testDomain)
+                                                .post('/internetservice/services/passageInfo/stopPassages/stop', expectedFormBody)
+                                                .reply(200, testSuccessResponse);
+                                            return instance
+                                                .getStopPassages(testId, mode, testStartTime, testTimeFrame)
+                                                .then((val: any): void => {
+                                                    expect(val).to.deep.equal(testSuccessResponse);
+                                                    expect(scope.isDone()).to.eq(true, 'scope should be done');
+                                                });
+                                        });
                                 });
                             });
                         });
@@ -306,27 +307,28 @@ describe('manni-watch-api-client.ts', (): void => {
                         STOP_MODES.forEach((mode: StopMode): void => {
                             optionalTimes.forEach((testStartTime: number): void => {
                                 optionalTimes.forEach((testTimeFrame: number): void => {
-                                    it(`should query stop passages for ("${testId}", "${mode}", ${testStartTime}, ${testTimeFrame})`, async (): Promise<void> => {
-                                        let expectedFormBody = `mode=${mode}`;
-                                        // tslint:disable-next-line:triple-equals
-                                        if (testStartTime != undefined) {
-                                            expectedFormBody += `&startTime=${testStartTime}`;
-                                        }
-                                        expectedFormBody += `&stopPoint=${testId}`;
-                                        // tslint:disable-next-line:triple-equals
-                                        if (testTimeFrame != undefined) {
-                                            expectedFormBody += `&timeFrame=${testTimeFrame}`;
-                                        }
-                                        const scope: nock.Scope = nock(testDomain)
-                                            .post('/internetservice/services/passageInfo/stopPassages/stopPoint', expectedFormBody)
-                                            .reply(200, testSuccessResponse);
-                                        return instance
-                                            .getStopPointPassages(testId, mode, testStartTime, testTimeFrame)
-                                            .then((val: any): void => {
-                                                expect(val).to.deep.equal(testSuccessResponse);
-                                                expect(scope.isDone()).to.eq(true, 'scope should be done');
-                                            });
-                                    });
+                                    it(`should query stop passages for ("${testId}", "${mode}", ${testStartTime}, ${testTimeFrame})`,
+                                        async (): Promise<void> => {
+                                            let expectedFormBody = `mode=${mode}`;
+                                            // tslint:disable-next-line:triple-equals
+                                            if (testStartTime != undefined) {
+                                                expectedFormBody += `&startTime=${testStartTime}`;
+                                            }
+                                            expectedFormBody += `&stopPoint=${testId}`;
+                                            // tslint:disable-next-line:triple-equals
+                                            if (testTimeFrame != undefined) {
+                                                expectedFormBody += `&timeFrame=${testTimeFrame}`;
+                                            }
+                                            const scope: nock.Scope = nock(testDomain)
+                                                .post('/internetservice/services/passageInfo/stopPassages/stopPoint', expectedFormBody)
+                                                .reply(200, testSuccessResponse);
+                                            return instance
+                                                .getStopPointPassages(testId, mode, testStartTime, testTimeFrame)
+                                                .then((val: any): void => {
+                                                    expect(val).to.deep.equal(testSuccessResponse);
+                                                    expect(scope.isDone()).to.eq(true, 'scope should be done');
+                                                });
+                                        });
                                 });
                             });
                         });
@@ -351,14 +353,14 @@ describe('manni-watch-api-client.ts', (): void => {
                                 const expectedQueryParams: any =
                                     lastUpdate == undefined
                                         ? {
-                                              colorType: 'ROUTE_BASED',
-                                              positionType: mode,
-                                          }
+                                            colorType: 'ROUTE_BASED',
+                                            positionType: mode,
+                                        }
                                         : {
-                                              colorType: 'ROUTE_BASED',
-                                              lastUpdate,
-                                              positionType: mode,
-                                          };
+                                            colorType: 'ROUTE_BASED',
+                                            lastUpdate,
+                                            positionType: mode,
+                                        };
                                 const scope: nock.Scope = nock(testDomain)
                                     .get('/internetservice/geoserviceDispatcher/services/vehicleinfo/vehicles')
                                     .query(expectedQueryParams)
