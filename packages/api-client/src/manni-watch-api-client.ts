@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import {
     ISettings,
     IStopInfo,
@@ -37,8 +36,7 @@ export class ManniWatchApiClient {
      * @param axiosInstance
      * @since 1.0.0
      */
-    public constructor(public readonly endpoint: string,
-        axiosInstance?: AxiosInstance) {
+    public constructor(public readonly endpoint: string, axiosInstance?: AxiosInstance) {
         if (axiosInstance) {
             this.httpClient = axiosInstance;
             this.httpClient.defaults.baseURL = endpoint;
@@ -53,10 +51,9 @@ export class ManniWatchApiClient {
     }
 
     public request<T>(reqOpts: AxiosRequestConfig): Promise<T> {
-        return this.httpClient.request(reqOpts)
-            .then((data: AxiosResponse<T>): T => {
-                return data.data;
-            });
+        return this.httpClient.request(reqOpts).then((data: AxiosResponse<T>): T => {
+            return data.data;
+        });
     }
 
     /**
@@ -68,9 +65,7 @@ export class ManniWatchApiClient {
      * @param positionType coordinate type
      * @param lastUpdate timestamp of last update
      */
-    public getVehicleLocations(positionType: PositionType = 'CORRECTED',
-        lastUpdate?: string | number)
-        : Promise<IVehicleLocationList> {
+    public getVehicleLocations(positionType: PositionType = 'CORRECTED', lastUpdate?: string | number): Promise<IVehicleLocationList> {
         const options: AxiosRequestConfig = {
             method: 'GET',
             params: {
@@ -136,12 +131,14 @@ export class ManniWatchApiClient {
      * @param box
      * @since 1.4.0
      */
-    public getStopLocations(box: IBoundingBox = {
-        bottom: -324000000,
-        left: -648000000,
-        right: 648000000,
-        top: 324000000,
-    }): Promise<IStopLocations> {
+    public getStopLocations(
+        box: IBoundingBox = {
+            bottom: -324000000,
+            left: -648000000,
+            right: 648000000,
+            top: 324000000,
+        }
+    ): Promise<IStopLocations> {
         const options: AxiosRequestConfig = {
             method: 'GET',
             params: box,
@@ -155,12 +152,14 @@ export class ManniWatchApiClient {
      * @param box
      * @since 1.4.0
      */
-    public getStopPointLocations(box: IBoundingBox = {
-        bottom: -324000000,
-        left: -648000000,
-        right: 648000000,
-        top: 324000000,
-    }): Promise<IStopPointLocations> {
+    public getStopPointLocations(
+        box: IBoundingBox = {
+            bottom: -324000000,
+            left: -648000000,
+            right: 648000000,
+            top: 324000000,
+        }
+    ): Promise<IStopPointLocations> {
         const options: AxiosRequestConfig = {
             method: 'GET',
             params: box,
@@ -174,8 +173,7 @@ export class ManniWatchApiClient {
      * @param mode
      * @since 1.0.0
      */
-    public getTripPassages(tripId: string,
-        mode: StopMode = 'departure'): Promise<ITripPassages> {
+    public getTripPassages(tripId: string, mode: StopMode = 'departure'): Promise<ITripPassages> {
         const options: AxiosRequestConfig = {
             data: qs.stringify({
                 mode,
@@ -195,10 +193,7 @@ export class ManniWatchApiClient {
      * @param timeFrame time frame from startTime in minutes
      * @since 2.3.0
      */
-    public getStopPassages(stopId: string,
-        mode: StopMode = 'departure',
-        startTime?: number,
-        timeFrame?: number): Promise<IStopPassage> {
+    public getStopPassages(stopId: string, mode: StopMode = 'departure', startTime?: number, timeFrame?: number): Promise<IStopPassage> {
         const options: AxiosRequestConfig = {
             data: qs.stringify({
                 mode,
@@ -220,10 +215,12 @@ export class ManniWatchApiClient {
      * @param timeFrame time frame from startTime in minutes
      * @since 3.0.0
      */
-    public getStopPointPassages(stopPointId: string,
+    public getStopPointPassages(
+        stopPointId: string,
         mode: StopMode = 'departure',
         startTime?: number,
-        timeFrame?: number): Promise<IStopPassage> {
+        timeFrame?: number
+    ): Promise<IStopPassage> {
         const options: AxiosRequestConfig = {
             data: qs.stringify({
                 mode,
@@ -273,10 +270,11 @@ export class ManniWatchApiClient {
                 Accept: 'text/javascript',
             },
             method: 'GET',
-            transformResponse: Util.transformSettingsBody,
+            transformResponse: (body: string): ISettings => {
+                return Util.transformSettingsBody(body);
+            },
             url: '/internetservice/settings',
         };
         return this.request(options);
     }
-
 }

@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { expect } from 'chai';
 import 'mocha';
 import { Util } from './util';
@@ -14,21 +13,15 @@ describe('util.ts', (): void => {
             const testObjects: any[] = [
                 { test: true },
                 { test: false },
-                { test: 'any value' }, {
+                { test: 'any value' },
+                {
                     nested: {
                         value: true,
                     },
                 },
             ];
-            const prefixes: string[] = [
-                '',
-                'a lot of',
-                'javascript_variable = ',
-            ];
-            const suffixes: string[] = [
-                ';',
-                '',
-            ];
+            const prefixes: string[] = ['', 'a lot of', 'javascript_variable = '];
+            const suffixes: string[] = [';', ''];
             testObjects.forEach((testObject: any): void => {
                 describe(`used with testObject: ${JSON.stringify(testObject)}`, (): void => {
                     prefixes.forEach((prefix: string): void => {

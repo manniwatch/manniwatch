@@ -3,10 +3,7 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
-import {
-    ISettings,
-} from '@manniwatch/api-types';
+import { ISettings } from '@manniwatch/api-types';
 
 export class Util {
     public static transformSettingsBody(body: string): ISettings {

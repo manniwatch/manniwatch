@@ -3,11 +3,5 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
-export {
-    IBoundingBox,
-    ManniWatchApiClient,
-} from './manni-watch-api-client';
-export {
-    Util,
-} from './util';
+export { IBoundingBox, ManniWatchApiClient } from './manni-watch-api-client';
+export { Util } from './util';
