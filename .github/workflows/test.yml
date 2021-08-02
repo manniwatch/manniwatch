@@ -95,9 +95,9 @@ jobs:
           npm ci
           npx lerna bootstrap --ci
       - name: Run Lint
-        run: npx lerna run lint --scope=${{ matrix.package.name }}
+        run: npx lerna run lint
       - name: Run Docs
-        run: npx lerna run docs --scope=${{ matrix.package.name }}
+        run: npx lerna run docs
   finish:
     needs: [test_suite, lint_suite]
     name: Finish Test
