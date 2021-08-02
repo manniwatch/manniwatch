@@ -176,7 +176,7 @@ jobs:
       - name: Run Docs
         run: npx lerna run docs
   finish:
-    needs: [test_suite, lint_suite]
+    needs: [test_suite, lint_suite, docs_suite]
     name: Finish Test
     runs-on: ubuntu-latest
     steps:
