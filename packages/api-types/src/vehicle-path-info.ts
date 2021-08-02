@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch
+/*
+ * Package @manniwatch/api-types
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 export interface IWayPoint {
