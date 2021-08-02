@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-client
+/*
+ * Package @manniwatch/api-client
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import {
     ISettings,
@@ -20,7 +22,7 @@ import * as qs from 'qs';
 import { Util } from './util';
 
 // tslint:disable-next-line:no-var-requires
-export const DEFAULT_USER_AGENT: string = 'ManniWatch Api Client/__BUILD_VERSION__';
+export const DEFAULT_USER_AGENT = 'ManniWatch Api Client/__BUILD_VERSION__';
 export interface IBoundingBox {
     top: number;
     bottom: number;
@@ -32,6 +34,7 @@ export class ManniWatchApiClient {
     /**
      *
      * @param endpoint the endpoint base Url to query
+     * @param axiosInstance
      * @since 1.0.0
      */
     public constructor(public readonly endpoint: string,
@@ -61,6 +64,7 @@ export class ManniWatchApiClient {
      */
     /**
      * Correct
+     *
      * @param positionType coordinate type
      * @param lastUpdate timestamp of last update
      */
@@ -112,6 +116,7 @@ export class ManniWatchApiClient {
     /**
      *
      * @param routeId the route id
+     * @param direction
      * @since 3.0.0
      */
     public getRouteByRouteId(routeId: string, direction: string): Promise<IVehiclePathInfo> {
@@ -128,6 +133,7 @@ export class ManniWatchApiClient {
 
     /**
      *
+     * @param box
      * @since 1.4.0
      */
     public getStopLocations(box: IBoundingBox = {
@@ -146,6 +152,7 @@ export class ManniWatchApiClient {
 
     /**
      *
+     * @param box
      * @since 1.4.0
      */
     public getStopPointLocations(box: IBoundingBox = {
@@ -163,6 +170,8 @@ export class ManniWatchApiClient {
     }
     /**
      *
+     * @param tripId
+     * @param mode
      * @since 1.0.0
      */
     public getTripPassages(tripId: string,
@@ -180,6 +189,8 @@ export class ManniWatchApiClient {
 
     /**
      *
+     * @param stopId
+     * @param mode
      * @param startTime milliseconds since epoch. now if undefined
      * @param timeFrame time frame from startTime in minutes
      * @since 2.3.0
@@ -203,6 +214,8 @@ export class ManniWatchApiClient {
 
     /**
      *
+     * @param stopPointId
+     * @param mode
      * @param startTime milliseconds since epoch. now if undefined
      * @param timeFrame time frame from startTime in minutes
      * @since 3.0.0
@@ -226,6 +239,7 @@ export class ManniWatchApiClient {
 
     /**
      *
+     * @param stopId
      * @since 1.0.0
      */
     public getStopInfo(stopId: string): Promise<IStopInfo> {
@@ -239,6 +253,7 @@ export class ManniWatchApiClient {
 
     /**
      *
+     * @param stopPointId
      * @since 1.0.0
      */
     public getStopPointInfo(stopPointId: string): Promise<IStopPointInfo> {

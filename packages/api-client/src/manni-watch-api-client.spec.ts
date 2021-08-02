@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-client
+/*
+ * Package @manniwatch/api-client
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import {
     IStopLocations,
@@ -25,7 +27,7 @@ const testSuccessResponse: any = {
 const STOP_MODES: StopMode[] = ['departure', 'arrival'];
 describe('manni-watch-api-client.ts', (): void => {
     describe('ManniWatchApiClient', (): void => {
-        const testDomain: string = 'http://test.domain';
+        const testDomain = 'http://test.domain';
         let instance: ManniWatchApiClient;
         before('create Sandbox', (): void => {
             if (!nock.isActive()) {
@@ -140,7 +142,7 @@ describe('manni-watch-api-client.ts', (): void => {
                     });
                     it('should get and transform settings as expected', (): Promise<void> => {
                         transformBodyStub.returns(testSuccessResponse);
-                        const testResponse: string = 'test = {};';
+                        const testResponse = 'test = {};';
                         const scope: nock.Scope = nock(testDomain)
                             .get('/internetservice/settings')
                             .reply(200, testResponse);
@@ -290,7 +292,7 @@ describe('manni-watch-api-client.ts', (): void => {
                                 optionalTimes.forEach((testTimeFrame: any): void => {
                                     it(`should query stop passages for ("${testId}","${mode}",${testStartTime},${testTimeFrame})`,
                                         (): Promise<void> => {
-                                            let expectedFormBody: string = `mode=${mode}`;
+                                            let expectedFormBody = `mode=${mode}`;
                                             // tslint:disable-next-line:triple-equals
                                             if (testStartTime != undefined) {
                                                 expectedFormBody += `&startTime=${testStartTime}`;
@@ -334,7 +336,7 @@ describe('manni-watch-api-client.ts', (): void => {
                                 optionalTimes.forEach((testTimeFrame: any): void => {
                                     it(`should query stop passages for ("${testId}", "${mode}", ${testStartTime}, ${testTimeFrame})`,
                                         (): Promise<void> => {
-                                            let expectedFormBody: string = `mode=${mode}`;
+                                            let expectedFormBody = `mode=${mode}`;
                                             // tslint:disable-next-line:triple-equals
                                             if (testStartTime != undefined) {
                                                 expectedFormBody += `&startTime=${testStartTime}`;
