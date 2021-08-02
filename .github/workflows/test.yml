@@ -4,7 +4,7 @@ on: [push,pull_request]
 jobs:
   build_suite:
     runs-on: ${{ matrix.os }}
-    name: Test - ${{ matrix.os }} - Node ${{ matrix.node }}
+    name: Build - ${{ matrix.os }} - Node ${{ matrix.node }}
     timeout-minutes: 30
     strategy:
       max-parallel: 4
@@ -102,7 +102,7 @@ jobs:
   lint_suite:
     needs: build_suite
     runs-on: ${{ matrix.os }}
-    name: Test - ${{ matrix.os }} - Node ${{ matrix.node }}
+    name: Lint - ${{ matrix.os }} - Node ${{ matrix.node }}
     timeout-minutes: 30
     strategy:
       max-parallel: 4
@@ -139,7 +139,7 @@ jobs:
   docs_suite:
     needs: build_suite
     runs-on: ${{ matrix.os }}
-    name: Test - ${{ matrix.os }} - Node ${{ matrix.node }}
+    name: Docs - ${{ matrix.os }} - Node ${{ matrix.node }}
     timeout-minutes: 30
     strategy:
       max-parallel: 4
