@@ -135,6 +135,44 @@ jobs:
           npx lerna bootstrap --ci
       - name: Run Lint
         run: npx lerna run lint
+  docs_suite:
+    needs: build_suite
+    runs-on: ${{ matrix.os }}
+    name: Test - ${{ matrix.os }} - Node ${{ matrix.node }}
+    timeout-minutes: 30
+    strategy:
+      max-parallel: 4
+      matrix:
+        node: [16]
+        os: [ubuntu-latest] #, windows-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 200
+      - name: Setup Node
+        uses: actions/setup-node@v2.3.0
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Get npm cache directory
+        id: npm-cache
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
+      - name: Setup Cache
+        uses: actions/cache@v2.1.6
+        with:
+          path: |
+            ${{ steps.npm-cache.outputs.dir }}
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-node${{ matrix.node }}-npm-${{ hashFiles('**/package-lock.json') }}
+      - name: Install Deps
+        run: |
+          npm ci
+          npx lerna bootstrap --ci
+      - uses: actions/download-artifact@v2.0.10
+        with:
+          name: build-${{matrix.node}}
       - name: Run Docs
         run: npx lerna run docs
   finish:
