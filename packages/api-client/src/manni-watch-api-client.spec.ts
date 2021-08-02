@@ -258,8 +258,8 @@ describe('manni-watch-api-client.ts', (): void => {
                     });
                 });
                 describe('getStopPassages()', (): void => {
-                    // tslint:disable-next-line:no-null-keyword
-                    const optionalTimes: number[] = [12598, null, undefined];
+                    // eslint:disable-next-line:@typescript-eslint/no-unsafe-assignment
+                    const optionalTimes: any[] = [12598, null, undefined];
                     ['id1', 'id2'].forEach((testId: string): void => {
                         STOP_MODES.forEach((mode: StopMode): void => {
                             optionalTimes.forEach((testStartTime: number): void => {
@@ -300,8 +300,8 @@ describe('manni-watch-api-client.ts', (): void => {
                     });
                 });
                 describe('getStopPointPassages()', (): void => {
-                    // tslint:disable-next-line:no-null-keyword
-                    const optionalTimes: number[] = [12598, null, undefined];
+                    // eslint:disable-next-line:@typescript-eslint/no-unsafe-assignment
+                    const optionalTimes: any[] = [12598, null, undefined];
                     ['id1', 'id2'].forEach((testId: string): void => {
                         STOP_MODES.forEach((mode: StopMode): void => {
                             optionalTimes.forEach((testStartTime: number): void => {
