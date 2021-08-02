@@ -79,7 +79,8 @@ jobs:
         run: |
           npm ci
           npx lerna bootstrap --ci
-      - uses: actions/download-artifact@v2.0.10
+      - name: Download Build artifacts
+        uses: actions/download-artifact@v2.0.10
         with:
           name: build-${{matrix.node}}
       - name: Run Test
@@ -170,9 +171,12 @@ jobs:
         run: |
           npm ci
           npx lerna bootstrap --ci
-      - uses: actions/download-artifact@v2.0.10
+      - name: Download Build artifacts
+        uses: actions/download-artifact@v2.0.10
         with:
           name: build-${{matrix.node}}
+      - name: Display structure of downloaded files
+        run: ls -R
       - name: Run Docs
         run: npx lerna run docs
   finish:
