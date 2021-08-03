@@ -186,6 +186,64 @@ jobs:
         run: ls -R
       - name: Run Docs
         run: npx lerna run docs
+  build-and-deploy-docs:
+    runs-on: ubuntu-latest
+    name: Deploy Documentation
+    if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
+    needs: [build_suite,docs_suite]
+    continue-on-error: true
+    strategy:
+      max-parallel: 4
+      matrix:
+        node: [16]
+        os: [ubuntu-latest] #, windows-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 200
+      - name: Setup Node
+        uses: actions/setup-node@v2.3.0
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Get npm cache directory
+        id: npm-cache
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
+      - name: Setup Cache
+        uses: actions/cache@v2.1.6
+        with:
+          path: |
+            ${{ steps.npm-cache.outputs.dir }}
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-node${{ matrix.node }}-npm-${{ hashFiles('**/package-lock.json') }}
+      - name: Install
+        run: |
+          npm ci
+          npx lerna bootstrap --ci
+      - name: Download Build artifacts
+        uses: actions/download-artifact@v2.0.10
+        with:
+          name: build-${{matrix.os}}-${{matrix.node}}
+          path: ./packages
+      - name: Build
+        run: |
+          npx lerna run docs
+          node .github/workflows/prepare_docs_deploy.js
+      - name: Install SSH Client 🔑
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.DOCS_DEPLOY_KEY }}
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          SSH: true
+          BRANCH: master # The branch the action should deploy to.
+          FOLDER: docs # The folder the action should deploy.
+          REPOSITORY_NAME: manniwatch/docs
+          TARGET_FOLDER: .
+
   finish:
     needs: [test_suite, lint_suite, docs_suite]
     name: Finish Test
