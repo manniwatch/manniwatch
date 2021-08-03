@@ -61,7 +61,7 @@
     "@types/helmet": "4.0.0",
     "@types/proxyquire": "1.3.28",
     "@types/supertest": "2.0.11",
-    "apidoc": "0.28.1",
+    "apidoc": "0.29.0",
     "axios": "0.21.1",
     "express": "4.17.1",
     "proxyquire": "2.1.3",
