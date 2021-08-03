@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-client
+/*
+ * Package @manniwatch/api-client
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { expect } from 'chai';
@@ -9,25 +10,20 @@ import { Util } from './util';
 describe('util.ts', (): void => {
     describe('Util', (): void => {
         describe('transformSettingsBody', (): void => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const testObjects: any[] = [
                 { test: true },
                 { test: false },
-                { test: 'any value' }, {
+                { test: 'any value' },
+                {
                     nested: {
                         value: true,
                     },
                 },
             ];
-            const prefixes: string[] = [
-                '',
-                'a lot of',
-                'javascript_variable = ',
-            ];
-            const suffixes: string[] = [
-                ';',
-                '',
-            ];
-            testObjects.forEach((testObject: any): void => {
+            const prefixes: string[] = ['', 'a lot of', 'javascript_variable = '];
+            const suffixes: string[] = [';', ''];
+            testObjects.forEach((testObject: unknown): void => {
                 describe(`used with testObject: ${JSON.stringify(testObject)}`, (): void => {
                     prefixes.forEach((prefix: string): void => {
                         suffixes.forEach((suffix: string): void => {
