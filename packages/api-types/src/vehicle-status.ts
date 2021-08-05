@@ -1,9 +1,11 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch
+/*
+ * Package @manniwatch/api-types
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 /**
  * Vehicle status
+ *
  * @since 1.0.0
  */
 export enum VEHICLE_STATUS {

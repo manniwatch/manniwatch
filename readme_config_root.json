@@ -1,4 +1,5 @@
 {
+    "extend": "temp_readme_config.json",
     "line": "water",
     "badges": [
         {
