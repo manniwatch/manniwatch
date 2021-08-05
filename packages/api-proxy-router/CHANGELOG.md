@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.3](https://github.com/manniwatch/manniwatch/compare/v0.27.2...v0.27.3) (2021-08-05)
+
+
+### Bug Fixes
+
+* **deps:** update @donmahallem/turbo packages ([5654892](https://github.com/manniwatch/manniwatch/commit/56548927b272e9730cc69dd36c114f7c00600774))
+
+
+
+
+
 ## [0.27.2](https://github.com/manniwatch/manniwatch/compare/v0.27.1...v0.27.2) (2021-07-29)
 
 

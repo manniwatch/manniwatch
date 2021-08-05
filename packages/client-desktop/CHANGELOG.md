@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.3](https://github.com/manniwatch/manniwatch/compare/v0.27.2...v0.27.3) (2021-08-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency electron to ~13.1.8 ([615ad81](https://github.com/manniwatch/manniwatch/commit/615ad815bcd21db257b4a5ab95f441e2b1bddd40))
+
+
+
+
+
 ## [0.27.2](https://github.com/manniwatch/manniwatch/compare/v0.27.1...v0.27.2) (2021-07-29)
 
 
