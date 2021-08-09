@@ -7,3 +7,4 @@ docs/
 **/*.lerna_backup
 .npmrc
 lerna-debug.log
+temp_readme_config.json
