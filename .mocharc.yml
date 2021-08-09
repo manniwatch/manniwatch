@@ -31,3 +31,4 @@ sort: false
 spec: src/**/*.spec.ts # the positional arguments!
 ui: bdd
 watch: false
+timeout: 10000
