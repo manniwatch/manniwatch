@@ -64,7 +64,7 @@
 		"@manniwatch/client-ng": "^0.27.4",
 		"@manniwatch/client-types": "^0.27.4",
 		"ajv": "~8.6.2",
-		"ajv-formats": "~2.1.0",
+		"ajv-formats": "~2.1.1",
 		"commander": "~8.1.0",
 		"deepmerge": "~4.2.2",
 		"electron": "~13.1.9",
