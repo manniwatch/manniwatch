@@ -3,17 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.27.5](https://github.com/manniwatch/manniwatch/compare/v0.27.4...v0.27.5) (2021-08-25)
-
-
-### Bug Fixes
-
-* **deps:** update dependency electron to ~13.1.9 ([397dc45](https://github.com/manniwatch/manniwatch/commit/397dc4559166cd6cfa0f2688f6c5e042dca9c0af))
-
-
-
-
-
 ## [0.27.4](https://github.com/manniwatch/manniwatch/compare/v0.27.3...v0.27.4) (2021-08-09)
 
 **Note:** Version bump only for package @manniwatch/pb-types

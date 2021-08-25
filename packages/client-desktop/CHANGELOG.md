@@ -3,22 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.27.5](https://github.com/manniwatch/manniwatch/compare/v0.27.4...v0.27.5) (2021-08-25)
-
-
-### Bug Fixes
-
-* **deps:** update angular monorepo to v12.2.2 ([db436d6](https://github.com/manniwatch/manniwatch/commit/db436d6135b333c353b8ab7d26faaa05062e9ddd))
-* **deps:** update dependency ajv-formats to ~2.1.1 ([287b0e3](https://github.com/manniwatch/manniwatch/commit/287b0e37629a213e827678eb72c7f3e8dd6414c8))
-* **deps:** update dependency electron to ~13.1.9 ([397dc45](https://github.com/manniwatch/manniwatch/commit/397dc4559166cd6cfa0f2688f6c5e042dca9c0af))
-* **deps:** update dependency electron to ~13.2.0 ([e15a1d7](https://github.com/manniwatch/manniwatch/commit/e15a1d7b5bd55647f990ca4f4244c04b8e0bfa8b))
-* **deps:** update dependency electron to ~13.2.1 ([1edd334](https://github.com/manniwatch/manniwatch/commit/1edd3343a8d2aeee9e80d71e08b1b0bd2dc37094))
-* **deps:** update dependency electron to ~13.2.2 ([dcfd55d](https://github.com/manniwatch/manniwatch/commit/dcfd55d75d06d1bdbfe82632c23c5fe314bcb475))
-
-
-
-
-
 ## [0.27.4](https://github.com/manniwatch/manniwatch/compare/v0.27.3...v0.27.4) (2021-08-09)
 
 **Note:** Version bump only for package @manniwatch/client-desktop
