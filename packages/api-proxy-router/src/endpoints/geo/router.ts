@@ -17,6 +17,11 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
          * @apiName StopLocations
          * @apiGroup Geo
          *
+         * @apiQuery {number} bottom Bottom Geo Border
+         * @apiQuery {number} left Left Geo Border
+         * @apiQuery {number} right Right Geo Border
+         * @apiQuery {number} top Top Geo Border
+         *
          * @apiVersion 0.1.0
          */
         router.get('/stops',
@@ -34,6 +39,11 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
          * @apiName StopPointLocations
          * @apiGroup Geo
          *
+         * @apiQuery {number} bottom Bottom Geo Border
+         * @apiQuery {number} left Left Geo Border
+         * @apiQuery {number} right Right Geo Border
+         * @apiQuery {number} top Top Geo Border
+         *
          * @apiVersion 0.4.0
          */
         router.get('/stopPoints',
@@ -50,6 +60,8 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
          * @api {get} /geo/vehicles Request vehicle locations
          * @apiName GetVehicleLocations
          * @apiGroup Geo
+         * @apiQuery {string="RAW","CORRECTED"} [mode="RAW"] Departure Mode to Query
+         * @apiQuery {number} [lastUpdate=0] Get updates since this point in time
          *
          * @apiVersion 0.1.0
          */

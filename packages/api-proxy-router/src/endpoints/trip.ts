@@ -30,7 +30,8 @@ export const createTripRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
          * @apiName GetTripPassages
          * @apiGroup Trip
          *
-         * @apiParam {String} id Vehicle id
+         * @apiParam {string} id Vehicle id
+         * @apiQuery {string="arrival","departure"} [departureMode="departure"] Default departure mode
          * @apiVersion 0.5.0
          */
         router.get('/:id([a-z0-9A-Z\-\+]+)/passages',
