@@ -24,7 +24,7 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
          * @apiQuery {number} right Right Geo Border
          * @apiQuery {number} top Top Geo Border
          * @apiVersion 0.1.0
-         * 
+         *
          */
         router.get('/stops',
             turboval.validateRequest('query', GEO_FENCE_SCHEMA),
@@ -45,7 +45,7 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
          * @apiQuery {number} right Right Geo Border
          * @apiQuery {number} top Top Geo Border
          * @apiVersion 0.4.0
-         * 
+         *
          */
         router.get('/stopPoints',
             turboval.validateRequest('query', GEO_FENCE_SCHEMA),
@@ -64,7 +64,7 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
          * @apiQuery {string="RAW","CORRECTED"} [mode="RAW"] Departure Mode to Query
          * @apiQuery {number} [lastUpdate=0] Get updates since this point in time
          * @apiVersion 0.1.0
-         * 
+         *
          */
         router.get('/vehicles',
             turboval.validateRequest('query', GET_VEHICLE_LOCATION_SCHEMA),

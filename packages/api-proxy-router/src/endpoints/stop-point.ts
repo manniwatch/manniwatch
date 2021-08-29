@@ -26,7 +26,7 @@ export const createStopPointRouter: (apiClient: ManniWatchApiClient, ajvInstance
          * @apiQuery {string} startTime Start time to query
          * @apiQuery {string} timeFrame Time frame to query
          * @apiVersion 0.6.0
-         * 
+         *
          */
         router.get('/:id([a-z0-9A-Z\-\+]+)/passages',
             turboval.validateRequest('query', STOP_PASSAGES_SCHEMA),
