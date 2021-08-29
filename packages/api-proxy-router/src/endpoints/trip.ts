@@ -10,6 +10,9 @@ import { TRIP_PASSAGES_SCHEMA } from '@manniwatch/schemas';
 import Ajv from 'ajv';
 import express from 'express';
 
+/**
+ * @category Sub Routes
+ */
 export const createTripRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Ajv) => express.Router =
     (apiClient: ManniWatchApiClient, ajvInstance: Ajv = new Ajv()): express.Router => {
         const router: express.Router = express.Router();
@@ -20,6 +23,7 @@ export const createTripRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
          *
          * @apiParam {String} id Vehicle id
          * @apiVersion 0.1.0
+         * 
          */
         router.get('/:id([a-z0-9A-Z\-\+]+)/route', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
             prom.promiseToResponse(apiClient.getRouteByTripId(req.params.id), res, next);
@@ -33,6 +37,7 @@ export const createTripRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
          * @apiParam {string} id Vehicle id
          * @apiQuery {string="arrival","departure"} [departureMode="departure"] Default departure mode
          * @apiVersion 0.5.0
+         * 
          */
         router.get('/:id([a-z0-9A-Z\-\+]+)/passages',
             turboval.validateRequest('query', TRIP_PASSAGES_SCHEMA, ajvInstance),

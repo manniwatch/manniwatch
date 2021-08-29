@@ -8,7 +8,7 @@ import NodeCache from 'node-cache';
 import * as endpoints from './endpoints';
 
 /**
- *
+ * @category Root Router
  * @param endpoint example: http://test.domain/
  */
 export const createApiProxyRouter: (endpoint: string | ManniWatchApiClient) => express.Router = (endpoint: string): express.Router => {
