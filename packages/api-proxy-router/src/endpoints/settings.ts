@@ -15,6 +15,9 @@ interface ISettingsEntry {
     lastModified: Date;
 }
 const CACHE_KEY_SETTINGS: string = 'mw_settings';
+/**
+ * @category Sub Routes
+ */
 export const createSettingsRouter: (apiClient: ManniWatchApiClient, cache: NodeCache) => express.Router =
     (apiClient: ManniWatchApiClient, cache: NodeCache): express.Router => {
         const router: express.Router = express.Router();
@@ -23,8 +26,9 @@ export const createSettingsRouter: (apiClient: ManniWatchApiClient, cache: NodeC
          * @api {get} /settings Request Trapeze Settings
          * @apiName GetSettings
          * @apiGroup Settings
-         *
          * @apiVersion 0.1.0
+         *
+         * @category Sub Routes
          */
         router.get('', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
             settingsMutex.runExclusive(async (): Promise<ISettingsEntry> => {

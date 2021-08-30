@@ -3,8 +3,8 @@
   "private": true,
   "devDependencies": {
     "@appnest/readme": "1.2.7",
-    "@donmahallem/eslint-config": "0.2.8",
-    "@donmahallem/rollup-config": "0.4.1",
+    "@donmahallem/eslint-config": "0.2.9",
+    "@donmahallem/rollup-config": "0.4.2",
     "@donmahallem/tslint-config": "0.2.0",
     "@rollup/plugin-commonjs": "20.0.0",
     "@rollup/plugin-json": "4.1.0",
@@ -13,7 +13,7 @@
     "@rollup/plugin-typescript": "8.2.5",
     "@types/chai": "4.2.21",
     "@types/mocha": "9.0.0",
-    "@types/node": "14.17.11",
+    "@types/node": "14.17.12",
     "@types/sinon": "10.0.2",
     "chai": "4.3.4",
     "commitizen": "4.2.4",
@@ -23,7 +23,7 @@
     "eslint": "7.32.0",
     "fs-extra": "10.0.0",
     "lerna": "4.0.0",
-    "mocha": "9.1.0",
+    "mocha": "9.1.1",
     "nyc": "15.1.0",
     "prettier": "2.3.2",
     "rollup": "2.56.3",
@@ -31,7 +31,7 @@
     "ts-node": "10.2.1",
     "tslib": "2.3.1",
     "tslint": "6.1.3",
-    "typedoc": "0.21.6",
+    "typedoc": "0.21.9",
     "typescript": "4.3.5"
   },
   "scripts": {

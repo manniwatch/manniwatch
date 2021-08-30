@@ -5,46 +5,43 @@ on:
 
 jobs:
   release_npm:
+    name: Publish to ${{matrix.title}}
     runs-on: ubuntu-latest
-    name: Publish Package to NPM
+    permissions:
+      contents: read
+      packages: write
+    timeout-minutes: 30
+    strategy:
+      max-parallel: 4
+      matrix:
+        include:
+          - registry: 'https://registry.npmjs.org'
+            registry_secret: ${{ secrets.NPM_TOKEN }}
+            title: 'NPM'
+          - registry: 'https://npm.pkg.github.com'
+            registry_secret: ${{ secrets.GITHUB_TOKEN }}
+            title: 'GITHUB'
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup Node
-        uses: actions/setup-node@v2.4.0
+      - uses: actions/checkout@v2
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v2.4.0
         with:
-          node-version: '12'
+          node-version: '16.x'
       - name: Install Packages
         run: |
           npm ci
           npx lerna bootstrap --ci
       - name: Build Package
         run: npm run build
-      - name: Prepare Package
-        run: |
-          npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
-      - name: Test NPM Identity
-        run: npm whoami
-      - name: Upload Package
-        run: npx lerna publish from-git --yes
-  release_github:
-    runs-on: ubuntu-latest
-    name: Publish Package to GITHUB
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      # Setup .npmrc file to publish to GitHub Packages
       - name: Setup Node
         uses: actions/setup-node@v2.4.0
         with:
-          node-version: '12'
-      - name: Install Packages
-        run: |
-          npm ci
-          npx lerna bootstrap --ci
-      - name: Build Package
-        run: npm run build
-      - name: Prepare Package
-        run: |
-          npm config set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
-      - name: Upload Package
-        run: npx lerna publish from-git --registry https://npm.pkg.github.com/manniwatch --yes
+          registry-url: ${{ matrix.registry }}
+          # Defaults to the user or organization that owns the workflow file
+          scope: '@manniwatch'
+      # Publish to GitHub Packages
+      - name: Publish to ${{matrix.title}}
+        run: npx lerna publish from-package --yes
+        env:
+          NODE_AUTH_TOKEN: ${{ matrix.registry_secret }}

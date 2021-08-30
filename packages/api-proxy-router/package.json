@@ -13,16 +13,20 @@
   "scripts": {
     "build": "rollup -c ./rollup.config.js && npm run build:types",
     "build:types": "tsc --project ./tsconfig.json  -d --declarationDir dist/types --declarationMap --emitDeclarationOnly",
-    "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
+    "build:readme": "npx @appnest/readme generate --input ./readme_blueprint.md --config readme_config.json",
     "test": "mocha --config ../../.mocharc.yml --timeout 30000",
     "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
     "lint": "tslint -c tslint.json -p tsconfig.spec.json src/**/*.ts",
     "lint:fix": "tslint --fix -c tslint.json -p tsconfig.spec.json src/**/*.ts",
     "docs": "typedoc --options ./typedoc.config.js",
+    "apidocs": "apidoc --line-ending LF README.md -i ./src/ -o ./docs/apidoc",
+    "postdocs": "npm run apidocs",
     "prepublishOnly": "npm run test && npm run docs && npm run build",
-    "version": "npm run build:readme && git add README.md"
+    "version": "npm run build:readme && git add README.md",
+    "postclean": "npx rimraf ./dist ./docs ./coverage"
   },
-  "homepage": "https://manniwatch.github.io/manniwatch/",
+  "homepage": "https://manniwatch.github.io/docs/api-proxy-router/index.html",
+  "apidoc": "https://manniwatch.github.io/docs/api-proxy-router/apidoc/index.html",
   "author": {
     "name": "donmahallem",
     "email": "donmahallem@users.noreply.github.com",
@@ -47,8 +51,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@donmahallem/turbo": "~2.1.24",
-    "@donmahallem/turbo-validate-request": "~0.2.3",
+    "@donmahallem/turbo": "~2.1.25",
+    "@donmahallem/turbo-validate-request": "~0.2.4",
     "@manniwatch/api-client": "^0.27.5",
     "@manniwatch/api-types": "^0.27.3",
     "@manniwatch/schemas": "^0.27.5",

@@ -10,6 +10,9 @@ import { STOP_PASSAGES_SCHEMA } from '@manniwatch/schemas';
 import Ajv from 'ajv';
 import express from 'express';
 
+/**
+ * @category Sub Routes
+ */
 export const createStopRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Ajv) => express.Router =
     (apiClient: ManniWatchApiClient, ajvInstance: Ajv = new Ajv()): express.Router => {
         const router: express.Router = express.Router();
@@ -18,11 +21,12 @@ export const createStopRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
          * @apiName GetStopPassages
          * @apiGroup Stop
          *
-         * @apiParam {String} id Stop id
-         * @apiParam {String} [mode="arrival","departure"]
-         * @apiParam {String} [startTime]
-         * @apiParam {String} [timeFrame]
+         * @apiParam (Path Parameters) {string} id Stop id
+         * @apiQuery {string="arrival","departure"} mode="departure" Departure Mode to Query
+         * @apiQuery {string} startTime Start time to query
+         * @apiQuery {string} timeFrame Time frame to query
          * @apiVersion 0.1.0
+         *
          */
         router.get('/:id([a-z0-9A-Z\-\+]+)/passages',
             turboval.validateRequest('query', STOP_PASSAGES_SCHEMA),
@@ -46,7 +50,7 @@ export const createStopRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
          * @apiName GetStopInfo
          * @apiGroup Stop
          *
-         * @apiParam {String} id Stop id
+         * @apiParam (Path Parameters) {String} id Stop id
          * @apiVersion 0.1.0
          */
         router.get('/:id([a-z0-9A-Z\-\+]+)/info',
