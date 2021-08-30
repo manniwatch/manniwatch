@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2.4.0
         with:
-          node-version: '14'
+          node-version: '16'
       - name: Install Packages
         run: |
           npm ci
@@ -28,6 +28,8 @@ jobs:
         run: npm run test
       - name: Prepare Package
         run: |
-          npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
+          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Upload Package
         run: npx lerna publish --dist-tag next --canary -y
