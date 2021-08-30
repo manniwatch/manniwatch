@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.6](https://github.com/manniwatch/manniwatch/compare/v0.27.5...v0.27.6) (2021-08-30)
+
+
+### Bug Fixes
+
+* **deps:** update @donmahallem/turbo packages ([a38815d](https://github.com/manniwatch/manniwatch/commit/a38815dfb5d81e923d2144f5927888193b9aa9bc))
+* **deps:** update angular monorepo to v12.2.3 ([8b72a00](https://github.com/manniwatch/manniwatch/commit/8b72a00caeb94e1c8a664776d69a6b9f167e0702))
+* **deps:** update angularmaterial monorepo to v12.2.3 ([12361bf](https://github.com/manniwatch/manniwatch/commit/12361bf5f5d3573c9274f58743574c98989810c8))
+
+
+
+
+
 ## [0.27.5](https://github.com/manniwatch/manniwatch/compare/v0.27.4...v0.27.5) (2021-08-25)
 
 

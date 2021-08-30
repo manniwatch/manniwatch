@@ -1,4 +1,4 @@
-<!-- ⚠️ This README has been generated from the file(s) "../package_readme_blueprint.md" ⚠️-->
+<!-- ⚠️ This README has been generated from the file(s) "./readme_blueprint.md" ⚠️-->
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)](#h1-aligncentermanniwatchapi-proxy-routerh1)
 
 # ➤ <h1 align="center">@manniwatch/api-proxy-router</h1>
@@ -31,3 +31,12 @@ Run the following command to install the package:
 ```
 npm install @manniwatch/api-proxy-router
 ```
+
+
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)](#docs)
+
+## ➤ Docs
+
+[Typedoc](https://manniwatch.github.io/docs/api-proxy-router/index.html)
+[Apidoc](https://manniwatch.github.io/docs/api-proxy-router/apidoc/index.html)
