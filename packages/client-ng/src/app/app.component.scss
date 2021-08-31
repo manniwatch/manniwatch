@@ -1,3 +1,4 @@
+@use 'sass:math';
 @use '~@angular/material' as mat;
 
 :host {
@@ -15,25 +16,26 @@
     display: flex;
 }
 
-@import './box-settings.scss';
+@import "./box-settings.scss";
 mat-sidenav-container {
     flex: 1 1 auto;
     display: flex;
     flex-direction: row;
 }
 
-mat-sidenav-content{
+mat-sidenav-content {
     align-self: stretch;
-    display:block;
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    position:fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
 }
-map[appMainMap],map[appOlMainMap]{
-    height:100%;
-    width:100%;
-    display:block;
+map[appMainMap],
+map[appOlMainMap] {
+    height: 100%;
+    width: 100%;
+    display: block;
     pointer-events: all;
 }
 
@@ -53,13 +55,13 @@ mat-sidenav.main-nav {
 
 $searchBorderRadius: 8px;
 
-app-main-toolbar{
+app-main-toolbar {
     max-width: $boxMaxWidth;
     position: absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    margin:$boxMarginVertical auto 0px auto;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    margin: $boxMarginVertical auto 0px auto;
     z-index: #{$overlayZIndex};
     border-radius: $searchBorderRadius;
     //border:1px solid rgb(87, 99, 207);
@@ -68,48 +70,48 @@ app-main-toolbar{
 }
 @keyframes overlay-box-expand-animation {
     to {
-        width:100vw;
+        width: 100vw;
     }
     from {
-        width:#{$boxMaxWidth + (2 * $boxMarginHorizontal)};
+        width: #{$boxMaxWidth + (2 * $boxMarginHorizontal)};
     }
 }
 @keyframes overlay-box-contract-animation {
     from {
-        width:100vw;
+        width: 100vw;
     }
     to {
-        width:#{$boxMaxWidth + (2 * $boxMarginHorizontal)};
+        width: #{$boxMaxWidth + (2 * $boxMarginHorizontal)};
     }
 }
-.overlay-box{
-    display:block;
+.overlay-box {
+    display: block;
     z-index: #{$overlayZIndex - 1};
     width: 100vw;
     position: absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    pointer-events:none;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    pointer-events: none;
     animation-name: overlay-box-expand-animation;
     animation-duration: 1s;
-    app-main-toolbar{
-        margin:#{$boxMarginVertical} auto 0 auto;
-        pointer-events:visible;
+    app-main-toolbar {
+        margin: #{$boxMarginVertical} auto 0 auto;
+        pointer-events: visible;
     }
-    .router-box{
+    .router-box {
         z-index: #{$overlayZIndex - 1};
         width: 100%;
         position: absolute;
-        top:0px;
-        left:0px;
-        right:0px;
-        bottom:0px;
-        overflow:auto;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        overflow: auto;
         ::ng-deep > *:not(:first-child) {
-            pointer-events:visible;
-            height:100%;
+            pointer-events: visible;
+            height: 100%;
             background-attachment: fixed;
             display: flex;
             flex: 1;
@@ -118,57 +120,57 @@ app-main-toolbar{
             @include mat.elevation(4);
         }
     }
-    @media (max-width: #{$boxMaxWidth + (2 * $boxMarginHorizontal)}) and (min-width: #{$boxMaxWidth + 1}){
-        app-main-toolbar{
-            border-radius: calc( #{$searchBorderRadius /(2 * $boxMarginHorizontal)}*(100vw - #{$boxMaxWidth}) );
-            margin-top: calc( #{$boxMarginVertical /(2 * $boxMarginHorizontal)}*(100vw - #{$boxMaxWidth}) );
+    @media (max-width: #{$boxMaxWidth + (2 * $boxMarginHorizontal)}) and (min-width: #{$boxMaxWidth + 1}) {
+        app-main-toolbar {
+            border-radius: calc(#{math.div($searchBorderRadius, 2 * $boxMarginHorizontal)}* (100vw - #{$boxMaxWidth}));
+            margin-top: calc(#{math.div($boxMarginVertical, 2 * $boxMarginHorizontal)}* (100vw - #{$boxMaxWidth}));
         }
     }
-    @media (min-width: $breakpoint){
-        app-main-toolbar{
-            right:unset;
-            margin:$boxMarginVertical 0px 0px $boxMarginHorizontal;
-            width:$boxMaxWidth;
+    @media (min-width: $breakpoint) {
+        app-main-toolbar {
+            right: unset;
+            margin: $boxMarginVertical 0px 0px $boxMarginHorizontal;
+            width: $boxMaxWidth;
         }
 
         // Needed for dropshadow to appear for nav box
         $rightPadding: 20px;
-        .router-box{
-            padding-right:$rightPadding;
+        .router-box {
+            padding-right: $rightPadding;
         }
     }
 
-    @media (max-width: #{$boxMaxWidth} ){
-        app-main-toolbar{
+    @media (max-width: #{$boxMaxWidth} ) {
+        app-main-toolbar {
             border-radius: 0px;
             margin-top: 0px;
         }
     }
 }
 
-@media (min-width: #{$breakpoint }){
-    .overlay-box{
+@media (min-width: #{$breakpoint }) {
+    .overlay-box {
         animation-name: overlay-box-contract-animation;
         animation-duration: 1s;
-        width:#{$boxMaxWidth + (2 * $boxMarginHorizontal)};
-        right:unset;
+        width: #{$boxMaxWidth + (2 * $boxMarginHorizontal)};
+        right: unset;
     }
 }
-@media (max-width: #{$boxMaxWidth} ){
-    .overlay-box{
-        display:flex;
+@media (max-width: #{$boxMaxWidth} ) {
+    .overlay-box {
+        display: flex;
         flex-direction: column;
         position: absolute;
         align-items: stretch;
-        app-main-toolbar{
-            margin:0px;
+        app-main-toolbar {
+            margin: 0px;
             position: relative;
-            flex:0 0 auto;
+            flex: 0 0 auto;
             order: 1;
         }
-        .router-box{
+        .router-box {
             position: unset;
-            flex:1 1 auto;
+            flex: 1 1 auto;
             order: 2;
             height: 100%;
         }
