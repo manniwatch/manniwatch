@@ -67,6 +67,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2.4.0
         with:
+          node-version: ${{ matrix.node }}
           registry-url: 'https://registry.npmjs.org'
           # Defaults to the user or organization that owns the workflow file
       # Publish to GitHub Packages
@@ -96,6 +97,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2.4.0
         with:
+          node-version: ${{ matrix.node }}
           registry-url: 'https://npm.pkg.github.com'
           # Defaults to the user or organization that owns the workflow file
           scope: '@manniwatch'
