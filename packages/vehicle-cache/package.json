@@ -1,6 +1,6 @@
 {
     "name": "@manniwatch/vehicle-cache",
-    "version": "0.27.6",
+    "version": "0.27.7",
     "description": "Caching for vehicle locations",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
@@ -20,9 +20,9 @@
         "prepublishOnly": "npm run test && npm run docs && npm run build"
     },
     "dependencies": {
-        "@manniwatch/api-client": "^0.27.6",
-        "@manniwatch/api-types": "^0.27.3",
-        "@manniwatch/vehicle-location-diff": "^0.27.3",
+        "@manniwatch/api-client": "^0.27.7",
+        "@manniwatch/api-types": "^0.27.7",
+        "@manniwatch/vehicle-location-diff": "^0.27.7",
         "node-cache": "~5.1.2",
         "rxjs": "~7.3.0"
     },

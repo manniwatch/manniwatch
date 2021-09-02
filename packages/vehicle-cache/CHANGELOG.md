@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.7](https://github.com/manniwatch/manniwatch/compare/v0.27.6...v0.27.7) (2021-09-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency async-mutex to ~0.3.2 ([2d6ec43](https://github.com/manniwatch/manniwatch/commit/2d6ec43ad4bffd8f9ab1eac65a5a09894607ac7b))
+
+
+
+
+
 ## [0.27.6](https://github.com/manniwatch/manniwatch/compare/v0.27.5...v0.27.6) (2021-08-30)
 
 

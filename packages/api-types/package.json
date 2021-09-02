@@ -1,6 +1,6 @@
 {
   "name": "@manniwatch/api-types",
-  "version": "0.27.3",
+  "version": "0.27.7",
   "description": "Api Types and helper for Trapeze Api",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
