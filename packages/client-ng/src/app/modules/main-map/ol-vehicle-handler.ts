@@ -3,6 +3,7 @@
  */
 
 import { NgZone } from '@angular/core';
+import { runOutsideZone } from '@donmahallem/rxjs-zone';
 import { IVehicleLocation, IVehiclePathInfo, IWayPoint } from '@manniwatch/api-types';
 import { Feature, Map as OlMap } from 'ol';
 import { Coordinate } from 'ol/coordinate';
@@ -17,7 +18,6 @@ import { catchError, distinctUntilChanged, pluck, switchMap } from 'rxjs/operato
 import { TimestampedVehicleLocation } from 'src/app/services';
 import { IData } from 'src/app/services/vehicle.service';
 import { OlUtil } from 'src/app/util/ol';
-import { runOutsideZone } from 'src/app/util/rxjs';
 import { OlMainMapDirective } from './ol-main-map.directive';
 export class OlVehicleHandler {
 
