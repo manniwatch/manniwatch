@@ -11,6 +11,7 @@ import {
     OnDestroy,
     SimpleChanges,
 } from '@angular/core';
+import { runOutsideZone } from '@donmahallem/rxjs-zone';
 import { IOsmMapProvider, MapProvider } from '@manniwatch/client-types/dist/types/environment.base';
 import { Collection, Map, View } from 'ol';
 import stylefunction from 'ol-mapbox-style/dist/stylefunction';
@@ -24,7 +25,6 @@ import { fromLonLat } from 'ol/proj';
 import { OSM, VectorTile } from 'ol/source';
 import { Subscription } from 'rxjs';
 import { SettingsService, Theme } from 'src/app/services';
-import { runOutsideZone } from 'src/app/util/rxjs';
 import { environment } from 'src/environments';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 

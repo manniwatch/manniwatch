@@ -3,10 +3,10 @@
  */
 
 import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
+import { runInsideZone } from '@donmahallem/rxjs-zone';
 import { IVehicleLocation } from '@manniwatch/api-types';
 import { Subscription } from 'rxjs';
 import { IStaticMapData } from 'src/app/modules/openlayers';
-import { runInsideZone } from 'src/app/util/rxjs';
 import { TripPassagesService } from './trip-passages.service';
 import {
     UpdateStatus,
