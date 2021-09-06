@@ -51,7 +51,7 @@ export class ManniWatchProxyServer {
         this.app.use('/api', createApiProxyRouter(endpoint));
         this.app.use('/api', api404Handler);
         this.app.use(express.static(this.ngModulePath));
-        this.app.get('/*', (req: express.Request, res: express.Response): void => {
+        this.app.get('*', (req: express.Request, res: express.Response): void => {
             res.status(404).sendFile(`${this.ngModulePath}/index.html`);
         });
         this.app.use(serverErrorHandler);
