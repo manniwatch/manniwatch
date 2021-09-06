@@ -8,17 +8,19 @@ import helmet from 'helmet';
 import { Server } from 'http';
 import path from 'path';
 import { api404Handler } from './api-not-found-handler';
+import { IServerConfig } from './proxy-api-server';
 import { serverErrorHandler } from './server-error-handler';
 
+export type FullServerConfig = IServerConfig & {
+    clientFiles?: string;
+};
 export class ManniWatchProxyServer {
     private app: express.Application;
     private server: Server;
     private ngModulePath: string;
-    constructor(public readonly endpoint: string,
-        public readonly port: number,
-        public readonly clientFiles?: string) {
+    constructor(public readonly config: FullServerConfig) {
         // tslint:disable-next-line:triple-equals
-        if (clientFiles == undefined) {
+        if (config.clientFiles == undefined) {
             // Check if @manniwatch/client-ng is installed
             const modulePath: string = require.resolve('@manniwatch/client-ng');
             if (modulePath) {
@@ -27,7 +29,7 @@ export class ManniWatchProxyServer {
                 throw new Error('Could not find @manniwatch/client-ng installed');
             }
         } else {
-            this.ngModulePath = clientFiles;
+            this.ngModulePath = config.clientFiles;
         }
 
         // setup server
@@ -48,7 +50,7 @@ export class ManniWatchProxyServer {
                 styleSrc: ['\'self\'', '\'unsafe-inline\''],
             },
         }));
-        this.app.use('/api', createApiProxyRouter(endpoint));
+        this.app.use('/api', createApiProxyRouter(config.endpoint));
         this.app.use('/api', api404Handler);
         this.app.use(express.static(this.ngModulePath));
         this.app.get('*', (req: express.Request, res: express.Response): void => {
@@ -59,7 +61,7 @@ export class ManniWatchProxyServer {
 
     public start(): Promise<void> {
         return new Promise((resolve: () => void, reject: (err: any) => void): void => {
-            this.server = this.app.listen(this.port, (err?: any): void => {
+            this.server = this.app.listen(this.config.port, (err?: any): void => {
                 err ? reject(err) : resolve();
             });
         });
