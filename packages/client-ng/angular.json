@@ -27,6 +27,11 @@
               "src/assets",
               "src/manifest.webmanifest",
               {
+                "glob": "**/*.json",
+                "input": "./config",
+                "output": "./config"
+              },
+              {
                 "glob": "**/*",
                 "input": "./node_modules/@manniwatch/assets/dist",
                 "output": "./assets/shared"
