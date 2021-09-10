@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/manniwatch",
+            "outputPath": "dist/manniwatch/osm",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -45,6 +45,15 @@
             "namedChunks": true
           },
           "configurations": {
+            "olvector": {
+              "outputPath": "dist/manniwatch/vector",
+              "fileReplacements": [
+                {
+                  "replace": "src/app/modules/openlayers/abstract-ol-map.directive.ts",
+                  "with": "src/app/modules/openlayers/abstract-vector-ol-map.directive.ts"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
