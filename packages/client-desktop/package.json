@@ -65,7 +65,7 @@
 		"@manniwatch/client-types": "^0.27.7",
 		"ajv": "~8.6.2",
 		"ajv-formats": "~2.1.1",
-		"commander": "~8.1.0",
+		"commander": "~8.2.0",
 		"deepmerge": "~4.2.2",
 		"electron": "~14.0.0",
 		"ol": "~6.6.1"
