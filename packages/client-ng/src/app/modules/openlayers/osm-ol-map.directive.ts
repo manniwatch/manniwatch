@@ -3,32 +3,20 @@
  */
 
 import {
-    AfterViewInit,
     Directive,
     ElementRef,
     NgZone,
-    OnChanges,
-    OnDestroy,
-    SimpleChanges,
 } from '@angular/core';
-import { runOutsideZone } from '@donmahallem/rxjs-zone';
-import { IOsmMapProvider, MapProvider } from '@manniwatch/client-types/dist/types/environment.base';
-import { Collection, Map, View } from 'ol';
-import stylefunction from 'ol-mapbox-style/dist/stylefunction';
+import { Map, View } from 'ol';
 import { Coordinate } from 'ol/coordinate';
-import MVT from 'ol/format/MVT';
-import { defaults, Interaction } from 'ol/interaction';
+import { defaults } from 'ol/interaction';
 import BaseTileLayer from 'ol/layer/BaseTile';
 import TileLayer from 'ol/layer/Tile';
-import VectorTileLayer from 'ol/layer/VectorTile';
 import { fromLonLat } from 'ol/proj';
-import { OSM, VectorTile } from 'ol/source';
-import { Subscription } from 'rxjs';
+import { OSM } from 'ol/source';
 import { SettingsService, Theme } from 'src/app/services';
 import { environment } from 'src/environments';
-import { AbstractOlMapDirective } from '.';
 import { BaseOlMapDirective } from './base-ol-map.directive';
-import { DARK_THEME, LIGHT_THEME } from './theme';
 
 @Directive()
 export abstract class OsmOlMapDirective extends BaseOlMapDirective<OSM> {
