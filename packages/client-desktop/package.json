@@ -49,12 +49,12 @@
 	},
 	"devDependencies": {
 		"@types/ol": "6.5.3",
-		"asar": "3.0.3",
+		"asar": "3.1.0",
 		"copy-webpack-plugin": "9.0.1",
 		"nyc": "15.1.0",
 		"pug-cli": "1.0.0-alpha6",
 		"ts-loader": "9.2.5",
-		"webpack": "5.52.0",
+		"webpack": "5.52.1",
 		"webpack-cli": "4.8.0",
 		"webpack-merge": "5.8.0"
 	},
@@ -65,7 +65,7 @@
 		"@manniwatch/client-types": "^0.27.7",
 		"ajv": "~8.6.2",
 		"ajv-formats": "~2.1.1",
-		"commander": "~8.1.0",
+		"commander": "~8.2.0",
 		"deepmerge": "~4.2.2",
 		"electron": "~14.0.0",
 		"ol": "~6.6.1"
