@@ -8,7 +8,7 @@ import { APP_VERSION } from './app-version';
 import { environment as compileEnvironment } from './environment';
 import { Environment } from './environment.base';
 
-const sourceEnvironments: any[] = [
+const sourceEnvironments: Partial<Environment>[] = [
     compileEnvironment,
     getManniwatchDesktopEnvironment(),
     {
@@ -16,4 +16,4 @@ const sourceEnvironments: any[] = [
     },
 ];
 
-export const environment: Environment = merge<Environment>(sourceEnvironments) as any;
+export const environment: Environment = merge<Environment>(sourceEnvironments) as Environment;
