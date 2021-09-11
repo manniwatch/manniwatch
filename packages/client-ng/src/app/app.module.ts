@@ -3,7 +3,7 @@
  */
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -18,6 +18,7 @@ import { environment } from '../environments';
 import { AppErrorHandler } from './app-error-handler';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ConfigService, ConfigServiceFactory } from './config.service';
 import { MainMapModule } from './modules/main-map';
 import { WebApiService } from './services';
 import { AppNotificationService } from './services/app-notification.service';
@@ -58,16 +59,22 @@ const moduleImports: any[] = [
             useClass: AppErrorHandler,
         },
         {
-            deps: [HttpClient],
+            deps: [HttpClient, ConfigService],
             provide: ApiService,
-            useFactory: (http: HttpClient): ApiService => {
+            useFactory: (http: HttpClient, config: ConfigService): ApiService => {
                 if (isManniwatchDesktop()) {
                     return new ElectronApiService(getManniwatchDesktopApi());
                 } else {
-                    return new WebApiService(http);
+                    return new WebApiService(http, config);
                 }
             },
         },
+        {
+            provide: APP_INITIALIZER,
+            useFactory: ConfigServiceFactory,
+            deps: [ConfigService],
+            multi: true
+        }
     ],
 })
 export class AppModule { }
