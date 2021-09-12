@@ -1,0 +1,6 @@
+{
+    "$schema": "./node_modules/@compodoc/compodoc/src/config/schema.json",
+    "tsconfig": "tsconfig.compodoc.json",
+    "unitTestCoverage ": "./coverage/manniwatch/coverage-final.json",
+    "output": "./docs"
+}
