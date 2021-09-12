@@ -37,7 +37,7 @@ export class SidebarComponent {
 
     /**
      * The @angular/core version used
-     * @returns {Version} Version
+     * @returns Version
      */
     public get angularVersion(): string {
         return VERSION.full;
