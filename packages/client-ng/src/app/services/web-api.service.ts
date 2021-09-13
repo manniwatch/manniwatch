@@ -18,8 +18,8 @@ import {
 import { IBounds, TripInfoWithId } from '@manniwatch/client-types';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { SettingsService } from './settings';
 import { ApiService } from './api.service';
+import { SettingsService } from './settings';
 
 @Injectable()
 export class WebApiService implements ApiService {

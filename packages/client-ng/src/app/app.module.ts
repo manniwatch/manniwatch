@@ -3,7 +3,7 @@
  */
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { APP_INITIALIZER, ErrorHandler, FactoryProvider, NgModule } from '@angular/core';
+import { APP_INITIALIZER, ClassProvider, ErrorHandler, FactoryProvider, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -42,7 +42,7 @@ const moduleImports: any[] = [
     }),
 ];
 
-const ApiFactoryProvider: FactoryProvider = {
+const API_FACTORY_PROVIDER: FactoryProvider = {
     deps: [HttpClient, SettingsService],
     provide: ApiService,
     useFactory: (http: HttpClient, config: SettingsService): ApiService => {
@@ -52,6 +52,17 @@ const ApiFactoryProvider: FactoryProvider = {
             return new WebApiService(http, config);
         }
     },
+};
+const SETTINGS_FACTORY_PROVIDER: FactoryProvider = {
+    deps: [SettingsService],
+    multi: true,
+    provide: APP_INITIALIZER,
+    useFactory: SettingsServiceFactory,
+};
+
+const ERROR_HANDLER_PROVIDER: ClassProvider = {
+    provide: ErrorHandler,
+    useClass: AppErrorHandler,
 };
 
 @NgModule({
@@ -65,17 +76,9 @@ const ApiFactoryProvider: FactoryProvider = {
         UserLocationService,
         SettingsService,
         AppNotificationService,
-        {
-            provide: ErrorHandler,
-            useClass: AppErrorHandler,
-        },
-        ApiFactoryProvider,
-        {
-            provide: APP_INITIALIZER,
-            useFactory: SettingsServiceFactory,
-            deps: [SettingsService],
-            multi: true
-        }
+        ERROR_HANDLER_PROVIDER,
+        API_FACTORY_PROVIDER,
+        SETTINGS_FACTORY_PROVIDER,
     ],
 })
 export class AppModule { }

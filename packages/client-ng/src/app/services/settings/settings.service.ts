@@ -2,16 +2,16 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { Injectable } from '@angular/core';
-import { combineLatest, BehaviorSubject, Observable, of } from 'rxjs';
-import { catchError, map, shareReplay, tap } from 'rxjs/operators';
-import { environment } from 'src/environments';
-import { createCssThemeWatcher } from './css-theme-watcher';
-import { Theme } from '../theme';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import deepmerge from 'deepmerge';
-import { Environment } from 'src/environments/environment.base';
+import { combineLatest, of, BehaviorSubject, Observable } from 'rxjs';
+import { catchError, map, shareReplay, tap } from 'rxjs/operators';
 import { deepFreezeObject } from 'src/app/util';
+import { environment } from 'src/environments';
+import { Environment } from 'src/environments/environment.base';
+import { Theme } from '../theme';
+import { createCssThemeWatcher } from './css-theme-watcher';
 
 export interface IConfig {
     apiBasePath?: string;
@@ -42,8 +42,6 @@ export class SettingsService {
             this.setBodyTheme(theme);
         });
     }
-
-
 
     /**
      * Function loading initial config
