@@ -83,35 +83,34 @@ describe('src/app/services/settings.service', (): void => {
             });
         });
         describe('load()', (): void => {
-            it('should store a successful response', (done: DoneFn) => {
+            it('should store a successful response', (done: DoneFn): void => {
 
                 const mockResponse: object = {
-                    userId: 1,
+                    completed: false,
                     id: 2,
                     title: 'Title',
-                    completed: false
                 };
                 expect(settingsService.baseConfig).toBeUndefined();
-                settingsService.load().subscribe(() => {
+                settingsService.load().subscribe((): void => {
                     expect(settingsService.baseConfig).toEqual(mockResponse);
                     done();
                 });
 
                 const mockRequest: TestRequest = httpMock.expectOne(
-                    environment.configUrl || '/config/config.json'
+                    environment.configUrl || '/config/config.json',
                 );
                 mockRequest.flush(mockResponse);
             });
-            it('should not set unsuccessful response', (done: DoneFn) => {
+            it('should not set unsuccessful response', (done: DoneFn): void => {
 
                 expect(settingsService.baseConfig).toBeUndefined();
-                settingsService.load().subscribe(() => {
+                settingsService.load().subscribe((): void => {
                     expect(settingsService.baseConfig).toEqual({});
                     done();
                 });
 
                 const mockRequest: TestRequest = httpMock.expectOne(
-                    environment.configUrl || '/config/config.json'
+                    environment.configUrl || '/config/config.json',
                 );
                 mockRequest.flush({}, {
                     status: 404,

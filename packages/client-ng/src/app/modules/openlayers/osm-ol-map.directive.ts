@@ -12,7 +12,6 @@ import { Coordinate } from 'ol/coordinate';
 import { defaults } from 'ol/interaction';
 import BaseTileLayer from 'ol/layer/BaseTile';
 import TileLayer from 'ol/layer/Tile';
-import { fromLonLat } from 'ol/proj';
 import { OSM } from 'ol/source';
 import { SettingsService, Theme } from 'src/app/services';
 import { environment } from 'src/environments';

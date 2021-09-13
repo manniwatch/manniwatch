@@ -16,7 +16,6 @@ import { Collection, Map, View } from 'ol';
 import { Coordinate } from 'ol/coordinate';
 import { defaults, Interaction } from 'ol/interaction';
 import BaseTileLayer from 'ol/layer/BaseTile';
-import { fromLonLat } from 'ol/proj';
 import { OSM, VectorTile } from 'ol/source';
 import { Subscription } from 'rxjs';
 import { SettingsService, Theme } from 'src/app/services';
