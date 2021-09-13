@@ -175,11 +175,10 @@ export class OlUtil {
     }
 
     public static convertArcMSToCoordinate(sourceCoordinate: TrapezeCoord): Coordinate {
-        const tmpCoord: any = sourceCoordinate;
-        if (tmpCoord.lat && tmpCoord.lon) {
-            return fromLonLat([tmpCoord.lon / 3600000, tmpCoord.lat / 3600000]);
-        } else if (tmpCoord.latitude && tmpCoord.longitude) {
-            return fromLonLat([tmpCoord.longitude / 3600000, tmpCoord.latitude / 3600000]);
+        if ('lat' in sourceCoordinate && 'lon' in sourceCoordinate) {
+            return fromLonLat([sourceCoordinate.lon / 3600000, sourceCoordinate.lat / 3600000]);
+        } else if ('latitude' in sourceCoordinate && 'longitude' in sourceCoordinate) {
+            return fromLonLat([sourceCoordinate.longitude / 3600000, sourceCoordinate.latitude / 3600000]);
         } else {
             throw new Error('Invalid coordinates');
         }
