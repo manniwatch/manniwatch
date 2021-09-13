@@ -3,27 +3,18 @@
  */
 
 import { Injectable } from '@angular/core';
-import { combineLatest, BehaviorSubject, Observable, Subscriber } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { combineLatest, BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, map, shareReplay, tap } from 'rxjs/operators';
 import { environment } from 'src/environments';
 import { createCssThemeWatcher } from './css-theme-watcher';
-import { Theme } from './theme';
+import { Theme } from '../theme';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import deepmerge from 'deepmerge';
+import { Environment } from 'src/environments/environment.base';
+import { deepFreezeObject } from 'src/app/util';
 
-// tslint:disable:max-classes-per-file
-export class SettingsLoadSubscriber extends Subscriber<void> {
-    public constructor(private resolve: (arg: void) => void) {
-        super();
-    }
-
-    public error(err: any): void {
-        this.resolve();
-        // tslint:disable-next-line:no-console
-        console.error(err);
-    }
-
-    public complete(): void {
-        this.resolve();
-    }
+export interface IConfig {
+    apiBasePath?: string;
 }
 
 @Injectable(
@@ -34,7 +25,9 @@ export class SettingsService {
     public readonly themeObservable: Observable<Theme>;
     private themeSubject: BehaviorSubject<Theme>;
     private cssThemeObservable: Observable<Theme>;
-    constructor() {
+    private sourceConfig: Partial<IConfig>;
+    private mergedConfig: IConfig & Environment;
+    constructor(public httpClient: HttpClient) {
         this.themeSubject = new BehaviorSubject(this.getThemePreference());
         this.cssThemeObservable = createCssThemeWatcher();
         this.themeObservable = combineLatest([this.themeSubject, this.cssThemeObservable])
@@ -50,6 +43,41 @@ export class SettingsService {
         });
     }
 
+
+
+    /**
+     * Function loading initial config
+     * @returns Observable
+     */
+    public load(): Observable<void> {
+        const configPath: string = environment.configPath || '/config/config.json';
+        return this.httpClient
+            .get(configPath)
+            .pipe(tap((resp: IConfig): void => {
+                console.info('Config loaded');
+            }), catchError((err: any): Observable<IConfig> => {
+                console.group(`Unable to load config`);
+                console.log(`Path: ${configPath}`);
+                if (err instanceof HttpErrorResponse && err.status !== 200) {
+                    console.error(`Status Code: ${err.status}`);
+                } else {
+                    console.error('Reason:', err);
+                }
+                console.groupEnd();
+                return of({});
+            }), map((cfg: IConfig): void => {
+                this.sourceConfig = cfg;
+                this.mergedConfig = deepFreezeObject(deepmerge(environment, cfg));
+            }));
+    }
+
+    public get baseConfig(): Partial<IConfig> {
+        return this.sourceConfig;
+    }
+
+    public get config(): Environment {
+        return this.mergedConfig;
+    }
     public updateBodyTheme(): void {
         this.setBodyTheme(this.getThemePreference());
     }

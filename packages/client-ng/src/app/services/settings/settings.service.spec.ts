@@ -4,7 +4,6 @@
 
 import { waitForAsync, TestBed } from '@angular/core/testing';
 import { environment } from 'src/environments';
-import { ApiService } from './api.service';
 import { SettingsService } from './settings.service';
 // import sinon from "sinon";
 
@@ -20,7 +19,7 @@ describe('src/app/services/settings.service', (): void => {
                 providers: [
                     SettingsService,
                     {
-                        provide: ApiService,
+                        provide: SettingsService,
                         useValue: {
                             getSettings: getSettingsSpy,
                         },

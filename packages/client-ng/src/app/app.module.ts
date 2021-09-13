@@ -3,7 +3,7 @@
  */
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
+import { APP_INITIALIZER, ErrorHandler, FactoryProvider, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -13,12 +13,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MainToolbarModule } from 'src/app/modules/main-toolbar';
 import { SidebarModule } from 'src/app/modules/sidebar';
-import { ApiService, ElectronApiService, SettingsService } from 'src/app/services';
+import { ApiService, ElectronApiService, SettingsService, SettingsServiceFactory } from 'src/app/services';
 import { environment } from '../environments';
 import { AppErrorHandler } from './app-error-handler';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ConfigService, ConfigServiceFactory } from './config.service';
 import { MainMapModule } from './modules/main-map';
 import { WebApiService } from './services';
 import { AppNotificationService } from './services/app-notification.service';
@@ -43,6 +42,18 @@ const moduleImports: any[] = [
     }),
 ];
 
+const ApiFactoryProvider: FactoryProvider = {
+    deps: [HttpClient, SettingsService],
+    provide: ApiService,
+    useFactory: (http: HttpClient, config: SettingsService): ApiService => {
+        if (isManniwatchDesktop()) {
+            return new ElectronApiService(getManniwatchDesktopApi());
+        } else {
+            return new WebApiService(http, config);
+        }
+    },
+};
+
 @NgModule({
     bootstrap: [AppComponent],
     declarations: [
@@ -58,21 +69,11 @@ const moduleImports: any[] = [
             provide: ErrorHandler,
             useClass: AppErrorHandler,
         },
-        {
-            deps: [HttpClient, ConfigService],
-            provide: ApiService,
-            useFactory: (http: HttpClient, config: ConfigService): ApiService => {
-                if (isManniwatchDesktop()) {
-                    return new ElectronApiService(getManniwatchDesktopApi());
-                } else {
-                    return new WebApiService(http, config);
-                }
-            },
-        },
+        ApiFactoryProvider,
         {
             provide: APP_INITIALIZER,
-            useFactory: ConfigServiceFactory,
-            deps: [ConfigService],
+            useFactory: SettingsServiceFactory,
+            deps: [SettingsService],
             multi: true
         }
     ],

@@ -51,7 +51,7 @@ export abstract class OsmOlMapDirective extends BaseOlMapDirective<OSM> {
     }
 
     public createMapLayer(): BaseTileLayer<OSM> {
-        if (environment.map.mapProvider.options) {
+        if (environment.map.mapProvider?.options) {
             return new TileLayer({
                 source: new OSM(environment.map.mapProvider.options),
             });
@@ -83,10 +83,12 @@ export abstract class OsmOlMapDirective extends BaseOlMapDirective<OSM> {
     public applyTheme(theme: Theme): void {
         NgZone.assertNotInAngularZone();
         const mapProvider: any = environment.map.mapProvider;
-        if (mapProvider?.options_dark && theme === Theme.DARK) {
-            this.mBackgroundMapLayer.setSource(new OSM(mapProvider.options_dark));
-        } else {
-            this.mBackgroundMapLayer.setSource(new OSM(mapProvider.options));
+        if (mapProvider) {
+            if (mapProvider?.options_dark && theme === Theme.DARK) {
+                this.mBackgroundMapLayer.setSource(new OSM(mapProvider.options_dark));
+            } else {
+                this.mBackgroundMapLayer.setSource(new OSM(mapProvider.options));
+            }
         }
     }
 
