@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { OlUtil } from ".";
+import { OlUtil } from '.';
 
 describe('util/ol/ol-util', (): void => {
   describe('OlUtil', (): void => {
