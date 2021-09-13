@@ -50,7 +50,7 @@ export class SettingsService {
      * @returns Observable
      */
     public load(): Observable<void> {
-        const configPath: string = environment.configPath || '/config/config.json';
+        const configPath: string = environment.configUrl || '/config/config.json';
         return this.httpClient
             .get(configPath)
             .pipe(tap((resp: IConfig): void => {
