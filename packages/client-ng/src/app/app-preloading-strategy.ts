@@ -13,9 +13,9 @@ import { EMPTY, Observable } from 'rxjs';
 export class AppPreloadingStrategy implements PreloadingStrategy {
   /**
    * Function to preload
-   * @param route {Route} route to preload
-   * @param load {function} callback
-   * @returns {Observable} to preload
+   * @param route route to preload
+   * @param load callback
+   * @returns to preload
    */
   preload(route: Route, load: () => Observable<any>): Observable<any> {
     return route.path.startsWith('error') ? load() : EMPTY;
