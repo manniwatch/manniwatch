@@ -2,8 +2,10 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { waitForAsync, TestBed } from '@angular/core/testing';
 import { environment } from 'src/environments';
+import { ApiService } from '..';
 import { SettingsService } from './settings.service';
 // import sinon from "sinon";
 
@@ -11,15 +13,19 @@ describe('src/app/services/settings.service', (): void => {
     describe('SettingsService', (): void => {
         let settingsService: SettingsService;
         let getSettingsSpy: jasmine.Spy<jasmine.Func>;
+        let httpMock: HttpTestingController;
         beforeAll((): void => {
             getSettingsSpy = jasmine.createSpy();
         });
         beforeEach(waitForAsync((): void => {
             TestBed.configureTestingModule({
+                imports: [
+                    HttpClientTestingModule,
+                ],
                 providers: [
                     SettingsService,
                     {
-                        provide: SettingsService,
+                        provide: ApiService,
                         useValue: {
                             getSettings: getSettingsSpy,
                         },
@@ -27,10 +33,13 @@ describe('src/app/services/settings.service', (): void => {
                 ],
             });
             settingsService = TestBed.inject(SettingsService);
+            httpMock = TestBed.inject(HttpTestingController);
         }));
 
         afterEach((): void => {
             getSettingsSpy.calls.reset();
+            // check for oustanding requests
+            httpMock.verify();
         });
         describe('getInitialMapZoom()', (): void => {
             interface ITestValue {
