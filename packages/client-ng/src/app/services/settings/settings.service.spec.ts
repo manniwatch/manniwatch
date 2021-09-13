@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 import { waitForAsync, TestBed } from '@angular/core/testing';
 import { environment } from 'src/environments';
 import { ApiService } from '..';
@@ -117,6 +117,43 @@ describe('src/app/services/settings.service', (): void => {
                         (settingsService as any).mSettings = undefined;
                         expect(settingsService.getInitialMapZoom()).toEqual(20);
                     }
+                });
+            });
+        });
+        describe('load()', (): void => {
+            it('should store a successful response', (done: DoneFn) => {
+
+                const mockResponse: object = {
+                    userId: 1,
+                    id: 2,
+                    title: 'Title',
+                    completed: false
+                };
+                expect(settingsService.baseConfig).toBeUndefined();
+                settingsService.load().subscribe(() => {
+                    expect(settingsService.baseConfig).toEqual(mockResponse);
+                    done();
+                });
+
+                const mockRequest: TestRequest = httpMock.expectOne(
+                    environment.configUrl || '/config/config.json'
+                );
+                mockRequest.flush(mockResponse);
+            });
+            it('should not set unsuccessful response', (done: DoneFn) => {
+
+                expect(settingsService.baseConfig).toBeUndefined();
+                settingsService.load().subscribe(() => {
+                    expect(settingsService.baseConfig).toEqual({});
+                    done();
+                });
+
+                const mockRequest: TestRequest = httpMock.expectOne(
+                    environment.configUrl || '/config/config.json'
+                );
+                mockRequest.flush({}, {
+                    status: 404,
+                    statusText: 'Not found',
                 });
             });
         });
