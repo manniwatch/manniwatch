@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MainToolbarModule } from 'src/app/modules/main-toolbar';
 import { SidebarModule } from 'src/app/modules/sidebar';
-import { ApiService, ElectronApiService, SettingsService, SettingsServiceFactory } from 'src/app/services';
+import { ApiService, ElectronApiService, SettingsService, SETTINGS_SERVICE_FACTORY } from 'src/app/services';
 import { environment } from '../environments';
 import { AppErrorHandler } from './app-error-handler';
 import { AppRoutingModule } from './app-routing.module';
@@ -57,7 +57,7 @@ const SETTINGS_FACTORY_PROVIDER: FactoryProvider = {
     deps: [SettingsService],
     multi: true,
     provide: APP_INITIALIZER,
-    useFactory: SettingsServiceFactory,
+    useFactory: SETTINGS_SERVICE_FACTORY,
 };
 
 const ERROR_HANDLER_PROVIDER: ClassProvider = {

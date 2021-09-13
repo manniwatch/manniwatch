@@ -3,4 +3,4 @@
  */
 
 export { SettingsService } from './settings.service';
-export { SettingsServiceFactory } from './settings-service.factory';
+export { SETTINGS_SERVICE_FACTORY } from './settings-service.factory';
