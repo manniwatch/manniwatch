@@ -5,9 +5,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import deepmerge from 'deepmerge';
+import { Coordinate } from 'ol/coordinate';
 import { combineLatest, of, BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map, shareReplay, tap } from 'rxjs/operators';
 import { deepFreezeObject } from 'src/app/util';
+import { OlUtil } from 'src/app/util/ol';
 import { environment } from 'src/environments';
 import { Environment } from 'src/environments/environment.base';
 import { Theme } from '../theme';
@@ -74,9 +76,13 @@ export class SettingsService {
         return this.sourceConfig;
     }
 
+    /**
+     * Config from which all non compile time settings should be resolved
+     */
     public get config(): Environment {
         return this.mergedConfig;
     }
+
     public updateBodyTheme(): void {
         this.setBodyTheme(this.getThemePreference());
     }
@@ -141,14 +147,14 @@ export class SettingsService {
         }
     }
 
-    public getInitialMapCenter(): [number, number] {
-        if (environment.map &&
-            environment.map.center &&
-            environment.map.center.lat &&
-            environment.map.center.lon) {
-            return [environment.map.center.lon / 3600000, environment.map.center.lat / 3600000];
+    public getInitialMapCenter(): Coordinate {
+        if (this.config?.map?.center) {
+            return OlUtil.convertArcMSToCoordinate(this.config.map.center);
         }
-        return [0, 0];
+        return OlUtil.convertArcMSToCoordinate({
+            lat: 0,
+            lon: 0,
+        });
     }
     public getInitialMapZoom(): number {
         if (environment.map) {

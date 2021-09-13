@@ -4,6 +4,7 @@
 
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 import { waitForAsync, TestBed } from '@angular/core/testing';
+import { fromLonLat } from 'ol/proj';
 import { environment } from 'src/environments';
 import { ApiService } from '..';
 import { SettingsService } from './settings.service';
@@ -41,61 +42,22 @@ describe('src/app/services/settings.service', (): void => {
             // check for oustanding requests
             httpMock.verify();
         });
-        describe('getInitialMapZoom()', (): void => {
-            interface ITestValue {
-                settings?: {
-                    lat?: number,
-                    lon?: number,
-                };
-                out: {
-                    lat: number,
-                    lon: number,
-                };
-            }
-            const testValues: ITestValue[] = [{
-                out: {
-                    lat: 0,
-                    lon: 0,
-                },
-            }, {
-                out: {
-                    lat: 0,
-                    lon: 0,
-                },
-                settings: {
-
-                },
-            }, {
-                out: {
-                    lat: 0,
-                    lon: 0,
-                },
-                settings: {
-                    lat: 20,
-                },
-            }, {
-                out: {
-                    lat: 0,
-                    lon: 0,
-                },
-                settings: {
-                    lon: 5005,
-                },
-            }, {
-                out: {
-                    lat: 49383292 / 3600000,
-                    lon: 2039290 / 3600000,
-                },
-                settings: {
-                    lat: 49383292,
-                    lon: 2039290,
-                },
-            }];
-            testValues.forEach((testValue: ITestValue): void => {
-                it(`should return LatLon(${testValue.out.lat},${testValue.out.lon})`, (): void => {
-                    (environment.map.center as any) = testValue.settings;
-                    expect(settingsService.getInitialMapCenter()).toEqual([testValue.out.lon, testValue.out.lat]);
+        describe('getInitialMapCenter()', (): void => {
+            it(`should return LatLon(0,0) as default map center`, (): void => {
+                expect(settingsService.config).toBeUndefined();
+                expect(settingsService.getInitialMapCenter()).toEqual([0, 0]);
+            });
+            it(`should return LatLon(0,0) as default map center`, (): void => {
+                expect(settingsService.config).toBeUndefined();
+                spyOnProperty(settingsService, 'config', 'get').and.returnValue({
+                    map: {
+                        center: {
+                            lat: 7200000,
+                            lon: 3600000,
+                        },
+                    },
                 });
+                expect(settingsService.getInitialMapCenter()).toEqual(fromLonLat([1, 2]));
             });
         });
         describe('getInitialMapZoom()', (): void => {

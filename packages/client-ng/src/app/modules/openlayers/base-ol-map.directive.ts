@@ -44,7 +44,7 @@ export abstract class BaseOlMapDirective<TILE extends VectorTile | OSM> implemen
                 target: this.elRef.nativeElement,
                 view: new View({
                     // projection: 'EPSG:3857', // 'EPSG:4326',
-                    center: fromLonLat(this.settings.getInitialMapCenter()),
+                    center: this.settings.getInitialMapCenter(),
                     maxZoom: 19,
                     minZoom: 1,
                     zoom: this.settings.getInitialMapZoom(),
