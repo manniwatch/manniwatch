@@ -3,7 +3,7 @@
  */
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { APP_INITIALIZER, ClassProvider, ErrorHandler, FactoryProvider, NgModule } from '@angular/core';
+import { APP_INITIALIZER, ClassProvider, ErrorHandler, FactoryProvider, InjectionToken, NgModule, ValueProvider } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -23,7 +23,9 @@ import { WebApiService } from './services';
 import { AppNotificationService } from './services/app-notification.service';
 import { StopPointService } from './services/stop-point.service';
 import { UserLocationService } from './services/user-location.service';
+import { LOCAL_STORAGE_TOKEN } from './util';
 import { getManniwatchDesktopApi, isManniwatchDesktop } from './util/electron';
+import { localStorageFactory } from './util/storage';
 
 const moduleImports: any[] = [
     BrowserModule,
@@ -60,6 +62,10 @@ const SETTINGS_FACTORY_PROVIDER: FactoryProvider = {
     useFactory: SETTINGS_SERVICE_FACTORY,
 };
 
+const BROWSER_LOCAL_STORAGE_PROVIDER: FactoryProvider = {
+    provide: LOCAL_STORAGE_TOKEN,
+    useFactory: localStorageFactory,
+};
 const ERROR_HANDLER_PROVIDER: ClassProvider = {
     provide: ErrorHandler,
     useClass: AppErrorHandler,
@@ -79,6 +85,7 @@ const ERROR_HANDLER_PROVIDER: ClassProvider = {
         ERROR_HANDLER_PROVIDER,
         API_FACTORY_PROVIDER,
         SETTINGS_FACTORY_PROVIDER,
+        BROWSER_LOCAL_STORAGE_PROVIDER,
     ],
 })
 export class AppModule { }
