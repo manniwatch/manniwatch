@@ -18,16 +18,17 @@ import {
 import { IBounds, TripInfoWithId } from '@manniwatch/client-types';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { environment } from 'src/environments';
 import { ApiService } from './api.service';
+import { SettingsService } from './settings';
 
 @Injectable()
 export class WebApiService implements ApiService {
 
-    public constructor(public http: HttpClient) { }
+    public constructor(public http: HttpClient, private config: SettingsService) { }
 
     public baseUrl(): string {
-        return environment.apiEndpoint.endsWith('\/') ? environment.apiEndpoint : (`${environment.apiEndpoint}\/`);
+        const basePath: string = this.config.config.apiEndpoint;
+        return basePath.endsWith('\/') ? basePath : (`${basePath}\/`);
     }
 
     public getTripPassages(tripId: string): Observable<TripInfoWithId> {

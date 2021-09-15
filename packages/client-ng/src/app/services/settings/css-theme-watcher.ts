@@ -4,7 +4,7 @@
 
 import { fromEvent, Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { Theme } from './theme';
+import { Theme } from '../theme';
 
 export const createCssThemeWatcher: () => Observable<Theme> = (): Observable<Theme> => {
     const prefersDarkScheme: MediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');

@@ -2,28 +2,21 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { combineLatest, BehaviorSubject, Observable, Subscriber } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import deepmerge from 'deepmerge';
+import { Coordinate } from 'ol/coordinate';
+import { combineLatest, of, BehaviorSubject, Observable } from 'rxjs';
+import { catchError, map, shareReplay, tap } from 'rxjs/operators';
+import { deepFreezeObject } from 'src/app/util';
+import { OlUtil } from 'src/app/util/ol';
 import { environment } from 'src/environments';
+import { Environment } from 'src/environments/environment.base';
+import { Theme } from '../theme';
 import { createCssThemeWatcher } from './css-theme-watcher';
-import { Theme } from './theme';
 
-// tslint:disable:max-classes-per-file
-export class SettingsLoadSubscriber extends Subscriber<void> {
-    public constructor(private resolve: (arg: void) => void) {
-        super();
-    }
-
-    public error(err: any): void {
-        this.resolve();
-        // tslint:disable-next-line:no-console
-        console.error(err);
-    }
-
-    public complete(): void {
-        this.resolve();
-    }
+export interface IConfig {
+    apiBasePath?: string;
 }
 
 @Injectable(
@@ -34,7 +27,9 @@ export class SettingsService {
     public readonly themeObservable: Observable<Theme>;
     private themeSubject: BehaviorSubject<Theme>;
     private cssThemeObservable: Observable<Theme>;
-    constructor() {
+    private sourceConfig: Partial<IConfig>;
+    private mergedConfig: IConfig & Environment;
+    constructor(public httpClient: HttpClient) {
         this.themeSubject = new BehaviorSubject(this.getThemePreference());
         this.cssThemeObservable = createCssThemeWatcher();
         this.themeObservable = combineLatest([this.themeSubject, this.cssThemeObservable])
@@ -48,6 +43,44 @@ export class SettingsService {
         this.themeObservable.subscribe((theme: Theme): void => {
             this.setBodyTheme(theme);
         });
+    }
+
+    /**
+     * Function loading initial config
+     * @returns Observable
+     */
+    public load(): Observable<void> {
+        const configPath: string = environment.configUrl || '/config/config.json';
+        return this.httpClient
+            .get(configPath)
+            .pipe(tap((resp: IConfig): void => {
+                // tslint:disable-next-line:no-console
+                console.info('Config loaded');
+            }), catchError((err: any): Observable<IConfig> => {
+                console.group(`Unable to load config`);
+                console.log(`Path: ${configPath}`);
+                if (err instanceof HttpErrorResponse && err.status !== 200) {
+                    console.error(`Status Code: ${err.status}`);
+                } else {
+                    console.error('Reason:', err);
+                }
+                console.groupEnd();
+                return of({});
+            }), map((cfg: IConfig): void => {
+                this.sourceConfig = cfg;
+                this.mergedConfig = deepFreezeObject(deepmerge(environment, cfg));
+            }));
+    }
+
+    public get baseConfig(): Partial<IConfig> {
+        return this.sourceConfig;
+    }
+
+    /**
+     * Config from which all non compile time settings should be resolved
+     */
+    public get config(): Environment {
+        return this.mergedConfig;
     }
 
     public updateBodyTheme(): void {
@@ -114,18 +147,18 @@ export class SettingsService {
         }
     }
 
-    public getInitialMapCenter(): [number, number] {
-        if (environment.map &&
-            environment.map.center &&
-            environment.map.center.lat &&
-            environment.map.center.lon) {
-            return [environment.map.center.lon / 3600000, environment.map.center.lat / 3600000];
+    public getInitialMapCenter(): Coordinate {
+        if (this.config?.map?.center) {
+            return OlUtil.convertArcMSToCoordinate(this.config.map.center);
         }
-        return [0, 0];
+        return OlUtil.convertArcMSToCoordinate({
+            lat: 0,
+            lon: 0,
+        });
     }
     public getInitialMapZoom(): number {
-        if (environment.map) {
-            return environment.map.zoom;
+        if (typeof this.config?.map?.zoom === 'number') {
+            return this.config.map.zoom;
         }
         return 13;
     }
