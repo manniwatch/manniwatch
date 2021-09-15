@@ -5,8 +5,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npm run build:pug && ng build",
-    "build:prod": "npm run build:pug && ng build --aot --prod",
+    "prebuild": "npm run build:pug",
+    "build": "ng build --configuration=olvector && ng build",
+    "prebuild:build:prod": "npm run build:pug",
+    "build:prod": "ng build --aot --configuration=production && ng build --aot --configuration=production,olvector",
     "build:pug": "pug ./src --doctype html",
     "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
     "build:release": "ng build --prod --aot",
