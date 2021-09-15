@@ -61,25 +61,27 @@ describe('src/app/services/settings.service', (): void => {
             });
         });
         describe('getInitialMapZoom()', (): void => {
-            const testValues: {
-                settings: boolean,
-                value?: number,
-            }[] = [];
-            testValues.forEach((testValue: {
-                settings: boolean,
-                value?: number,
-            }): void => {
-                it(`should return zoom level ${(testValue.value ? testValue.value : 20)}`, (): void => {
-                    if (testValue.settings) {
-                        (settingsService as any).mSettings = {
-                            INITIAL_ZOOM: testValue.value,
-                        };
-                        expect(settingsService.getInitialMapZoom()).toEqual(testValue.value ? testValue.value : 20);
-                    } else {
-                        (settingsService as any).mSettings = undefined;
-                        expect(settingsService.getInitialMapZoom()).toEqual(20);
-                    }
+            it(`should return zoom level 15`, (): void => {
+                expect(settingsService.config).toBeUndefined();
+                spyOnProperty(settingsService, 'config', 'get').and.returnValue({
+                    map: {
+                        zoom: 15,
+                    },
                 });
+                expect(settingsService.getInitialMapZoom()).toEqual(15);
+            });
+            it(`should return zoom level 0`, (): void => {
+                expect(settingsService.config).toBeUndefined();
+                spyOnProperty(settingsService, 'config', 'get').and.returnValue({
+                    map: {
+                        zoom: 0,
+                    },
+                });
+                expect(settingsService.getInitialMapZoom()).toEqual(0);
+            });
+            it(`should return default zoom level 13`, (): void => {
+                expect(settingsService.config).toBeUndefined();
+                expect(settingsService.getInitialMapZoom()).toEqual(13);
             });
         });
         describe('load()', (): void => {

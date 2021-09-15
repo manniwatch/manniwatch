@@ -157,8 +157,8 @@ export class SettingsService {
         });
     }
     public getInitialMapZoom(): number {
-        if (environment.map) {
-            return environment.map.zoom;
+        if (typeof this.config?.map?.zoom === 'number') {
+            return this.config.map.zoom;
         }
         return 13;
     }
