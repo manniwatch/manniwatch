@@ -3,6 +3,7 @@
  */
 
 import { MapStorage } from './map-storage';
+import { IStorage } from './storage';
 
 const storageAvailable: (st: Storage) => boolean = (st: Storage): boolean => {
     const testString: string = 'manniwatch';

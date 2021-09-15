@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
-interface IStorage {
+export interface IStorage {
     readonly length: number;
     clear(): void;
     getItem(key: string): string | null;

@@ -3,13 +3,15 @@
  */
 
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import deepmerge from 'deepmerge';
 import { Coordinate } from 'ol/coordinate';
 import { combineLatest, of, BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map, shareReplay, tap } from 'rxjs/operators';
 import { deepFreezeObject } from 'src/app/util';
 import { OlUtil } from 'src/app/util/ol';
+import { LOCAL_STORAGE_TOKEN } from 'src/app/util/storage';
+import { IStorage } from 'src/app/util/storage/storage';
 import { environment } from 'src/environments';
 import { Environment } from 'src/environments/environment.base';
 import { Theme } from '../theme';
@@ -29,7 +31,8 @@ export class SettingsService {
     private cssThemeObservable: Observable<Theme>;
     private sourceConfig: Partial<IConfig>;
     private mergedConfig: IConfig & Environment;
-    constructor(public httpClient: HttpClient) {
+    constructor(public httpClient: HttpClient,
+        @Inject(LOCAL_STORAGE_TOKEN) public lStorage: IStorage) {
         this.themeSubject = new BehaviorSubject(this.getThemePreference());
         this.cssThemeObservable = createCssThemeWatcher();
         this.themeObservable = combineLatest([this.themeSubject, this.cssThemeObservable])
@@ -116,28 +119,28 @@ export class SettingsService {
     }
 
     /**
-     * Persists the theme preference in localStorage
+     * Persists the theme preference in storageProvider
      * @param theme theme to store
      */
     protected setThemePreference(theme: Theme): void {
         switch (theme) {
             case Theme.DARK:
-                localStorage.setItem('theme', 'dark');
+                this.lStorage.setItem('theme', 'dark');
                 break;
             case Theme.LIGHT:
-                localStorage.setItem('theme', 'light');
+                this.lStorage.setItem('theme', 'light');
                 break;
             default:
-                localStorage.removeItem('theme');
+                this.lStorage.removeItem('theme');
                 break;
         }
     }
 
     /**
-     * Retrieves the theme preference from localStorage
+     * Retrieves the theme preference from the storageProvider
      */
     protected getThemePreference(): Theme {
-        switch (localStorage.getItem('theme')) {
+        switch (this.lStorage.getItem('theme')) {
             case 'dark':
                 return Theme.DARK;
             case 'light':

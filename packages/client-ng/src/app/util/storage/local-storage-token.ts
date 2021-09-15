@@ -3,6 +3,7 @@
  */
 
 import { InjectionToken } from '@angular/core';
+import { IStorage } from './storage';
 
 /**
  * Provides storage options

@@ -5,20 +5,25 @@
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 import { waitForAsync, TestBed } from '@angular/core/testing';
 import { fromLonLat } from 'ol/proj';
+import { LOCAL_STORAGE_TOKEN } from 'src/app/util/storage';
+import { IStorage } from 'src/app/util/storage/storage';
 import { environment } from 'src/environments';
 import { ApiService } from '..';
 import { SettingsService } from './settings.service';
-// import sinon from "sinon";
 
 describe('src/app/services/settings.service', (): void => {
     describe('SettingsService', (): void => {
         let settingsService: SettingsService;
         let getSettingsSpy: jasmine.Spy<jasmine.Func>;
         let httpMock: HttpTestingController;
+        let storageSpy: jasmine.SpyObj<IStorage>;
         beforeAll((): void => {
             getSettingsSpy = jasmine.createSpy();
         });
         beforeEach(waitForAsync((): void => {
+            storageSpy = jasmine.createSpyObj<IStorage>('StorageSpy', [
+                'getItem', 'setItem',
+            ]);
             TestBed.configureTestingModule({
                 imports: [
                     HttpClientTestingModule,
@@ -30,6 +35,10 @@ describe('src/app/services/settings.service', (): void => {
                         useValue: {
                             getSettings: getSettingsSpy,
                         },
+                    },
+                    {
+                        provide: LOCAL_STORAGE_TOKEN,
+                        useValue: storageSpy,
                     },
                 ],
             });

@@ -2,6 +2,8 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-ng
  */
 
+import { IStorage } from './storage';
+
 export class MapStorage implements IStorage {
     private data: { [key: string]: string } = {};
 
