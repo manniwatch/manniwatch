@@ -45,7 +45,7 @@ describe('src/app/services/settings.service', (): void => {
         describe('getInitialMapCenter()', (): void => {
             it(`should return LatLon(0,0) as default map center`, (): void => {
                 expect(settingsService.config).toBeUndefined();
-                expect(settingsService.getInitialMapCenter()).toEqual([0, 0]);
+                expect(settingsService.getInitialMapCenter()).toEqual(fromLonLat([0, 0]));
             });
             it(`should return LatLon(0,0) as default map center`, (): void => {
                 expect(settingsService.config).toBeUndefined();
