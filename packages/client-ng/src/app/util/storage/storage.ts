@@ -1,3 +1,6 @@
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
 
 interface IStorage {
     readonly length: number;

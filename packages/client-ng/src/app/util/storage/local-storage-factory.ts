@@ -1,6 +1,10 @@
-import { MapStorage } from "./map-storage";
+/*!
+ * Source https://github.com/manniwatch/manniwatch Package: client-ng
+ */
 
-function storageAvailable(st: Storage): boolean {
+import { MapStorage } from './map-storage';
+
+const storageAvailable: (st: Storage) => boolean = (st: Storage): boolean => {
     const testString: string = 'manniwatch';
     try {
         st.setItem(testString, testString);
@@ -9,12 +13,13 @@ function storageAvailable(st: Storage): boolean {
     } catch (e) {
         return false;
     }
-}
-export function LOCAL_STORAGE_FACTORY(): IStorage {
+};
+
+export const LOCAL_STORAGE_FACTORY: () => IStorage = (): IStorage => {
     if (storageAvailable(localStorage)) {
         return localStorage;
     } else if (storageAvailable(sessionStorage)) {
         return sessionStorage;
     }
     return new MapStorage();
-}
+};
