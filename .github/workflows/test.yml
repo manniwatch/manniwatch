@@ -182,8 +182,6 @@ jobs:
         with:
           name: build-${{matrix.os}}-${{matrix.node}}
           path: ./packages
-      - name: Display structure of downloaded files
-        run: ls -R
       - name: Run Docs
         run: npx lerna run docs
   finish:
