@@ -1,4 +1,4 @@
 {
     "$schema": "./../config.schema.json",
-    "apiBasePath": "https://example.domain.com/"
+    "apiBasePath": "/api"
 }
