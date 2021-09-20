@@ -73,7 +73,7 @@
     "deepmerge": "4.2.2",
     "material-design-icons": "3.0.1",
     "ol": "6.6.1",
-    "ol-mapbox-style": "6.4.2",
+    "ol-mapbox-style": "6.5.0",
     "rxjs": "7.3.0",
     "zone.js": "0.11.4"
   },
