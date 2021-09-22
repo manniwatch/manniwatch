@@ -3,7 +3,7 @@
  */
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { APP_INITIALIZER, ClassProvider, ErrorHandler, FactoryProvider, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MainToolbarModule } from 'src/app/modules/main-toolbar';
 import { SidebarModule } from 'src/app/modules/sidebar';
-import { ApiService, ElectronApiService, SettingsService } from 'src/app/services';
+import { ApiService, ElectronApiService, SettingsService, SETTINGS_SERVICE_FACTORY } from 'src/app/services';
 import { environment } from '../environments';
 import { AppErrorHandler } from './app-error-handler';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +24,7 @@ import { AppNotificationService } from './services/app-notification.service';
 import { StopPointService } from './services/stop-point.service';
 import { UserLocationService } from './services/user-location.service';
 import { getManniwatchDesktopApi, isManniwatchDesktop } from './util/electron';
+import { localStorageFactory, LOCAL_STORAGE_TOKEN } from './util/storage';
 
 const moduleImports: any[] = [
     BrowserModule,
@@ -42,6 +43,33 @@ const moduleImports: any[] = [
     }),
 ];
 
+const API_FACTORY_PROVIDER: FactoryProvider = {
+    deps: [HttpClient, SettingsService],
+    provide: ApiService,
+    useFactory: (http: HttpClient, config: SettingsService): ApiService => {
+        if (isManniwatchDesktop()) {
+            return new ElectronApiService(getManniwatchDesktopApi());
+        } else {
+            return new WebApiService(http, config);
+        }
+    },
+};
+const SETTINGS_FACTORY_PROVIDER: FactoryProvider = {
+    deps: [SettingsService],
+    multi: true,
+    provide: APP_INITIALIZER,
+    useFactory: SETTINGS_SERVICE_FACTORY,
+};
+
+const BROWSER_LOCAL_STORAGE_PROVIDER: FactoryProvider = {
+    provide: LOCAL_STORAGE_TOKEN,
+    useFactory: localStorageFactory,
+};
+const ERROR_HANDLER_PROVIDER: ClassProvider = {
+    provide: ErrorHandler,
+    useClass: AppErrorHandler,
+};
+
 @NgModule({
     bootstrap: [AppComponent],
     declarations: [
@@ -53,21 +81,10 @@ const moduleImports: any[] = [
         UserLocationService,
         SettingsService,
         AppNotificationService,
-        {
-            provide: ErrorHandler,
-            useClass: AppErrorHandler,
-        },
-        {
-            deps: [HttpClient],
-            provide: ApiService,
-            useFactory: (http: HttpClient): ApiService => {
-                if (isManniwatchDesktop()) {
-                    return new ElectronApiService(getManniwatchDesktopApi());
-                } else {
-                    return new WebApiService(http);
-                }
-            },
-        },
+        ERROR_HANDLER_PROVIDER,
+        API_FACTORY_PROVIDER,
+        SETTINGS_FACTORY_PROVIDER,
+        BROWSER_LOCAL_STORAGE_PROVIDER,
     ],
 })
 export class AppModule { }

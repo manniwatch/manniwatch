@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/manniwatch",
+            "outputPath": "dist/manniwatch/osm",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -26,6 +26,11 @@
               "src/favicon.ico",
               "src/assets",
               "src/manifest.webmanifest",
+              {
+                "glob": "**/*.json",
+                "input": "./config",
+                "output": "./config"
+              },
               {
                 "glob": "**/*",
                 "input": "./node_modules/@manniwatch/assets/dist",
@@ -45,6 +50,15 @@
             "namedChunks": true
           },
           "configurations": {
+            "olvector": {
+              "outputPath": "dist/manniwatch/vector",
+              "fileReplacements": [
+                {
+                  "replace": "src/app/modules/openlayers/abstract-ol-map.directive.ts",
+                  "with": "src/app/modules/openlayers/abstract-vector-ol-map.directive.ts"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -92,6 +106,9 @@
             "browserTarget": "manniwatch:build"
           },
           "configurations": {
+            "olvector": {
+              "browserTarget": "manniwatch:build:olvector"
+            },
             "production": {
               "browserTarget": "manniwatch:build:production"
             }

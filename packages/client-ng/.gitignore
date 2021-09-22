@@ -50,3 +50,6 @@ Thumbs.db
 /src/*.html
 
 !.npmrc
+
+# Project custom
+proxy.conf.json

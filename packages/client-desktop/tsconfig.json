@@ -8,9 +8,11 @@
         "importHelpers": true,
         "target": "ES2018",
         "declaration": true,
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true
     },
     "include": [
-        "./src"
+        "./src/**/*.ts"
     ],
     "exclude": [
         "node_modules"

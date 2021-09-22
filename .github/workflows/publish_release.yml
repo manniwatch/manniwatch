@@ -48,6 +48,7 @@ jobs:
           path: |
             packages/*/dist
   publish_npm:
+    runs-on: ${{ matrix.os }}
     needs: build_suite
     name: Publish to NPM
     permissions:
@@ -77,6 +78,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   publish_github:
+    runs-on: ${{ matrix.os }}
     needs: build_suite
     name: Publish to Github
     permissions:

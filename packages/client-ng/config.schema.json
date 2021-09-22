@@ -1,0 +1,72 @@
+{
+    "type": "object",
+    "properties": {
+        "apiEndpoint": {
+            "type": "string",
+            "examples": [
+                "https://example.domain.com/"
+            ],
+            "description": "Base path for api calls",
+            "title": "Api base path"
+        },
+        "map": {
+            "title": "Map Config",
+            "description": "Settings for map settings",
+            "type": "object",
+            "required": [],
+            "properties": {
+                "zoom": {
+                    "type": "number",
+                    "minimum": 0,
+                    "title": "Default zoom level"
+                },
+                "center": {
+                    "type": "object",
+                    "required": [
+                        "lat",
+                        "lon"
+                    ],
+                    "properties": {
+                        "lat": {
+                            "type": "number",
+                            "title": "Latitude"
+                        },
+                        "lon": {
+                            "type": "number",
+                            "title": "Longitude"
+                        }
+                    }
+                },
+                "osm": {
+                    "type": "object",
+                    "properties": {
+                        "url": {
+                            "title": "Default map url scheme",
+                            "type": "string",
+                            "examples": [
+                                "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            ]
+                        },
+                        "dark_url": {
+                            "title": "Default secondary map url scheme",
+                            "description": "Will be used in the dark theme",
+                            "type": "string",
+                            "examples": [
+                                "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            ]
+                        }
+                    }
+                },
+                "vector": {
+                    "type": "object",
+                    "properties": {
+                        "url": {
+                            "title": "Vector tile source url",
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

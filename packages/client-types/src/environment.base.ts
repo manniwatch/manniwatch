@@ -24,6 +24,10 @@ export type MapProvider = IVectorMapProvider | IOsmMapProvider;
 
 export interface IEnvironmentBase {
     readonly apiEndpoint: string;
+    /**
+     * url to the config to be loaded on app start
+     */
+    readonly configUrl?: string;
     readonly map?: {
         center: IMapCoordinate;
         zoom: number;
