@@ -106,6 +106,9 @@
             "browserTarget": "manniwatch:build"
           },
           "configurations": {
+            "olvector": {
+              "browserTarget": "manniwatch:build:olvector"
+            },
             "production": {
               "browserTarget": "manniwatch:build:production"
             }
