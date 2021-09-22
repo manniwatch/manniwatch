@@ -1,7 +1,7 @@
 {
   "name": "@manniwatch/client-ng",
   "description": "Angular Client for Manniwatch",
-  "version": "0.27.7",
+  "version": "0.28.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -67,8 +67,8 @@
     "@angular/router": "12.2.6",
     "@angular/service-worker": "12.2.6",
     "@donmahallem/rxjs-zone": "0.2.6",
-    "@manniwatch/api-types": "^0.27.7",
-    "@manniwatch/assets": "^0.27.7",
+    "@manniwatch/api-types": "^0.28.0",
+    "@manniwatch/assets": "^0.28.0",
     "date-fns": "2.24.0",
     "deepmerge": "4.2.2",
     "material-design-icons": "3.0.1",
@@ -84,7 +84,7 @@
     "@angular/compiler-cli": "12.2.6",
     "@angular/language-service": "12.2.6",
     "@compodoc/compodoc": "1.1.15",
-    "@manniwatch/client-types": "^0.27.7",
+    "@manniwatch/client-types": "^0.28.0",
     "@types/jasmine": "3.9.1",
     "@types/jasminewd2": "2.0.10",
     "@types/node": "14.17.18",

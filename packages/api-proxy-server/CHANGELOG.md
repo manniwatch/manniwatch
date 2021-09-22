@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.28.0](https://github.com/manniwatch/manniwatch/compare/v0.27.7...v0.28.0) (2021-09-22)
+
+
+### Bug Fixes
+
+* **api-proxy-server:** remove leading slash in path ([#2285](https://github.com/manniwatch/manniwatch/issues/2285)) ([0ef3508](https://github.com/manniwatch/manniwatch/commit/0ef35085731af32fb7b52307e0deeced0b526a48))
+
+
+
+
+
 ## [0.27.7](https://github.com/manniwatch/manniwatch/compare/v0.27.6...v0.27.7) (2021-09-02)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.28.0](https://github.com/manniwatch/manniwatch/compare/v0.27.7...v0.28.0) (2021-09-22)
+
+
+### Features
+
+* **client-types:** add configUrl option to IEnvironmentBase ([#2291](https://github.com/manniwatch/manniwatch/issues/2291)) ([e0f93d9](https://github.com/manniwatch/manniwatch/commit/e0f93d9c1db359dd55cafc0a6d9251e46730cd0d))
+
+
+
+
+
 ## [0.27.7](https://github.com/manniwatch/manniwatch/compare/v0.27.6...v0.27.7) (2021-09-02)
 
 

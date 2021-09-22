@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.28.0](https://github.com/manniwatch/manniwatch/compare/v0.27.7...v0.28.0) (2021-09-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.2.6 ([ad42ff6](https://github.com/manniwatch/manniwatch/commit/ad42ff67c6ef7bac7dc9e2eed51819ed78d684b9))
+* **deps:** update dependency commander to ~8.2.0 ([28f314b](https://github.com/manniwatch/manniwatch/commit/28f314bb2a1393cbbc2e34034790ad12c868d3a9))
+* **deps:** update dependency electron to ~14.0.1 ([#2319](https://github.com/manniwatch/manniwatch/issues/2319)) ([8e6a78b](https://github.com/manniwatch/manniwatch/commit/8e6a78b087c09b725703dc3f89aef210f07caf3d))
+* **deps:** update dependency electron to v15 ([24067d8](https://github.com/manniwatch/manniwatch/commit/24067d8db775664e02f9b0ec448d5f0039c07c92))
+* **deps:** update dependency ol-mapbox-style to v6.5.0 ([233080b](https://github.com/manniwatch/manniwatch/commit/233080b0c7ab1581a7ef88487c942d6820743579))
+
+
+
+
+
 ## [0.27.7](https://github.com/manniwatch/manniwatch/compare/v0.27.6...v0.27.7) (2021-09-02)
 
 
