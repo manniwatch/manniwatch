@@ -20,7 +20,7 @@ jobs:
         with:
           fetch-depth: 200
       - name: Setup Node
-        uses: actions/setup-node@v2.4.0
+        uses: actions/setup-node@v2.4.1
         with:
           node-version: ${{ matrix.node }}
       - name: Get npm cache directory
@@ -66,7 +66,7 @@ jobs:
           name: build-${{matrix.os}}-${{matrix.node}}
           path: ./packages
       - name: Setup Node
-        uses: actions/setup-node@v2.4.0
+        uses: actions/setup-node@v2.4.1
         with:
           node-version: ${{ matrix.node }}
           registry-url: 'https://registry.npmjs.org'
@@ -97,7 +97,7 @@ jobs:
           name: build-${{matrix.os}}-${{matrix.node}}
           path: ./packages
       - name: Setup Node
-        uses: actions/setup-node@v2.4.0
+        uses: actions/setup-node@v2.4.1
         with:
           node-version: ${{ matrix.node }}
           registry-url: 'https://npm.pkg.github.com'
