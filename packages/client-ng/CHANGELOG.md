@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.28.1](https://github.com/manniwatch/manniwatch/compare/v0.28.0...v0.28.1) (2021-10-10)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v12.2.7 ([67f40f6](https://github.com/manniwatch/manniwatch/commit/67f40f660ca306d5779a22f2082b036279effba6))
+* **deps:** update angular monorepo to v12.2.8 ([d83522c](https://github.com/manniwatch/manniwatch/commit/d83522c009b9e2f77a3c840ccceb16a6bee2297c))
+* **deps:** update angular monorepo to v12.2.9 ([e8a2ff4](https://github.com/manniwatch/manniwatch/commit/e8a2ff4959b367bc2ecd55167dae480140841e82))
+* **deps:** update angularmaterial monorepo to v12.2.7 ([980177d](https://github.com/manniwatch/manniwatch/commit/980177d5248853b22dc11e3b8f9990831c3a23dd))
+* **deps:** update angularmaterial monorepo to v12.2.8 ([fe24e6f](https://github.com/manniwatch/manniwatch/commit/fe24e6fa81863a41d1529ea806e6ce406c00d081))
+* **deps:** update angularmaterial monorepo to v12.2.9 ([2bdc2e4](https://github.com/manniwatch/manniwatch/commit/2bdc2e4a6c524e6d98cf6232358335feec217178))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.2.8 ([2438fa3](https://github.com/manniwatch/manniwatch/commit/2438fa31528aad5d062c53efba3f0f1442c9886d))
+* **deps:** update dependency date-fns to v2.25.0 ([c78b448](https://github.com/manniwatch/manniwatch/commit/c78b448738bd0e60d473e36cc6272176552dc928))
+* **deps:** update dependency rxjs to v7.3.1 ([7091ce4](https://github.com/manniwatch/manniwatch/commit/7091ce44cc961333e4d7e55799d2c4d82ed47d2e))
+* **deps:** update dependency rxjs to v7.4.0 ([3f84d48](https://github.com/manniwatch/manniwatch/commit/3f84d48d98b14eb7cd5ed30c4e6e4b271d633437))
+
+
+
+
+
 # [0.28.0](https://github.com/manniwatch/manniwatch/compare/v0.27.7...v0.28.0) (2021-09-22)
 
 

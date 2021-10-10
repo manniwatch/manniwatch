@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.28.1](https://github.com/manniwatch/manniwatch/compare/v0.28.0...v0.28.1) (2021-10-10)
+
+
+### Bug Fixes
+
+* **deps:** update angularmaterial monorepo to v12.2.8 ([fe24e6f](https://github.com/manniwatch/manniwatch/commit/fe24e6fa81863a41d1529ea806e6ce406c00d081))
+* **deps:** update dependency date-fns to v2.25.0 ([c78b448](https://github.com/manniwatch/manniwatch/commit/c78b448738bd0e60d473e36cc6272176552dc928))
+* **deps:** update dependency electron to ~15.1.0 ([40f1714](https://github.com/manniwatch/manniwatch/commit/40f17143b758f231e5627c335a269b32e2cb39e7))
+* **deps:** update dependency electron to ~15.1.1 ([faa28ee](https://github.com/manniwatch/manniwatch/commit/faa28ee08364b41a6f3750267615a2ae51f39fb3))
+* **deps:** update dependency electron to ~15.1.2 ([303366a](https://github.com/manniwatch/manniwatch/commit/303366a5519d48780738dbcf62ced3219c2552b9))
+
+
+
+
+
 # [0.28.0](https://github.com/manniwatch/manniwatch/compare/v0.27.7...v0.28.0) (2021-09-22)
 
 
