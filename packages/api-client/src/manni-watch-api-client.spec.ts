@@ -16,6 +16,7 @@ const testSuccessResponse: any = {
     message: 'This is a mocked response',
     status: 200,
 };
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 const STOP_MODES: StopMode[] = ['departure', 'arrival'];
 describe('manni-watch-api-client.ts', (): void => {
     describe('ManniWatchApiClient', (): void => {
