@@ -27,8 +27,6 @@ export const createSettingsRouter: (apiClient: ManniWatchApiClient, cache: NodeC
          * @apiName GetSettings
          * @apiGroup Settings
          * @apiVersion 0.1.0
-         *
-         * @category Sub Routes
          */
         router.get('', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
             settingsMutex.runExclusive(async (): Promise<ISettingsEntry> => {
