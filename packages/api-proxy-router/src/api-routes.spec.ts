@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
+/*
+ * Package @manniwatch/api-proxy-router
+ * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
@@ -10,48 +11,46 @@ import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 import supertest from 'supertest';
 import * as endpoints from './endpoints';
-import {
-    createTestErrorRequestHandler,
-    NOT_FOUND_RESPONSE,
-    NOT_FOUND_RESPONSE_LENGTH,
-} from './endpoints/common-test.spec';
+import { createTestErrorRequestHandler, NOT_FOUND_RESPONSE, NOT_FOUND_RESPONSE_LENGTH } from './endpoints/common-test.spec';
 
 // tslint:disable:no-unused-expression
 interface ITestEndpoint {
     endpointName: string;
     path: string;
 }
-const testEndpoints: ITestEndpoint[] = [{
-    endpointName: 'createGeoRouter',
-    path: '/geo',
-},
-{
-    endpointName: 'createTripRouter',
-    path: '/trip',
-},
-{
-    endpointName: 'createVehicleRouter',
-    path: '/vehicle',
-},
-{
-    endpointName: 'createStopRouter',
-    path: '/stop',
-},
-{
-    endpointName: 'createStopPointRouter',
-    path: '/stopPoint',
-},
-{
-    endpointName: 'createSettingsRouter',
-    path: '/settings',
-}];
+const testEndpoints: ITestEndpoint[] = [
+    {
+        endpointName: 'createGeoRouter',
+        path: '/geo',
+    },
+    {
+        endpointName: 'createTripRouter',
+        path: '/trip',
+    },
+    {
+        endpointName: 'createVehicleRouter',
+        path: '/vehicle',
+    },
+    {
+        endpointName: 'createStopRouter',
+        path: '/stop',
+    },
+    {
+        endpointName: 'createStopPointRouter',
+        path: '/stopPoint',
+    },
+    {
+        endpointName: 'createSettingsRouter',
+        path: '/settings',
+    },
+];
 type EndpointTypes = keyof typeof endpoints;
 describe('api-routes.ts', (): void => {
     describe('createApiProxyRouter()', (): void => {
         let sandbox: sinon.SinonSandbox;
         const routerKeys: EndpointTypes[] = Object.keys(endpoints) as EndpointTypes[];
-        const endpointStubs: Record<EndpointTypes, sinon.SinonStub> = {} as any;
-        let createApiProxyRouter: any;
+        const endpointStubs: Partial<Record<EndpointTypes, sinon.SinonStub>> = {};
+        let createApiProxyRouter: (apiClient: ManniWatchApiClient | string) => express.Router;
         before((): void => {
             sandbox = sinon.createSandbox();
             for (const key of routerKeys) {
@@ -64,6 +63,7 @@ describe('api-routes.ts', (): void => {
                     };
                 });
             }
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
             createApiProxyRouter = proxyquire('./api-routes', {
                 './endpoints': endpointStubs,
             }).createApiProxyRouter;
@@ -79,18 +79,18 @@ describe('api-routes.ts', (): void => {
             expect(route).to.not.be.undefined;
             for (const key of routerKeys) {
                 expect(endpointStubs[key].callCount).to.equal(1, 'should only be called once');
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 const arg: ManniWatchApiClient = endpointStubs[key].getCall(0).args[0];
-                expect(arg.endpoint).to.equal('https://localhost:12/',
-                    `endpoint ${key} should be created with a correct instance`);
+                expect(arg.endpoint).to.equal('https://localhost:12/', `endpoint ${key} should be created with a correct instance`);
             }
         });
         it('should setup with a client instance as endpoint', (): void => {
             const route: express.Router = createApiProxyRouter('https://localhost:12345/');
             expect(route).to.not.be.undefined;
             for (const key of routerKeys) {
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 const arg: ManniWatchApiClient = endpointStubs[key].getCall(0).args[0];
-                expect(arg.endpoint).to.equal('https://localhost:12345/',
-                    `endpoint ${key} should be created with a correct instance`);
+                expect(arg.endpoint).to.equal('https://localhost:12345/', `endpoint ${key} should be created with a correct instance`);
             }
         });
         describe('setup inner routes', (): void => {
@@ -130,7 +130,7 @@ describe('api-routes.ts', (): void => {
             });
             describe('test endpoints', (): void => {
                 testEndpoints.forEach((testEndpoint: ITestEndpoint): void => {
-                    it(`should query \'${testEndpoint.path}\' successfully`, (): Promise<void> => {
+                    it(`should query '${testEndpoint.path}' successfully`, (): Promise<void> => {
                         return supertest(app)
                             .get(testEndpoint.path)
                             .expect('Content-Type', /json/)
