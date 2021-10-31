@@ -6,6 +6,7 @@
 import * as prom from '@donmahallem/turbo';
 import * as turboval from '@donmahallem/turbo-validate-request';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
+import { ITripPassages, IVehiclePathInfo } from '@manniwatch/api-types';
 import { expect } from 'chai';
 import express from 'express';
 import 'mocha';
@@ -64,7 +65,7 @@ describe('endpoints/trip.ts', (): void => {
         testIds.forEach((testId: string): void => {
             describe(`query '/trip/${testId}/route'`, (): void => {
                 it('should pass on the provided parameters', (): Promise<void> => {
-                    apiClientStub.getRouteByTripId.resolves(SUCCESS_RESPONSE);
+                    apiClientStub.getRouteByTripId.resolves(SUCCESS_RESPONSE as IVehiclePathInfo);
                     promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                         source
                             .then((responseObject: any): void => {
@@ -102,7 +103,7 @@ describe('endpoints/trip.ts', (): void => {
                 testIds.forEach((testId: string): void => {
                     const queryUrl = `/trip/${testId}/passages`;
                     it(`should query '${queryUrl}'`, (): Promise<void> => {
-                        apiClientStub.getTripPassages.resolves(SUCCESS_RESPONSE);
+                        apiClientStub.getTripPassages.resolves(SUCCESS_RESPONSE as ITripPassages);
                         promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                             source
                                 .then((responseObject: any): void => {
@@ -123,7 +124,7 @@ describe('endpoints/trip.ts', (): void => {
                     ['departure', 'arrival'].forEach((testMode: string): void => {
                         const queryUrlWithParam = `${queryUrl}?mode=${testMode}`;
                         it(`should query '${queryUrlWithParam}'`, (): Promise<void> => {
-                            apiClientStub.getTripPassages.resolves(SUCCESS_RESPONSE);
+                            apiClientStub.getTripPassages.resolves(SUCCESS_RESPONSE as ITripPassages);
                             promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                                 source
                                     .then((responseObject: any): void => {
@@ -162,7 +163,7 @@ describe('endpoints/trip.ts', (): void => {
                 testIds.forEach((testId: string): void => {
                     const queryUrl = `/trip/${testId}/passages`;
                     it(`should query '${queryUrl}'`, (): Promise<void> => {
-                        apiClientStub.getTripPassages.resolves(SUCCESS_RESPONSE);
+                        apiClientStub.getTripPassages.resolves(SUCCESS_RESPONSE as ITripPassages);
                         promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                             source
                                 .then((responseObject: any): void => {

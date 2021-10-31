@@ -49,7 +49,8 @@ describe('api-routes.ts', (): void => {
     describe('createApiProxyRouter()', (): void => {
         let sandbox: sinon.SinonSandbox;
         const routerKeys: EndpointTypes[] = Object.keys(endpoints) as EndpointTypes[];
-        const endpointStubs: Partial<Record<EndpointTypes, sinon.SinonStub>> = {};
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        const endpointStubs: Record<EndpointTypes, sinon.SinonStub> = {} as any;
         let createApiProxyRouter: (apiClient: ManniWatchApiClient | string) => express.Router;
         before((): void => {
             sandbox = sinon.createSandbox();

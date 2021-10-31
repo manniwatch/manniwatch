@@ -5,7 +5,7 @@
 
 import { RequestError } from '@donmahallem/turbo';
 import { IBoundingBox, ManniWatchApiClient } from '@manniwatch/api-client';
-import { IVehicleLocationList, PositionType } from '@manniwatch/api-types';
+import { IStopLocations, IStopPointLocations, IVehicleLocationList, PositionType } from '@manniwatch/api-types';
 import { GEO_FENCE_SCHEMA, GET_VEHICLE_LOCATION_SCHEMA } from '@manniwatch/schemas';
 import { expect } from 'chai';
 import express from 'express';
@@ -61,7 +61,7 @@ describe('endpoints/geo/router.ts', (): void => {
                 '@donmahallem/turbo-validate-request': {
                     validateRequest: validateStubParent,
                 },
-            }).createGeoRouter;
+            }).createGeoRouter as (apiClient: ManniWatchApiClient) => express.Router;
         });
         beforeEach((): void => {
             validateStubParent.callsFake((type: string, schema: any): sinon.SinonStub => {
@@ -99,21 +99,15 @@ describe('endpoints/geo/router.ts', (): void => {
         after((): void => {
             sandbox.restore();
         });
-        it('should use the 404 handler', (done: Mocha.Done): void => {
-            supertest(app)
+        it('should use the 404 handler', (): Promise<void> => {
+            return supertest(app)
                 .get('/unknown/route')
                 .expect('Content-Type', /json/)
                 .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
                 .expect(404, NOT_FOUND_RESPONSE)
-                .end((err: any, res: supertest.Response): void => {
-                    if (err) {
-                        done(err);
-                        return;
-                    }
+                .then((res: supertest.Response): void => {
                     expect(routeErrorStub.callCount).to.equal(0);
-                    done();
-                })
-                .catch(done);
+                });
         });
         describe('/stopPoints', (): void => {
             afterEach((): void => {
@@ -131,7 +125,7 @@ describe('endpoints/geo/router.ts', (): void => {
                         `/stopPoints?bottom=${testCoordinate.bottom}&top=${testCoordinate.top}` +
                         `&left=${testCoordinate.left}&right=${testCoordinate.right}`;
                     it(`should query the stops with '${basePath}'`, (): Promise<void> => {
-                        stubClient.getStopPointLocations.returns(delayPromise(SUCCESS_RESPONSE));
+                        stubClient.getStopPointLocations.returns(delayPromise(SUCCESS_RESPONSE) as Promise<IStopPointLocations>);
                         return supertest(app)
                             .get(basePath)
                             .expect('Content-Type', /json/)
@@ -162,7 +156,7 @@ describe('endpoints/geo/router.ts', (): void => {
                         `/stopPoints?bottom=${testCoordinate.bottom}&top=${testCoordinate.top}` +
                         `&left=${testCoordinate.left}&right=${testCoordinate.right}`;
                     it(`should reject '${basePath}'`, (): Promise<void> => {
-                        stubClient.getStopLocations.returns(delayPromise(SUCCESS_RESPONSE));
+                        stubClient.getStopLocations.returns(delayPromise(SUCCESS_RESPONSE) as Promise<IStopLocations>);
                         return supertest(app)
                             .get(basePath)
                             .expect('Content-Type', /json/)
@@ -195,7 +189,7 @@ describe('endpoints/geo/router.ts', (): void => {
                         `/stops?bottom=${testCoordinate.bottom}&top=${testCoordinate.top}` +
                         `&left=${testCoordinate.left}&right=${testCoordinate.right}`;
                     it(`should query the stops with '${basePath}'`, (): Promise<void> => {
-                        stubClient.getStopLocations.returns(delayPromise(SUCCESS_RESPONSE));
+                        stubClient.getStopLocations.returns(delayPromise(SUCCESS_RESPONSE) as Promise<IStopLocations>);
                         return supertest(app)
                             .get(basePath)
                             .expect('Content-Type', /json/)
@@ -223,7 +217,7 @@ describe('endpoints/geo/router.ts', (): void => {
                         `/stops?bottom=${testCoordinate.bottom}&top=${testCoordinate.top}` +
                         `&left=${testCoordinate.left}&right=${testCoordinate.right}`;
                     it(`should reject '${basePath}'`, (): Promise<void> => {
-                        stubClient.getStopLocations.returns(delayPromise(SUCCESS_RESPONSE));
+                        stubClient.getStopLocations.returns(delayPromise(SUCCESS_RESPONSE) as Promise<IStopLocations>);
                         return supertest(app)
                             .get(basePath)
                             .expect('Content-Type', /json/)
