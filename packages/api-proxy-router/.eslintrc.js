@@ -20,19 +20,9 @@ module.exports = {
     "settings": {
         "jsdoc": {
             "structuredTags": {
-                "apiName": {
-                    "required": ["name"]
-                },
-                "apiGroup": {
-                    "required": ["name"]
-                },
-                "apiParam": {
-                    "required": ["name"]
-                },
                 "apiVersion": {
                     "required": ["name"]
                 },
-                // "apiQuery": { "required": false },
                 "api": {
                     "type": [
                         "get",

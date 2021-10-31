@@ -35,6 +35,7 @@ const validCoordinatesNumbers: { [key in keyof IBoundingBox]: number }[] = valid
 const positionTypes: PositionType[] = ['RAW', 'CORRECTED'];
 const lastUpdates: string[] = ['22929299292', '2938'];
 type TestIBoundingBox = { [key in keyof IBoundingBox]: string };
+/* eslint-disable @typescript-eslint/no-explicit-any */
 describe('endpoints/geo/router.ts', (): void => {
     describe('createGeoRouter()', (): void => {
         let app: express.Express;
@@ -78,14 +79,14 @@ describe('endpoints/geo/router.ts', (): void => {
             const route: express.Router = createGeoRouter(stubClient);
             app = express();
             app.use(route);
-            app.use((req: express.Request, res: express.Response, next: express.NextFunction): void => {
+            app.use((req: express.Request, res: express.Response): void => {
                 res.status(404);
                 res.json(NOT_FOUND_RESPONSE);
             });
             app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction): void => {
                 routeErrorStub(err, req, res, next);
             });
-            routeErrorStub.callsFake((err: any, req: express.Request, res: express.Response, next: express.NextFunction): void => {
+            routeErrorStub.callsFake((err: any, req: express.Request, res: express.Response): void => {
                 res.status(501).json(NOT_FOUND_RESPONSE);
             });
         });
@@ -105,7 +106,7 @@ describe('endpoints/geo/router.ts', (): void => {
                 .expect('Content-Type', /json/)
                 .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
                 .expect(404, NOT_FOUND_RESPONSE)
-                .then((res: supertest.Response): void => {
+                .then((): void => {
                     expect(routeErrorStub.callCount).to.equal(0);
                 });
         });
@@ -131,7 +132,7 @@ describe('endpoints/geo/router.ts', (): void => {
                             .expect('Content-Type', /json/)
                             .expect(200, SUCCESS_RESPONSE)
                             .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
-                            .then((res: supertest.Response): void => {
+                            .then((): void => {
                                 expect(routeErrorStub.callCount).to.equal(0);
                                 expect(stubClient.getStopPointLocations.callCount).to.equal(
                                     1,
@@ -162,7 +163,7 @@ describe('endpoints/geo/router.ts', (): void => {
                             .expect('Content-Type', /json/)
                             .expect(501, NOT_FOUND_RESPONSE)
                             .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
-                            .then((res: supertest.Response): void => {
+                            .then((): void => {
                                 expect(routeErrorStub.callCount).to.equal(1, 'error handler should be called');
                                 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                                 const testError: RequestError = routeErrorStub.getCall(0).args[0];
@@ -195,7 +196,7 @@ describe('endpoints/geo/router.ts', (): void => {
                             .expect('Content-Type', /json/)
                             .expect(200, SUCCESS_RESPONSE)
                             .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
-                            .then((res: supertest.Response): void => {
+                            .then((): void => {
                                 expect(routeErrorStub.callCount).to.equal(0);
                                 expect(stubClient.getStopLocations.callCount).to.equal(1, 'getStopLocations should only be called once');
                                 expect(stubClient.getStopLocations.args).to.deep.equal([[validCoordinatesNumbers[idx]]]);
@@ -223,7 +224,7 @@ describe('endpoints/geo/router.ts', (): void => {
                             .expect('Content-Type', /json/)
                             .expect(501, NOT_FOUND_RESPONSE)
                             .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
-                            .then((res: supertest.Response): void => {
+                            .then((): void => {
                                 expect(routeErrorStub.callCount).to.equal(1, 'error handler should be called');
                                 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                                 const testError: RequestError = routeErrorStub.getCall(0).args[0];
@@ -261,7 +262,7 @@ describe('endpoints/geo/router.ts', (): void => {
                                 .expect('Content-Type', /json/)
                                 .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
                                 .expect(200, SUCCESS_RESPONSE)
-                                .then((res: supertest.Response): void => {
+                                .then((): void => {
                                     expect(routeErrorStub.callCount).to.equal(0);
                                     expect(stubClient.getVehicleLocations.callCount).to.equal(
                                         1,
@@ -303,7 +304,7 @@ describe('endpoints/geo/router.ts', (): void => {
                                 .expect('Content-Type', /json/)
                                 .expect(501, NOT_FOUND_RESPONSE)
                                 .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
-                                .then((res: supertest.Response): void => {
+                                .then((): void => {
                                     expect(routeErrorStub.callCount).to.equal(1, 'error handler should be called');
                                     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                                     const testError: RequestError = routeErrorStub.getCall(0).args[0];

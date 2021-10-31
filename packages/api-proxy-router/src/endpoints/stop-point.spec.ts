@@ -20,8 +20,10 @@ import {
     NOT_FOUND_RESPONSE_LENGTH,
     SUCCESS_RESPONSE,
     SUCCESS_RESPONSE_LENGTH,
+    ErrorSpy,
 } from './common-test.spec';
 const testIds: string[] = ['-12883', 'kasd'];
+/* eslint-disable @typescript-eslint/no-explicit-any */
 describe('endpoints/stop-point.ts', (): void => {
     describe('createStopPointRouter', (): void => {
         let app: express.Express;
@@ -29,9 +31,9 @@ describe('endpoints/stop-point.ts', (): void => {
         let getStopPointInfoStub: sinon.SinonStub<Parameters<ManniWatchApiClient['getStopPointInfo']>>;
         let getStopPointPassagesStub: sinon.SinonStub<Parameters<ManniWatchApiClient['getStopPointPassages']>>;
         let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
-        let validateStub: sinon.SinonStub;
-        let validateStubHandler: sinon.SinonStub;
-        let errorSpy: sinon.SinonSpy;
+        let validateStub: sinon.SinonStub<Parameters<typeof promval['validateRequest']>>;
+        let validateStubHandler: sinon.SinonStub<Parameters<typeof prom['promiseToResponse']>>;
+        let errorSpy: ErrorSpy;
         let createStopPointRouter: (apiClient: ManniWatchApiClient) => express.Router;
         before((): void => {
             validateStub = sinon.stub(promval, 'validateRequest');
@@ -39,7 +41,7 @@ describe('endpoints/stop-point.ts', (): void => {
             getStopPointInfoStub = sinon.stub();
             getStopPointPassagesStub = sinon.stub();
             validateStubHandler = sinon.stub();
-            errorSpy = sinon.spy();
+            errorSpy = sinon.spy() as ErrorSpy;
             apiClientStub = sinon.createStubInstance(ManniWatchApiClient, {
                 getStopPointInfo: getStopPointInfoStub,
                 getStopPointPassages: getStopPointPassagesStub,
@@ -97,7 +99,7 @@ describe('endpoints/stop-point.ts', (): void => {
                         .expect('Content-Type', /json/)
                         .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
                         .expect(200, SUCCESS_RESPONSE)
-                        .then((res: supertest.Response): void => {
+                        .then((): void => {
                             expect(apiClientStub.getStopPointInfo.callCount).to.equal(1, 'getStopPointInfo should only be called once');
                             expect(apiClientStub.getStopPointInfo.getCall(0).args).to.deep.equal([testId]);
                             expect(apiClientStub.getStopPointPassages.callCount).to.equal(0, 'getStopPointPassages should not be called');
@@ -137,7 +139,7 @@ describe('endpoints/stop-point.ts', (): void => {
                             .expect('Content-Type', /json/)
                             .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
                             .expect(200, SUCCESS_RESPONSE)
-                            .then((res: supertest.Response): void => {
+                            .then((): void => {
                                 expect(apiClientStub.getStopPointPassages.callCount).to.equal(
                                     1,
                                     'getStopPointPassages should only be called once'
@@ -179,7 +181,7 @@ describe('endpoints/stop-point.ts', (): void => {
                                         .expect('Content-Type', /json/)
                                         .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
                                         .expect(200, SUCCESS_RESPONSE)
-                                        .then((res: supertest.Response): void => {
+                                        .then((): void => {
                                             expect(apiClientStub.getStopPointPassages.callCount).to.equal(
                                                 1,
                                                 'getStopPointPassages should only be called once'

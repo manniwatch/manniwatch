@@ -11,8 +11,8 @@ import { GEO_FENCE_SCHEMA, GET_VEHICLE_LOCATION_SCHEMA } from '@manniwatch/schem
 import express from 'express';
 
 /**
- * @param apiClient
- * @category Sub Routes
+ * @param {ManniWatchApiClient} apiClient api client
+ * @returns {express.Router} a express router instance
  */
 export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router = (apiClient: ManniWatchApiClient): express.Router => {
     const router: express.Router = express.Router();
