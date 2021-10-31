@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.28.2](https://github.com/manniwatch/manniwatch/compare/v0.28.1...v0.28.2) (2021-10-31)
+
+
+### Bug Fixes
+
+* **deps:** update @donmahallem/turbo packages ([#2454](https://github.com/manniwatch/manniwatch/issues/2454)) ([0a85c00](https://github.com/manniwatch/manniwatch/commit/0a85c00740a01a51040714177b6389657bba068a))
+* **deps:** update angular monorepo to v12.2.10 ([ac4ecc7](https://github.com/manniwatch/manniwatch/commit/ac4ecc7a04ed66f0f51bd5d33b476bac097a766f))
+* **deps:** update angular monorepo to v12.2.11 ([67c2d17](https://github.com/manniwatch/manniwatch/commit/67c2d177f3fa8df74e6454424124ab43cc1ea2f0))
+* **deps:** update angular monorepo to v12.2.12 ([2eb51be](https://github.com/manniwatch/manniwatch/commit/2eb51beeda812d26c4766f8e955e022acef55ad0))
+* **deps:** update angularmaterial monorepo to v12.2.10 ([c2828e6](https://github.com/manniwatch/manniwatch/commit/c2828e6170a50ce19d594cf2c506f41a8a31779e))
+* **deps:** update angularmaterial monorepo to v12.2.11 ([64b4e09](https://github.com/manniwatch/manniwatch/commit/64b4e094f42a091149547cb547e5ef816de0b047))
+* **deps:** update angularmaterial monorepo to v12.2.12 ([f6d8cb6](https://github.com/manniwatch/manniwatch/commit/f6d8cb6f650b2012782db37d01ab0739b1644328))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.2.9 ([abb6c4c](https://github.com/manniwatch/manniwatch/commit/abb6c4c9b0395c56d9325b7b12b032c667755fee))
+* **deps:** update dependency commander to ~8.3.0 ([d5a2dbc](https://github.com/manniwatch/manniwatch/commit/d5a2dbc5dae9790d6a44d24e3d4e895d3ea13b43))
+* **deps:** update dependency electron to ~15.2.0 ([92d7d29](https://github.com/manniwatch/manniwatch/commit/92d7d29c7b7da8df26cdda1eadeffd103f3ab21c))
+* **deps:** update dependency electron to ~15.3.0 ([952d96b](https://github.com/manniwatch/manniwatch/commit/952d96b669424f57d304d912dc9b6424e8321b72))
+
+
+
+
+
 ## [0.28.1](https://github.com/manniwatch/manniwatch/compare/v0.28.0...v0.28.1) (2021-10-10)
 
 

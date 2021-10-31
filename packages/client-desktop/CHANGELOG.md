@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.28.2](https://github.com/manniwatch/manniwatch/compare/v0.28.1...v0.28.2) (2021-10-31)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v12.2.12 ([2eb51be](https://github.com/manniwatch/manniwatch/commit/2eb51beeda812d26c4766f8e955e022acef55ad0))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.2.9 ([abb6c4c](https://github.com/manniwatch/manniwatch/commit/abb6c4c9b0395c56d9325b7b12b032c667755fee))
+* **deps:** update dependency commander to ~8.3.0 ([d5a2dbc](https://github.com/manniwatch/manniwatch/commit/d5a2dbc5dae9790d6a44d24e3d4e895d3ea13b43))
+* **deps:** update dependency electron to ~15.2.0 ([92d7d29](https://github.com/manniwatch/manniwatch/commit/92d7d29c7b7da8df26cdda1eadeffd103f3ab21c))
+* **deps:** update dependency electron to ~15.3.0 ([952d96b](https://github.com/manniwatch/manniwatch/commit/952d96b669424f57d304d912dc9b6424e8321b72))
+
+
+
+
+
 ## [0.28.1](https://github.com/manniwatch/manniwatch/compare/v0.28.0...v0.28.1) (2021-10-10)
 
 

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.28.2](https://github.com/manniwatch/manniwatch/compare/v0.28.1...v0.28.2) (2021-10-31)
+
+
+### Bug Fixes
+
+* **deps:** update @donmahallem/turbo packages ([#2454](https://github.com/manniwatch/manniwatch/issues/2454)) ([0a85c00](https://github.com/manniwatch/manniwatch/commit/0a85c00740a01a51040714177b6389657bba068a))
+* **deps:** update angular monorepo to v12.2.12 ([2eb51be](https://github.com/manniwatch/manniwatch/commit/2eb51beeda812d26c4766f8e955e022acef55ad0))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.2.9 ([abb6c4c](https://github.com/manniwatch/manniwatch/commit/abb6c4c9b0395c56d9325b7b12b032c667755fee))
+
+
+
+
+
 ## [0.28.1](https://github.com/manniwatch/manniwatch/compare/v0.28.0...v0.28.1) (2021-10-10)
 
 
