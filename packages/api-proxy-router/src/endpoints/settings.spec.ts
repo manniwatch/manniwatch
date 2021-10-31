@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
+/*
+ * Package @manniwatch/api-proxy-router
+ * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
@@ -15,7 +16,7 @@ import { createSettingsRouter } from './settings';
 describe('endpoints/settings.ts', (): void => {
     describe('createSettingsRouter', (): void => {
         let app: express.Express;
-        let getSettingsStub: sinon.SinonStub;
+        let getSettingsStub: sinon.SinonStub<Parameters<ManniWatchApiClient['getSettings']>>;
         let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
         let fakeCache: sinon.SinonStubbedInstance<NodeCache>;
         let sandbox: sinon.SinonSandbox;
@@ -24,14 +25,14 @@ describe('endpoints/settings.ts', (): void => {
             sandbox = sinon.createSandbox();
             getSettingsStub = sandbox.stub();
             apiClientStub = sandbox.createStubInstance(ManniWatchApiClient, {
-                getSettings: getSettingsStub as any,
+                getSettings: getSettingsStub,
             });
             fakeCache = sandbox.createStubInstance(NodeCache);
             fakeTimer = sandbox.useFakeTimers(30000);
         });
 
         beforeEach((): void => {
-            const route: express.Router = createSettingsRouter(apiClientStub as any, fakeCache as any);
+            const route: express.Router = createSettingsRouter(apiClientStub, fakeCache);
             app = express();
             app.use('/settings', route);
         });
@@ -42,7 +43,7 @@ describe('endpoints/settings.ts', (): void => {
             sandbox.restore();
             fakeTimer.restore();
         });
-        describe('query \'\'', (): void => {
+        describe("query ''", (): void => {
             it('should proxy the request and cache the response', async (): Promise<void> => {
                 getSettingsStub.resolves(SUCCESS_RESPONSE);
                 fakeCache.get.returns(undefined);
@@ -54,8 +55,7 @@ describe('endpoints/settings.ts', (): void => {
                     .expect('ETag', 'W/"f809b3e2ff34d869ee123b2108961aa6"')
                     .expect('Last-Modified', new Date(30000).toUTCString())
                     .then((res: supertest.Response): void => {
-                        expect(apiClientStub.getSettings.callCount)
-                            .to.equal(1, 'getSettings should only be called once');
+                        expect(apiClientStub.getSettings.callCount).to.equal(1, 'getSettings should only be called once');
                         expect(fakeCache.get.callCount).to.equal(1, 'cache should be queried once');
                         expect(fakeCache.set.callCount).to.equal(1, 'cache should be updated once');
                     });
@@ -75,8 +75,7 @@ describe('endpoints/settings.ts', (): void => {
                     .expect('Last-Modified', testLastModified.toUTCString())
                     .expect(200, SUCCESS_RESPONSE)
                     .then((res: supertest.Response): void => {
-                        expect(apiClientStub.getSettings.callCount)
-                            .to.equal(0, 'getSettings should not be called');
+                        expect(apiClientStub.getSettings.callCount).to.equal(0, 'getSettings should not be called');
                         expect(fakeCache.get.callCount).to.equal(1, 'cache should be queried once');
                         expect(fakeCache.set.callCount).to.equal(0, 'cache should not be updated');
                     });
