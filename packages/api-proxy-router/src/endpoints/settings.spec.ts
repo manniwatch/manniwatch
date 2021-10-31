@@ -54,7 +54,7 @@ describe('endpoints/settings.ts', (): void => {
                     .expect(200, SUCCESS_RESPONSE)
                     .expect('ETag', 'W/"f809b3e2ff34d869ee123b2108961aa6"')
                     .expect('Last-Modified', new Date(30000).toUTCString())
-                    .then((res: supertest.Response): void => {
+                    .then((): void => {
                         expect(apiClientStub.getSettings.callCount).to.equal(1, 'getSettings should only be called once');
                         expect(fakeCache.get.callCount).to.equal(1, 'cache should be queried once');
                         expect(fakeCache.set.callCount).to.equal(1, 'cache should be updated once');
@@ -74,7 +74,7 @@ describe('endpoints/settings.ts', (): void => {
                     .expect('ETag', 'W/"testtag"')
                     .expect('Last-Modified', testLastModified.toUTCString())
                     .expect(200, SUCCESS_RESPONSE)
-                    .then((res: supertest.Response): void => {
+                    .then((): void => {
                         expect(apiClientStub.getSettings.callCount).to.equal(0, 'getSettings should not be called');
                         expect(fakeCache.get.callCount).to.equal(1, 'cache should be queried once');
                         expect(fakeCache.set.callCount).to.equal(0, 'cache should not be updated');

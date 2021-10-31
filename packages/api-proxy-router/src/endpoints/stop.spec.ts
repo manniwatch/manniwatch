@@ -20,8 +20,10 @@ import {
     NOT_FOUND_RESPONSE_LENGTH,
     SUCCESS_RESPONSE,
     SUCCESS_RESPONSE_LENGTH,
+    ErrorSpy,
 } from './common-test.spec';
 const testIds: string[] = ['-12883', 'kasd'];
+/* eslint-disable @typescript-eslint/no-explicit-any */
 describe('endpoints/stop.ts', (): void => {
     describe('createStopRouter', (): void => {
         let app: express.Express;
@@ -31,7 +33,7 @@ describe('endpoints/stop.ts', (): void => {
         let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
         let validateStub: sinon.SinonStub;
         let validateStubHandler: sinon.SinonStub;
-        let errorSpy: sinon.SinonSpy;
+        let errorSpy: ErrorSpy;
         let createStopRouter: (apiClient: ManniWatchApiClient) => express.Router;
         before((): void => {
             validateStub = sinon.stub(turboval, 'validateRequest');
@@ -39,7 +41,7 @@ describe('endpoints/stop.ts', (): void => {
             getStopInfoStub = sinon.stub();
             getStopPassagesStub = sinon.stub();
             validateStubHandler = sinon.stub();
-            errorSpy = sinon.spy();
+            errorSpy = sinon.spy() as ErrorSpy;
             apiClientStub = sinon.createStubInstance(ManniWatchApiClient, {
                 getStopInfo: getStopInfoStub,
                 getStopPassages: getStopPassagesStub,
@@ -97,7 +99,7 @@ describe('endpoints/stop.ts', (): void => {
                         .expect('Content-Type', /json/)
                         .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
                         .expect(200, SUCCESS_RESPONSE)
-                        .then((res: supertest.Response): void => {
+                        .then((): void => {
                             expect(apiClientStub.getStopInfo.callCount).to.equal(1, 'getStopInfo should only be called once');
                             expect(apiClientStub.getStopInfo.getCall(0).args).to.deep.equal([testId]);
                             expect(apiClientStub.getStopPassages.callCount).to.equal(0, 'getStopPassages should not be called');
@@ -137,7 +139,7 @@ describe('endpoints/stop.ts', (): void => {
                             .expect('Content-Type', /json/)
                             .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
                             .expect(200, SUCCESS_RESPONSE)
-                            .then((res: supertest.Response): void => {
+                            .then((): void => {
                                 expect(apiClientStub.getStopPassages.callCount).to.equal(1, 'getStopPassages should only be called once');
                                 expect(apiClientStub.getStopPassages.getCall(0).args).to.deep.equal([
                                     testId,
@@ -176,7 +178,7 @@ describe('endpoints/stop.ts', (): void => {
                                         .expect('Content-Type', /json/)
                                         .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
                                         .expect(200, SUCCESS_RESPONSE)
-                                        .then((res: supertest.Response): void => {
+                                        .then((): void => {
                                             expect(apiClientStub.getStopPassages.callCount).to.equal(
                                                 1,
                                                 'getStopPassages should only be called once'
@@ -222,7 +224,7 @@ describe('endpoints/stop.ts', (): void => {
                             .expect('Content-Type', /json/)
                             .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
                             .expect(200, NOT_FOUND_RESPONSE)
-                            .then((res: supertest.Response): void => {
+                            .then((): void => {
                                 expect(apiClientStub.getStopPassages.callCount).to.equal(0, 'getStopPassages should not be called');
                             });
                     });

@@ -17,9 +17,9 @@ interface ISettingsEntry {
 }
 const CACHE_KEY_SETTINGS = 'mw_settings';
 /**
- * @param apiClient
- * @param cache
- * @category Sub Routes
+ * @param {ManniWatchApiClient} apiClient api client
+ * @param {NodeCache} cache A cache instance
+ * @returns {express.Router} a express router instance
  */
 export const createSettingsRouter: (apiClient: ManniWatchApiClient, cache: NodeCache) => express.Router = (
     apiClient: ManniWatchApiClient,

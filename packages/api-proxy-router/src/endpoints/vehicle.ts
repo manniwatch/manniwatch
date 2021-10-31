@@ -8,8 +8,8 @@ import { ManniWatchApiClient } from '@manniwatch/api-client';
 import express from 'express';
 
 /**
- * @param apiClient
- * @category Sub Routes
+ * @param {ManniWatchApiClient} apiClient api client
+ * @returns {express.Router} a express router instance
  */
 export const createVehicleRouter: (apiClient: ManniWatchApiClient) => express.Router = (apiClient: ManniWatchApiClient): express.Router => {
     const router: express.Router = express.Router();

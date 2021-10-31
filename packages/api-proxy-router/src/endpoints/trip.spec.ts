@@ -15,27 +15,29 @@ import sinon from 'sinon';
 import supertest from 'supertest';
 import {
     createTestErrorRequestHandler,
+    ErrorSpy,
     NOT_FOUND_RESPONSE,
     NOT_FOUND_RESPONSE_LENGTH,
     SUCCESS_RESPONSE,
     SUCCESS_RESPONSE_LENGTH,
 } from './common-test.spec';
 const testIds: string[] = ['-12883', 'kasd'];
+/* eslint-disable @typescript-eslint/no-explicit-any */
 describe('endpoints/trip.ts', (): void => {
     describe('createTripRouter', (): void => {
         let app: express.Express;
         let promiseStub: sinon.SinonStub<Parameters<typeof prom['promiseToResponse']>>;
         let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
-        let validateStub: sinon.SinonStub;
-        let validateStubHandler: sinon.SinonStub<Parameters<typeof turboval['validateRequest']>>;
+        let validateStub: sinon.SinonStub<Parameters<typeof turboval['validateRequest']>>;
+        let validateStubHandler: sinon.SinonStub<[ReturnType<typeof turboval['validateRequest']>], void>;
         let sandbox: sinon.SinonSandbox;
-        let errorSpy: sinon.SinonSpy;
+        let errorSpy: ErrorSpy;
         let createTripRouter: (apiClient: ManniWatchApiClient) => express.Router;
         before((): void => {
             sandbox = sinon.createSandbox();
             promiseStub = sandbox.stub();
             validateStub = sandbox.stub();
-            errorSpy = sandbox.spy();
+            errorSpy = sandbox.spy() as ErrorSpy;
             apiClientStub = sandbox.createStubInstance(ManniWatchApiClient);
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
             createTripRouter = proxyquire('./trip', {

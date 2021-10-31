@@ -14,6 +14,7 @@ import supertest from 'supertest';
 import { SUCCESS_RESPONSE, SUCCESS_RESPONSE_LENGTH } from './common-test.spec';
 const testIds: string[] = ['-12883', 'kasd'];
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 describe('endpoints/vehicle.ts', (): void => {
     describe('createVehicleRouter', (): void => {
         let app: express.Express;
@@ -64,7 +65,7 @@ describe('endpoints/vehicle.ts', (): void => {
                         .expect('Content-Type', /json/)
                         .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
                         .expect(200, SUCCESS_RESPONSE)
-                        .then((res: supertest.Response): void => {
+                        .then((): void => {
                             expect(apiClientStub.getRouteByVehicleId.callCount).to.equal(1, 'getSettings should only be called once');
                             expect(apiClientStub.getRouteByVehicleId.getCall(0).args).to.deep.equal([testId]);
                         });

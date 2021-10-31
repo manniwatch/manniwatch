@@ -11,9 +11,9 @@ import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 import supertest from 'supertest';
 import * as endpoints from './endpoints';
-import { createTestErrorRequestHandler, NOT_FOUND_RESPONSE, NOT_FOUND_RESPONSE_LENGTH } from './endpoints/common-test.spec';
+import { createTestErrorRequestHandler, ErrorSpy, NOT_FOUND_RESPONSE, NOT_FOUND_RESPONSE_LENGTH } from './endpoints/common-test.spec';
 
-// tslint:disable:no-unused-expression
+/* eslint-disable @typescript-eslint/no-explicit-any */
 interface ITestEndpoint {
     endpointName: string;
     path: string;
@@ -57,7 +57,7 @@ describe('api-routes.ts', (): void => {
             for (const key of routerKeys) {
                 endpointStubs[key] = sandbox.stub();
                 endpointStubs[key].callsFake((): express.RequestHandler => {
-                    return (req: express.Request, res: express.Response, next: express.NextFunction): void => {
+                    return (req: express.Request, res: express.Response): void => {
                         res.json({
                             name: key,
                         });
@@ -96,15 +96,15 @@ describe('api-routes.ts', (): void => {
         });
         describe('setup inner routes', (): void => {
             let app: express.Express;
-            let routeErrorSpy: sinon.SinonSpy;
+            let routeErrorSpy: ErrorSpy;
             before((): void => {
-                routeErrorSpy = sinon.spy();
+                routeErrorSpy = sinon.spy() as ErrorSpy;
             });
             beforeEach((): void => {
                 const route: express.Router = createApiProxyRouter('https://localhost:12345/');
                 app = express();
                 app.use(route);
-                app.use((req: express.Request, res: express.Response, next: express.NextFunction): void => {
+                app.use((req: express.Request, res: express.Response): void => {
                     res.status(404);
                     res.json(NOT_FOUND_RESPONSE);
                 });
@@ -136,7 +136,7 @@ describe('api-routes.ts', (): void => {
                             .get(testEndpoint.path)
                             .expect('Content-Type', /json/)
                             .expect(200, { name: testEndpoint.endpointName })
-                            .then((res: supertest.Response): void => {
+                            .then((): void => {
                                 expect(routeErrorSpy.callCount).to.equal(0);
                             });
                     });

@@ -12,9 +12,9 @@ import Ajv from 'ajv';
 import express from 'express';
 
 /**
- * @param apiClient
- * @param ajvInstance
- * @category Sub Routes
+ * @param {ManniWatchApiClient} apiClient api client
+ * @param {Ajv} ajvInstance Ajv Instance to be used
+ * @returns {express.Router} a express router instance
  */
 export const createTripRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Ajv) => express.Router = (
     apiClient: ManniWatchApiClient,

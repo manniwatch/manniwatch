@@ -6,6 +6,7 @@
 import { StopMode } from '@manniwatch/api-types';
 import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @hidden
  */
@@ -34,7 +35,8 @@ export const NOT_FOUND_RESPONSE: object = { error: true, status: 404 };
 export const NOT_FOUND_RESPONSE_LENGTH = `${JSON.stringify(NOT_FOUND_RESPONSE).length}`;
 export const SUCCESS_RESPONSE: object = { error: false, status: 200 };
 export const SUCCESS_RESPONSE_LENGTH = `${JSON.stringify(SUCCESS_RESPONSE).length}`;
-export const createTestErrorRequestHandler: (innerSpy: sinon.SinonSpy) => ErrorRequestHandler = (
+export type ErrorSpy = sinon.SinonSpy<[(err: any) => void], void>;
+export const createTestErrorRequestHandler: (innerSpy: ErrorSpy) => ErrorRequestHandler = (
     innerSpy: sinon.SinonSpy
 ): ErrorRequestHandler => {
     return (err: any, req: Request, res: Response, next: NextFunction): void => {
