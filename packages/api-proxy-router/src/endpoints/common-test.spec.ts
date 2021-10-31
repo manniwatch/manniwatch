@@ -1,10 +1,12 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
+/*
+ * Package @manniwatch/api-proxy-router
+ * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
 
 import { StopMode } from '@manniwatch/api-types';
 import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @hidden
  */
@@ -21,25 +23,26 @@ export interface ITestEndpoint<K, T> {
     innerMethod: FunctionPropertyNames<T>;
 }
 
-export const delayPromise: <T>(resolveValue: T, delayMs?: number) => Promise<T> =
-    <T>(resolveValue: T, delayMs: number = 50): Promise<T> => {
-        return new Promise<T>((resolve: (v: T) => void): void => {
-            setTimeout((): void => {
-                resolve(resolveValue);
-            }, delayMs);
-        });
-    };
+export const delayPromise: <T>(resolveValue: T, delayMs?: number) => Promise<T> = <T>(resolveValue: T, delayMs = 50): Promise<T> => {
+    return new Promise<T>((resolve: (v: T) => void): void => {
+        setTimeout((): void => {
+            resolve(resolveValue);
+        }, delayMs);
+    });
+};
 
-export const NOT_FOUND_RESPONSE: any = { error: true, status: 404 };
-export const NOT_FOUND_RESPONSE_LENGTH: string = `${JSON.stringify(NOT_FOUND_RESPONSE).length}`;
-export const SUCCESS_RESPONSE: any = { error: false, status: 200 };
-export const SUCCESS_RESPONSE_LENGTH: string = `${JSON.stringify(SUCCESS_RESPONSE).length}`;
-export const createTestErrorRequestHandler: (innerSpy: sinon.SinonSpy) => ErrorRequestHandler =
-    (innerSpy: sinon.SinonSpy): ErrorRequestHandler => {
-        return (err: any, req: Request, res: Response, next: NextFunction): void => {
-            innerSpy(err);
-            res.json(NOT_FOUND_RESPONSE);
-        };
+export const NOT_FOUND_RESPONSE: object = { error: true, status: 404 };
+export const NOT_FOUND_RESPONSE_LENGTH = `${JSON.stringify(NOT_FOUND_RESPONSE).length}`;
+export const SUCCESS_RESPONSE: object = { error: false, status: 200 };
+export const SUCCESS_RESPONSE_LENGTH = `${JSON.stringify(SUCCESS_RESPONSE).length}`;
+export type ErrorSpy = sinon.SinonSpy<[(err: any) => void], void>;
+export const createTestErrorRequestHandler: (innerSpy: ErrorSpy) => ErrorRequestHandler = (
+    innerSpy: sinon.SinonSpy
+): ErrorRequestHandler => {
+    return (err: any, req: Request, res: Response, next: NextFunction): void => {
+        innerSpy(err);
+        res.json(NOT_FOUND_RESPONSE);
     };
+};
 
 export const testStopModes: (StopMode | undefined)[] = ['arrival', 'departure', undefined];

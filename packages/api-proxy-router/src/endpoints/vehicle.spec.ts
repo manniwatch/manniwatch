@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
+/*
+ * Package @manniwatch/api-proxy-router
+ * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
 
 import * as prom from '@donmahallem/turbo';
@@ -12,19 +13,22 @@ import sinon from 'sinon';
 import supertest from 'supertest';
 import { SUCCESS_RESPONSE, SUCCESS_RESPONSE_LENGTH } from './common-test.spec';
 const testIds: string[] = ['-12883', 'kasd'];
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 describe('endpoints/vehicle.ts', (): void => {
     describe('createVehicleRouter', (): void => {
         let app: express.Express;
-        let promiseStub: sinon.SinonStub;
-        let getRouteByVehicleIdStub: sinon.SinonStub;
+        let promiseStub: sinon.SinonStub<Parameters<typeof prom['promiseToResponse']>>;
+        let getRouteByVehicleIdStub: sinon.SinonStub<Parameters<ManniWatchApiClient['getRouteByVehicleId']>>;
         let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
-        let createVehicleRouter: any;
+        let createVehicleRouter: (apiClient: ManniWatchApiClient) => express.Router;
         before((): void => {
             promiseStub = sinon.stub(prom, 'promiseToResponse');
             getRouteByVehicleIdStub = sinon.stub();
             apiClientStub = sinon.createStubInstance(ManniWatchApiClient, {
-                getRouteByVehicleId: getRouteByVehicleIdStub as any,
+                getRouteByVehicleId: getRouteByVehicleIdStub,
             });
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
             createVehicleRouter = proxyquire('./vehicle', {
                 '@donmahallem/turbo': {
                     promiseToResponse: promiseStub,
@@ -33,7 +37,7 @@ describe('endpoints/vehicle.ts', (): void => {
         });
 
         beforeEach((): void => {
-            const route: express.Router = createVehicleRouter(apiClientStub as any);
+            const route: express.Router = createVehicleRouter(apiClientStub);
             app = express();
             app.use('/vehicle', route);
         });
@@ -53,18 +57,17 @@ describe('endpoints/vehicle.ts', (): void => {
                         source
                             .then((responseObject: any): void => {
                                 res.json(responseObject);
-                            });
+                            })
+                            .catch(next);
                     });
                     return supertest(app)
                         .get(`/vehicle/${testId}/route`)
                         .expect('Content-Type', /json/)
                         .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
                         .expect(200, SUCCESS_RESPONSE)
-                        .then((res: supertest.Response): void => {
-                            expect(apiClientStub.getRouteByVehicleId.callCount)
-                                .to.equal(1, 'getSettings should only be called once');
-                            expect(apiClientStub.getRouteByVehicleId.getCall(0).args)
-                                .to.deep.equal([testId]);
+                        .then((): void => {
+                            expect(apiClientStub.getRouteByVehicleId.callCount).to.equal(1, 'getSettings should only be called once');
+                            expect(apiClientStub.getRouteByVehicleId.getCall(0).args).to.deep.equal([testId]);
                         });
                 });
             });

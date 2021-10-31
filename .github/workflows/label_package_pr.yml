@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout code"
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - name: Label the PR
-        uses: donmahallem/lerna-label@v0.1.5
+        uses: donmahallem/lerna-label@v0.1.6
         with:
           github_secret: "${{ secrets.GITHUB_TOKEN }}"
           prefix: "pkg"

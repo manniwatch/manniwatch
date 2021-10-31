@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-router
+/*
+ * Package @manniwatch/api-proxy-router
+ * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
@@ -8,13 +9,11 @@ import NodeCache from 'node-cache';
 import * as endpoints from './endpoints';
 
 /**
- * @category Root Router
- * @param endpoint example: http://test.domain/
+ * @param {string|ManniWatchApiClient} endpoint example: http://test.domain/
+ * @returns {express.Router} a express router instance
  */
 export const createApiProxyRouter: (endpoint: string | ManniWatchApiClient) => express.Router = (endpoint: string): express.Router => {
-    const apiClient: ManniWatchApiClient = (typeof endpoint === 'string') ?
-        new ManniWatchApiClient(endpoint) :
-        endpoint;
+    const apiClient: ManniWatchApiClient = typeof endpoint === 'string' ? new ManniWatchApiClient(endpoint) : endpoint;
     const route: express.Router = express.Router();
     const apiCache: NodeCache = new NodeCache();
 
