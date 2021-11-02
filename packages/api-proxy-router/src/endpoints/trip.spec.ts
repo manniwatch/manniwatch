@@ -87,7 +87,7 @@ describe('endpoints/trip.ts', (): void => {
                 });
             });
         });
-        describe("query '/trip/:id/passages'", (): void => {
+        describe(`query '/trip/:id/passages'`, (): void => {
             afterEach((): void => {
                 expect(validateStubHandler.callCount).to.equal(1, 'should be called once');
                 expect(apiClientStub.getStopInfo.callCount).to.equal(0, 'getStopInfo should not be called');

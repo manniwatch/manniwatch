@@ -43,7 +43,7 @@ describe('endpoints/settings.ts', (): void => {
             sandbox.restore();
             fakeTimer.restore();
         });
-        describe("query ''", (): void => {
+        describe(`query ''`, (): void => {
             it('should proxy the request and cache the response', async (): Promise<void> => {
                 getSettingsStub.resolves(SUCCESS_RESPONSE);
                 fakeCache.get.returns(undefined);
@@ -52,7 +52,7 @@ describe('endpoints/settings.ts', (): void => {
                     .expect('Content-Type', /json/)
                     .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
                     .expect(200, SUCCESS_RESPONSE)
-                    .expect('ETag', 'W/"f809b3e2ff34d869ee123b2108961aa6"')
+                    .expect('ETag', 'W/`f809b3e2ff34d869ee123b2108961aa6`')
                     .expect('Last-Modified', new Date(30000).toUTCString())
                     .then((): void => {
                         expect(apiClientStub.getSettings.callCount).to.equal(1, 'getSettings should only be called once');
@@ -71,7 +71,7 @@ describe('endpoints/settings.ts', (): void => {
                     .get('/settings')
                     .expect('Content-Type', /json/)
                     .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
-                    .expect('ETag', 'W/"testtag"')
+                    .expect('ETag', 'W/`testtag`')
                     .expect('Last-Modified', testLastModified.toUTCString())
                     .expect(200, SUCCESS_RESPONSE)
                     .then((): void => {
