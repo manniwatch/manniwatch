@@ -64,7 +64,7 @@ export class OlStaticMapDirective extends AbstractOlMapDirective implements OnCh
     }
 
     public updateMapData(mapData: IStaticMapData): void {
-        // tslint:disable-next-line:triple-equals
+        // eslint-disable-next-line eqeqeq
         if (mapData == undefined) {
             return;
         }
@@ -77,7 +77,7 @@ export class OlStaticMapDirective extends AbstractOlMapDirective implements OnCh
         }
         NgZone.assertNotInAngularZone();
         this.blur = mapData.map.blur || false;
-        // tslint:disable-next-line:triple-equals
+        // eslint-disable-next-line eqeqeq
         if (this.getMap() && mapData.map.center != undefined) {
             this.panMapTo(OlUtil.convertArcMSToCoordinate(mapData.map.center), mapData.map.zoomLevel);
         }

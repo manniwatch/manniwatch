@@ -4,7 +4,7 @@
 import { ApiService, IElectronInterface, IEnvironmentBase } from '@manniwatch/client-types';
 
 declare global {
-    // tslint:disable-next-line:interface-name
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     interface Window {
         electron?: {
             manniwatch?: IElectronInterface;

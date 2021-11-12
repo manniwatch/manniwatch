@@ -11,9 +11,9 @@ import {
   formatDistanceToNow as dateFormatDistanceToNow,
 } from 'date-fns';
 import { TripPassagesListItemComponent } from './trip-passages-list-item.component';
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
+/* eslint-disable max-classes-per-file */
+/* eslint-disable @angular-eslint/component-selector */
+/* eslint-disable @angular-eslint/directive-selector */
 @Component({
   selector: 'mat-icon',
   template: '<ng-content></ng-content>',
@@ -41,8 +41,8 @@ export class TestParentComponent {
   public testPassage: ITripPassage;
 }
 
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
+/* eslint-enable @angular-eslint/component-selector */
+/* eslint-enable @angular-eslint/directive-selector */
 
 const testPassages: ITripPassage[] = [{
   actualTime: '12:20',
@@ -95,7 +95,7 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', (): 
         cmp = cmpFixture.componentInstance;
       });
       describe('departed', (): void => {
-        // tslint:disable-next-line:no-null-keyword
+        // eslint-disable-next-line no-null/no-null
         [null, undefined, { status: VEHICLE_STATUS.STOPPING }]
           .forEach((testValue: any): void => {
             it(`should return false for:${JSON.stringify(testValue)}`, (): void => {
@@ -109,7 +109,7 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', (): 
         });
       });
       describe('stopping', (): void => {
-        // tslint:disable-next-line:no-null-keyword
+        // eslint-disable-next-line no-null/no-null
         [null, undefined, { status: VEHICLE_STATUS.DEPARTED }]
           .forEach((testValue: any): void => {
             it(`should return false for:${JSON.stringify(testValue)}`, (): void => {

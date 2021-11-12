@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 export const LIGHT_THEME: any = {
     "version": 8,
     "name": "Bright",

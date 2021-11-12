@@ -57,7 +57,7 @@ export class SettingsService {
         return this.httpClient
             .get(configPath)
             .pipe(tap((resp: IConfig): void => {
-                // tslint:disable-next-line:no-console
+                // eslint-disable-next-line no-console
                 console.info('Config loaded');
             }), catchError((err: any): Observable<IConfig> => {
                 console.group(`Unable to load config`);

@@ -7,9 +7,9 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import * as dateFns from 'date-fns';
 import { DepartureListItemComponent } from './departure-list-item.component';
 
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
+/* eslint-disable max-classes-per-file */
+/* eslint-disable @angular-eslint/component-selector */
+/* eslint-disable @angular-eslint/directive-selector */
 @Component({
   selector: 'mat-icon',
   template: '<ng-content></ng-content>',
@@ -31,8 +31,8 @@ export class TestRouterLinkDirective {
   public routerLink: string;
 }
 
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
+/* eslint-enable @angular-eslint/component-selector */
+/* eslint-enable @angular-eslint/directive-selector */
 describe('src/app/modules/stop/departure-list-item.component', (): void => {
   describe('DepartureListItemComponent', (): void => {
     beforeEach(waitForAsync((): void => {

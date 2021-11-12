@@ -96,7 +96,6 @@
     "@typescript-eslint/eslint-plugin": "4.28.2",
     "@typescript-eslint/parser": "4.28.2",
     "apply-loader": "2.0.0",
-    "codelyzer": "6.0.2",
     "eslint": "^7.26.0",
     "jasmine-core": "3.10.1",
     "jasmine-spec-reporter": "7.0.0",

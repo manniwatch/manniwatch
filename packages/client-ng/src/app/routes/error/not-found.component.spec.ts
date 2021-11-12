@@ -8,9 +8,9 @@ import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NotFoundComponent } from './not-found.component';
 
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
+/* eslint-disable max-classes-per-file */
+/* eslint-disable @angular-eslint/component-selector */
+/* eslint-disable @angular-eslint/directive-selector */
 @Component({
     selector: 'mat-icon',
     template: '<div></div>',
@@ -42,8 +42,8 @@ class TestMatNavListComponent {
 class TestNotFoundMessageSwitchComponent {
 }
 
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
+/* eslint-enable @angular-eslint/component-selector */
+/* eslint-enable @angular-eslint/directive-selector */
 
 describe('src/modules/error/not-found.component.ts', (): void => {
     describe('NotFoundComponent', (): void => {

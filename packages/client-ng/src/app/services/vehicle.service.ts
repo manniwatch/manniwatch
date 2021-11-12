@@ -58,7 +58,7 @@ export const createVehicleDiff: <T extends TimestampedVehicleLocation[]>(previou
             removed: [],
             unchanged: [],
         };
-        // tslint:disable-next-line:triple-equals
+        // eslint-disable-next-line eqeqeq
         const oldDiff: IVehicleDiff = (previousState == undefined) ? {
             added: [],
             changed: [],

@@ -28,7 +28,7 @@ export const ELECTRON_API: InjectionToken<ApiService> = new InjectionToken<ApiSe
 export class ElectronApiService implements RootApiService {
 
     public constructor(@Inject(ELECTRON_API) private readonly service: ApiService) {
-        // tslint:disable-next-line:triple-equals
+        // eslint-disable-next-line eqeqeq
         if (service == undefined) {
             throw new Error('No electron config provided');
         }

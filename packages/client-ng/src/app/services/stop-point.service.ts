@@ -9,7 +9,7 @@ import { debounceTime, map, retryWhen, shareReplay, tap, withLatestFrom } from '
 import { ApiService } from './api.service';
 import { AppNotificationService } from './app-notification.service';
 
-// tslint:disable:max-classes-per-file
+/* eslint-disable max-classes-per-file */
 export class StopPointLoadSubscriber extends Subscriber<IStopLocation[]> {
 
     public constructor(private service: StopPointService) {

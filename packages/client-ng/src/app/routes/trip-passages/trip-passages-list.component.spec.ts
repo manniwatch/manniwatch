@@ -15,9 +15,9 @@ import {
 import { TripInfoWithId } from '@manniwatch/client-types';
 import { TripPassagesListComponent } from './trip-passages-list.component';
 
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
+/* eslint-disable max-classes-per-file */
+/* eslint-disable @angular-eslint/component-selector */
+/* eslint-disable @angular-eslint/directive-selector */
 @Component({
   selector: 'mat-nav-list',
   template: '<ng-content></ng-content>',
@@ -39,8 +39,8 @@ export class TestTripPassagesListItemComponent {
 export class TestParentComponent {
   public testPassage: ITripPassages;
 }
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
+/* eslint-enable @angular-eslint/component-selector */
+/* eslint-enable @angular-eslint/directive-selector */
 const testActualPassages: IActualTripPassage[] = [{
   actualTime: '09:30',
   status: VEHICLE_STATUS.STOPPING,
@@ -120,7 +120,7 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
       });
       describe('set - tripInfo', (): void => {
         it('should set passages to an empty array for null', (): void => {
-          // tslint:disable-next-line:no-null-keyword
+          // eslint-disable-next-line no-null/no-null
           cmp.tripInfo = null;
           expect(cmp.passages).toEqual([]);
         });
@@ -181,7 +181,7 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
         cmp = cmpFixture.componentInstance;
       });
       describe('hasPassages()', (): void => {
-        // tslint:disable-next-line:no-null-keyword
+        // eslint-disable-next-line no-null/no-null
         [undefined, null, [], 1, 'k'].forEach((testValue: any): void => {
           it(`should return false for passages being "${testValue}"`, (): void => {
             cmp.passages = testValue;

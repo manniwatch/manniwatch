@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 export const DARK_THEME: any = {
     "version": 8,
     "name": "Dark Matter",
