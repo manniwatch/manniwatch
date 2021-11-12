@@ -10,12 +10,13 @@
       ],
       "parserOptions": {
         "project": [
-          "tsconfig.json",
-          "e2e/tsconfig.json"
+          "./tsconfig.json",
+          "./e2e/tsconfig.json"
         ],
         "createDefaultProgram": true
       },
       "extends": [
+        "@donmahallem/eslint-config",
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
