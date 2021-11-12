@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { waitForAsync, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
@@ -15,7 +17,7 @@ describe('src/app/modules/stop/stop-info.resolver', (): void => {
         let getSpy: jasmine.Spy<jasmine.Func>;
         let nextSpy: jasmine.Spy<jasmine.Func>;
         let navigateSpy: jasmine.Spy<jasmine.Func>;
-        const testId: string = '239jmcntest';
+        const testId = '239jmcntest';
         beforeAll((): void => {
             getSpy = jasmine.createSpy();
             navigateSpy = jasmine.createSpy();
@@ -56,7 +58,7 @@ describe('src/app/modules/stop/stop-info.resolver', (): void => {
                 });
                 afterEach((): void => {
                     expect(nextSpy.calls.count()).toEqual(1);
-                    expect(nextSpy.calls.first().args[0] as any)
+                    expect(nextSpy.calls.first().args[0] )
                         .toEqual([testId]);
                     expect(navigateSpy.calls.count()).toEqual(0);
                 });

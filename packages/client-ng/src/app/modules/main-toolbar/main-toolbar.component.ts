@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { Component, ViewChild } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router, RouterEvent } from '@angular/router';
@@ -37,11 +39,11 @@ export class MainToolbarComponent {
     public set searchOpen(open: boolean) {
         this.mSearchOpen = open;
     }
-    public closeable: boolean = false;
+    public closeable = false;
     @ViewChild(ToolbarSearchBoxComponent)
     private searchBoxComponent: ToolbarSearchBoxComponent;
 
-    private mSearchOpen: boolean = false;
+    private mSearchOpen = false;
 
     constructor(private sidebarService: SidebarService,
         private router: Router) {

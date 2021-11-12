@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -53,14 +55,14 @@ export class WebApiService implements ApiService {
     public getStopPointPassages(stopPointId: string): Observable<IStopPassage> {
         return this.http.get<IStopPassage>(`${this.baseUrl()}stopPoint/${stopPointId}/passages`);
     }
-    public getVehicleLocations(lastUpdate: number = 0): Observable<IVehicleLocationList> {
+    public getVehicleLocations(lastUpdate = 0): Observable<IVehicleLocationList> {
         return this.http.get<IVehicleLocationList>(`${this.baseUrl()}geo/vehicles`, {
             params: {
                 lastUpdate: `${lastUpdate}`,
             },
         });
     }
-    public getVehicleLocation(vehicleId: string, lastUpdate: number = 0): Observable<IVehicleLocation> {
+    public getVehicleLocation(vehicleId: string, lastUpdate = 0): Observable<IVehicleLocation> {
         return this.http.get<IVehicleLocation>(`${this.baseUrl()}geo/vehicle/${vehicleId}`, {
             params: {
                 lastUpdate: `${lastUpdate}`,

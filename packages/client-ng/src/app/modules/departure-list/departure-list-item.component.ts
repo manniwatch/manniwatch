@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import {
     ChangeDetectionStrategy,
@@ -36,13 +38,14 @@ export class DepartureListItemComponent {
     /**
      * The time of arrival
      */
-    private mTime: string = '';
+    private mTime = '';
 
     /**
      * Sets the departure
+     *
      * @param deps The departures
      */
-    @Input('departure')
+    @Input()
     public set departure(deps: IDeparture) {
         this.mDeparture = deps;
         this.mDelay = this.calculateDelay(deps);
@@ -51,6 +54,7 @@ export class DepartureListItemComponent {
 
     /**
      * gets the departure
+     *
      * @returns the departure or undefined
      */
     public get departure(): IDeparture {
@@ -77,6 +81,7 @@ export class DepartureListItemComponent {
 
     /**
      * Returns the DepartureStatus
+     *
      * @returns vehicle status {@VEHICLE_STATUS}
      */
     public get status(): VEHICLE_STATUS {
@@ -99,6 +104,7 @@ export class DepartureListItemComponent {
 
     /**
      * Returns the delay
+     *
      * @returns false or an integer except 0
      */
     public get delay(): boolean | number {
@@ -107,6 +113,7 @@ export class DepartureListItemComponent {
 
     /**
      * Calculates the delay
+     *
      * @param data a number except 0 or false
      */
     public calculateDelay(data: IDeparture): false | number {

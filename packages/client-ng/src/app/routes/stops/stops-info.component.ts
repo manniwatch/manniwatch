@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -24,6 +26,7 @@ export class StopsInfoComponent {
     }
     /**
      * The stops to be displayed
+     *
      * @returns a list of stops to be used
      */
     public get stops(): IStopLocation[] {

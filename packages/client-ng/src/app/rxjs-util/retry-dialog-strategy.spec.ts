@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { from, merge, throwError, Observable, Subject } from 'rxjs';
 import { delay, mergeMap, retryWhen, tap } from 'rxjs/operators';
@@ -48,7 +50,7 @@ describe('src/app/rxjs-util/retry-dialog-strategy.ts', (): void => {
             });
             describe('Should be retried', (): void => {
                 it('should open the dialog and succeed after first retry', (done: DoneFn): void => {
-                    let tries: number = 0;
+                    let tries = 0;
                     from([1])
                         .pipe(
                             tap((value: number): void => {
@@ -67,7 +69,7 @@ describe('src/app/rxjs-util/retry-dialog-strategy.ts', (): void => {
                     afterClosedSubject.next(true);
                 });
                 it('should not open dialogs twice', (done: DoneFn): void => {
-                    let tries: number = 0;
+                    let tries = 0;
                     from([1])
                         .pipe(
                             mergeMap((value: number): Observable<any> => {

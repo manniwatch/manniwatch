@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
@@ -18,7 +20,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     public get results(): Observable<IStopLocation[]> {
         return this.resultObservable;
     }
-    public data: string = '';
+    public data = '';
     private searchParamSubscription: Subscription;
     private resultObservable: Observable<IStopLocation[]> = NEVER;
     public constructor(private activatedRoute: ActivatedRoute, private titleService: Title) {

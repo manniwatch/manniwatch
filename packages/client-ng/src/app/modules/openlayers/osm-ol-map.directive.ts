@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import {
     Directive,
@@ -77,6 +79,7 @@ export abstract class OsmOlMapDirective extends BaseOlMapDirective<OSM> {
 
     /**
      * Selected theme
+     *
      * @param theme theme to set
      */
     public applyTheme(theme: Theme): void {

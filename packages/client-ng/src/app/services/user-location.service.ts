@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, EMPTY, Observable, Subscriber } from 'rxjs';
@@ -43,7 +45,7 @@ export class UserLocationService {
             });
     }
 
-    public createPositionRequest(timeout: number = 10000, highAccuracy: boolean = false): Observable<GeolocationPosition> {
+    public createPositionRequest(timeout = 10000, highAccuracy = false): Observable<GeolocationPosition> {
         return new Observable<any>((subscriber: Subscriber<GeolocationPosition>): void => {
 
             const geoSuccess: (position: GeolocationPosition) => void = (position: GeolocationPosition): void => {

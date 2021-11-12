@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandler, Injectable, Injector } from '@angular/core';
@@ -17,6 +19,7 @@ export class AppErrorHandler implements ErrorHandler {
     /**
      * If the browser supports the online tag it will
      * returns its value. otherwise it will always be true
+     *
      * @returns true if the navigator is offline
      */
     public isClientOffline(): boolean {
@@ -25,6 +28,8 @@ export class AppErrorHandler implements ErrorHandler {
 
     /**
      * Handles all errors
+     *
+     * @param error
      */
     public handleError(error: Error | HttpErrorResponse | any): void {
         // The notification service
@@ -45,6 +50,7 @@ export class AppErrorHandler implements ErrorHandler {
 
     /**
      * Handles HttpErrorResponses
+     *
      * @param errorResponse the response to handle
      * @param notificationService the notification service to be used
      */

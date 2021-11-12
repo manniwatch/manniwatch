@@ -1,8 +1,11 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
+
 import { IVehicleLocation } from '@manniwatch/api-types';
+import { FeatureLike } from 'ol/Feature';
 import { Coordinate } from 'ol/coordinate';
 import { fromLonLat } from 'ol/proj';
 import CircleStyle from 'ol/style/Circle';
@@ -11,7 +14,6 @@ import Icon from 'ol/style/Icon';
 import Stroke from 'ol/style/Stroke';
 import Style, { StyleLike } from 'ol/style/Style';
 import Text from 'ol/style/Text';
-import { FeatureLike } from 'ol/Feature';
 import { TrapezeCoord } from './trapeze-coord';
 
 const DEFAULT_STYLES: { [key: string]: StyleLike; } = {
@@ -121,7 +123,7 @@ const DEFAULT_STYLES: { [key: string]: StyleLike; } = {
 };
 export class OlUtil {
 
-    public static createVehicleMarkerStyle(selected: boolean = false): (p0: FeatureLike, p1: number) => Style {
+    public static createVehicleMarkerStyle(selected = false): (p0: FeatureLike, p1: number) => Style {
         return (p0: FeatureLike, p1: number): Style => {
             const vehicle: IVehicleLocation = p0.get('vehicle');
             // eslint-disable-next-line eqeqeq
@@ -148,7 +150,7 @@ export class OlUtil {
             return undefined;
         };
     }
-    public static createStopMarkerStyle(selected: boolean = false): Style {
+    public static createStopMarkerStyle(selected = false): Style {
         return selected ? DEFAULT_STYLES.stop_selected as Style : DEFAULT_STYLES.stop as Style;
     }
     public static createStyleByFeature(feature: FeatureLike): StyleLike {

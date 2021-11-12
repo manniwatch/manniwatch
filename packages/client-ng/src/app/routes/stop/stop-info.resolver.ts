@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -19,6 +21,7 @@ export class StopInfoResolver implements Resolve<IStopPassage> {
 
     /**
      * Constructor
+     *
      * @param api the {@ApiService}
      * @param router the {@Router}
      */
@@ -26,6 +29,7 @@ export class StopInfoResolver implements Resolve<IStopPassage> {
 
     /**
      * Resolves the stop information via the stopId param inside the route
+     *
      * @param route The RouteSnapshot
      * @param state The RouterState
      */

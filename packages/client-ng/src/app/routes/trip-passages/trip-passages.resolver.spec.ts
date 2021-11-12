@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { waitForAsync, TestBed } from '@angular/core/testing';
 import { of, throwError, Observable } from 'rxjs';
@@ -12,7 +14,7 @@ import { TripPassagesUtil } from './trip-util';
 describe('src/app/modules/trip-passages/trip-passages.resolver', (): void => {
     describe('TripPassagesResolver', (): void => {
         let resolver: TripPassagesResolver;
-        const testId: string = '239jmcntest';
+        const testId = '239jmcntest';
         let convertResponseStub: jasmine.Spy<jasmine.Func>;
         let handleErrorStub: jasmine.Spy<jasmine.Func>;
         let convertResponseOperatorStub: jasmine.Spy<jasmine.Func>;

@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { Component, VERSION } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -29,6 +31,7 @@ export class SidebarComponent {
 
     /**
      * The app version found inside the package
+     *
      * @returns the package version
      */
     public get appVersion(): string {
@@ -37,6 +40,7 @@ export class SidebarComponent {
 
     /**
      * The @angular/core version used
+     *
      * @returns Version
      */
     public get angularVersion(): string {

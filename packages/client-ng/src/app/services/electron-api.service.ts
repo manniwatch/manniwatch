@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { Inject, InjectionToken } from '@angular/core';
 import {
@@ -64,11 +66,11 @@ export class ElectronApiService implements RootApiService {
         return from(this.service.getStopPointPassages(stopPointId, mode, startTime, timeFrame));
     }
 
-    public getVehicleLocations(lastUpdate: number = 0): Observable<IVehicleLocationList> {
+    public getVehicleLocations(lastUpdate = 0): Observable<IVehicleLocationList> {
         return from(this.service.getVehicleLocations('RAW', lastUpdate));
     }
 
-    public getVehicleLocation(vehicleId: string, lastUpdate: number = 0): Observable<IVehicleLocation> {
+    public getVehicleLocation(vehicleId: string, lastUpdate = 0): Observable<IVehicleLocation> {
         return EMPTY; // from(this.service.getVehicleLocation(vehicleId, lastUpdate));
     }
 

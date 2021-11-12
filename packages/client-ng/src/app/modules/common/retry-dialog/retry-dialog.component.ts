@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -21,6 +23,7 @@ export interface IRetryDialogData {
 export class RetryDialogComponent {
     /**
      * Constructor
+     *
      * @param dialogRef Reference to the Dialog Component
      * @param data Additional data that can be provided to the Dialog
      */

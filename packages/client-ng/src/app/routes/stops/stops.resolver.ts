@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -21,7 +23,10 @@ export class StopsResolver implements Resolve<IStopLocations> {
 
     /**
      * Constructor
+     *
      * @param api the {@ApiService}
+     * @param router
+     * @param dialog
      */
     public constructor(private api: ApiService,
         private router: Router,
@@ -29,6 +34,7 @@ export class StopsResolver implements Resolve<IStopLocations> {
 
     /**
      * Resolves the station response
+     *
      * @param route The activated RouteSnapshot
      * @param state The router state snapshot
      * @returns An observable that resolves the {@StationsResponse}

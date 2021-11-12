@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import {
     Component,
@@ -16,7 +18,7 @@ import { IDeparture } from '@manniwatch/api-types';
 export class RouteListComponent {
 
     private mDepartures: any[] = [];
-    @Input('routes')
+    @Input()
     public set routes(deps: any[]) {
         this.mDepartures = deps ? deps : [];
     }

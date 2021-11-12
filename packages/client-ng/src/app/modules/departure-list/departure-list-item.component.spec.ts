@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { Component, Directive, Input } from '@angular/core';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
@@ -202,7 +204,7 @@ describe('src/app/modules/stop/departure-list-item.component', (): void => {
           ];
         passages.forEach((value: any): void => {
           it(`should convert the "${value.value}" to "${value.result}"`, (): void => {
-            expect(cmp.calculateDelay(value.value as any)).toEqual(value.result);
+            expect(cmp.calculateDelay(value.value )).toEqual(value.result);
           });
         });
       });

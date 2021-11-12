@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import {
     ChangeDetectionStrategy,
@@ -25,7 +27,7 @@ export class DepartureListComponent {
     /**
      * set the departures
      */
-    @Input('departures')
+    @Input()
     public set departures(deps: IDeparture[]) {
         this.mDepartures = deps ? deps : [];
     }
@@ -39,6 +41,7 @@ export class DepartureListComponent {
 
     /**
      * Returns if the atleast one departure was provided
+     *
      * @returns true if there is atleast one departure
      */
     public hasDepartures(): boolean {
