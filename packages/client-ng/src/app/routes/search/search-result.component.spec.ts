@@ -77,7 +77,7 @@ describe('src/modules/routing/search/search-result.resolver.ts', (): void => {
         });
 
         it('should create the component', waitForAsync((): void => {
-            expect(testResolver).toBeTruthy();
+            void expect(testResolver).toBeTruthy();
         }));
     });
 });

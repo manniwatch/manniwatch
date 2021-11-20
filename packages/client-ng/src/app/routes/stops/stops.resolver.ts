@@ -42,18 +42,20 @@ export class StopsResolver implements Resolve<IStopLocations> {
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IStopLocations> {
         return this.api
             .getStopLocations()
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             .pipe(catchError((err: any | HttpErrorResponse): Observable<IStopLocations> => {
-                if (err.status === 404) {
+                if (err?.status === 404) {
                     this.router.navigate(['error', 'not-found']);
                     return EMPTY;
                 } else {
                     return throwError(err);
                 }
             }),
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 retryWhen(retryDialogStrategy((error: any | HttpErrorResponse): any =>
                     this.dialog.open(RetryDialogComponent, {
                         data: {
-                            code: error.status ? error.status : undefined,
+                            code: error?.status,
                             message: 'test',
                         },
                     }))));

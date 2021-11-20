@@ -43,7 +43,7 @@ describe('src/app/modules/stop/departure-list.component', (): void => {
     it('should create the app', waitForAsync((): void => {
       const fixture: ComponentFixture<DepartureListComponent> = TestBed.createComponent(DepartureListComponent);
       const app: DepartureListComponent = fixture.debugElement.componentInstance;
-      expect(app).toBeTruthy();
+      void expect(app).toBeTruthy();
     }));
     describe('layout', (): void => {
       it('needs to be implemented');
@@ -73,7 +73,7 @@ describe('src/app/modules/stop/departure-list.component', (): void => {
           testPassages.forEach((testPassage: ITestDepartures): void => {
             it(`should get the correct value for "${testPassage.value}"`, (): void => {
               (cmp as any).mDepartures = testPassage.value;
-              expect(cmp.departures).toEqual(testPassage.result);
+              void expect(cmp.departures).toEqual(testPassage.result);
             });
           });
         });
@@ -81,7 +81,7 @@ describe('src/app/modules/stop/departure-list.component', (): void => {
           testPassages.forEach((testPassage: ITestDepartures): void => {
             it(`should set the correct value for "${testPassage.value}"`, (): void => {
               cmp.departures = testPassage.value;
-              expect((cmp as any).mDepartures).toEqual(testPassage.result);
+              void expect((cmp as any).mDepartures).toEqual(testPassage.result);
             });
           });
         });
@@ -103,7 +103,7 @@ describe('src/app/modules/stop/departure-list.component', (): void => {
         data.forEach((testData: { value: any, result: boolean }): void => {
           it(`should return "${testData.result}" for '${JSON.stringify(testData.value)}`, (): void => {
             (cmp as any).mDepartures = testData.value;
-            expect(cmp.hasDepartures()).toEqual(testData.result);
+            void expect(cmp.hasDepartures()).toEqual(testData.result);
           });
         });
       });

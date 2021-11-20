@@ -102,12 +102,12 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', (): 
           .forEach((testValue: any): void => {
             it(`should return false for:${JSON.stringify(testValue)}`, (): void => {
               cmp.passage = testValue;
-              expect(cmp.departed).toBeFalse();
+              void expect(cmp.departed).toBeFalse();
             });
           });
         it('should return true for status being DEPARTED ', (): void => {
           cmp.passage = { status: VEHICLE_STATUS.DEPARTED } as ITripPassage;
-          expect(cmp.departed).toBeTrue();
+          void expect(cmp.departed).toBeTrue();
         });
       });
       describe('stopping', (): void => {
@@ -116,12 +116,12 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', (): 
           .forEach((testValue: any): void => {
             it(`should return false for:${JSON.stringify(testValue)}`, (): void => {
               cmp.passage = testValue;
-              expect(cmp.stopping).toBeFalse();
+              void expect(cmp.stopping).toBeFalse();
             });
           });
         it('should return true for status being STOPPING', (): void => {
           cmp.passage = { status: VEHICLE_STATUS.STOPPING } as ITripPassage;
-          expect(cmp.stopping).toBeTrue();
+          void expect(cmp.stopping).toBeTrue();
         });
       });
       describe('passageTime', (): void => {
@@ -135,31 +135,31 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', (): 
         });
         it('should return "No departure time" for no provided passage', (): void => {
           cmp.passage = undefined;
-          expect(cmp.passageTime).toEqual('No departure time');
+          void expect(cmp.passageTime).toEqual('No departure time');
         });
         it('should return full time for provided plannedTime', (): void => {
           cmp.passage = {
             plannedTime: '14:00',
           } as ITripPassage;
-          expect(cmp.passageTime).toEqual(dateFormat(new Date(2013, 9, 23, 14), 'p'));
+          void expect(cmp.passageTime).toEqual(dateFormat(new Date(2013, 9, 23, 14), 'p'));
         });
         it('should return "in 5 min" for provided plannedTime', (): void => {
           cmp.passage = {
             plannedTime: '12:05',
           } as ITripPassage;
-          expect(cmp.passageTime).toEqual(dateFormatDistanceToNow(new Date(2013, 9, 23, 12, 5), { addSuffix: true }));
+          void expect(cmp.passageTime).toEqual(dateFormatDistanceToNow(new Date(2013, 9, 23, 12, 5), { addSuffix: true }));
         });
         it('should return full time for provided actualTime', (): void => {
           cmp.passage = {
             actualTime: '15:00',
           } as ITripPassage;
-          expect(cmp.passageTime).toEqual(dateFormat(new Date(2013, 9, 23, 15), 'p'));
+          void expect(cmp.passageTime).toEqual(dateFormat(new Date(2013, 9, 23, 15), 'p'));
         });
         it('should return "in 5 min" for provided actualTime', (): void => {
           cmp.passage = {
             actualTime: '12:03',
           } as ITripPassage;
-          expect(cmp.passageTime).toEqual(dateFormatDistanceToNow(new Date(2013, 9, 23, 12, 3), { addSuffix: true }));
+          void expect(cmp.passageTime).toEqual(dateFormatDistanceToNow(new Date(2013, 9, 23, 12, 3), { addSuffix: true }));
         });
       });
     });
@@ -179,8 +179,8 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', (): 
           cmp.passage = testPassage;
           cmpFixture.detectChanges();
           const titleElement: HTMLElement = cmpFixture.debugElement.query(By.css('h4')).nativeElement;
-          expect(titleElement.innerText).toEqual(testPassage.stop.name);
-          expect(routerLinkCmp.routerLink).toEqual(['/stop', testPassage.stop.shortName]);
+          void expect(titleElement.innerText).toEqual(testPassage.stop.name);
+          void expect(routerLinkCmp.routerLink).toEqual(['/stop', testPassage.stop.shortName]);
         });
       });
     });
@@ -197,7 +197,7 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', (): 
         it(`layout should be updated with correct values with passage seq_num "${testPassage.stop_seq_num}"`, (): void => {
           parentCmp.testPassage = testPassage;
           parentFixture.detectChanges();
-          expect(cmp.passage).toEqual(testPassage);
+          void expect(cmp.passage).toEqual(testPassage);
         });
       });
     });

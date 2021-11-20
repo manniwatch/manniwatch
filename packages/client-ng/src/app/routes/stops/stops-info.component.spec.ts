@@ -84,7 +84,7 @@ describe('src/modules/stops/stops-info.component.ts', (): void => {
         }));
 
         it('should create the app', waitForAsync((): void => {
-            expect(app).toBeTruthy();
+            void expect(app).toBeTruthy();
         }));
         describe('layout', (): void => {
             it('needs to done');
@@ -94,24 +94,24 @@ describe('src/modules/stops/stops-info.component.ts', (): void => {
             describe('constructor', (): void => {
                 it('should sort the provided stops', (): void => {
                     const stops: any[] = (app as any).mStops;
-                    expect(stops[0].name).toEqual('aa');
-                    expect(stops[1].name).toEqual('ab');
-                    expect(stops[2].name).toEqual('b');
-                    expect(stops[3].name).toEqual('c');
+                    void expect(stops[0].name).toEqual('aa');
+                    void expect(stops[1].name).toEqual('ab');
+                    void expect(stops[2].name).toEqual('b');
+                    void expect(stops[3].name).toEqual('c');
                 });
             });
             describe('stops', (): void => {
                 describe('getter', (): void => {
                     it('should return mStops', (): void => {
                         const stops: any[] = (app as any).mStops;
-                        expect(app.stops).toEqual(stops);
+                        void expect(app.stops).toEqual(stops);
                     });
                 });
             });
             describe('hasHeader(idx)', (): void => {
                 [true, false, true, true].forEach((responseValue: boolean, idx: number): void => {
-                    it(`should return ${responseValue} for idx: ${idx}`, (): void => {
-                        expect(app.hasHeader(idx)).toEqual(responseValue);
+                    it(`should return ${responseValue ? 'true' : 'false'} for idx: ${idx}`, (): void => {
+                        void expect(app.hasHeader(idx)).toEqual(responseValue);
                     });
                 });
             });

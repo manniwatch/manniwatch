@@ -100,19 +100,19 @@ describe('src/app/routes/trip-passages/trip-passage.component', (): void => {
           .query(By.css('div.not-found'));
       });
       it('should display "no passages" disclaimer', (): void => {
-        expect(listDebugElement).toBeDefined();
-        expect(mapHeaderDebugElement).toBeDefined();
-        expect(notFoundDebugElement).toBeNull();
+        void expect(listDebugElement).toBeDefined();
+        void expect(mapHeaderDebugElement).toBeDefined();
+        void expect(notFoundDebugElement).toBeNull();
         const listCmp: TestTripPassagesListComponent = listDebugElement.componentInstance;
         const mapHeaderCmp: TestStaticMapDirective = mapHeaderDebugElement.componentInstance;
-        expect(listCmp.tripInfo).toEqual(testStatus.tripInfo);
-        expect(mapHeaderCmp.mapData).toEqual(cmp.headerMapData);
+        void expect(listCmp.tripInfo).toEqual(testStatus.tripInfo);
+        void expect(mapHeaderCmp.mapData).toEqual(cmp.headerMapData);
       });
     });
     describe('with no status emitted', (): void => {
       it('should display no content', (): void => {
         cmpFixture.detectChanges();
-        expect(cmpFixture.debugElement.nativeElement.innerText).toEqual('');
+        void expect(cmpFixture.debugElement.nativeElement.innerText).toEqual('');
       });
     });
   });

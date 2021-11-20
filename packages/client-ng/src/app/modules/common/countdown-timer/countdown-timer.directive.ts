@@ -49,7 +49,7 @@ export class CountdownTimerDirective implements OnInit, OnDestroy {
                 if (diff <= 0) {
                     return this.placeholder;
                 } else {
-                    return Math.ceil(diff / 1000.0) + 's';
+                    return `${Math.ceil(diff / 1000.0)}s`;
                 }
             }),
                 distinctUntilChanged())

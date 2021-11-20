@@ -136,10 +136,10 @@ export class VehicleService {
                                     }
                                     prev.set(cur.id, cur);
                                     return prev;
-                                }, new Map());
+                                }, new Map<string, TimestampedVehicles>());
                         const filterInvalid: TimestampedVehicleLocation[] =
                             Array.from(reducedVehicles.values())
-                                .filter((vehState: any): boolean => {
+                                .filter((vehState?: { isDeleted: boolean, latitude?: number, longitude?: number }): boolean => {
                                     if (vehState) {
                                         if (vehState.isDeleted === true) {
                                             return false;
@@ -149,13 +149,14 @@ export class VehicleService {
                                         }
                                     }
                                     return false;
-                                }) as any;
+                                }) as TimestampedVehicleLocation[];
                         return {
                             lastUpdate: value.lastUpdate,
                             vehicles: filterInvalid,
                         };
                     }), catchError((err: any): Observable<IData> =>
                         of(Object.assign({
+                            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                             error: err,
                         }, previousData))))));
     }

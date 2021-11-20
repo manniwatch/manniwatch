@@ -52,8 +52,8 @@ describe('src/modules/error/not-found-msg-switch.component.ts', (): void => {
             infoBoxDebugElement = cmpFixture.debugElement.query(By.css('div.info'));
         }));
         it('should create the app', waitForAsync((): void => {
-            expect(cmp).toBeTruthy();
-            expect(infoBoxDebugElement.componentInstance).toBeTruthy();
+            void expect(cmp).toBeTruthy();
+            void expect(infoBoxDebugElement.componentInstance).toBeTruthy();
         }));
         describe('error type is provided', (): void => {
             describe(`error type is ${ErrorType.PASSAGE_NOT_FOUND}`, (): void => {
@@ -64,7 +64,7 @@ describe('src/modules/error/not-found-msg-switch.component.ts', (): void => {
                     cmpFixture.detectChanges();
                 });
                 it('should only display that the passage could not be found', (): void => {
-                    expect(infoBoxDebugElement.nativeElement.textContent)
+                    void expect(infoBoxDebugElement.nativeElement.textContent)
                         .toEqual('The passage could not be found. It either expired or has yet to start.Please select another passage.');
                 });
             });
@@ -76,7 +76,7 @@ describe('src/modules/error/not-found-msg-switch.component.ts', (): void => {
                     cmpFixture.detectChanges();
                 });
                 it('should only display that the vehicle could not be found', (): void => {
-                    expect(infoBoxDebugElement.nativeElement.textContent)
+                    void expect(infoBoxDebugElement.nativeElement.textContent)
                         .toEqual('The requested vehicle could not be found. It might not be active at the moment.');
                 });
             });
@@ -88,7 +88,7 @@ describe('src/modules/error/not-found-msg-switch.component.ts', (): void => {
                     cmpFixture.detectChanges();
                 });
                 it('should only display that the requested resource could not be found', (): void => {
-                    expect(infoBoxDebugElement.nativeElement.textContent).toEqual('The requested resource can not be found.');
+                    void expect(infoBoxDebugElement.nativeElement.textContent).toEqual('The requested resource can not be found.');
                 });
             });
         });

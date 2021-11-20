@@ -8,7 +8,8 @@ import { waitForAsync, TestBed } from '@angular/core/testing';
 import { BehaviorSubject } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { SidebarService } from './sidebar.service';
-// import sinon from "sinon";
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 describe('src/app/services/sidebar.service', (): void => {
     describe('SidebarService', (): void => {
         let sidebarService: SidebarService;
@@ -33,12 +34,12 @@ describe('src/app/services/sidebar.service', (): void => {
             it('should publish the events from the suject to the observable', (done: DoneFn): void => {
                 subject.next(false);
                 const cb: (err?: any) => void = (err?: any): void => {
-                    expect(err).not.toBeDefined();
-                    expect(nextSpy).toHaveBeenCalledTimes(4);
-                    expect(nextSpy.calls.argsFor(0)).toEqual([false]);
-                    expect(nextSpy.calls.argsFor(1)).toEqual([true]);
-                    expect(nextSpy.calls.argsFor(2)).toEqual([false]);
-                    expect(nextSpy.calls.argsFor(3)).toEqual([true]);
+                    void expect(err).not.toBeDefined();
+                    void expect(nextSpy).toHaveBeenCalledTimes(4);
+                    void expect(nextSpy.calls.argsFor(0)).toEqual([false]);
+                    void expect(nextSpy.calls.argsFor(1)).toEqual([true]);
+                    void expect(nextSpy.calls.argsFor(2)).toEqual([false]);
+                    void expect(nextSpy.calls.argsFor(3)).toEqual([true]);
                     done();
                 };
                 sidebarService.sidebarObservable.pipe(take(4)).subscribe(nextSpy, cb, cb);
@@ -52,7 +53,7 @@ describe('src/app/services/sidebar.service', (): void => {
                 [true, false].forEach((testValue: boolean): void => {
                     it(`should return ${testValue}`, (): void => {
                         subject.next(testValue);
-                        expect(sidebarService.sidebarOpen).toEqual(testValue);
+                        void expect(sidebarService.sidebarOpen).toEqual(testValue);
                     });
                 });
             });
@@ -61,10 +62,10 @@ describe('src/app/services/sidebar.service', (): void => {
             it('should publish a true event', (done: DoneFn): void => {
                 subject.next(false);
                 const cb: (err?: any) => void = (err?: any): void => {
-                    expect(err).not.toBeDefined();
-                    expect(nextSpy).toHaveBeenCalledTimes(2);
-                    expect(nextSpy.calls.argsFor(0)).toEqual([false]);
-                    expect(nextSpy.calls.argsFor(1)).toEqual([true]);
+                    void expect(err).not.toBeDefined();
+                    void expect(nextSpy).toHaveBeenCalledTimes(2);
+                    void expect(nextSpy.calls.argsFor(0)).toEqual([false]);
+                    void expect(nextSpy.calls.argsFor(1)).toEqual([true]);
                     done();
                 };
                 sidebarService.sidebarObservable.pipe(take(2)).subscribe(nextSpy, cb, cb);
@@ -75,10 +76,10 @@ describe('src/app/services/sidebar.service', (): void => {
             it('should publish a false event', (done: DoneFn): void => {
                 subject.next(false);
                 const cb: (err?: any) => void = (err?: any): void => {
-                    expect(err).not.toBeDefined();
-                    expect(nextSpy).toHaveBeenCalledTimes(2);
-                    expect(nextSpy.calls.argsFor(0)).toEqual([false]);
-                    expect(nextSpy.calls.argsFor(1)).toEqual([false]);
+                    void expect(err).not.toBeDefined();
+                    void expect(nextSpy).toHaveBeenCalledTimes(2);
+                    void expect(nextSpy.calls.argsFor(0)).toEqual([false]);
+                    void expect(nextSpy.calls.argsFor(1)).toEqual([false]);
                     done();
                 };
                 sidebarService.sidebarObservable.pipe(take(2)).subscribe(nextSpy, cb, cb);
@@ -89,11 +90,11 @@ describe('src/app/services/sidebar.service', (): void => {
             it('should publish a false event', (done: DoneFn): void => {
                 subject.next(false);
                 const cb: (err?: any) => void = (err?: any): void => {
-                    expect(err).not.toBeDefined();
-                    expect(nextSpy).toHaveBeenCalledTimes(3);
-                    expect(nextSpy.calls.argsFor(0)).toEqual([false]);
-                    expect(nextSpy.calls.argsFor(1)).toEqual([true]);
-                    expect(nextSpy.calls.argsFor(2)).toEqual([false]);
+                    void expect(err).not.toBeDefined();
+                    void expect(nextSpy).toHaveBeenCalledTimes(3);
+                    void expect(nextSpy.calls.argsFor(0)).toEqual([false]);
+                    void expect(nextSpy.calls.argsFor(1)).toEqual([true]);
+                    void expect(nextSpy.calls.argsFor(2)).toEqual([false]);
                     done();
                 };
                 sidebarService.sidebarObservable.pipe(take(3)).subscribe(nextSpy, cb, cb);

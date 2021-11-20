@@ -10,6 +10,7 @@ import { delay, map, skip, take, toArray } from 'rxjs/operators';
 import { TripPassagesService } from './trip-passages.service';
 import { IPassageStatus, TripPassagesUtil, UpdateStatus } from './trip-util';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type PartialPassageStatus = Partial<IPassageStatus>;
 describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
     describe('TripPassagesService', (): void => {
@@ -43,7 +44,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                             complete: doneFn,
                             error: doneFn.fail,
                             next: (val: any): void => {
-                                expect(val).toEqual(initialTripData);
+                                void expect(val).toEqual(initialTripData);
                                 doneFn();
                             },
                         });
@@ -58,7 +59,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                             complete: doneFn,
                             error: doneFn.fail,
                             next: (val: any): void => {
-                                expect(val).toEqual(initialTripData);
+                                void expect(val).toEqual(initialTripData);
                                 doneFn();
                             },
                         });
@@ -105,17 +106,17 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                     const subscription: Subscription = testService
                         .createDelayedPassageRequest(testTripId, testDelay * 1000)
                         .subscribe(nextSpy);
-                    expect(convertResponseSpy).toHaveBeenCalledTimes(1);
-                    expect(convertResponseSpy).toHaveBeenCalledWith(testTripId);
-                    expect(handleErrorSpy).toHaveBeenCalledTimes(1);
-                    expect(handleErrorSpy).toHaveBeenCalledWith(testTripId);
+                    void expect(convertResponseSpy).toHaveBeenCalledTimes(1);
+                    void expect(convertResponseSpy).toHaveBeenCalledWith(testTripId);
+                    void expect(handleErrorSpy).toHaveBeenCalledTimes(1);
+                    void expect(handleErrorSpy).toHaveBeenCalledWith(testTripId);
                     tick((testDelay * 1000) - 500);
-                    expect(subscription.closed).toBeFalse();
-                    expect(nextSpy).toHaveBeenCalledTimes(0);
+                    void expect(subscription.closed).toBeFalse();
+                    void expect(nextSpy).toHaveBeenCalledTimes(0);
                     tick(1000);
-                    expect(subscription.closed).toBeTrue();
-                    expect(nextSpy).toHaveBeenCalledTimes(1);
-                    expect(nextSpy).toHaveBeenCalledWith({ d: 3, c: 2, network: true, result: 1 });
+                    void expect(subscription.closed).toBeTrue();
+                    void expect(nextSpy).toHaveBeenCalledTimes(1);
+                    void expect(nextSpy).toHaveBeenCalledWith({ d: 3, c: 2, network: true, result: 1 });
                     subscription.unsubscribe();
                 }));
             });
@@ -162,10 +163,10 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                         complete: doneFn,
                         error: doneFn.fail,
                         next: (val: IPassageStatus[]): void => {
-                            expect(createRefreshPollObservableSpy).toHaveBeenCalledTimes(1);
-                            expect(createRefreshPollObservableSpy).toHaveBeenCalledWith(statusSubject);
-                            expect(val).toEqual([testValue]);
-                            expect(statusSubjectNextSpy).toHaveBeenCalledTimes(1);
+                            void expect(createRefreshPollObservableSpy).toHaveBeenCalledTimes(1);
+                            void expect(createRefreshPollObservableSpy).toHaveBeenCalledWith(statusSubject);
+                            void expect(val).toEqual([testValue]);
+                            void expect(statusSubjectNextSpy).toHaveBeenCalledTimes(1);
                         },
                     });
                 routeDataSubject.next({ tripPassages: testValue });
@@ -188,10 +189,10 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                         complete: doneFn,
                         error: doneFn.fail,
                         next: (val: IPassageStatus[]): void => {
-                            expect(createRefreshPollObservableSpy).toHaveBeenCalledTimes(1);
-                            expect(createRefreshPollObservableSpy).toHaveBeenCalledWith(statusSubject);
-                            expect(val).toEqual([testValue]);
-                            expect(statusSubjectNextSpy).toHaveBeenCalledTimes(2);
+                            void expect(createRefreshPollObservableSpy).toHaveBeenCalledTimes(1);
+                            void expect(createRefreshPollObservableSpy).toHaveBeenCalledWith(statusSubject);
+                            void expect(val).toEqual([testValue]);
+                            void expect(statusSubjectNextSpy).toHaveBeenCalledTimes(2);
                         },
                     });
                 statusSubject.next(testValue);
@@ -221,11 +222,11 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                         complete: doneFn,
                         error: doneFn.fail,
                         next: (val: IPassageStatus[]): void => {
-                            expect(createRefreshPollObservableSpy).toHaveBeenCalledTimes(1);
-                            expect(createRefreshPollObservableSpy).toHaveBeenCalledWith(statusSubject);
-                            expect(val).toEqual([testValue, testValue2]);
-                            expect(statusSubjectNextSpy).toHaveBeenCalledTimes(3);
-                            expect(statusSubjectNextSpy.calls.allArgs()).toEqual([
+                            void expect(createRefreshPollObservableSpy).toHaveBeenCalledTimes(1);
+                            void expect(createRefreshPollObservableSpy).toHaveBeenCalledWith(statusSubject);
+                            void expect(val).toEqual([testValue, testValue2]);
+                            void expect(statusSubjectNextSpy).toHaveBeenCalledTimes(3);
+                            void expect(statusSubjectNextSpy.calls.allArgs()).toEqual([
                                 [testValue],
                                 [testValue2],
                                 [testValue2]]);
@@ -259,17 +260,17 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                         complete: doneFn,
                         error: doneFn.fail,
                         next: (val: IPassageStatus[]): void => {
-                            expect(createRefreshPollObservableSpy).toHaveBeenCalledTimes(1);
-                            expect(createRefreshPollObservableSpy).toHaveBeenCalledWith(statusSubject);
-                            expect(val).toEqual([testValue, {
+                            void expect(createRefreshPollObservableSpy).toHaveBeenCalledTimes(1);
+                            void expect(createRefreshPollObservableSpy).toHaveBeenCalledWith(statusSubject);
+                            void expect(val).toEqual([testValue, {
                                 failures: 4,
                                 status: UpdateStatus.ERROR,
                                 timestamp: 29232,
                                 tripId: 'tripId',
                                 tripInfo: undefined,
                             }]);
-                            expect(statusSubjectNextSpy).toHaveBeenCalledTimes(3);
-                            expect(statusSubjectNextSpy.calls.allArgs()).toEqual([
+                            void expect(statusSubjectNextSpy).toHaveBeenCalledTimes(3);
+                            void expect(statusSubjectNextSpy.calls.allArgs()).toEqual([
                                 [testValue],
                                 [testValue2],
                                 [{
@@ -315,33 +316,33 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                 createDelayedPassageRequestSpy.and.callFake((): Observable<any> =>
                     of(createDelayedPassageRequestSpy.calls.count()).pipe(delay(1000)));
                 const subscription: Subscription = testObservable.subscribe(nextSpy);
-                expect(createDelayedPassageRequestSpy).toHaveBeenCalledTimes(0);
+                void expect(createDelayedPassageRequestSpy).toHaveBeenCalledTimes(0);
                 statusSubject.next({
                     status: UpdateStatus.LOADED,
                     tripId: '1',
                 });
-                expect(createDelayedPassageRequestSpy).toHaveBeenCalledTimes(1);
-                expect(nextSpy).toHaveBeenCalledTimes(0);
+                void expect(createDelayedPassageRequestSpy).toHaveBeenCalledTimes(1);
+                void expect(nextSpy).toHaveBeenCalledTimes(0);
                 tick(1100);
-                expect(nextSpy).toHaveBeenCalledTimes(1);
+                void expect(nextSpy).toHaveBeenCalledTimes(1);
                 statusSubject.next({
                     status: UpdateStatus.LOADED,
                     tripId: '2',
                 });
-                expect(createDelayedPassageRequestSpy).toHaveBeenCalledTimes(2);
+                void expect(createDelayedPassageRequestSpy).toHaveBeenCalledTimes(2);
                 tick(500);
-                expect(nextSpy).toHaveBeenCalledTimes(1);
+                void expect(nextSpy).toHaveBeenCalledTimes(1);
                 statusSubject.next({
                     status: UpdateStatus.ERROR,
                     tripId: '3',
                 });
-                expect(createDelayedPassageRequestSpy).toHaveBeenCalledTimes(3);
-                expect(nextSpy).toHaveBeenCalledTimes(1);
-                expect(nextSpy.calls.allArgs()).toEqual([[1]]);
+                void expect(createDelayedPassageRequestSpy).toHaveBeenCalledTimes(3);
+                void expect(nextSpy).toHaveBeenCalledTimes(1);
+                void expect(nextSpy.calls.allArgs()).toEqual([[1]]);
                 tick(1100);
-                expect(nextSpy).toHaveBeenCalledTimes(2);
-                expect(nextSpy.calls.allArgs()).toEqual([[1], [3]]);
-                expect(createDelayedPassageRequestSpy.calls.allArgs())
+                void expect(nextSpy).toHaveBeenCalledTimes(2);
+                void expect(nextSpy.calls.allArgs()).toEqual([[1], [3]]);
+                void expect(createDelayedPassageRequestSpy.calls.allArgs())
                     .toEqual([['1', 10000], ['2', 10000], ['3', 20000]]);
                 subscription.unsubscribe();
             }));

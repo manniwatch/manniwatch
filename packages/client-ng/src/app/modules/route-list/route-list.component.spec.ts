@@ -75,8 +75,8 @@ describe('src/modules/stop/route-list.component.ts', (): void => {
                 routeListCmp = fixture.debugElement.query(By.directive(RouteListComponent)).componentInstance;
             });
             it('should create the components', (): void => {
-                expect(component).toBeTruthy();
-                expect(routeListCmp).toBeTruthy();
+                void expect(component).toBeTruthy();
+                void expect(routeListCmp).toBeTruthy();
             });
             describe('test the "routes" input', (): void => {
                 const testItem: any[] = [
@@ -98,7 +98,7 @@ describe('src/modules/stop/route-list.component.ts', (): void => {
                 it('should set the testitem correctly as the input element', (): void => {
                     component.testData = testItem;
                     fixture.detectChanges();
-                    expect(routeListCmp.routes)
+                    void expect(routeListCmp.routes)
                         .toEqual(testItem);
                 });
             });

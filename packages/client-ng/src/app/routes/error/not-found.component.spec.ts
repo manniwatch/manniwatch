@@ -73,10 +73,10 @@ describe('src/modules/error/not-found.component.ts', (): void => {
             matListDebugElements = cmpFixture.debugElement.queryAll(By.css('mat-list-item'));
         }));
         it('should create the app', waitForAsync((): void => {
-            expect(cmp).toBeTruthy();
+            void expect(cmp).toBeTruthy();
         }));
         it('should create the correct number of list items', (): void => {
-            expect(matListDebugElements.length).toEqual(2);
+            void expect(matListDebugElements.length).toEqual(2);
         });
     });
 });

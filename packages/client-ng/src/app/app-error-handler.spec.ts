@@ -10,6 +10,7 @@ import { TestBed } from '@angular/core/testing';
 import { AppErrorHandler } from './app-error-handler';
 import { AppNotificationService, AppNotificationType } from './services/app-notification.service';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 describe('src/app/app-error-handler.ts', (): void => {
     describe('AppErrorHandler', (): void => {
         let handler: AppErrorHandler;
@@ -37,7 +38,7 @@ describe('src/app/app-error-handler.ts', (): void => {
             notifySpy.calls.reset();
         });
         it('should be constructed', (): void => {
-            expect(handler).toBeTruthy();
+            void expect(handler).toBeTruthy();
         });
         describe('handleError()', (): void => {
             let handleHttpErrorResponseSpy: jasmine.Spy<jasmine.Func>;
@@ -62,10 +63,10 @@ describe('src/app/app-error-handler.ts', (): void => {
                 })].forEach((testError: any): void => {
                     it('should call handleHttpErrorResponse()', (): void => {
                         handler.handleError(testError);
-                        expect(handleHttpErrorResponseSpy).toHaveBeenCalledTimes(1);
-                        expect(handleHttpErrorResponseSpy).toHaveBeenCalledWith(testError, notificationService);
-                        expect(notifySpy).toHaveBeenCalledTimes(0);
-                        expect(consoleErrorSpy).toHaveBeenCalledTimes(0);
+                        void expect(handleHttpErrorResponseSpy).toHaveBeenCalledTimes(1);
+                        void expect(handleHttpErrorResponseSpy).toHaveBeenCalledWith(testError, notificationService);
+                        void expect(notifySpy).toHaveBeenCalledTimes(0);
+                        void expect(consoleErrorSpy).toHaveBeenCalledTimes(0);
                     });
                 });
             });
@@ -74,16 +75,16 @@ describe('src/app/app-error-handler.ts', (): void => {
                 ].forEach((testError: any): void => {
                     it('should call notify()', (): void => {
                         handler.handleError(testError);
-                        expect(handleHttpErrorResponseSpy).toHaveBeenCalledTimes(0);
-                        expect(notifySpy).toHaveBeenCalledTimes(1);
-                        expect(notifySpy).toHaveBeenCalledWith({
+                        void expect(handleHttpErrorResponseSpy).toHaveBeenCalledTimes(0);
+                        void expect(notifySpy).toHaveBeenCalledTimes(1);
+                        void expect(notifySpy).toHaveBeenCalledWith({
                             message: testError.message,
                             reportable: true,
                             title: 'Uncaught error occured',
                             type: AppNotificationType.ERROR,
                         });
-                        expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
-                        expect(consoleErrorSpy).toHaveBeenCalledWith('It happens: ', testError);
+                        void expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
+                        void expect(consoleErrorSpy).toHaveBeenCalledWith('It happens: ', testError);
                     });
                 });
             });
@@ -132,9 +133,9 @@ describe('src/app/app-error-handler.ts', (): void => {
                 testHttpErrors.forEach((testError: ITestHttpError): void => {
                     it(`should notify that the client is offline for status: ${testError.error.status}`, (): void => {
                         handler.handleHttpErrorResponse(testError.error, notificationService);
-                        expect(isClientOfflineSpy).toHaveBeenCalledTimes(1);
-                        expect(notifySpy).toHaveBeenCalledTimes(1);
-                        expect(notifySpy).toHaveBeenCalledWith({
+                        void expect(isClientOfflineSpy).toHaveBeenCalledTimes(1);
+                        void expect(notifySpy).toHaveBeenCalledTimes(1);
+                        void expect(notifySpy).toHaveBeenCalledWith({
                             title: 'No Internet Connection',
                             type: AppNotificationType.ERROR,
                         });
@@ -148,9 +149,9 @@ describe('src/app/app-error-handler.ts', (): void => {
                 testHttpErrors.forEach((testError: ITestHttpError): void => {
                     it(`should propagate a server error for code: ${testError.error.status}`, (): void => {
                         handler.handleHttpErrorResponse(testError.error, notificationService);
-                        expect(isClientOfflineSpy).toHaveBeenCalledTimes(1);
-                        expect(notifySpy).toHaveBeenCalledTimes(1);
-                        expect(notifySpy).toHaveBeenCalledWith(testError.message);
+                        void expect(isClientOfflineSpy).toHaveBeenCalledTimes(1);
+                        void expect(notifySpy).toHaveBeenCalledTimes(1);
+                        void expect(notifySpy).toHaveBeenCalledWith(testError.message);
                     });
                 });
             });

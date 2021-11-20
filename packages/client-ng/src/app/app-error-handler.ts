@@ -38,7 +38,7 @@ export class AppErrorHandler implements ErrorHandler {
             return this.handleHttpErrorResponse(error, notificationService);
         } else {
             notificationService.notify({
-                message: error.message,
+                message: error?.message,
                 reportable: true,
                 title: 'Uncaught error occured',
                 type: AppNotificationType.ERROR,

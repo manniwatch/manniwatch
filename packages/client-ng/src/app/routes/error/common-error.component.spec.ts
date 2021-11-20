@@ -42,7 +42,7 @@ describe('src/modules/error/common.component.ts', (): void => {
         }));
 
         it('should create the app', waitForAsync((): void => {
-            expect(cmp).toBeTruthy();
+            void expect(cmp).toBeTruthy();
         }));
     });
 });

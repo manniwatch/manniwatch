@@ -93,7 +93,7 @@ describe('src/modules/main-toolbar/search-box.component.ts', (): void => {
         it('should create the app', waitForAsync((): void => {
             const fixture: ComponentFixture<ToolbarSearchBoxComponent> = TestBed.createComponent(ToolbarSearchBoxComponent);
             const app: ToolbarSearchBoxComponent = fixture.debugElement.componentInstance;
-            expect(app).toBeTruthy();
+            void expect(app).toBeTruthy();
         }));
     });
 });

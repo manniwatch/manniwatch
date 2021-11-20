@@ -65,7 +65,7 @@ describe('src/routes/settings/settings.component.ts', (): void => {
         }));
 
         it('should create the app', waitForAsync((): void => {
-            expect(app).toBeTruthy();
+            void expect(app).toBeTruthy();
         }));
         describe('layout', (): void => {
             it('needs to be implemented');

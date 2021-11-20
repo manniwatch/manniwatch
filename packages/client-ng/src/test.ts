@@ -5,7 +5,12 @@
 
 
 // This file is required by karma.conf.js and loads recursively all the .spec and framework files
-/* eslint-disable import/order */
+/* eslint-disable import/order,
+ @typescript-eslint/no-unsafe-assignment,
+ @typescript-eslint/no-unsafe-call,
+ @typescript-eslint/no-unsafe-member-access,
+ @typescript-eslint/no-explicit-any
+ */
 import 'zone.js/testing';
 import { getTestBed } from '@angular/core/testing';
 import {

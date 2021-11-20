@@ -42,7 +42,7 @@ describe('src/routes/settings/theme-selector/theme-selector.component.ts', (): v
         let fixture: ComponentFixture<ThemeSelectorComponent>;
         let app: ThemeSelectorComponent;
         let setThemeSpy: jasmine.Spy<jasmine.Func>;
-        let themeObservableSubscribeSpy: jasmine.Spy<jasmine.Func>;
+        let themeObservableSubscribeSpy: jasmine.Spy<() => SettingsService['themeObservable']>;
         beforeAll((): void => {
             setThemeSpy = jasmine.createSpy('setTheme');
             themeObservableSubscribeSpy = jasmine.createSpy('themeObservable.subscribe');
@@ -81,7 +81,7 @@ describe('src/routes/settings/theme-selector/theme-selector.component.ts', (): v
         });
 
         it('should create the app', waitForAsync((): void => {
-            expect(app).toBeTruthy();
+            void expect(app).toBeTruthy();
         }));
         describe('layout', (): void => {
             it('needs to be implemented');
@@ -89,44 +89,44 @@ describe('src/routes/settings/theme-selector/theme-selector.component.ts', (): v
         describe('methods', (): void => {
             describe('selectTheme', (): void => {
                 it('should call through to setTheme on settingservice', (): void => {
-                    expect(setThemeSpy).not.toHaveBeenCalled();
+                    void expect(setThemeSpy).not.toHaveBeenCalled();
                     app.selectTheme(Theme.DARK);
-                    expect(setThemeSpy).toHaveBeenCalledTimes(1);
-                    expect(setThemeSpy).toHaveBeenCalledWith(Theme.DARK);
+                    void expect(setThemeSpy).toHaveBeenCalledTimes(1);
+                    void expect(setThemeSpy).toHaveBeenCalledWith(Theme.DARK);
                 });
             });
             describe('onSelectionChange', (): void => {
                 it('should call through to setTheme on settingservice', (): void => {
-                    expect(setThemeSpy).not.toHaveBeenCalled();
+                    void expect(setThemeSpy).not.toHaveBeenCalled();
                     app.onSelectionChange({ options: [{ value: Theme.DARK }] } as any);
-                    expect(setThemeSpy).toHaveBeenCalledTimes(1);
-                    expect(setThemeSpy).toHaveBeenCalledWith(Theme.DARK);
+                    void expect(setThemeSpy).toHaveBeenCalledTimes(1);
+                    void expect(setThemeSpy).toHaveBeenCalledWith(Theme.DARK);
                 });
             });
             describe('ngOnInit', (): void => {
                 it('should subscribe correctly', (): void => {
-                    expect((app as any).themeSubscription).not.toBeDefined();
+                    void expect((app as any).themeSubscription).not.toBeDefined();
                     app.theme = Theme.LIGHT;
                     themeObservableSubscribeSpy.and.returnValue(NEVER.pipe(startWith(Theme.DARK)));
-                    expect(themeObservableSubscribeSpy).toHaveBeenCalledTimes(0);
+                    void expect(themeObservableSubscribeSpy).toHaveBeenCalledTimes(0);
                     app.ngOnInit();
-                    expect(themeObservableSubscribeSpy).toHaveBeenCalledTimes(1);
-                    expect(app.theme).withContext('Expected theme to be set to dark').toEqual(Theme.DARK as any);
+                    void expect(themeObservableSubscribeSpy).toHaveBeenCalledTimes(1);
+                    void expect(app.theme).withContext('Expected theme to be set to dark').toEqual(Theme.DARK as any);
                 });
             });
             describe('ngOnDestroy', (): void => {
                 it('should not throw without subscription', (): void => {
-                    expect((): void => {
+                    void expect((): void => {
                         app.ngOnDestroy();
                     }).not.toThrow();
                 });
                 it('should unsubscribe correctly', (): void => {
                     const unsubscribeSpy: jasmine.Spy<jasmine.Func> = jasmine.createSpy('unsubscribe');
                     (app as any).themeSubscription = { unsubscribe: unsubscribeSpy };
-                    expect((): void => {
+                    void expect((): void => {
                         app.ngOnDestroy();
                     }).not.toThrow();
-                    expect(unsubscribeSpy).toHaveBeenCalledTimes(1);
+                    void expect(unsubscribeSpy).toHaveBeenCalledTimes(1);
                 });
             });
         });

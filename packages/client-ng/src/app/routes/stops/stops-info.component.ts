@@ -6,7 +6,7 @@
 
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IStopLocation } from '@manniwatch/api-types';
+import { IStopLocation, IStopLocations } from '@manniwatch/api-types';
 @Component({
     selector: 'app-stops-info',
     styleUrls: ['./stops-info.component.scss'],
@@ -14,7 +14,7 @@ import { IStopLocation } from '@manniwatch/api-types';
 })
 export class StopsInfoComponent {
     private mStops: IStopLocation[] = [];
-    constructor(private activatedRoute: ActivatedRoute) {
+    constructor(private activatedRoute: ActivatedRoute & { snapshow: { data: { stops?: IStopLocations } } }) {
         const st: IStopLocation[] = this.activatedRoute.snapshot.data.stops.stops.sort((a: IStopLocation, b: IStopLocation): number =>
             a.name.localeCompare(b.name));
         this.mStops = st;

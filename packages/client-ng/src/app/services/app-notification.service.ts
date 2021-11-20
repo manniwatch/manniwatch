@@ -58,8 +58,6 @@ export class AppNotificationService {
      * Subject for replaying notifcations
      */
     private notificationSubject: Subject<IAppNotification> = new Subject();
-    constructor() {
-    }
 
     /**
      * Will publish the notification

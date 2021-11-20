@@ -31,9 +31,9 @@ export class AppComponent implements OnInit {
         this.sidebarService.sidebarObservable
             .subscribe((open: boolean): void => {
                 if (open) {
-                    this.sidenav.open();
+                    void this.sidenav.open();
                 } else {
-                    this.sidenav.close();
+                    void this.sidenav.close();
                 }
             });
         this.sidenav.openedChange.subscribe((open: boolean): void => {
@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
             }
         });
     }
-    public onVoted(agreed: any): void {
+    public onVoted(agreed: { tripId: string }): void {
         this.tripId = agreed.tripId;
     }
 

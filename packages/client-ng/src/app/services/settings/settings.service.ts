@@ -53,13 +53,13 @@ export class SettingsService {
     /**
      * Function loading initial config
      *
-     * @returns Observable
+     * @returns {Observable} Observable
      */
     public load(): Observable<void> {
         const configPath: string = environment.configUrl || '/config/config.json';
         return this.httpClient
             .get(configPath)
-            .pipe(tap((resp: IConfig): void => {
+            .pipe(tap((): void => {
                 // eslint-disable-next-line no-console
                 console.info('Config loaded');
             }), catchError((err: any): Observable<IConfig> => {
@@ -84,6 +84,7 @@ export class SettingsService {
 
     /**
      * Config from which all non compile time settings should be resolved
+     * @returns {Environment} Environment
      */
     public get config(): Environment {
         return this.mergedConfig;
@@ -107,6 +108,7 @@ export class SettingsService {
 
     /**
      * Returns the current theme
+     * @returns {Theme} current theme
      */
     public get theme(): Theme {
         return this.themeSubject.value;
@@ -114,6 +116,7 @@ export class SettingsService {
 
     /**
      * Sets the current theme
+     * @param {Theme} Theme
      */
     public set theme(theme: Theme) {
         this.themeSubject.next(theme);
@@ -124,7 +127,7 @@ export class SettingsService {
     /**
      * Persists the theme preference in storageProvider
      *
-     * @param theme theme to store
+     * @param {Theme} theme theme to store
      */
     protected setThemePreference(theme: Theme): void {
         switch (theme) {
@@ -142,6 +145,7 @@ export class SettingsService {
 
     /**
      * Retrieves the theme preference from the storageProvider
+     * @returns {Theme} Theme
      */
     protected getThemePreference(): Theme {
         switch (this.lStorage.getItem('theme')) {

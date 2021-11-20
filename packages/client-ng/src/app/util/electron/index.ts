@@ -5,6 +5,7 @@
 
 
 import { ApiService, IElectronInterface, IEnvironmentBase } from '@manniwatch/client-types';
+import { environment } from 'src/environments';
 
 declare global {
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -17,13 +18,13 @@ declare global {
 export const isManniwatchDesktop = (): boolean => {
     return (window &&
         'electron' in window &&
-        'manniwatch' in (window as any).electron);
+        'manniwatch' in window.electron);
 };
 
 export const getManniwatchDesktopApi = (): ApiService => {
-    return (window as any).electron.manniwatch.api;
+    return window.electron.manniwatch.api;
 };
 
 export const getManniwatchDesktopEnvironment = (): IEnvironmentBase => {
-    return window?.electron?.manniwatch?.environment || {} as any;
+    return window?.electron?.manniwatch?.environment || environment;
 };

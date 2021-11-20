@@ -4,6 +4,7 @@
  */
 
 
+import { HttpErrorResponse } from '@angular/common/http';
 import { TripInfoWithId } from '@manniwatch/client-types';
 import { of, Observable, OperatorFunction } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
@@ -38,8 +39,9 @@ export class TripPassagesUtil {
         }));
     }
     public static handleError(tripId: string): OperatorFunction<any, IPassageStatus> {
-        return catchError((err: any): Observable<IPassageStatus> => {
-            if (err && err.status) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+        return catchError((err: any | HttpErrorResponse): Observable<IPassageStatus> => {
+            if (typeof err?.status === 'number') {
                 return of({
                     failures: 1,
                     passages: undefined,

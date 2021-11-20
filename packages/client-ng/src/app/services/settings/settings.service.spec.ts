@@ -55,11 +55,11 @@ describe('src/app/services/settings.service', (): void => {
         });
         describe('getInitialMapCenter()', (): void => {
             it(`should return LatLon(0,0) as default map center`, (): void => {
-                expect(settingsService.config).toBeUndefined();
-                expect(settingsService.getInitialMapCenter()).toEqual(fromLonLat([0, 0]));
+                void expect(settingsService.config).toBeUndefined();
+                void expect(settingsService.getInitialMapCenter()).toEqual(fromLonLat([0, 0]));
             });
             it(`should return LatLon(0,0) as default map center`, (): void => {
-                expect(settingsService.config).toBeUndefined();
+                void expect(settingsService.config).toBeUndefined();
                 spyOnProperty(settingsService, 'config', 'get').and.returnValue({
                     map: {
                         center: {
@@ -68,67 +68,65 @@ describe('src/app/services/settings.service', (): void => {
                         },
                     },
                 });
-                expect(settingsService.getInitialMapCenter()).toEqual(fromLonLat([1, 2]));
+                void expect(settingsService.getInitialMapCenter()).toEqual(fromLonLat([1, 2]));
             });
         });
         describe('getInitialMapZoom()', (): void => {
             it(`should return zoom level 15`, (): void => {
-                expect(settingsService.config).toBeUndefined();
+                void expect(settingsService.config).toBeUndefined();
                 spyOnProperty(settingsService, 'config', 'get').and.returnValue({
                     map: {
                         zoom: 15,
                     },
                 });
-                expect(settingsService.getInitialMapZoom()).toEqual(15);
+                void expect(settingsService.getInitialMapZoom()).toEqual(15);
             });
             it(`should return zoom level 0`, (): void => {
-                expect(settingsService.config).toBeUndefined();
+                void expect(settingsService.config).toBeUndefined();
                 spyOnProperty(settingsService, 'config', 'get').and.returnValue({
                     map: {
                         zoom: 0,
                     },
                 });
-                expect(settingsService.getInitialMapZoom()).toEqual(0);
+                void expect(settingsService.getInitialMapZoom()).toEqual(0);
             });
             it(`should return default zoom level 13`, (): void => {
-                expect(settingsService.config).toBeUndefined();
-                expect(settingsService.getInitialMapZoom()).toEqual(13);
+                void expect(settingsService.config).toBeUndefined();
+                void expect(settingsService.getInitialMapZoom()).toEqual(13);
             });
         });
         describe('setThemePreference()', (): void => {
             it(`should set the theme to dark mode`, (): void => {
-                expect(storageSpy.setItem.calls.count()).toEqual(0);
+                void expect(storageSpy.setItem.calls.count()).toEqual(0);
                 settingsService.theme = Theme.DARK;
-                expect(storageSpy.setItem.calls.count()).toEqual(1);
-                expect(storageSpy.removeItem.calls.count()).toEqual(0);
-                expect(storageSpy.setItem.calls.argsFor(0)).toEqual(['theme', 'dark']);
+                void expect(storageSpy.setItem.calls.count()).toEqual(1);
+                void expect(storageSpy.removeItem.calls.count()).toEqual(0);
+                void expect(storageSpy.setItem.calls.argsFor(0)).toEqual(['theme', 'dark']);
             });
             it(`should set the theme to light mode`, (): void => {
-                expect(storageSpy.setItem.calls.count()).toEqual(0);
+                void expect(storageSpy.setItem.calls.count()).toEqual(0);
                 settingsService.theme = Theme.LIGHT;
-                expect(storageSpy.setItem.calls.count()).toEqual(1);
-                expect(storageSpy.removeItem.calls.count()).toEqual(0);
-                expect(storageSpy.setItem.calls.argsFor(0)).toEqual(['theme', 'light']);
+                void expect(storageSpy.setItem.calls.count()).toEqual(1);
+                void expect(storageSpy.removeItem.calls.count()).toEqual(0);
+                void expect(storageSpy.setItem.calls.argsFor(0)).toEqual(['theme', 'light']);
             });
             it(`should remove the theme preference for unknown values`, (): void => {
-                expect(storageSpy.setItem.calls.count()).toEqual(0);
+                void expect(storageSpy.setItem.calls.count()).toEqual(0);
                 settingsService.theme = -2000;
-                expect(storageSpy.setItem.calls.count()).toEqual(0);
-                expect(storageSpy.removeItem.calls.count()).toEqual(1);
-                expect(storageSpy.removeItem.calls.argsFor(0)).toEqual(['theme']);
+                void expect(storageSpy.setItem.calls.count()).toEqual(0);
+                void expect(storageSpy.removeItem.calls.count()).toEqual(1);
+                void expect(storageSpy.removeItem.calls.argsFor(0)).toEqual(['theme']);
             });
         });
         describe('load()', (): void => {
             it('should store a successful response', (done: DoneFn): void => {
 
-                const mockResponse: object = {
-                    completed: false,
-                    id: 2,
+                const mockResponse: { [k: string]: string | number } = {
                     title: 'Title',
                 };
-                expect(settingsService.baseConfig).toBeUndefined();
+                void expect(settingsService.baseConfig).toBeUndefined();
                 settingsService.load().subscribe((): void => {
-                    expect(settingsService.baseConfig).toEqual(mockResponse);
+                    void expect(settingsService.baseConfig).toEqual(mockResponse);
                     done();
                 });
 
@@ -139,9 +137,9 @@ describe('src/app/services/settings.service', (): void => {
             });
             it('should not set unsuccessful response', (done: DoneFn): void => {
 
-                expect(settingsService.baseConfig).toBeUndefined();
+                void expect(settingsService.baseConfig).toBeUndefined();
                 settingsService.load().subscribe((): void => {
-                    expect(settingsService.baseConfig).toEqual({});
+                    void expect(settingsService.baseConfig).toEqual({});
                     done();
                 });
 

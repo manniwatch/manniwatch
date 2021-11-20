@@ -11,6 +11,7 @@ import { ApiService } from 'src/app/services';
 import { TripPassagesResolver } from './trip-passages.resolver';
 import { TripPassagesUtil } from './trip-util';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 describe('src/app/modules/trip-passages/trip-passages.resolver', (): void => {
     describe('TripPassagesResolver', (): void => {
         let resolver: TripPassagesResolver;
@@ -64,8 +65,8 @@ describe('src/app/modules/trip-passages/trip-passages.resolver', (): void => {
             };
 
             afterEach((): void => {
-                expect(convertResponseStub).toHaveBeenCalledTimes(1);
-                expect(handleErrorStub).toHaveBeenCalledTimes(1);
+                void expect(convertResponseStub).toHaveBeenCalledTimes(1);
+                void expect(handleErrorStub).toHaveBeenCalledTimes(1);
             });
             describe('getTripPassages() resolves', (): void => {
                 beforeEach((): void => {
@@ -78,17 +79,17 @@ describe('src/app/modules/trip-passages/trip-passages.resolver', (): void => {
                     resolver.resolve({ params: { tripId: testId } } as any, undefined)
                         .subscribe({
                             complete: (): void => {
-                                expect(getTripPassagesSpy)
+                                void expect(getTripPassagesSpy)
                                     .toHaveBeenCalledTimes(1);
-                                expect(getTripPassagesSpy.calls.argsFor(0))
+                                void expect(getTripPassagesSpy.calls.argsFor(0))
                                     .withContext('getTripPassages should be called with the provided tripId')
                                     .toEqual([testId]);
-                                expect(nextSpy)
+                                void expect(nextSpy)
                                     .toHaveBeenCalledTimes(1);
-                                expect(nextSpy.calls.first().args[0]).toEqual(convertedResponse);
-                                expect(convertResponseOperatorStub).toHaveBeenCalledTimes(1);
-                                expect(handleErrorOperatorStub).toHaveBeenCalledTimes(1);
-                                expect(convertResponseOperatorStub).toHaveBeenCalledBefore(handleErrorOperatorStub);
+                                void expect(nextSpy.calls.first().args[0]).toEqual(convertedResponse);
+                                void expect(convertResponseOperatorStub).toHaveBeenCalledTimes(1);
+                                void expect(handleErrorOperatorStub).toHaveBeenCalledTimes(1);
+                                void expect(convertResponseOperatorStub).toHaveBeenCalledBefore(handleErrorOperatorStub);
                                 done();
                             },
                             error: done.fail,
@@ -107,17 +108,17 @@ describe('src/app/modules/trip-passages/trip-passages.resolver', (): void => {
                     resolver.resolve({ params: { tripId: testId } } as any, undefined)
                         .subscribe({
                             complete: (): void => {
-                                expect(getTripPassagesSpy)
+                                void expect(getTripPassagesSpy)
                                     .toHaveBeenCalledTimes(1);
-                                expect(getTripPassagesSpy.calls.argsFor(0))
+                                void expect(getTripPassagesSpy.calls.argsFor(0))
                                     .withContext('getTripPassages should be called with the provided tripId')
                                     .toEqual([testId]);
-                                expect(nextSpy)
+                                void expect(nextSpy)
                                     .toHaveBeenCalledTimes(1);
-                                expect(nextSpy.calls.first().args).toEqual([errorResponse]);
-                                expect(convertResponseOperatorStub).toHaveBeenCalledTimes(1);
-                                expect(handleErrorOperatorStub).toHaveBeenCalledTimes(1);
-                                expect(convertResponseOperatorStub).toHaveBeenCalledBefore(handleErrorOperatorStub);
+                                void expect(nextSpy.calls.first().args).toEqual([errorResponse]);
+                                void expect(convertResponseOperatorStub).toHaveBeenCalledTimes(1);
+                                void expect(handleErrorOperatorStub).toHaveBeenCalledTimes(1);
+                                void expect(convertResponseOperatorStub).toHaveBeenCalledBefore(handleErrorOperatorStub);
                                 done();
                             },
                             error: done.fail,

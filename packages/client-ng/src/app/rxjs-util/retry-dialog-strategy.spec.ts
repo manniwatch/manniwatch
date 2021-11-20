@@ -3,11 +3,11 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { from, merge, throwError, Observable, Subject } from 'rxjs';
 import { delay, mergeMap, retryWhen, tap } from 'rxjs/operators';
 import { retryDialogStrategy, RetryDialogStrategyFuncResponse } from './retry-dialog-strategy';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 describe('src/app/rxjs-util/retry-dialog-strategy.ts', (): void => {
     describe('retryDialogStrategy', (): void => {
         let createDialogSpy: jasmine.Spy<jasmine.Func>;
@@ -29,14 +29,14 @@ describe('src/app/rxjs-util/retry-dialog-strategy.ts', (): void => {
                 from([1, 2, 3])
                     .pipe(retryWhen(strategy))
                     .subscribe(nextSpy, done.fail, (): void => {
-                        expect(nextSpy).toHaveBeenCalledTimes(3);
-                        expect(nextSpy.calls.allArgs()).toEqual([[1], [2], [3]]); // , [2], [3]);
-                        expect(createDialogSpy).not.toHaveBeenCalled();
+                        void expect(nextSpy).toHaveBeenCalledTimes(3);
+                        void expect(nextSpy.calls.allArgs()).toEqual([[1], [2], [3]]); // , [2], [3]);
+                        void expect(createDialogSpy).not.toHaveBeenCalled();
                         done();
                     });
             });
             afterEach((): void => {
-                expect(createDialogSpy).not.toHaveBeenCalled();
+                void expect(createDialogSpy).not.toHaveBeenCalled();
             });
         });
         describe('Error occurs', (): void => {
@@ -44,9 +44,9 @@ describe('src/app/rxjs-util/retry-dialog-strategy.ts', (): void => {
             const afterClosedSubject: Subject<boolean> = new Subject();
             beforeEach((): void => {
                 createDialogSpy.and.callFake((): any =>
-                    ({
-                        afterClosed: (): Observable<any> => afterClosedSubject.pipe(delay(100)),
-                    }));
+                ({
+                    afterClosed: (): Observable<any> => afterClosedSubject.pipe(delay(100)),
+                }));
             });
             describe('Should be retried', (): void => {
                 it('should open the dialog and succeed after first retry', (done: DoneFn): void => {
@@ -61,9 +61,9 @@ describe('src/app/rxjs-util/retry-dialog-strategy.ts', (): void => {
                             }),
                             retryWhen(strategy))
                         .subscribe(nextSpy, done.fail, (): void => {
-                            expect(nextSpy).toHaveBeenCalledTimes(1);
-                            expect(nextSpy.calls.allArgs()).toEqual([[1]]);
-                            expect(createDialogSpy).toHaveBeenCalledTimes(1);
+                            void expect(nextSpy).toHaveBeenCalledTimes(1);
+                            void expect(nextSpy.calls.allArgs()).toEqual([[1]]);
+                            void expect(createDialogSpy).toHaveBeenCalledTimes(1);
                             done();
                         });
                     afterClosedSubject.next(true);
@@ -82,9 +82,9 @@ describe('src/app/rxjs-util/retry-dialog-strategy.ts', (): void => {
                             }),
                             retryWhen(strategy))
                         .subscribe(nextSpy, done.fail, (): void => {
-                            expect(nextSpy).toHaveBeenCalledTimes(1);
-                            expect(nextSpy.calls.allArgs()).toEqual([[1]]);
-                            expect(createDialogSpy).toHaveBeenCalledTimes(1);
+                            void expect(nextSpy).toHaveBeenCalledTimes(1);
+                            void expect(nextSpy.calls.allArgs()).toEqual([[1]]);
+                            void expect(createDialogSpy).toHaveBeenCalledTimes(1);
                             done();
                         });
                     afterClosedSubject.next(true);
@@ -95,8 +95,8 @@ describe('src/app/rxjs-util/retry-dialog-strategy.ts', (): void => {
                     throwError(testError)
                         .pipe(retryWhen(strategy))
                         .subscribe(nextSpy, (): void => {
-                            expect(nextSpy).not.toHaveBeenCalled();
-                            expect(createDialogSpy).toHaveBeenCalledTimes(1);
+                            void expect(nextSpy).not.toHaveBeenCalled();
+                            void expect(createDialogSpy).toHaveBeenCalledTimes(1);
                             done();
                         });
                     afterClosedSubject.next(false);
@@ -105,8 +105,8 @@ describe('src/app/rxjs-util/retry-dialog-strategy.ts', (): void => {
                     throwError(testError)
                         .pipe(retryWhen(strategy))
                         .subscribe(nextSpy, (): void => {
-                            expect(nextSpy).not.toHaveBeenCalled();
-                            expect(createDialogSpy).toHaveBeenCalledTimes(2);
+                            void expect(nextSpy).not.toHaveBeenCalled();
+                            void expect(createDialogSpy).toHaveBeenCalledTimes(2);
                             done();
                         });
                     afterClosedSubject.next(true);

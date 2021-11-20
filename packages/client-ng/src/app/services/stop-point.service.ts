@@ -6,28 +6,10 @@
 
 import { Injectable } from '@angular/core';
 import { IStopLocation, IStopLocations, IStopPointLocation, IStopPointLocations } from '@manniwatch/api-types';
-import { Observable, Subscriber } from 'rxjs';
+import { Observable } from 'rxjs';
 import { debounceTime, map, retryWhen, shareReplay, tap, withLatestFrom } from 'rxjs/operators';
 import { ApiService } from './api.service';
 import { AppNotificationService } from './app-notification.service';
-
-/* eslint-disable max-classes-per-file */
-export class StopPointLoadSubscriber extends Subscriber<IStopLocation[]> {
-
-    public constructor(private service: StopPointService) {
-        super();
-    }
-
-    public next(stops: IStopLocation[]): void {
-        (this.service as any).mStopLocations = stops;
-    }
-
-    public error(err: any): void {
-    }
-
-    public complete(): void {
-    }
-}
 
 /**
  * Service for caching and retrieving Stop Locations

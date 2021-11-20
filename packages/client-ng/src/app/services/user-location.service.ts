@@ -27,14 +27,15 @@ export class UserLocationService {
         return this.locationSubject.asObservable();
     }
 
-    private locationErrorSubject: BehaviorSubject<GeolocationPositionError> = new BehaviorSubject(undefined);
+    private locationErrorSubject: BehaviorSubject<GeolocationPositionError> = new BehaviorSubject<GeolocationPositionError>(undefined);
 
-    private locationSubject: BehaviorSubject<GeolocationPosition> = new BehaviorSubject(undefined);
+    private locationSubject: BehaviorSubject<GeolocationPosition> = new BehaviorSubject<GeolocationPosition>(undefined);
     public constructor() {
         this.locationErrorObservable
             .pipe(debounceTime(30000),
-                mergeMap((val: GeolocationPositionError): Observable<GeolocationPosition> =>
+                mergeMap((): Observable<GeolocationPosition> =>
                     this.createPositionRequest()),
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 catchError((err: any): Observable<any> => {
                     this.locationErrorSubject.next(err);
                     return EMPTY;
@@ -46,7 +47,7 @@ export class UserLocationService {
     }
 
     public createPositionRequest(timeout = 10000, highAccuracy = false): Observable<GeolocationPosition> {
-        return new Observable<any>((subscriber: Subscriber<GeolocationPosition>): void => {
+        return new Observable<GeolocationPosition>((subscriber: Subscriber<GeolocationPosition>): void => {
 
             const geoSuccess: (position: GeolocationPosition) => void = (position: GeolocationPosition): void => {
                 subscriber.next(position);

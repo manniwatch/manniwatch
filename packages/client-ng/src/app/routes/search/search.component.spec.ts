@@ -77,7 +77,7 @@ describe('src/modules/routing/search/search.component.ts', (): void => {
         });
 
         it('should create the component', waitForAsync((): void => {
-            expect(cmp).toBeTruthy();
+            void expect(cmp).toBeTruthy();
         }));
     });
 });

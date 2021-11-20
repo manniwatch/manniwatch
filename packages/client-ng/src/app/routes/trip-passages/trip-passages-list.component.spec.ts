@@ -124,15 +124,15 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
         it('should set passages to an empty array for null', (): void => {
           // eslint-disable-next-line no-null/no-null
           cmp.tripInfo = null;
-          expect(cmp.passages).toEqual([]);
+          void expect(cmp.passages).toEqual([]);
         });
         it('should set passages to an empty array for undefined', (): void => {
           cmp.tripInfo = undefined;
-          expect(cmp.passages).toEqual([]);
+          void expect(cmp.passages).toEqual([]);
         });
         it('should set passages to an empty array with no actual and old provided', (): void => {
           cmp.tripInfo = {} as TripInfoWithId;
-          expect(cmp.passages).toEqual([]);
+          void expect(cmp.passages).toEqual([]);
         });
         it('should set passages ordered correctly for actual and old provided', (): void => {
           cmp.tripInfo = {
@@ -142,7 +142,7 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
             routeName: 'routeName1',
             tripId: 'testId',
           };
-          expect(cmp.passages).toEqual([testActualPassages[1],
+          void expect(cmp.passages).toEqual([testActualPassages[1],
           testActualPassages[2],
           testActualPassages[0],
           testOldPassages[1],
@@ -157,7 +157,7 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
             routeName: 'routeName1',
             tripId: 'testId',
           };
-          expect(cmp.passages).toEqual([testOldPassages[1],
+          void expect(cmp.passages).toEqual([testOldPassages[1],
           testOldPassages[2],
           testOldPassages[0]]);
         });
@@ -169,7 +169,7 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
             routeName: 'routeName1',
             tripId: 'testId',
           };
-          expect(cmp.passages).toEqual([testActualPassages[1],
+          void expect(cmp.passages).toEqual([testActualPassages[1],
           testActualPassages[2],
           testActualPassages[0]]);
         });
@@ -187,13 +187,13 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
         [undefined, null, [], 1, 'k'].forEach((testValue: any): void => {
           it(`should return false for passages being "${testValue}"`, (): void => {
             cmp.passages = testValue;
-            expect(cmp.hasPassages()).toBeFalse();
+            void expect(cmp.hasPassages()).toBeFalse();
           });
         });
         [[1], [1, 2]].forEach((testValue: any[]): void => {
           it(`should return true for ${testValue.length} set passage`, (): void => {
             cmp.passages = testValue;
-            expect(cmp.hasPassages()).toBeTrue();
+            void expect(cmp.hasPassages()).toBeTrue();
           });
         });
       });
@@ -217,12 +217,12 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
               .queryAll(By.directive(TestTripPassagesListItemComponent))
               .map((val: DebugElement): TestTripPassagesListItemComponent => val.componentInstance);
             bodyText = cmpFixture.debugElement.nativeElement.innerText;
-            expect(bodyText).not.toEqual('No Passages');
-            expect(listItems.length).toEqual(testNum);
+            void expect(bodyText).not.toEqual('No Passages');
+            void expect(listItems.length).toEqual(testNum);
             const mappedValues: ITripPassage[] = listItems
               .map((itemCmp: TestTripPassagesListItemComponent): ITripPassage =>
                 itemCmp.passage);
-            expect(mappedValues).toEqual(testActualPassages.slice(0, testNum));
+            void expect(mappedValues).toEqual(testActualPassages.slice(0, testNum));
 
           });
         });
@@ -239,8 +239,8 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
               .queryAll(By.directive(TestTripPassagesListItemComponent))
               .map((val: DebugElement): TestTripPassagesListItemComponent => val.componentInstance);
             bodyText = cmpFixture.debugElement.nativeElement.innerText;
-            expect(bodyText).toEqual('No Passages');
-            expect(listItems.length).toEqual(0);
+            void expect(bodyText).toEqual('No Passages');
+            void expect(listItems.length).toEqual(0);
           });
         });
       });
@@ -261,12 +261,12 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
         parentFixture.detectChanges();
       });
       it('should set the elements via the Input tag', (): void => {
-        expect(tripInfoSpy).toHaveBeenCalledTimes(1);
-        expect(tripInfoSpy).toHaveBeenCalledWith(undefined);
+        void expect(tripInfoSpy).toHaveBeenCalledTimes(1);
+        void expect(tripInfoSpy).toHaveBeenCalledWith(undefined);
         parentCmp.testPassage = testActualPassages as any;
         parentFixture.detectChanges();
-        expect(tripInfoSpy).toHaveBeenCalledTimes(2);
-        expect(tripInfoSpy).toHaveBeenCalledWith(testActualPassages);
+        void expect(tripInfoSpy).toHaveBeenCalledTimes(2);
+        void expect(tripInfoSpy).toHaveBeenCalledWith(testActualPassages);
       });
       afterEach((): void => {
         tripInfoSpy.calls.reset();

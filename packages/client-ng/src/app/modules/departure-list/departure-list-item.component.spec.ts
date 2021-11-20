@@ -35,6 +35,7 @@ export class TestRouterLinkDirective {
 
 /* eslint-enable @angular-eslint/component-selector */
 /* eslint-enable @angular-eslint/directive-selector */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 describe('src/app/modules/stop/departure-list-item.component', (): void => {
   describe('DepartureListItemComponent', (): void => {
     beforeEach(waitForAsync((): void => {
@@ -50,7 +51,7 @@ describe('src/app/modules/stop/departure-list-item.component', (): void => {
     it('should create the app', waitForAsync((): void => {
       const fixture: ComponentFixture<DepartureListItemComponent> = TestBed.createComponent(DepartureListItemComponent);
       const app: DepartureListItemComponent = fixture.debugElement.componentInstance;
-      expect(app).toBeTruthy();
+      void expect(app).toBeTruthy();
     }));
     describe('layout', (): void => {
       it('needs to be implemented');
@@ -70,7 +71,7 @@ describe('src/app/modules/stop/departure-list-item.component', (): void => {
           testPassages.forEach((testPassage: any): void => {
             it('should get the correct value', (): void => {
               (cmp as any).mDeparture = testPassage;
-              expect(cmp.departure).toEqual(testPassage);
+              void expect(cmp.departure).toEqual(testPassage);
             });
           });
         });
@@ -88,13 +89,13 @@ describe('src/app/modules/stop/departure-list-item.component', (): void => {
           testPassages.forEach((testPassage: any): void => {
             it('should set the correct value', (): void => {
               cmp.departure = testPassage;
-              expect((cmp as any).mDeparture).toEqual(testPassage);
-              expect(calculateDelaySpy).toHaveBeenCalledTimes(1);
-              expect(convertTimeSpy).toHaveBeenCalledTimes(1);
-              expect(calculateDelaySpy).toHaveBeenCalledWith(testPassage);
-              expect(convertTimeSpy).toHaveBeenCalledWith(testPassage);
-              expect((cmp as any).mTime).toEqual({ time: testPassage });
-              expect((cmp as any).mDelay).toEqual({ delay: testPassage });
+              void expect((cmp as any).mDeparture).toEqual(testPassage);
+              void expect(calculateDelaySpy).toHaveBeenCalledTimes(1);
+              void expect(convertTimeSpy).toHaveBeenCalledTimes(1);
+              void expect(calculateDelaySpy).toHaveBeenCalledWith(testPassage);
+              void expect(convertTimeSpy).toHaveBeenCalledWith(testPassage);
+              void expect((cmp as any).mTime).toEqual({ time: testPassage });
+              void expect((cmp as any).mDelay).toEqual({ delay: testPassage });
             });
           });
           afterEach((): void => {
@@ -108,7 +109,7 @@ describe('src/app/modules/stop/departure-list-item.component', (): void => {
           testPassages.forEach((value: any): void => {
             it(`should convert the object to "${value}"`, (): void => {
               (cmp as any).mTime = value;
-              expect(cmp.time).toEqual(value);
+              void expect(cmp.time).toEqual(value);
             });
           });
         });
@@ -118,7 +119,7 @@ describe('src/app/modules/stop/departure-list-item.component', (): void => {
           testPassages.forEach((value: any): void => {
             it(`should convert the object to "${value}"`, (): void => {
               (cmp as any).mDelay = value;
-              expect(cmp.delay).toEqual(value);
+              void expect(cmp.delay).toEqual(value);
             });
           });
         });
@@ -137,7 +138,7 @@ describe('src/app/modules/stop/departure-list-item.component', (): void => {
           const planned: Date = dateFns.add(baseTime, {
             seconds: 2000,
           });
-          expect(cmp.convertTime({
+          void expect(cmp.convertTime({
             actualRelativeTime: 2000,
           } as any)).toEqual(dateFns.format(planned, 'p'));
         });
@@ -145,7 +146,7 @@ describe('src/app/modules/stop/departure-list-item.component', (): void => {
           const planned: Date = dateFns.add(baseTime, {
             seconds: 20,
           });
-          expect(cmp.convertTime({
+          void expect(cmp.convertTime({
             actualRelativeTime: 20,
           } as any)).toEqual(dateFns.formatDistanceToNow(planned, { addSuffix: true }));
         });
@@ -153,7 +154,7 @@ describe('src/app/modules/stop/departure-list-item.component', (): void => {
           const planned: Date = dateFns.add(baseTime, {
             seconds: -500,
           });
-          expect(cmp.convertTime({
+          void expect(cmp.convertTime({
             actualRelativeTime: -500,
           } as any)).toEqual(dateFns.formatDistanceToNow(planned, { addSuffix: true }));
         });
@@ -204,7 +205,7 @@ describe('src/app/modules/stop/departure-list-item.component', (): void => {
           ];
         passages.forEach((value: any): void => {
           it(`should convert the "${value.value}" to "${value.result}"`, (): void => {
-            expect(cmp.calculateDelay(value.value )).toEqual(value.result);
+            void expect(cmp.calculateDelay(value.value)).toEqual(value.result);
           });
         });
       });

@@ -14,9 +14,9 @@ describe('src/app/services/settings/settings-service.facotry.ts', (): void => {
         let cfgStub: jasmine.SpyObj<SettingsService>;
         let testScheduler: TestScheduler;
         beforeAll((): void => {
-            cfgStub = jasmine.createSpyObj('SettingsService', ['load']);
+            cfgStub = jasmine.createSpyObj<SettingsService>('SettingsService', ['load']);
             testScheduler = new TestScheduler((actual: unknown, expected: unknown): void => {
-                expect(actual).toEqual(expected);
+                void expect(actual).toEqual(expected);
             });
         });
         it('should call the load function and return', (): void => {

@@ -14,10 +14,10 @@ if (environment.production) {
     enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule).then((): void => {
+platformBrowserDynamic().bootstrapModule(AppModule).then(async (): Promise<void> => {
     if ('serviceWorker' in navigator && environment.production) {
-        navigator.serviceWorker.register('/ngsw-worker.js');
+        await navigator.serviceWorker.register('/ngsw-worker.js');
     }
 })
-    /* eslint-disable no-console */
+    /* eslint-disable no-console, @typescript-eslint/no-explicit-any */
     .catch((err: any): void => console.error(err));

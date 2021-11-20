@@ -24,7 +24,7 @@ export class StopPointInfoService {
         private apiService: ApiService,
         public stopService: StopPointService,
         private appRef: ApplicationRef) {
-        this.stopPassageObservable = this.route.data.pipe(map((params: any): IStopPassage => {
+        this.stopPassageObservable = this.route.data.pipe(map((params: { stopPoint: IStopPassage }): IStopPassage => {
             return params.stopPoint;
         }));
     }

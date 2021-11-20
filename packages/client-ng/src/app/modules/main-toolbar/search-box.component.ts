@@ -22,7 +22,7 @@ export class ToolbarSearchBoxComponent implements OnInit, OnDestroy {
     public searchInput: ElementRef;
 
     @Output()
-    public readonly focusSearch: EventEmitter<boolean> = new EventEmitter();
+    public readonly focusSearch: EventEmitter<boolean> = new EventEmitter<boolean>();
     private updateSubscription: Subscription;
     constructor(private router: Router) {
     }
@@ -40,7 +40,7 @@ export class ToolbarSearchBoxComponent implements OnInit, OnDestroy {
                 debounceTime(200),
             )
             .subscribe((value: string): void => {
-                this.router.navigate(['search'], {
+                void this.router.navigate(['search'], {
                     queryParams: {
                         q: value,
                     },
@@ -50,9 +50,9 @@ export class ToolbarSearchBoxComponent implements OnInit, OnDestroy {
     }
 
     public onSubmit(): void {
-        this.router.navigate(['search'], {
+        void this.router.navigate(['search'], {
             queryParams: {
-                q: this.searchControl.value,
+                q: this.searchControl.value as string,
             },
             skipLocationChange: false,
         });

@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 import { from, throwError, Observable } from 'rxjs';
 import { ApiService } from 'src/app/services';
 import { StopInfoResolver } from './stop-info.resolver';
-// import sinon from "sinon";
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 describe('src/app/modules/stop/stop-info.resolver', (): void => {
     describe('StopInfoResolver', (): void => {
         let resolver: StopInfoResolver;
@@ -57,10 +57,10 @@ describe('src/app/modules/stop/stop-info.resolver', (): void => {
                     resolver.resolve({ params: { stopId: testId } } as any, undefined).subscribe(nextSpy, done.fail, done);
                 });
                 afterEach((): void => {
-                    expect(nextSpy.calls.count()).toEqual(1);
-                    expect(nextSpy.calls.first().args[0] )
+                    void expect(nextSpy.calls.count()).toEqual(1);
+                    void expect(nextSpy.calls.first().args[0])
                         .toEqual([testId]);
-                    expect(navigateSpy.calls.count()).toEqual(0);
+                    void expect(navigateSpy.calls.count()).toEqual(0);
                 });
             });
             describe('should not navigate for generic error', (): void => {
@@ -73,8 +73,8 @@ describe('src/app/modules/stop/stop-info.resolver', (): void => {
                     resolver.resolve({ params: { tripId: testId } } as any, undefined).subscribe(nextSpy, done.fail, done);
                 });
                 afterEach((): void => {
-                    expect(nextSpy.calls.count()).toEqual(0);
-                    expect(navigateSpy.calls.count()).toEqual(0);
+                    void expect(nextSpy.calls.count()).toEqual(0);
+                    void expect(navigateSpy.calls.count()).toEqual(0);
                 });
             });
             describe('should navigate for 404 error', (): void => {
@@ -89,8 +89,8 @@ describe('src/app/modules/stop/stop-info.resolver', (): void => {
                     resolver.resolve({ params: { tripId: testId } } as any, undefined).subscribe(nextSpy, done.fail, done);
                 });
                 afterEach((): void => {
-                    expect(nextSpy.calls.count()).toEqual(0);
-                    expect(navigateSpy.calls.count()).toEqual(1);
+                    void expect(nextSpy.calls.count()).toEqual(0);
+                    void expect(navigateSpy.calls.count()).toEqual(1);
                 });
             });
         });

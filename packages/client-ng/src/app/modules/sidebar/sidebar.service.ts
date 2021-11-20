@@ -18,7 +18,6 @@ export class SidebarService {
         return this.mSidebarStatusSubject.asObservable();
     }
     private mSidebarStatusSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
-    public constructor() { }
 
     public toggleSidebar(): void {
         this.mSidebarStatusSubject.next(!this.mSidebarStatusSubject.getValue());

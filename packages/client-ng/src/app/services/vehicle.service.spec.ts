@@ -10,8 +10,10 @@ describe('src/app/services/vehicle.service.ts', (): void => {
     describe('createVehicleDiff(oldVehicles, newVehicles)', (): void => {
         describe('oldVehicles is undefined', (): void => {
             // eslint-disable-next-line no-null/no-null
-            [undefined, null].forEach((testValue: any): void => {
+            [undefined, null].forEach((testValue: undefined | null): void => {
+                // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
                 it(`should pass on new vehicles if olds are ${testValue}`, (): void => {
+                    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
                     const newVehicles: any[] = [
                         {
                             id: '1',
@@ -21,12 +23,14 @@ describe('src/app/services/vehicle.service.ts', (): void => {
                         },
                     ];
                     const result: IVehicleDiff = createVehicleDiff(testValue, newVehicles);
-                    expect(result).toEqual({
-                        added: newVehicles,
-                        changed: [],
-                        removed: [],
-                        unchanged: [],
-                    });
+                    void expect(result)
+                        .withContext('empty responses')
+                        .toEqual({
+                            added: newVehicles,
+                            changed: [],
+                            removed: [],
+                            unchanged: [],
+                        });
                 });
             });
         });

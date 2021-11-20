@@ -12,7 +12,7 @@ import { filter } from 'rxjs/operators';
 @Injectable()
 export class OlMainMapService {
     public readonly statusObservable: Observable<string>;
-    private readonly selectedVehicleSubject: BehaviorSubject<string> = new BehaviorSubject(undefined);
+    private readonly selectedVehicleSubject: BehaviorSubject<string> = new BehaviorSubject<string>(undefined);
     constructor(private router: Router) {
         this.statusObservable = this.selectedVehicleSubject.asObservable();
         this.router
@@ -23,7 +23,7 @@ export class OlMainMapService {
             .subscribe({
                 next: (evt: NavigationEnd): void => {
                     if (evt.url.search(/\/passages\/[a-z0-9]+/i) >= 0) {
-                        const splitUrl: string[] = evt.url.toLocaleLowerCase().split('\/');
+                        const splitUrl: string[] = evt.url.toLocaleLowerCase().split('/');
                         const tripId: string = splitUrl[splitUrl.indexOf('passages') + 1];
                         this.selectedVehicleSubject.next(tripId);
                     } else {

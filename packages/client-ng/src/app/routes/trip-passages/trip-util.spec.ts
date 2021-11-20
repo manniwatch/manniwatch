@@ -48,7 +48,7 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
                                     tripId: val.tripId,
                                     tripInfo: val,
                                 }));
-                            expect(testResult).toEqual(testStatuses);
+                            void expect(testResult).toEqual(testStatuses);
                         },
                     });
             });
@@ -58,7 +58,7 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
                     .subscribe({
                         complete: (): void => doneFn.fail(testError),
                         error: (err: any): void => {
-                            expect(err).toEqual(testError);
+                            void expect(err).toEqual(testError);
                             doneFn();
                         },
                         next: (): void => doneFn.fail(testError),
@@ -74,7 +74,7 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
                         complete: doneFn,
                         error: doneFn.fail,
                         next: (testResult: IPassageStatus[]): void => {
-                            expect(testResult as any).toEqual([1, 2, 3]);
+                            void expect(testResult as any).toEqual([1, 2, 3]);
                         },
                     });
             });
@@ -88,7 +88,7 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
                             complete: doneFn,
                             error: doneFn.fail,
                             next: (testResult: IPassageStatus[]): void => {
-                                expect(testResult as any).toEqual([{
+                                void expect(testResult as any).toEqual([{
                                     failures: 1,
                                     passages: undefined,
                                     status: UpdateStatus.ERROR,
@@ -110,7 +110,7 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
                                 complete: doneFn,
                                 error: doneFn.fail,
                                 next: (testResult: IPassageStatus[]): void => {
-                                    expect(testResult as any).toEqual([{
+                                    void expect(testResult as any).toEqual([{
                                         failures: 1,
                                         passages: undefined,
                                         status: testStatus,
@@ -131,7 +131,7 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
                                 complete: doneFn,
                                 error: doneFn.fail,
                                 next: (testResult: IPassageStatus[]): void => {
-                                    expect(testResult as any).toEqual([{
+                                    void expect(testResult as any).toEqual([{
                                         failures: 1,
                                         passages: undefined,
                                         status: 500,

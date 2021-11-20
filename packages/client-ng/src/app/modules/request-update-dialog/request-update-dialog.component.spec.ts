@@ -86,7 +86,7 @@ describe('src/app/modules/request-update-dialog/request-update-dialog.component.
                 cmp = cmpFixture.debugElement.componentInstance;
             }));
             it('should create the component', waitForAsync((): void => {
-                expect(cmp).toBeTruthy();
+                void expect(cmp).toBeTruthy();
             }));
             it('should display loading spinner if status equals "loading"', waitForAsync(async (): Promise<void> => {
                 statusSubject.next(SW_STATUS.LOADING);
@@ -95,15 +95,15 @@ describe('src/app/modules/request-update-dialog/request-update-dialog.component.
                 cmpFixture.detectChanges();
                 await cmpFixture.whenStable();
                 const debugElement: DebugElement = cmpFixture.debugElement.query(By.directive(TestMatSpinnerComponent));
-                expect(debugElement).toBeTruthy();
+                void expect(debugElement).toBeTruthy();
             }));
             it('should display that no update is available', waitForAsync(async (): Promise<void> => {
                 statusSubject.next('unknown status' as any);
                 cmpFixture.detectChanges();
                 await cmpFixture.whenStable();
                 const debugElement: DebugElement = cmpFixture.debugElement.query(By.css('mat-dialog-content'));
-                expect(debugElement).toBeTruthy();
-                expect(debugElement.nativeElement.innerText).toEqual('No Update available!');
+                void expect(debugElement).toBeTruthy();
+                void expect(debugElement.nativeElement.innerText).toEqual('No Update available!');
             }));
         });
     });
