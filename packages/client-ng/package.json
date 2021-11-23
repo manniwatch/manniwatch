@@ -83,7 +83,7 @@
     "@angular/compiler": "12.2.13",
     "@angular/compiler-cli": "12.2.13",
     "@angular/language-service": "12.2.13",
-    "@compodoc/compodoc": "1.1.15",
+    "@compodoc/compodoc": "1.1.16",
     "@manniwatch/client-types": "^0.28.2",
     "@types/jasmine": "3.10.2",
     "@types/jasminewd2": "2.0.10",
