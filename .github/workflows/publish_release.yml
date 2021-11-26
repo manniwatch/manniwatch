@@ -23,6 +23,10 @@ jobs:
         uses: actions/setup-node@v2.4.1
         with:
           node-version: ${{ matrix.node }}
+      - name: Update NPM
+        run: |
+          npm install -g npm
+          npm -v
       - name: Get npm cache directory
         id: npm-cache
         run: |
