@@ -9,7 +9,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        node: [12, 14, 16]
+        node: [14, 16]
         os: [ubuntu-latest] #, windows-latest]
     steps:
       - name: Checkout
@@ -20,6 +20,10 @@ jobs:
         uses: actions/setup-node@v2.4.1
         with:
           node-version: ${{ matrix.node }}
+      - name: Update NPM
+        run: |
+          npm install -g npm
+          npm -v
       - name: Get npm cache directory
         id: npm-cache
         run: |
@@ -52,7 +56,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        node: [12, 14, 16]
+        node: [14, 16]
         os: [ubuntu-latest] #, windows-latest]
     steps:
       - name: Checkout
@@ -63,6 +67,10 @@ jobs:
         uses: actions/setup-node@v2.4.1
         with:
           node-version: ${{ matrix.node }}
+      - name: Update NPM
+        run: |
+          npm install -g npm
+          npm -v
       - name: Get npm cache directory
         id: npm-cache
         run: |
@@ -119,6 +127,10 @@ jobs:
         uses: actions/setup-node@v2.4.1
         with:
           node-version: ${{ matrix.node }}
+      - name: Update NPM
+        run: |
+          npm install -g npm
+          npm -v
       - name: Get npm cache directory
         id: npm-cache
         run: |
@@ -161,6 +173,10 @@ jobs:
         uses: actions/setup-node@v2.4.1
         with:
           node-version: ${{ matrix.node }}
+      - name: Update NPM
+        run: |
+          npm install -g npm
+          npm -v
       - name: Get npm cache directory
         id: npm-cache
         run: |
