@@ -13,8 +13,9 @@ const validCoordinates: TestIBoundingBox[] = [
     { bottom: '-1000', left: '-1000', right: '-500', top: '1000' },
     { bottom: '500', left: '-1000', right: '1000', top: '1000' },
     { bottom: '-1000', left: '500', right: '1000', top: '1000' },
+    { bottom: '-1000', left: '500', right: 1000, top: 1000 },
 ];
-type TestIBoundingBox = { [key in keyof IGeoFenceSchema]: string };
+type TestIBoundingBox = { [key in keyof IGeoFenceSchema]: string | number };
 describe('geo-fence.ts', (): void => {
     let ajvInstance: Ajv;
     beforeEach('setup Ajv and validation function', (): void => {
