@@ -65,7 +65,7 @@ jobs:
       - uses: actions/checkout@v2
       # Setup .npmrc file to publish to npm
       - name: Download Build artifacts
-        uses: actions/download-artifact@v2.0.10
+        uses: actions/download-artifact@v2.1.0
         with:
           name: build-${{matrix.os}}-${{matrix.node}}
           path: ./packages
@@ -96,7 +96,7 @@ jobs:
       - uses: actions/checkout@v2
       # Setup .npmrc file to publish to npm
       - name: Download Build artifacts
-        uses: actions/download-artifact@v2.0.10
+        uses: actions/download-artifact@v2.1.0
         with:
           name: build-${{matrix.os}}-${{matrix.node}}
           path: ./packages
