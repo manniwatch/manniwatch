@@ -55,7 +55,7 @@ describe('endpoints/schema/vehicle-location', (): void => {
             });
             // tslint:disable-next-line:no-null-keyword
             [null, 'any'].forEach((testValue: string | null): void => {
-                it(`should reject for ${testValue}`, (): void => {
+                it(`should reject for ${testValue === null ? 'null' : testValue}`, (): void => {
                     expect(
                         validator({
                             positionType: testValue,
