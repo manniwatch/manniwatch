@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: schemas
+/*
+ * Package @manniwatch/schemas
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import Ajv, { ValidateFunction } from 'ajv';
@@ -25,26 +26,26 @@ describe('geo-fence.ts', (): void => {
         const parameters: string[] = ['top', 'bottom', 'right', 'left'];
         const combinations: Partial<TestIBoundingBox>[] = [{}];
         const paramMap: TestIBoundingBox = { bottom: '-1000', left: '-1000', right: '1000', top: '1000' };
-        for (let i: number = 0; i < 4; i++) {
+        for (let i = 0; i < 4; i++) {
             const box1: Partial<TestIBoundingBox> = {};
-            box1[parameters[i]] = paramMap[parameters[i]];
+            box1[parameters[i]] = paramMap[parameters[i]] as unknown;
             combinations.push(box1);
-            for (let j: number = 0; j < 4; j++) {
+            for (let j = 0; j < 4; j++) {
                 if (i === j) {
                     continue;
                 }
                 const box2: Partial<TestIBoundingBox> = {};
-                box2[parameters[i]] = paramMap[parameters[i]];
-                box2[parameters[j]] = paramMap[parameters[j]];
+                box2[parameters[i]] = paramMap[parameters[i]] as unknown;
+                box2[parameters[j]] = paramMap[parameters[j]] as unknown;
                 combinations.push(box2);
-                for (let k: number = 0; k < 4; k++) {
+                for (let k = 0; k < 4; k++) {
                     if (i === k || j === k) {
                         continue;
                     }
                     const box3: Partial<TestIBoundingBox> = {};
-                    box3[parameters[i]] = paramMap[parameters[i]];
-                    box3[parameters[j]] = paramMap[parameters[j]];
-                    box3[parameters[k]] = paramMap[parameters[k]];
+                    box3[parameters[i]] = paramMap[parameters[i]] as unknown;
+                    box3[parameters[j]] = paramMap[parameters[j]] as unknown;
+                    box3[parameters[k]] = paramMap[parameters[k]] as unknown;
                     combinations.push(box3);
                 }
             }

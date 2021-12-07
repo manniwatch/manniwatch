@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: schemas
+/*
+ * Package @manniwatch/schemas
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import Ajv, { ValidateFunction } from 'ajv';
@@ -20,42 +21,57 @@ describe('endpoints/schema/vehicle-location', (): void => {
     });
     describe('GET_VEHICLE_LOCATION_SCHEMA', (): void => {
         describe('$root.lastUpdate', (): void => {
-            validTestNumbers.forEach((testValue: any): void => {
+            validTestNumbers.forEach((testValue: string | number): void => {
                 it(`should pass for ${testValue}`, (): void => {
-                    expect(validator({
-                        lastUpdate: testValue,
-                    }), 'schema should be valid').to.be.true;
+                    expect(
+                        validator({
+                            lastUpdate: testValue,
+                        }),
+                        'schema should be valid'
+                    ).to.be.true;
                 });
             });
-            invalidTestNumbers.forEach((testValue: any): void => {
+            invalidTestNumbers.forEach((testValue: string | number): void => {
                 it(`should reject for ${testValue}`, (): void => {
-                    expect(validator({
-                        lastUpdate: testValue,
-                    }), 'schema should not be valid').to.be.false;
+                    expect(
+                        validator({
+                            lastUpdate: testValue,
+                        }),
+                        'schema should not be valid'
+                    ).to.be.false;
                 });
             });
         });
         describe('$root.positionType', (): void => {
-            ['RAW', 'CORRECTED'].forEach((testValue: any): void => {
+            ['RAW', 'CORRECTED'].forEach((testValue: string | number): void => {
                 it(`should pass for ${testValue}`, (): void => {
-                    expect(validator({
-                        positionType: testValue,
-                    }), 'schema should be valid').to.be.true;
+                    expect(
+                        validator({
+                            positionType: testValue,
+                        }),
+                        'schema should be valid'
+                    ).to.be.true;
                 });
             });
             // tslint:disable-next-line:no-null-keyword
-            [null, 'any'].forEach((testValue: any): void => {
+            [null, 'any'].forEach((testValue: string | number): void => {
                 it(`should reject for ${testValue}`, (): void => {
-                    expect(validator({
-                        positionType: testValue,
-                    }), 'schema should not be valid').to.be.false;
+                    expect(
+                        validator({
+                            positionType: testValue,
+                        }),
+                        'schema should not be valid'
+                    ).to.be.false;
                 });
             });
         });
         it(`should reject unknown properties`, (): void => {
-            expect(validator({
-                unknown: 'property',
-            }), 'schema should not be valid').to.be.false;
+            expect(
+                validator({
+                    unknown: 'property',
+                }),
+                'schema should not be valid'
+            ).to.be.false;
         });
     });
 });

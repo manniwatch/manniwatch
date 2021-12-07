@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: schemas
+/*
+ * Package @manniwatch/schemas
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import Ajv, { ValidateFunction } from 'ajv';
@@ -19,12 +20,12 @@ describe('endpoints/schema/uint', (): void => {
         validator = ajvInstance.compile(UINT_SCHEMA);
     });
     describe('UINT_SCHEMA', (): void => {
-        validValues.forEach((testValue: (string | number)): void => {
+        validValues.forEach((testValue: string | number): void => {
             it(`should accept ${testValue} with type '${typeof testValue}'`, (): void => {
                 expect(validator(testValue)).to.be.true;
             });
         });
-        invalidValues.forEach((testValue: (string | number)): void => {
+        invalidValues.forEach((testValue: string | number): void => {
             it(`should reject ${testValue} with type '${typeof testValue}'`, (): void => {
                 expect(validator(testValue)).to.be.false;
             });
