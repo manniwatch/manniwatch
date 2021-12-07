@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: schemas
+/*
+ * Package @manniwatch/schemas
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { StopMode } from '@manniwatch/api-types';
@@ -24,48 +25,65 @@ describe('endpoints/schema/stop-passages', (): void => {
         describe('$root.mode', (): void => {
             validOptions.forEach((mode: StopMode): void => {
                 it(`should accept '${mode}'`, (): void => {
-                    expect(validator({
-                        mode,
-                    })).to.be.true;
+                    expect(
+                        validator({
+                            mode,
+                        })
+                    ).to.be.true;
                 });
             });
         });
         describe('$root.timeFrame', (): void => {
-            validTestNumbers.forEach((testValue: any): void => {
+            validTestNumbers.forEach((testValue: string | number): void => {
                 it(`should pass for ${testValue}`, (): void => {
-                    expect(validator({
-                        timeFrame: testValue,
-                    }), 'schema should be valid').to.be.true;
+                    expect(
+                        validator({
+                            timeFrame: testValue,
+                        }),
+                        'schema should be valid'
+                    ).to.be.true;
                 });
             });
-            invalidTestNumbers.forEach((testValue: any): void => {
+            invalidTestNumbers.forEach((testValue: string | number): void => {
                 it(`should reject for ${testValue}`, (): void => {
-                    expect(validator({
-                        timeFrame: testValue,
-                    }), 'schema should not be valid').to.be.false;
+                    expect(
+                        validator({
+                            timeFrame: testValue,
+                        }),
+                        'schema should not be valid'
+                    ).to.be.false;
                 });
             });
         });
         describe('$root.startTime', (): void => {
-            validTestNumbers.forEach((testValue: any): void => {
+            validTestNumbers.forEach((testValue: string | number): void => {
                 it(`should pass for ${testValue}`, (): void => {
-                    expect(validator({
-                        startTime: testValue,
-                    }), 'schema should be valid').to.be.true;
+                    expect(
+                        validator({
+                            startTime: testValue,
+                        }),
+                        'schema should be valid'
+                    ).to.be.true;
                 });
             });
-            invalidTestNumbers.forEach((testValue: any): void => {
+            invalidTestNumbers.forEach((testValue: string | number): void => {
                 it(`should reject for ${testValue}`, (): void => {
-                    expect(validator({
-                        startTime: testValue,
-                    }), 'schema should not be valid').to.be.false;
+                    expect(
+                        validator({
+                            startTime: testValue,
+                        }),
+                        'schema should not be valid'
+                    ).to.be.false;
                 });
             });
         });
         it(`should reject unknown properties`, (): void => {
-            expect(validator({
-                unknown: 'property',
-            }), 'schema should not be valid').to.be.false;
+            expect(
+                validator({
+                    unknown: 'property',
+                }),
+                'schema should not be valid'
+            ).to.be.false;
         });
     });
 });

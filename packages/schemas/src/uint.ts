@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: schemas
+/*
+ * Package @manniwatch/schemas
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { RequireIdJSONSchemaType } from './util';
@@ -16,4 +17,4 @@ export const UINT_SCHEMA: RequireIdJSONSchemaType<string | number> = {
             type: 'integer',
         },
     ],
-} as any;
+};
