@@ -54,7 +54,7 @@ describe('endpoints/schema/vehicle-location', (): void => {
                 });
             });
             // tslint:disable-next-line:no-null-keyword
-            [null, 'any'].forEach((testValue: string | number): void => {
+            [null, 'any'].forEach((testValue: string | null): void => {
                 it(`should reject for ${testValue}`, (): void => {
                     expect(
                         validator({
