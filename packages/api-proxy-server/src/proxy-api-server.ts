@@ -8,11 +8,14 @@ import { Server } from 'http';
 import { api404Handler } from './api-not-found-handler';
 import { serverErrorHandler } from './server-error-handler';
 
+export interface IServerConfig {
+    endpoint: string;
+    port: number;
+}
 export class ManniWatchApiProxyServer {
     private app: express.Application;
     private server: Server;
-    constructor(public readonly endpoint: string,
-        public readonly port: number) {
+    constructor(public readonly config: IServerConfig) {
         this.app = express();
         this.app.use((req: express.Request, res: express.Response, next: express.NextFunction): void => {
             res.set({
@@ -20,14 +23,14 @@ export class ManniWatchApiProxyServer {
             });
             next();
         });
-        this.app.use('/api', createApiProxyRouter(endpoint));
+        this.app.use('/api', createApiProxyRouter(config.endpoint));
         this.app.use(api404Handler);
         this.app.use(serverErrorHandler);
     }
 
     public start(): Promise<void> {
         return new Promise((resolve: () => void, reject: (err: any) => void): void => {
-            this.server = this.app.listen(this.port, (err?: any): void => {
+            this.server = this.app.listen(this.config.port, (err?: any): void => {
                 err ? reject(err) : resolve();
             });
         });
