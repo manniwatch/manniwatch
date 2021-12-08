@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-server
+/*
+ * Package @manniwatch/api-proxy-server
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import nconf from 'nconf';
@@ -22,7 +23,8 @@ export class Config {
                     alias: 'port',
                     describe: 'the port to run on',
                 },
-            }).defaults({
+            })
+            .defaults({
                 endpoint: undefined,
                 port: 3000,
             });
@@ -31,13 +33,14 @@ export class Config {
 
     /**
      * gets the port for the server
+     *
+     * @returns {number} server port
      */
     public static get port(): number {
-        return Config.nconf.get('port');
+        return Config.nconf.get('port') as number;
     }
 
     public static get endpoint(): string {
-        return Config.nconf.get('endpoint');
+        return Config.nconf.get('endpoint') as string;
     }
-
 }
