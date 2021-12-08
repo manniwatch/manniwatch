@@ -43,7 +43,7 @@
     "url": "https://github.com/manniwatch/manniwatch.git"
   },
   "engines": {
-    "node": ">=14 <17"
+    "node": ">=14"
   },
   "files": [
     "dist/*",

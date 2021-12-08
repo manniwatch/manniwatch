@@ -74,7 +74,7 @@
     "all": true
   },
   "engines": {
-    "node": ">=14 <17"
+    "node": ">=14"
   },
   "config": {
     "commitizen": {
