@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-server
+/*
+ * Package @manniwatch/api-proxy-server
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 describe('test', (): void => {

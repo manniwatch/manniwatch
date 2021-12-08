@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-server
+/*
+ * Package @manniwatch/api-proxy-server
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { createApiProxyRouter } from '@manniwatch/api-proxy-router';
@@ -14,9 +15,7 @@ export class ManniWatchProxyServer {
     private app: express.Application;
     private server: Server;
     private ngModulePath: string;
-    constructor(public readonly endpoint: string,
-        public readonly port: number,
-        public readonly clientFiles?: string) {
+    constructor(public readonly endpoint: string, public readonly port: number, public readonly clientFiles?: string) {
         // tslint:disable-next-line:triple-equals
         if (clientFiles == undefined) {
             // Check if @manniwatch/client-ng is installed
@@ -32,22 +31,28 @@ export class ManniWatchProxyServer {
 
         // setup server
         this.app = express();
-        this.app.use(helmet.contentSecurityPolicy({
-            directives: {
-                connectSrc: ['\'self\'',
-                    'https://c.tile.openstreetmap.org',
-                    'https://b.tile.openstreetmap.org',
-                    'https://a.tile.openstreetmap.org'],
-                defaultSrc: ['\'self\''],
-                imgSrc: ['\'self\'',
-                    'https://c.tile.openstreetmap.org',
-                    'https://b.tile.openstreetmap.org',
-                    'https://a.tile.openstreetmap.org',
-                    'data:'],
-                scriptSrc: ['\'self\'', '\'unsafe-inline\''],
-                styleSrc: ['\'self\'', '\'unsafe-inline\''],
-            },
-        }));
+        this.app.use(
+            helmet.contentSecurityPolicy({
+                directives: {
+                    connectSrc: [
+                        `'self'`,
+                        'https://c.tile.openstreetmap.org',
+                        'https://b.tile.openstreetmap.org',
+                        'https://a.tile.openstreetmap.org',
+                    ],
+                    defaultSrc: [`'self'`],
+                    imgSrc: [
+                        `'self'`,
+                        'https://c.tile.openstreetmap.org',
+                        'https://b.tile.openstreetmap.org',
+                        'https://a.tile.openstreetmap.org',
+                        'data:',
+                    ],
+                    scriptSrc: [`'self'`, `'unsafe-inline'`],
+                    styleSrc: [`'self'`, `'unsafe-inline'`],
+                },
+            })
+        );
         this.app.use('/api', createApiProxyRouter(endpoint));
         this.app.use('/api', api404Handler);
         this.app.use(express.static(this.ngModulePath));
@@ -58,7 +63,9 @@ export class ManniWatchProxyServer {
     }
 
     public start(): Promise<void> {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         return new Promise((resolve: () => void, reject: (err: any) => void): void => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             this.server = this.app.listen(this.port, (err?: any): void => {
                 err ? reject(err) : resolve();
             });
@@ -66,7 +73,9 @@ export class ManniWatchProxyServer {
     }
 
     public stop(): Promise<void> {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         return new Promise((resolve: () => void, reject: (err: any) => void): void => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             this.server.close((err: any): void => {
                 err ? reject(err) : resolve();
             });
