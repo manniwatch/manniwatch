@@ -35,21 +35,21 @@ export class ManniWatchProxyServer {
             helmet.contentSecurityPolicy({
                 directives: {
                     connectSrc: [
-                        "'self'",
+                        `'self'`,
                         'https://c.tile.openstreetmap.org',
                         'https://b.tile.openstreetmap.org',
                         'https://a.tile.openstreetmap.org',
                     ],
-                    defaultSrc: ["'self'"],
+                    defaultSrc: [`'self'`],
                     imgSrc: [
-                        "'self'",
+                        `'self'`,
                         'https://c.tile.openstreetmap.org',
                         'https://b.tile.openstreetmap.org',
                         'https://a.tile.openstreetmap.org',
                         'data:',
                     ],
-                    scriptSrc: ["'self'", "'unsafe-inline'"],
-                    styleSrc: ["'self'", "'unsafe-inline'"],
+                    scriptSrc: [`'self'`, `'unsafe-inline'`],
+                    styleSrc: [`'self'`, `'unsafe-inline'`],
                 },
             })
         );
