@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: api-proxy-server
+/*
+ * Package @manniwatch/api-proxy-server
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { createApiProxyRouter } from '@manniwatch/api-proxy-router';
@@ -11,8 +12,7 @@ import { serverErrorHandler } from './server-error-handler';
 export class ManniWatchApiProxyServer {
     private app: express.Application;
     private server: Server;
-    constructor(public readonly endpoint: string,
-        public readonly port: number) {
+    constructor(public readonly endpoint: string, public readonly port: number) {
         this.app = express();
         this.app.use((req: express.Request, res: express.Response, next: express.NextFunction): void => {
             res.set({
@@ -26,7 +26,9 @@ export class ManniWatchApiProxyServer {
     }
 
     public start(): Promise<void> {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         return new Promise((resolve: () => void, reject: (err: any) => void): void => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             this.server = this.app.listen(this.port, (err?: any): void => {
                 err ? reject(err) : resolve();
             });
@@ -34,7 +36,9 @@ export class ManniWatchApiProxyServer {
     }
 
     public stop(): Promise<void> {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         return new Promise((resolve: () => void, reject: (err: any) => void): void => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             this.server.close((err: any): void => {
                 err ? reject(err) : resolve();
             });
