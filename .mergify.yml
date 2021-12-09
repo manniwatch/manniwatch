@@ -10,7 +10,7 @@ pull_request_rules:
       - label=ready-to-merge
     actions:
       queue:
-        method: merge
+        method: squash
         name: default
   - name: delete head branch on merged pull requests
     conditions:
