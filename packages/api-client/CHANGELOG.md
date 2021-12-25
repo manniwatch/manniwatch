@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.28.3](https://github.com/manniwatch/manniwatch/compare/v0.28.2...v0.28.3) (2021-12-25)
+
+
+### Bug Fixes
+
+* **api-client:** bump qs to 6.10.2 ([#2583](https://github.com/manniwatch/manniwatch/issues/2583)) ([a242c68](https://github.com/manniwatch/manniwatch/commit/a242c68b808791af2a6bbc3811262eeb17e6602a))
+* **api-client:** more verbose typings ([#2631](https://github.com/manniwatch/manniwatch/issues/2631)) ([d27c06f](https://github.com/manniwatch/manniwatch/commit/d27c06f7311a2315b905ced2df21420335285c75))
+* **api-client:** use qs as default import ([#2630](https://github.com/manniwatch/manniwatch/issues/2630)) ([b3db509](https://github.com/manniwatch/manniwatch/commit/b3db5099c5da8e170b3b2a648ed75ebbb6c715a2))
+* **deps:** update package-lock.json files ([#2546](https://github.com/manniwatch/manniwatch/issues/2546)) ([f0f7da0](https://github.com/manniwatch/manniwatch/commit/f0f7da00702bb07593d2393d2b5e87a4806c854e))
+
+
+
+
+
 ## [0.28.2](https://github.com/manniwatch/manniwatch/compare/v0.28.1...v0.28.2) (2021-10-31)
 
 **Note:** Version bump only for package @manniwatch/api-client

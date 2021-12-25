@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.28.3](https://github.com/manniwatch/manniwatch/compare/v0.28.2...v0.28.3) (2021-12-25)
+
+
+### Bug Fixes
+
+* **deps:** update @donmahallem/turbo packages ([#2559](https://github.com/manniwatch/manniwatch/issues/2559)) ([d410302](https://github.com/manniwatch/manniwatch/commit/d410302c10461b4f0f851b8768d70e8811fa8022))
+* **deps:** update @donmahallem/turbo packages ([#2574](https://github.com/manniwatch/manniwatch/issues/2574)) ([5b236c0](https://github.com/manniwatch/manniwatch/commit/5b236c09d2d1d1b5376111ebf0959f009e33ed6c))
+* **deps:** update @donmahallem/turbo packages ([#2598](https://github.com/manniwatch/manniwatch/issues/2598)) ([92aea5b](https://github.com/manniwatch/manniwatch/commit/92aea5b9723134c6e229727f58a287590780aabf))
+* **deps:** update @donmahallem/turbo packages ([#2602](https://github.com/manniwatch/manniwatch/issues/2602)) ([5e0644f](https://github.com/manniwatch/manniwatch/commit/5e0644fa3486d4d754341dbb326106f1e1eae760))
+* **deps:** update ajv to 8.8.2 ([#2579](https://github.com/manniwatch/manniwatch/issues/2579)) ([f248282](https://github.com/manniwatch/manniwatch/commit/f24828254b6c1b6cbc252854e9380ae8ec6b0f41))
+* **deps:** update angular monorepo to v12.2.14 ([29cfd56](https://github.com/manniwatch/manniwatch/commit/29cfd5697ba2f5976133a3069a56ffbd395f4625))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.2.12 ([1e1d2ac](https://github.com/manniwatch/manniwatch/commit/1e1d2ac2ca41456026a359689a795e79edda604f))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.2.17 ([c1f15ea](https://github.com/manniwatch/manniwatch/commit/c1f15ead6fc22d8ba7b94d3c80d83bcb2b01dbf4))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.0 ([#2599](https://github.com/manniwatch/manniwatch/issues/2599)) ([11de7e3](https://github.com/manniwatch/manniwatch/commit/11de7e33592390b49cc9b41170fbb9fdf5e8f9eb))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.1 ([#2603](https://github.com/manniwatch/manniwatch/issues/2603)) ([d8a7589](https://github.com/manniwatch/manniwatch/commit/d8a7589ca78dd19577cbf8ed30ef525776aaf8bf))
+* **deps:** update dependency electron to ~15.3.1 ([ff174e4](https://github.com/manniwatch/manniwatch/commit/ff174e4a06c32b23cfce7d4c8115ec9efb767d6b))
+* **deps:** update dependency electron to ~16.0.1 ([d276921](https://github.com/manniwatch/manniwatch/commit/d2769211a4ed2f37637de77cfefe9fa81ac3b80f))
+* **deps:** update dependency electron to ~16.0.2 ([b56e00a](https://github.com/manniwatch/manniwatch/commit/b56e00afff2385c1ca35f6c114d061d2e2f514ee))
+* **deps:** update dependency electron to ~16.0.3 ([ea73fc3](https://github.com/manniwatch/manniwatch/commit/ea73fc3482f5761c86daf141d2a492e51d84e2bd))
+* **deps:** update dependency electron to ~16.0.4 ([2b8b89e](https://github.com/manniwatch/manniwatch/commit/2b8b89eafbe93624fa3d9940a35727e79358fa30))
+* **deps:** update dependency electron to ~16.0.5 ([13ea71a](https://github.com/manniwatch/manniwatch/commit/13ea71a785aaf26d961ab03a102c04489a19ba18))
+* **deps:** update dependency electron to v16 ([81c678b](https://github.com/manniwatch/manniwatch/commit/81c678b7f0af21f361b6b71a6ebdde32b3f8de72))
+* **deps:** update dependency ol-mapbox-style to v6.5.3 ([64c13de](https://github.com/manniwatch/manniwatch/commit/64c13de0b78cf9bcaf442dcec7a9565004bf3a6c))
+* **deps:** update dependency ol-mapbox-style to v6.6.0 ([c658180](https://github.com/manniwatch/manniwatch/commit/c65818049b77540487532d3414a19b5bd25c6eb7))
+* **deps:** update dependency ol-mapbox-style to v6.8.0 ([23c01b4](https://github.com/manniwatch/manniwatch/commit/23c01b4b34c356334e33db6b46843014dd54b343))
+* **deps:** update package-lock.json files ([#2546](https://github.com/manniwatch/manniwatch/issues/2546)) ([f0f7da0](https://github.com/manniwatch/manniwatch/commit/f0f7da00702bb07593d2393d2b5e87a4806c854e))
+
+
+
+
+
 ## [0.28.2](https://github.com/manniwatch/manniwatch/compare/v0.28.1...v0.28.2) (2021-10-31)
 
 

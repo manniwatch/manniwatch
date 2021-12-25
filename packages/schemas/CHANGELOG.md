@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.28.3](https://github.com/manniwatch/manniwatch/compare/v0.28.2...v0.28.3) (2021-12-25)
+
+
+### Bug Fixes
+
+* **deps:** update ajv to 8.8.2 ([#2579](https://github.com/manniwatch/manniwatch/issues/2579)) ([f248282](https://github.com/manniwatch/manniwatch/commit/f24828254b6c1b6cbc252854e9380ae8ec6b0f41))
+* **deps:** update package-lock.json files ([#2546](https://github.com/manniwatch/manniwatch/issues/2546)) ([f0f7da0](https://github.com/manniwatch/manniwatch/commit/f0f7da00702bb07593d2393d2b5e87a4806c854e))
+
+
+
+
+
 ## [0.28.2](https://github.com/manniwatch/manniwatch/compare/v0.28.1...v0.28.2) (2021-10-31)
 
 **Note:** Version bump only for package @manniwatch/schemas

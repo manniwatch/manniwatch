@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.28.3](https://github.com/manniwatch/manniwatch/compare/v0.28.2...v0.28.3) (2021-12-25)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v12.2.13 ([9dbe794](https://github.com/manniwatch/manniwatch/commit/9dbe79472ff2ce970706ee50212c44f2b037ee7d))
+* **deps:** update angular monorepo to v12.2.14 ([29cfd56](https://github.com/manniwatch/manniwatch/commit/29cfd5697ba2f5976133a3069a56ffbd395f4625))
+* **deps:** update angular monorepo to v12.2.15 ([4ae59bb](https://github.com/manniwatch/manniwatch/commit/4ae59bb04d4ca800506b632dcdff35b5e3480d66))
+* **deps:** update angularmaterial monorepo to v12.2.13 ([4c34e19](https://github.com/manniwatch/manniwatch/commit/4c34e1936e189f6414cca8e3ebe0a2e356bd51cc))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.2.10 ([ba0b622](https://github.com/manniwatch/manniwatch/commit/ba0b62263be846871ac21c094a9d6a3c90e3fd4e))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.2.11 ([#2501](https://github.com/manniwatch/manniwatch/issues/2501)) ([2623b95](https://github.com/manniwatch/manniwatch/commit/2623b95b0c2bf5414f32fd32cf59daf676d2ea9e))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.2.12 ([1e1d2ac](https://github.com/manniwatch/manniwatch/commit/1e1d2ac2ca41456026a359689a795e79edda604f))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.2.13 ([15fdd05](https://github.com/manniwatch/manniwatch/commit/15fdd0508ab502db5496ae816d09db0891f6b862))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.2.14 ([#2537](https://github.com/manniwatch/manniwatch/issues/2537)) ([7db13e9](https://github.com/manniwatch/manniwatch/commit/7db13e9fe9b0187d1d8513cf9ffca6072340bc15))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.2.16 ([#2561](https://github.com/manniwatch/manniwatch/issues/2561)) ([87b7cd2](https://github.com/manniwatch/manniwatch/commit/87b7cd2b0a98265857c1dd1a9d3cac6b145e2293))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.2.17 ([c1f15ea](https://github.com/manniwatch/manniwatch/commit/c1f15ead6fc22d8ba7b94d3c80d83bcb2b01dbf4))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.0 ([#2599](https://github.com/manniwatch/manniwatch/issues/2599)) ([11de7e3](https://github.com/manniwatch/manniwatch/commit/11de7e33592390b49cc9b41170fbb9fdf5e8f9eb))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.1 ([#2603](https://github.com/manniwatch/manniwatch/issues/2603)) ([d8a7589](https://github.com/manniwatch/manniwatch/commit/d8a7589ca78dd19577cbf8ed30ef525776aaf8bf))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.2 ([#2629](https://github.com/manniwatch/manniwatch/issues/2629)) ([751a48b](https://github.com/manniwatch/manniwatch/commit/751a48b364aae2a889717aeac866ea465c9ef743))
+* **deps:** update dependency date-fns to v2.26.0 ([566c2e6](https://github.com/manniwatch/manniwatch/commit/566c2e6a3768f585e0024446b59a3f23ca22b628))
+* **deps:** update dependency date-fns to v2.27.0 ([#2564](https://github.com/manniwatch/manniwatch/issues/2564)) ([ddaf5a4](https://github.com/manniwatch/manniwatch/commit/ddaf5a4b950f31754a25131da0e13399ffca8bc5))
+* **deps:** update dependency ol-mapbox-style to v6.5.3 ([64c13de](https://github.com/manniwatch/manniwatch/commit/64c13de0b78cf9bcaf442dcec7a9565004bf3a6c))
+* **deps:** update dependency ol-mapbox-style to v6.6.0 ([c658180](https://github.com/manniwatch/manniwatch/commit/c65818049b77540487532d3414a19b5bd25c6eb7))
+* **deps:** update dependency ol-mapbox-style to v6.7.0 ([ac3f5cb](https://github.com/manniwatch/manniwatch/commit/ac3f5cbada11870e6207921b54383c8e3a69b2df))
+* **deps:** update dependency ol-mapbox-style to v6.8.0 ([23c01b4](https://github.com/manniwatch/manniwatch/commit/23c01b4b34c356334e33db6b46843014dd54b343))
+* **deps:** update dependency ol-mapbox-style to v6.8.1 ([c201abe](https://github.com/manniwatch/manniwatch/commit/c201abe3122454bbb120970efb2555991cae2eb0))
+* **deps:** update package-lock.json files ([#2546](https://github.com/manniwatch/manniwatch/issues/2546)) ([f0f7da0](https://github.com/manniwatch/manniwatch/commit/f0f7da00702bb07593d2393d2b5e87a4806c854e))
+
+
+
+
+
 ## [0.28.2](https://github.com/manniwatch/manniwatch/compare/v0.28.1...v0.28.2) (2021-10-31)
 
 

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.28.3](https://github.com/manniwatch/manniwatch/compare/v0.28.2...v0.28.3) (2021-12-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ol-mapbox-style to v6.5.3 ([64c13de](https://github.com/manniwatch/manniwatch/commit/64c13de0b78cf9bcaf442dcec7a9565004bf3a6c))
+* **deps:** update dependency ol-mapbox-style to v6.6.0 ([c658180](https://github.com/manniwatch/manniwatch/commit/c65818049b77540487532d3414a19b5bd25c6eb7))
+* **deps:** update dependency ol-mapbox-style to v6.8.0 ([23c01b4](https://github.com/manniwatch/manniwatch/commit/23c01b4b34c356334e33db6b46843014dd54b343))
+* **deps:** update package-lock.json files ([#2546](https://github.com/manniwatch/manniwatch/issues/2546)) ([f0f7da0](https://github.com/manniwatch/manniwatch/commit/f0f7da00702bb07593d2393d2b5e87a4806c854e))
+
+
+
+
+
 ## [0.28.2](https://github.com/manniwatch/manniwatch/compare/v0.28.1...v0.28.2) (2021-10-31)
 
 **Note:** Version bump only for package @manniwatch/client-types
