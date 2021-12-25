@@ -17,7 +17,7 @@ import {
     StopMode,
 } from '@manniwatch/api-types';
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import * as qs from 'qs';
+import qs from 'qs';
 import { Util } from './util';
 
 // tslint:disable-next-line:no-var-requires
