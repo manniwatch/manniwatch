@@ -48,8 +48,8 @@ export class ManniWatchApiClient {
         }
     }
 
-    public request<T>(reqOpts: AxiosRequestConfig): Promise<T> {
-        return this.httpClient.request(reqOpts).then((data: AxiosResponse<T>): T => {
+    public async request<T, REQUEST_DATA = any>(reqOpts: AxiosRequestConfig<REQUEST_DATA>): Promise<T> {
+        return this.httpClient.request(reqOpts).then((data: AxiosResponse<T, REQUEST_DATA>): T => {
             return data.data;
         });
     }
