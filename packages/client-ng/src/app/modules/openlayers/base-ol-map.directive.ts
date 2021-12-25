@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import {
     AfterViewInit,
@@ -71,6 +73,7 @@ export abstract class BaseOlMapDirective<TILE extends VectorTile | OSM> implemen
 
     /**
      * Selected theme
+     *
      * @param theme theme to set
      */
     public abstract applyTheme(theme: Theme): void;

@@ -16,6 +16,7 @@
         "createDefaultProgram": true
       },
       "extends": [
+        "@donmahallem/eslint-config",
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
@@ -36,6 +37,15 @@
             "style": "kebab-case"
           }
         ]
+      }
+    },
+    {
+      "files": [
+        "*.spec.ts"
+      ],
+      "rules": {
+        "@typescript-eslint/no-floating-promises": "off",
+        "@angular-eslint/component-selector": "off"
       }
     },
     {

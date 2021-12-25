@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { runInsideZone } from '@donmahallem/rxjs-zone';

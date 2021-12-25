@@ -1,12 +1,15 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { Location } from '@angular/common';
 import { Directive, ElementRef, NgZone, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { IStopLocation, IStopPointLocation, IVehicleLocation } from '@manniwatch/api-types';
 import { Map as OLMap } from 'ol';
+import Feature, { FeatureLike } from 'ol/Feature';
 import * as OlCondition from 'ol/events/condition';
 import Point from 'ol/geom/Point';
 import { Select } from 'ol/interaction';
@@ -14,7 +17,6 @@ import { SelectEvent } from 'ol/interaction/Select';
 import BaseTileLayer from 'ol/layer/BaseTile';
 import { OSM, VectorTile } from 'ol/source';
 import Style from 'ol/style/Style';
-import Feature, { FeatureLike } from 'ol/Feature';
 import { Subscription } from 'rxjs';
 import { AbstractOlMapDirective } from 'src/app/modules/openlayers';
 import { ApiService, SettingsService } from 'src/app/services';
@@ -41,6 +43,7 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
     private vehicleHandler: OlVehicleHandler;
     /**
      * Constructor
+     *
      * @param elRef injected elementRef of the component root
      * @param apiService ApiService instance
      * @param router Router Instance
@@ -49,6 +52,8 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
      * @param location Browser Location
      * @param snackBar SnackbarService Instance
      * @param settings Settings Service
+     * @param vehicleSerivce
+     * @param mainMapService
      * @param zone ngZone Instance
      */
     constructor(elRef: ElementRef,

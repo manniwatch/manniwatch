@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { Injectable } from '@angular/core';
 import { PreloadingStrategy, Route } from '@angular/router';
@@ -13,6 +15,7 @@ import { EMPTY, Observable } from 'rxjs';
 export class AppPreloadingStrategy implements PreloadingStrategy {
   /**
    * Function to preload
+   *
    * @param route route to preload
    * @param load callback
    * @returns to preload

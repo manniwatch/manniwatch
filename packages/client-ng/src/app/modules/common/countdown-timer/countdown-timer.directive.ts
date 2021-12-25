@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { Directive, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
 import { combineLatest, timer, BehaviorSubject, Subscriber, Subscription } from 'rxjs';
@@ -34,9 +36,9 @@ export class CountdownTimerDirective implements OnInit, OnDestroy {
      * Placeholder if time has run out
      */
     @Input()
-    public placeholder: string = '-';
+    public placeholder = '-';
 
-    private timestamp: string = '';
+    private timestamp = '';
     private updateSubscription: Subscription;
     private timestampSubject: BehaviorSubject<number> = new BehaviorSubject(0);
 

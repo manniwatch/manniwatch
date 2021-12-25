@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { all as merge } from 'deepmerge';
 import { getManniwatchDesktopEnvironment } from 'src/app/util/electron';
@@ -16,4 +18,4 @@ const sourceEnvironments: Partial<Environment>[] = [
     },
 ];
 
-export const environment: Environment = merge<Environment>(sourceEnvironments) as Environment;
+export const environment: Environment = merge<Environment>(sourceEnvironments) ;

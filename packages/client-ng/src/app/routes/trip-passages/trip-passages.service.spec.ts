@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { fakeAsync, tick } from '@angular/core/testing';
 import { of, EMPTY, NEVER, Observable, Subject, Subscription } from 'rxjs';
@@ -95,7 +97,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
             });
             [2, 5, 20].forEach((testDelay: number): void => {
                 it(`should call getTripPassages after ${testDelay} seconds`, fakeAsync((): void => {
-                    const testTripId: string = 'any test id';
+                    const testTripId = 'any test id';
                     convertResponseSpy.and.returnValue(map((a: any): any => Object.assign({ c: 2 }, a)));
                     handleErrorSpy.and.returnValue(map((a: any): any => Object.assign({ d: 3 }, a)));
                     getTripPassagesSpy.and.returnValue(of(networkResult));

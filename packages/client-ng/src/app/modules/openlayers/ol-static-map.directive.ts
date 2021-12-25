@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { Directive, ElementRef, HostBinding, Input, NgZone, OnChanges, SimpleChanges } from '@angular/core';
 import { IStopLocation, IVehicleLocation } from '@manniwatch/api-types';
@@ -31,7 +33,7 @@ export class OlStaticMapDirective extends AbstractOlMapDirective implements OnCh
 
     private readonly KEY_MAP_DATA: string = 'mapData';
     @HostBinding('class.no-location')
-    public blur: boolean = false;
+    public blur = false;
     protected readonly markerVectorSource: VectorSource<Point> = undefined;
     protected readonly markerLayer: VectorLayer<VectorSource<Point>> = undefined;
 

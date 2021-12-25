@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
@@ -50,6 +52,7 @@ export class SettingsService {
 
     /**
      * Function loading initial config
+     *
      * @returns Observable
      */
     public load(): Observable<void> {
@@ -120,6 +123,7 @@ export class SettingsService {
 
     /**
      * Persists the theme preference in storageProvider
+     *
      * @param theme theme to store
      */
     protected setThemePreference(theme: Theme): void {

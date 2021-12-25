@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 export const deepFreezeObject: <T extends object | object[]>(obj: T) => T
     = <T extends object | object[]>(obj: T): T => {

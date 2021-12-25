@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import { TripInfoWithId } from '@manniwatch/client-types';
 import { of, throwError } from 'rxjs';
@@ -9,7 +11,7 @@ import { IPassageStatus, TripPassagesUtil, UpdateStatus } from './trip-util';
 
 describe('src/app/modules/trip-passages/trip-util', (): void => {
     describe('TripPassagesUtil', (): void => {
-        const testTimestamp: number = 38382992;
+        const testTimestamp = 38382992;
         const testError: Error = new Error('Should not have been called');
         beforeAll((): void => {
             jasmine.clock().install();
@@ -78,7 +80,7 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
             });
             describe('errors without status', (): void => {
                 it('should convert errors and not fail without status', (doneFn: DoneFn): void => {
-                    const testTripId: string = 'testTripId';
+                    const testTripId = 'testTripId';
                     throwError(testError)
                         .pipe(TripPassagesUtil.handleError(testTripId),
                             toArray())
@@ -100,7 +102,7 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
             describe('errors with status', (): void => {
                 [300, 400, 401, 404].forEach((testStatus: number): void => {
                     it(`should convert error without 5xx error status "${testStatus}"`, (doneFn: DoneFn): void => {
-                        const testTripId: string = `testTripId${testStatus}`;
+                        const testTripId = `testTripId${testStatus}`;
                         throwError({ status: testStatus })
                             .pipe(TripPassagesUtil.handleError(testTripId),
                                 toArray())
@@ -121,7 +123,7 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
                 });
                 [500, 521, 599].forEach((testStatus: number): void => {
                     it(`should convert error with 5xx error status "${testStatus}" to 500`, (doneFn: DoneFn): void => {
-                        const testTripId: string = `testTripId${testStatus}`;
+                        const testTripId = `testTripId${testStatus}`;
                         throwError({ status: testStatus })
                             .pipe(TripPassagesUtil.handleError(testTripId),
                                 toArray())

@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 
 import {
     ChangeDetectionStrategy,
@@ -42,6 +44,7 @@ export class TripPassagesListComponent {
 
     /**
      * Returns if the atleast one passages was provided
+     *
      * @returns true if there is atleast one departure
      */
     public hasPassages(): boolean {
