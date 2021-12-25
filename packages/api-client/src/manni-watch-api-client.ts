@@ -3,7 +3,11 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import {
+import { PositionType, StopMode } from '@manniwatch/api-types';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import qs from 'qs';
+import { Util } from './util';
+import type {
     ISettings,
     IStopInfo,
     IStopLocations,
@@ -13,14 +17,8 @@ import {
     ITripPassages,
     IVehicleLocationList,
     IVehiclePathInfo,
-    PositionType,
-    StopMode,
 } from '@manniwatch/api-types';
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import qs from 'qs';
-import { Util } from './util';
 
-// tslint:disable-next-line:no-var-requires
 export const DEFAULT_USER_AGENT = 'ManniWatch Api Client/__BUILD_VERSION__';
 export interface IBoundingBox {
     top: number;
