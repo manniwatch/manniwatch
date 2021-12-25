@@ -3,7 +3,11 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import {
+import { PositionType, StopMode } from '@manniwatch/api-types';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import qs from 'qs';
+import { Util } from './util';
+import type {
     ISettings,
     IStopInfo,
     IStopLocations,
@@ -13,14 +17,8 @@ import {
     ITripPassages,
     IVehicleLocationList,
     IVehiclePathInfo,
-    PositionType,
-    StopMode,
 } from '@manniwatch/api-types';
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import qs from 'qs';
-import { Util } from './util';
 
-// tslint:disable-next-line:no-var-requires
 export const DEFAULT_USER_AGENT = 'ManniWatch Api Client/__BUILD_VERSION__';
 export interface IBoundingBox {
     top: number;
@@ -50,8 +48,8 @@ export class ManniWatchApiClient {
         }
     }
 
-    public request<T>(reqOpts: AxiosRequestConfig): Promise<T> {
-        return this.httpClient.request(reqOpts).then((data: AxiosResponse<T>): T => {
+    public async request<T, REQUEST_DATA = any>(reqOpts: AxiosRequestConfig<REQUEST_DATA>): Promise<T> {
+        return this.httpClient.request(reqOpts).then((data: AxiosResponse<T, REQUEST_DATA>): T => {
             return data.data;
         });
     }
@@ -174,7 +172,7 @@ export class ManniWatchApiClient {
      * @since 1.0.0
      */
     public getTripPassages(tripId: string, mode: StopMode = 'departure'): Promise<ITripPassages> {
-        const options: AxiosRequestConfig = {
+        const options: AxiosRequestConfig<string> = {
             data: qs.stringify({
                 mode,
                 tripId,
@@ -194,7 +192,7 @@ export class ManniWatchApiClient {
      * @since 2.3.0
      */
     public getStopPassages(stopId: string, mode: StopMode = 'departure', startTime?: number, timeFrame?: number): Promise<IStopPassage> {
-        const options: AxiosRequestConfig = {
+        const options: AxiosRequestConfig<string> = {
             data: qs.stringify({
                 mode,
                 startTime: startTime || undefined,
@@ -221,7 +219,7 @@ export class ManniWatchApiClient {
         startTime?: number,
         timeFrame?: number
     ): Promise<IStopPassage> {
-        const options: AxiosRequestConfig = {
+        const options: AxiosRequestConfig<string> = {
             data: qs.stringify({
                 mode,
                 startTime: startTime || undefined,
@@ -240,7 +238,7 @@ export class ManniWatchApiClient {
      * @since 1.0.0
      */
     public getStopInfo(stopId: string): Promise<IStopInfo> {
-        const options: AxiosRequestConfig = {
+        const options: AxiosRequestConfig<string> = {
             data: qs.stringify({ stop: stopId }),
             method: 'POST',
             url: '/internetservice/services/stopInfo/stop',
@@ -254,7 +252,7 @@ export class ManniWatchApiClient {
      * @since 1.0.0
      */
     public getStopPointInfo(stopPointId: string): Promise<IStopPointInfo> {
-        const options: AxiosRequestConfig = {
+        const options: AxiosRequestConfig<string> = {
             data: qs.stringify({ stopPoint: stopPointId }),
             method: 'POST',
             url: '/internetservice/services/stopInfo/stopPoint',
