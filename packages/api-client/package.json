@@ -2,8 +2,8 @@
     "name": "@manniwatch/api-client",
     "version": "0.28.2",
     "description": "Node Client to consume the Api",
-    "main": "dist/cjs/index.js",
-    "module": "dist/esm/index.js",
+    "main": "dist/cjs/index.cjs",
+    "module": "dist/esm/index.mjs",
     "types": "dist/types/index.d.ts",
     "private": false,
     "scripts": {
@@ -20,14 +20,18 @@
         "prepublishOnly": "npm run test && npm run docs && npm run build",
         "version": "npm run build:readme && git add README.md"
     },
+    "exports": {
+        "import": "./dist/esm/index.mjs",
+        "require": "./dist/cjs/index.cjs"
+    },
     "dependencies": {
         "@manniwatch/api-types": "^0.28.0",
         "axios": "~0.24.0",
-        "qs": "~6.10.1"
+        "qs": "~6.10.2"
     },
     "devDependencies": {
         "@types/qs": "6.9.7",
-        "nock": "13.1.4"
+        "nock": "13.2.1"
     },
     "files": [
         "dist/*",
@@ -48,7 +52,7 @@
         "url": "https://github.com/manniwatch/manniwatch.git"
     },
     "engines": {
-        "node": ">=12.0.0"
+        "node": ">=14"
     },
     "publishConfig": {
         "access": "public"

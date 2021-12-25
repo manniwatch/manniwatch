@@ -112,7 +112,7 @@ describe('endpoints/geo/router.ts', (): void => {
         });
         describe('/stopPoints', (): void => {
             afterEach((): void => {
-                expect(vehicleValidateStub.callCount).to.equal(0, "vehicle schema shouldn't be evaluated against this route");
+                expect(vehicleValidateStub.callCount).to.equal(0, `vehicle schema shouldn't be evaluated against this route`);
                 expect(geoFenceValidateStub.callCount).to.equal(1, 'geo fence validation should only happen once');
             });
             describe('resolves', (): void => {
@@ -176,7 +176,7 @@ describe('endpoints/geo/router.ts', (): void => {
         });
         describe('/stops', (): void => {
             afterEach((): void => {
-                expect(vehicleValidateStub.callCount).to.equal(0, "vehicle schema shouldn't be evaluated against this route");
+                expect(vehicleValidateStub.callCount).to.equal(0, `vehicle schema shouldn't be evaluated against this route`);
                 expect(geoFenceValidateStub.callCount).to.equal(1, 'geo fence validation should only happen once');
             });
             describe('resolves', (): void => {
@@ -237,7 +237,7 @@ describe('endpoints/geo/router.ts', (): void => {
         });
         describe('/vehicles', (): void => {
             afterEach((): void => {
-                expect(geoFenceValidateStub.callCount).to.equal(0, "fence schema shouldn't be evaluated against this route");
+                expect(geoFenceValidateStub.callCount).to.equal(0, `fence schema shouldn't be evaluated against this route`);
                 expect(vehicleValidateStub.callCount).to.equal(1, 'query param validation should only happen once');
             });
             describe('resolves', (): void => {

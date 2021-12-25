@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: schemas
+/*
+ * Package @manniwatch/schemas
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 export { GEO_FENCE_SCHEMA, IGeoFenceSchema } from './geo-fence';

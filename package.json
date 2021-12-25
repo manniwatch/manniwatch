@@ -3,35 +3,35 @@
   "private": true,
   "devDependencies": {
     "@appnest/readme": "1.2.7",
-    "@donmahallem/eslint-config": "0.3.0",
-    "@donmahallem/rollup-config": "0.4.7",
-    "@donmahallem/tslint-config": "0.2.1",
+    "@donmahallem/eslint-config": "0.5.2",
+    "@donmahallem/rollup-config": "0.7.1",
+    "@donmahallem/tslint-config": "0.3.0",
     "@rollup/plugin-commonjs": "21.0.1",
     "@rollup/plugin-json": "4.1.0",
-    "@rollup/plugin-node-resolve": "13.0.6",
+    "@rollup/plugin-node-resolve": "13.1.1",
     "@rollup/plugin-replace": "3.0.0",
     "@rollup/plugin-typescript": "8.3.0",
-    "@types/chai": "4.2.22",
+    "@types/chai": "4.3.0",
     "@types/mocha": "9.0.0",
-    "@types/node": "16.11.6",
+    "@types/node": "16.11.17",
     "@types/sinon": "10.0.6",
     "chai": "4.3.4",
     "commitizen": "4.2.4",
     "conventional-changelog-angular": "5.0.13",
     "coveralls": "3.1.1",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "8.1.0",
+    "eslint": "8.5.0",
     "fs-extra": "10.0.0",
     "lerna": "4.0.0",
     "mocha": "9.1.3",
     "nyc": "15.1.0",
-    "prettier": "2.4.1",
-    "rollup": "2.58.3",
-    "sinon": "11.1.2",
+    "prettier": "2.5.1",
+    "rollup": "2.62.0",
+    "sinon": "12.0.1",
     "ts-node": "10.4.0",
     "tslib": "2.3.1",
     "tslint": "6.1.3",
-    "typedoc": "0.22.7",
+    "typedoc": "0.22.10",
     "typescript": "4.4.4"
   },
   "scripts": {
@@ -74,7 +74,7 @@
     "all": true
   },
   "engines": {
-    "node": "^12 || ^14 || ^16"
+    "node": ">=14"
   },
   "config": {
     "commitizen": {

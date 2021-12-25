@@ -13,9 +13,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup Node
-        uses: actions/setup-node@v2.4.1
+        uses: actions/setup-node@v2.5.0
         with:
-          node-version: 14
+          node-version: 16
       - name: Install renovate
         run: npm install renovate -g
       - name: Run Test

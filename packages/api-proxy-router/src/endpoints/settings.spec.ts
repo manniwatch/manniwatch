@@ -43,7 +43,7 @@ describe('endpoints/settings.ts', (): void => {
             sandbox.restore();
             fakeTimer.restore();
         });
-        describe("query ''", (): void => {
+        describe(`query ''`, (): void => {
             it('should proxy the request and cache the response', async (): Promise<void> => {
                 getSettingsStub.resolves(SUCCESS_RESPONSE);
                 fakeCache.get.returns(undefined);

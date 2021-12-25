@@ -9,7 +9,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        node: [12, 14, 16]
+        node: [14, 16]
         os: [ubuntu-latest] #, windows-latest]
     steps:
       - name: Checkout
@@ -17,15 +17,19 @@ jobs:
         with:
           fetch-depth: 200
       - name: Setup Node
-        uses: actions/setup-node@v2.4.1
+        uses: actions/setup-node@v2.5.0
         with:
           node-version: ${{ matrix.node }}
+      - name: Update NPM
+        run: |
+          npm install -g npm
+          npm -v
       - name: Get npm cache directory
         id: npm-cache
         run: |
           echo "::set-output name=dir::$(npm config get cache)"
       - name: Setup Cache
-        uses: actions/cache@v2.1.6
+        uses: actions/cache@v2.1.7
         with:
           path: |
             ${{ steps.npm-cache.outputs.dir }}
@@ -39,7 +43,7 @@ jobs:
       - name: Run Build
         run: npx lerna run build
       - name: Archive production artifacts
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v2.3.1
         with:
           name: build-${{matrix.os}}-${{matrix.node}}
           path: |
@@ -52,7 +56,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        node: [12, 14, 16]
+        node: [14, 16]
         os: [ubuntu-latest] #, windows-latest]
     steps:
       - name: Checkout
@@ -60,15 +64,19 @@ jobs:
         with:
           fetch-depth: 200
       - name: Setup Node
-        uses: actions/setup-node@v2.4.1
+        uses: actions/setup-node@v2.5.0
         with:
           node-version: ${{ matrix.node }}
+      - name: Update NPM
+        run: |
+          npm install -g npm
+          npm -v
       - name: Get npm cache directory
         id: npm-cache
         run: |
           echo "::set-output name=dir::$(npm config get cache)"
       - name: Setup Cache
-        uses: actions/cache@v2.1.6
+        uses: actions/cache@v2.1.7
         with:
           path: |
             ${{ steps.npm-cache.outputs.dir }}
@@ -80,7 +88,7 @@ jobs:
           npm ci
           npx lerna bootstrap --ci
       - name: Download Build artifacts
-        uses: actions/download-artifact@v2.0.10
+        uses: actions/download-artifact@v2.1.0
         with:
           name: build-${{matrix.os}}-${{matrix.node}}
           path: ./packages
@@ -116,15 +124,19 @@ jobs:
         with:
           fetch-depth: 200
       - name: Setup Node
-        uses: actions/setup-node@v2.4.1
+        uses: actions/setup-node@v2.5.0
         with:
           node-version: ${{ matrix.node }}
+      - name: Update NPM
+        run: |
+          npm install -g npm
+          npm -v
       - name: Get npm cache directory
         id: npm-cache
         run: |
           echo "::set-output name=dir::$(npm config get cache)"
       - name: Setup Cache
-        uses: actions/cache@v2.1.6
+        uses: actions/cache@v2.1.7
         with:
           path: |
             ${{ steps.npm-cache.outputs.dir }}
@@ -136,7 +148,7 @@ jobs:
           npm ci
           npx lerna bootstrap --ci
       - name: Download Build artifacts
-        uses: actions/download-artifact@v2.0.10
+        uses: actions/download-artifact@v2.1.0
         with:
           name: build-${{matrix.os}}-${{matrix.node}}
           path: ./packages
@@ -158,15 +170,19 @@ jobs:
         with:
           fetch-depth: 200
       - name: Setup Node
-        uses: actions/setup-node@v2.4.1
+        uses: actions/setup-node@v2.5.0
         with:
           node-version: ${{ matrix.node }}
+      - name: Update NPM
+        run: |
+          npm install -g npm
+          npm -v
       - name: Get npm cache directory
         id: npm-cache
         run: |
           echo "::set-output name=dir::$(npm config get cache)"
       - name: Setup Cache
-        uses: actions/cache@v2.1.6
+        uses: actions/cache@v2.1.7
         with:
           path: |
             ${{ steps.npm-cache.outputs.dir }}
@@ -178,7 +194,7 @@ jobs:
           npm ci
           npx lerna bootstrap --ci
       - name: Download Build artifacts
-        uses: actions/download-artifact@v2.0.10
+        uses: actions/download-artifact@v2.1.0
         with:
           name: build-${{matrix.os}}-${{matrix.node}}
           path: ./packages

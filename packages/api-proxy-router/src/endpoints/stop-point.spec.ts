@@ -78,7 +78,7 @@ describe('endpoints/stop-point.ts', (): void => {
             promiseStub.restore();
             validateStub.restore();
         });
-        describe("query '/stopPoint/:id/route'", (): void => {
+        describe(`query '/stopPoint/:id/route'`, (): void => {
             afterEach((): void => {
                 expect(promiseStub.callCount).to.equal(1);
                 expect(errorSpy.callCount).to.equal(0, 'No route error should occur');

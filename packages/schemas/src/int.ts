@@ -1,12 +1,13 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: schemas
+/*
+ * Package @manniwatch/schemas
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { RequireIdJSONSchemaType } from './util';
 
 export const INT_SCHEMA: RequireIdJSONSchemaType<string | number> = {
     $id: '#manniwatch/int',
-    anyOf: [
+    oneOf: [
         {
             pattern: '^[\\+\\-]?\\d+$',
             type: 'string',
@@ -15,4 +16,4 @@ export const INT_SCHEMA: RequireIdJSONSchemaType<string | number> = {
             type: 'integer',
         },
     ],
-} as any;
+};
