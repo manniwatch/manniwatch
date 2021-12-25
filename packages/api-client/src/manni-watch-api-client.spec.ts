@@ -12,9 +12,25 @@ import sinon from 'sinon';
 import { IBoundingBox, ManniWatchApiClient } from './manni-watch-api-client';
 import { Util } from './util';
 
-const testSuccessResponse: any = {
+interface ITestSuccessResponse {
+    message: string;
+    status: number;
+}
+const testSuccessResponse: ITestSuccessResponse = {
     message: 'This is a mocked response',
     status: 200,
+};
+const testBox: IBoundingBox = {
+    bottom: 4,
+    left: 3,
+    right: 2,
+    top: 1,
+};
+const testBoxParams: Record<keyof IBoundingBox, string> = {
+    bottom: '4',
+    left: '3',
+    right: '2',
+    top: '1',
 };
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 const STOP_MODES: StopMode[] = ['departure', 'arrival'];
@@ -54,7 +70,7 @@ describe('manni-watch-api-client.ts', (): void => {
                     .get('/test/path')
                     .matchHeader('User-Agent', /^ManniWatch Api Client\/__BUILD_VERSION__/)
                     .reply(200, testSuccessResponse);
-                return instance.request(testOpts).then((val: any): void => {
+                return instance.request<ITestSuccessResponse, undefined>(testOpts).then((val: ITestSuccessResponse): void => {
                     expect(val).to.deep.equal(testSuccessResponse);
                     expect(scope.isDone()).to.eq(true, 'scope should be done');
                 });
@@ -67,7 +83,7 @@ describe('manni-watch-api-client.ts', (): void => {
             });
             beforeEach((): void => {
                 requestStub = sinon.stub(instance, 'request');
-                requestStub.callsFake((opts: AxiosRequestConfig): Promise<any> => {
+                requestStub.callsFake((opts: AxiosRequestConfig): Promise<unknown> => {
                     return reqpDefault(opts).then((data: AxiosResponse<unknown>): unknown => data.data);
                 });
             });
@@ -94,7 +110,7 @@ describe('manni-watch-api-client.ts', (): void => {
                             const scope: nock.Scope = nock(testDomain)
                                 .post('/internetservice/services/stopInfo/stop', `stop=${testId}`)
                                 .reply(200, testSuccessResponse);
-                            return instance.getStopInfo(testId).then((val: any): void => {
+                            return instance.getStopInfo(testId).then((val: unknown): void => {
                                 expect(val).to.deep.equal(testSuccessResponse);
                                 expect(scope.isDone()).to.eq(true, 'scope should be done');
                             });
@@ -108,7 +124,7 @@ describe('manni-watch-api-client.ts', (): void => {
                                 .post('/internetservice/geoserviceDispatcher/services/pathinfo/trip')
                                 .query({ id: testId })
                                 .reply(200, testSuccessResponse);
-                            return instance.getRouteByTripId(testId).then((val: any): void => {
+                            return instance.getRouteByTripId(testId).then((val: unknown): void => {
                                 expect(val).to.deep.equal(testSuccessResponse);
                                 expect(scope.isDone()).to.eq(true, 'scope should be done');
                             });
@@ -130,7 +146,7 @@ describe('manni-watch-api-client.ts', (): void => {
                         transformBodyStub.returns(testSuccessResponse);
                         const testResponse = 'test = {};';
                         const scope: nock.Scope = nock(testDomain).get('/internetservice/settings').reply(200, testResponse);
-                        return instance.getSettings().then((val: any): void => {
+                        return instance.getSettings().then((val: unknown): void => {
                             expect(transformBodyStub.callCount).to.equal(1);
                             expect(transformBodyStub.getCall(0).args[0]).to.deep.eq(testResponse);
                             expect(val).to.deep.equal(testSuccessResponse);
@@ -145,7 +161,7 @@ describe('manni-watch-api-client.ts', (): void => {
                                 .post('/internetservice/geoserviceDispatcher/services/pathinfo/vehicle')
                                 .query({ id: testId })
                                 .reply(200, testSuccessResponse);
-                            return instance.getRouteByVehicleId(testId).then((val: any): void => {
+                            return instance.getRouteByVehicleId(testId).then((val: unknown): void => {
                                 expect(val).to.deep.equal(testSuccessResponse);
                                 expect(scope.isDone()).to.eq(true, 'scope should be done');
                             });
@@ -160,7 +176,7 @@ describe('manni-watch-api-client.ts', (): void => {
                                     .post('/internetservice/geoserviceDispatcher/services/pathinfo/route')
                                     .query({ direction: testDirection, id: testId })
                                     .reply(200, testSuccessResponse);
-                                return instance.getRouteByRouteId(testId, testDirection).then((val: any): void => {
+                                return instance.getRouteByRouteId(testId, testDirection).then((val: unknown): void => {
                                     expect(val).to.deep.equal(testSuccessResponse);
                                     expect(scope.isDone()).to.eq(true, 'scope should be done');
                                 });
@@ -169,18 +185,12 @@ describe('manni-watch-api-client.ts', (): void => {
                     });
                 });
                 describe('getStopLocations()', (): void => {
-                    const testBox: IBoundingBox = {
-                        bottom: 4,
-                        left: 3,
-                        right: 2,
-                        top: 1,
-                    };
                     it(`should query route with ${JSON.stringify(testBox)}`, (): Promise<void> => {
                         const scope: nock.Scope = nock(testDomain)
                             .get('/internetservice/geoserviceDispatcher/services/stopinfo/stops')
-                            .query(testBox as any)
+                            .query(testBoxParams)
                             .reply(200, testSuccessResponse);
-                        return instance.getStopLocations(testBox).then((val: any): void => {
+                        return instance.getStopLocations(testBox).then((val: unknown): void => {
                             expect(val).to.deep.equal(testSuccessResponse);
                             expect(scope.isDone()).to.eq(true, 'scope should be done');
                         });
@@ -202,16 +212,10 @@ describe('manni-watch-api-client.ts', (): void => {
                     });
                 });
                 describe('getStopPointLocations()', (): void => {
-                    const testBox: IBoundingBox = {
-                        bottom: 4,
-                        left: 3,
-                        right: 2,
-                        top: 1,
-                    };
                     it(`should query route with ${JSON.stringify(testBox)}`, (): Promise<void> => {
                         const scope: nock.Scope = nock(testDomain)
                             .get('/internetservice/geoserviceDispatcher/services/stopinfo/stopPoints')
-                            .query(testBox as any)
+                            .query(testBoxParams)
                             .reply(200, testSuccessResponse);
                         return instance.getStopPointLocations(testBox).then((val: IStopPointLocations): void => {
                             expect(val).to.deep.equal(testSuccessResponse);
@@ -241,7 +245,7 @@ describe('manni-watch-api-client.ts', (): void => {
                                 const scope: nock.Scope = nock(testDomain)
                                     .post('/internetservice/services/tripInfo/tripPassages', `mode=${mode}&tripId=${testId}`)
                                     .reply(200, testSuccessResponse);
-                                return instance.getTripPassages(testId, mode).then((val: any): void => {
+                                return instance.getTripPassages(testId, mode).then((val: unknown): void => {
                                     expect(val).to.deep.equal(testSuccessResponse);
                                     expect(scope.isDone()).to.eq(true, 'scope should be done');
                                 });
@@ -251,7 +255,7 @@ describe('manni-watch-api-client.ts', (): void => {
                             const scope: nock.Scope = nock(testDomain)
                                 .post('/internetservice/services/tripInfo/tripPassages', `mode=departure&tripId=${testId}`)
                                 .reply(200, testSuccessResponse);
-                            return instance.getTripPassages(testId).then((val: any): void => {
+                            return instance.getTripPassages(testId).then((val: unknown): void => {
                                 expect(val).to.deep.equal(testSuccessResponse);
                                 expect(scope.isDone()).to.eq(true, 'scope should be done');
                             });
@@ -260,7 +264,7 @@ describe('manni-watch-api-client.ts', (): void => {
                 });
                 describe('getStopPassages()', (): void => {
                     // eslint:disable-next-line:@typescript-eslint/no-unsafe-assignment
-                    const optionalTimes: any[] = [12598, null, undefined];
+                    const optionalTimes: (number | null | undefined)[] = [12598, null, undefined];
                     ['id1', 'id2'].forEach((testId: string): void => {
                         STOP_MODES.forEach((mode: StopMode): void => {
                             optionalTimes.forEach((testStartTime: number): void => {
@@ -283,7 +287,7 @@ describe('manni-watch-api-client.ts', (): void => {
                                             .reply(200, testSuccessResponse);
                                         return instance
                                             .getStopPassages(testId, mode, testStartTime, testTimeFrame)
-                                            .then((val: any): void => {
+                                            .then((val: unknown): void => {
                                                 expect(val).to.deep.equal(testSuccessResponse);
                                                 expect(scope.isDone()).to.eq(true, 'scope should be done');
                                             });
@@ -295,7 +299,7 @@ describe('manni-watch-api-client.ts', (): void => {
                             const scope: nock.Scope = nock(testDomain)
                                 .post('/internetservice/services/passageInfo/stopPassages/stop', `mode=departure&stop=${testId}`)
                                 .reply(200, testSuccessResponse);
-                            return instance.getStopPassages(testId).then((val: any): void => {
+                            return instance.getStopPassages(testId).then((val: unknown): void => {
                                 expect(val).to.deep.equal(testSuccessResponse);
                                 expect(scope.isDone()).to.eq(true, 'scope should be done');
                             });
@@ -304,7 +308,7 @@ describe('manni-watch-api-client.ts', (): void => {
                 });
                 describe('getStopPointPassages()', (): void => {
                     // eslint:disable-next-line:@typescript-eslint/no-unsafe-assignment
-                    const optionalTimes: any[] = [12598, null, undefined];
+                    const optionalTimes: (number | null | undefined)[] = [12598, null, undefined];
                     ['id1', 'id2'].forEach((testId: string): void => {
                         STOP_MODES.forEach((mode: StopMode): void => {
                             optionalTimes.forEach((testStartTime: number): void => {
@@ -327,7 +331,7 @@ describe('manni-watch-api-client.ts', (): void => {
                                             .reply(200, testSuccessResponse);
                                         return instance
                                             .getStopPointPassages(testId, mode, testStartTime, testTimeFrame)
-                                            .then((val: any): void => {
+                                            .then((val: unknown): void => {
                                                 expect(val).to.deep.equal(testSuccessResponse);
                                                 expect(scope.isDone()).to.eq(true, 'scope should be done');
                                             });
@@ -339,7 +343,7 @@ describe('manni-watch-api-client.ts', (): void => {
                             const scope: nock.Scope = nock(testDomain)
                                 .post('/internetservice/services/passageInfo/stopPassages/stopPoint', `mode=departure&stopPoint=${testId}`)
                                 .reply(200, testSuccessResponse);
-                            return instance.getStopPointPassages(testId).then((val: any): void => {
+                            return instance.getStopPointPassages(testId).then((val: unknown): void => {
                                 expect(val).to.deep.equal(testSuccessResponse);
                                 expect(scope.isDone()).to.eq(true, 'scope should be done');
                             });
@@ -353,20 +357,23 @@ describe('manni-watch-api-client.ts', (): void => {
                         [10, 100, undefined].forEach((lastUpdate: number): void => {
                             it(`should query vehicles with positionType "${mode}" and lastUpdate ${lastUpdate} `, (): Promise<void> => {
                                 // tslint:disable-next-line:triple-equals
-                                const expectedQueryParams: any =
-                                    lastUpdate == undefined
-                                        ? {
-                                              colorType: 'ROUTE_BASED',
-                                              positionType: mode,
-                                          }
-                                        : {
-                                              colorType: 'ROUTE_BASED',
-                                              lastUpdate,
-                                              positionType: mode,
-                                          };
+                                const expectedQueryParams: {
+                                    colorType: 'ROUTE_BASED';
+                                    positionType: PositionType;
+                                } = {
+                                    colorType: 'ROUTE_BASED',
+                                    positionType: mode,
+                                };
                                 const scope: nock.Scope = nock(testDomain)
                                     .get('/internetservice/geoserviceDispatcher/services/vehicleinfo/vehicles')
-                                    .query(expectedQueryParams)
+                                    .query({
+                                        ...expectedQueryParams,
+                                        ...(lastUpdate
+                                            ? {
+                                                  lastUpdate: `${lastUpdate}`,
+                                              }
+                                            : undefined),
+                                    })
                                     .reply(200, testSuccessResponse);
                                 return instance.getVehicleLocations(mode, lastUpdate).then((val: IVehicleLocationList): void => {
                                     expect(val).to.deep.equal(testSuccessResponse);
