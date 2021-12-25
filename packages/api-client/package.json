@@ -2,8 +2,8 @@
     "name": "@manniwatch/api-client",
     "version": "0.28.2",
     "description": "Node Client to consume the Api",
-    "main": "dist/cjs/index.js",
-    "module": "dist/esm/index.js",
+    "main": "dist/cjs/index.cjs",
+    "module": "dist/esm/index.mjs",
     "types": "dist/types/index.d.ts",
     "private": false,
     "scripts": {
@@ -19,6 +19,11 @@
         "docs": "typedoc --options ./typedoc.config.js",
         "prepublishOnly": "npm run test && npm run docs && npm run build",
         "version": "npm run build:readme && git add README.md"
+    },
+    "exports": {
+        "import": "./dist/esm/index.mjs",
+        "require": "./dist/esm/index.cjs",
+        "node": "./dist/esm/index.cjs"
     },
     "dependencies": {
         "@manniwatch/api-types": "^0.28.0",
