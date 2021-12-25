@@ -155,9 +155,21 @@
               "devServerTarget": "manniwatch:serve:production"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "manniwatch"
+  "defaultProject": "manniwatch",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
