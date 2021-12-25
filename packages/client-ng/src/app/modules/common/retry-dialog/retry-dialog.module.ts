@@ -13,9 +13,6 @@ import { RetryDialogComponent } from './retry-dialog.component';
     declarations: [
         RetryDialogComponent,
     ],
-    entryComponents: [
-        RetryDialogComponent,
-    ],
     exports: [
         CommonModule,
         MatIconModule,
@@ -29,7 +26,6 @@ import { RetryDialogComponent } from './retry-dialog.component';
         MatButtonModule,
         MatDialogModule,
     ],
-    providers: [
-    ],
+    providers: []
 })
 export class RetryDialogModule { }

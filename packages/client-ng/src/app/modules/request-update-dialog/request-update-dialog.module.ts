@@ -13,9 +13,6 @@ import { RequestUpdateDialogComponent } from './request-update-dialog.component'
     declarations: [
         RequestUpdateDialogComponent,
     ],
-    entryComponents: [
-        RequestUpdateDialogComponent,
-    ],
     exports: [
         CommonModule,
         MatDialogModule,
@@ -29,6 +26,6 @@ import { RequestUpdateDialogComponent } from './request-update-dialog.component'
         MatButtonModule,
         MatProgressSpinnerModule,
     ],
-    providers: [],
+    providers: []
 })
 export class RequestUpdateDialogModule { }
