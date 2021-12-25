@@ -22,8 +22,7 @@
     },
     "exports": {
         "import": "./dist/esm/index.mjs",
-        "require": "./dist/esm/index.cjs",
-        "node": "./dist/esm/index.cjs"
+        "require": "./dist/cjs/index.cjs"
     },
     "dependencies": {
         "@manniwatch/api-types": "^0.28.0",
