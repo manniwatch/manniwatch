@@ -1,9 +1,13 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { Inject, InjectionToken } from '@angular/core';
-import {
+import { Inject, InjectionToken, Optional } from '@angular/core';
+import { from, EMPTY, Observable } from 'rxjs';
+import { getManniwatchDesktopApi } from '../util/electron';
+import { ApiService as RootApiService } from './api.service';
+import type {
     ISettings,
     IStopInfo,
     IStopLocations,
@@ -14,10 +18,7 @@ import {
     IVehiclePathInfo,
     StopMode,
 } from '@manniwatch/api-types';
-import { ApiService, IBounds, TripInfoWithId } from '@manniwatch/client-types';
-import { from, EMPTY, Observable } from 'rxjs';
-import { getManniwatchDesktopApi } from '../util/electron';
-import { ApiService as RootApiService } from './api.service';
+import type { ApiService, IBounds, TripInfoWithId } from '@manniwatch/client-types';
 
 export const ELECTRON_API: InjectionToken<ApiService> = new InjectionToken<ApiService>('app.electron-api', {
     factory: (): ApiService => {
@@ -26,8 +27,7 @@ export const ELECTRON_API: InjectionToken<ApiService> = new InjectionToken<ApiSe
     providedIn: 'root',
 });
 export class ElectronApiService implements RootApiService {
-
-    public constructor(@Inject(ELECTRON_API) private readonly service: ApiService) {
+    public constructor(@Optional() @Inject(ELECTRON_API) private readonly service?: ApiService) {
         // tslint:disable-next-line:triple-equals
         if (service == undefined) {
             throw new Error('No electron config provided');
@@ -50,25 +50,24 @@ export class ElectronApiService implements RootApiService {
         return from(this.service.getStopInfo(stopId));
     }
 
-    public getStopPassages(stopId: string,
-        mode: StopMode = 'departure',
-        startTime?: number,
-        timeFrame?: number): Observable<IStopPassage> {
+    public getStopPassages(stopId: string, mode: StopMode = 'departure', startTime?: number, timeFrame?: number): Observable<IStopPassage> {
         return from(this.service.getStopPassages(stopId, mode, startTime, timeFrame));
     }
 
-    public getStopPointPassages(stopPointId: string,
+    public getStopPointPassages(
+        stopPointId: string,
         mode: StopMode = 'departure',
         startTime?: number,
-        timeFrame?: number): Observable<IStopPassage> {
+        timeFrame?: number
+    ): Observable<IStopPassage> {
         return from(this.service.getStopPointPassages(stopPointId, mode, startTime, timeFrame));
     }
 
-    public getVehicleLocations(lastUpdate: number = 0): Observable<IVehicleLocationList> {
+    public getVehicleLocations(lastUpdate = 0): Observable<IVehicleLocationList> {
         return from(this.service.getVehicleLocations('RAW', lastUpdate));
     }
 
-    public getVehicleLocation(vehicleId: string, lastUpdate: number = 0): Observable<IVehicleLocation> {
+    public getVehicleLocation(vehicleId: string, lastUpdate = 0): Observable<IVehicleLocation> {
         return EMPTY; // from(this.service.getVehicleLocation(vehicleId, lastUpdate));
     }
 

@@ -1,12 +1,9 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
-import {
-    ChangeDetectionStrategy,
-    Component,
-    Input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ITripPassage } from '@manniwatch/api-types';
 import { TripInfoWithId } from '@manniwatch/client-types';
 
@@ -30,8 +27,7 @@ export class TripPassagesListComponent {
             if (info.old && info.old.length > 0) {
                 passages.push(...info.old);
             }
-            passages.sort((a: ITripPassage, b: ITripPassage): number =>
-                parseInt(a.stop_seq_num, 10) - parseInt(b.stop_seq_num, 10));
+            passages.sort((a: ITripPassage, b: ITripPassage): number => parseInt(a.stop_seq_num, 10) - parseInt(b.stop_seq_num, 10));
             this.passages = passages;
             return;
         }
@@ -42,10 +38,10 @@ export class TripPassagesListComponent {
 
     /**
      * Returns if the atleast one passages was provided
+     *
      * @returns true if there is atleast one departure
      */
     public hasPassages(): boolean {
         return Array.isArray(this.passages) && this.passages.length > 0;
     }
-
 }

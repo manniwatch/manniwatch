@@ -1,8 +1,10 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { fakeAsync, tick } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
 import { of, EMPTY, NEVER, Observable, Subject, Subscription } from 'rxjs';
 import { delay, map, skip, take, toArray } from 'rxjs/operators';
 import { TripPassagesService } from './trip-passages.service';
@@ -34,32 +36,34 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
             });
             describe('statusSubject should be set by route data', (): void => {
                 it('statusSubject should be initialized with route snapshot data', (doneFn: DoneFn): void => {
-                    const service: TripPassagesService = new TripPassagesService(testRoute, undefined, undefined, undefined);
-                    (service as any).statusSubject
-                        .pipe(take(1))
-                        .subscribe({
-                            complete: doneFn,
-                            error: doneFn.fail,
-                            next: (val: any): void => {
-                                expect(val).toEqual(initialTripData);
-                                doneFn();
-                            },
-                        });
+                    const service: TripPassagesService = new TripPassagesService(
+                        testRoute as ActivatedRoute,
+                        undefined,
+                        undefined,
+                        undefined
+                    );
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+                    (service as any as { statusSubject: Subject<IPassageStatus> }).statusSubject.pipe(take(1)).subscribe({
+                        complete: doneFn,
+                        error: doneFn.fail,
+                        next: (val: any): void => {
+                            expect(val).toEqual(initialTripData);
+                            doneFn();
+                        },
+                    });
                 });
             });
             describe('statusObservable ', (): void => {
                 it('should set statusObservable to value from createStatusObservable()', (doneFn: DoneFn): void => {
                     const service: TripPassagesService = new TripPassagesService(testRoute, undefined, undefined, undefined);
-                    service.statusObservable
-                        .pipe(take(1))
-                        .subscribe({
-                            complete: doneFn,
-                            error: doneFn.fail,
-                            next: (val: any): void => {
-                                expect(val).toEqual(initialTripData);
-                                doneFn();
-                            },
-                        });
+                    service.statusObservable.pipe(take(1)).subscribe({
+                        complete: doneFn,
+                        error: doneFn.fail,
+                        next: (val: any): void => {
+                            expect(val).toEqual(initialTripData);
+                            doneFn();
+                        },
+                    });
                     refreshSubject.next(initialTripData);
                 });
             });
@@ -78,7 +82,8 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                 createStatusObservableSpy = spyOn(TripPassagesService.prototype, 'createStatusObservable');
                 convertResponseSpy = spyOn(TripPassagesUtil, 'convertResponse');
                 handleErrorSpy = spyOn(TripPassagesUtil, 'handleError');
-                createStatusObservableSpy.and.callFake((): void => { });
+                // eslint-disable-next-line @typescript-eslint/no-empty-function
+                createStatusObservableSpy.and.callFake((): void => {});
                 const testRoute: any = {
                     snapshot: { data: initialRouteData },
                 };
@@ -95,7 +100,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
             });
             [2, 5, 20].forEach((testDelay: number): void => {
                 it(`should call getTripPassages after ${testDelay} seconds`, fakeAsync((): void => {
-                    const testTripId: string = 'any test id';
+                    const testTripId = 'any test id';
                     convertResponseSpy.and.returnValue(map((a: any): any => Object.assign({ c: 2 }, a)));
                     handleErrorSpy.and.returnValue(map((a: any): any => Object.assign({ d: 3 }, a)));
                     getTripPassagesSpy.and.returnValue(of(networkResult));
@@ -107,13 +112,13 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                     expect(convertResponseSpy).toHaveBeenCalledWith(testTripId);
                     expect(handleErrorSpy).toHaveBeenCalledTimes(1);
                     expect(handleErrorSpy).toHaveBeenCalledWith(testTripId);
-                    tick((testDelay * 1000) - 500);
+                    tick(testDelay * 1000 - 500);
                     expect(subscription.closed).toBeFalse();
                     expect(nextSpy).toHaveBeenCalledTimes(0);
                     tick(1000);
                     expect(subscription.closed).toBeTrue();
                     expect(nextSpy).toHaveBeenCalledTimes(1);
-                    expect(nextSpy).toHaveBeenCalledWith({ d: 3, c: 2, network: true, result: 1 });
+                    expect(nextSpy).toHaveBeenCalledWith({ c: 2, d: 3, network: true, result: 1 });
                     subscription.unsubscribe();
                 }));
             });
@@ -130,7 +135,8 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                 statusSubject = new Subject();
                 statusSubjectNextSpy = spyOn(statusSubject, 'next').and.callThrough();
                 createStatusObservableSpy = spyOn(TripPassagesService.prototype, 'createStatusObservable');
-                createStatusObservableSpy.and.callFake((): void => { });
+                // eslint-disable-next-line @typescript-eslint/no-empty-function
+                createStatusObservableSpy.and.callFake((): void => {});
                 const testRoute: any = {
                     data: routeDataSubject,
                     snapshot: { data: initialRouteData },
@@ -152,9 +158,9 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                     tripId: 'tripId',
                     tripInfo: undefined,
                 };
-                createRefreshPollObservableSpy.and
-                    .callFake((): Observable<any> => EMPTY);
-                testService.createStatusObservable(statusSubject)
+                createRefreshPollObservableSpy.and.callFake((): Observable<any> => EMPTY);
+                testService
+                    .createStatusObservable(statusSubject)
                     .pipe(toArray())
                     .subscribe({
                         complete: doneFn,
@@ -178,9 +184,9 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                     tripId: 'tripId',
                     tripInfo: undefined,
                 };
-                createRefreshPollObservableSpy.and
-                    .callFake((inp: Observable<any>): Observable<any> => inp.pipe(take(1)));
-                testService.createStatusObservable(statusSubject)
+                createRefreshPollObservableSpy.and.callFake((inp: Observable<any>): Observable<any> => inp.pipe(take(1)));
+                testService
+                    .createStatusObservable(statusSubject)
                     .pipe(toArray())
                     .subscribe({
                         complete: doneFn,
@@ -211,9 +217,9 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                     tripId: 'tripId',
                     tripInfo: undefined,
                 };
-                createRefreshPollObservableSpy.and
-                    .callFake((inp: Observable<any>): Observable<any> => inp.pipe(skip(1), take(1)));
-                testService.createStatusObservable(statusSubject)
+                createRefreshPollObservableSpy.and.callFake((inp: Observable<any>): Observable<any> => inp.pipe(skip(1), take(1)));
+                testService
+                    .createStatusObservable(statusSubject)
                     .pipe(toArray())
                     .subscribe({
                         complete: doneFn,
@@ -223,10 +229,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                             expect(createRefreshPollObservableSpy).toHaveBeenCalledWith(statusSubject);
                             expect(val).toEqual([testValue, testValue2]);
                             expect(statusSubjectNextSpy).toHaveBeenCalledTimes(3);
-                            expect(statusSubjectNextSpy.calls.allArgs()).toEqual([
-                                [testValue],
-                                [testValue2],
-                                [testValue2]]);
+                            expect(statusSubjectNextSpy.calls.allArgs()).toEqual([[testValue], [testValue2], [testValue2]]);
                         },
                     });
                 routeDataSubject.next({ tripPassages: testValue });
@@ -249,9 +252,9 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                     tripId: 'tripId',
                     tripInfo: undefined,
                 };
-                createRefreshPollObservableSpy.and
-                    .callFake((inp: Observable<any>): Observable<any> => inp.pipe(skip(1), take(1)));
-                testService.createStatusObservable(statusSubject)
+                createRefreshPollObservableSpy.and.callFake((inp: Observable<any>): Observable<any> => inp.pipe(skip(1), take(1)));
+                testService
+                    .createStatusObservable(statusSubject)
                     .pipe(toArray())
                     .subscribe({
                         complete: doneFn,
@@ -259,24 +262,30 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                         next: (val: IPassageStatus[]): void => {
                             expect(createRefreshPollObservableSpy).toHaveBeenCalledTimes(1);
                             expect(createRefreshPollObservableSpy).toHaveBeenCalledWith(statusSubject);
-                            expect(val).toEqual([testValue, {
-                                failures: 4,
-                                status: UpdateStatus.ERROR,
-                                timestamp: 29232,
-                                tripId: 'tripId',
-                                tripInfo: undefined,
-                            }]);
-                            expect(statusSubjectNextSpy).toHaveBeenCalledTimes(3);
-                            expect(statusSubjectNextSpy.calls.allArgs()).toEqual([
-                                [testValue],
-                                [testValue2],
-                                [{
+                            expect(val).toEqual([
+                                testValue,
+                                {
                                     failures: 4,
                                     status: UpdateStatus.ERROR,
                                     timestamp: 29232,
                                     tripId: 'tripId',
                                     tripInfo: undefined,
-                                }]]);
+                                },
+                            ]);
+                            expect(statusSubjectNextSpy).toHaveBeenCalledTimes(3);
+                            expect(statusSubjectNextSpy.calls.allArgs()).toEqual([
+                                [testValue],
+                                [testValue2],
+                                [
+                                    {
+                                        failures: 4,
+                                        status: UpdateStatus.ERROR,
+                                        timestamp: 29232,
+                                        tripId: 'tripId',
+                                        tripInfo: undefined,
+                                    },
+                                ],
+                            ]);
                         },
                     });
                 routeDataSubject.next({ tripPassages: testValue });
@@ -297,8 +306,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                 const testRoute: any = {
                     snapshot: { data: initialRouteData },
                 };
-                const testApiService: any = {
-                };
+                const testApiService: any = {};
                 testService = new TripPassagesService(testRoute, testApiService, undefined, undefined);
                 createDelayedPassageRequestSpy = spyOn(testService, 'createDelayedPassageRequest');
             });
@@ -310,8 +318,9 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
             });
             it('should delay querying 10s if previous status is LOADED', fakeAsync((): void => {
                 const nextSpy: jasmine.Spy<jasmine.Func> = jasmine.createSpy('nextSpy');
-                createDelayedPassageRequestSpy.and.callFake((): Observable<any> =>
-                    of(createDelayedPassageRequestSpy.calls.count()).pipe(delay(1000)));
+                createDelayedPassageRequestSpy.and.callFake(
+                    (): Observable<any> => of(createDelayedPassageRequestSpy.calls.count()).pipe(delay(1000))
+                );
                 const subscription: Subscription = testObservable.subscribe(nextSpy);
                 expect(createDelayedPassageRequestSpy).toHaveBeenCalledTimes(0);
                 statusSubject.next({
@@ -339,8 +348,11 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                 tick(1100);
                 expect(nextSpy).toHaveBeenCalledTimes(2);
                 expect(nextSpy.calls.allArgs()).toEqual([[1], [3]]);
-                expect(createDelayedPassageRequestSpy.calls.allArgs())
-                    .toEqual([['1', 10000], ['2', 10000], ['3', 20000]]);
+                expect(createDelayedPassageRequestSpy.calls.allArgs()).toEqual([
+                    ['1', 10000],
+                    ['2', 10000],
+                    ['3', 20000],
+                ]);
                 subscription.unsubscribe();
             }));
         });

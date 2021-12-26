@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Injectable } from '@angular/core';
@@ -51,16 +52,13 @@ export interface IAppNotificationDismiss {
     providedIn: 'root',
 })
 export class AppNotificationService {
-
     /**
      * Subject for replaying notifcations
      */
-    private notificationSubject: Subject<IAppNotification> = new Subject();
-    constructor() {
-    }
-
+    private notificationSubject: Subject<IAppNotification> = new Subject<IAppNotification>();
     /**
      * Will publish the notification
+     *
      * @param noti the notification
      */
     public notify(noti: IAppNotification): void {
@@ -75,7 +73,6 @@ export class AppNotificationService {
     }
 
     public report(err: any): void {
-
+        // TODO
     }
-
 }

@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { NgModule } from '@angular/core';
@@ -23,11 +24,7 @@ const errorRoutes: Routes = [
 ];
 
 @NgModule({
-    exports: [
-        RouterModule,
-    ],
-    imports: [
-        RouterModule.forChild(errorRoutes),
-    ],
+    exports: [RouterModule],
+    imports: [RouterModule.forChild(errorRoutes)],
 })
-export class ErrorRoutingModule { }
+export class ErrorRoutingModule {}

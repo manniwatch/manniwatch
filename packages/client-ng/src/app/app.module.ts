@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -26,7 +27,7 @@ import { UserLocationService } from './services/user-location.service';
 import { getManniwatchDesktopApi, isManniwatchDesktop } from './util/electron';
 import { localStorageFactory, LOCAL_STORAGE_TOKEN } from './util/storage';
 
-const moduleImports: any[] = [
+const moduleImports: NgModule['imports'] = [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -72,9 +73,7 @@ const ERROR_HANDLER_PROVIDER: ClassProvider = {
 
 @NgModule({
     bootstrap: [AppComponent],
-    declarations: [
-        AppComponent,
-    ],
+    declarations: [AppComponent],
     imports: moduleImports,
     providers: [
         StopPointService,
@@ -87,4 +86,4 @@ const ERROR_HANDLER_PROVIDER: ClassProvider = {
         BROWSER_LOCAL_STORAGE_PROVIDER,
     ],
 })
-export class AppModule { }
+export class AppModule {}

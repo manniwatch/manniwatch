@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Directive, ElementRef, HostBinding, Input, NgZone, OnChanges, SimpleChanges } from '@angular/core';
@@ -16,9 +17,9 @@ export interface IStaticMapData {
     stops?: IStopLocation[];
     vehicles?: IVehicleLocation[];
     map: {
-        blur?: boolean,
-        center?: TrapezeCoord,
-        zoomLevel?: number,
+        blur?: boolean;
+        center?: TrapezeCoord;
+        zoomLevel?: number;
     };
 }
 /**
@@ -28,18 +29,15 @@ export interface IStaticMapData {
     selector: 'map[appOlStatic]',
 })
 export class OlStaticMapDirective extends AbstractOlMapDirective implements OnChanges {
-
     private readonly KEY_MAP_DATA: string = 'mapData';
     @HostBinding('class.no-location')
-    public blur: boolean = false;
+    public blur = false;
     protected readonly markerVectorSource: VectorSource<Point> = undefined;
     protected readonly markerLayer: VectorLayer<VectorSource<Point>> = undefined;
 
     @Input()
     public mapData: IStaticMapData;
-    constructor(elRef: ElementRef,
-        zone: NgZone,
-        settingsService: SettingsService) {
+    constructor(elRef: ElementRef, zone: NgZone, settingsService: SettingsService) {
         super(elRef, zone, settingsService);
         this.markerVectorSource = new VectorSource();
         this.markerLayer = new VectorLayer({
@@ -59,7 +57,7 @@ export class OlStaticMapDirective extends AbstractOlMapDirective implements OnCh
 
     public ngOnChanges(changes: SimpleChanges): void {
         if (this.KEY_MAP_DATA in changes) {
-            this.updateMapData(changes[this.KEY_MAP_DATA].currentValue);
+            this.updateMapData(changes[this.KEY_MAP_DATA].currentValue as IStaticMapData);
         }
     }
 

@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { NgModule } from '@angular/core';
@@ -43,29 +44,27 @@ const appRoutes: Routes = [
         path: 'settings',
     },
     {
-        children: [
-        ],
+        children: [],
         path: '',
     },
     {
-        path: '**', redirectTo: '/error/not-found',
+        path: '**',
+        redirectTo: '/error/not-found',
     },
 ];
 
 @NgModule({
-    exports: [
-        RouterModule,
-    ],
+    exports: [RouterModule],
     imports: [
         RouterModule.forRoot(
             appRoutes,
             {
-    enableTracing: false,
-    preloadingStrategy: AppPreloadingStrategy,
-    relativeLinkResolution: 'legacy',
-}, // <-- debugging purposes only
+                enableTracing: false,
+                preloadingStrategy: AppPreloadingStrategy,
+                relativeLinkResolution: 'legacy',
+            } // <-- debugging purposes only
         ),
     ],
     providers: [AppPreloadingStrategy],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

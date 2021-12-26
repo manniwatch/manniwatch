@@ -1,20 +1,20 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { NgZone } from '@angular/core';
 import { IStopLocation, IStopPointLocation } from '@manniwatch/api-types';
 import { Map as OlMap } from 'ol';
+import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
-import Feature from 'ol/Feature';
 import { combineLatest, Observable, Subscription } from 'rxjs';
 import { startWith, take } from 'rxjs/operators';
 import { OlUtil } from 'src/app/util/ol';
 import { OlMainMapDirective } from './ol-main-map.directive';
 export class OlMarkerHandler {
-
     /**
      * Layer for the stop markers to be displayed on the map
      */
@@ -26,18 +26,14 @@ export class OlMarkerHandler {
     private stopPointMarkerVectorSource: VectorSource<Point> = undefined;
     private stopMarkerVectorSource: VectorSource<Point> = undefined;
     private loadSubscription: Subscription;
-    public constructor(private mainMap: OlMainMapDirective,
-        private readonly zoomBorder: number) {
-    }
+    public constructor(private mainMap: OlMainMapDirective, private readonly zoomBorder: number) {}
 
     public getStopLocations(): Observable<IStopLocation[]> {
-        return this.mainMap.stopService.stopObservable
-            .pipe(take(1), startWith([]));
+        return this.mainMap.stopService.stopObservable.pipe(take(1), startWith([]));
     }
 
     public getStopPointLocations(): Observable<IStopPointLocation[]> {
-        return this.mainMap.stopService.stopPointObservable
-            .pipe(take(1), startWith([]));
+        return this.mainMap.stopService.stopPointObservable.pipe(take(1), startWith([]));
     }
 
     public start(leafletMap: OlMap): void {
@@ -57,12 +53,12 @@ export class OlMarkerHandler {
         });
         leafletMap.addLayer(this.stopMarkerLayer);
         leafletMap.addLayer(this.stopPointMarkerLayer);
-        this.loadSubscription =
-            combineLatest([this.getStopLocations(), this.getStopPointLocations()])
-                .subscribe((result: [IStopLocation[], IStopPointLocation[]]): void => {
-                    this.setStopPoints(result[1]);
-                    this.setStops(result[0]);
-                });
+        this.loadSubscription = combineLatest([this.getStopLocations(), this.getStopPointLocations()]).subscribe(
+            (result: [IStopLocation[], IStopPointLocation[]]): void => {
+                this.setStopPoints(result[1]);
+                this.setStops(result[0]);
+            }
+        );
     }
 
     public setStopPoints(stopPoints: IStopPointLocation[]): void {

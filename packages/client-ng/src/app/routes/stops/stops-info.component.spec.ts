@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Component } from '@angular/core';
@@ -15,28 +16,23 @@ import { StopsInfoComponent } from './stops-info.component';
     selector: 'mat-nav-list',
     template: '<div></div>',
 })
-class TestMatListComponent {
-}
+class TestMatListComponent {}
 @Component({
     selector: 'mat-list-item',
     template: '<div></div>',
 })
-class TestMatListItemComponent {
-}
+class TestMatListItemComponent {}
 @Component({
     selector: 'mat-divider',
     template: '<div></div>',
 })
-class TestMatDividerComponent {
-}
+class TestMatDividerComponent {}
 
 @Component({
     selector: 'mat-icon',
     template: '<div></div>',
 })
-class TestMatIconComponent {
-
-}
+class TestMatIconComponent {}
 
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
@@ -45,45 +41,43 @@ describe('src/modules/stops/stops-info.component.ts', (): void => {
     describe('StopsInfoComponent', (): void => {
         let fixture: ComponentFixture<StopsInfoComponent>;
         let app: StopsInfoComponent;
-        beforeEach(waitForAsync((): void => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    StopsInfoComponent,
-                    TestMatListComponent,
-                    TestMatDividerComponent,
-                    TestMatListItemComponent,
-                    TestMatIconComponent,
-                ],
-                imports: [
-                    RouterTestingModule,
-                ],
-                providers: [
-                    {
-                        provide: ActivatedRoute,
-                        useValue: {
-                            snapshot: {
-                                data: {
-                                    stops: {
-                                        stops: [
-                                            { name: 'c' },
-                                            { name: 'aa' },
-                                            { name: 'b' },
-                                            { name: 'ab' },
-                                        ],
+        beforeEach(
+            waitForAsync((): void => {
+                TestBed.configureTestingModule({
+                    declarations: [
+                        StopsInfoComponent,
+                        TestMatListComponent,
+                        TestMatDividerComponent,
+                        TestMatListItemComponent,
+                        TestMatIconComponent,
+                    ],
+                    imports: [RouterTestingModule],
+                    providers: [
+                        {
+                            provide: ActivatedRoute,
+                            useValue: {
+                                snapshot: {
+                                    data: {
+                                        stops: {
+                                            stops: [{ name: 'c' }, { name: 'aa' }, { name: 'b' }, { name: 'ab' }],
+                                        },
                                     },
                                 },
                             },
                         },
-                    },
-                ],
-            }).compileComponents();
-            fixture = TestBed.createComponent(StopsInfoComponent);
-            app = fixture.debugElement.componentInstance;
-        }));
+                    ],
+                }).compileComponents();
+                fixture = TestBed.createComponent(StopsInfoComponent);
+                app = fixture.debugElement.componentInstance;
+            })
+        );
 
-        it('should create the app', waitForAsync((): void => {
-            expect(app).toBeTruthy();
-        }));
+        it(
+            'should create the app',
+            waitForAsync((): void => {
+                expect(app).toBeTruthy();
+            })
+        );
         describe('layout', (): void => {
             it('needs to done');
         });
@@ -108,7 +102,7 @@ describe('src/modules/stops/stops-info.component.ts', (): void => {
             });
             describe('hasHeader(idx)', (): void => {
                 [true, false, true, true].forEach((responseValue: boolean, idx: number): void => {
-                    it(`should return ${responseValue} for idx: ${idx}`, (): void => {
+                    it(`should return ${responseValue ? 'true' : 'false'} for idx: ${idx}`, (): void => {
                         expect(app.hasHeader(idx)).toEqual(responseValue);
                     });
                 });

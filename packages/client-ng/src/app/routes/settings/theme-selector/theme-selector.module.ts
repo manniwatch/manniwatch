@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { CommonModule } from '@angular/common';
@@ -12,15 +13,8 @@ import { ThemeSelectorComponent } from './theme-selector.component';
  * Stops lazy loaded Module
  */
 @NgModule({
-    declarations: [
-        ThemeSelectorComponent,
-    ],
-    imports: [
-        CommonModule,
-        MatIconModule,
-        MatListModule,
-    ],
-    providers: [
-    ],
+    declarations: [ThemeSelectorComponent],
+    imports: [CommonModule, MatIconModule, MatListModule],
+    providers: [],
 })
-export class ThemeSelectorModule { }
+export class ThemeSelectorModule {}

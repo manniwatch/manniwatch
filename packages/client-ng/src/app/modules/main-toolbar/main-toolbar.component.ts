@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Component, ViewChild } from '@angular/core';
@@ -10,7 +11,6 @@ import { ToolbarSearchBoxComponent } from './search-box.component';
 
 // tslint:disable:max-classes-per-file
 export class NavigationSubscriber extends Subscriber<RouterEvent> {
-
     public constructor(private toolbar: MainToolbarComponent) {
         super();
     }
@@ -29,7 +29,6 @@ export class NavigationSubscriber extends Subscriber<RouterEvent> {
     templateUrl: './main-toolbar.component.html',
 })
 export class MainToolbarComponent {
-
     public get searchOpen(): boolean {
         return this.mSearchOpen;
     }
@@ -37,14 +36,13 @@ export class MainToolbarComponent {
     public set searchOpen(open: boolean) {
         this.mSearchOpen = open;
     }
-    public closeable: boolean = false;
+    public closeable = false;
     @ViewChild(ToolbarSearchBoxComponent)
     private searchBoxComponent: ToolbarSearchBoxComponent;
 
-    private mSearchOpen: boolean = false;
+    private mSearchOpen = false;
 
-    constructor(private sidebarService: SidebarService,
-        private router: Router) {
+    constructor(private sidebarService: SidebarService, private router: Router) {
         this.router.events.subscribe(new NavigationSubscriber(this));
     }
 
@@ -52,7 +50,7 @@ export class MainToolbarComponent {
         this.sidebarService.toggleSidebar();
     }
 
-    public onFocusSearch(event: any): void {
+    public onFocusSearch(event: boolean): void {
         this.searchOpen = event;
     }
     public toggleSearch(): void {
@@ -60,5 +58,4 @@ export class MainToolbarComponent {
             // this.searchBoxComponent.doFocusSearch();
         }
     }
-
 }

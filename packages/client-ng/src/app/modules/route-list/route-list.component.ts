@@ -1,11 +1,9 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
-import {
-    Component,
-    Input,
-} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IDeparture } from '@manniwatch/api-types';
 
 @Component({
@@ -14,14 +12,13 @@ import { IDeparture } from '@manniwatch/api-types';
     templateUrl: './route-list.component.html',
 })
 export class RouteListComponent {
-
-    private mDepartures: any[] = [];
-    @Input('routes')
-    public set routes(deps: any[]) {
+    private mDepartures: IDeparture[] = [];
+    @Input()
+    public set routes(deps: IDeparture[]) {
         this.mDepartures = deps ? deps : [];
     }
 
-    public get routes(): any[] {
+    public get routes(): IDeparture[] {
         return this.mDepartures;
     }
 
@@ -35,5 +32,4 @@ export class RouteListComponent {
             return `${Math.ceil(time / 60)}min`;
         }
     }
-
 }

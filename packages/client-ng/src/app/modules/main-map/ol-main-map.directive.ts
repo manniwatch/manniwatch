@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Location } from '@angular/common';
@@ -7,6 +8,7 @@ import { Directive, ElementRef, NgZone, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { IStopLocation, IStopPointLocation, IVehicleLocation } from '@manniwatch/api-types';
 import { Map as OLMap } from 'ol';
+import Feature, { FeatureLike } from 'ol/Feature';
 import * as OlCondition from 'ol/events/condition';
 import Point from 'ol/geom/Point';
 import { Select } from 'ol/interaction';
@@ -14,7 +16,6 @@ import { SelectEvent } from 'ol/interaction/Select';
 import BaseTileLayer from 'ol/layer/BaseTile';
 import { OSM, VectorTile } from 'ol/source';
 import Style from 'ol/style/Style';
-import Feature, { FeatureLike } from 'ol/Feature';
 import { Subscription } from 'rxjs';
 import { AbstractOlMapDirective } from 'src/app/modules/openlayers';
 import { ApiService, SettingsService } from 'src/app/services';
@@ -41,17 +42,19 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
     private vehicleHandler: OlVehicleHandler;
     /**
      * Constructor
+     *
      * @param elRef injected elementRef of the component root
      * @param apiService ApiService instance
      * @param router Router Instance
      * @param stopService Stop Service Instance for retrievel of stops
-     * @param userLocationService UserLocationService Instance
      * @param location Browser Location
-     * @param snackBar SnackbarService Instance
      * @param settings Settings Service
+     * @param vehicleSerivce
+     * @param mainMapService
      * @param zone ngZone Instance
      */
-    constructor(elRef: ElementRef,
+    constructor(
+        elRef: ElementRef,
         public apiService: ApiService,
         public router: Router,
         public stopService: StopPointService,
@@ -59,7 +62,8 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
         settings: SettingsService,
         public vehicleSerivce: VehicleService,
         public mainMapService: OlMainMapService,
-        zone: NgZone) {
+        zone: NgZone
+    ) {
         super(elRef, zone, settings);
         this.markerHandler = new OlMarkerHandler(this, 15);
         this.vehicleHandler = new OlVehicleHandler(this);
@@ -96,20 +100,20 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
     public onClickStopPoint(stopPoint: IStopPointLocation): void {
         NgZone.assertNotInAngularZone();
         this.zone.run((): void => {
-            this.router.navigate(['stopPoint', stopPoint.stopPoint]);
+            void this.router.navigate(['stopPoint', stopPoint.stopPoint]);
         });
     }
 
     public onClickStop(stop: IStopLocation): void {
         NgZone.assertNotInAngularZone();
         this.zone.run((): void => {
-            this.router.navigate(['stop', stop.shortName]);
+            void this.router.navigate(['stop', stop.shortName]);
         });
     }
     public onClickVehicle(vehicle: IVehicleLocation): void {
         NgZone.assertNotInAngularZone();
         this.zone.run((): void => {
-            this.router.navigate(['passages', vehicle.tripId]);
+            void this.router.navigate(['passages', vehicle.tripId]);
         });
     }
 
@@ -120,16 +124,16 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
         this.getMap().addInteraction(this.mapSelectInteraction);
         this.mapSelectInteraction.on('select', (e: SelectEvent): void => {
             if (e.selected.length > 0) {
-                const selectedFeature: Feature<Point> = e.selected[0];
+                const selectedFeature: Feature<Point> = e.selected[0] as Feature<Point>;
                 switch (selectedFeature.get('type')) {
                     case 'stopPoint':
-                        this.onClickStopPoint(selectedFeature.get('stopPoint'));
+                        this.onClickStopPoint(selectedFeature.get('stopPoint') as IStopPointLocation);
                         break;
                     case 'stop':
-                        this.onClickStop(selectedFeature.get('stop'));
+                        this.onClickStop(selectedFeature.get('stop') as IStopLocation);
                         break;
                     case 'vehicle':
-                        this.onClickVehicle(selectedFeature.get('vehicle'));
+                        this.onClickVehicle(selectedFeature.get('vehicle') as IVehicleLocation);
                         break;
                 }
             }
@@ -144,5 +148,4 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
             this.vehicleUpdateSubscription.unsubscribe();
         }
     }
-
 }

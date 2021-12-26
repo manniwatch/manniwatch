@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Component, Input } from '@angular/core';
@@ -34,8 +35,7 @@ class TestMatListItemComponent {
     selector: 'mat-icon',
     template: '<div></div>',
 })
-class TestMatIconComponent {
-}
+class TestMatIconComponent {}
 
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
@@ -47,35 +47,33 @@ describe('src/modules/routing/search/search-result.resolver.ts', (): void => {
         beforeAll((): void => {
             stopLocationSpy = jasmine.createSpy();
         });
-        beforeEach(waitForAsync((): void => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    SearchComponent,
-                    TestMatIconComponent,
-                    TestMatNavListComponent,
-                    TestMatListItemComponent,
-                ],
-                imports: [
-                    RouterTestingModule,
-                ],
-                providers: [
-                    SearchResultResolver,
-                    {
-                        provide: StopPointService,
-                        useValue: {
-                            stopLocationsObservable: stopLocationSpy,
+        beforeEach(
+            waitForAsync((): void => {
+                TestBed.configureTestingModule({
+                    declarations: [SearchComponent, TestMatIconComponent, TestMatNavListComponent, TestMatListItemComponent],
+                    imports: [RouterTestingModule],
+                    providers: [
+                        SearchResultResolver,
+                        {
+                            provide: StopPointService,
+                            useValue: {
+                                stopLocationsObservable: stopLocationSpy,
+                            },
                         },
-                    },
-                ],
-            }).compileComponents();
-            testResolver = TestBed.inject(SearchResultResolver);
-        }));
+                    ],
+                }).compileComponents();
+                testResolver = TestBed.inject(SearchResultResolver);
+            })
+        );
         afterEach((): void => {
             stopLocationSpy.calls.reset();
         });
 
-        it('should create the component', waitForAsync((): void => {
-            expect(testResolver).toBeTruthy();
-        }));
+        it(
+            'should create the component',
+            waitForAsync((): void => {
+                expect(testResolver).toBeTruthy();
+            })
+        );
     });
 });

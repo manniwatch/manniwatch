@@ -1,13 +1,9 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    Input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 import { ITripPassage, VEHICLE_STATUS } from '@manniwatch/api-types';
 import {
     differenceInMinutes as dateDifferenceInMinutes,

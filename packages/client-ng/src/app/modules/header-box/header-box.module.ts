@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { CommonModule } from '@angular/common';
@@ -8,15 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { HeaderBoxComponent } from './header-box.component';
 
 @NgModule({
-    declarations: [
-        HeaderBoxComponent,
-    ],
-    exports: [
-        HeaderBoxComponent,
-    ],
-    imports: [
-        CommonModule,
-        MatIconModule,
-    ],
+    declarations: [HeaderBoxComponent],
+    exports: [HeaderBoxComponent],
+    imports: [CommonModule, MatIconModule],
 })
-export class HeaderBoxModule { }
+export class HeaderBoxModule {}

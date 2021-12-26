@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
@@ -13,17 +14,15 @@ import { debounceTime, filter, startWith } from 'rxjs/operators';
     templateUrl: './search-box.component.html',
 })
 export class ToolbarSearchBoxComponent implements OnInit, OnDestroy {
-
     public searchControl: FormControl = new FormControl();
 
     @ViewChild('searchInput')
     public searchInput: ElementRef;
 
     @Output()
-    public readonly focusSearch: EventEmitter<boolean> = new EventEmitter();
+    public readonly focusSearch: EventEmitter<boolean> = new EventEmitter<boolean>();
     private updateSubscription: Subscription;
-    constructor(private router: Router) {
-    }
+    constructor(private router: Router) {}
 
     public onLoseFocus(): void {
         this.focusSearch.next(false);
@@ -33,12 +32,11 @@ export class ToolbarSearchBoxComponent implements OnInit, OnDestroy {
         this.updateSubscription = this.searchControl.valueChanges
             .pipe(
                 startWith(''),
-                filter((value: string): boolean =>
-                    value.length > 0),
-                debounceTime(200),
+                filter((value: string): boolean => value.length > 0),
+                debounceTime(200)
             )
             .subscribe((value: string): void => {
-                this.router.navigate(['search'], {
+                void this.router.navigate(['search'], {
                     queryParams: {
                         q: value,
                     },
@@ -48,9 +46,9 @@ export class ToolbarSearchBoxComponent implements OnInit, OnDestroy {
     }
 
     public onSubmit(): void {
-        this.router.navigate(['search'], {
+        void this.router.navigate(['search'], {
             queryParams: {
-                q: this.searchControl.value,
+                q: this.searchControl.value as string,
             },
             skipLocationChange: false,
         });
@@ -61,5 +59,4 @@ export class ToolbarSearchBoxComponent implements OnInit, OnDestroy {
             this.updateSubscription.unsubscribe();
         }
     }
-
 }

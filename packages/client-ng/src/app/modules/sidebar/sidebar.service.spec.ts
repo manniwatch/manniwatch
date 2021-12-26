@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { waitForAsync, TestBed } from '@angular/core/testing';
@@ -15,13 +16,15 @@ describe('src/app/services/sidebar.service', (): void => {
         beforeAll((): void => {
             nextSpy = jasmine.createSpy();
         });
-        beforeEach(waitForAsync((): void => {
-            TestBed.configureTestingModule({
-                providers: [SidebarService],
-            });
-            sidebarService = TestBed.inject(SidebarService);
-            subject = (sidebarService as any).mSidebarStatusSubject;
-        }));
+        beforeEach(
+            waitForAsync((): void => {
+                TestBed.configureTestingModule({
+                    providers: [SidebarService],
+                });
+                sidebarService = TestBed.inject(SidebarService);
+                subject = (sidebarService as any).mSidebarStatusSubject;
+            })
+        );
 
         afterEach((): void => {
             nextSpy.calls.reset();
@@ -48,7 +51,7 @@ describe('src/app/services/sidebar.service', (): void => {
         describe('sidebarOpen', (): void => {
             describe('-- getter', (): void => {
                 [true, false].forEach((testValue: boolean): void => {
-                    it(`should return ${testValue}`, (): void => {
+                    it(`should return ${testValue ? 'true' : 'false'}`, (): void => {
                         subject.next(testValue);
                         expect(sidebarService.sidebarOpen).toEqual(testValue);
                     });

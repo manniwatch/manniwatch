@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Component } from '@angular/core';
@@ -14,28 +15,23 @@ import { SettingsComponent } from './settings.component';
     selector: 'mat-nav-list',
     template: '<div></div>',
 })
-class TestMatListComponent {
-}
+class TestMatListComponent {}
 @Component({
     selector: 'mat-list-item',
     template: '<div></div>',
 })
-class TestMatListItemComponent {
-}
+class TestMatListItemComponent {}
 @Component({
     selector: 'mat-divider',
     template: '<div></div>',
 })
-class TestMatDividerComponent {
-}
+class TestMatDividerComponent {}
 
 @Component({
     selector: 'mat-icon',
     template: '<div></div>',
 })
-class TestMatIconComponent {
-
-}
+class TestMatIconComponent {}
 
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
@@ -44,27 +40,30 @@ describe('src/routes/settings/settings.component.ts', (): void => {
     describe('SettingsComponent', (): void => {
         let fixture: ComponentFixture<SettingsComponent>;
         let app: SettingsComponent;
-        beforeEach(waitForAsync((): void => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    SettingsComponent,
-                    TestMatListComponent,
-                    TestMatDividerComponent,
-                    TestMatListItemComponent,
-                    TestMatIconComponent,
-                ],
-                imports: [
-                    RouterTestingModule,
-                ],
-                providers: [],
-            }).compileComponents();
-            fixture = TestBed.createComponent(SettingsComponent);
-            app = fixture.debugElement.componentInstance;
-        }));
+        beforeEach(
+            waitForAsync((): void => {
+                TestBed.configureTestingModule({
+                    declarations: [
+                        SettingsComponent,
+                        TestMatListComponent,
+                        TestMatDividerComponent,
+                        TestMatListItemComponent,
+                        TestMatIconComponent,
+                    ],
+                    imports: [RouterTestingModule],
+                    providers: [],
+                }).compileComponents();
+                fixture = TestBed.createComponent(SettingsComponent);
+                app = fixture.debugElement.componentInstance;
+            })
+        );
 
-        it('should create the app', waitForAsync((): void => {
-            expect(app).toBeTruthy();
-        }));
+        it(
+            'should create the app',
+            waitForAsync((): void => {
+                expect(app).toBeTruthy();
+            })
+        );
         describe('layout', (): void => {
             it('needs to be implemented');
         });

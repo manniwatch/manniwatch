@@ -1,12 +1,13 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { MapStorage } from './map-storage';
 import { IStorage } from './storage';
 
 const storageAvailable: (st: Storage) => boolean = (st: Storage): boolean => {
-    const testString: string = 'manniwatch';
+    const testString = 'manniwatch';
     try {
         st.setItem(testString, testString);
         st.removeItem(testString);

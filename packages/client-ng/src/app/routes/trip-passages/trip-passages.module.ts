@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { CommonModule } from '@angular/common';
@@ -14,21 +15,8 @@ import { TripPassagesRoutingModule } from './trip-passages-routing.module';
 import { TripPassagesComponent } from './trip-passages.component';
 import { TripPassagesResolver } from './trip-passages.resolver';
 @NgModule({
-    declarations: [
-        TripPassagesComponent,
-        TripPassagesListComponent,
-        TripPassagesListItemComponent,
-    ],
-    imports: [
-        CommonModule,
-        MatIconModule,
-        MatListModule,
-        TripPassagesRoutingModule,
-        HeaderBoxModule,
-        OlStaticMapModule,
-    ],
-    providers: [
-        TripPassagesResolver,
-    ],
+    declarations: [TripPassagesComponent, TripPassagesListComponent, TripPassagesListItemComponent],
+    imports: [CommonModule, MatIconModule, MatListModule, TripPassagesRoutingModule, HeaderBoxModule, OlStaticMapModule],
+    providers: [TripPassagesResolver],
 })
-export class TripPassagesModule { }
+export class TripPassagesModule {}

@@ -1,10 +1,11 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { IStopLocation } from '@manniwatch/api-types';
+import { ActivatedRoute, Data } from '@angular/router';
+import { IStopLocation, IStopLocations } from '@manniwatch/api-types';
 @Component({
     selector: 'app-stops-info',
     styleUrls: ['./stops-info.component.scss'],
@@ -13,10 +14,9 @@ import { IStopLocation } from '@manniwatch/api-types';
 export class StopsInfoComponent {
     private mStops: IStopLocation[] = [];
     constructor(private activatedRoute: ActivatedRoute) {
-        const st: IStopLocation[] = this.activatedRoute.snapshot.data.stops.stops.sort((a: IStopLocation, b: IStopLocation): number =>
-            a.name.localeCompare(b.name));
-        this.mStops = st;
-
+        const data: Data & { stops?: IStopLocations } = this.activatedRoute.snapshot.data;
+        const stops: IStopLocation[] | undefined = data?.stops?.stops;
+        this.mStops = stops ? stops.sort((a: IStopLocation, b: IStopLocation): number => a.name.localeCompare(b.name)) : [];
     }
 
     public hasHeader(idx: number): boolean {
@@ -24,10 +24,10 @@ export class StopsInfoComponent {
     }
     /**
      * The stops to be displayed
+     *
      * @returns a list of stops to be used
      */
     public get stops(): IStopLocation[] {
         return this.mStops;
     }
-
 }

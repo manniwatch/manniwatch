@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { HttpErrorResponse } from '@angular/common/http';
@@ -10,7 +11,7 @@ import { IStopLocations } from '@manniwatch/api-types';
 import { throwError, EMPTY, Observable } from 'rxjs';
 import { catchError, retryWhen } from 'rxjs/operators';
 import { RetryDialogComponent } from 'src/app/modules/common/retry-dialog';
-import { retryDialogStrategy } from 'src/app/rxjs-util';
+import { CreateDialogFuncResponse, retryDialogStrategy } from 'src/app/rxjs-util';
 import { ApiService } from 'src/app/services';
 
 /**
@@ -18,38 +19,42 @@ import { ApiService } from 'src/app/services';
  */
 @Injectable()
 export class StopsResolver implements Resolve<IStopLocations> {
-
     /**
      * Constructor
+     *
      * @param api the {@ApiService}
+     * @param router
+     * @param dialog
      */
-    public constructor(private api: ApiService,
-        private router: Router,
-        private dialog: MatDialog) { }
+    public constructor(private api: ApiService, private router: Router, private dialog: MatDialog) {}
 
     /**
      * Resolves the station response
+     *
      * @param route The activated RouteSnapshot
      * @param state The router state snapshot
      * @returns An observable that resolves the {@StationsResponse}
      */
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IStopLocations> {
-        return this.api
-            .getStopLocations()
-            .pipe(catchError((err: any | HttpErrorResponse): Observable<IStopLocations> => {
-                if (err.status === 404) {
-                    this.router.navigate(['error', 'not-found']);
+        return this.api.getStopLocations().pipe(
+            catchError((err: any | HttpErrorResponse): Observable<IStopLocations> => {
+                if (err instanceof HttpErrorResponse && err.status === 404) {
+                    void this.router.navigate(['error', 'not-found']);
                     return EMPTY;
-                } else {
-                    return throwError(err);
                 }
+                return throwError((): any | HttpErrorResponse => err);
             }),
-                retryWhen(retryDialogStrategy((error: any | HttpErrorResponse): any =>
-                    this.dialog.open(RetryDialogComponent, {
+            retryWhen(
+                retryDialogStrategy((error: any | HttpErrorResponse): CreateDialogFuncResponse => {
+                    const code: number | undefined = error instanceof HttpErrorResponse ? error.status : undefined;
+                    return this.dialog.open(RetryDialogComponent, {
                         data: {
-                            code: error.status ? error.status : undefined,
+                            code,
                             message: 'test',
                         },
-                    }))));
+                    });
+                })
+            )
+        );
     }
 }

@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -14,30 +15,24 @@ import { map } from 'rxjs/operators';
     templateUrl: './search.component.html',
 })
 export class SearchComponent implements OnInit, OnDestroy {
-
     public get results(): Observable<IStopLocation[]> {
         return this.resultObservable;
     }
-    public data: string = '';
+    public data = '';
     private searchParamSubscription: Subscription;
     private resultObservable: Observable<IStopLocation[]> = NEVER;
-    public constructor(private activatedRoute: ActivatedRoute, private titleService: Title) {
-
-    }
+    public constructor(private activatedRoute: ActivatedRoute, private titleService: Title) {}
 
     public ngOnInit(): void {
-        this.searchParamSubscription = this.activatedRoute
-            .queryParams.subscribe((value: Params): void => {
-                this.data = value.q ? value.q : '';
-                this.titleService.setTitle(`Search - "${this.data}"`);
-            });
-        this.resultObservable = this.activatedRoute.data
-            .pipe(map((val: Data): IStopLocation[] => {
-                if (val.results) {
-                    return val.results;
-                }
-                return [];
-            }));
+        this.searchParamSubscription = this.activatedRoute.queryParams.subscribe((value: Params & { q?: string }): void => {
+            this.data = value.q || '';
+            this.titleService.setTitle(`Search - "${this.data}"`);
+        });
+        this.resultObservable = this.activatedRoute.data.pipe(
+            map((val: Data): IStopLocation[] => {
+                return (val.results || []) as IStopLocation[];
+            })
+        );
     }
     public ngOnDestroy(): void {
         if (this.searchParamSubscription) {

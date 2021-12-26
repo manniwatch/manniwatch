@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { enableProdMode } from '@angular/core';
@@ -12,10 +13,12 @@ if (environment.production) {
     enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule).then((): void => {
-    if ('serviceWorker' in navigator && environment.production) {
-        navigator.serviceWorker.register('/ngsw-worker.js');
-    }
-})
-    // tslint:disable:no-console
+platformBrowserDynamic()
+    .bootstrapModule(AppModule)
+    .then((): void => {
+        if ('serviceWorker' in navigator && environment.production) {
+            void navigator.serviceWorker.register('/ngsw-worker.js');
+        }
+    })
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .catch((err: any): void => console.error(err));

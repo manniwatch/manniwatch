@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { HttpErrorResponse } from '@angular/common/http';
@@ -16,27 +17,28 @@ import { ApiService } from 'src/app/services';
  */
 @Injectable()
 export class StopInfoResolver implements Resolve<IStopPassage> {
-
     /**
      * Constructor
+     *
      * @param api the {@ApiService}
      * @param router the {@Router}
      */
-    public constructor(private api: ApiService, private router: Router) { }
+    public constructor(private api: ApiService, private router: Router) {}
 
     /**
      * Resolves the stop information via the stopId param inside the route
+     *
      * @param route The RouteSnapshot
      * @param state The RouterState
      */
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IStopPassage> {
-        return this.api
-            .getStopPassages(route.params.stopId)
-            .pipe(catchError((err: any | HttpErrorResponse): Observable<any> => {
-                if (err.status === 404) {
-                    this.router.navigate(['stops']);
+        return this.api.getStopPassages(route.params.stopId as string).pipe(
+            catchError((err: any | HttpErrorResponse): Observable<never> => {
+                if (err instanceof HttpErrorResponse && err.status === 404) {
+                    void this.router.navigate(['stops']);
                 }
                 return EMPTY;
-            }));
+            })
+        );
     }
 }

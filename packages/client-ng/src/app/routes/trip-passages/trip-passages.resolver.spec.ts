@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { waitForAsync, TestBed } from '@angular/core/testing';
@@ -12,7 +13,7 @@ import { TripPassagesUtil } from './trip-util';
 describe('src/app/modules/trip-passages/trip-passages.resolver', (): void => {
     describe('TripPassagesResolver', (): void => {
         let resolver: TripPassagesResolver;
-        const testId: string = '239jmcntest';
+        const testId = '239jmcntest';
         let convertResponseStub: jasmine.Spy<jasmine.Func>;
         let handleErrorStub: jasmine.Spy<jasmine.Func>;
         let convertResponseOperatorStub: jasmine.Spy<jasmine.Func>;
@@ -27,20 +28,24 @@ describe('src/app/modules/trip-passages/trip-passages.resolver', (): void => {
             getTripPassagesSpy = jasmine.createSpy('getTripPassages');
             nextSpy = jasmine.createSpy('onNext');
         });
-        beforeEach(waitForAsync((): void => {
-            convertResponseStub.and.callFake((): any => convertResponseOperatorStub);
-            handleErrorStub.and.callFake((): any => handleErrorOperatorStub);
-            TestBed.configureTestingModule({
-                providers: [TripPassagesResolver,
-                    {
-                        provide: ApiService,
-                        useValue: {
-                            getTripPassages: getTripPassagesSpy,
+        beforeEach(
+            waitForAsync((): void => {
+                convertResponseStub.and.callFake(() => convertResponseOperatorStub);
+                handleErrorStub.and.callFake(() => handleErrorOperatorStub);
+                TestBed.configureTestingModule({
+                    providers: [
+                        TripPassagesResolver,
+                        {
+                            provide: ApiService,
+                            useValue: {
+                                getTripPassages: getTripPassagesSpy,
+                            },
                         },
-                    }],
-            });
-            resolver = TestBed.inject(TripPassagesResolver);
-        }));
+                    ],
+                });
+                resolver = TestBed.inject(TripPassagesResolver);
+            })
+        );
 
         afterEach((): void => {
             convertResponseStub.calls.reset();
@@ -67,60 +72,52 @@ describe('src/app/modules/trip-passages/trip-passages.resolver', (): void => {
             });
             describe('getTripPassages() resolves', (): void => {
                 beforeEach((): void => {
-                    getTripPassagesSpy.and.callFake((...args: any[]): Observable<any> =>
-                        of(args));
+                    getTripPassagesSpy.and.callFake((...args: any[]): Observable<any> => of(args));
                     handleErrorOperatorStub.and.callFake(catchError((): Observable<any> => of(errorResponse)));
                     convertResponseOperatorStub.and.callFake(map((): any => convertedResponse));
                 });
                 it('should construct the request correctly', (done: DoneFn): void => {
-                    resolver.resolve({ params: { tripId: testId } } as any, undefined)
-                        .subscribe({
-                            complete: (): void => {
-                                expect(getTripPassagesSpy)
-                                    .toHaveBeenCalledTimes(1);
-                                expect(getTripPassagesSpy.calls.argsFor(0))
-                                    .withContext('getTripPassages should be called with the provided tripId')
-                                    .toEqual([testId]);
-                                expect(nextSpy)
-                                    .toHaveBeenCalledTimes(1);
-                                expect(nextSpy.calls.first().args[0]).toEqual(convertedResponse);
-                                expect(convertResponseOperatorStub).toHaveBeenCalledTimes(1);
-                                expect(handleErrorOperatorStub).toHaveBeenCalledTimes(1);
-                                expect(convertResponseOperatorStub).toHaveBeenCalledBefore(handleErrorOperatorStub);
-                                done();
-                            },
-                            error: done.fail,
-                            next: nextSpy,
-                        });
+                    resolver.resolve({ params: { tripId: testId } } as any).subscribe({
+                        complete: (): void => {
+                            expect(getTripPassagesSpy).toHaveBeenCalledTimes(1);
+                            expect(getTripPassagesSpy.calls.argsFor(0))
+                                .withContext('getTripPassages should be called with the provided tripId')
+                                .toEqual([testId]);
+                            expect(nextSpy).toHaveBeenCalledTimes(1);
+                            expect(nextSpy.calls.first().args[0]).toEqual(convertedResponse);
+                            expect(convertResponseOperatorStub).toHaveBeenCalledTimes(1);
+                            expect(handleErrorOperatorStub).toHaveBeenCalledTimes(1);
+                            expect(convertResponseOperatorStub).toHaveBeenCalledBefore(handleErrorOperatorStub);
+                            done();
+                        },
+                        error: done.fail,
+                        next: nextSpy,
+                    });
                 });
             });
             describe('getTripPassages() rejects', (): void => {
                 beforeEach((): void => {
-                    getTripPassagesSpy.and.callFake((...args: any[]): Observable<any> =>
-                        throwError(args));
+                    getTripPassagesSpy.and.callFake((...args: any[]): Observable<any> => throwError(args));
                     handleErrorOperatorStub.and.callFake(catchError((): Observable<any> => of(errorResponse)));
                     convertResponseOperatorStub.and.callFake(map((): any => convertedResponse));
                 });
                 it('should construct the request correctly', (done: DoneFn): void => {
-                    resolver.resolve({ params: { tripId: testId } } as any, undefined)
-                        .subscribe({
-                            complete: (): void => {
-                                expect(getTripPassagesSpy)
-                                    .toHaveBeenCalledTimes(1);
-                                expect(getTripPassagesSpy.calls.argsFor(0))
-                                    .withContext('getTripPassages should be called with the provided tripId')
-                                    .toEqual([testId]);
-                                expect(nextSpy)
-                                    .toHaveBeenCalledTimes(1);
-                                expect(nextSpy.calls.first().args).toEqual([errorResponse]);
-                                expect(convertResponseOperatorStub).toHaveBeenCalledTimes(1);
-                                expect(handleErrorOperatorStub).toHaveBeenCalledTimes(1);
-                                expect(convertResponseOperatorStub).toHaveBeenCalledBefore(handleErrorOperatorStub);
-                                done();
-                            },
-                            error: done.fail,
-                            next: nextSpy,
-                        });
+                    resolver.resolve({ params: { tripId: testId } } as any).subscribe({
+                        complete: (): void => {
+                            expect(getTripPassagesSpy).toHaveBeenCalledTimes(1);
+                            expect(getTripPassagesSpy.calls.argsFor(0))
+                                .withContext('getTripPassages should be called with the provided tripId')
+                                .toEqual([testId]);
+                            expect(nextSpy).toHaveBeenCalledTimes(1);
+                            expect(nextSpy.calls.first().args).toEqual([errorResponse]);
+                            expect(convertResponseOperatorStub).toHaveBeenCalledTimes(1);
+                            expect(handleErrorOperatorStub).toHaveBeenCalledTimes(1);
+                            expect(convertResponseOperatorStub).toHaveBeenCalledBefore(handleErrorOperatorStub);
+                            done();
+                        },
+                        error: done.fail,
+                        next: nextSpy,
+                    });
                 });
             });
         });

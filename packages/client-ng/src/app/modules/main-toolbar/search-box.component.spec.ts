@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Component, Directive, EventEmitter, Input, Output } from '@angular/core';
@@ -16,8 +17,7 @@ import { ToolbarSearchBoxComponent } from './search-box.component';
     selector: 'mat-form-field',
     template: '<div></div>',
 })
-class TestMatFormFieldComponent {
-}
+class TestMatFormFieldComponent {}
 
 @Directive({
     selector: 'input',
@@ -45,53 +45,53 @@ class TestMatOptionComponent {
 })
 class TestMatAutoCompleteComponent {
     @Input()
-    public displayWith: ((inp: any) => string);
+    public displayWith: (inp: any) => string;
     @Output()
-    public optionSelected: EventEmitter<MatAutocompleteSelectedEvent> = new EventEmitter();
+    public optionSelected: EventEmitter<MatAutocompleteSelectedEvent> = new EventEmitter<MatAutocompleteSelectedEvent>();
 }
 
 @Component({
     selector: 'mat-icon',
     template: '<div></div>',
 })
-class TestMatIconComponent {
-}
+class TestMatIconComponent {}
 
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
 
-class TestStopPointService {
-
-}
+class TestStopPointService {}
 
 describe('src/modules/main-toolbar/search-box.component.ts', (): void => {
     describe('ToolbarSearchBoxComponent', (): void => {
-        beforeEach(waitForAsync((): void => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    ToolbarSearchBoxComponent,
-                    TestMatIconComponent,
-                    TestMatAutoCompleteComponent,
-                    TestMatOptionComponent,
-                    TestMatFormFieldComponent,
-                    TestFormControlDirective,
-                ],
-                imports: [
-                    RouterTestingModule,
-                ],
-                providers: [
-                    {
-                        provide: StopPointService,
-                        useValue: new TestStopPointService(),
-                    },
-                ],
-            }).compileComponents();
-        }));
+        beforeEach(
+            waitForAsync((): void => {
+                TestBed.configureTestingModule({
+                    declarations: [
+                        ToolbarSearchBoxComponent,
+                        TestMatIconComponent,
+                        TestMatAutoCompleteComponent,
+                        TestMatOptionComponent,
+                        TestMatFormFieldComponent,
+                        TestFormControlDirective,
+                    ],
+                    imports: [RouterTestingModule],
+                    providers: [
+                        {
+                            provide: StopPointService,
+                            useValue: new TestStopPointService(),
+                        },
+                    ],
+                }).compileComponents();
+            })
+        );
 
-        it('should create the app', waitForAsync((): void => {
-            const fixture: ComponentFixture<ToolbarSearchBoxComponent> = TestBed.createComponent(ToolbarSearchBoxComponent);
-            const app: ToolbarSearchBoxComponent = fixture.debugElement.componentInstance;
-            expect(app).toBeTruthy();
-        }));
+        it(
+            'should create the app',
+            waitForAsync((): void => {
+                const fixture: ComponentFixture<ToolbarSearchBoxComponent> = TestBed.createComponent(ToolbarSearchBoxComponent);
+                const app: ToolbarSearchBoxComponent = fixture.debugElement.componentInstance;
+                expect(app).toBeTruthy();
+            })
+        );
     });
 });
