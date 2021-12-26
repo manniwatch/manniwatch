@@ -95,6 +95,7 @@ export abstract class VectorOlMapDirective extends BaseOlMapDirective<VectorTile
             'openmaptiles');
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     public applyVectorTheme(theme: Theme): void {
     }
 }

@@ -30,7 +30,7 @@ export class WebApiService implements ApiService {
 
     public baseUrl(): string {
         const basePath: string = this.config.config.apiEndpoint;
-        return basePath.endsWith('\/') ? basePath : (`${basePath}\/`);
+        return basePath.endsWith('/') ? basePath : (`${basePath}/`);
     }
 
     public getTripPassages(tripId: string): Observable<TripInfoWithId> {
@@ -107,7 +107,7 @@ export class WebApiService implements ApiService {
                 const firstBracket: number = body.indexOf('{');
                 const lastBracket: number = body.lastIndexOf('}');
                 const parsedBody: string = body.substr(firstBracket, lastBracket - firstBracket + 1);
-                return JSON.parse(parsedBody);
+                return JSON.parse(parsedBody) as ISettings;
             }));
     }
 }

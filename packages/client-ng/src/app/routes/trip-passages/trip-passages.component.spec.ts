@@ -112,7 +112,7 @@ describe('src/app/routes/trip-passages/trip-passage.component', (): void => {
     describe('with no status emitted', (): void => {
       it('should display no content', (): void => {
         cmpFixture.detectChanges();
-        expect(cmpFixture.debugElement.nativeElement.innerText).toEqual('');
+        expect((cmpFixture.debugElement.nativeElement as HTMLElement).innerText).toEqual('');
       });
     });
   });

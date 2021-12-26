@@ -5,6 +5,7 @@
 
 
 import { fakeAsync, tick } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
 import { of, EMPTY, NEVER, Observable, Subject, Subscription } from 'rxjs';
 import { delay, map, skip, take, toArray } from 'rxjs/operators';
 import { TripPassagesService } from './trip-passages.service';
@@ -36,8 +37,10 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
             });
             describe('statusSubject should be set by route data', (): void => {
                 it('statusSubject should be initialized with route snapshot data', (doneFn: DoneFn): void => {
-                    const service: TripPassagesService = new TripPassagesService(testRoute, undefined, undefined, undefined);
-                    (service as any).statusSubject
+                    const service: TripPassagesService = new TripPassagesService(testRoute as ActivatedRoute,
+                        undefined, undefined, undefined);
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+                    ((service as any) as { statusSubject: Subject<IPassageStatus> }).statusSubject
                         .pipe(take(1))
                         .subscribe({
                             complete: doneFn,
@@ -80,6 +83,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                 createStatusObservableSpy = spyOn(TripPassagesService.prototype, 'createStatusObservable');
                 convertResponseSpy = spyOn(TripPassagesUtil, 'convertResponse');
                 handleErrorSpy = spyOn(TripPassagesUtil, 'handleError');
+                // eslint-disable-next-line @typescript-eslint/no-empty-function
                 createStatusObservableSpy.and.callFake((): void => { });
                 const testRoute: any = {
                     snapshot: { data: initialRouteData },
@@ -115,7 +119,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                     tick(1000);
                     expect(subscription.closed).toBeTrue();
                     expect(nextSpy).toHaveBeenCalledTimes(1);
-                    expect(nextSpy).toHaveBeenCalledWith({ d: 3, c: 2, network: true, result: 1 });
+                    expect(nextSpy).toHaveBeenCalledWith({ c: 2, d: 3, network: true, result: 1 });
                     subscription.unsubscribe();
                 }));
             });
@@ -132,6 +136,7 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                 statusSubject = new Subject();
                 statusSubjectNextSpy = spyOn(statusSubject, 'next').and.callThrough();
                 createStatusObservableSpy = spyOn(TripPassagesService.prototype, 'createStatusObservable');
+                // eslint-disable-next-line @typescript-eslint/no-empty-function
                 createStatusObservableSpy.and.callFake((): void => { });
                 const testRoute: any = {
                     data: routeDataSubject,

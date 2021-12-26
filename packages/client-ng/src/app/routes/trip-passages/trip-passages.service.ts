@@ -29,7 +29,8 @@ export class TripPassagesService {
         return this.appRef.isStable
             .pipe(first(),
                 mergeMap((): Observable<IPassageStatus> => {
-                    return merge(this.route.data.pipe(map((data: Data): ITripPassages => data.tripPassages as ITripPassages)), refreshObservable)
+                    return merge(this.route.data.pipe(map((data: Data): ITripPassages =>
+                        data.tripPassages as ITripPassages)), refreshObservable)
                         .pipe(scan((acc: IPassageStatus, val: IPassageStatus, idx: number): IPassageStatus => {
                             if (val.failures > 0) {
                                 const newVal: IPassageStatus = Object.assign({}, val);
@@ -62,8 +63,8 @@ export class TripPassagesService {
 
     public createStopLocationObservable(): Observable<TimestampedVehicleLocation> {
         return this.route.data
-            .pipe(map((data: any): IPassageStatus => {
-                return data.tripPassages;
+            .pipe(map((data: Data): IPassageStatus => {
+                return data.tripPassages as IPassageStatus;
             }), switchMap((tripStatus: IPassageStatus): Observable<TimestampedVehicleLocation> => {
                 return this.vehicleService.getVehicleByTripId(tripStatus.tripId);
             }));

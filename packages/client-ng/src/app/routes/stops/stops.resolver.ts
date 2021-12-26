@@ -12,7 +12,7 @@ import { IStopLocations } from '@manniwatch/api-types';
 import { throwError, EMPTY, Observable } from 'rxjs';
 import { catchError, retryWhen } from 'rxjs/operators';
 import { RetryDialogComponent } from 'src/app/modules/common/retry-dialog';
-import { retryDialogStrategy } from 'src/app/rxjs-util';
+import { CreateDialogFuncResponse, retryDialogStrategy } from 'src/app/rxjs-util';
 import { ApiService } from 'src/app/services';
 
 /**
@@ -43,19 +43,20 @@ export class StopsResolver implements Resolve<IStopLocations> {
         return this.api
             .getStopLocations()
             .pipe(catchError((err: any | HttpErrorResponse): Observable<IStopLocations> => {
-                if (err.status === 404) {
-                    this.router.navigate(['error', 'not-found']);
+                if (err instanceof HttpErrorResponse && err.status === 404) {
+                    void this.router.navigate(['error', 'not-found']);
                     return EMPTY;
-                } else {
-                    return throwError(err);
                 }
+                return throwError((): any | HttpErrorResponse => err);
             }),
-                retryWhen(retryDialogStrategy((error: any | HttpErrorResponse): any =>
+                retryWhen(retryDialogStrategy((error: any | HttpErrorResponse): CreateDialogFuncResponse => {
+                    const code: number | undefined = (error instanceof HttpErrorResponse) ? error.status : undefined;
                     this.dialog.open(RetryDialogComponent, {
                         data: {
-                            code: error.status ? error.status : undefined,
+                            code,
                             message: 'test',
                         },
-                    }))));
+                    })
+                })));
     }
 }

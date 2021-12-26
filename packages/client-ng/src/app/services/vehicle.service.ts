@@ -139,24 +139,22 @@ export class VehicleService {
                                 }, new Map<string, TimestampedVehicles>());
                         const filterInvalid: TimestampedVehicleLocation[] =
                             Array.from<TimestampedVehicles>(reducedVehicles.values())
-                                .filter((vehState: any): boolean => {
-                                    if (vehState) {
-                                        if (vehState.isDeleted === true) {
-                                            return false;
-                                        }
-                                        if (vehState.latitude && vehState.longitude) {
-                                            return true;
-                                        }
+                                .filter((vehState: TimestampedVehicles): boolean => {
+                                    if (vehState.latitude && vehState.longitude) {
+                                        return true;
                                     }
-                                    return false;
-                                }) as any;
+                                    if (vehState?.isDeleted === true) {
+                                        return false;
+                                    } else
+                                        return false;
+                                }) as TimestampedVehicleLocation[];
                         return {
                             lastUpdate: value.lastUpdate,
                             vehicles: filterInvalid,
                         };
                     }), catchError((err: any): Observable<IData> =>
                         of(Object.assign({
-                            error: err,
+                            error: err as Error,
                         }, previousData))))));
     }
 

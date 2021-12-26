@@ -99,20 +99,20 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
     public onClickStopPoint(stopPoint: IStopPointLocation): void {
         NgZone.assertNotInAngularZone();
         this.zone.run((): void => {
-            this.router.navigate(['stopPoint', stopPoint.stopPoint]);
+            void this.router.navigate(['stopPoint', stopPoint.stopPoint]);
         });
     }
 
     public onClickStop(stop: IStopLocation): void {
         NgZone.assertNotInAngularZone();
         this.zone.run((): void => {
-            this.router.navigate(['stop', stop.shortName]);
+            void this.router.navigate(['stop', stop.shortName]);
         });
     }
     public onClickVehicle(vehicle: IVehicleLocation): void {
         NgZone.assertNotInAngularZone();
         this.zone.run((): void => {
-            this.router.navigate(['passages', vehicle.tripId]);
+            void this.router.navigate(['passages', vehicle.tripId]);
         });
     }
 
@@ -123,16 +123,16 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
         this.getMap().addInteraction(this.mapSelectInteraction);
         this.mapSelectInteraction.on('select', (e: SelectEvent): void => {
             if (e.selected.length > 0) {
-                const selectedFeature: Feature<Point> = e.selected[0];
+                const selectedFeature: Feature<Point> = e.selected[0] as Feature<Point>;
                 switch (selectedFeature.get('type')) {
                     case 'stopPoint':
-                        this.onClickStopPoint(selectedFeature.get('stopPoint'));
+                        this.onClickStopPoint(selectedFeature.get('stopPoint') as IStopPointLocation);
                         break;
                     case 'stop':
-                        this.onClickStop(selectedFeature.get('stop'));
+                        this.onClickStop(selectedFeature.get('stop') as IStopLocation);
                         break;
                     case 'vehicle':
-                        this.onClickVehicle(selectedFeature.get('vehicle'));
+                        this.onClickVehicle(selectedFeature.get('vehicle') as IVehicleLocation);
                         break;
                 }
             }

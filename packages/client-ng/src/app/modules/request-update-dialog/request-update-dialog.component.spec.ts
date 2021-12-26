@@ -98,7 +98,7 @@ describe('src/app/modules/request-update-dialog/request-update-dialog.component.
                 expect(debugElement).toBeTruthy();
             }));
             it('should display that no update is available', waitForAsync(async (): Promise<void> => {
-                statusSubject.next('unknown status' as any);
+                statusSubject.next('unknown status' as SW_STATUS);
                 cmpFixture.detectChanges();
                 await cmpFixture.whenStable();
                 const debugElement: DebugElement = cmpFixture.debugElement.query(By.css('mat-dialog-content'));

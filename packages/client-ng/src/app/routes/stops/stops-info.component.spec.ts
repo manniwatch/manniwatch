@@ -110,7 +110,7 @@ describe('src/modules/stops/stops-info.component.ts', (): void => {
             });
             describe('hasHeader(idx)', (): void => {
                 [true, false, true, true].forEach((responseValue: boolean, idx: number): void => {
-                    it(`should return ${responseValue} for idx: ${idx}`, (): void => {
+                    it(`should return ${responseValue ? 'true' : 'false'} for idx: ${idx}`, (): void => {
                         expect(app.hasHeader(idx)).toEqual(responseValue);
                     });
                 });

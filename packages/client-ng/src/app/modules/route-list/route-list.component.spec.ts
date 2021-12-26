@@ -103,7 +103,5 @@ describe('src/modules/stop/route-list.component.ts', (): void => {
                 });
             });
         });
-        beforeAll((): void => { });
-        afterEach((): void => { });
     });
 });

@@ -23,7 +23,7 @@ export class OlMainMapService {
             .subscribe({
                 next: (evt: NavigationEnd): void => {
                     if (evt.url.search(/\/passages\/[a-z0-9]+/i) >= 0) {
-                        const splitUrl: string[] = evt.url.toLocaleLowerCase().split('\/');
+                        const splitUrl: string[] = evt.url.toLocaleLowerCase().split('/');
                         const tripId: string = splitUrl[splitUrl.indexOf('passages') + 1];
                         this.selectedVehicleSubject.next(tripId);
                     } else {

@@ -43,17 +43,17 @@ describe('src/app/rxjs-util/retry-dialog-strategy.ts', (): void => {
             const testError: Error = new Error('testError');
             const afterClosedSubject: Subject<boolean> = new Subject();
             beforeEach((): void => {
-                createDialogSpy.and.callFake((): any =>
-                    ({
-                        afterClosed: (): Observable<any> => afterClosedSubject.pipe(delay(100)),
-                    }));
+                createDialogSpy.and.callFake(() =>
+                ({
+                    afterClosed: () => afterClosedSubject.pipe(delay(100)),
+                }));
             });
             describe('Should be retried', (): void => {
                 it('should open the dialog and succeed after first retry', (done: DoneFn): void => {
                     let tries = 0;
                     from([1])
                         .pipe(
-                            tap((value: number): void => {
+                            tap((): void => {
                                 tries++;
                                 if (tries < 2) {
                                     throw testError;
@@ -72,7 +72,7 @@ describe('src/app/rxjs-util/retry-dialog-strategy.ts', (): void => {
                     let tries = 0;
                     from([1])
                         .pipe(
-                            mergeMap((value: number): Observable<any> => {
+                            mergeMap((value: number): Observable<number> => {
                                 tries++;
                                 if (tries < 2) {
                                     return merge(throwError(testError), throwError(testError));

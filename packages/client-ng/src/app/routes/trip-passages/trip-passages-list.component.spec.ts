@@ -185,7 +185,7 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
       describe('hasPassages()', (): void => {
         // tslint:disable-next-line:no-null-keyword
         [undefined, null, [], 1, 'k'].forEach((testValue: any): void => {
-          it(`should return false for passages being "${testValue}"`, (): void => {
+          it(`should return false for passages being "${testValue as string}"`, (): void => {
             cmp.passages = testValue;
             expect(cmp.hasPassages()).toBeFalse();
           });
@@ -215,7 +215,8 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
             cmpFixture.detectChanges();
             listItems = cmpFixture.debugElement
               .queryAll(By.directive(TestTripPassagesListItemComponent))
-              .map((val: DebugElement): TestTripPassagesListItemComponent => val.componentInstance);
+              .map((val: DebugElement): TestTripPassagesListItemComponent =>
+                val.componentInstance as TestTripPassagesListItemComponent);
             bodyText = cmpFixture.debugElement.nativeElement.innerText;
             expect(bodyText).not.toEqual('No Passages');
             expect(listItems.length).toEqual(testNum);
@@ -237,7 +238,8 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
             cmpFixture.detectChanges();
             listItems = cmpFixture.debugElement
               .queryAll(By.directive(TestTripPassagesListItemComponent))
-              .map((val: DebugElement): TestTripPassagesListItemComponent => val.componentInstance);
+              .map((val: DebugElement): TestTripPassagesListItemComponent =>
+                val.componentInstance as TestTripPassagesListItemComponent);
             bodyText = cmpFixture.debugElement.nativeElement.innerText;
             expect(bodyText).toEqual('No Passages');
             expect(listItems.length).toEqual(0);
@@ -255,8 +257,7 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
         parentCmp = parentFixture.componentInstance;
         cmp = parentFixture.debugElement.query(By.directive(TripPassagesListComponent)).componentInstance;
         tripInfoSpy = spyOnProperty(cmp, 'tripInfo', 'set');
-        tripInfoSpy.and.callFake((): void => {
-        });
+        tripInfoSpy.and.callFake((): void => { return; });
         parentCmp.testPassage = undefined;
         parentFixture.detectChanges();
       });

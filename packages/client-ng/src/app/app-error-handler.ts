@@ -37,8 +37,9 @@ export class AppErrorHandler implements ErrorHandler {
         if (error instanceof HttpErrorResponse) {
             return this.handleHttpErrorResponse(error, notificationService);
         } else {
+            const message: string = ('message' in error) ? (error as { message: string }).message  : 'Unknown error';
             notificationService.notify({
-                message: error.message,
+                message,
                 reportable: true,
                 title: 'Uncaught error occured',
                 type: AppNotificationType.ERROR,

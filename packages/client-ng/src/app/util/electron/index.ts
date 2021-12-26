@@ -18,12 +18,12 @@ export const isManniwatchDesktop = (): boolean => {
     return (window &&
         'electron' in window &&
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
-        'manniwatch' in (window as any).electron);
+        'manniwatch' in window.electron);
 };
 
 export const getManniwatchDesktopApi = (): ApiService => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return (window as any).electron.manniwatch.api as ApiService;
+    return window.electron.manniwatch.api ;
 };
 
 export const getManniwatchDesktopEnvironment = (): IEnvironmentBase => {

@@ -5,6 +5,7 @@
 
 
 import {
+    AfterViewInit,
     Directive,
     ElementRef,
     NgZone,
@@ -20,7 +21,7 @@ import { environment } from 'src/environments';
 import { BaseOlMapDirective } from './base-ol-map.directive';
 
 @Directive()
-export abstract class OsmOlMapDirective extends BaseOlMapDirective<OSM> {
+export abstract class OsmOlMapDirective extends BaseOlMapDirective<OSM> implements AfterViewInit {
 
     constructor(elRef: ElementRef,
         zone: NgZone,
@@ -36,7 +37,7 @@ export abstract class OsmOlMapDirective extends BaseOlMapDirective<OSM> {
                 layers: [
                     this.mBackgroundMapLayer,
                 ],
-                target: this.elRef.nativeElement,
+                target: this.elRef.nativeElement as HTMLElement,
                 view: new View({
                     // projection: 'EPSG:3857', // 'EPSG:4326',
                     center: this.settings.getInitialMapCenter(),
@@ -84,9 +85,9 @@ export abstract class OsmOlMapDirective extends BaseOlMapDirective<OSM> {
      */
     public applyTheme(theme: Theme): void {
         NgZone.assertNotInAngularZone();
-        const mapProvider: any = environment.map.mapProvider;
+        const mapProvider = environment.map.mapProvider;
         if (mapProvider) {
-            if (mapProvider?.options_dark && theme === Theme.DARK) {
+            if ('options_dark' in mapProvider && theme === Theme.DARK) {
                 this.mBackgroundMapLayer.setSource(new OSM(mapProvider.options_dark));
             } else {
                 this.mBackgroundMapLayer.setSource(new OSM(mapProvider.options));

@@ -28,7 +28,7 @@ import { UserLocationService } from './services/user-location.service';
 import { getManniwatchDesktopApi, isManniwatchDesktop } from './util/electron';
 import { localStorageFactory, LOCAL_STORAGE_TOKEN } from './util/storage';
 
-const moduleImports: any[] = [
+const moduleImports: NgModule['imports'] = [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,

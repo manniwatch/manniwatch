@@ -46,6 +46,7 @@ describe('src/app/app-error-handler.ts', (): void => {
                 consoleErrorSpy = spyOn(console, 'error');
             });
             beforeEach((): void => {
+                // eslint-disable-next-line @typescript-eslint/no-empty-function
                 consoleErrorSpy.and.callFake((): void => { });
                 handleHttpErrorResponseSpy = spyOn(handler, 'handleHttpErrorResponse');
                 handleHttpErrorResponseSpy.and.callFake((): boolean =>

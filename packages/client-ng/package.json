@@ -9,7 +9,7 @@
     "build": "ng build --configuration=olvector && ng build",
     "prebuild:build:prod": "npm run build:pug",
     "build:prod": "ng build --aot --configuration=production && ng build --aot --configuration=production,olvector",
-    "build:pug": "pug ./src --doctype html",
+    "build:pug": "pug ./src --doctype html --pretty",
     "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
     "build:release": "ng build --prod --aot",
     "test": "ng test --watch=false --browsers=ChromeHeadless",

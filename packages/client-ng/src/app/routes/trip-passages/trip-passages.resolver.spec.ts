@@ -30,8 +30,8 @@ describe('src/app/modules/trip-passages/trip-passages.resolver', (): void => {
             nextSpy = jasmine.createSpy('onNext');
         });
         beforeEach(waitForAsync((): void => {
-            convertResponseStub.and.callFake((): any => convertResponseOperatorStub);
-            handleErrorStub.and.callFake((): any => handleErrorOperatorStub);
+            convertResponseStub.and.callFake(() => convertResponseOperatorStub);
+            handleErrorStub.and.callFake(() => handleErrorOperatorStub);
             TestBed.configureTestingModule({
                 providers: [TripPassagesResolver,
                     {
@@ -75,7 +75,7 @@ describe('src/app/modules/trip-passages/trip-passages.resolver', (): void => {
                     convertResponseOperatorStub.and.callFake(map((): any => convertedResponse));
                 });
                 it('should construct the request correctly', (done: DoneFn): void => {
-                    resolver.resolve({ params: { tripId: testId } } as any, undefined)
+                    resolver.resolve({ params: { tripId: testId } } as any)
                         .subscribe({
                             complete: (): void => {
                                 expect(getTripPassagesSpy)

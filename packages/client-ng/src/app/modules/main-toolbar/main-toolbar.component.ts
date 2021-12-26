@@ -54,7 +54,7 @@ export class MainToolbarComponent {
         this.sidebarService.toggleSidebar();
     }
 
-    public onFocusSearch(event: any): void {
+    public onFocusSearch(event: boolean): void {
         this.searchOpen = event;
     }
     public toggleSearch(): void {

@@ -50,7 +50,7 @@ describe('src/app/services/sidebar.service', (): void => {
         describe('sidebarOpen', (): void => {
             describe('-- getter', (): void => {
                 [true, false].forEach((testValue: boolean): void => {
-                    it(`should return ${testValue}`, (): void => {
+                    it(`should return ${testValue ? 'true' : 'false'}`, (): void => {
                         subject.next(testValue);
                         expect(sidebarService.sidebarOpen).toEqual(testValue);
                     });

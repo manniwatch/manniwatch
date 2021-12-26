@@ -6,6 +6,7 @@
 
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav, MatSidenavContainer } from '@angular/material/sidenav';
+import { TripInfoWithId } from '@manniwatch/client-types';
 import { SidebarService } from 'src/app/modules/sidebar';
 @Component({
     selector: 'app-root',
@@ -31,9 +32,9 @@ export class AppComponent implements OnInit {
         this.sidebarService.sidebarObservable
             .subscribe((open: boolean): void => {
                 if (open) {
-                    this.sidenav.open();
+                    void this.sidenav.open();
                 } else {
-                    this.sidenav.close();
+                    void this.sidenav.close();
                 }
             });
         this.sidenav.openedChange.subscribe((open: boolean): void => {
@@ -44,12 +45,13 @@ export class AppComponent implements OnInit {
             }
         });
     }
-    public onVoted(agreed: any): void {
+
+    public onVoted(agreed: TripInfoWithId): void {
         this.tripId = agreed.tripId;
     }
 
     public toggleSidebar(): void {
-        this.sidenav.toggle();
+        void this.sidenav.toggle();
     }
 
 }

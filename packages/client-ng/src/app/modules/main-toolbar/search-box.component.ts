@@ -22,7 +22,7 @@ export class ToolbarSearchBoxComponent implements OnInit, OnDestroy {
     public searchInput: ElementRef;
 
     @Output()
-    public readonly focusSearch: EventEmitter<boolean> = new EventEmitter();
+    public readonly focusSearch: EventEmitter<boolean> = new EventEmitter<boolean>();
     private updateSubscription: Subscription;
     constructor(private router: Router) {
     }

@@ -5,6 +5,9 @@
 
 
 import { Inject, InjectionToken, Optional } from '@angular/core';
+import { from, EMPTY, Observable } from 'rxjs';
+import { getManniwatchDesktopApi } from '../util/electron';
+import { ApiService as RootApiService } from './api.service';
 import type {
     ISettings,
     IStopInfo,
@@ -17,9 +20,6 @@ import type {
     StopMode,
 } from '@manniwatch/api-types';
 import type { ApiService, IBounds, TripInfoWithId } from '@manniwatch/client-types';
-import { from, EMPTY, Observable } from 'rxjs';
-import { getManniwatchDesktopApi } from '../util/electron';
-import { ApiService as RootApiService } from './api.service';
 
 export const ELECTRON_API: InjectionToken<ApiService> = new InjectionToken<ApiService>('app.electron-api', {
     factory: (): ApiService => {

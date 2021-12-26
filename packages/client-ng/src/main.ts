@@ -16,8 +16,8 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule).then((): void => {
     if ('serviceWorker' in navigator && environment.production) {
-        navigator.serviceWorker.register('/ngsw-worker.js');
+        void navigator.serviceWorker.register('/ngsw-worker.js');
     }
 })
-    // tslint:disable:no-console
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .catch((err: any): void => console.error(err));

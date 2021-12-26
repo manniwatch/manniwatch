@@ -29,16 +29,13 @@ export class SearchComponent implements OnInit, OnDestroy {
 
     public ngOnInit(): void {
         this.searchParamSubscription = this.activatedRoute
-            .queryParams.subscribe((value: Params): void => {
-                this.data = value.q ? value.q : '';
+            .queryParams.subscribe((value: Params & { q?: string }): void => {
+                this.data = value.q || '';
                 this.titleService.setTitle(`Search - "${this.data}"`);
             });
         this.resultObservable = this.activatedRoute.data
             .pipe(map((val: Data): IStopLocation[] => {
-                if (val.results) {
-                    return val.results;
-                }
-                return [];
+                return (val.results || []) as IStopLocation[];
             }));
     }
     public ngOnDestroy(): void {
