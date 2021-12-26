@@ -45,7 +45,8 @@
       ],
       "rules": {
         "@typescript-eslint/no-floating-promises": "off",
-        "@angular-eslint/component-selector": "off"
+        "@angular-eslint/component-selector": "off",
+        "@angular-eslint/directive-selector": "off"
       }
     },
     {
