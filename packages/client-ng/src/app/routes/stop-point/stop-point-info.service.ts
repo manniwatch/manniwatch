@@ -5,7 +5,7 @@
 
 
 import { ApplicationRef, Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Data } from '@angular/router';
 import { IStopPassage, IStopPointLocation } from '@manniwatch/api-types';
 import { interval, Observable } from 'rxjs';
 import { first, map, mergeMap, startWith, switchMap } from 'rxjs/operators';
@@ -24,8 +24,8 @@ export class StopPointInfoService {
         private apiService: ApiService,
         public stopService: StopPointService,
         private appRef: ApplicationRef) {
-        this.stopPassageObservable = this.route.data.pipe(map((params: any): IStopPassage => {
-            return params.stopPoint;
+        this.stopPassageObservable = this.route.data.pipe(map((params: Data): IStopPassage => {
+            return params.stopPoint as IStopPassage;
         }));
     }
     public createStopPassageRefreshObservable(): Observable<IStopPassage> {

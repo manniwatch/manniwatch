@@ -95,5 +95,6 @@ export abstract class OsmOlMapDirective extends BaseOlMapDirective<OSM> {
     }
 
     public applyVectorTheme(theme: Theme): void {
+        // Keep
     }
 }

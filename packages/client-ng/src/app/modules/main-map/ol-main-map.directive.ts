@@ -48,9 +48,7 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
      * @param apiService ApiService instance
      * @param router Router Instance
      * @param stopService Stop Service Instance for retrievel of stops
-     * @param userLocationService UserLocationService Instance
      * @param location Browser Location
-     * @param snackBar SnackbarService Instance
      * @param settings Settings Service
      * @param vehicleSerivce
      * @param mainMapService

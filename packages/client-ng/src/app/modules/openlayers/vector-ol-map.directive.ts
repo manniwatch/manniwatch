@@ -5,6 +5,7 @@
 
 
 import {
+    AfterViewInit,
     Directive,
     ElementRef,
     NgZone,
@@ -24,7 +25,7 @@ import { BaseOlMapDirective } from './base-ol-map.directive';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 
 @Directive()
-export abstract class VectorOlMapDirective extends BaseOlMapDirective<VectorTile> {
+export abstract class VectorOlMapDirective extends BaseOlMapDirective<VectorTile> implements AfterViewInit {
 
     constructor(elRef: ElementRef,
         zone: NgZone,
@@ -40,7 +41,7 @@ export abstract class VectorOlMapDirective extends BaseOlMapDirective<VectorTile
                 layers: [
                     this.mBackgroundMapLayer,
                 ],
-                target: this.elRef.nativeElement,
+                target: this.elRef.nativeElement as HTMLElement,
                 view: new View({
                     // projection: 'EPSG:3857', // 'EPSG:4326',
                     center: this.settings.getInitialMapCenter(),

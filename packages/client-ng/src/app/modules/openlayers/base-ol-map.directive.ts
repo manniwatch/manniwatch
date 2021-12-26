@@ -42,7 +42,7 @@ export abstract class BaseOlMapDirective<TILE extends VectorTile | OSM> implemen
                 layers: [
                     this.mBackgroundMapLayer,
                 ],
-                target: this.elRef.nativeElement,
+                target: this.elRef.nativeElement as HTMLElement,
                 view: new View({
                     // projection: 'EPSG:3857', // 'EPSG:4326',
                     center: this.settings.getInitialMapCenter(),
@@ -93,7 +93,7 @@ export abstract class BaseOlMapDirective<TILE extends VectorTile | OSM> implemen
     }
 
     public onBeforeSetView(map: Map): void {
-
+        // Keep
     }
 
     public onAfterSetView(map: Map): void {

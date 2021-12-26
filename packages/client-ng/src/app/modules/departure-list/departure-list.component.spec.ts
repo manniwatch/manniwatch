@@ -42,7 +42,7 @@ describe('src/app/modules/stop/departure-list.component', (): void => {
     }));
     it('should create the app', waitForAsync((): void => {
       const fixture: ComponentFixture<DepartureListComponent> = TestBed.createComponent(DepartureListComponent);
-      const app: DepartureListComponent = fixture.debugElement.componentInstance;
+      const app: DepartureListComponent = fixture.debugElement.componentInstance as DepartureListComponent;
       expect(app).toBeTruthy();
     }));
     describe('layout', (): void => {

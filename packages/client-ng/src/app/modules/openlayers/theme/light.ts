@@ -3,7 +3,7 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
+/* eslint-disable sort-keys */
 export const LIGHT_THEME: any = {
     version: 8,
     name: 'Bright',

@@ -17,13 +17,13 @@ import { IDeparture } from '@manniwatch/api-types';
 })
 export class RouteListComponent {
 
-    private mDepartures: any[] = [];
+    private mDepartures: IDeparture[] = [];
     @Input()
-    public set routes(deps: any[]) {
+    public set routes(deps: IDeparture[]) {
         this.mDepartures = deps ? deps : [];
     }
 
-    public get routes(): any[] {
+    public get routes(): IDeparture[] {
         return this.mDepartures;
     }
 

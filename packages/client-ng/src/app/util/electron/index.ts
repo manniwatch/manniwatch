@@ -17,13 +17,16 @@ declare global {
 export const isManniwatchDesktop = (): boolean => {
     return (window &&
         'electron' in window &&
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
         'manniwatch' in (window as any).electron);
 };
 
 export const getManniwatchDesktopApi = (): ApiService => {
-    return (window as any).electron.manniwatch.api;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return (window as any).electron.manniwatch.api as ApiService;
 };
 
 export const getManniwatchDesktopEnvironment = (): IEnvironmentBase => {
-    return window?.electron?.manniwatch?.environment || {} as any;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
+    return window?.electron?.manniwatch?.environment || {} as IEnvironmentBase;
 };

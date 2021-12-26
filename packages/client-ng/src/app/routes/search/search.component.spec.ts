@@ -9,6 +9,7 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Title } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SearchComponent } from './search.component';
+import { SearchModule } from '.';
 
 // tslint:disable:max-classes-per-file
 // tslint:disable:component-selector
@@ -70,7 +71,7 @@ describe('src/modules/routing/search/search.component.ts', (): void => {
                 ],
             }).compileComponents();
             fixture = TestBed.createComponent(SearchComponent);
-            cmp = fixture.debugElement.componentInstance;
+            cmp = fixture.debugElement.componentInstance as SearchComponent;
         }));
         afterEach((): void => {
             getTitleSpy.calls.reset();

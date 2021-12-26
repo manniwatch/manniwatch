@@ -12,7 +12,7 @@ import { filter } from 'rxjs/operators';
 @Injectable()
 export class OlMainMapService {
     public readonly statusObservable: Observable<string>;
-    private readonly selectedVehicleSubject: BehaviorSubject<string> = new BehaviorSubject(undefined);
+    private readonly selectedVehicleSubject: BehaviorSubject<string> = new BehaviorSubject<string>(undefined);
     constructor(private router: Router) {
         this.statusObservable = this.selectedVehicleSubject.asObservable();
         this.router

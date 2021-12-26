@@ -32,6 +32,4 @@ export class NotFoundComponent {
         path: '/stops',
         title: 'Stops',
     }];
-    constructor() {
-    }
 }

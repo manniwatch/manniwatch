@@ -38,7 +38,7 @@ describe('src/modules/error/common.component.ts', (): void => {
                 providers: [],
             }).compileComponents();
             cmpFixture = TestBed.createComponent(CommonErrorComponent);
-            cmp = cmpFixture.debugElement.componentInstance;
+            cmp = cmpFixture.debugElement.componentInstance as CommonErrorComponent;
         }));
 
         it('should create the app', waitForAsync((): void => {

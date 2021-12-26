@@ -136,9 +136,9 @@ export class VehicleService {
                                     }
                                     prev.set(cur.id, cur);
                                     return prev;
-                                }, new Map());
+                                }, new Map<string, TimestampedVehicles>());
                         const filterInvalid: TimestampedVehicleLocation[] =
-                            Array.from(reducedVehicles.values())
+                            Array.from<TimestampedVehicles>(reducedVehicles.values())
                                 .filter((vehState: any): boolean => {
                                     if (vehState) {
                                         if (vehState.isDeleted === true) {

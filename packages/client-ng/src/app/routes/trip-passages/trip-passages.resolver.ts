@@ -17,7 +17,7 @@ import { IPassageStatus, TripPassagesUtil } from './trip-util';
 export class TripPassagesResolver implements Resolve<IPassageStatus> {
 
     public constructor(private api: ApiService) { }
-    public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IPassageStatus> {
+    public resolve(route: ActivatedRouteSnapshot): Observable<IPassageStatus> {
         const tripId: string = route.params.tripId as string;
         return this.api.getTripPassages(tripId)
             .pipe(TripPassagesUtil.convertResponse(tripId),

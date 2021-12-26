@@ -23,7 +23,7 @@ export class SearchResultResolver implements Resolve<any> {
                         /**
                          * Filter by search term
                          */
-                        .filter((option: IStopLocation): boolean => option.name.toLowerCase().includes(route.queryParams.q))
+                        .filter((option: IStopLocation): boolean => option.name.toLowerCase().includes(route.queryParams.q as string))
                         .sort((a: IStopLocation, b: IStopLocation): number => a.name.localeCompare(b.name))));
     }
 }

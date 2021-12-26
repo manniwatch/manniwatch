@@ -38,7 +38,7 @@ export class StopPointInfoResolver implements Resolve<IStopPassage> {
             .getStopPointPassages(route.params.stopPointId)
             .pipe(catchError((err: any | HttpErrorResponse): Observable<any> => {
                 if (err.status === 404) {
-                    this.router.navigate(['stops']);
+                    void this.router.navigate(['stops']);
                 }
                 return EMPTY;
             }));

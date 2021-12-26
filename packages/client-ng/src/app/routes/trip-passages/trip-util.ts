@@ -4,6 +4,7 @@
  */
 
 
+import { HttpErrorResponse } from '@angular/common/http';
 import { TripInfoWithId } from '@manniwatch/client-types';
 import { of, Observable, OperatorFunction } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
@@ -37,8 +38,8 @@ export class TripPassagesUtil {
             tripInfo: tripPassages,
         }));
     }
-    public static handleError(tripId: string): OperatorFunction<any, IPassageStatus> {
-        return catchError((err: any): Observable<IPassageStatus> => {
+    public static handleError<T extends IPassageStatus = IPassageStatus>(tripId: string): OperatorFunction<T, IPassageStatus> {
+        return catchError((err: HttpErrorResponse): Observable<IPassageStatus> => {
             if (err && err.status) {
                 return of({
                     failures: 1,

@@ -20,7 +20,7 @@ export class TripPassagesService {
         private apiService: ApiService,
         private vehicleService: VehicleService,
         private appRef: ApplicationRef) {
-        this.statusSubject = new BehaviorSubject(route.snapshot.data.tripPassages);
+        this.statusSubject = new BehaviorSubject<IPassageStatus>(route.snapshot.data.tripPassages as IPassageStatus);
         this.statusObservable = this.createStatusObservable(this.statusSubject);
     }
 
@@ -29,7 +29,7 @@ export class TripPassagesService {
         return this.appRef.isStable
             .pipe(first(),
                 mergeMap((): Observable<IPassageStatus> => {
-                    return merge(this.route.data.pipe(map((data: Data): ITripPassages => data.tripPassages)), refreshObservable)
+                    return merge(this.route.data.pipe(map((data: Data): ITripPassages => data.tripPassages as ITripPassages)), refreshObservable)
                         .pipe(scan((acc: IPassageStatus, val: IPassageStatus, idx: number): IPassageStatus => {
                             if (val.failures > 0) {
                                 const newVal: IPassageStatus = Object.assign({}, val);

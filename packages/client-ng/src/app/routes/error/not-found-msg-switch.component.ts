@@ -23,7 +23,7 @@ export class NotFoundMessageSwitchComponent {
         this.errorTypeObservable = this.route.queryParams
             .pipe(map((value: Params): ErrorType => {
                 if (value.type) {
-                    return value.type;
+                    return value.type as ErrorType;
                 }
                 return ErrorType.UNKNOWN;
             }));

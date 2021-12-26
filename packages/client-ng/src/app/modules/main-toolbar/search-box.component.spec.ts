@@ -49,7 +49,7 @@ class TestMatAutoCompleteComponent {
     @Input()
     public displayWith: ((inp: any) => string);
     @Output()
-    public optionSelected: EventEmitter<MatAutocompleteSelectedEvent> = new EventEmitter();
+    public optionSelected: EventEmitter<MatAutocompleteSelectedEvent> = new EventEmitter<MatAutocompleteSelectedEvent>();
 }
 
 @Component({

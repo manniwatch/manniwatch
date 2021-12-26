@@ -68,7 +68,7 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
         describe('handleError(tripId)', (): void => {
             it('should pass on non errors', (doneFn: DoneFn): void => {
                 of(1, 2, 3)
-                    .pipe(TripPassagesUtil.handleError(undefined),
+                    .pipe(TripPassagesUtil.handleError<any>(undefined),
                         toArray())
                     .subscribe({
                         complete: doneFn,

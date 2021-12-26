@@ -4,8 +4,8 @@
  */
 
 
-import { Inject, InjectionToken } from '@angular/core';
-import {
+import { Inject, InjectionToken, Optional } from '@angular/core';
+import type {
     ISettings,
     IStopInfo,
     IStopLocations,
@@ -16,7 +16,7 @@ import {
     IVehiclePathInfo,
     StopMode,
 } from '@manniwatch/api-types';
-import { ApiService, IBounds, TripInfoWithId } from '@manniwatch/client-types';
+import type { ApiService, IBounds, TripInfoWithId } from '@manniwatch/client-types';
 import { from, EMPTY, Observable } from 'rxjs';
 import { getManniwatchDesktopApi } from '../util/electron';
 import { ApiService as RootApiService } from './api.service';
@@ -29,7 +29,7 @@ export const ELECTRON_API: InjectionToken<ApiService> = new InjectionToken<ApiSe
 });
 export class ElectronApiService implements RootApiService {
 
-    public constructor(@Inject(ELECTRON_API) private readonly service: ApiService) {
+    public constructor(@Optional() @Inject(ELECTRON_API) private readonly service?: ApiService) {
         // tslint:disable-next-line:triple-equals
         if (service == undefined) {
             throw new Error('No electron config provided');

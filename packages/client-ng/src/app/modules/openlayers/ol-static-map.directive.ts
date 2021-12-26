@@ -61,7 +61,7 @@ export class OlStaticMapDirective extends AbstractOlMapDirective implements OnCh
 
     public ngOnChanges(changes: SimpleChanges): void {
         if (this.KEY_MAP_DATA in changes) {
-            this.updateMapData(changes[this.KEY_MAP_DATA].currentValue);
+            this.updateMapData(changes[this.KEY_MAP_DATA].currentValue as IStaticMapData);
         }
     }
 
