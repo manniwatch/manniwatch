@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, EMPTY, Observable, Subscriber } from 'rxjs';
 import { catchError, debounceTime, mergeMap } from 'rxjs/operators';
@@ -12,9 +11,8 @@ import { catchError, debounceTime, mergeMap } from 'rxjs/operators';
     providedIn: 'root',
 })
 export class UserLocationService {
-
     public get featureAvailable(): boolean {
-        return (navigator.geolocation) ? true : false;
+        return navigator.geolocation ? true : false;
     }
 
     public get location(): GeolocationPosition {
@@ -32,13 +30,14 @@ export class UserLocationService {
     private locationSubject: BehaviorSubject<GeolocationPosition> = new BehaviorSubject<GeolocationPosition>(undefined);
     public constructor() {
         this.locationErrorObservable
-            .pipe(debounceTime(30000),
-                mergeMap((val: GeolocationPositionError): Observable<GeolocationPosition> =>
-                    this.createPositionRequest()),
+            .pipe(
+                debounceTime(30000),
+                mergeMap((val: GeolocationPositionError): Observable<GeolocationPosition> => this.createPositionRequest()),
                 catchError((err: GeolocationPositionError): Observable<never> => {
                     this.locationErrorSubject.next(err);
                     return EMPTY;
-                }))
+                })
+            )
             .subscribe((val: GeolocationPosition): void => {
                 this.locationErrorSubject.next(undefined);
                 this.locationSubject.next(val);
@@ -47,7 +46,6 @@ export class UserLocationService {
 
     public createPositionRequest(timeout = 10000, highAccuracy = false): Observable<GeolocationPosition> {
         return new Observable<GeolocationPosition>((subscriber: Subscriber<GeolocationPosition>): void => {
-
             const geoSuccess: (position: GeolocationPosition) => void = (position: GeolocationPosition): void => {
                 subscriber.next(position);
                 subscriber.complete();
@@ -62,5 +60,4 @@ export class UserLocationService {
             });
         });
     }
-
 }

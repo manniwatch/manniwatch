@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import deepmerge from 'deepmerge';
@@ -23,27 +22,25 @@ export interface IConfig {
     apiBasePath?: string;
 }
 
-@Injectable(
-    { providedIn: 'root' },
-)
+@Injectable({ providedIn: 'root' })
 export class SettingsService {
-
     public readonly themeObservable: Observable<Theme>;
     private themeSubject: BehaviorSubject<Theme>;
     private cssThemeObservable: Observable<Theme>;
     private sourceConfig: Partial<IConfig>;
     private mergedConfig: IConfig & Environment;
-    constructor(public httpClient: HttpClient,
-        @Inject(LOCAL_STORAGE_TOKEN) public lStorage: IStorage) {
+    constructor(public httpClient: HttpClient, @Inject(LOCAL_STORAGE_TOKEN) public lStorage: IStorage) {
         this.themeSubject = new BehaviorSubject(this.getThemePreference());
         this.cssThemeObservable = createCssThemeWatcher();
-        this.themeObservable = combineLatest([this.themeSubject, this.cssThemeObservable])
-            .pipe(map((themes: [Theme, Theme]): Theme => {
+        this.themeObservable = combineLatest([this.themeSubject, this.cssThemeObservable]).pipe(
+            map((themes: [Theme, Theme]): Theme => {
                 if (themes[0] === Theme.DEFAULT) {
                     return themes[1];
                 }
                 return themes[0];
-            }), shareReplay(1));
+            }),
+            shareReplay(1)
+        );
         this.updateBodyTheme();
         this.themeObservable.subscribe((theme: Theme): void => {
             this.setBodyTheme(theme);
@@ -57,12 +54,12 @@ export class SettingsService {
      */
     public load(): Observable<void> {
         const configPath: string = environment.configUrl || '/config/config.json';
-        return this.httpClient
-            .get(configPath)
-            .pipe(tap((resp: IConfig): void => {
+        return this.httpClient.get(configPath).pipe(
+            tap((resp: IConfig): void => {
                 // tslint:disable-next-line:no-console
                 console.info('Config loaded');
-            }), catchError((err: any): Observable<IConfig> => {
+            }),
+            catchError((err: any): Observable<IConfig> => {
                 console.group(`Unable to load config`);
                 console.log(`Path: ${configPath}`);
                 if (err instanceof HttpErrorResponse && err.status !== 200) {
@@ -72,10 +69,12 @@ export class SettingsService {
                 }
                 console.groupEnd();
                 return of({});
-            }), map((cfg: IConfig): void => {
+            }),
+            map((cfg: IConfig): void => {
                 this.sourceConfig = cfg;
                 this.mergedConfig = deepFreezeObject(deepmerge(environment, cfg));
-            }));
+            })
+        );
     }
 
     public get baseConfig(): Partial<IConfig> {

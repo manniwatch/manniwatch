@@ -3,21 +3,12 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-    Event,
-    NavigationCancel,
-    NavigationEnd,
-    NavigationError,
-    NavigationStart,
-    Router,
-} from '@angular/router';
+import { Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { Subscriber, Subscription } from 'rxjs';
 
 // tslint:disable:max-classes-per-file
 export class RouteLoadingSubscriber extends Subscriber<Event> {
-
     constructor(private indicatorCmp: RouteLoadingIndicatorComponent) {
         super();
     }
@@ -41,16 +32,11 @@ export class RouteLoadingSubscriber extends Subscriber<Event> {
     templateUrl: './route-loading-indicator.component.html',
 })
 export class RouteLoadingIndicatorComponent implements OnInit, OnDestroy {
-
     public loading = false;
     private subscription: Subscription;
-    constructor(private router: Router) {
-
-    }
+    constructor(private router: Router) {}
     public ngOnInit(): void {
-        this.subscription = this.router
-            .events
-            .subscribe(new RouteLoadingSubscriber(this));
+        this.subscription = this.router.events.subscribe(new RouteLoadingSubscriber(this));
     }
 
     public ngOnDestroy(): void {

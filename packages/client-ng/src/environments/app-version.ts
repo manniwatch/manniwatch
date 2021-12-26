@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 /**
  * Reads the angular app version from the package file
  *

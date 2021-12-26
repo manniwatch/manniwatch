@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { from, merge, throwError, Observable, Subject } from 'rxjs';
 import { delay, mergeMap, retryWhen, tap } from 'rxjs/operators';
 import { retryDialogStrategy, RetryDialogStrategyFuncResponse } from './retry-dialog-strategy';
@@ -43,8 +42,7 @@ describe('src/app/rxjs-util/retry-dialog-strategy.ts', (): void => {
             const testError: Error = new Error('testError');
             const afterClosedSubject: Subject<boolean> = new Subject();
             beforeEach((): void => {
-                createDialogSpy.and.callFake(() =>
-                ({
+                createDialogSpy.and.callFake(() => ({
                     afterClosed: () => afterClosedSubject.pipe(delay(100)),
                 }));
             });
@@ -59,7 +57,8 @@ describe('src/app/rxjs-util/retry-dialog-strategy.ts', (): void => {
                                     throw testError;
                                 }
                             }),
-                            retryWhen(strategy))
+                            retryWhen(strategy)
+                        )
                         .subscribe(nextSpy, done.fail, (): void => {
                             expect(nextSpy).toHaveBeenCalledTimes(1);
                             expect(nextSpy.calls.allArgs()).toEqual([[1]]);
@@ -80,7 +79,8 @@ describe('src/app/rxjs-util/retry-dialog-strategy.ts', (): void => {
                                     return from([value]);
                                 }
                             }),
-                            retryWhen(strategy))
+                            retryWhen(strategy)
+                        )
                         .subscribe(nextSpy, done.fail, (): void => {
                             expect(nextSpy).toHaveBeenCalledTimes(1);
                             expect(nextSpy.calls.allArgs()).toEqual([[1]]);

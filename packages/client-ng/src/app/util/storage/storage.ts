@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 export interface IStorage {
     readonly length: number;
     clear(): void;

@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandler } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
@@ -18,15 +17,18 @@ describe('src/app/app-error-handler.ts', (): void => {
         let notificationService: AppNotificationService;
         beforeEach((): void => {
             TestBed.configureTestingModule({
-                providers: [{
-                    provide: AppNotificationService,
-                    useValue: {
-                        notify: notifySpy,
+                providers: [
+                    {
+                        provide: AppNotificationService,
+                        useValue: {
+                            notify: notifySpy,
+                        },
                     },
-                }, {
-                    provide: ErrorHandler,
-                    useClass: AppErrorHandler,
-                }],
+                    {
+                        provide: ErrorHandler,
+                        useClass: AppErrorHandler,
+                    },
+                ],
             });
             handler = TestBed.inject(ErrorHandler) as AppErrorHandler;
             notificationService = TestBed.inject(AppNotificationService);
@@ -47,20 +49,21 @@ describe('src/app/app-error-handler.ts', (): void => {
             });
             beforeEach((): void => {
                 // eslint-disable-next-line @typescript-eslint/no-empty-function
-                consoleErrorSpy.and.callFake((): void => { });
+                consoleErrorSpy.and.callFake((): void => {});
                 handleHttpErrorResponseSpy = spyOn(handler, 'handleHttpErrorResponse');
-                handleHttpErrorResponseSpy.and.callFake((): boolean =>
-                    false);
+                handleHttpErrorResponseSpy.and.callFake((): boolean => false);
             });
             afterEach((): void => {
                 handleHttpErrorResponseSpy.calls.reset();
                 consoleErrorSpy.calls.reset();
             });
             describe('an HttpErrorResponse is reported', (): void => {
-                [new HttpErrorResponse({
-                    status: 200,
-                    statusText: '500 error message',
-                })].forEach((testError: any): void => {
+                [
+                    new HttpErrorResponse({
+                        status: 200,
+                        statusText: '500 error message',
+                    }),
+                ].forEach((testError: any): void => {
                     it('should call handleHttpErrorResponse()', (): void => {
                         handler.handleError(testError);
                         expect(handleHttpErrorResponseSpy).toHaveBeenCalledTimes(1);
@@ -71,8 +74,7 @@ describe('src/app/app-error-handler.ts', (): void => {
                 });
             });
             describe('an Error is reported', (): void => {
-                [new Error('test error'),
-                ].forEach((testError: any): void => {
+                [new Error('test error')].forEach((testError: any): void => {
                     it('should call notify()', (): void => {
                         handler.handleError(testError);
                         expect(handleHttpErrorResponseSpy).toHaveBeenCalledTimes(0);
@@ -105,27 +107,31 @@ describe('src/app/app-error-handler.ts', (): void => {
                     reportable?: boolean;
                 };
             }
-            const testHttpErrors: ITestHttpError[] = [{
-                error: createError(404),
-                message: {
-                    message: `404 - ${createError(404).message}`,
-                    title: 'Request-Error',
-                    type: AppNotificationType.ERROR,
+            const testHttpErrors: ITestHttpError[] = [
+                {
+                    error: createError(404),
+                    message: {
+                        message: `404 - ${createError(404).message}`,
+                        title: 'Request-Error',
+                        type: AppNotificationType.ERROR,
+                    },
                 },
-            }, {
-                error: createError(520),
-                message: {
-                    message: `520 - ${createError(520).message}`,
-                    title: 'Server-Error',
-                    type: AppNotificationType.ERROR,
+                {
+                    error: createError(520),
+                    message: {
+                        message: `520 - ${createError(520).message}`,
+                        title: 'Server-Error',
+                        type: AppNotificationType.ERROR,
+                    },
                 },
-            }, {
-                error: createError(350),
-                message: {
-                    title: 'Unknown HTTP-Error occured',
-                    type: AppNotificationType.ERROR,
+                {
+                    error: createError(350),
+                    message: {
+                        title: 'Unknown HTTP-Error occured',
+                        type: AppNotificationType.ERROR,
+                    },
                 },
-            }];
+            ];
             describe('client is offline', (): void => {
                 beforeEach((): void => {
                     isClientOfflineSpy.and.returnValue(true);

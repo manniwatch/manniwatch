@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { Component } from '@angular/core';
 import { ActivatedRoute, Data } from '@angular/router';
 import { IStopLocation, IStopLocations } from '@manniwatch/api-types';
@@ -17,9 +16,7 @@ export class StopsInfoComponent {
     constructor(private activatedRoute: ActivatedRoute) {
         const data: Data & { stops?: IStopLocations } = this.activatedRoute.snapshot.data;
         const stops: IStopLocation[] | undefined = data?.stops?.stops;
-        this.mStops = stops ? stops.sort((a: IStopLocation, b: IStopLocation): number =>
-            a.name.localeCompare(b.name)) : [];
-
+        this.mStops = stops ? stops.sort((a: IStopLocation, b: IStopLocation): number => a.name.localeCompare(b.name)) : [];
     }
 
     public hasHeader(idx: number): boolean {
@@ -33,5 +30,4 @@ export class StopsInfoComponent {
     public get stops(): IStopLocation[] {
         return this.mStops;
     }
-
 }

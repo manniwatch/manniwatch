@@ -3,11 +3,7 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
-import {
-    Component,
-    Input,
-} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IDeparture } from '@manniwatch/api-types';
 
 @Component({
@@ -16,7 +12,6 @@ import { IDeparture } from '@manniwatch/api-types';
     templateUrl: './route-list.component.html',
 })
 export class RouteListComponent {
-
     private mDepartures: IDeparture[] = [];
     @Input()
     public set routes(deps: IDeparture[]) {
@@ -37,5 +32,4 @@ export class RouteListComponent {
             return `${Math.ceil(time / 60)}min`;
         }
     }
-
 }

@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -15,12 +14,9 @@ import { IPassageStatus, TripPassagesUtil } from './trip-util';
  */
 @Injectable()
 export class TripPassagesResolver implements Resolve<IPassageStatus> {
-
-    public constructor(private api: ApiService) { }
+    public constructor(private api: ApiService) {}
     public resolve(route: ActivatedRouteSnapshot): Observable<IPassageStatus> {
         const tripId: string = route.params.tripId as string;
-        return this.api.getTripPassages(tripId)
-            .pipe(TripPassagesUtil.convertResponse(tripId),
-                TripPassagesUtil.handleError(tripId));
+        return this.api.getTripPassages(tripId).pipe(TripPassagesUtil.convertResponse(tripId), TripPassagesUtil.handleError(tripId));
     }
 }

@@ -3,5 +3,4 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 export { SettingsModule } from './settings.module';

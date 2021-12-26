@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { Injectable } from '@angular/core';
 import { Event, NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -15,11 +14,12 @@ export class OlMainMapService {
     private readonly selectedVehicleSubject: BehaviorSubject<string> = new BehaviorSubject<string>(undefined);
     constructor(private router: Router) {
         this.statusObservable = this.selectedVehicleSubject.asObservable();
-        this.router
-            .events
-            .pipe(filter((evt: Event): boolean => {
-                return evt instanceof NavigationEnd;
-            }))
+        this.router.events
+            .pipe(
+                filter((evt: Event): boolean => {
+                    return evt instanceof NavigationEnd;
+                })
+            )
             .subscribe({
                 next: (evt: NavigationEnd): void => {
                     if (evt.url.search(/\/passages\/[a-z0-9]+/i) >= 0) {

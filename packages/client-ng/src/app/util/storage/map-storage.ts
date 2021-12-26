@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { IStorage } from './storage';
 
 export class MapStorage implements IStorage {

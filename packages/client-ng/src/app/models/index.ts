@@ -3,12 +3,7 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
-import {
-    IStopLocation,
-    IStopPointLocation,
-    IVehicleLocation,
-} from '@manniwatch/api-types';
+import { IStopLocation, IStopPointLocation, IVehicleLocation } from '@manniwatch/api-types';
 
 export interface ITimestampVehicleLocation {
     /**

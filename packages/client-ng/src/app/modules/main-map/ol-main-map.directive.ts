@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { Location } from '@angular/common';
 import { Directive, ElementRef, NgZone, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
@@ -54,7 +53,8 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
      * @param mainMapService
      * @param zone ngZone Instance
      */
-    constructor(elRef: ElementRef,
+    constructor(
+        elRef: ElementRef,
         public apiService: ApiService,
         public router: Router,
         public stopService: StopPointService,
@@ -62,7 +62,8 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
         settings: SettingsService,
         public vehicleSerivce: VehicleService,
         public mainMapService: OlMainMapService,
-        zone: NgZone) {
+        zone: NgZone
+    ) {
         super(elRef, zone, settings);
         this.markerHandler = new OlMarkerHandler(this, 15);
         this.vehicleHandler = new OlVehicleHandler(this);
@@ -147,5 +148,4 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
             this.vehicleUpdateSubscription.unsubscribe();
         }
     }
-
 }

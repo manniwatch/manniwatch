@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { all as merge } from 'deepmerge';
 import { getManniwatchDesktopEnvironment } from 'src/app/util/electron';
 import { APP_VERSION } from './app-version';
@@ -18,4 +17,4 @@ const sourceEnvironments: Partial<Environment>[] = [
     },
 ];
 
-export const environment: Environment = merge<Environment>(sourceEnvironments) ;
+export const environment: Environment = merge<Environment>(sourceEnvironments);

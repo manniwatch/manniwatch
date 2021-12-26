@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { Component, VERSION } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { environment } from 'src/environments';
@@ -16,10 +15,7 @@ import { SidebarService } from './sidebar.service';
     templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent {
-    public constructor(private sidebarService: SidebarService,
-        public dialog: MatDialog) {
-
-    }
+    public constructor(private sidebarService: SidebarService, public dialog: MatDialog) {}
 
     public closeSidebar(): void {
         this.sidebarService.closeSidebar();

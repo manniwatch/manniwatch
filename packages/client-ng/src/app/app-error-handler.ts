@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandler, Injectable, Injector } from '@angular/core';
 import { AppNotificationService, AppNotificationType } from './services/app-notification.service';
@@ -13,8 +12,7 @@ import { AppNotificationService, AppNotificationType } from './services/app-noti
  */
 @Injectable()
 export class AppErrorHandler implements ErrorHandler {
-
-    public constructor(private injector: Injector) { }
+    public constructor(private injector: Injector) {}
 
     /**
      * If the browser supports the online tag it will
@@ -23,7 +21,7 @@ export class AppErrorHandler implements ErrorHandler {
      * @returns true if the navigator is offline
      */
     public isClientOffline(): boolean {
-        return (!navigator.onLine);
+        return !navigator.onLine;
     }
 
     /**
@@ -37,7 +35,7 @@ export class AppErrorHandler implements ErrorHandler {
         if (error instanceof HttpErrorResponse) {
             return this.handleHttpErrorResponse(error, notificationService);
         } else {
-            const message: string = ('message' in error) ? (error as { message: string }).message  : 'Unknown error';
+            const message: string = 'message' in error ? (error as { message: string }).message : 'Unknown error';
             notificationService.notify({
                 message,
                 reportable: true,

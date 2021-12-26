@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
@@ -13,7 +12,6 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     templateUrl: './header-box.component.html',
 })
 export class HeaderBoxComponent {
-
     @Input()
     public lastUpdate: Date = undefined;
 

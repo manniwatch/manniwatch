@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { NgZone } from '@angular/core';
 import { runOutsideZone } from '@donmahallem/rxjs-zone';
 import { IVehicleLocation, IVehiclePathInfo, IWayPoint } from '@manniwatch/api-types';
@@ -22,7 +21,6 @@ import { IData } from 'src/app/services/vehicle.service';
 import { OlUtil } from 'src/app/util/ol';
 import { OlMainMapDirective } from './ol-main-map.directive';
 export class OlVehicleHandler {
-
     /**
      * Layer for the stop markers to be displayed on the map
      */
@@ -35,8 +33,7 @@ export class OlVehicleHandler {
     private mouseHoverSubscription: Subscription;
 
     private selectVehicleSubscription: Subscription;
-    public constructor(private mainMap: OlMainMapDirective) {
-    }
+    public constructor(private mainMap: OlMainMapDirective) {}
 
     public start(leafletMap: OlMap): void {
         NgZone.assertNotInAngularZone();
@@ -51,34 +48,34 @@ export class OlVehicleHandler {
         leafletMap.addLayer(this.vehicleRouteLayer);
         leafletMap.addLayer(this.vehicleMarkerLayer);
 
-        const obs1: Observable<TimestampedVehicleLocation[]> = this.mainMap.vehicleSerivce
-            .getVehicles
-            .pipe(runOutsideZone(this.mainMap.zone),
-                distinctUntilChanged((x: IData, y: IData): boolean => {
-                    if (x && y) {
-                        return x.lastUpdate === y.lastUpdate;
-                    }
-                    return false;
-                }), pluck('vehicles'));
+        const obs1: Observable<TimestampedVehicleLocation[]> = this.mainMap.vehicleSerivce.getVehicles.pipe(
+            runOutsideZone(this.mainMap.zone),
+            distinctUntilChanged((x: IData, y: IData): boolean => {
+                if (x && y) {
+                    return x.lastUpdate === y.lastUpdate;
+                }
+                return false;
+            }),
+            pluck('vehicles')
+        );
 
-        const obs2: Observable<IVehiclePathInfo> = this.mainMap.mainMapService
-            .statusObservable
-            .pipe(runOutsideZone(this.mainMap.zone),
-                switchMap((tripId: string): Observable<IVehiclePathInfo> => {
-                    if (tripId) {
-                        return this.mainMap.apiService.getRouteByTripId(tripId)
-                            .pipe(catchError((err: any): Observable<IVehiclePathInfo> => {
-                                return of(undefined);
-                            }));
-                    }
-                    return of(undefined);
-                }));
-        this.loadSubscription = combineLatest([obs1, obs2])
-            .subscribe((result: [TimestampedVehicleLocation[], IVehiclePathInfo]): void => {
-                this.setVehicles(result[0]);
-                this.setRoute(result[1]);
-            });
-
+        const obs2: Observable<IVehiclePathInfo> = this.mainMap.mainMapService.statusObservable.pipe(
+            runOutsideZone(this.mainMap.zone),
+            switchMap((tripId: string): Observable<IVehiclePathInfo> => {
+                if (tripId) {
+                    return this.mainMap.apiService.getRouteByTripId(tripId).pipe(
+                        catchError((err: any): Observable<IVehiclePathInfo> => {
+                            return of(undefined);
+                        })
+                    );
+                }
+                return of(undefined);
+            })
+        );
+        this.loadSubscription = combineLatest([obs1, obs2]).subscribe((result: [TimestampedVehicleLocation[], IVehiclePathInfo]): void => {
+            this.setVehicles(result[0]);
+            this.setRoute(result[1]);
+        });
     }
 
     public setRoute(vehiclePath: IVehiclePathInfo): void {
@@ -90,12 +87,14 @@ export class OlVehicleHandler {
 
             const polyline: LineString = new LineString(locations);
             const feature: Feature<LineString> = new Feature(polyline);
-            feature.setStyle(new Style({
-                stroke: new Stroke({
-                    color: [255, 111, 0, 0.8],
-                    width: 6,
-                }),
-            }));
+            feature.setStyle(
+                new Style({
+                    stroke: new Stroke({
+                        color: [255, 111, 0, 0.8],
+                        width: 6,
+                    }),
+                })
+            );
             this.vehicleRouteVectorSource.addFeature(feature);
         }
     }

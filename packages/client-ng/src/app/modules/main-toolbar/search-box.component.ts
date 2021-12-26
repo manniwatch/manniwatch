@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,7 +14,6 @@ import { debounceTime, filter, startWith } from 'rxjs/operators';
     templateUrl: './search-box.component.html',
 })
 export class ToolbarSearchBoxComponent implements OnInit, OnDestroy {
-
     public searchControl: FormControl = new FormControl();
 
     @ViewChild('searchInput')
@@ -24,8 +22,7 @@ export class ToolbarSearchBoxComponent implements OnInit, OnDestroy {
     @Output()
     public readonly focusSearch: EventEmitter<boolean> = new EventEmitter<boolean>();
     private updateSubscription: Subscription;
-    constructor(private router: Router) {
-    }
+    constructor(private router: Router) {}
 
     public onLoseFocus(): void {
         this.focusSearch.next(false);
@@ -35,9 +32,8 @@ export class ToolbarSearchBoxComponent implements OnInit, OnDestroy {
         this.updateSubscription = this.searchControl.valueChanges
             .pipe(
                 startWith(''),
-                filter((value: string): boolean =>
-                    value.length > 0),
-                debounceTime(200),
+                filter((value: string): boolean => value.length > 0),
+                debounceTime(200)
             )
             .subscribe((value: string): void => {
                 void this.router.navigate(['search'], {
@@ -63,5 +59,4 @@ export class ToolbarSearchBoxComponent implements OnInit, OnDestroy {
             this.updateSubscription.unsubscribe();
         }
     }
-
 }

@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SearchResultResolver } from './search-result.resolver';
@@ -21,11 +20,7 @@ const tripPassagesRoute: Routes = [
 ];
 
 @NgModule({
-    exports: [
-        RouterModule,
-    ],
-    imports: [
-        RouterModule.forChild(tripPassagesRoute),
-    ],
+    exports: [RouterModule],
+    imports: [RouterModule.forChild(tripPassagesRoute)],
 })
-export class SearchRoutingModule { }
+export class SearchRoutingModule {}

@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,11 +19,7 @@ import { RouteLoadingIndicatorComponent } from './route-loading-indicator.compon
 import { ToolbarSearchBoxComponent } from './search-box.component';
 
 @NgModule({
-    declarations: [
-        MainToolbarComponent,
-        ToolbarSearchBoxComponent,
-        RouteLoadingIndicatorComponent,
-    ],
+    declarations: [MainToolbarComponent, ToolbarSearchBoxComponent, RouteLoadingIndicatorComponent],
     exports: [
         MainToolbarComponent,
         CommonModule,
@@ -54,7 +49,6 @@ import { ToolbarSearchBoxComponent } from './search-box.component';
         RouterModule,
         MatProgressBarModule,
     ],
-    providers: [
-    ],
+    providers: [],
 })
-export class MainToolbarModule { }
+export class MainToolbarModule {}

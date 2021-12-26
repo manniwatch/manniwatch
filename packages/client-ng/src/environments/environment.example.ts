@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { IEnvironmentBase } from '@manniwatch/client-types';
 
 export const environment: IEnvironmentBase = {

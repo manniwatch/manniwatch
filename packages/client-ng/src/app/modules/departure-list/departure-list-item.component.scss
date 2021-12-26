@@ -1,45 +1,44 @@
-
 @use '@angular/material' as mat;
 @import '@angular/material/theming';
 
 @import 'src/themes.scss';
-:host{
-    display:block;
+:host {
+    display: block;
 }
-div.no-departures{
-    margin:15px;
+div.no-departures {
+    margin: 15px;
 }
-span.pattern-text{
+span.pattern-text {
     font-weight: bold;
 }
 
-span.pattern-text.late{
+span.pattern-text.late {
     color: mat.get-color-from-palette(map-get($manniwatch-light-theme, warn));
     @media (prefers-color-scheme: dark) {
         color: mat.get-color-from-palette(map-get($manniwatch-dark-theme, warn));
     }
 }
-span.pattern-text.late:before{
+span.pattern-text.late:before {
     content: '+';
 }
-span.pattern-text.early{
+span.pattern-text.early {
     color: mat.get-color-from-palette(map-get($manniwatch-light-theme, accent));
     @media (prefers-color-scheme: dark) {
         color: mat.get-color-from-palette(map-get($manniwatch-dark-theme, accent));
     }
 }
 $config: mat.define-typography-config();
-h4.title{
+h4.title {
     font-size: 16px !important;
     font-family: mat.font-family($config);
     font-weight: 700 !important;
     opacity: 0.87;
     // color:green;
 }
-p.subtitle{
+p.subtitle {
     font-size: 12px !important;
     font-family: mat.font-family($config);
-    line-height:20px;
+    line-height: 20px;
     font-weight: 600 !important;
     opacity: 0.6;
     // color:red;

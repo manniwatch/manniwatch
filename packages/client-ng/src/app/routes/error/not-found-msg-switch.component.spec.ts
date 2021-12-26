@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { DebugElement, Injectable } from '@angular/core';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -34,27 +33,26 @@ describe('src/modules/error/not-found-msg-switch.component.ts', (): void => {
         let cmp: NotFoundComponent;
         let testActivatedRoute: TestActivatedRoute;
         let infoBoxDebugElement: DebugElement;
-        beforeEach(waitForAsync((): void => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    NotFoundMessageSwitchComponent,
-                ],
-                imports: [
-                    RouterTestingModule,
-                ],
-                providers: [
-                    { provide: ActivatedRoute, useClass: TestActivatedRoute },
-                ],
-            }).compileComponents();
-            cmpFixture = TestBed.createComponent(NotFoundMessageSwitchComponent);
-            cmp = cmpFixture.debugElement.componentInstance;
-            testActivatedRoute = TestBed.inject(ActivatedRoute) as any;
-            infoBoxDebugElement = cmpFixture.debugElement.query(By.css('div.info'));
-        }));
-        it('should create the app', waitForAsync((): void => {
-            expect(cmp).toBeTruthy();
-            expect(infoBoxDebugElement.componentInstance).toBeTruthy();
-        }));
+        beforeEach(
+            waitForAsync((): void => {
+                TestBed.configureTestingModule({
+                    declarations: [NotFoundMessageSwitchComponent],
+                    imports: [RouterTestingModule],
+                    providers: [{ provide: ActivatedRoute, useClass: TestActivatedRoute }],
+                }).compileComponents();
+                cmpFixture = TestBed.createComponent(NotFoundMessageSwitchComponent);
+                cmp = cmpFixture.debugElement.componentInstance;
+                testActivatedRoute = TestBed.inject(ActivatedRoute) as any;
+                infoBoxDebugElement = cmpFixture.debugElement.query(By.css('div.info'));
+            })
+        );
+        it(
+            'should create the app',
+            waitForAsync((): void => {
+                expect(cmp).toBeTruthy();
+                expect(infoBoxDebugElement.componentInstance).toBeTruthy();
+            })
+        );
         describe('error type is provided', (): void => {
             describe(`error type is ${ErrorType.PASSAGE_NOT_FOUND}`, (): void => {
                 beforeEach((): void => {
@@ -64,8 +62,9 @@ describe('src/modules/error/not-found-msg-switch.component.ts', (): void => {
                     cmpFixture.detectChanges();
                 });
                 it('should only display that the passage could not be found', (): void => {
-                    expect(infoBoxDebugElement.nativeElement.textContent)
-                        .toEqual('The passage could not be found. It either expired or has yet to start.Please select another passage.');
+                    expect(infoBoxDebugElement.nativeElement.textContent).toEqual(
+                        'The passage could not be found. It either expired or has yet to start.Please select another passage.'
+                    );
                 });
             });
             describe(`error type is ${ErrorType.VEHICLE_NOT_FOUND}`, (): void => {
@@ -76,8 +75,9 @@ describe('src/modules/error/not-found-msg-switch.component.ts', (): void => {
                     cmpFixture.detectChanges();
                 });
                 it('should only display that the vehicle could not be found', (): void => {
-                    expect(infoBoxDebugElement.nativeElement.textContent)
-                        .toEqual('The requested vehicle could not be found. It might not be active at the moment.');
+                    expect(infoBoxDebugElement.nativeElement.textContent).toEqual(
+                        'The requested vehicle could not be found. It might not be active at the moment.'
+                    );
                 });
             });
             describe('error type is an unsupported value', (): void => {

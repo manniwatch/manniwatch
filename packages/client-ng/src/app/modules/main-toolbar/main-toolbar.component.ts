@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { Component, ViewChild } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router, RouterEvent } from '@angular/router';
 import { Subscriber } from 'rxjs';
@@ -12,7 +11,6 @@ import { ToolbarSearchBoxComponent } from './search-box.component';
 
 // tslint:disable:max-classes-per-file
 export class NavigationSubscriber extends Subscriber<RouterEvent> {
-
     public constructor(private toolbar: MainToolbarComponent) {
         super();
     }
@@ -31,7 +29,6 @@ export class NavigationSubscriber extends Subscriber<RouterEvent> {
     templateUrl: './main-toolbar.component.html',
 })
 export class MainToolbarComponent {
-
     public get searchOpen(): boolean {
         return this.mSearchOpen;
     }
@@ -45,8 +42,7 @@ export class MainToolbarComponent {
 
     private mSearchOpen = false;
 
-    constructor(private sidebarService: SidebarService,
-        private router: Router) {
+    constructor(private sidebarService: SidebarService, private router: Router) {
         this.router.events.subscribe(new NavigationSubscriber(this));
     }
 
@@ -62,5 +58,4 @@ export class MainToolbarComponent {
             // this.searchBoxComponent.doFocusSearch();
         }
     }
-
 }

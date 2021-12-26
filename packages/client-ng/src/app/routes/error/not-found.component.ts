@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { Component } from '@angular/core';
 @Component({
     selector: 'app-not-found',
@@ -15,7 +14,6 @@ import { Component } from '@angular/core';
  * Offers links to common entry points
  */
 export class NotFoundComponent {
-
     /**
      * List of entry points
      */
@@ -23,13 +21,16 @@ export class NotFoundComponent {
         icon: string;
         path: string;
         title: string;
-    }[] = [{
-        icon: 'home',
-        path: '/',
-        title: 'Home',
-    }, {
-        icon: 'place',
-        path: '/stops',
-        title: 'Stops',
-    }];
+    }[] = [
+        {
+            icon: 'home',
+            path: '/',
+            title: 'Home',
+        },
+        {
+            icon: 'place',
+            path: '/stops',
+            title: 'Stops',
+        },
+    ];
 }

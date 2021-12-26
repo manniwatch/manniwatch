@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { MapStorage } from './map-storage';
 import { IStorage } from './storage';
 

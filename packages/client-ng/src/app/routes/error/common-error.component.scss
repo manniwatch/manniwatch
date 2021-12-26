@@ -3,24 +3,24 @@
     flex-direction: column;
     flex-flow: column;
     height: 100%;
-    background: #F9F9F9;
+    background: #f9f9f9;
 }
 
-.header{
+.header {
     position: relative;
-    height:calc(100vw / 4 * 3);
-    width:100%;
+    height: calc(100vw / 4 * 3);
+    width: 100%;
     max-height: 250px;
-    min-height:150px;
-    background:#999999;
-    mat-icon{
+    min-height: 150px;
+    background: #999999;
+    mat-icon {
         position: absolute;
-        top:0px;
-        right:0px;
-        bottom:0px;
-        left:0px;
-        margin:auto;
-        width:64px;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        margin: auto;
+        width: 64px;
         height: 64px;
         font-size: 64px;
     }

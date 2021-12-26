@@ -3,20 +3,9 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
-import {
-    ChangeDetectionStrategy,
-    Component,
-    Input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { IDeparture, VEHICLE_STATUS } from '@manniwatch/api-types';
-import {
-    add,
-    differenceInMinutes,
-    format,
-    formatDistanceToNow,
-    parse,
-} from 'date-fns';
+import { add, differenceInMinutes, format, formatDistanceToNow, parse } from 'date-fns';
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-departure-list-item',
@@ -24,7 +13,6 @@ import {
     templateUrl: './departure-list-item.component.html',
 })
 export class DepartureListItemComponent {
-
     /**
      * Object holding the current departure
      * Can be undefined
@@ -124,7 +112,7 @@ export class DepartureListItemComponent {
                 let diffMinutes: number = differenceInMinutes(actual, planned);
                 if (diffMinutes > 60 * 12) {
                     diffMinutes -= 60 * 24;
-                } else if (diffMinutes < - 60 * 12) {
+                } else if (diffMinutes < -60 * 12) {
                     diffMinutes += 60 * 24;
                 }
                 return diffMinutes;
@@ -132,5 +120,4 @@ export class DepartureListItemComponent {
         }
         return false;
     }
-
 }

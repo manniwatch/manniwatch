@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import {
     ISettings,
     IStopInfo,
@@ -23,14 +22,8 @@ export abstract class ApiService {
     abstract getRouteByVehicleId(vehicleId: string): Observable<IVehiclePathInfo>;
     abstract getRouteByTripId(tripId: string): Observable<IVehiclePathInfo>;
     abstract getStopInfo(stopId: string): Observable<IStopInfo>;
-    abstract getStopPassages(stopId: string,
-        mode?: StopMode,
-        startTime?: number,
-        timeFrame?: number): Observable<IStopPassage>;
-    abstract getStopPointPassages(stopPointId: string,
-        mode?: StopMode,
-        startTime?: number,
-        timeFrame?: number): Observable<IStopPassage>;
+    abstract getStopPassages(stopId: string, mode?: StopMode, startTime?: number, timeFrame?: number): Observable<IStopPassage>;
+    abstract getStopPointPassages(stopPointId: string, mode?: StopMode, startTime?: number, timeFrame?: number): Observable<IStopPassage>;
     abstract getVehicleLocations(lastUpdate: number): Observable<IVehicleLocationList>;
     abstract getVehicleLocation(vehicleId: string, lastUpdate: number): Observable<IVehicleLocation>;
     abstract getStopLocations(bounds?: IBounds): Observable<IStopLocations>;

@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav, MatSidenavContainer } from '@angular/material/sidenav';
 import { TripInfoWithId } from '@manniwatch/client-types';
@@ -14,7 +13,6 @@ import { SidebarService } from 'src/app/modules/sidebar';
     templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {
-
     public get isSidenavOpen(): boolean {
         return this.sidenav.opened;
     }
@@ -26,17 +24,15 @@ export class AppComponent implements OnInit {
     sidenav: MatSidenav;
     predictions: any;
     tripId: string;
-    constructor(private sidebarService: SidebarService) {
-    }
+    constructor(private sidebarService: SidebarService) {}
     public ngOnInit(): void {
-        this.sidebarService.sidebarObservable
-            .subscribe((open: boolean): void => {
-                if (open) {
-                    void this.sidenav.open();
-                } else {
-                    void this.sidenav.close();
-                }
-            });
+        this.sidebarService.sidebarObservable.subscribe((open: boolean): void => {
+            if (open) {
+                void this.sidenav.open();
+            } else {
+                void this.sidenav.close();
+            }
+        });
         this.sidenav.openedChange.subscribe((open: boolean): void => {
             if (open) {
                 this.sidebarService.openSidebar();
@@ -53,5 +49,4 @@ export class AppComponent implements OnInit {
     public toggleSidebar(): void {
         void this.sidenav.toggle();
     }
-
 }

@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { APP_INITIALIZER, ClassProvider, ErrorHandler, FactoryProvider, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -74,9 +73,7 @@ const ERROR_HANDLER_PROVIDER: ClassProvider = {
 
 @NgModule({
     bootstrap: [AppComponent],
-    declarations: [
-        AppComponent,
-    ],
+    declarations: [AppComponent],
     imports: moduleImports,
     providers: [
         StopPointService,
@@ -89,4 +86,4 @@ const ERROR_HANDLER_PROVIDER: ClassProvider = {
         BROWSER_LOCAL_STORAGE_PROVIDER,
     ],
 })
-export class AppModule { }
+export class AppModule {}

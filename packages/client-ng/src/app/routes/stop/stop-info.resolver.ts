@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
@@ -18,14 +17,13 @@ import { ApiService } from 'src/app/services';
  */
 @Injectable()
 export class StopInfoResolver implements Resolve<IStopPassage> {
-
     /**
      * Constructor
      *
      * @param api the {@ApiService}
      * @param router the {@Router}
      */
-    public constructor(private api: ApiService, private router: Router) { }
+    public constructor(private api: ApiService, private router: Router) {}
 
     /**
      * Resolves the stop information via the stopId param inside the route
@@ -34,13 +32,13 @@ export class StopInfoResolver implements Resolve<IStopPassage> {
      * @param state The RouterState
      */
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IStopPassage> {
-        return this.api
-            .getStopPassages(route.params.stopId as string)
-            .pipe(catchError((err: any | HttpErrorResponse): Observable<never> => {
+        return this.api.getStopPassages(route.params.stopId as string).pipe(
+            catchError((err: any | HttpErrorResponse): Observable<never> => {
                 if (err instanceof HttpErrorResponse && err.status === 404) {
                     void this.router.navigate(['stops']);
                 }
                 return EMPTY;
-            }));
+            })
+        );
     }
 }

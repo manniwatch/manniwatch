@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonErrorComponent } from './common-error.component';
@@ -25,11 +24,7 @@ const errorRoutes: Routes = [
 ];
 
 @NgModule({
-    exports: [
-        RouterModule,
-    ],
-    imports: [
-        RouterModule.forChild(errorRoutes),
-    ],
+    exports: [RouterModule],
+    imports: [RouterModule.forChild(errorRoutes)],
 })
-export class ErrorRoutingModule { }
+export class ErrorRoutingModule {}

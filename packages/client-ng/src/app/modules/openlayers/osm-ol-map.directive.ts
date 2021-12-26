@@ -3,13 +3,7 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
-import {
-    AfterViewInit,
-    Directive,
-    ElementRef,
-    NgZone,
-} from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, NgZone } from '@angular/core';
 import { Map, View } from 'ol';
 import { Coordinate } from 'ol/coordinate';
 import { defaults } from 'ol/interaction';
@@ -22,10 +16,7 @@ import { BaseOlMapDirective } from './base-ol-map.directive';
 
 @Directive()
 export abstract class OsmOlMapDirective extends BaseOlMapDirective<OSM> implements AfterViewInit {
-
-    constructor(elRef: ElementRef,
-        zone: NgZone,
-        settings: SettingsService) {
+    constructor(elRef: ElementRef, zone: NgZone, settings: SettingsService) {
         super(elRef, zone, settings);
     }
     public ngAfterViewInit(): void {
@@ -34,9 +25,7 @@ export abstract class OsmOlMapDirective extends BaseOlMapDirective<OSM> implemen
             this.mBackgroundMapLayer = this.createMapLayer();
             this.map = new Map({
                 interactions: defaults(),
-                layers: [
-                    this.mBackgroundMapLayer,
-                ],
+                layers: [this.mBackgroundMapLayer],
                 target: this.elRef.nativeElement as HTMLElement,
                 view: new View({
                     // projection: 'EPSG:3857', // 'EPSG:4326',

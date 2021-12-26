@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 import { RunHelpers, TestScheduler } from 'rxjs/testing';
 import { SETTINGS_SERVICE_FACTORY } from './settings-service.factory';

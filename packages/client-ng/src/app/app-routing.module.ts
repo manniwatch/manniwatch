@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppPreloadingStrategy } from './app-preloading-strategy';
@@ -45,29 +44,27 @@ const appRoutes: Routes = [
         path: 'settings',
     },
     {
-        children: [
-        ],
+        children: [],
         path: '',
     },
     {
-        path: '**', redirectTo: '/error/not-found',
+        path: '**',
+        redirectTo: '/error/not-found',
     },
 ];
 
 @NgModule({
-    exports: [
-        RouterModule,
-    ],
+    exports: [RouterModule],
     imports: [
         RouterModule.forRoot(
             appRoutes,
             {
-    enableTracing: false,
-    preloadingStrategy: AppPreloadingStrategy,
-    relativeLinkResolution: 'legacy',
-}, // <-- debugging purposes only
+                enableTracing: false,
+                preloadingStrategy: AppPreloadingStrategy,
+                relativeLinkResolution: 'legacy',
+            } // <-- debugging purposes only
         ),
     ],
     providers: [AppPreloadingStrategy],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

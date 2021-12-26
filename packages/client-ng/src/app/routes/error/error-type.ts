@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 export enum ErrorType {
     PASSAGE_NOT_FOUND = 1,
     VEHICLE_NOT_FOUND = 2,

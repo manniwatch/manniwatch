@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { waitForAsync, TestBed } from '@angular/core/testing';
 import { BehaviorSubject } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -17,13 +16,15 @@ describe('src/app/services/sidebar.service', (): void => {
         beforeAll((): void => {
             nextSpy = jasmine.createSpy();
         });
-        beforeEach(waitForAsync((): void => {
-            TestBed.configureTestingModule({
-                providers: [SidebarService],
-            });
-            sidebarService = TestBed.inject(SidebarService);
-            subject = (sidebarService as any).mSidebarStatusSubject;
-        }));
+        beforeEach(
+            waitForAsync((): void => {
+                TestBed.configureTestingModule({
+                    providers: [SidebarService],
+                });
+                sidebarService = TestBed.inject(SidebarService);
+                subject = (sidebarService as any).mSidebarStatusSubject;
+            })
+        );
 
         afterEach((): void => {
             nextSpy.calls.reset();

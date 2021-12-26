@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
@@ -53,7 +52,6 @@ export interface IAppNotificationDismiss {
     providedIn: 'root',
 })
 export class AppNotificationService {
-
     /**
      * Subject for replaying notifcations
      */
@@ -77,5 +75,4 @@ export class AppNotificationService {
     public report(err: any): void {
         // TODO
     }
-
 }

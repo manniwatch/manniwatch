@@ -3,13 +3,7 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
-import {
-    AfterViewInit,
-    Directive,
-    ElementRef,
-    NgZone,
-} from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, NgZone } from '@angular/core';
 import { Map, View } from 'ol';
 import stylefunction from 'ol-mapbox-style/dist/stylefunction';
 import { Coordinate } from 'ol/coordinate';
@@ -26,10 +20,7 @@ import { DARK_THEME, LIGHT_THEME } from './theme';
 
 @Directive()
 export abstract class VectorOlMapDirective extends BaseOlMapDirective<VectorTile> implements AfterViewInit {
-
-    constructor(elRef: ElementRef,
-        zone: NgZone,
-        settings: SettingsService) {
+    constructor(elRef: ElementRef, zone: NgZone, settings: SettingsService) {
         super(elRef, zone, settings);
     }
     public ngAfterViewInit(): void {
@@ -38,9 +29,7 @@ export abstract class VectorOlMapDirective extends BaseOlMapDirective<VectorTile
             this.mBackgroundMapLayer = this.createMapLayer();
             this.map = new Map({
                 interactions: defaults(),
-                layers: [
-                    this.mBackgroundMapLayer,
-                ],
+                layers: [this.mBackgroundMapLayer],
                 target: this.elRef.nativeElement as HTMLElement,
                 view: new View({
                     // projection: 'EPSG:3857', // 'EPSG:4326',
@@ -90,12 +79,9 @@ export abstract class VectorOlMapDirective extends BaseOlMapDirective<VectorTile
      */
     public applyTheme(theme: Theme): void {
         NgZone.assertNotInAngularZone();
-        stylefunction(this.mBackgroundMapLayer,
-            theme === Theme.DARK ? DARK_THEME : LIGHT_THEME,
-            'openmaptiles');
+        stylefunction(this.mBackgroundMapLayer, theme === Theme.DARK ? DARK_THEME : LIGHT_THEME, 'openmaptiles');
     }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    public applyVectorTheme(theme: Theme): void {
-    }
+    public applyVectorTheme(theme: Theme): void {}
 }

@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,22 +11,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { RetryDialogComponent } from './retry-dialog.component';
 
 @NgModule({
-    declarations: [
-        RetryDialogComponent,
-    ],
-    exports: [
-        CommonModule,
-        MatIconModule,
-        MatButtonModule,
-        MatDialogModule,
-        RetryDialogComponent,
-    ],
-    imports: [
-        CommonModule,
-        MatIconModule,
-        MatButtonModule,
-        MatDialogModule,
-    ],
-    providers: []
+    declarations: [RetryDialogComponent],
+    exports: [CommonModule, MatIconModule, MatButtonModule, MatDialogModule, RetryDialogComponent],
+    imports: [CommonModule, MatIconModule, MatButtonModule, MatDialogModule],
+    providers: [],
 })
-export class RetryDialogModule { }
+export class RetryDialogModule {}

@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SettingsComponent } from './settings.component';
@@ -21,11 +20,7 @@ const settingsRoutes: Routes = [
 ];
 
 @NgModule({
-    exports: [
-        RouterModule,
-    ],
-    imports: [
-        RouterModule.forChild(settingsRoutes),
-    ],
+    exports: [RouterModule],
+    imports: [RouterModule.forChild(settingsRoutes)],
 })
-export class SettingsRoutingModule { }
+export class SettingsRoutingModule {}

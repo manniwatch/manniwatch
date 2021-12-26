@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { Directive, ElementRef, HostBinding, Input, NgZone, OnChanges, SimpleChanges } from '@angular/core';
 import { IStopLocation, IVehicleLocation } from '@manniwatch/api-types';
 import { Feature, Map as OlMap } from 'ol';
@@ -18,9 +17,9 @@ export interface IStaticMapData {
     stops?: IStopLocation[];
     vehicles?: IVehicleLocation[];
     map: {
-        blur?: boolean,
-        center?: TrapezeCoord,
-        zoomLevel?: number,
+        blur?: boolean;
+        center?: TrapezeCoord;
+        zoomLevel?: number;
     };
 }
 /**
@@ -30,7 +29,6 @@ export interface IStaticMapData {
     selector: 'map[appOlStatic]',
 })
 export class OlStaticMapDirective extends AbstractOlMapDirective implements OnChanges {
-
     private readonly KEY_MAP_DATA: string = 'mapData';
     @HostBinding('class.no-location')
     public blur = false;
@@ -39,9 +37,7 @@ export class OlStaticMapDirective extends AbstractOlMapDirective implements OnCh
 
     @Input()
     public mapData: IStaticMapData;
-    constructor(elRef: ElementRef,
-        zone: NgZone,
-        settingsService: SettingsService) {
+    constructor(elRef: ElementRef, zone: NgZone, settingsService: SettingsService) {
         super(elRef, zone, settingsService);
         this.markerVectorSource = new VectorSource();
         this.markerLayer = new VectorLayer({

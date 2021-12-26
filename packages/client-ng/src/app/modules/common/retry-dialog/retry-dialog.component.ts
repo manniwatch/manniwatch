@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -27,8 +26,7 @@ export class RetryDialogComponent {
      * @param dialogRef Reference to the Dialog Component
      * @param data Additional data that can be provided to the Dialog
      */
-    constructor(public dialogRef: MatDialogRef<RetryDialogComponent, boolean>,
-        @Inject(MAT_DIALOG_DATA) public data: IRetryDialogData) { }
+    constructor(public dialogRef: MatDialogRef<RetryDialogComponent, boolean>, @Inject(MAT_DIALOG_DATA) public data: IRetryDialogData) {}
 
     /**
      * OnClick Event

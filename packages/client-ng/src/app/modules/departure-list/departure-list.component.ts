@@ -3,12 +3,7 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
-import {
-    ChangeDetectionStrategy,
-    Component,
-    Input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { IDeparture } from '@manniwatch/api-types';
 
 /**
@@ -21,7 +16,6 @@ import { IDeparture } from '@manniwatch/api-types';
     templateUrl: './departure-list.component.html',
 })
 export class DepartureListComponent {
-
     private mDepartures: IDeparture[] = [];
 
     /**
@@ -47,5 +41,4 @@ export class DepartureListComponent {
     public hasDepartures(): boolean {
         return this.mDepartures !== undefined && this.mDepartures.length > 0;
     }
-
 }

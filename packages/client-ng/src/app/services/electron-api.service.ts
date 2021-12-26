@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { Inject, InjectionToken, Optional } from '@angular/core';
 import { from, EMPTY, Observable } from 'rxjs';
 import { getManniwatchDesktopApi } from '../util/electron';
@@ -28,7 +27,6 @@ export const ELECTRON_API: InjectionToken<ApiService> = new InjectionToken<ApiSe
     providedIn: 'root',
 });
 export class ElectronApiService implements RootApiService {
-
     public constructor(@Optional() @Inject(ELECTRON_API) private readonly service?: ApiService) {
         // tslint:disable-next-line:triple-equals
         if (service == undefined) {
@@ -52,17 +50,16 @@ export class ElectronApiService implements RootApiService {
         return from(this.service.getStopInfo(stopId));
     }
 
-    public getStopPassages(stopId: string,
-        mode: StopMode = 'departure',
-        startTime?: number,
-        timeFrame?: number): Observable<IStopPassage> {
+    public getStopPassages(stopId: string, mode: StopMode = 'departure', startTime?: number, timeFrame?: number): Observable<IStopPassage> {
         return from(this.service.getStopPassages(stopId, mode, startTime, timeFrame));
     }
 
-    public getStopPointPassages(stopPointId: string,
+    public getStopPointPassages(
+        stopPointId: string,
         mode: StopMode = 'departure',
         startTime?: number,
-        timeFrame?: number): Observable<IStopPassage> {
+        timeFrame?: number
+    ): Observable<IStopPassage> {
         return from(this.service.getStopPointPassages(stopPointId, mode, startTime, timeFrame));
     }
 

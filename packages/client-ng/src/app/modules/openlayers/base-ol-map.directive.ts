@@ -3,16 +3,7 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
-import {
-    AfterViewInit,
-    Directive,
-    ElementRef,
-    NgZone,
-    OnChanges,
-    OnDestroy,
-    SimpleChanges,
-} from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, NgZone, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { runOutsideZone } from '@donmahallem/rxjs-zone';
 import { Collection, Map, View } from 'ol';
 import { Coordinate } from 'ol/coordinate';
@@ -24,24 +15,18 @@ import { SettingsService, Theme } from 'src/app/services';
 
 @Directive()
 export abstract class BaseOlMapDirective<TILE extends VectorTile | OSM> implements AfterViewInit, OnDestroy, OnChanges {
-
     protected map: Map;
     private locationSubscription: Subscription;
     protected mBackgroundMapLayer: BaseTileLayer<TILE>;
     private themeSubscription: Subscription;
-    constructor(protected elRef: ElementRef,
-        public readonly zone: NgZone,
-        public readonly settings: SettingsService) {
-    }
+    constructor(protected elRef: ElementRef, public readonly zone: NgZone, public readonly settings: SettingsService) {}
     public ngAfterViewInit(): void {
         this.zone.runOutsideAngular((): void => {
             // Seems to be necessary to run ngZone updates EVERY SINGLE TIME!!!! the map is firing a drag event
             this.mBackgroundMapLayer = this.createMapLayer();
             this.map = new Map({
                 interactions: defaults(),
-                layers: [
-                    this.mBackgroundMapLayer,
-                ],
+                layers: [this.mBackgroundMapLayer],
                 target: this.elRef.nativeElement as HTMLElement,
                 view: new View({
                     // projection: 'EPSG:3857', // 'EPSG:4326',
@@ -97,14 +82,11 @@ export abstract class BaseOlMapDirective<TILE extends VectorTile | OSM> implemen
     }
 
     public onAfterSetView(map: Map): void {
-        this.themeSubscription = this.settings
-            .themeObservable
-            .pipe(runOutsideZone(this.zone))
-            .subscribe({
-                next: (val: Theme): void => {
-                    this.applyTheme(val);
-                },
-            });
+        this.themeSubscription = this.settings.themeObservable.pipe(runOutsideZone(this.zone)).subscribe({
+            next: (val: Theme): void => {
+                this.applyTheme(val);
+            },
+        });
     }
 
     public getMap(): Map | undefined {

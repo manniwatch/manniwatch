@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { TripInfoWithId } from '@manniwatch/client-types';
 import { of, throwError } from 'rxjs';
 import { map, toArray } from 'rxjs/operators';
@@ -23,31 +22,40 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
         describe('convertResponse(tripId)', (): void => {
             it('should convert TripInfoWithId to an IPassageStatus', (doneFn: DoneFn): void => {
                 of(1, 2, 3)
-                    .pipe(map((val: number): TripInfoWithId => ({
-                        tripId: `${val}`,
-                    } as TripInfoWithId)),
+                    .pipe(
+                        map(
+                            (val: number): TripInfoWithId =>
+                                ({
+                                    tripId: `${val}`,
+                                } as TripInfoWithId)
+                        ),
                         TripPassagesUtil.convertResponse(undefined),
-                        toArray())
+                        toArray()
+                    )
                     .subscribe({
                         complete: doneFn,
                         error: doneFn.fail,
                         next: (testResult: IPassageStatus[]): void => {
-                            const testTrips: Partial<TripInfoWithId>[] = [{
-                                tripId: '1',
-                            }, {
-                                tripId: '2',
-                            }, {
-                                tripId: '3',
-                            }];
-                            const testStatuses: IPassageStatus[] = testTrips
-                                .map((val: TripInfoWithId): IPassageStatus =>
-                                ({
+                            const testTrips: Partial<TripInfoWithId>[] = [
+                                {
+                                    tripId: '1',
+                                },
+                                {
+                                    tripId: '2',
+                                },
+                                {
+                                    tripId: '3',
+                                },
+                            ];
+                            const testStatuses: IPassageStatus[] = testTrips.map(
+                                (val: TripInfoWithId): IPassageStatus => ({
                                     failures: 0,
                                     status: UpdateStatus.LOADED,
                                     timestamp: testTimestamp,
                                     tripId: val.tripId,
                                     tripInfo: val,
-                                }));
+                                })
+                            );
                             expect(testResult).toEqual(testStatuses);
                         },
                     });
@@ -69,8 +77,7 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
             it('should pass on non errors', (doneFn: DoneFn): void => {
                 of(1, 2, 3)
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-                    .pipe(TripPassagesUtil.handleError<any>(undefined),
-                        toArray())
+                    .pipe(TripPassagesUtil.handleError<any>(undefined), toArray())
                     .subscribe({
                         complete: doneFn,
                         error: doneFn.fail,
@@ -83,19 +90,20 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
                 it('should convert errors and not fail without status', (doneFn: DoneFn): void => {
                     const testTripId = 'testTripId';
                     throwError(testError)
-                        .pipe(TripPassagesUtil.handleError(testTripId),
-                            toArray())
+                        .pipe(TripPassagesUtil.handleError(testTripId), toArray())
                         .subscribe({
                             complete: doneFn,
                             error: doneFn.fail,
                             next: (testResult: IPassageStatus[]): void => {
-                                expect(testResult as any).toEqual([{
-                                    failures: 1,
-                                    passages: undefined,
-                                    status: UpdateStatus.ERROR,
-                                    timestamp: testTimestamp,
-                                    tripId: testTripId,
-                                }]);
+                                expect(testResult as any).toEqual([
+                                    {
+                                        failures: 1,
+                                        passages: undefined,
+                                        status: UpdateStatus.ERROR,
+                                        timestamp: testTimestamp,
+                                        tripId: testTripId,
+                                    },
+                                ]);
                             },
                         });
                 });
@@ -105,19 +113,20 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
                     it(`should convert error without 5xx error status "${testStatus}"`, (doneFn: DoneFn): void => {
                         const testTripId = `testTripId${testStatus}`;
                         throwError({ status: testStatus })
-                            .pipe(TripPassagesUtil.handleError(testTripId),
-                                toArray())
+                            .pipe(TripPassagesUtil.handleError(testTripId), toArray())
                             .subscribe({
                                 complete: doneFn,
                                 error: doneFn.fail,
                                 next: (testResult: IPassageStatus[]): void => {
-                                    expect(testResult as any).toEqual([{
-                                        failures: 1,
-                                        passages: undefined,
-                                        status: testStatus,
-                                        timestamp: testTimestamp,
-                                        tripId: testTripId,
-                                    }]);
+                                    expect(testResult as any).toEqual([
+                                        {
+                                            failures: 1,
+                                            passages: undefined,
+                                            status: testStatus,
+                                            timestamp: testTimestamp,
+                                            tripId: testTripId,
+                                        },
+                                    ]);
                                 },
                             });
                     });
@@ -126,19 +135,20 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
                     it(`should convert error with 5xx error status "${testStatus}" to 500`, (doneFn: DoneFn): void => {
                         const testTripId = `testTripId${testStatus}`;
                         throwError({ status: testStatus })
-                            .pipe(TripPassagesUtil.handleError(testTripId),
-                                toArray())
+                            .pipe(TripPassagesUtil.handleError(testTripId), toArray())
                             .subscribe({
                                 complete: doneFn,
                                 error: doneFn.fail,
                                 next: (testResult: IPassageStatus[]): void => {
-                                    expect(testResult as any).toEqual([{
-                                        failures: 1,
-                                        passages: undefined,
-                                        status: 500,
-                                        timestamp: testTimestamp,
-                                        tripId: testTripId,
-                                    }]);
+                                    expect(testResult as any).toEqual([
+                                        {
+                                            failures: 1,
+                                            passages: undefined,
+                                            status: 500,
+                                            timestamp: testTimestamp,
+                                            tripId: testTripId,
+                                        },
+                                    ]);
                                 },
                             });
                     });

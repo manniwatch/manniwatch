@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -18,19 +17,8 @@ import { StopsResolver } from './stops.resolver';
  * Stops lazy loaded Module
  */
 @NgModule({
-    declarations: [
-        StopsInfoComponent,
-    ],
-    imports: [
-        StopsRoutingModule,
-        CommonModule,
-        MatIconModule,
-        MatListModule,
-        RetryDialogModule,
-        MatDialogModule,
-    ],
-    providers: [
-        StopsResolver,
-    ],
+    declarations: [StopsInfoComponent],
+    imports: [StopsRoutingModule, CommonModule, MatIconModule, MatListModule, RetryDialogModule, MatDialogModule],
+    providers: [StopsResolver],
 })
-export class StopsModule { }
+export class StopsModule {}

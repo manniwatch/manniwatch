@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -20,7 +19,6 @@ import { ApiService } from 'src/app/services';
  */
 @Injectable()
 export class StopsResolver implements Resolve<IStopLocations> {
-
     /**
      * Constructor
      *
@@ -28,9 +26,7 @@ export class StopsResolver implements Resolve<IStopLocations> {
      * @param router
      * @param dialog
      */
-    public constructor(private api: ApiService,
-        private router: Router,
-        private dialog: MatDialog) { }
+    public constructor(private api: ApiService, private router: Router, private dialog: MatDialog) {}
 
     /**
      * Resolves the station response
@@ -40,23 +36,25 @@ export class StopsResolver implements Resolve<IStopLocations> {
      * @returns An observable that resolves the {@StationsResponse}
      */
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IStopLocations> {
-        return this.api
-            .getStopLocations()
-            .pipe(catchError((err: any | HttpErrorResponse): Observable<IStopLocations> => {
+        return this.api.getStopLocations().pipe(
+            catchError((err: any | HttpErrorResponse): Observable<IStopLocations> => {
                 if (err instanceof HttpErrorResponse && err.status === 404) {
                     void this.router.navigate(['error', 'not-found']);
                     return EMPTY;
                 }
                 return throwError((): any | HttpErrorResponse => err);
             }),
-                retryWhen(retryDialogStrategy((error: any | HttpErrorResponse): CreateDialogFuncResponse => {
-                    const code: number | undefined = (error instanceof HttpErrorResponse) ? error.status : undefined;
-                    this.dialog.open(RetryDialogComponent, {
+            retryWhen(
+                retryDialogStrategy((error: any | HttpErrorResponse): CreateDialogFuncResponse => {
+                    const code: number | undefined = error instanceof HttpErrorResponse ? error.status : undefined;
+                    return this.dialog.open(RetryDialogComponent, {
                         data: {
                             code,
                             message: 'test',
                         },
-                    })
-                })));
+                    });
+                })
+            )
+        );
     }
 }

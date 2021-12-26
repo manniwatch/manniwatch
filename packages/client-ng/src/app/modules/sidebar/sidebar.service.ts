@@ -3,14 +3,12 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root',
 })
 export class SidebarService {
-
     public get sidebarOpen(): boolean {
         return this.mSidebarStatusSubject.value;
     }
@@ -30,5 +28,4 @@ export class SidebarService {
     public closeSidebar(): void {
         this.mSidebarStatusSubject.next(false);
     }
-
 }

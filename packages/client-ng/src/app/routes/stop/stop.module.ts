@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,9 +18,7 @@ import { StopInfoComponent } from './stop-info.component';
 import { StopInfoResolver } from './stop-info.resolver';
 import { StopRoutingModule } from './stop-routing.module';
 @NgModule({
-    declarations: [
-        StopInfoComponent,
-    ],
+    declarations: [StopInfoComponent],
     imports: [
         CommonModule,
         MatIconModule,
@@ -35,8 +32,6 @@ import { StopRoutingModule } from './stop-routing.module';
         OlStaticMapModule,
         RouteListModule,
     ],
-    providers: [
-        StopInfoResolver,
-    ],
+    providers: [StopInfoResolver],
 })
-export class StopModule { }
+export class StopModule {}

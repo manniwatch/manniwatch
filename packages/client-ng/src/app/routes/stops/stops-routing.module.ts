@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { StopsInfoComponent } from './stops-info.component';
@@ -20,11 +19,7 @@ const tripPassagesRoute: Routes = [
 ];
 
 @NgModule({
-    exports: [
-        RouterModule,
-    ],
-    imports: [
-        RouterModule.forChild(tripPassagesRoute),
-    ],
+    exports: [RouterModule],
+    imports: [RouterModule.forChild(tripPassagesRoute)],
 })
-export class StopsRoutingModule { }
+export class StopsRoutingModule {}

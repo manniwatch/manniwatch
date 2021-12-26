@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
@@ -22,15 +21,17 @@ export type RetryDialogStrategyFunc = (createDialog: CreateDialogFunc) => RetryD
  *
  * @param createDialog a method that returns valid Dialog
  */
-export const retryDialogStrategy: RetryDialogStrategyFunc = (createDialog: CreateDialogFunc): RetryDialogStrategyFuncResponse =>
+export const retryDialogStrategy: RetryDialogStrategyFunc =
+    (createDialog: CreateDialogFunc): RetryDialogStrategyFuncResponse =>
     (errors: Observable<ErrorItem>): Observable<true> => {
         let dialogOpen = false;
-        return errors.pipe(skipWhile((): boolean => dialogOpen),
+        return errors.pipe(
+            skipWhile((): boolean => dialogOpen),
             mergeMap((error: ErrorItem): Observable<true> => {
                 dialogOpen = true;
                 const dialogRef: CreateDialogFuncResponse = createDialog(error);
-                return dialogRef.afterClosed()
-                    .pipe(map((tapedValue: boolean): true => {
+                return dialogRef.afterClosed().pipe(
+                    map((tapedValue: boolean): true => {
                         dialogOpen = false;
                         if (!tapedValue) {
                             /**
@@ -42,6 +43,8 @@ export const retryDialogStrategy: RetryDialogStrategyFunc = (createDialog: Creat
                          * Retry the preceeding stream
                          */
                         return true;
-                    }));
-            }));
+                    })
+                );
+            })
+        );
     };

@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { Component } from '@angular/core';
 
 @Component({
@@ -11,5 +10,4 @@ import { Component } from '@angular/core';
     styleUrls: ['./settings.component.scss'],
     templateUrl: './settings.component.html',
 })
-export class SettingsComponent {
-}
+export class SettingsComponent {}

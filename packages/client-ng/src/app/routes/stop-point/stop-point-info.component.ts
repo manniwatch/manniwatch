@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { IStopPassage } from '@manniwatch/api-types';
 import { Subscription } from 'rxjs';
@@ -18,28 +17,26 @@ import { StopPointInfoService } from './stop-point-info.service';
     templateUrl: './stop-point-info.component.html',
 })
 export class StopPointInfoComponent implements OnInit, OnDestroy {
-
     public headerMapData: IStaticMapData;
     private subscriptions: Subscription[] = [];
     public stopPassage: IStopPassage;
-    constructor(public stopInfoService: StopPointInfoService) {
-    }
+    constructor(public stopInfoService: StopPointInfoService) {}
 
     public ngOnInit(): void {
-        this.subscriptions.push(this.stopInfoService
-            .createStopPointLocationObservable()
-            .subscribe({
+        this.subscriptions.push(
+            this.stopInfoService.createStopPointLocationObservable().subscribe({
                 next: (mapData: IStaticMapData): void => {
                     this.headerMapData = mapData;
                 },
-            }));
-        this.subscriptions.push(this.stopInfoService
-            .createStopPassageRefreshObservable()
-            .subscribe({
+            })
+        );
+        this.subscriptions.push(
+            this.stopInfoService.createStopPassageRefreshObservable().subscribe({
                 next: (mapData: IStopPassage): void => {
                     this.stopPassage = mapData;
                 },
-            }));
+            })
+        );
     }
 
     public ngOnDestroy(): void {

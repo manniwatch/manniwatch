@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { ApplicationRef, Injectable } from '@angular/core';
 import { ActivatedRoute, Data } from '@angular/router';
 import { IStopLocation, IStopPassage } from '@manniwatch/api-types';
@@ -19,35 +18,36 @@ export interface IStatus {
 @Injectable()
 export class StopInfoService {
     public stopInfoObservable: Observable<IStopPassage>;
-    constructor(private route: ActivatedRoute,
+    constructor(
+        private route: ActivatedRoute,
         private apiService: ApiService,
         private stopService: StopPointService,
-        private appRef: ApplicationRef) {
-        this.stopInfoObservable = this.route.data
-            .pipe(map((data: Data): IStopPassage =>
-                data.stopInfo as IStopPassage));
-
+        private appRef: ApplicationRef
+    ) {
+        this.stopInfoObservable = this.route.data.pipe(map((data: Data): IStopPassage => data.stopInfo as IStopPassage));
     }
 
     public createStopLocationObservable(): Observable<IStopLocation> {
-        return this.stopInfoObservable
-            .pipe(mergeMap((value: IStopPassage): Observable<IStopLocation> => {
+        return this.stopInfoObservable.pipe(
+            mergeMap((value: IStopPassage): Observable<IStopLocation> => {
                 return this.stopService.filterStop(value.stopShortName);
-            }));
+            })
+        );
     }
 
     public createStopPassageRefreshObservable(): Observable<IStopPassage> {
-        return this.stopInfoObservable
-            .pipe(switchMap((value: IStopPassage): Observable<IStopPassage> => {
-                return this.appRef
-                    .isStable.pipe(first((state: boolean): boolean => state),
-                        mergeMap((): Observable<IStopPassage> => {
-                            return interval(10000)
-                                .pipe(switchMap((): Observable<IStopPassage> =>
-                                    this.apiService
-                                        .getStopPassages(value.stopShortName)));
-                        }),
-                        startWith(value));
-            }));
+        return this.stopInfoObservable.pipe(
+            switchMap((value: IStopPassage): Observable<IStopPassage> => {
+                return this.appRef.isStable.pipe(
+                    first((state: boolean): boolean => state),
+                    mergeMap((): Observable<IStopPassage> => {
+                        return interval(10000).pipe(
+                            switchMap((): Observable<IStopPassage> => this.apiService.getStopPassages(value.stopShortName))
+                        );
+                    }),
+                    startWith(value)
+                );
+            })
+        );
     }
 }

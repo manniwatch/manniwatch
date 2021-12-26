@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { IVehicleLocation } from '@manniwatch/api-types';
 import { FeatureLike } from 'ol/Feature';
 import { Coordinate } from 'ol/coordinate';
@@ -16,7 +15,7 @@ import Style, { StyleLike } from 'ol/style/Style';
 import Text from 'ol/style/Text';
 import { TrapezeCoord } from './trapeze-coord';
 
-const DEFAULT_STYLES: { [key: string]: StyleLike; } = {
+const DEFAULT_STYLES: { [key: string]: StyleLike } = {
     icon: new Style({
         image: new Icon({
             anchor: [0.5, 0.5],
@@ -28,7 +27,8 @@ const DEFAULT_STYLES: { [key: string]: StyleLike; } = {
     }),
     route: new Style({
         stroke: new Stroke({
-            color: [237, 212, 0, 0.8], width: 6,
+            color: [237, 212, 0, 0.8],
+            width: 6,
         }),
     }),
     stop: new Style({
@@ -36,7 +36,8 @@ const DEFAULT_STYLES: { [key: string]: StyleLike; } = {
             fill: new Fill({ color: '#111111' }),
             radius: 12,
             stroke: new Stroke({
-                color: '#EEEEEE', width: 2,
+                color: '#EEEEEE',
+                width: 2,
             }),
         }),
         text: new Text({
@@ -52,7 +53,8 @@ const DEFAULT_STYLES: { [key: string]: StyleLike; } = {
             fill: new Fill({ color: '#AAAAFF' }),
             radius: 12,
             stroke: new Stroke({
-                color: '#111111', width: 2,
+                color: '#111111',
+                width: 2,
             }),
         }),
         text: new Text({
@@ -67,7 +69,7 @@ const DEFAULT_STYLES: { [key: string]: StyleLike; } = {
         const vehicle: IVehicleLocation = p0.get('vehicle') as IVehicleLocation;
         // tslint:disable-next-line:triple-equals
         if (vehicle != undefined) {
-            const rot: number = Math.PI / 180 * ((vehicle.heading + 270) % 360);
+            const rot: number = (Math.PI / 180) * ((vehicle.heading + 270) % 360);
             return new Style({
                 image: new Icon({
                     anchor: [24 / 68, 0.5],
@@ -99,7 +101,7 @@ const DEFAULT_STYLES: { [key: string]: StyleLike; } = {
         const vehicle: IVehicleLocation = p0.get('vehicle') as IVehicleLocation;
         // tslint:disable-next-line:triple-equals
         if (vehicle != undefined) {
-            const rot: number = Math.PI / 180 * ((vehicle.heading + 270) % 360);
+            const rot: number = (Math.PI / 180) * ((vehicle.heading + 270) % 360);
             return new Style({
                 image: new Icon({
                     anchor: [24 / 68, 0.5],
@@ -122,13 +124,12 @@ const DEFAULT_STYLES: { [key: string]: StyleLike; } = {
     },
 };
 export class OlUtil {
-
     public static createVehicleMarkerStyle(selected = false): (p0: FeatureLike, p1: number) => Style {
         return (p0: FeatureLike, p1: number): Style => {
             const vehicle: IVehicleLocation = p0.get('vehicle') as IVehicleLocation;
             // tslint:disable-next-line:triple-equals
             if (vehicle != undefined) {
-                const rot: number = Math.PI / 180 * ((vehicle.heading + 270) % 360);
+                const rot: number = (Math.PI / 180) * ((vehicle.heading + 270) % 360);
                 return new Style({
                     image: new Icon({
                         anchor: [24 / 68, 0.5],
@@ -151,7 +152,7 @@ export class OlUtil {
         };
     }
     public static createStopMarkerStyle(selected = false): Style {
-        return selected ? DEFAULT_STYLES.stop_selected as Style : DEFAULT_STYLES.stop as Style;
+        return selected ? (DEFAULT_STYLES.stop_selected as Style) : (DEFAULT_STYLES.stop as Style);
     }
     public static createStyleByFeature(feature: FeatureLike): StyleLike {
         // tslint:disable-next-line:triple-equals

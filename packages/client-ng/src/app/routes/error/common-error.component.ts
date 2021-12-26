@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { Component } from '@angular/core';
 @Component({
     selector: 'app-common-error',
@@ -13,6 +12,4 @@ import { Component } from '@angular/core';
 /**
  * Common Error component
  */
-export class CommonErrorComponent {
-
-}
+export class CommonErrorComponent {}

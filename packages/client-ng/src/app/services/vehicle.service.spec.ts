@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-
 import { createVehicleDiff, IVehicleDiff } from './vehicle.service';
 
 describe('src/app/services/vehicle.service.ts', (): void => {

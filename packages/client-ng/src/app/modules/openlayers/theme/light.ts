@@ -16,12 +16,12 @@ export const LIGHT_THEME: any = {
             1444849354174.1904: { collapsed: true, name: 'Tunnels' },
             1444849364238.8171: { collapsed: false, name: 'Buildings' },
             1444849382550.77: { collapsed: false, name: 'Water' },
-            1444849388993.3071: { collapsed: false, name: 'Land' }
+            1444849388993.3071: { collapsed: false, name: 'Land' },
         },
         'mapbox:type': 'template',
         'openmaptiles:mapbox:owner': 'openmaptiles',
         'openmaptiles:mapbox:source:url': 'mapbox://openmaptiles.4qljc88t',
-        'openmaptiles:version': '3.x'
+        'openmaptiles:version': '3.x',
     },
     center: [0, 0],
     zoom: 1,
@@ -30,8 +30,8 @@ export const LIGHT_THEME: any = {
     sources: {
         openmaptiles: {
             type: 'vector',
-            url: 'https://api.maptiler.com/tiles/v3/tiles.json?key={key}'
-        }
+            url: 'https://api.maptiler.com/tiles/v3/tiles.json?key={key}',
+        },
     },
     sprite: 'https://openmaptiles.github.io/osm-bright-gl-style/sprite',
     glyphs: 'https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key={key}',
@@ -39,7 +39,7 @@ export const LIGHT_THEME: any = {
         {
             id: 'background',
             type: 'background',
-            paint: { 'background-color': '#f8f4f0' }
+            paint: { 'background-color': '#f8f4f0' },
         },
         {
             id: 'landcover-glacier',
@@ -51,8 +51,14 @@ export const LIGHT_THEME: any = {
             layout: { visibility: 'visible' },
             paint: {
                 'fill-color': '#fff',
-                'fill-opacity': { base: 1, stops: [[0, 0.9], [10, 0.3]] }
-            }
+                'fill-opacity': {
+                    base: 1,
+                    stops: [
+                        [0, 0.9],
+                        [10, 0.3],
+                    ],
+                },
+            },
         },
         {
             id: 'landuse-residential',
@@ -60,20 +66,17 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849388993.3071' },
             source: 'openmaptiles',
             'source-layer': 'landuse',
-            filter: [
-                'all',
-                ['in', 'class', 'residential', 'suburb', 'neighbourhood']
-            ],
+            filter: ['all', ['in', 'class', 'residential', 'suburb', 'neighbourhood']],
             layout: { visibility: 'visible' },
             paint: {
                 'fill-color': {
                     base: 1,
                     stops: [
                         [12, 'hsla(30, 19%, 90%, 0.4)'],
-                        [16, 'hsla(30, 19%, 90%, 0.2)']
-                    ]
-                }
-            }
+                        [16, 'hsla(30, 19%, 90%, 0.2)'],
+                    ],
+                },
+            },
         },
         {
             id: 'landuse-commercial',
@@ -81,26 +84,18 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849388993.3071' },
             source: 'openmaptiles',
             'source-layer': 'landuse',
-            filter: [
-                'all',
-                ['==', '$type', 'Polygon'],
-                ['==', 'class', 'commercial']
-            ],
+            filter: ['all', ['==', '$type', 'Polygon'], ['==', 'class', 'commercial']],
             layout: { visibility: 'visible' },
-            paint: { 'fill-color': 'hsla(0, 60%, 87%, 0.23)' }
+            paint: { 'fill-color': 'hsla(0, 60%, 87%, 0.23)' },
         },
         {
             id: 'landuse-industrial',
             type: 'fill',
             source: 'openmaptiles',
             'source-layer': 'landuse',
-            filter: [
-                'all',
-                ['==', '$type', 'Polygon'],
-                ['in', 'class', 'industrial', 'garages', 'dam']
-            ],
+            filter: ['all', ['==', '$type', 'Polygon'], ['in', 'class', 'industrial', 'garages', 'dam']],
             layout: { visibility: 'visible' },
-            paint: { 'fill-color': 'hsla(49, 100%, 88%, 0.34)' }
+            paint: { 'fill-color': 'hsla(49, 100%, 88%, 0.34)' },
         },
         {
             id: 'landuse-cemetery',
@@ -109,7 +104,7 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'landuse',
             filter: ['==', 'class', 'cemetery'],
-            paint: { 'fill-color': '#e0e4dd' }
+            paint: { 'fill-color': '#e0e4dd' },
         },
         {
             id: 'landuse-hospital',
@@ -118,7 +113,7 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'landuse',
             filter: ['==', 'class', 'hospital'],
-            paint: { 'fill-color': '#fde' }
+            paint: { 'fill-color': '#fde' },
         },
         {
             id: 'landuse-school',
@@ -127,7 +122,7 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'landuse',
             filter: ['==', 'class', 'school'],
-            paint: { 'fill-color': '#f0e8f8' }
+            paint: { 'fill-color': '#f0e8f8' },
         },
         {
             id: 'landuse-railway',
@@ -137,7 +132,7 @@ export const LIGHT_THEME: any = {
             'source-layer': 'landuse',
             filter: ['==', 'class', 'railway'],
             layout: { visibility: 'visible' },
-            paint: { 'fill-color': 'hsla(30, 19%, 90%, 0.4)' }
+            paint: { 'fill-color': 'hsla(30, 19%, 90%, 0.4)' },
         },
         {
             id: 'landcover-wood',
@@ -147,11 +142,17 @@ export const LIGHT_THEME: any = {
             'source-layer': 'landcover',
             filter: ['==', 'class', 'wood'],
             paint: {
-                'fill-antialias': { base: 1, stops: [[0, false], [9, true]] },
+                'fill-antialias': {
+                    base: 1,
+                    stops: [
+                        [0, false],
+                        [9, true],
+                    ],
+                },
                 'fill-color': '#6a4',
                 'fill-opacity': 0.1,
-                'fill-outline-color': 'hsla(0, 0%, 0%, 0.03)'
-            }
+                'fill-outline-color': 'hsla(0, 0%, 0%, 0.03)',
+            },
         },
         {
             id: 'landcover-grass',
@@ -160,7 +161,7 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'landcover',
             filter: ['==', 'class', 'grass'],
-            paint: { 'fill-color': '#d8e8c8', 'fill-opacity': 1 }
+            paint: { 'fill-color': '#d8e8c8', 'fill-opacity': 1 },
         },
         {
             id: 'landcover-grass-park',
@@ -169,7 +170,7 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'park',
             filter: ['==', 'class', 'public_park'],
-            paint: { 'fill-color': '#d8e8c8', 'fill-opacity': 0.8 }
+            paint: { 'fill-color': '#d8e8c8', 'fill-opacity': 0.8 },
         },
         {
             id: 'waterway_tunnel',
@@ -177,17 +178,19 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'waterway',
             minzoom: 14,
-            filter: [
-                'all',
-                ['in', 'class', 'river', 'stream', 'canal'],
-                ['==', 'brunnel', 'tunnel']
-            ],
+            filter: ['all', ['in', 'class', 'river', 'stream', 'canal'], ['==', 'brunnel', 'tunnel']],
             layout: { 'line-cap': 'round', visibility: 'visible' },
             paint: {
                 'line-color': '#a0c8f0',
                 'line-dasharray': [2, 4],
-                'line-width': { base: 1.3, stops: [[13, 0.5], [20, 6]] }
-            }
+                'line-width': {
+                    base: 1.3,
+                    stops: [
+                        [13, 0.5],
+                        [20, 6],
+                    ],
+                },
+            },
         },
         {
             id: 'waterway-other',
@@ -195,16 +198,18 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849382550.77' },
             source: 'openmaptiles',
             'source-layer': 'waterway',
-            filter: [
-                'all',
-                ['!in', 'class', 'canal', 'river', 'stream'],
-                ['==', 'intermittent', 0]
-            ],
+            filter: ['all', ['!in', 'class', 'canal', 'river', 'stream'], ['==', 'intermittent', 0]],
             layout: { 'line-cap': 'round', visibility: 'visible' },
             paint: {
                 'line-color': '#a0c8f0',
-                'line-width': { base: 1.3, stops: [[13, 0.5], [20, 2]] }
-            }
+                'line-width': {
+                    base: 1.3,
+                    stops: [
+                        [13, 0.5],
+                        [20, 2],
+                    ],
+                },
+            },
         },
         {
             id: 'waterway-other-intermittent',
@@ -212,17 +217,19 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849382550.77' },
             source: 'openmaptiles',
             'source-layer': 'waterway',
-            filter: [
-                'all',
-                ['!in', 'class', 'canal', 'river', 'stream'],
-                ['==', 'intermittent', 1]
-            ],
+            filter: ['all', ['!in', 'class', 'canal', 'river', 'stream'], ['==', 'intermittent', 1]],
             layout: { 'line-cap': 'round', visibility: 'visible' },
             paint: {
                 'line-color': '#a0c8f0',
                 'line-dasharray': [4, 3],
-                'line-width': { base: 1.3, stops: [[13, 0.5], [20, 2]] }
-            }
+                'line-width': {
+                    base: 1.3,
+                    stops: [
+                        [13, 0.5],
+                        [20, 2],
+                    ],
+                },
+            },
         },
         {
             id: 'waterway-stream-canal',
@@ -230,17 +237,18 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849382550.77' },
             source: 'openmaptiles',
             'source-layer': 'waterway',
-            filter: [
-                'all',
-                ['in', 'class', 'canal', 'stream'],
-                ['!=', 'brunnel', 'tunnel'],
-                ['==', 'intermittent', 0]
-            ],
+            filter: ['all', ['in', 'class', 'canal', 'stream'], ['!=', 'brunnel', 'tunnel'], ['==', 'intermittent', 0]],
             layout: { 'line-cap': 'round', visibility: 'visible' },
             paint: {
                 'line-color': '#a0c8f0',
-                'line-width': { base: 1.3, stops: [[13, 0.5], [20, 6]] }
-            }
+                'line-width': {
+                    base: 1.3,
+                    stops: [
+                        [13, 0.5],
+                        [20, 6],
+                    ],
+                },
+            },
         },
         {
             id: 'waterway-stream-canal-intermittent',
@@ -248,18 +256,19 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849382550.77' },
             source: 'openmaptiles',
             'source-layer': 'waterway',
-            filter: [
-                'all',
-                ['in', 'class', 'canal', 'stream'],
-                ['!=', 'brunnel', 'tunnel'],
-                ['==', 'intermittent', 1]
-            ],
+            filter: ['all', ['in', 'class', 'canal', 'stream'], ['!=', 'brunnel', 'tunnel'], ['==', 'intermittent', 1]],
             layout: { 'line-cap': 'round', visibility: 'visible' },
             paint: {
                 'line-color': '#a0c8f0',
                 'line-dasharray': [4, 3],
-                'line-width': { base: 1.3, stops: [[13, 0.5], [20, 6]] }
-            }
+                'line-width': {
+                    base: 1.3,
+                    stops: [
+                        [13, 0.5],
+                        [20, 6],
+                    ],
+                },
+            },
         },
         {
             id: 'waterway-river',
@@ -267,17 +276,18 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849382550.77' },
             source: 'openmaptiles',
             'source-layer': 'waterway',
-            filter: [
-                'all',
-                ['==', 'class', 'river'],
-                ['!=', 'brunnel', 'tunnel'],
-                ['==', 'intermittent', 0]
-            ],
+            filter: ['all', ['==', 'class', 'river'], ['!=', 'brunnel', 'tunnel'], ['==', 'intermittent', 0]],
             layout: { 'line-cap': 'round', visibility: 'visible' },
             paint: {
                 'line-color': '#a0c8f0',
-                'line-width': { base: 1.2, stops: [[10, 0.8], [20, 6]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [10, 0.8],
+                        [20, 6],
+                    ],
+                },
+            },
         },
         {
             id: 'waterway-river-intermittent',
@@ -285,18 +295,19 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849382550.77' },
             source: 'openmaptiles',
             'source-layer': 'waterway',
-            filter: [
-                'all',
-                ['==', 'class', 'river'],
-                ['!=', 'brunnel', 'tunnel'],
-                ['==', 'intermittent', 1]
-            ],
+            filter: ['all', ['==', 'class', 'river'], ['!=', 'brunnel', 'tunnel'], ['==', 'intermittent', 1]],
             layout: { 'line-cap': 'round', visibility: 'visible' },
             paint: {
                 'line-color': '#a0c8f0',
                 'line-dasharray': [3, 2.5],
-                'line-width': { base: 1.2, stops: [[10, 0.8], [20, 6]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [10, 0.8],
+                        [20, 6],
+                    ],
+                },
+            },
         },
         {
             id: 'water-offset',
@@ -310,8 +321,14 @@ export const LIGHT_THEME: any = {
             paint: {
                 'fill-color': '#a0c8f0',
                 'fill-opacity': 1,
-                'fill-translate': { base: 1, stops: [[6, [2, 0]], [8, [0, 0]]] }
-            }
+                'fill-translate': {
+                    base: 1,
+                    stops: [
+                        [6, [2, 0]],
+                        [8, [0, 0]],
+                    ],
+                },
+            },
         },
         {
             id: 'water',
@@ -321,7 +338,7 @@ export const LIGHT_THEME: any = {
             'source-layer': 'water',
             filter: ['all', ['!=', 'intermittent', 1], ['!=', 'brunnel', 'tunnel']],
             layout: { visibility: 'visible' },
-            paint: { 'fill-color': 'hsl(210, 67%, 85%)' }
+            paint: { 'fill-color': 'hsl(210, 67%, 85%)' },
         },
         {
             id: 'water-intermittent',
@@ -331,7 +348,7 @@ export const LIGHT_THEME: any = {
             'source-layer': 'water',
             filter: ['all', ['==', 'intermittent', 1]],
             layout: { visibility: 'visible' },
-            paint: { 'fill-color': 'hsl(210, 67%, 85%)', 'fill-opacity': 0.7 }
+            paint: { 'fill-color': 'hsl(210, 67%, 85%)', 'fill-opacity': 0.7 },
         },
         {
             id: 'water-pattern',
@@ -341,7 +358,7 @@ export const LIGHT_THEME: any = {
             'source-layer': 'water',
             filter: ['all'],
             layout: { visibility: 'visible' },
-            paint: { 'fill-pattern': 'wave', 'fill-translate': [0, 2.5] }
+            paint: { 'fill-pattern': 'wave', 'fill-translate': [0, 2.5] },
         },
         {
             id: 'landcover-ice-shelf',
@@ -353,8 +370,14 @@ export const LIGHT_THEME: any = {
             layout: { visibility: 'visible' },
             paint: {
                 'fill-color': '#fff',
-                'fill-opacity': { base: 1, stops: [[0, 0.9], [10, 0.3]] }
-            }
+                'fill-opacity': {
+                    base: 1,
+                    stops: [
+                        [0, 0.9],
+                        [10, 0.3],
+                    ],
+                },
+            },
         },
         {
             id: 'landcover-sand',
@@ -364,7 +387,7 @@ export const LIGHT_THEME: any = {
             'source-layer': 'landcover',
             filter: ['all', ['==', 'class', 'sand']],
             layout: { visibility: 'visible' },
-            paint: { 'fill-color': 'rgba(245, 238, 188, 1)', 'fill-opacity': 1 }
+            paint: { 'fill-color': 'rgba(245, 238, 188, 1)', 'fill-opacity': 1 },
         },
         {
             id: 'building',
@@ -374,8 +397,14 @@ export const LIGHT_THEME: any = {
             'source-layer': 'building',
             paint: {
                 'fill-antialias': true,
-                'fill-color': { base: 1, stops: [[15.5, '#f2eae2'], [16, '#dfdbd7']] }
-            }
+                'fill-color': {
+                    base: 1,
+                    stops: [
+                        [15.5, '#f2eae2'],
+                        [16, '#dfdbd7'],
+                    ],
+                },
+            },
         },
         {
             id: 'building-top',
@@ -386,10 +415,22 @@ export const LIGHT_THEME: any = {
             layout: { visibility: 'visible' },
             paint: {
                 'fill-color': '#f2eae2',
-                'fill-opacity': { base: 1, stops: [[13, 0], [16, 1]] },
+                'fill-opacity': {
+                    base: 1,
+                    stops: [
+                        [13, 0],
+                        [16, 1],
+                    ],
+                },
                 'fill-outline-color': '#dfdbd7',
-                'fill-translate': { base: 1, stops: [[14, [0, 0]], [16, [-2, -2]]] }
-            }
+                'fill-translate': {
+                    base: 1,
+                    stops: [
+                        [14, [0, 0]],
+                        [16, [-2, -2]],
+                    ],
+                },
+            },
         },
         {
             id: 'tunnel-service-track-casing',
@@ -397,17 +438,20 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849354174.1904' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', 'brunnel', 'tunnel'],
-                ['in', 'class', 'service', 'track']
-            ],
+            filter: ['all', ['==', 'brunnel', 'tunnel'], ['in', 'class', 'service', 'track']],
             layout: { 'line-join': 'round' },
             paint: {
                 'line-color': '#cfcdca',
                 'line-dasharray': [0.5, 0.25],
-                'line-width': { base: 1.2, stops: [[15, 1], [16, 4], [20, 11]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [15, 1],
+                        [16, 4],
+                        [20, 11],
+                    ],
+                },
+            },
         },
         {
             id: 'tunnel-minor-casing',
@@ -419,12 +463,22 @@ export const LIGHT_THEME: any = {
             layout: { 'line-join': 'round' },
             paint: {
                 'line-color': '#cfcdca',
-                'line-opacity': { stops: [[12, 0], [12.5, 1]] },
+                'line-opacity': {
+                    stops: [
+                        [12, 0],
+                        [12.5, 1],
+                    ],
+                },
                 'line-width': {
                     base: 1.2,
-                    stops: [[12, 0.5], [13, 1], [14, 4], [20, 15]]
-                }
-            }
+                    stops: [
+                        [12, 0.5],
+                        [13, 1],
+                        [14, 4],
+                        [20, 15],
+                    ],
+                },
+            },
         },
         {
             id: 'tunnel-secondary-tertiary-casing',
@@ -432,17 +486,19 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849354174.1904' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', 'brunnel', 'tunnel'],
-                ['in', 'class', 'secondary', 'tertiary']
-            ],
+            filter: ['all', ['==', 'brunnel', 'tunnel'], ['in', 'class', 'secondary', 'tertiary']],
             layout: { 'line-join': 'round' },
             paint: {
                 'line-color': '#e9ac77',
                 'line-opacity': 1,
-                'line-width': { base: 1.2, stops: [[8, 1.5], [20, 17]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [8, 1.5],
+                        [20, 17],
+                    ],
+                },
+            },
         },
         {
             id: 'tunnel-trunk-primary-casing',
@@ -450,19 +506,20 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849354174.1904' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', 'brunnel', 'tunnel'],
-                ['in', 'class', 'primary', 'trunk']
-            ],
+            filter: ['all', ['==', 'brunnel', 'tunnel'], ['in', 'class', 'primary', 'trunk']],
             layout: { 'line-join': 'round' },
             paint: {
                 'line-color': '#e9ac77',
                 'line-width': {
                     base: 1.2,
-                    stops: [[5, 0.4], [6, 0.6], [7, 1.5], [20, 22]]
-                }
-            }
+                    stops: [
+                        [5, 0.4],
+                        [6, 0.6],
+                        [7, 1.5],
+                        [20, 22],
+                    ],
+                },
+            },
         },
         {
             id: 'tunnel-motorway-casing',
@@ -470,20 +527,21 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849354174.1904' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', 'brunnel', 'tunnel'],
-                ['==', 'class', 'motorway']
-            ],
+            filter: ['all', ['==', 'brunnel', 'tunnel'], ['==', 'class', 'motorway']],
             layout: { 'line-join': 'round', visibility: 'visible' },
             paint: {
                 'line-color': '#e9ac77',
                 'line-dasharray': [0.5, 0.25],
                 'line-width': {
                     base: 1.2,
-                    stops: [[5, 0.4], [6, 0.6], [7, 1.5], [20, 22]]
-                }
-            }
+                    stops: [
+                        [5, 0.4],
+                        [6, 0.6],
+                        [7, 1.5],
+                        [20, 22],
+                    ],
+                },
+            },
         },
         {
             id: 'tunnel-path',
@@ -491,16 +549,18 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849354174.1904' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', '$type', 'LineString'],
-                ['all', ['==', 'brunnel', 'tunnel'], ['==', 'class', 'path']]
-            ],
+            filter: ['all', ['==', '$type', 'LineString'], ['all', ['==', 'brunnel', 'tunnel'], ['==', 'class', 'path']]],
             paint: {
                 'line-color': '#cba',
                 'line-dasharray': [1.5, 0.75],
-                'line-width': { base: 1.2, stops: [[15, 1.2], [20, 4]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [15, 1.2],
+                        [20, 4],
+                    ],
+                },
+            },
         },
         {
             id: 'tunnel-service-track',
@@ -508,16 +568,19 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849354174.1904' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', 'brunnel', 'tunnel'],
-                ['in', 'class', 'service', 'track']
-            ],
+            filter: ['all', ['==', 'brunnel', 'tunnel'], ['in', 'class', 'service', 'track']],
             layout: { 'line-join': 'round' },
             paint: {
                 'line-color': '#fff',
-                'line-width': { base: 1.2, stops: [[15.5, 0], [16, 2], [20, 7.5]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [15.5, 0],
+                        [16, 2],
+                        [20, 7.5],
+                    ],
+                },
+            },
         },
         {
             id: 'tunnel-minor',
@@ -525,17 +588,20 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849354174.1904' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', 'brunnel', 'tunnel'],
-                ['==', 'class', 'minor_road']
-            ],
+            filter: ['all', ['==', 'brunnel', 'tunnel'], ['==', 'class', 'minor_road']],
             layout: { 'line-join': 'round' },
             paint: {
                 'line-color': '#fff',
                 'line-opacity': 1,
-                'line-width': { base: 1.2, stops: [[13.5, 0], [14, 2.5], [20, 11.5]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [13.5, 0],
+                        [14, 2.5],
+                        [20, 11.5],
+                    ],
+                },
+            },
         },
         {
             id: 'tunnel-secondary-tertiary',
@@ -543,16 +609,19 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849354174.1904' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', 'brunnel', 'tunnel'],
-                ['in', 'class', 'secondary', 'tertiary']
-            ],
+            filter: ['all', ['==', 'brunnel', 'tunnel'], ['in', 'class', 'secondary', 'tertiary']],
             layout: { 'line-join': 'round' },
             paint: {
                 'line-color': '#fff4c6',
-                'line-width': { base: 1.2, stops: [[6.5, 0], [7, 0.5], [20, 10]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [6.5, 0],
+                        [7, 0.5],
+                        [20, 10],
+                    ],
+                },
+            },
         },
         {
             id: 'tunnel-trunk-primary',
@@ -560,16 +629,19 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849354174.1904' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', 'brunnel', 'tunnel'],
-                ['in', 'class', 'primary', 'trunk']
-            ],
+            filter: ['all', ['==', 'brunnel', 'tunnel'], ['in', 'class', 'primary', 'trunk']],
             layout: { 'line-join': 'round' },
             paint: {
                 'line-color': '#fff4c6',
-                'line-width': { base: 1.2, stops: [[6.5, 0], [7, 0.5], [20, 18]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [6.5, 0],
+                        [7, 0.5],
+                        [20, 18],
+                    ],
+                },
+            },
         },
         {
             id: 'tunnel-motorway',
@@ -577,16 +649,19 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849354174.1904' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', 'brunnel', 'tunnel'],
-                ['==', 'class', 'motorway']
-            ],
+            filter: ['all', ['==', 'brunnel', 'tunnel'], ['==', 'class', 'motorway']],
             layout: { 'line-join': 'round', visibility: 'visible' },
             paint: {
                 'line-color': '#ffdaa6',
-                'line-width': { base: 1.2, stops: [[6.5, 0], [7, 0.5], [20, 18]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [6.5, 0],
+                        [7, 0.5],
+                        [20, 18],
+                    ],
+                },
+            },
         },
         {
             id: 'tunnel-railway',
@@ -598,8 +673,15 @@ export const LIGHT_THEME: any = {
             paint: {
                 'line-color': '#bbb',
                 'line-dasharray': [2, 2],
-                'line-width': { base: 1.4, stops: [[14, 0.4], [15, 0.75], [20, 2]] }
-            }
+                'line-width': {
+                    base: 1.4,
+                    stops: [
+                        [14, 0.4],
+                        [15, 0.75],
+                        [20, 2],
+                    ],
+                },
+            },
         },
         {
             id: 'ferry',
@@ -611,8 +693,8 @@ export const LIGHT_THEME: any = {
             paint: {
                 'line-color': 'rgba(108, 159, 182, 1)',
                 'line-dasharray': [2, 2],
-                'line-width': 1.1
-            }
+                'line-width': 1.1,
+            },
         },
         {
             id: 'aeroway-taxiway-casing',
@@ -625,13 +707,19 @@ export const LIGHT_THEME: any = {
             layout: {
                 'line-cap': 'round',
                 'line-join': 'round',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'line-color': 'rgba(153, 153, 153, 1)',
                 'line-opacity': 1,
-                'line-width': { base: 1.5, stops: [[11, 2], [17, 12]] }
-            }
+                'line-width': {
+                    base: 1.5,
+                    stops: [
+                        [11, 2],
+                        [17, 12],
+                    ],
+                },
+            },
         },
         {
             id: 'aeroway-runway-casing',
@@ -644,13 +732,19 @@ export const LIGHT_THEME: any = {
             layout: {
                 'line-cap': 'round',
                 'line-join': 'round',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'line-color': 'rgba(153, 153, 153, 1)',
                 'line-opacity': 1,
-                'line-width': { base: 1.5, stops: [[11, 5], [17, 55]] }
-            }
+                'line-width': {
+                    base: 1.5,
+                    stops: [
+                        [11, 5],
+                        [17, 55],
+                    ],
+                },
+            },
         },
         {
             id: 'aeroway-area',
@@ -659,16 +753,18 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'aeroway',
             minzoom: 4,
-            filter: [
-                'all',
-                ['==', '$type', 'Polygon'],
-                ['in', 'class', 'runway', 'taxiway']
-            ],
+            filter: ['all', ['==', '$type', 'Polygon'], ['in', 'class', 'runway', 'taxiway']],
             layout: { visibility: 'visible' },
             paint: {
                 'fill-color': 'rgba(255, 255, 255, 1)',
-                'fill-opacity': { base: 1, stops: [[13, 0], [14, 1]] }
-            }
+                'fill-opacity': {
+                    base: 1,
+                    stops: [
+                        [13, 0],
+                        [14, 1],
+                    ],
+                },
+            },
         },
         {
             id: 'aeroway-taxiway',
@@ -677,21 +773,29 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'aeroway',
             minzoom: 4,
-            filter: [
-                'all',
-                ['in', 'class', 'taxiway'],
-                ['==', '$type', 'LineString']
-            ],
+            filter: ['all', ['in', 'class', 'taxiway'], ['==', '$type', 'LineString']],
             layout: {
                 'line-cap': 'round',
                 'line-join': 'round',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'line-color': 'rgba(255, 255, 255, 1)',
-                'line-opacity': { base: 1, stops: [[11, 0], [12, 1]] },
-                'line-width': { base: 1.5, stops: [[11, 1], [17, 10]] }
-            }
+                'line-opacity': {
+                    base: 1,
+                    stops: [
+                        [11, 0],
+                        [12, 1],
+                    ],
+                },
+                'line-width': {
+                    base: 1.5,
+                    stops: [
+                        [11, 1],
+                        [17, 10],
+                    ],
+                },
+            },
         },
         {
             id: 'aeroway-runway',
@@ -700,21 +804,29 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'aeroway',
             minzoom: 4,
-            filter: [
-                'all',
-                ['in', 'class', 'runway'],
-                ['==', '$type', 'LineString']
-            ],
+            filter: ['all', ['in', 'class', 'runway'], ['==', '$type', 'LineString']],
             layout: {
                 'line-cap': 'round',
                 'line-join': 'round',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'line-color': 'rgba(255, 255, 255, 1)',
-                'line-opacity': { base: 1, stops: [[11, 0], [12, 1]] },
-                'line-width': { base: 1.5, stops: [[11, 4], [17, 50]] }
-            }
+                'line-opacity': {
+                    base: 1,
+                    stops: [
+                        [11, 0],
+                        [12, 1],
+                    ],
+                },
+                'line-width': {
+                    base: 1.5,
+                    stops: [
+                        [11, 4],
+                        [17, 50],
+                    ],
+                },
+            },
         },
         {
             id: 'road_area_pier',
@@ -724,7 +836,7 @@ export const LIGHT_THEME: any = {
             'source-layer': 'transportation',
             filter: ['all', ['==', '$type', 'Polygon'], ['==', 'class', 'pier']],
             layout: { visibility: 'visible' },
-            paint: { 'fill-antialias': true, 'fill-color': '#f8f4f0' }
+            paint: { 'fill-antialias': true, 'fill-color': '#f8f4f0' },
         },
         {
             id: 'road_pier',
@@ -736,8 +848,14 @@ export const LIGHT_THEME: any = {
             layout: { 'line-cap': 'round', 'line-join': 'round' },
             paint: {
                 'line-color': '#f8f4f0',
-                'line-width': { base: 1.2, stops: [[15, 1], [17, 4]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [15, 1],
+                        [17, 4],
+                    ],
+                },
+            },
         },
         {
             id: 'highway-area',
@@ -751,8 +869,8 @@ export const LIGHT_THEME: any = {
                 'fill-antialias': false,
                 'fill-color': 'hsla(0, 0%, 89%, 0.56)',
                 'fill-opacity': 0.9,
-                'fill-outline-color': '#cfcdca'
-            }
+                'fill-outline-color': '#cfcdca',
+            },
         },
         {
             id: 'highway-motorway-link-casing',
@@ -761,20 +879,21 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'transportation',
             minzoom: 12,
-            filter: [
-                'all',
-                ['!in', 'brunnel', 'bridge', 'tunnel'],
-                ['==', 'class', 'motorway_link']
-            ],
+            filter: ['all', ['!in', 'brunnel', 'bridge', 'tunnel'], ['==', 'class', 'motorway_link']],
             layout: { 'line-cap': 'round', 'line-join': 'round' },
             paint: {
                 'line-color': '#e9ac77',
                 'line-opacity': 1,
                 'line-width': {
                     base: 1.2,
-                    stops: [[12, 1], [13, 3], [14, 4], [20, 15]]
-                }
-            }
+                    stops: [
+                        [12, 1],
+                        [13, 3],
+                        [14, 4],
+                        [20, 15],
+                    ],
+                },
+            },
         },
         {
             id: 'highway-link-casing',
@@ -786,28 +905,26 @@ export const LIGHT_THEME: any = {
             filter: [
                 'all',
                 ['!in', 'brunnel', 'bridge', 'tunnel'],
-                [
-                    'in',
-                    'class',
-                    'primary_link',
-                    'secondary_link',
-                    'tertiary_link',
-                    'trunk_link'
-                ]
+                ['in', 'class', 'primary_link', 'secondary_link', 'tertiary_link', 'trunk_link'],
             ],
             layout: {
                 'line-cap': 'round',
                 'line-join': 'round',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'line-color': '#e9ac77',
                 'line-opacity': 1,
                 'line-width': {
                     base: 1.2,
-                    stops: [[12, 1], [13, 3], [14, 4], [20, 15]]
-                }
-            }
+                    stops: [
+                        [12, 1],
+                        [13, 3],
+                        [14, 4],
+                        [20, 15],
+                    ],
+                },
+            },
         },
         {
             id: 'highway-minor-casing',
@@ -818,21 +935,27 @@ export const LIGHT_THEME: any = {
             filter: [
                 'all',
                 ['==', '$type', 'LineString'],
-                [
-                    'all',
-                    ['!=', 'brunnel', 'tunnel'],
-                    ['in', 'class', 'minor', 'service', 'track']
-                ]
+                ['all', ['!=', 'brunnel', 'tunnel'], ['in', 'class', 'minor', 'service', 'track']],
             ],
             layout: { 'line-cap': 'round', 'line-join': 'round' },
             paint: {
                 'line-color': '#cfcdca',
-                'line-opacity': { stops: [[12, 0], [12.5, 1]] },
+                'line-opacity': {
+                    stops: [
+                        [12, 0],
+                        [12.5, 1],
+                    ],
+                },
                 'line-width': {
                     base: 1.2,
-                    stops: [[12, 0.5], [13, 1], [14, 4], [20, 15]]
-                }
-            }
+                    stops: [
+                        [12, 0.5],
+                        [13, 1],
+                        [14, 4],
+                        [20, 15],
+                    ],
+                },
+            },
         },
         {
             id: 'highway-secondary-tertiary-casing',
@@ -840,21 +963,23 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849345966.4436' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['!in', 'brunnel', 'bridge', 'tunnel'],
-                ['in', 'class', 'secondary', 'tertiary']
-            ],
+            filter: ['all', ['!in', 'brunnel', 'bridge', 'tunnel'], ['in', 'class', 'secondary', 'tertiary']],
             layout: {
                 'line-cap': 'butt',
                 'line-join': 'round',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'line-color': '#e9ac77',
                 'line-opacity': 1,
-                'line-width': { base: 1.2, stops: [[8, 1.5], [20, 17]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [8, 1.5],
+                        [20, 17],
+                    ],
+                },
+            },
         },
         {
             id: 'highway-primary-casing',
@@ -863,24 +988,30 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'transportation',
             minzoom: 5,
-            filter: [
-                'all',
-                ['!in', 'brunnel', 'bridge', 'tunnel'],
-                ['in', 'class', 'primary']
-            ],
+            filter: ['all', ['!in', 'brunnel', 'bridge', 'tunnel'], ['in', 'class', 'primary']],
             layout: {
                 'line-cap': 'butt',
                 'line-join': 'round',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'line-color': '#e9ac77',
-                'line-opacity': { stops: [[7, 0], [8, 1]] },
+                'line-opacity': {
+                    stops: [
+                        [7, 0],
+                        [8, 1],
+                    ],
+                },
                 'line-width': {
                     base: 1.2,
-                    stops: [[7, 0], [8, 0.6], [9, 1.5], [20, 22]]
-                }
-            }
+                    stops: [
+                        [7, 0],
+                        [8, 0.6],
+                        [9, 1.5],
+                        [20, 22],
+                    ],
+                },
+            },
         },
         {
             id: 'highway-trunk-casing',
@@ -889,24 +1020,30 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'transportation',
             minzoom: 5,
-            filter: [
-                'all',
-                ['!in', 'brunnel', 'bridge', 'tunnel'],
-                ['in', 'class', 'trunk']
-            ],
+            filter: ['all', ['!in', 'brunnel', 'bridge', 'tunnel'], ['in', 'class', 'trunk']],
             layout: {
                 'line-cap': 'butt',
                 'line-join': 'round',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'line-color': '#e9ac77',
-                'line-opacity': { stops: [[5, 0], [6, 1]] },
+                'line-opacity': {
+                    stops: [
+                        [5, 0],
+                        [6, 1],
+                    ],
+                },
                 'line-width': {
                     base: 1.2,
-                    stops: [[5, 0], [6, 0.6], [7, 1.5], [20, 22]]
-                }
-            }
+                    stops: [
+                        [5, 0],
+                        [6, 0.6],
+                        [7, 1.5],
+                        [20, 22],
+                    ],
+                },
+            },
         },
         {
             id: 'highway-motorway-casing',
@@ -915,24 +1052,31 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'transportation',
             minzoom: 4,
-            filter: [
-                'all',
-                ['!in', 'brunnel', 'bridge', 'tunnel'],
-                ['==', 'class', 'motorway']
-            ],
+            filter: ['all', ['!in', 'brunnel', 'bridge', 'tunnel'], ['==', 'class', 'motorway']],
             layout: {
                 'line-cap': 'butt',
                 'line-join': 'round',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'line-color': '#e9ac77',
-                'line-opacity': { stops: [[4, 0], [5, 1]] },
+                'line-opacity': {
+                    stops: [
+                        [4, 0],
+                        [5, 1],
+                    ],
+                },
                 'line-width': {
                     base: 1.2,
-                    stops: [[4, 0], [5, 0.4], [6, 0.6], [7, 1.5], [20, 22]]
-                }
-            }
+                    stops: [
+                        [4, 0],
+                        [5, 0.4],
+                        [6, 0.6],
+                        [7, 1.5],
+                        [20, 22],
+                    ],
+                },
+            },
         },
         {
             id: 'highway-path',
@@ -940,16 +1084,18 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849345966.4436' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', '$type', 'LineString'],
-                ['all', ['!in', 'brunnel', 'bridge', 'tunnel'], ['==', 'class', 'path']]
-            ],
+            filter: ['all', ['==', '$type', 'LineString'], ['all', ['!in', 'brunnel', 'bridge', 'tunnel'], ['==', 'class', 'path']]],
             paint: {
                 'line-color': '#cba',
                 'line-dasharray': [1.5, 0.75],
-                'line-width': { base: 1.2, stops: [[15, 1.2], [20, 4]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [15, 1.2],
+                        [20, 4],
+                    ],
+                },
+            },
         },
         {
             id: 'highway-motorway-link',
@@ -958,19 +1104,20 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'transportation',
             minzoom: 12,
-            filter: [
-                'all',
-                ['!in', 'brunnel', 'bridge', 'tunnel'],
-                ['==', 'class', 'motorway_link']
-            ],
+            filter: ['all', ['!in', 'brunnel', 'bridge', 'tunnel'], ['==', 'class', 'motorway_link']],
             layout: { 'line-cap': 'round', 'line-join': 'round' },
             paint: {
                 'line-color': '#fc8',
                 'line-width': {
                     base: 1.2,
-                    stops: [[12.5, 0], [13, 1.5], [14, 2.5], [20, 11.5]]
-                }
-            }
+                    stops: [
+                        [12.5, 0],
+                        [13, 1.5],
+                        [14, 2.5],
+                        [20, 11.5],
+                    ],
+                },
+            },
         },
         {
             id: 'highway-link',
@@ -982,27 +1129,25 @@ export const LIGHT_THEME: any = {
             filter: [
                 'all',
                 ['!in', 'brunnel', 'bridge', 'tunnel'],
-                [
-                    'in',
-                    'class',
-                    'primary_link',
-                    'secondary_link',
-                    'tertiary_link',
-                    'trunk_link'
-                ]
+                ['in', 'class', 'primary_link', 'secondary_link', 'tertiary_link', 'trunk_link'],
             ],
             layout: {
                 'line-cap': 'round',
                 'line-join': 'round',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'line-color': '#fea',
                 'line-width': {
                     base: 1.2,
-                    stops: [[12.5, 0], [13, 1.5], [14, 2.5], [20, 11.5]]
-                }
-            }
+                    stops: [
+                        [12.5, 0],
+                        [13, 1.5],
+                        [14, 2.5],
+                        [20, 11.5],
+                    ],
+                },
+            },
         },
         {
             id: 'highway-minor',
@@ -1013,18 +1158,21 @@ export const LIGHT_THEME: any = {
             filter: [
                 'all',
                 ['==', '$type', 'LineString'],
-                [
-                    'all',
-                    ['!=', 'brunnel', 'tunnel'],
-                    ['in', 'class', 'minor', 'service', 'track']
-                ]
+                ['all', ['!=', 'brunnel', 'tunnel'], ['in', 'class', 'minor', 'service', 'track']],
             ],
             layout: { 'line-cap': 'round', 'line-join': 'round' },
             paint: {
                 'line-color': '#fff',
                 'line-opacity': 1,
-                'line-width': { base: 1.2, stops: [[13.5, 0], [14, 2.5], [20, 11.5]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [13.5, 0],
+                        [14, 2.5],
+                        [20, 11.5],
+                    ],
+                },
+            },
         },
         {
             id: 'highway-secondary-tertiary',
@@ -1032,20 +1180,23 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849345966.4436' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['!in', 'brunnel', 'bridge', 'tunnel'],
-                ['in', 'class', 'secondary', 'tertiary']
-            ],
+            filter: ['all', ['!in', 'brunnel', 'bridge', 'tunnel'], ['in', 'class', 'secondary', 'tertiary']],
             layout: {
                 'line-cap': 'round',
                 'line-join': 'round',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'line-color': '#fea',
-                'line-width': { base: 1.2, stops: [[6.5, 0], [8, 0.5], [20, 13]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [6.5, 0],
+                        [8, 0.5],
+                        [20, 13],
+                    ],
+                },
+            },
         },
         {
             id: 'highway-primary',
@@ -1053,24 +1204,23 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849345966.4436' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', '$type', 'LineString'],
-                [
-                    'all',
-                    ['!in', 'brunnel', 'bridge', 'tunnel'],
-                    ['in', 'class', 'primary']
-                ]
-            ],
+            filter: ['all', ['==', '$type', 'LineString'], ['all', ['!in', 'brunnel', 'bridge', 'tunnel'], ['in', 'class', 'primary']]],
             layout: {
                 'line-cap': 'round',
                 'line-join': 'round',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'line-color': '#fea',
-                'line-width': { base: 1.2, stops: [[8.5, 0], [9, 0.5], [20, 18]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [8.5, 0],
+                        [9, 0.5],
+                        [20, 18],
+                    ],
+                },
+            },
         },
         {
             id: 'highway-trunk',
@@ -1078,24 +1228,23 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849345966.4436' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', '$type', 'LineString'],
-                [
-                    'all',
-                    ['!in', 'brunnel', 'bridge', 'tunnel'],
-                    ['in', 'class', 'trunk']
-                ]
-            ],
+            filter: ['all', ['==', '$type', 'LineString'], ['all', ['!in', 'brunnel', 'bridge', 'tunnel'], ['in', 'class', 'trunk']]],
             layout: {
                 'line-cap': 'round',
                 'line-join': 'round',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'line-color': '#fea',
-                'line-width': { base: 1.2, stops: [[6.5, 0], [7, 0.5], [20, 18]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [6.5, 0],
+                        [7, 0.5],
+                        [20, 18],
+                    ],
+                },
+            },
         },
         {
             id: 'highway-motorway',
@@ -1104,24 +1253,23 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'transportation',
             minzoom: 5,
-            filter: [
-                'all',
-                ['==', '$type', 'LineString'],
-                [
-                    'all',
-                    ['!in', 'brunnel', 'bridge', 'tunnel'],
-                    ['==', 'class', 'motorway']
-                ]
-            ],
+            filter: ['all', ['==', '$type', 'LineString'], ['all', ['!in', 'brunnel', 'bridge', 'tunnel'], ['==', 'class', 'motorway']]],
             layout: {
                 'line-cap': 'round',
                 'line-join': 'round',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'line-color': '#fc8',
-                'line-width': { base: 1.2, stops: [[6.5, 0], [7, 0.5], [20, 18]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [6.5, 0],
+                        [7, 0.5],
+                        [20, 18],
+                    ],
+                },
+            },
         },
         {
             id: 'railway-transit',
@@ -1129,16 +1277,18 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849345966.4436' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', '$type', 'LineString'],
-                ['all', ['==', 'class', 'transit'], ['!in', 'brunnel', 'tunnel']]
-            ],
+            filter: ['all', ['==', '$type', 'LineString'], ['all', ['==', 'class', 'transit'], ['!in', 'brunnel', 'tunnel']]],
             layout: { visibility: 'visible' },
             paint: {
                 'line-color': 'hsla(0, 0%, 73%, 0.77)',
-                'line-width': { base: 1.4, stops: [[14, 0.4], [20, 1]] }
-            }
+                'line-width': {
+                    base: 1.4,
+                    stops: [
+                        [14, 0.4],
+                        [20, 1],
+                    ],
+                },
+            },
         },
         {
             id: 'railway-transit-hatching',
@@ -1146,17 +1296,20 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849345966.4436' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', '$type', 'LineString'],
-                ['all', ['==', 'class', 'transit'], ['!in', 'brunnel', 'tunnel']]
-            ],
+            filter: ['all', ['==', '$type', 'LineString'], ['all', ['==', 'class', 'transit'], ['!in', 'brunnel', 'tunnel']]],
             layout: { visibility: 'visible' },
             paint: {
                 'line-color': 'hsla(0, 0%, 73%, 0.68)',
                 'line-dasharray': [0.2, 8],
-                'line-width': { base: 1.4, stops: [[14.5, 0], [15, 2], [20, 6]] }
-            }
+                'line-width': {
+                    base: 1.4,
+                    stops: [
+                        [14.5, 0],
+                        [15, 2],
+                        [20, 6],
+                    ],
+                },
+            },
         },
         {
             id: 'railway-service',
@@ -1164,15 +1317,17 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849345966.4436' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', '$type', 'LineString'],
-                ['all', ['==', 'class', 'rail'], ['has', 'service']]
-            ],
+            filter: ['all', ['==', '$type', 'LineString'], ['all', ['==', 'class', 'rail'], ['has', 'service']]],
             paint: {
                 'line-color': 'hsla(0, 0%, 73%, 0.77)',
-                'line-width': { base: 1.4, stops: [[14, 0.4], [20, 1]] }
-            }
+                'line-width': {
+                    base: 1.4,
+                    stops: [
+                        [14, 0.4],
+                        [20, 1],
+                    ],
+                },
+            },
         },
         {
             id: 'railway-service-hatching',
@@ -1180,17 +1335,20 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849345966.4436' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', '$type', 'LineString'],
-                ['all', ['==', 'class', 'rail'], ['has', 'service']]
-            ],
+            filter: ['all', ['==', '$type', 'LineString'], ['all', ['==', 'class', 'rail'], ['has', 'service']]],
             layout: { visibility: 'visible' },
             paint: {
                 'line-color': 'hsla(0, 0%, 73%, 0.68)',
                 'line-dasharray': [0.2, 8],
-                'line-width': { base: 1.4, stops: [[14.5, 0], [15, 2], [20, 6]] }
-            }
+                'line-width': {
+                    base: 1.4,
+                    stops: [
+                        [14.5, 0],
+                        [15, 2],
+                        [20, 6],
+                    ],
+                },
+            },
         },
         {
             id: 'railway',
@@ -1201,17 +1359,19 @@ export const LIGHT_THEME: any = {
             filter: [
                 'all',
                 ['==', '$type', 'LineString'],
-                [
-                    'all',
-                    ['!has', 'service'],
-                    ['!in', 'brunnel', 'bridge', 'tunnel'],
-                    ['==', 'class', 'rail']
-                ]
+                ['all', ['!has', 'service'], ['!in', 'brunnel', 'bridge', 'tunnel'], ['==', 'class', 'rail']],
             ],
             paint: {
                 'line-color': '#bbb',
-                'line-width': { base: 1.4, stops: [[14, 0.4], [15, 0.75], [20, 2]] }
-            }
+                'line-width': {
+                    base: 1.4,
+                    stops: [
+                        [14, 0.4],
+                        [15, 0.75],
+                        [20, 2],
+                    ],
+                },
+            },
         },
         {
             id: 'railway-hatching',
@@ -1222,18 +1382,20 @@ export const LIGHT_THEME: any = {
             filter: [
                 'all',
                 ['==', '$type', 'LineString'],
-                [
-                    'all',
-                    ['!has', 'service'],
-                    ['!in', 'brunnel', 'bridge', 'tunnel'],
-                    ['==', 'class', 'rail']
-                ]
+                ['all', ['!has', 'service'], ['!in', 'brunnel', 'bridge', 'tunnel'], ['==', 'class', 'rail']],
             ],
             paint: {
                 'line-color': '#bbb',
                 'line-dasharray': [0.2, 8],
-                'line-width': { base: 1.4, stops: [[14.5, 0], [15, 3], [20, 8]] }
-            }
+                'line-width': {
+                    base: 1.4,
+                    stops: [
+                        [14.5, 0],
+                        [15, 3],
+                        [20, 8],
+                    ],
+                },
+            },
         },
         {
             id: 'bridge-motorway-link-casing',
@@ -1241,20 +1403,21 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849334699.1902' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', 'brunnel', 'bridge'],
-                ['==', 'class', 'motorway_link']
-            ],
+            filter: ['all', ['==', 'brunnel', 'bridge'], ['==', 'class', 'motorway_link']],
             layout: { 'line-join': 'round' },
             paint: {
                 'line-color': '#e9ac77',
                 'line-opacity': 1,
                 'line-width': {
                     base: 1.2,
-                    stops: [[12, 1], [13, 3], [14, 4], [20, 15]]
-                }
-            }
+                    stops: [
+                        [12, 1],
+                        [13, 3],
+                        [14, 4],
+                        [20, 15],
+                    ],
+                },
+            },
         },
         {
             id: 'bridge-link-casing',
@@ -1262,27 +1425,21 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849334699.1902' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', 'brunnel', 'bridge'],
-                [
-                    'in',
-                    'class',
-                    'primary_link',
-                    'secondary_link',
-                    'tertiary_link',
-                    'trunk_link'
-                ]
-            ],
+            filter: ['all', ['==', 'brunnel', 'bridge'], ['in', 'class', 'primary_link', 'secondary_link', 'tertiary_link', 'trunk_link']],
             layout: { 'line-join': 'round' },
             paint: {
                 'line-color': '#e9ac77',
                 'line-opacity': 1,
                 'line-width': {
                     base: 1.2,
-                    stops: [[12, 1], [13, 3], [14, 4], [20, 15]]
-                }
-            }
+                    stops: [
+                        [12, 1],
+                        [13, 3],
+                        [14, 4],
+                        [20, 15],
+                    ],
+                },
+            },
         },
         {
             id: 'bridge-secondary-tertiary-casing',
@@ -1290,17 +1447,19 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849334699.1902' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', 'brunnel', 'bridge'],
-                ['in', 'class', 'secondary', 'tertiary']
-            ],
+            filter: ['all', ['==', 'brunnel', 'bridge'], ['in', 'class', 'secondary', 'tertiary']],
             layout: { 'line-join': 'round' },
             paint: {
                 'line-color': '#e9ac77',
                 'line-opacity': 1,
-                'line-width': { base: 1.2, stops: [[8, 1.5], [20, 28]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [8, 1.5],
+                        [20, 28],
+                    ],
+                },
+            },
         },
         {
             id: 'bridge-trunk-primary-casing',
@@ -1308,19 +1467,20 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849334699.1902' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', 'brunnel', 'bridge'],
-                ['in', 'class', 'primary', 'trunk']
-            ],
+            filter: ['all', ['==', 'brunnel', 'bridge'], ['in', 'class', 'primary', 'trunk']],
             layout: { 'line-join': 'round' },
             paint: {
                 'line-color': 'hsl(28, 76%, 67%)',
                 'line-width': {
                     base: 1.2,
-                    stops: [[5, 0.4], [6, 0.6], [7, 1.5], [20, 26]]
-                }
-            }
+                    stops: [
+                        [5, 0.4],
+                        [6, 0.6],
+                        [7, 1.5],
+                        [20, 26],
+                    ],
+                },
+            },
         },
         {
             id: 'bridge-motorway-casing',
@@ -1328,19 +1488,20 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849334699.1902' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', 'brunnel', 'bridge'],
-                ['==', 'class', 'motorway']
-            ],
+            filter: ['all', ['==', 'brunnel', 'bridge'], ['==', 'class', 'motorway']],
             layout: { 'line-join': 'round' },
             paint: {
                 'line-color': '#e9ac77',
                 'line-width': {
                     base: 1.2,
-                    stops: [[5, 0.4], [6, 0.6], [7, 1.5], [20, 22]]
-                }
-            }
+                    stops: [
+                        [5, 0.4],
+                        [6, 0.6],
+                        [7, 1.5],
+                        [20, 22],
+                    ],
+                },
+            },
         },
         {
             id: 'bridge-path-casing',
@@ -1348,15 +1509,17 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849334699.1902' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', '$type', 'LineString'],
-                ['all', ['==', 'brunnel', 'bridge'], ['==', 'class', 'path']]
-            ],
+            filter: ['all', ['==', '$type', 'LineString'], ['all', ['==', 'brunnel', 'bridge'], ['==', 'class', 'path']]],
             paint: {
                 'line-color': '#f8f4f0',
-                'line-width': { base: 1.2, stops: [[15, 1.2], [20, 18]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [15, 1.2],
+                        [20, 18],
+                    ],
+                },
+            },
         },
         {
             id: 'bridge-path',
@@ -1364,16 +1527,18 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849334699.1902' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', '$type', 'LineString'],
-                ['all', ['==', 'brunnel', 'bridge'], ['==', 'class', 'path']]
-            ],
+            filter: ['all', ['==', '$type', 'LineString'], ['all', ['==', 'brunnel', 'bridge'], ['==', 'class', 'path']]],
             paint: {
                 'line-color': '#cba',
                 'line-dasharray': [1.5, 0.75],
-                'line-width': { base: 1.2, stops: [[15, 1.2], [20, 4]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [15, 1.2],
+                        [20, 4],
+                    ],
+                },
+            },
         },
         {
             id: 'bridge-motorway-link',
@@ -1381,19 +1546,20 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849334699.1902' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', 'brunnel', 'bridge'],
-                ['==', 'class', 'motorway_link']
-            ],
+            filter: ['all', ['==', 'brunnel', 'bridge'], ['==', 'class', 'motorway_link']],
             layout: { 'line-join': 'round' },
             paint: {
                 'line-color': '#fc8',
                 'line-width': {
                     base: 1.2,
-                    stops: [[12.5, 0], [13, 1.5], [14, 2.5], [20, 11.5]]
-                }
-            }
+                    stops: [
+                        [12.5, 0],
+                        [13, 1.5],
+                        [14, 2.5],
+                        [20, 11.5],
+                    ],
+                },
+            },
         },
         {
             id: 'bridge-link',
@@ -1401,26 +1567,20 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849334699.1902' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', 'brunnel', 'bridge'],
-                [
-                    'in',
-                    'class',
-                    'primary_link',
-                    'secondary_link',
-                    'tertiary_link',
-                    'trunk_link'
-                ]
-            ],
+            filter: ['all', ['==', 'brunnel', 'bridge'], ['in', 'class', 'primary_link', 'secondary_link', 'tertiary_link', 'trunk_link']],
             layout: { 'line-join': 'round' },
             paint: {
                 'line-color': '#fea',
                 'line-width': {
                     base: 1.2,
-                    stops: [[12.5, 0], [13, 1.5], [14, 2.5], [20, 11.5]]
-                }
-            }
+                    stops: [
+                        [12.5, 0],
+                        [13, 1.5],
+                        [14, 2.5],
+                        [20, 11.5],
+                    ],
+                },
+            },
         },
         {
             id: 'bridge-secondary-tertiary',
@@ -1428,16 +1588,19 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849334699.1902' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', 'brunnel', 'bridge'],
-                ['in', 'class', 'secondary', 'tertiary']
-            ],
+            filter: ['all', ['==', 'brunnel', 'bridge'], ['in', 'class', 'secondary', 'tertiary']],
             layout: { 'line-join': 'round' },
             paint: {
                 'line-color': '#fea',
-                'line-width': { base: 1.2, stops: [[6.5, 0], [7, 0.5], [20, 20]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [6.5, 0],
+                        [7, 0.5],
+                        [20, 20],
+                    ],
+                },
+            },
         },
         {
             id: 'bridge-trunk-primary',
@@ -1445,16 +1608,19 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849334699.1902' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', 'brunnel', 'bridge'],
-                ['in', 'class', 'primary', 'trunk']
-            ],
+            filter: ['all', ['==', 'brunnel', 'bridge'], ['in', 'class', 'primary', 'trunk']],
             layout: { 'line-join': 'round' },
             paint: {
                 'line-color': '#fea',
-                'line-width': { base: 1.2, stops: [[6.5, 0], [7, 0.5], [20, 18]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [6.5, 0],
+                        [7, 0.5],
+                        [20, 18],
+                    ],
+                },
+            },
         },
         {
             id: 'bridge-motorway',
@@ -1462,16 +1628,19 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849334699.1902' },
             source: 'openmaptiles',
             'source-layer': 'transportation',
-            filter: [
-                'all',
-                ['==', 'brunnel', 'bridge'],
-                ['==', 'class', 'motorway']
-            ],
+            filter: ['all', ['==', 'brunnel', 'bridge'], ['==', 'class', 'motorway']],
             layout: { 'line-join': 'round' },
             paint: {
                 'line-color': '#fc8',
-                'line-width': { base: 1.2, stops: [[6.5, 0], [7, 0.5], [20, 18]] }
-            }
+                'line-width': {
+                    base: 1.2,
+                    stops: [
+                        [6.5, 0],
+                        [7, 0.5],
+                        [20, 18],
+                    ],
+                },
+            },
         },
         {
             id: 'bridge-railway',
@@ -1482,8 +1651,15 @@ export const LIGHT_THEME: any = {
             filter: ['all', ['==', 'brunnel', 'bridge'], ['==', 'class', 'rail']],
             paint: {
                 'line-color': '#bbb',
-                'line-width': { base: 1.4, stops: [[14, 0.4], [15, 0.75], [20, 2]] }
-            }
+                'line-width': {
+                    base: 1.4,
+                    stops: [
+                        [14, 0.4],
+                        [15, 0.75],
+                        [20, 2],
+                    ],
+                },
+            },
         },
         {
             id: 'bridge-railway-hatching',
@@ -1495,8 +1671,15 @@ export const LIGHT_THEME: any = {
             paint: {
                 'line-color': '#bbb',
                 'line-dasharray': [0.2, 8],
-                'line-width': { base: 1.4, stops: [[14.5, 0], [15, 3], [20, 8]] }
-            }
+                'line-width': {
+                    base: 1.4,
+                    stops: [
+                        [14.5, 0],
+                        [15, 3],
+                        [20, 8],
+                    ],
+                },
+            },
         },
         {
             id: 'cablecar',
@@ -1508,8 +1691,14 @@ export const LIGHT_THEME: any = {
             layout: { 'line-cap': 'round', visibility: 'visible' },
             paint: {
                 'line-color': 'hsl(0, 0%, 70%)',
-                'line-width': { base: 1, stops: [[11, 1], [19, 2.5]] }
-            }
+                'line-width': {
+                    base: 1,
+                    stops: [
+                        [11, 1],
+                        [19, 2.5],
+                    ],
+                },
+            },
         },
         {
             id: 'cablecar-dash',
@@ -1522,50 +1711,58 @@ export const LIGHT_THEME: any = {
             paint: {
                 'line-color': 'hsl(0, 0%, 70%)',
                 'line-dasharray': [2, 3],
-                'line-width': { base: 1, stops: [[11, 3], [19, 5.5]] }
-            }
+                'line-width': {
+                    base: 1,
+                    stops: [
+                        [11, 3],
+                        [19, 5.5],
+                    ],
+                },
+            },
         },
         {
             id: 'boundary-land-level-4',
             type: 'line',
             source: 'openmaptiles',
             'source-layer': 'boundary',
-            filter: [
-                'all',
-                ['>=', 'admin_level', 4],
-                ['<=', 'admin_level', 8],
-                ['!=', 'maritime', 1]
-            ],
+            filter: ['all', ['>=', 'admin_level', 4], ['<=', 'admin_level', 8], ['!=', 'maritime', 1]],
             layout: { 'line-join': 'round', visibility: 'visible' },
             paint: {
                 'line-color': '#9e9cab',
                 'line-dasharray': [3, 1, 1, 1],
-                'line-width': { base: 1.4, stops: [[4, 0.4], [5, 1], [12, 3]] }
-            }
+                'line-width': {
+                    base: 1.4,
+                    stops: [
+                        [4, 0.4],
+                        [5, 1],
+                        [12, 3],
+                    ],
+                },
+            },
         },
         {
             id: 'boundary-land-level-2',
             type: 'line',
             source: 'openmaptiles',
             'source-layer': 'boundary',
-            filter: [
-                'all',
-                ['==', 'admin_level', 2],
-                ['!=', 'maritime', 1],
-                ['!=', 'disputed', 1]
-            ],
+            filter: ['all', ['==', 'admin_level', 2], ['!=', 'maritime', 1], ['!=', 'disputed', 1]],
             layout: {
                 'line-cap': 'round',
                 'line-join': 'round',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'line-color': 'hsl(248, 7%, 66%)',
                 'line-width': {
                     base: 1,
-                    stops: [[0, 0.6], [4, 1.4], [5, 2], [12, 8]]
-                }
-            }
+                    stops: [
+                        [0, 0.6],
+                        [4, 1.4],
+                        [5, 2],
+                        [12, 8],
+                    ],
+                },
+            },
         },
         {
             id: 'boundary-land-disputed',
@@ -1576,16 +1773,21 @@ export const LIGHT_THEME: any = {
             layout: {
                 'line-cap': 'round',
                 'line-join': 'round',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'line-color': 'hsl(248, 7%, 70%)',
                 'line-dasharray': [1, 3],
                 'line-width': {
                     base: 1,
-                    stops: [[0, 0.6], [4, 1.4], [5, 2], [12, 8]]
-                }
-            }
+                    stops: [
+                        [0, 0.6],
+                        [4, 1.4],
+                        [5, 2],
+                        [12, 8],
+                    ],
+                },
+            },
         },
         {
             id: 'boundary-water',
@@ -1597,16 +1799,26 @@ export const LIGHT_THEME: any = {
             layout: {
                 'line-cap': 'round',
                 'line-join': 'round',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'line-color': 'rgba(154, 189, 214, 1)',
-                'line-opacity': { stops: [[6, 0.6], [10, 1]] },
+                'line-opacity': {
+                    stops: [
+                        [6, 0.6],
+                        [10, 1],
+                    ],
+                },
                 'line-width': {
                     base: 1,
-                    stops: [[0, 0.6], [4, 1.4], [5, 2], [12, 8]]
-                }
-            }
+                    stops: [
+                        [0, 0.6],
+                        [4, 1.4],
+                        [5, 2],
+                        [12, 8],
+                    ],
+                },
+            },
         },
         {
             id: 'waterway-name',
@@ -1623,13 +1835,13 @@ export const LIGHT_THEME: any = {
                 'text-letter-spacing': 0.2,
                 'text-max-width': 5,
                 'text-rotation-alignment': 'map',
-                'text-size': 14
+                'text-size': 14,
             },
             paint: {
                 'text-color': '#74aee9',
                 'text-halo-color': 'rgba(255,255,255,0.7)',
-                'text-halo-width': 1.5
-            }
+                'text-halo-width': 1.5,
+            },
         },
         {
             id: 'water-name-lakeline',
@@ -1645,13 +1857,13 @@ export const LIGHT_THEME: any = {
                 'text-letter-spacing': 0.2,
                 'text-max-width': 5,
                 'text-rotation-alignment': 'map',
-                'text-size': 14
+                'text-size': 14,
             },
             paint: {
                 'text-color': '#74aee9',
                 'text-halo-color': 'rgba(255,255,255,0.7)',
-                'text-halo-width': 1.5
-            }
+                'text-halo-width': 1.5,
+            },
         },
         {
             id: 'water-name-ocean',
@@ -1667,13 +1879,13 @@ export const LIGHT_THEME: any = {
                 'text-letter-spacing': 0.2,
                 'text-max-width': 5,
                 'text-rotation-alignment': 'map',
-                'text-size': 14
+                'text-size': 14,
             },
             paint: {
                 'text-color': '#74aee9',
                 'text-halo-color': 'rgba(255,255,255,0.7)',
-                'text-halo-width': 1.5
-            }
+                'text-halo-width': 1.5,
+            },
         },
         {
             id: 'water-name-other',
@@ -1689,14 +1901,19 @@ export const LIGHT_THEME: any = {
                 'text-letter-spacing': 0.2,
                 'text-max-width': 5,
                 'text-rotation-alignment': 'map',
-                'text-size': { stops: [[0, 10], [6, 14]] },
-                visibility: 'visible'
+                'text-size': {
+                    stops: [
+                        [0, 10],
+                        [6, 14],
+                    ],
+                },
+                visibility: 'visible',
             },
             paint: {
                 'text-color': '#74aee9',
                 'text-halo-color': 'rgba(255,255,255,0.7)',
-                'text-halo-width': 1.5
-            }
+                'text-halo-width': 1.5,
+            },
         },
         {
             id: 'poi-level-3',
@@ -1704,12 +1921,7 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'poi',
             minzoom: 16,
-            filter: [
-                'all',
-                ['==', '$type', 'Point'],
-                ['>=', 'rank', 25],
-                ['any', ['!has', 'level'], ['==', 'level', 0]]
-            ],
+            filter: ['all', ['==', '$type', 'Point'], ['>=', 'rank', 25], ['any', ['!has', 'level'], ['==', 'level', 0]]],
             layout: {
                 'icon-image': '{class}_11',
                 'text-anchor': 'top',
@@ -1719,14 +1931,14 @@ export const LIGHT_THEME: any = {
                 'text-offset': [0, 0.6],
                 'text-padding': 2,
                 'text-size': 12,
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'text-color': '#666',
                 'text-halo-blur': 0.5,
                 'text-halo-color': '#ffffff',
-                'text-halo-width': 1
-            }
+                'text-halo-width': 1,
+            },
         },
         {
             id: 'poi-level-2',
@@ -1739,7 +1951,7 @@ export const LIGHT_THEME: any = {
                 ['==', '$type', 'Point'],
                 ['<=', 'rank', 24],
                 ['>=', 'rank', 15],
-                ['any', ['!has', 'level'], ['==', 'level', 0]]
+                ['any', ['!has', 'level'], ['==', 'level', 0]],
             ],
             layout: {
                 'icon-image': '{class}_11',
@@ -1750,14 +1962,14 @@ export const LIGHT_THEME: any = {
                 'text-offset': [0, 0.6],
                 'text-padding': 2,
                 'text-size': 12,
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'text-color': '#666',
                 'text-halo-blur': 0.5,
                 'text-halo-color': '#ffffff',
-                'text-halo-width': 1
-            }
+                'text-halo-width': 1,
+            },
         },
         {
             id: 'poi-level-1',
@@ -1765,13 +1977,7 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'poi',
             minzoom: 14,
-            filter: [
-                'all',
-                ['==', '$type', 'Point'],
-                ['<=', 'rank', 14],
-                ['has', 'name'],
-                ['any', ['!has', 'level'], ['==', 'level', 0]]
-            ],
+            filter: ['all', ['==', '$type', 'Point'], ['<=', 'rank', 14], ['has', 'name'], ['any', ['!has', 'level'], ['==', 'level', 0]]],
             layout: {
                 'icon-image': '{class}_11',
                 'text-anchor': 'top',
@@ -1781,14 +1987,14 @@ export const LIGHT_THEME: any = {
                 'text-offset': [0, 0.6],
                 'text-padding': 2,
                 'text-size': 12,
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'text-color': '#666',
                 'text-halo-blur': 0.5,
                 'text-halo-color': '#ffffff',
-                'text-halo-width': 1
-            }
+                'text-halo-width': 1,
+            },
         },
         {
             id: 'poi-railway',
@@ -1796,13 +2002,7 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'poi',
             minzoom: 13,
-            filter: [
-                'all',
-                ['==', '$type', 'Point'],
-                ['has', 'name'],
-                ['==', 'class', 'railway'],
-                ['==', 'subclass', 'station']
-            ],
+            filter: ['all', ['==', '$type', 'Point'], ['has', 'name'], ['==', 'class', 'railway'], ['==', 'subclass', 'station']],
             layout: {
                 'icon-allow-overlap': false,
                 'icon-ignore-placement': false,
@@ -1817,14 +2017,14 @@ export const LIGHT_THEME: any = {
                 'text-offset': [0, 0.6],
                 'text-optional': true,
                 'text-padding': 2,
-                'text-size': 12
+                'text-size': 12,
             },
             paint: {
                 'text-color': '#666',
                 'text-halo-blur': 0.5,
                 'text-halo-color': '#ffffff',
-                'text-halo-width': 1
-            }
+                'text-halo-width': 1,
+            },
         },
         {
             id: 'road_oneway',
@@ -1835,28 +2035,23 @@ export const LIGHT_THEME: any = {
             filter: [
                 'all',
                 ['==', 'oneway', 1],
-                [
-                    'in',
-                    'class',
-                    'motorway',
-                    'trunk',
-                    'primary',
-                    'secondary',
-                    'tertiary',
-                    'minor',
-                    'service'
-                ]
+                ['in', 'class', 'motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'minor', 'service'],
             ],
             layout: {
                 'icon-image': 'oneway',
                 'icon-padding': 2,
                 'icon-rotate': 90,
                 'icon-rotation-alignment': 'map',
-                'icon-size': { stops: [[15, 0.5], [19, 1]] },
+                'icon-size': {
+                    stops: [
+                        [15, 0.5],
+                        [19, 1],
+                    ],
+                },
                 'symbol-placement': 'line',
-                'symbol-spacing': 75
+                'symbol-spacing': 75,
             },
-            paint: { 'icon-opacity': 0.5 }
+            paint: { 'icon-opacity': 0.5 },
         },
         {
             id: 'road_oneway_opposite',
@@ -1867,28 +2062,23 @@ export const LIGHT_THEME: any = {
             filter: [
                 'all',
                 ['==', 'oneway', -1],
-                [
-                    'in',
-                    'class',
-                    'motorway',
-                    'trunk',
-                    'primary',
-                    'secondary',
-                    'tertiary',
-                    'minor',
-                    'service'
-                ]
+                ['in', 'class', 'motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'minor', 'service'],
             ],
             layout: {
                 'icon-image': 'oneway',
                 'icon-padding': 2,
                 'icon-rotate': -90,
                 'icon-rotation-alignment': 'map',
-                'icon-size': { stops: [[15, 0.5], [19, 1]] },
+                'icon-size': {
+                    stops: [
+                        [15, 0.5],
+                        [19, 1],
+                    ],
+                },
                 'symbol-placement': 'line',
-                'symbol-spacing': 75
+                'symbol-spacing': 75,
             },
-            paint: { 'icon-opacity': 0.5 }
+            paint: { 'icon-opacity': 0.5 },
         },
         {
             id: 'highway-name-path',
@@ -1902,13 +2092,19 @@ export const LIGHT_THEME: any = {
                 'text-field': '{name:latin} {name:nonlatin}',
                 'text-font': ['Noto Sans Regular'],
                 'text-rotation-alignment': 'map',
-                'text-size': { base: 1, stops: [[13, 12], [14, 13]] }
+                'text-size': {
+                    base: 1,
+                    stops: [
+                        [13, 12],
+                        [14, 13],
+                    ],
+                },
             },
             paint: {
                 'text-color': 'hsl(30, 23%, 62%)',
                 'text-halo-color': '#f8f4f0',
-                'text-halo-width': 0.5
-            }
+                'text-halo-width': 0.5,
+            },
         },
         {
             id: 'highway-name-minor',
@@ -1916,23 +2112,25 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'transportation_name',
             minzoom: 15,
-            filter: [
-                'all',
-                ['==', '$type', 'LineString'],
-                ['in', 'class', 'minor', 'service', 'track']
-            ],
+            filter: ['all', ['==', '$type', 'LineString'], ['in', 'class', 'minor', 'service', 'track']],
             layout: {
                 'symbol-placement': 'line',
                 'text-field': '{name:latin} {name:nonlatin}',
                 'text-font': ['Noto Sans Regular'],
                 'text-rotation-alignment': 'map',
-                'text-size': { base: 1, stops: [[13, 12], [14, 13]] }
+                'text-size': {
+                    base: 1,
+                    stops: [
+                        [13, 12],
+                        [14, 13],
+                    ],
+                },
             },
             paint: {
                 'text-color': '#765',
                 'text-halo-blur': 0.5,
-                'text-halo-width': 1
-            }
+                'text-halo-width': 1,
+            },
         },
         {
             id: 'highway-name-major',
@@ -1946,13 +2144,19 @@ export const LIGHT_THEME: any = {
                 'text-field': '{name:latin} {name:nonlatin}',
                 'text-font': ['Noto Sans Regular'],
                 'text-rotation-alignment': 'map',
-                'text-size': { base: 1, stops: [[13, 12], [14, 13]] }
+                'text-size': {
+                    base: 1,
+                    stops: [
+                        [13, 12],
+                        [14, 13],
+                    ],
+                },
             },
             paint: {
                 'text-color': '#765',
                 'text-halo-blur': 0.5,
-                'text-halo-width': 1
-            }
+                'text-halo-width': 1,
+            },
         },
         {
             id: 'highway-shield',
@@ -1964,20 +2168,26 @@ export const LIGHT_THEME: any = {
                 'all',
                 ['<=', 'ref_length', 6],
                 ['==', '$type', 'LineString'],
-                ['!in', 'network', 'us-interstate', 'us-highway', 'us-state']
+                ['!in', 'network', 'us-interstate', 'us-highway', 'us-state'],
             ],
             layout: {
                 'icon-image': 'road_{ref_length}',
                 'icon-rotation-alignment': 'viewport',
                 'icon-size': 1,
-                'symbol-placement': { base: 1, stops: [[10, 'point'], [11, 'line']] },
+                'symbol-placement': {
+                    base: 1,
+                    stops: [
+                        [10, 'point'],
+                        [11, 'line'],
+                    ],
+                },
                 'symbol-spacing': 200,
                 'text-field': '{ref}',
                 'text-font': ['Noto Sans Regular'],
                 'text-rotation-alignment': 'viewport',
-                'text-size': 10
+                'text-size': 10,
             },
-            paint: {}
+            paint: {},
         },
         {
             id: 'highway-shield-us-interstate',
@@ -1985,27 +2195,26 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'transportation_name',
             minzoom: 7,
-            filter: [
-                'all',
-                ['<=', 'ref_length', 6],
-                ['==', '$type', 'LineString'],
-                ['in', 'network', 'us-interstate']
-            ],
+            filter: ['all', ['<=', 'ref_length', 6], ['==', '$type', 'LineString'], ['in', 'network', 'us-interstate']],
             layout: {
                 'icon-image': '{network}_{ref_length}',
                 'icon-rotation-alignment': 'viewport',
                 'icon-size': 1,
                 'symbol-placement': {
                     base: 1,
-                    stops: [[7, 'point'], [7, 'line'], [8, 'line']]
+                    stops: [
+                        [7, 'point'],
+                        [7, 'line'],
+                        [8, 'line'],
+                    ],
                 },
                 'symbol-spacing': 200,
                 'text-field': '{ref}',
                 'text-font': ['Noto Sans Regular'],
                 'text-rotation-alignment': 'viewport',
-                'text-size': 10
+                'text-size': 10,
             },
-            paint: { 'text-color': 'rgba(0, 0, 0, 1)' }
+            paint: { 'text-color': 'rgba(0, 0, 0, 1)' },
         },
         {
             id: 'highway-shield-us-other',
@@ -2013,24 +2222,25 @@ export const LIGHT_THEME: any = {
             source: 'openmaptiles',
             'source-layer': 'transportation_name',
             minzoom: 9,
-            filter: [
-                'all',
-                ['<=', 'ref_length', 6],
-                ['==', '$type', 'LineString'],
-                ['in', 'network', 'us-highway', 'us-state']
-            ],
+            filter: ['all', ['<=', 'ref_length', 6], ['==', '$type', 'LineString'], ['in', 'network', 'us-highway', 'us-state']],
             layout: {
                 'icon-image': '{network}_{ref_length}',
                 'icon-rotation-alignment': 'viewport',
                 'icon-size': 1,
-                'symbol-placement': { base: 1, stops: [[10, 'point'], [11, 'line']] },
+                'symbol-placement': {
+                    base: 1,
+                    stops: [
+                        [10, 'point'],
+                        [11, 'line'],
+                    ],
+                },
                 'symbol-spacing': 200,
                 'text-field': '{ref}',
                 'text-font': ['Noto Sans Regular'],
                 'text-rotation-alignment': 'viewport',
-                'text-size': 10
+                'text-size': 10,
             },
-            paint: { 'text-color': 'rgba(0, 0, 0, 1)' }
+            paint: { 'text-color': 'rgba(0, 0, 0, 1)' },
         },
         {
             id: 'airport-label-major',
@@ -2050,14 +2260,14 @@ export const LIGHT_THEME: any = {
                 'text-optional': true,
                 'text-padding': 2,
                 'text-size': 12,
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'text-color': '#666',
                 'text-halo-blur': 0.5,
                 'text-halo-color': '#ffffff',
-                'text-halo-width': 1
-            }
+                'text-halo-width': 1,
+            },
         },
         {
             id: 'place-other',
@@ -2065,29 +2275,27 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849242106.713' },
             source: 'openmaptiles',
             'source-layer': 'place',
-            filter: [
-                '!in',
-                'class',
-                'city',
-                'town',
-                'village',
-                'country',
-                'continent'
-            ],
+            filter: ['!in', 'class', 'city', 'town', 'village', 'country', 'continent'],
             layout: {
                 'text-field': '{name:latin}\n{name:nonlatin}',
                 'text-font': ['Noto Sans Bold'],
                 'text-letter-spacing': 0.1,
                 'text-max-width': 9,
-                'text-size': { base: 1.2, stops: [[12, 10], [15, 14]] },
+                'text-size': {
+                    base: 1.2,
+                    stops: [
+                        [12, 10],
+                        [15, 14],
+                    ],
+                },
                 'text-transform': 'uppercase',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'text-color': '#633',
                 'text-halo-color': 'rgba(255,255,255,0.8)',
-                'text-halo-width': 1.2
-            }
+                'text-halo-width': 1.2,
+            },
         },
         {
             id: 'place-village',
@@ -2100,14 +2308,20 @@ export const LIGHT_THEME: any = {
                 'text-field': '{name:latin}\n{name:nonlatin}',
                 'text-font': ['Noto Sans Regular'],
                 'text-max-width': 8,
-                'text-size': { base: 1.2, stops: [[10, 12], [15, 22]] },
-                visibility: 'visible'
+                'text-size': {
+                    base: 1.2,
+                    stops: [
+                        [10, 12],
+                        [15, 22],
+                    ],
+                },
+                visibility: 'visible',
             },
             paint: {
                 'text-color': '#333',
                 'text-halo-color': 'rgba(255,255,255,0.8)',
-                'text-halo-width': 1.2
-            }
+                'text-halo-width': 1.2,
+            },
         },
         {
             id: 'place-town',
@@ -2120,14 +2334,20 @@ export const LIGHT_THEME: any = {
                 'text-field': '{name:latin}\n{name:nonlatin}',
                 'text-font': ['Noto Sans Regular'],
                 'text-max-width': 8,
-                'text-size': { base: 1.2, stops: [[10, 14], [15, 24]] },
-                visibility: 'visible'
+                'text-size': {
+                    base: 1.2,
+                    stops: [
+                        [10, 14],
+                        [15, 24],
+                    ],
+                },
+                visibility: 'visible',
             },
             paint: {
                 'text-color': '#333',
                 'text-halo-color': 'rgba(255,255,255,0.8)',
-                'text-halo-width': 1.2
-            }
+                'text-halo-width': 1.2,
+            },
         },
         {
             id: 'place-city',
@@ -2140,14 +2360,20 @@ export const LIGHT_THEME: any = {
                 'text-field': '{name:latin}\n{name:nonlatin}',
                 'text-font': ['Noto Sans Regular'],
                 'text-max-width': 8,
-                'text-size': { base: 1.2, stops: [[7, 14], [11, 24]] },
-                visibility: 'visible'
+                'text-size': {
+                    base: 1.2,
+                    stops: [
+                        [7, 14],
+                        [11, 24],
+                    ],
+                },
+                visibility: 'visible',
             },
             paint: {
                 'text-color': '#333',
                 'text-halo-color': 'rgba(255,255,255,0.8)',
-                'text-halo-width': 1.2
-            }
+                'text-halo-width': 1.2,
+            },
         },
         {
             id: 'place-city-capital',
@@ -2164,14 +2390,20 @@ export const LIGHT_THEME: any = {
                 'text-font': ['Noto Sans Regular'],
                 'text-max-width': 8,
                 'text-offset': [0.4, 0],
-                'text-size': { base: 1.2, stops: [[7, 14], [11, 24]] },
-                visibility: 'visible'
+                'text-size': {
+                    base: 1.2,
+                    stops: [
+                        [7, 14],
+                        [11, 24],
+                    ],
+                },
+                visibility: 'visible',
             },
             paint: {
                 'text-color': '#333',
                 'text-halo-color': 'rgba(255,255,255,0.8)',
-                'text-halo-width': 1.2
-            }
+                'text-halo-width': 1.2,
+            },
         },
         {
             id: 'place-country-other',
@@ -2179,26 +2411,26 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849242106.713' },
             source: 'openmaptiles',
             'source-layer': 'place',
-            filter: [
-                'all',
-                ['==', 'class', 'country'],
-                ['>=', 'rank', 3],
-                ['!has', 'iso_a2']
-            ],
+            filter: ['all', ['==', 'class', 'country'], ['>=', 'rank', 3], ['!has', 'iso_a2']],
             layout: {
                 'text-field': '{name:latin}',
                 'text-font': ['Noto Sans Italic'],
                 'text-max-width': 6.25,
-                'text-size': { stops: [[3, 11], [7, 17]] },
+                'text-size': {
+                    stops: [
+                        [3, 11],
+                        [7, 17],
+                    ],
+                },
                 'text-transform': 'uppercase',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'text-color': '#334',
                 'text-halo-blur': 1,
                 'text-halo-color': 'rgba(255,255,255,0.8)',
-                'text-halo-width': 2
-            }
+                'text-halo-width': 2,
+            },
         },
         {
             id: 'place-country-3',
@@ -2206,26 +2438,26 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849242106.713' },
             source: 'openmaptiles',
             'source-layer': 'place',
-            filter: [
-                'all',
-                ['==', 'class', 'country'],
-                ['>=', 'rank', 3],
-                ['has', 'iso_a2']
-            ],
+            filter: ['all', ['==', 'class', 'country'], ['>=', 'rank', 3], ['has', 'iso_a2']],
             layout: {
                 'text-field': '{name:latin}',
                 'text-font': ['Noto Sans Bold'],
                 'text-max-width': 6.25,
-                'text-size': { stops: [[3, 11], [7, 17]] },
+                'text-size': {
+                    stops: [
+                        [3, 11],
+                        [7, 17],
+                    ],
+                },
                 'text-transform': 'uppercase',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'text-color': '#334',
                 'text-halo-blur': 1,
                 'text-halo-color': 'rgba(255,255,255,0.8)',
-                'text-halo-width': 2
-            }
+                'text-halo-width': 2,
+            },
         },
         {
             id: 'place-country-2',
@@ -2233,26 +2465,26 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849242106.713' },
             source: 'openmaptiles',
             'source-layer': 'place',
-            filter: [
-                'all',
-                ['==', 'class', 'country'],
-                ['==', 'rank', 2],
-                ['has', 'iso_a2']
-            ],
+            filter: ['all', ['==', 'class', 'country'], ['==', 'rank', 2], ['has', 'iso_a2']],
             layout: {
                 'text-field': '{name:latin}',
                 'text-font': ['Noto Sans Bold'],
                 'text-max-width': 6.25,
-                'text-size': { stops: [[2, 11], [5, 17]] },
+                'text-size': {
+                    stops: [
+                        [2, 11],
+                        [5, 17],
+                    ],
+                },
                 'text-transform': 'uppercase',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'text-color': '#334',
                 'text-halo-blur': 1,
                 'text-halo-color': 'rgba(255,255,255,0.8)',
-                'text-halo-width': 2
-            }
+                'text-halo-width': 2,
+            },
         },
         {
             id: 'place-country-1',
@@ -2260,26 +2492,26 @@ export const LIGHT_THEME: any = {
             metadata: { 'mapbox:group': '1444849242106.713' },
             source: 'openmaptiles',
             'source-layer': 'place',
-            filter: [
-                'all',
-                ['==', 'class', 'country'],
-                ['==', 'rank', 1],
-                ['has', 'iso_a2']
-            ],
+            filter: ['all', ['==', 'class', 'country'], ['==', 'rank', 1], ['has', 'iso_a2']],
             layout: {
                 'text-field': '{name:latin}',
                 'text-font': ['Noto Sans Bold'],
                 'text-max-width': 6.25,
-                'text-size': { stops: [[1, 11], [4, 17]] },
+                'text-size': {
+                    stops: [
+                        [1, 11],
+                        [4, 17],
+                    ],
+                },
                 'text-transform': 'uppercase',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'text-color': '#334',
                 'text-halo-blur': 1,
                 'text-halo-color': 'rgba(255,255,255,0.8)',
-                'text-halo-width': 2
-            }
+                'text-halo-width': 2,
+            },
         },
         {
             id: 'place-continent',
@@ -2295,15 +2527,15 @@ export const LIGHT_THEME: any = {
                 'text-max-width': 6.25,
                 'text-size': 14,
                 'text-transform': 'uppercase',
-                visibility: 'visible'
+                visibility: 'visible',
             },
             paint: {
                 'text-color': '#334',
                 'text-halo-blur': 1,
                 'text-halo-color': 'rgba(255,255,255,0.8)',
-                'text-halo-width': 2
-            }
-        }
+                'text-halo-width': 2,
+            },
+        },
     ],
-    id: 'bright'
-}
+    id: 'bright',
+};
