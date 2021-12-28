@@ -20,7 +20,7 @@ jobs:
         with:
           fetch-depth: 200
       - name: Setup Node
-        uses: actions/setup-node@v2.5.0
+        uses: actions/setup-node@v2.5.1
         with:
           node-version: ${{ matrix.node }}
       - name: Update NPM
@@ -61,7 +61,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Setup Node
-        uses: actions/setup-node@v2.5.0
+        uses: actions/setup-node@v2.5.1
         with:
           node-version: '14'
       - name: Setup Cache
@@ -113,7 +113,7 @@ jobs:
         with:
           fetch-depth: 200
       - name: Setup Node
-        uses: actions/setup-node@v2.5.0
+        uses: actions/setup-node@v2.5.1
         with:
           node-version: ${{ matrix.node }}
       - name: Get npm cache directory
