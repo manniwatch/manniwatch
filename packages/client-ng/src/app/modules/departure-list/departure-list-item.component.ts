@@ -54,6 +54,9 @@ export class DepartureListItemComponent {
     }
 
     public get statusIcon(): string {
+        if (this.mDeparture == undefined) {
+            return 'question_mark';
+        }
         switch (this.mDeparture.status) {
             case VEHICLE_STATUS.PREDICTED:
                 return 'directions_bus';
@@ -73,7 +76,7 @@ export class DepartureListItemComponent {
      * @returns vehicle status {@VEHICLE_STATUS}
      */
     public get status(): VEHICLE_STATUS {
-        return this.mDeparture.status;
+        return this.mDeparture?.status;
     }
 
     public convertTime(departure: IDeparture): string {
