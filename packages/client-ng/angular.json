@@ -103,7 +103,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "manniwatch:build"
+            "browserTarget": "manniwatch:build",
+            "proxyConfig": "./proxy.conf.json"
           },
           "configurations": {
             "olvector": {
