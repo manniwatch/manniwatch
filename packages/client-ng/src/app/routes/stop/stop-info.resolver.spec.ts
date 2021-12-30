@@ -3,10 +3,7 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { IStopPassage } from '@manniwatch/api-types';
-import { defer, EMPTY, Observable, of } from 'rxjs';
 import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 import { RunHelpers, TestScheduler } from 'rxjs/testing';
 import { ApiService } from 'src/app/services';
@@ -15,7 +12,6 @@ import { StopInfoResolver } from './stop-info.resolver';
 describe('src/app/routes/stop/stop-info-resolver', (): void => {
     describe('StopInfoResolver', (): void => {
         let resolver: StopInfoResolver;
-        let routerSpy: jasmine.SpyObj<Router>;
         let apiSpyObj: jasmine.SpyObj<ApiService>;
         beforeEach((): void => {
             apiSpyObj = jasmine.createSpyObj(ApiService, ['getStopPassages']);

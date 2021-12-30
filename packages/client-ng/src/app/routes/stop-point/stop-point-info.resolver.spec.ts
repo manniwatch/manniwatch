@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { Router } from '@angular/router';
 import { IStopPassage } from '@manniwatch/api-types';
 import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 import { RunHelpers, TestScheduler } from 'rxjs/testing';
@@ -13,7 +12,6 @@ import { StopPointInfoResolver } from './stop-point-info.resolver';
 describe('src/app/routes/stop/stop-info-resolver', (): void => {
     describe('StopPointInfoResolver', (): void => {
         let resolver: StopPointInfoResolver;
-        let routerSpy: jasmine.SpyObj<Router>;
         let apiSpyObj: jasmine.SpyObj<ApiService>;
         beforeEach((): void => {
             apiSpyObj = jasmine.createSpyObj(ApiService, ['getStopPointPassages']);
