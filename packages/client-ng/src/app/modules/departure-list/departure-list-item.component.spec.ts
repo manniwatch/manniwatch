@@ -5,6 +5,7 @@
 
 import { Component, Directive, Input } from '@angular/core';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { IDeparture, VEHICLE_STATUS } from '@manniwatch/api-types';
 import * as dateFns from 'date-fns';
 import { DepartureListItemComponent } from './departure-list-item.component';
 
@@ -32,6 +33,20 @@ export class TestRouterLinkDirective {
 
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
+
+interface IStatusTest {
+    status: VEHICLE_STATUS;
+    icon: string;
+}
+
+const STATUS_TEST_CASES: IStatusTest[] = [
+    { icon: 'directions_bus', status: VEHICLE_STATUS.PREDICTED },
+    { icon: 'directions_bus', status: VEHICLE_STATUS.DEPARTED },
+    { icon: 'departure_board', status: VEHICLE_STATUS.STOPPING },
+    { icon: 'query_builder', status: VEHICLE_STATUS.PLANNED },
+    { icon: 'query_builder', status: undefined },
+];
+
 describe('src/app/modules/stop/departure-list-item.component', (): void => {
     describe('DepartureListItemComponent', (): void => {
         beforeEach(
@@ -113,6 +128,29 @@ describe('src/app/modules/stop/departure-list-item.component', (): void => {
                             (cmp as any).mDelay = value;
                             expect(cmp.delay).toEqual(value);
                         });
+                    });
+                });
+            });
+            describe('statusIcon', (): void => {
+                STATUS_TEST_CASES.forEach((item): void => {
+                    it(`should return ${item.icon} for VEHICLE_STATUS.${item.status || 'UNKNOWN'}`, (): void => {
+                        cmp.departure = {
+                            status: item.status,
+                        } as IDeparture;
+                        expect(cmp.statusIcon).toEqual(item.icon);
+                    });
+                });
+                it(`should return 'question_mark' if no departure is set`, (): void => {
+                    expect(cmp.statusIcon).toEqual('question_mark');
+                });
+            });
+            describe('status', (): void => {
+                STATUS_TEST_CASES.forEach((item): void => {
+                    it(`should return ${item.status}`, (): void => {
+                        cmp.departure = {
+                            status: item.status,
+                        } as IDeparture;
+                        expect(cmp.status).toEqual(item.status);
                     });
                 });
             });
