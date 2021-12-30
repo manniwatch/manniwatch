@@ -23,6 +23,6 @@ export class StopInfoResolver extends RetryResolver<IStopPassage> {
 
     public createLoader(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IStopPassage> {
         console.log(route.params);
-        return this.api.getStopPassages(route.params.stopIda as string)
+        return this.api.getStopPassages(route.params.stopIda as string);
     }
 }

@@ -59,17 +59,17 @@ export interface IConfirmationDialogSettings {
     providedIn: 'root',
 })
 export class AppDialogService {
-    public constructor(public readonly dialog: MatDialog) { }
+    public constructor(public readonly dialog: MatDialog) {}
 
     public getRetryDialog(cfg: IConfirmationDialogSettings): Observable<boolean> {
-        return this.getConfirmation(cfg, RetryDialogComponent)
-            .pipe(defaultIfEmpty(false));
+        return this.getConfirmation(cfg, RetryDialogComponent).pipe(defaultIfEmpty(false));
     }
 
-    public getConfirmation<T, D = any, R extends any = boolean>(cfg: D, cmp: ComponentType<T>): Observable<R> {
-        return this.dialog.open<T, D, R>(cmp, {
-            data: cfg,
-        }).afterClosed();
+    public getConfirmation<T, D = any, R = boolean>(cfg: D, cmp: ComponentType<T>): Observable<R> {
+        return this.dialog
+            .open<T, D, R>(cmp, {
+                data: cfg,
+            })
+            .afterClosed();
     }
-
 }

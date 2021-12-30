@@ -4,22 +4,19 @@
  */
 
 import { HttpErrorResponse } from '@angular/common/http';
-import { waitForAsync, TestBed } from '@angular/core/testing';
-import { } from '@angular/material/dialog';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
-import { defer, EMPTY, from, iif, mergeMap, Observable, of, } from 'rxjs';
+import { defer, EMPTY, Observable, of } from 'rxjs';
 import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 import { RunHelpers, TestScheduler } from 'rxjs/testing';
 import { AppDialogService } from '../services';
 import { RetryResolver } from './retry-resolver';
 
-class TestRetryResolver extends RetryResolver<string>{
+class TestRetryResolver extends RetryResolver<string> {
     public createLoader(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<string> {
         return undefined;
     }
-
 }
-const TEST_ID: string = 'test_id';
+const TEST_ID = 'test_id';
 describe('src/app/util/retry-resolver', (): void => {
     describe('RetryResolver', (): void => {
         let resolver: TestRetryResolver;
@@ -66,7 +63,11 @@ describe('src/app/util/retry-resolver', (): void => {
                     const e1subs = '  ^!';
                     const expected = '-#';
 
-                    expectObservable(resolver.resolve({ params: { stopId: TEST_ID } } as any, undefined)).toBe(expected, undefined, testError);
+                    expectObservable(resolver.resolve({ params: { stopId: TEST_ID } } as any, undefined)).toBe(
+                        expected,
+                        undefined,
+                        testError
+                    );
                     expectSubscriptions(e1.subscriptions).toBe(e1subs);
                 });
                 expect(dialogSpy.getRetryDialog.calls.count()).toEqual(0, 'No Dialog should be shown');
@@ -81,8 +82,8 @@ describe('src/app/util/retry-resolver', (): void => {
                 });
                 it('should navigate to 404 route on 404 status', (): void => {
                     const testError: HttpErrorResponse = new HttpErrorResponse({
-                        statusText: 'Test status',
                         status: 404,
+                        statusText: 'Test status',
                     });
                     routerSpy.navigate.and.resolveTo(true);
                     dialogSpy.getRetryDialog.and.returnValue(EMPTY);
@@ -102,8 +103,8 @@ describe('src/app/util/retry-resolver', (): void => {
                 });
                 it('should retry once and succeed', (): void => {
                     const testError: HttpErrorResponse = new HttpErrorResponse({
-                        statusText: 'Test status',
                         status: 500,
+                        statusText: 'Test status',
                     });
                     dialogSpy.getRetryDialog.and.returnValue(of(true));
                     testScheduler.run((helpers: RunHelpers) => {
@@ -111,12 +112,12 @@ describe('src/app/util/retry-resolver', (): void => {
                         const e1: ColdObservable<string> = cold(' -#', undefined, testError);
                         const e2: ColdObservable<string> = cold(' -a|');
                         createLoaderSpy.and.callFake((): Observable<string> => {
-                            let count: number = 0;
+                            let count = 0;
 
                             return defer(() => {
                                 count++;
                                 return count <= 1 ? e1 : e2;
-                            })
+                            });
                         });
                         const expected = '--a|';
 
@@ -129,8 +130,8 @@ describe('src/app/util/retry-resolver', (): void => {
                 });
                 it('should pass on original error if dialog is denied', (): void => {
                     const testError: HttpErrorResponse = new HttpErrorResponse({
-                        statusText: 'Test status',
                         status: 500,
+                        statusText: 'Test status',
                     });
                     dialogSpy.getRetryDialog.and.returnValue(of(false));
                     testScheduler.run((helpers: RunHelpers) => {
@@ -139,7 +140,11 @@ describe('src/app/util/retry-resolver', (): void => {
                         createLoaderSpy.and.callFake((): Observable<string> => e1);
                         const expected = '-#';
 
-                        expectObservable(resolver.resolve({ params: { stopId: TEST_ID } } as any, undefined)).toBe(expected, undefined, testError);
+                        expectObservable(resolver.resolve({ params: { stopId: TEST_ID } } as any, undefined)).toBe(
+                            expected,
+                            undefined,
+                            testError
+                        );
                         flush();
                         expectSubscriptions(e1.subscriptions).toBe('^!');
                     });

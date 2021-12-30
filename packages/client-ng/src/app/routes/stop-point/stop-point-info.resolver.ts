@@ -22,6 +22,6 @@ export class StopPointInfoResolver extends RetryResolver<IStopPassage> {
     }
 
     public createLoader(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IStopPassage> {
-        return this.api.getStopPointPassages(route.params.stopPointId as string)
+        return this.api.getStopPointPassages(route.params.stopPointId as string);
     }
 }
