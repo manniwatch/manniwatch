@@ -3,122 +3,76 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { waitForAsync, TestBed } from '@angular/core/testing';
-import { of, throwError, Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { TripInfoWithId } from '@manniwatch/client-types';
+import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
+import { RunHelpers, TestScheduler } from 'rxjs/testing';
 import { ApiService } from 'src/app/services';
 import { TripPassagesResolver } from './trip-passages.resolver';
-import { TripPassagesUtil } from './trip-util';
 
-describe('src/app/modules/trip-passages/trip-passages.resolver', (): void => {
+describe('src/app/routes/trip-passages/trip-passages.resolver', (): void => {
     describe('TripPassagesResolver', (): void => {
         let resolver: TripPassagesResolver;
-        const testId = '239jmcntest';
-        let convertResponseStub: jasmine.Spy<jasmine.Func>;
-        let handleErrorStub: jasmine.Spy<jasmine.Func>;
-        let convertResponseOperatorStub: jasmine.Spy<jasmine.Func>;
-        let handleErrorOperatorStub: jasmine.Spy<jasmine.Func>;
-        let getTripPassagesSpy: jasmine.Spy<jasmine.Func>;
-        let nextSpy: jasmine.Spy<jasmine.Func>;
-        beforeAll((): void => {
-            convertResponseStub = spyOn(TripPassagesUtil, 'convertResponse');
-            handleErrorStub = spyOn(TripPassagesUtil, 'handleError');
-            convertResponseOperatorStub = jasmine.createSpy('convertResponseOperator');
-            handleErrorOperatorStub = jasmine.createSpy('handleErrorOperator');
-            getTripPassagesSpy = jasmine.createSpy('getTripPassages');
-            nextSpy = jasmine.createSpy('onNext');
+        let apiSpyObj: jasmine.SpyObj<ApiService>;
+        const TEST_DATE: Date = new Date(2000, 10, 10);
+        beforeEach((): void => {
+            apiSpyObj = jasmine.createSpyObj(ApiService, ['getTripPassages']);
+            resolver = new TripPassagesResolver(apiSpyObj, undefined, undefined);
         });
-        beforeEach(
-            waitForAsync((): void => {
-                convertResponseStub.and.callFake(() => convertResponseOperatorStub);
-                handleErrorStub.and.callFake(() => handleErrorOperatorStub);
-                TestBed.configureTestingModule({
-                    providers: [
-                        TripPassagesResolver,
-                        {
-                            provide: ApiService,
-                            useValue: {
-                                getTripPassages: getTripPassagesSpy,
-                            },
-                        },
-                    ],
+
+        describe('createLoader(route, state)', (): void => {
+            let testScheduler: TestScheduler;
+            let jasmineClk: jasmine.Clock;
+            const expectedObservableResults: { [key: string]: object } = {
+                a: { failures: 0, status: 2, timestamp: TEST_DATE.getTime(), tripId: undefined, tripInfo: 'a' },
+                b: { failures: 0, status: 2, timestamp: TEST_DATE.getTime(), tripId: undefined, tripInfo: 'b' },
+                c: { failures: 0, status: 2, timestamp: TEST_DATE.getTime(), tripId: undefined, tripInfo: 'c' },
+            };
+            beforeEach((): void => {
+                jasmineClk = jasmine.clock().install();
+                jasmineClk.mockDate(TEST_DATE);
+                testScheduler = new TestScheduler((actual, expected) => {
+                    expect(actual).toEqual(expected);
                 });
-                resolver = TestBed.inject(TripPassagesResolver);
-            })
-        );
-
-        afterEach((): void => {
-            convertResponseStub.calls.reset();
-            handleErrorStub.calls.reset();
-            getTripPassagesSpy.calls.reset();
-            convertResponseOperatorStub.calls.reset();
-            handleErrorOperatorStub.calls.reset();
-            nextSpy.calls.reset();
-        });
-
-        describe('resolve(route, state)', (): void => {
-            const convertedResponse: any = {
-                converted: true,
-                type: 'response',
-            };
-            const errorResponse: any = {
-                converted: false,
-                type: 'error',
-            };
-
+            });
+            it('verify Clock mock is working', (): void => {
+                expect(Date.now()).toEqual(TEST_DATE.getTime());
+                jasmineClk.tick(50);
+                expect(Date.now()).toEqual(TEST_DATE.getTime() + 50);
+            });
             afterEach((): void => {
-                expect(convertResponseStub).toHaveBeenCalledTimes(1);
-                expect(handleErrorStub).toHaveBeenCalledTimes(1);
+                jasmineClk.uninstall();
             });
-            describe('getTripPassages() resolves', (): void => {
-                beforeEach((): void => {
-                    getTripPassagesSpy.and.callFake((...args: any[]): Observable<any> => of(args));
-                    handleErrorOperatorStub.and.callFake(catchError((): Observable<any> => of(errorResponse)));
-                    convertResponseOperatorStub.and.callFake(map((): any => convertedResponse));
+            it('should pass on api results correctly', (): void => {
+                testScheduler.run((helpers: RunHelpers) => {
+                    const { cold, expectObservable, expectSubscriptions } = helpers;
+                    const e1: ColdObservable<TripInfoWithId> = cold(' -a--b--c---|');
+                    const e1subs = '  ^----------!';
+                    const expected = '-a--b--c---|';
+                    apiSpyObj.getTripPassages.and.returnValue(e1);
+                    expectObservable(resolver.createLoader({ params: { tripId: 'testId' } } as any, undefined)).toBe(
+                        expected,
+                        expectedObservableResults
+                    );
+                    expectSubscriptions(e1.subscriptions).toBe(e1subs);
                 });
-                it('should construct the request correctly', (done: DoneFn): void => {
-                    resolver.resolve({ params: { tripId: testId } } as any).subscribe({
-                        complete: (): void => {
-                            expect(getTripPassagesSpy).toHaveBeenCalledTimes(1);
-                            expect(getTripPassagesSpy.calls.argsFor(0))
-                                .withContext('getTripPassages should be called with the provided tripId')
-                                .toEqual([testId]);
-                            expect(nextSpy).toHaveBeenCalledTimes(1);
-                            expect(nextSpy.calls.first().args[0]).toEqual(convertedResponse);
-                            expect(convertResponseOperatorStub).toHaveBeenCalledTimes(1);
-                            expect(handleErrorOperatorStub).toHaveBeenCalledTimes(1);
-                            expect(convertResponseOperatorStub).toHaveBeenCalledBefore(handleErrorOperatorStub);
-                            done();
-                        },
-                        error: done.fail,
-                        next: nextSpy,
-                    });
-                });
+                expect(apiSpyObj.getTripPassages.calls.count()).toEqual(1);
+                expect(apiSpyObj.getTripPassages.calls.first().args).toEqual(['testId']);
             });
-            describe('getTripPassages() rejects', (): void => {
-                beforeEach((): void => {
-                    getTripPassagesSpy.and.callFake((...args: any[]): Observable<any> => throwError(args));
-                    handleErrorOperatorStub.and.callFake(catchError((): Observable<any> => of(errorResponse)));
-                    convertResponseOperatorStub.and.callFake(map((): any => convertedResponse));
+            it('should pass on api errors correctly', (): void => {
+                testScheduler.run((helpers: RunHelpers) => {
+                    const { cold, expectObservable, expectSubscriptions } = helpers;
+                    const e1: ColdObservable<TripInfoWithId> = cold(' -a--#');
+                    const e1subs = '  ^---!';
+                    const expected = '-a--#';
+                    apiSpyObj.getTripPassages.and.returnValue(e1);
+                    expectObservable(resolver.createLoader({ params: { tripId: 'testId' } } as any, undefined)).toBe(
+                        expected,
+                        expectedObservableResults
+                    );
+                    expectSubscriptions(e1.subscriptions).toBe(e1subs);
                 });
-                it('should construct the request correctly', (done: DoneFn): void => {
-                    resolver.resolve({ params: { tripId: testId } } as any).subscribe({
-                        complete: (): void => {
-                            expect(getTripPassagesSpy).toHaveBeenCalledTimes(1);
-                            expect(getTripPassagesSpy.calls.argsFor(0))
-                                .withContext('getTripPassages should be called with the provided tripId')
-                                .toEqual([testId]);
-                            expect(nextSpy).toHaveBeenCalledTimes(1);
-                            expect(nextSpy.calls.first().args).toEqual([errorResponse]);
-                            expect(convertResponseOperatorStub).toHaveBeenCalledTimes(1);
-                            expect(handleErrorOperatorStub).toHaveBeenCalledTimes(1);
-                            expect(convertResponseOperatorStub).toHaveBeenCalledBefore(handleErrorOperatorStub);
-                            done();
-                        },
-                        error: done.fail,
-                        next: nextSpy,
-                    });
-                });
+                expect(apiSpyObj.getTripPassages.calls.count()).toEqual(1);
+                expect(apiSpyObj.getTripPassages.calls.first().args).toEqual(['testId']);
             });
         });
     });
