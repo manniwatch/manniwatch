@@ -9,10 +9,11 @@ import { RunHelpers, TestScheduler } from 'rxjs/testing';
 import { ApiService } from 'src/app/services';
 import { TripPassagesResolver } from './trip-passages.resolver';
 
-describe('src/app/routes/stop/stop-info-resolver', (): void => {
-    describe('StopInfoResolver', (): void => {
+describe('src/app/routes/trip-passages/trip-passages.resolver', (): void => {
+    describe('TripPassagesResolver', (): void => {
         let resolver: TripPassagesResolver;
         let apiSpyObj: jasmine.SpyObj<ApiService>;
+        const TEST_DATE: Date = new Date(2000, 10, 10);
         beforeEach((): void => {
             apiSpyObj = jasmine.createSpyObj(ApiService, ['getTripPassages']);
             resolver = new TripPassagesResolver(apiSpyObj, undefined, undefined);
@@ -22,18 +23,23 @@ describe('src/app/routes/stop/stop-info-resolver', (): void => {
             let testScheduler: TestScheduler;
             let jasmineClk: jasmine.Clock;
             const expectedObservableResults: { [key: string]: object } = {
-                a: { failures: 0, status: 2, timestamp: 973810800000, tripId: undefined, tripInfo: 'a' },
-                b: { failures: 0, status: 2, timestamp: 973810800000, tripId: undefined, tripInfo: 'b' },
-                c: { failures: 0, status: 2, timestamp: 973810800000, tripId: undefined, tripInfo: 'c' },
+                a: { failures: 0, status: 2, timestamp: TEST_DATE.getTime(), tripId: undefined, tripInfo: 'a' },
+                b: { failures: 0, status: 2, timestamp: TEST_DATE.getTime(), tripId: undefined, tripInfo: 'b' },
+                c: { failures: 0, status: 2, timestamp: TEST_DATE.getTime(), tripId: undefined, tripInfo: 'c' },
             };
             beforeEach((): void => {
                 jasmineClk = jasmine.clock().install();
-                jasmineClk.mockDate(new Date(2000, 10, 10));
+                jasmineClk.mockDate(TEST_DATE);
                 testScheduler = new TestScheduler((actual, expected) => {
                     expect(actual).toEqual(expected);
                 });
             });
-            afterEach(function () {
+            it('verify Clock mock is working', (): void => {
+                expect(Date.now()).toEqual(TEST_DATE.getTime());
+                jasmineClk.tick(50);
+                expect(Date.now()).toEqual(TEST_DATE.getTime() + 50);
+            });
+            afterEach((): void => {
                 jasmineClk.uninstall();
             });
             it('should pass on api results correctly', (): void => {
