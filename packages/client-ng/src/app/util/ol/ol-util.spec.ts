@@ -3,7 +3,8 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { OlUtil } from '.';
+import { fromLonLat } from 'ol/proj';
+import { OlUtil, TrapezeCoord } from '.';
 
 describe('util/ol/ol-util', (): void => {
     describe('OlUtil', (): void => {
@@ -15,6 +16,22 @@ describe('util/ol/ol-util', (): void => {
                         lon: 0,
                     })
                 ).toBeTruthy();
+            });
+            it('should throw an error if invalid coordinate format is provided', (): void => {
+                expect((): void => {
+                    OlUtil.convertArcMSToCoordinate({
+                        lat: 0,
+                        longitude: 0,
+                    } as any);
+                }).toThrowError('Invalid coordinates');
+            });
+            it('should convert coordinates with latitude and longitude properties', (): void => {
+                expect(
+                    OlUtil.convertArcMSToCoordinate({
+                        latitude: 3600000,
+                        longitude: 3600000,
+                    })
+                ).toEqual(fromLonLat([1, 1]));
             });
         });
         describe('createStyleByType(feature)', (): void => {
