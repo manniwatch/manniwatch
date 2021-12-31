@@ -43,3 +43,5 @@ flags:
   api-types:
     paths:
       - packages/api-types/
+fixes:
+  - "/home/runner/work/manniwatch/manniwatch::"
