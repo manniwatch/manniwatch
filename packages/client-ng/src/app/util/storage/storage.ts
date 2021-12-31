@@ -3,6 +3,9 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
+/**
+ * This interface mimics the Storage implemented in browsers
+ */
 export interface IStorage {
     readonly length: number;
     clear(): void;
