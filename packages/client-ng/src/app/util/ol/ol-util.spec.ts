@@ -17,5 +17,10 @@ describe('util/ol/ol-util', (): void => {
                 ).toBeTruthy();
             });
         });
+        describe('createStyleByType(feature)', (): void => {
+            it('should return same result for stopPoint and point', (): void => {
+                expect(OlUtil.createStyleByType('stopPoint')).toEqual(OlUtil.createStyleByType('stop'));
+            });
+        });
     });
 });
