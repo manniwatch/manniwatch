@@ -1,11 +1,11 @@
-import { LOCAL_STORAGE_FACTORY } from "./local-storage-factory";
-import { MapStorage } from "./map-storage";
-import { IStorage } from "./storage";
-
 /*
  * Package @manniwatch/client-ng
  * Source https://manniwatch.github.io/manniwatch/
  */
+
+import { LOCAL_STORAGE_FACTORY } from './local-storage-factory';
+import { MapStorage } from './map-storage';
+import { IStorage } from './storage';
 
 describe('./src/app/util/storage/local-storage-factory', (): void => {
     describe('LOCAL_STORAGE_FACTORY', (): void => {
