@@ -1,5 +1,5 @@
 @use 'sass:math';
-@import "./../../box-settings.scss";
+@import './../../box-settings.scss';
 $toppadding: 100px;
 :host > mat-nav-list {
     padding-top: 100px;

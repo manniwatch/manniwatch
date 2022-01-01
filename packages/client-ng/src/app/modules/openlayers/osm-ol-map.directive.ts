@@ -1,12 +1,9 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
-import {
-    Directive,
-    ElementRef,
-    NgZone,
-} from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, NgZone } from '@angular/core';
 import { Map, View } from 'ol';
 import { Coordinate } from 'ol/coordinate';
 import { defaults } from 'ol/interaction';
@@ -18,11 +15,8 @@ import { environment } from 'src/environments';
 import { BaseOlMapDirective } from './base-ol-map.directive';
 
 @Directive()
-export abstract class OsmOlMapDirective extends BaseOlMapDirective<OSM> {
-
-    constructor(elRef: ElementRef,
-        zone: NgZone,
-        settings: SettingsService) {
+export abstract class OsmOlMapDirective extends BaseOlMapDirective<OSM> implements AfterViewInit {
+    constructor(elRef: ElementRef, zone: NgZone, settings: SettingsService) {
         super(elRef, zone, settings);
     }
     public ngAfterViewInit(): void {
@@ -31,10 +25,8 @@ export abstract class OsmOlMapDirective extends BaseOlMapDirective<OSM> {
             this.mBackgroundMapLayer = this.createMapLayer();
             this.map = new Map({
                 interactions: defaults(),
-                layers: [
-                    this.mBackgroundMapLayer,
-                ],
-                target: this.elRef.nativeElement,
+                layers: [this.mBackgroundMapLayer],
+                target: this.elRef.nativeElement as HTMLElement,
                 view: new View({
                     // projection: 'EPSG:3857', // 'EPSG:4326',
                     center: this.settings.getInitialMapCenter(),
@@ -77,13 +69,14 @@ export abstract class OsmOlMapDirective extends BaseOlMapDirective<OSM> {
 
     /**
      * Selected theme
+     *
      * @param theme theme to set
      */
     public applyTheme(theme: Theme): void {
         NgZone.assertNotInAngularZone();
-        const mapProvider: any = environment.map.mapProvider;
+        const mapProvider = environment.map.mapProvider;
         if (mapProvider) {
-            if (mapProvider?.options_dark && theme === Theme.DARK) {
+            if ('options_dark' in mapProvider && theme === Theme.DARK) {
                 this.mBackgroundMapLayer.setSource(new OSM(mapProvider.options_dark));
             } else {
                 this.mBackgroundMapLayer.setSource(new OSM(mapProvider.options));
@@ -92,5 +85,6 @@ export abstract class OsmOlMapDirective extends BaseOlMapDirective<OSM> {
     }
 
     public applyVectorTheme(theme: Theme): void {
+        // Keep
     }
 }

@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Component } from '@angular/core';
@@ -13,7 +14,6 @@ import { Component } from '@angular/core';
  * Offers links to common entry points
  */
 export class NotFoundComponent {
-
     /**
      * List of entry points
      */
@@ -21,15 +21,16 @@ export class NotFoundComponent {
         icon: string;
         path: string;
         title: string;
-    }[] = [{
-        icon: 'home',
-        path: '/',
-        title: 'Home',
-    }, {
-        icon: 'place',
-        path: '/stops',
-        title: 'Stops',
-    }];
-    constructor() {
-    }
+    }[] = [
+        {
+            icon: 'home',
+            path: '/',
+            title: 'Home',
+        },
+        {
+            icon: 'place',
+            path: '/stops',
+            title: 'Stops',
+        },
+    ];
 }

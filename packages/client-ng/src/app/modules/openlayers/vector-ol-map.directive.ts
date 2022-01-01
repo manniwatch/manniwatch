@@ -1,12 +1,9 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
-import {
-    Directive,
-    ElementRef,
-    NgZone,
-} from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, NgZone } from '@angular/core';
 import { Map, View } from 'ol';
 import stylefunction from 'ol-mapbox-style/dist/stylefunction';
 import { Coordinate } from 'ol/coordinate';
@@ -22,11 +19,8 @@ import { BaseOlMapDirective } from './base-ol-map.directive';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 
 @Directive()
-export abstract class VectorOlMapDirective extends BaseOlMapDirective<VectorTile> {
-
-    constructor(elRef: ElementRef,
-        zone: NgZone,
-        settings: SettingsService) {
+export abstract class VectorOlMapDirective extends BaseOlMapDirective<VectorTile> implements AfterViewInit {
+    constructor(elRef: ElementRef, zone: NgZone, settings: SettingsService) {
         super(elRef, zone, settings);
     }
     public ngAfterViewInit(): void {
@@ -35,10 +29,8 @@ export abstract class VectorOlMapDirective extends BaseOlMapDirective<VectorTile
             this.mBackgroundMapLayer = this.createMapLayer();
             this.map = new Map({
                 interactions: defaults(),
-                layers: [
-                    this.mBackgroundMapLayer,
-                ],
-                target: this.elRef.nativeElement,
+                layers: [this.mBackgroundMapLayer],
+                target: this.elRef.nativeElement as HTMLElement,
                 view: new View({
                     // projection: 'EPSG:3857', // 'EPSG:4326',
                     center: this.settings.getInitialMapCenter(),
@@ -82,15 +74,14 @@ export abstract class VectorOlMapDirective extends BaseOlMapDirective<VectorTile
 
     /**
      * Selected theme
+     *
      * @param theme theme to set
      */
     public applyTheme(theme: Theme): void {
         NgZone.assertNotInAngularZone();
-        stylefunction(this.mBackgroundMapLayer,
-            theme === Theme.DARK ? DARK_THEME : LIGHT_THEME,
-            'openmaptiles');
+        stylefunction(this.mBackgroundMapLayer, theme === Theme.DARK ? DARK_THEME : LIGHT_THEME, 'openmaptiles');
     }
 
-    public applyVectorTheme(theme: Theme): void {
-    }
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    public applyVectorTheme(theme: Theme): void {}
 }

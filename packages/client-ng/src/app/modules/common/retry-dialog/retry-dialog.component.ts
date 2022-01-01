@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Component, Inject } from '@angular/core';
@@ -21,11 +22,11 @@ export interface IRetryDialogData {
 export class RetryDialogComponent {
     /**
      * Constructor
+     *
      * @param dialogRef Reference to the Dialog Component
      * @param data Additional data that can be provided to the Dialog
      */
-    constructor(public dialogRef: MatDialogRef<RetryDialogComponent, boolean>,
-        @Inject(MAT_DIALOG_DATA) public data: IRetryDialogData) { }
+    constructor(public dialogRef: MatDialogRef<RetryDialogComponent, boolean>, @Inject(MAT_DIALOG_DATA) public data: IRetryDialogData) {}
 
     /**
      * OnClick Event

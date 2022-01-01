@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Component } from '@angular/core';
@@ -17,20 +18,17 @@ import { ThemeSelectorComponent } from './theme-selector.component';
     selector: 'mat-selection-list',
     template: '<ng-content></ng-content>',
 })
-class TestMatSelectionListComponent {
-}
+class TestMatSelectionListComponent {}
 @Component({
     selector: 'mat-list-option',
     template: '<ng-content></ng-content>',
 })
-class TestMatListOptionComponent {
-}
+class TestMatListOptionComponent {}
 @Component({
     selector: 'mat-icon',
     template: '<ng-content></ng-content>',
 })
-class TestMatIconComponent {
-}
+class TestMatIconComponent {}
 
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
@@ -45,42 +43,40 @@ describe('src/routes/settings/theme-selector/theme-selector.component.ts', (): v
             setThemeSpy = jasmine.createSpy('setTheme');
             themeObservableSubscribeSpy = jasmine.createSpy('themeObservable.subscribe');
         });
-        beforeEach(waitForAsync((): void => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    ThemeSelectorComponent,
-                    TestMatSelectionListComponent,
-                    TestMatListOptionComponent,
-                    TestMatIconComponent,
-                ],
-                imports: [
-                    RouterTestingModule,
-                ],
-                providers: [
-                    {
-                        provide: SettingsService,
-                        useValue: {
-                            set theme(th: Theme) {
-                                setThemeSpy(th);
-                            },
-                            get themeObservable(): any {
-                                return themeObservableSubscribeSpy();
+        beforeEach(
+            waitForAsync((): void => {
+                TestBed.configureTestingModule({
+                    declarations: [ThemeSelectorComponent, TestMatSelectionListComponent, TestMatListOptionComponent, TestMatIconComponent],
+                    imports: [RouterTestingModule],
+                    providers: [
+                        {
+                            provide: SettingsService,
+                            useValue: {
+                                set theme(th: Theme) {
+                                    setThemeSpy(th);
+                                },
+                                get themeObservable(): any {
+                                    return themeObservableSubscribeSpy();
+                                },
                             },
                         },
-                    },
-                ],
-            }).compileComponents();
-            fixture = TestBed.createComponent(ThemeSelectorComponent);
-            app = fixture.debugElement.componentInstance;
-        }));
+                    ],
+                }).compileComponents();
+                fixture = TestBed.createComponent(ThemeSelectorComponent);
+                app = fixture.debugElement.componentInstance;
+            })
+        );
         afterEach((): void => {
             setThemeSpy.calls.reset();
             themeObservableSubscribeSpy.calls.reset();
         });
 
-        it('should create the app', waitForAsync((): void => {
-            expect(app).toBeTruthy();
-        }));
+        it(
+            'should create the app',
+            waitForAsync((): void => {
+                expect(app).toBeTruthy();
+            })
+        );
         describe('layout', (): void => {
             it('needs to be implemented');
         });
@@ -109,7 +105,9 @@ describe('src/routes/settings/theme-selector/theme-selector.component.ts', (): v
                     expect(themeObservableSubscribeSpy).toHaveBeenCalledTimes(0);
                     app.ngOnInit();
                     expect(themeObservableSubscribeSpy).toHaveBeenCalledTimes(1);
-                    expect(app.theme).withContext('Expected theme to be set to dark').toEqual(Theme.DARK as any);
+                    expect(app.theme)
+                        .withContext('Expected theme to be set to dark')
+                        .toEqual(Theme.DARK as any);
                 });
             });
             describe('ngOnDestroy', (): void => {

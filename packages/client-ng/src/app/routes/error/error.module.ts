@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { CommonModule } from '@angular/common';
@@ -12,19 +13,8 @@ import { ErrorRoutingModule } from './error-routing.module';
 import { NotFoundMessageSwitchComponent } from './not-found-msg-switch.component';
 import { NotFoundComponent } from './not-found.component';
 @NgModule({
-    declarations: [
-        NotFoundComponent,
-        CommonErrorComponent,
-        NotFoundMessageSwitchComponent,
-    ],
-    imports: [
-        ErrorRoutingModule,
-        CommonModule,
-        MatListModule,
-        MatIconModule,
-        MatDividerModule,
-    ],
-    providers: [
-    ],
+    declarations: [NotFoundComponent, CommonErrorComponent, NotFoundMessageSwitchComponent],
+    imports: [ErrorRoutingModule, CommonModule, MatListModule, MatIconModule, MatDividerModule],
+    providers: [],
 })
-export class ErrorModule { }
+export class ErrorModule {}

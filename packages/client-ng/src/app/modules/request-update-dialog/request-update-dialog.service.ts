@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Injectable } from '@angular/core';
@@ -13,7 +14,6 @@ export enum SW_STATUS {
 }
 @Injectable()
 export class RequestUpdateDialogService {
-
     public readonly statusObservable: Observable<SW_STATUS>;
     private readonly statusSubject: BehaviorSubject<SW_STATUS>;
     constructor(public swService: SwUpdate) {
@@ -23,9 +23,11 @@ export class RequestUpdateDialogService {
             this.statusSubject.next(SW_STATUS.NO_SERVICE_WORKER);
             return;
         }
-        this.swService.checkForUpdate().then((): void => {
-            this.statusSubject.next(SW_STATUS.UPDATE_AVAILABLE);
-        })
+        this.swService
+            .checkForUpdate()
+            .then((): void => {
+                this.statusSubject.next(SW_STATUS.UPDATE_AVAILABLE);
+            })
             .catch((err: any): void => {
                 this.statusSubject.next(SW_STATUS.UNKNOWN_ERROR);
             });

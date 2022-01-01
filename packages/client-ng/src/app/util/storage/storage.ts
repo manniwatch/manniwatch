@@ -1,7 +1,11 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
+/**
+ * This interface mimics the Storage implemented in browsers
+ */
 export interface IStorage {
     readonly length: number;
     clear(): void;

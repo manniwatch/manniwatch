@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Component } from '@angular/core';
@@ -11,6 +12,4 @@ import { Component } from '@angular/core';
 /**
  * Common Error component
  */
-export class CommonErrorComponent {
-
-}
+export class CommonErrorComponent {}

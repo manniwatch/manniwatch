@@ -17,7 +17,7 @@ jobs:
         with:
           fetch-depth: 200
       - name: Setup Node
-        uses: actions/setup-node@v2.5.0
+        uses: actions/setup-node@v2.5.1
         with:
           node-version: ${{ matrix.node }}
       - name: Update NPM
@@ -64,7 +64,7 @@ jobs:
         with:
           fetch-depth: 200
       - name: Setup Node
-        uses: actions/setup-node@v2.5.0
+        uses: actions/setup-node@v2.5.1
         with:
           node-version: ${{ matrix.node }}
       - name: Update NPM
@@ -94,16 +94,11 @@ jobs:
           path: ./packages
       - name: Run Test
         run: npx lerna run test:coverage
-      - name: Retrieve Codecov Flag Name
-        id: "flagname"
-        run: |
-          FLAGNAME=$(echo "${{ matrix.package.name }}" | sed -n -e 's/^.*\///p')
-          echo "::set-output name=flagname::${FLAGNAME}"
       - name: Upload coverage to Codecov Monorepo
         uses: codecov/codecov-action@v2.1.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          flags: ${{ steps.flagname.outputs.flagname }}
+          flags: unit_test
           directory: ${{ matrix.package.location }}
           name: Test
           fail_ci_if_error: false
@@ -124,7 +119,7 @@ jobs:
         with:
           fetch-depth: 200
       - name: Setup Node
-        uses: actions/setup-node@v2.5.0
+        uses: actions/setup-node@v2.5.1
         with:
           node-version: ${{ matrix.node }}
       - name: Update NPM
@@ -170,7 +165,7 @@ jobs:
         with:
           fetch-depth: 200
       - name: Setup Node
-        uses: actions/setup-node@v2.5.0
+        uses: actions/setup-node@v2.5.1
         with:
           node-version: ${{ matrix.node }}
       - name: Update NPM

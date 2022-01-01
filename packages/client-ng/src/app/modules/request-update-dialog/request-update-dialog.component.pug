@@ -9,4 +9,4 @@ mat-dialog-content([ngSwitch]="status")
     p(*ngSwitchDefault,i18n="no update|indicates that no update is available@@no_update_available") No Update available!
 mat-dialog-actions
     button(mat-button,mat-dialog-close) Close
-    button(mat-button,color="primary",*ngIf="status=='update_available'") Update
+    button(mat-button,color="primary",*ngIf="status==='update_available'") Update

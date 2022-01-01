@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { CommonModule } from '@angular/common';
@@ -9,21 +10,9 @@ import { MatListModule } from '@angular/material/list';
 import { RouteListComponent } from './route-list.component';
 
 @NgModule({
-    declarations: [
-        RouteListComponent,
-    ],
-    exports: [
-        CommonModule,
-        MatDividerModule,
-        MatListModule,
-        RouteListComponent,
-    ],
-    imports: [
-        CommonModule,
-        MatDividerModule,
-        MatListModule,
-    ],
-    providers: [
-    ],
+    declarations: [RouteListComponent],
+    exports: [CommonModule, MatDividerModule, MatListModule, RouteListComponent],
+    imports: [CommonModule, MatDividerModule, MatListModule],
+    providers: [],
 })
-export class RouteListModule { }
+export class RouteListModule {}

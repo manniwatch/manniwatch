@@ -1,12 +1,9 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
-import {
-    IStopLocation,
-    IStopPointLocation,
-    IVehicleLocation,
-} from '@manniwatch/api-types';
+import { IStopLocation, IStopPointLocation, IVehicleLocation } from '@manniwatch/api-types';
 
 export interface ITimestampVehicleLocation {
     /**

@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -13,29 +14,24 @@ import { SettingsService, Theme } from 'src/app/services';
     templateUrl: './theme-selector.component.html',
 })
 export class ThemeSelectorComponent implements OnInit, OnDestroy {
-
     public theme: Theme;
     private themeSubscription: Subscription;
-    public constructor(public settingsService: SettingsService) {
-
-    }
+    public constructor(public settingsService: SettingsService) {}
     public selectTheme(theme: Theme): void {
         this.settingsService.theme = theme;
     }
 
     public onSelectionChange(change: MatSelectionListChange): void {
-        const value: Theme = change.options[0].value;
+        const value: Theme = change.options[0].value as Theme;
         this.settingsService.theme = value;
     }
 
     public ngOnInit(): void {
-        this.themeSubscription = this.settingsService
-            .themeObservable
-            .subscribe({
-                next: (theme: Theme): void => {
-                    this.theme = theme;
-                },
-            });
+        this.themeSubscription = this.settingsService.themeObservable.subscribe({
+            next: (theme: Theme): void => {
+                this.theme = theme;
+            },
+        });
     }
 
     public ngOnDestroy(): void {

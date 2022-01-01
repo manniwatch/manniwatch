@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { createVehicleDiff, IVehicleDiff } from './vehicle.service';
@@ -9,7 +10,7 @@ describe('src/app/services/vehicle.service.ts', (): void => {
         describe('oldVehicles is undefined', (): void => {
             // tslint:disable-next-line:no-null-keyword
             [undefined, null].forEach((testValue: any): void => {
-                it(`should pass on new vehicles if olds are ${testValue}`, (): void => {
+                it(`should pass on new vehicles if olds are ${testValue as string}`, (): void => {
                     const newVehicles: any[] = [
                         {
                             id: '1',

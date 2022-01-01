@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { CommonModule } from '@angular/common';
@@ -12,20 +13,8 @@ import { DepartureListItemComponent } from './departure-list-item.component';
 import { DepartureListComponent } from './departure-list.component';
 
 @NgModule({
-    declarations: [
-        DepartureListComponent,
-        DepartureListItemComponent,
-    ],
-    exports: [
-        DepartureListComponent,
-        DepartureListItemComponent,
-    ],
-    imports: [
-        CommonModule,
-        MatIconModule,
-        MatListModule,
-        MatProgressSpinnerModule,
-        RouterModule,
-    ],
+    declarations: [DepartureListComponent, DepartureListItemComponent],
+    exports: [DepartureListComponent, DepartureListItemComponent],
+    imports: [CommonModule, MatIconModule, MatListModule, MatProgressSpinnerModule, RouterModule],
 })
-export class DepartureListModule { }
+export class DepartureListModule {}

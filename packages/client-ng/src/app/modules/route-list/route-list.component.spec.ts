@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Component } from '@angular/core';
@@ -15,22 +16,19 @@ import { RouteListComponent } from './route-list.component';
     selector: 'mat-divider',
     template: '<div></div>',
 })
-export class TestMatDividerComponent {
-}
+export class TestMatDividerComponent {}
 
 @Component({
     selector: 'mat-list-item',
     template: '<div></div>',
 })
-export class TestMatListItemComponent {
-}
+export class TestMatListItemComponent {}
 
 @Component({
     selector: 'mat-list',
     template: '<div></div>',
 })
-export class TestMatListComponent {
-}
+export class TestMatListComponent {}
 
 @Component({
     template: '<app-route-list [routes]="testData"></app-route-list>',
@@ -43,22 +41,21 @@ export class TestParentComponent {
 
 describe('src/modules/stop/route-list.component.ts', (): void => {
     describe('RouteListComponent', (): void => {
-        beforeEach(waitForAsync((): void => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    RouteListComponent,
-                    TestMatDividerComponent,
-                    TestMatListItemComponent,
-                    TestMatListComponent,
-                    TestParentComponent,
-                ],
-                imports: [
-                    RouterTestingModule,
-                ],
-                providers: [
-                ],
-            }).compileComponents();
-        }));
+        beforeEach(
+            waitForAsync((): void => {
+                TestBed.configureTestingModule({
+                    declarations: [
+                        RouteListComponent,
+                        TestMatDividerComponent,
+                        TestMatListItemComponent,
+                        TestMatListComponent,
+                        TestParentComponent,
+                    ],
+                    imports: [RouterTestingModule],
+                    providers: [],
+                }).compileComponents();
+            })
+        );
 
         beforeEach((): void => {
             // testUploadDataService.
@@ -79,29 +76,20 @@ describe('src/modules/stop/route-list.component.ts', (): void => {
             describe('test the "routes" input', (): void => {
                 const testItem: any[] = [
                     {
-                        directions: [
-                            'test direction 1',
-                            'test direction 2',
-                        ],
+                        directions: ['test direction 1', 'test direction 2'],
                         shortName: '123',
                     },
                     {
-                        directions: [
-                            'other test direction 1',
-                            'other test direction 2',
-                        ],
+                        directions: ['other test direction 1', 'other test direction 2'],
                         shortName: '421',
                     },
                 ];
                 it('should set the testitem correctly as the input element', (): void => {
                     component.testData = testItem;
                     fixture.detectChanges();
-                    expect(routeListCmp.routes)
-                        .toEqual(testItem);
+                    expect(routeListCmp.routes).toEqual(testItem);
                 });
             });
         });
-        beforeAll((): void => { });
-        afterEach((): void => { });
     });
 });

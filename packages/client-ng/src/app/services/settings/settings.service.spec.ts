@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
@@ -20,31 +21,29 @@ describe('src/app/services/settings.service', (): void => {
         beforeAll((): void => {
             getSettingsSpy = jasmine.createSpy();
         });
-        beforeEach(waitForAsync((): void => {
-            storageSpy = jasmine.createSpyObj<IStorage>('StorageSpy', [
-                'getItem', 'setItem', 'removeItem',
-            ]);
-            TestBed.configureTestingModule({
-                imports: [
-                    HttpClientTestingModule,
-                ],
-                providers: [
-                    SettingsService,
-                    {
-                        provide: ApiService,
-                        useValue: {
-                            getSettings: getSettingsSpy,
+        beforeEach(
+            waitForAsync((): void => {
+                storageSpy = jasmine.createSpyObj<IStorage>('StorageSpy', ['getItem', 'setItem', 'removeItem']);
+                TestBed.configureTestingModule({
+                    imports: [HttpClientTestingModule],
+                    providers: [
+                        SettingsService,
+                        {
+                            provide: ApiService,
+                            useValue: {
+                                getSettings: getSettingsSpy,
+                            },
                         },
-                    },
-                    {
-                        provide: LOCAL_STORAGE_TOKEN,
-                        useValue: storageSpy,
-                    },
-                ],
-            });
-            settingsService = TestBed.inject(SettingsService);
-            httpMock = TestBed.inject(HttpTestingController);
-        }));
+                        {
+                            provide: LOCAL_STORAGE_TOKEN,
+                            useValue: storageSpy,
+                        },
+                    ],
+                });
+                settingsService = TestBed.inject(SettingsService);
+                httpMock = TestBed.inject(HttpTestingController);
+            })
+        );
 
         afterEach((): void => {
             getSettingsSpy.calls.reset();
@@ -118,7 +117,6 @@ describe('src/app/services/settings.service', (): void => {
         });
         describe('load()', (): void => {
             it('should store a successful response', (done: DoneFn): void => {
-
                 const mockResponse: object = {
                     completed: false,
                     id: 2,
@@ -130,26 +128,24 @@ describe('src/app/services/settings.service', (): void => {
                     done();
                 });
 
-                const mockRequest: TestRequest = httpMock.expectOne(
-                    environment.configUrl || '/config/config.json',
-                );
+                const mockRequest: TestRequest = httpMock.expectOne(environment.configUrl || '/config/config.json');
                 mockRequest.flush(mockResponse);
             });
             it('should not set unsuccessful response', (done: DoneFn): void => {
-
                 expect(settingsService.baseConfig).toBeUndefined();
                 settingsService.load().subscribe((): void => {
                     expect(settingsService.baseConfig).toEqual({});
                     done();
                 });
 
-                const mockRequest: TestRequest = httpMock.expectOne(
-                    environment.configUrl || '/config/config.json',
+                const mockRequest: TestRequest = httpMock.expectOne(environment.configUrl || '/config/config.json');
+                mockRequest.flush(
+                    {},
+                    {
+                        status: 404,
+                        statusText: 'Not found',
+                    }
                 );
-                mockRequest.flush({}, {
-                    status: 404,
-                    statusText: 'Not found',
-                });
             });
         });
     });

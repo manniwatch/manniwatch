@@ -1,95 +1,55 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { waitForAsync, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
-import { from, throwError, Observable } from 'rxjs';
+import { IStopPassage } from '@manniwatch/api-types';
+import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
+import { RunHelpers, TestScheduler } from 'rxjs/testing';
 import { ApiService } from 'src/app/services';
 import { StopInfoResolver } from './stop-info.resolver';
-// import sinon from "sinon";
 
-describe('src/app/modules/stop/stop-info.resolver', (): void => {
+describe('src/app/routes/stop/stop-info-resolver', (): void => {
     describe('StopInfoResolver', (): void => {
         let resolver: StopInfoResolver;
-        let getSpy: jasmine.Spy<jasmine.Func>;
-        let nextSpy: jasmine.Spy<jasmine.Func>;
-        let navigateSpy: jasmine.Spy<jasmine.Func>;
-        const testId: string = '239jmcntest';
-        beforeAll((): void => {
-            getSpy = jasmine.createSpy();
-            navigateSpy = jasmine.createSpy();
-            nextSpy = jasmine.createSpy();
-        });
-        beforeEach(waitForAsync((): void => {
-            TestBed.configureTestingModule({
-                providers: [StopInfoResolver,
-                    {
-                        provide: ApiService,
-                        useValue: {
-                            getStopPassages: getSpy,
-                        },
-                    }, {
-                        provide: Router,
-                        useValue: {
-                            navigate: navigateSpy,
-                        },
-                    }],
-            });
-            resolver = TestBed.inject(StopInfoResolver);
-        }));
-
-        afterEach((): void => {
-            getSpy.calls.reset();
-            nextSpy.calls.reset();
-            navigateSpy.calls.reset();
+        let apiSpyObj: jasmine.SpyObj<ApiService>;
+        beforeEach((): void => {
+            apiSpyObj = jasmine.createSpyObj(ApiService, ['getStopPassages']);
+            resolver = new StopInfoResolver(apiSpyObj, undefined, undefined);
         });
 
-        describe('resolve(route, state)', (): void => {
-            describe('should succeed', (): void => {
-                beforeEach((): void => {
-                    getSpy.and.callFake((...args: any[]): Observable<any> =>
-                        from([args]));
-                });
-                it('should construct the request correctly', (done: DoneFn): void => {
-                    resolver.resolve({ params: { stopId: testId } } as any, undefined).subscribe(nextSpy, done.fail, done);
-                });
-                afterEach((): void => {
-                    expect(nextSpy.calls.count()).toEqual(1);
-                    expect(nextSpy.calls.first().args[0] as any)
-                        .toEqual([testId]);
-                    expect(navigateSpy.calls.count()).toEqual(0);
+        describe('createLoader(route, state)', (): void => {
+            let testScheduler: TestScheduler;
+            beforeEach((): void => {
+                testScheduler = new TestScheduler((actual, expected) => {
+                    expect(actual).toEqual(expected);
                 });
             });
-            describe('should not navigate for generic error', (): void => {
-                const testError: Error = new Error('test error');
-                beforeEach((): void => {
-                    getSpy.and.callFake((...args: any[]): Observable<any> =>
-                        throwError(testError));
+            it('should pass on api results correctly', (): void => {
+                testScheduler.run((helpers: RunHelpers) => {
+                    const { cold, expectObservable, expectSubscriptions } = helpers;
+                    const e1: ColdObservable<IStopPassage> = cold(' -a--b--c---|');
+                    const e1subs = '  ^----------!';
+                    const expected = '-a--b--c---|';
+                    apiSpyObj.getStopPassages.and.returnValue(e1);
+                    expectObservable(resolver.createLoader({ params: { stopId: 'testId' } } as any, undefined)).toBe(expected);
+                    expectSubscriptions(e1.subscriptions).toBe(e1subs);
                 });
-                it('should construct the request correctly', (done: DoneFn): void => {
-                    resolver.resolve({ params: { tripId: testId } } as any, undefined).subscribe(nextSpy, done.fail, done);
-                });
-                afterEach((): void => {
-                    expect(nextSpy.calls.count()).toEqual(0);
-                    expect(navigateSpy.calls.count()).toEqual(0);
-                });
+                expect(apiSpyObj.getStopPassages.calls.count()).toEqual(1);
+                expect(apiSpyObj.getStopPassages.calls.first().args).toEqual(['testId']);
             });
-            describe('should navigate for 404 error', (): void => {
-                const testError: any = {
-                    status: 404,
-                };
-                beforeEach((): void => {
-                    getSpy.and.callFake((...args: any[]): Observable<any> =>
-                        throwError(testError));
+            it('should pass on api errors correctly', (): void => {
+                testScheduler.run((helpers: RunHelpers) => {
+                    const { cold, expectObservable, expectSubscriptions } = helpers;
+                    const e1: ColdObservable<IStopPassage> = cold(' -a--#');
+                    const e1subs = '  ^---!';
+                    const expected = '-a--#';
+                    apiSpyObj.getStopPassages.and.returnValue(e1);
+                    expectObservable(resolver.createLoader({ params: { stopId: 'testId' } } as any, undefined)).toBe(expected);
+                    expectSubscriptions(e1.subscriptions).toBe(e1subs);
                 });
-                it('should construct the request correctly', (done: DoneFn): void => {
-                    resolver.resolve({ params: { tripId: testId } } as any, undefined).subscribe(nextSpy, done.fail, done);
-                });
-                afterEach((): void => {
-                    expect(nextSpy.calls.count()).toEqual(0);
-                    expect(navigateSpy.calls.count()).toEqual(1);
-                });
+                expect(apiSpyObj.getStopPassages.calls.count()).toEqual(1);
+                expect(apiSpyObj.getStopPassages.calls.first().args).toEqual(['testId']);
             });
         });
     });

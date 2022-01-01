@@ -1,42 +1,42 @@
-@use '~@angular/material' as mat;
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
 
 @import 'src/themes.scss';
 
 mat-icon[matListIcon]::after {
-    content:"directions_bus"
+    content: 'directions_bus';
 }
 :host-context(.departed) {
-    a{
-        opacity:0.75 !important;
-        background-color: rgba(0,0,0,0.1);
+    a {
+        opacity: 0.75 !important;
+        background-color: rgba(0, 0, 0, 0.1);
     }
     mat-icon[matListIcon]::after {
-        content:"transfer_within_a_station"
+        content: 'transfer_within_a_station';
     }
 }
 
 :host-context(.stopping) {
-    a{
-        background-color: rgba(0,255,0,0.1);
+    a {
+        background-color: rgba(0, 255, 0, 0.1);
     }
     mat-icon[matListIcon]::after {
-        content:"place"
+        content: 'place';
     }
 }
 
 $config: mat.define-typography-config();
-h4.title{
+h4.title {
     font-size: 16px !important;
     font-family: mat.font-family($config);
     font-weight: 700 !important;
     opacity: 0.87;
     // color:green;
 }
-p.subtitle{
+p.subtitle {
     font-size: 12px !important;
     font-family: mat.font-family($config);
-    line-height:20px;
+    line-height: 20px;
     font-weight: 600 !important;
     opacity: 0.6;
     // color:red;

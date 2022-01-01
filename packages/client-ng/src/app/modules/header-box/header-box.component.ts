@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
@@ -11,7 +12,6 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     templateUrl: './header-box.component.html',
 })
 export class HeaderBoxComponent {
-
     @Input()
     public lastUpdate: Date = undefined;
 

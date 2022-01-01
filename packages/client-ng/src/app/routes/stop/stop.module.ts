@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { CommonModule } from '@angular/common';
@@ -17,9 +18,7 @@ import { StopInfoComponent } from './stop-info.component';
 import { StopInfoResolver } from './stop-info.resolver';
 import { StopRoutingModule } from './stop-routing.module';
 @NgModule({
-    declarations: [
-        StopInfoComponent,
-    ],
+    declarations: [StopInfoComponent],
     imports: [
         CommonModule,
         MatIconModule,
@@ -33,8 +32,6 @@ import { StopRoutingModule } from './stop-routing.module';
         OlStaticMapModule,
         RouteListModule,
     ],
-    providers: [
-        StopInfoResolver,
-    ],
+    providers: [StopInfoResolver],
 })
-export class StopModule { }
+export class StopModule {}

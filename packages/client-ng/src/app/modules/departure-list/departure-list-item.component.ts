@@ -1,20 +1,11 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
-import {
-    ChangeDetectionStrategy,
-    Component,
-    Input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { IDeparture, VEHICLE_STATUS } from '@manniwatch/api-types';
-import {
-    add,
-    differenceInMinutes,
-    format,
-    formatDistanceToNow,
-    parse,
-} from 'date-fns';
+import { add, differenceInMinutes, format, formatDistanceToNow, parse } from 'date-fns';
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-departure-list-item',
@@ -22,7 +13,6 @@ import {
     templateUrl: './departure-list-item.component.html',
 })
 export class DepartureListItemComponent {
-
     /**
      * Object holding the current departure
      * Can be undefined
@@ -36,13 +26,14 @@ export class DepartureListItemComponent {
     /**
      * The time of arrival
      */
-    private mTime: string = '';
+    private mTime = '';
 
     /**
      * Sets the departure
+     *
      * @param deps The departures
      */
-    @Input('departure')
+    @Input()
     public set departure(deps: IDeparture) {
         this.mDeparture = deps;
         this.mDelay = this.calculateDelay(deps);
@@ -51,6 +42,7 @@ export class DepartureListItemComponent {
 
     /**
      * gets the departure
+     *
      * @returns the departure or undefined
      */
     public get departure(): IDeparture {
@@ -62,6 +54,9 @@ export class DepartureListItemComponent {
     }
 
     public get statusIcon(): string {
+        if (this.mDeparture == undefined) {
+            return 'question_mark';
+        }
         switch (this.mDeparture.status) {
             case VEHICLE_STATUS.PREDICTED:
                 return 'directions_bus';
@@ -77,10 +72,11 @@ export class DepartureListItemComponent {
 
     /**
      * Returns the DepartureStatus
+     *
      * @returns vehicle status {@VEHICLE_STATUS}
      */
     public get status(): VEHICLE_STATUS {
-        return this.mDeparture.status;
+        return this.mDeparture?.status;
     }
 
     public convertTime(departure: IDeparture): string {
@@ -99,6 +95,7 @@ export class DepartureListItemComponent {
 
     /**
      * Returns the delay
+     *
      * @returns false or an integer except 0
      */
     public get delay(): boolean | number {
@@ -107,6 +104,7 @@ export class DepartureListItemComponent {
 
     /**
      * Calculates the delay
+     *
      * @param data a number except 0 or false
      */
     public calculateDelay(data: IDeparture): false | number {
@@ -117,7 +115,7 @@ export class DepartureListItemComponent {
                 let diffMinutes: number = differenceInMinutes(actual, planned);
                 if (diffMinutes > 60 * 12) {
                     diffMinutes -= 60 * 24;
-                } else if (diffMinutes < - 60 * 12) {
+                } else if (diffMinutes < -60 * 12) {
                     diffMinutes += 60 * 24;
                 }
                 return diffMinutes;
@@ -125,5 +123,4 @@ export class DepartureListItemComponent {
         }
         return false;
     }
-
 }

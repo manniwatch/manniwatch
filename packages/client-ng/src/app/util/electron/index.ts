@@ -1,6 +1,8 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
+
 import { ApiService, IElectronInterface, IEnvironmentBase } from '@manniwatch/client-types';
 
 declare global {
@@ -12,15 +14,20 @@ declare global {
     }
 }
 export const isManniwatchDesktop = (): boolean => {
-    return (window &&
+    return (
+        window &&
         'electron' in window &&
-        'manniwatch' in (window as any).electron);
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
+        'manniwatch' in window.electron
+    );
 };
 
 export const getManniwatchDesktopApi = (): ApiService => {
-    return (window as any).electron.manniwatch.api;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return window.electron.manniwatch.api;
 };
 
 export const getManniwatchDesktopEnvironment = (): IEnvironmentBase => {
-    return window?.electron?.manniwatch?.environment || {} as any;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
+    return window?.electron?.manniwatch?.environment || ({} as IEnvironmentBase);
 };

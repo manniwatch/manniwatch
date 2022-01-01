@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Component } from '@angular/core';
@@ -14,8 +15,7 @@ import { CommonErrorComponent } from './common-error.component';
     selector: 'mat-icon',
     template: '<div></div>',
 })
-class TestMatIconComponent {
-}
+class TestMatIconComponent {}
 
 // tslint:enable:component-selector
 // tslint:enable:directive-selector
@@ -24,23 +24,23 @@ describe('src/modules/error/common.component.ts', (): void => {
     describe('CommonComponent', (): void => {
         let cmpFixture: ComponentFixture<CommonErrorComponent>;
         let cmp: CommonErrorComponent;
-        beforeEach(waitForAsync((): void => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    CommonErrorComponent,
-                    TestMatIconComponent,
-                ],
-                imports: [
-                    RouterTestingModule,
-                ],
-                providers: [],
-            }).compileComponents();
-            cmpFixture = TestBed.createComponent(CommonErrorComponent);
-            cmp = cmpFixture.debugElement.componentInstance;
-        }));
+        beforeEach(
+            waitForAsync((): void => {
+                TestBed.configureTestingModule({
+                    declarations: [CommonErrorComponent, TestMatIconComponent],
+                    imports: [RouterTestingModule],
+                    providers: [],
+                }).compileComponents();
+                cmpFixture = TestBed.createComponent(CommonErrorComponent);
+                cmp = cmpFixture.debugElement.componentInstance as CommonErrorComponent;
+            })
+        );
 
-        it('should create the app', waitForAsync((): void => {
-            expect(cmp).toBeTruthy();
-        }));
+        it(
+            'should create the app',
+            waitForAsync((): void => {
+                expect(cmp).toBeTruthy();
+            })
+        );
     });
 });

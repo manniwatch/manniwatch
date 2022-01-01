@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Component, VERSION } from '@angular/core';
@@ -14,10 +15,7 @@ import { SidebarService } from './sidebar.service';
     templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent {
-    public constructor(private sidebarService: SidebarService,
-        public dialog: MatDialog) {
-
-    }
+    public constructor(private sidebarService: SidebarService, public dialog: MatDialog) {}
 
     public closeSidebar(): void {
         this.sidebarService.closeSidebar();
@@ -29,6 +27,7 @@ export class SidebarComponent {
 
     /**
      * The app version found inside the package
+     *
      * @returns the package version
      */
     public get appVersion(): string {
@@ -37,6 +36,7 @@ export class SidebarComponent {
 
     /**
      * The @angular/core version used
+     *
      * @returns Version
      */
     public get angularVersion(): string {

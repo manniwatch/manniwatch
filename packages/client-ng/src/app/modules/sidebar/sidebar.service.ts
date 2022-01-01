@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Injectable } from '@angular/core';
@@ -8,15 +9,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class SidebarService {
-
     public get sidebarOpen(): boolean {
         return this.mSidebarStatusSubject.value;
     }
     public get sidebarObservable(): Observable<boolean> {
         return this.mSidebarStatusSubject.asObservable();
     }
-    private mSidebarStatusSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
-    public constructor() { }
+    private mSidebarStatusSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
     public toggleSidebar(): void {
         this.mSidebarStatusSubject.next(!this.mSidebarStatusSubject.getValue());
@@ -29,5 +28,4 @@ export class SidebarService {
     public closeSidebar(): void {
         this.mSidebarStatusSubject.next(false);
     }
-
 }

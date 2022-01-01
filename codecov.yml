@@ -3,10 +3,45 @@ comment:
 coverage:
   status:
     project:
+      api-client:
+        paths:
+          - packages/api-client/*
+      api-proxy-router:
+        paths:
+          - packages/api-proxy-router/*
+      api-proxy-server:
+        paths:
+          - packages/api-proxy-server/*
       api-types:
         paths:
           - packages/api-types/*
+      client-desktop:
+        paths:
+          - packages/client-desktop/*
+      client-ng:
+        paths:
+          - packages/client-ng/*
+      client-types:
+        paths:
+          - packages/client-types/*
+      pb-converter:
+        paths:
+          - packages/pb-converter/*
+      pb-types:
+        paths:
+          - packages/pb-types/*
+      schemas:
+        paths:
+          - packages/schemas/*
+      vehicle-cache:
+        paths:
+          - packages/vehicle-cache/*
+      vehicle-location-diff:
+        paths:
+          - packages/vehicle-location-diff/*
 flags:
   api-types:
     paths:
       - packages/api-types/
+fixes:
+  - "/home/runner/work/manniwatch/manniwatch::"

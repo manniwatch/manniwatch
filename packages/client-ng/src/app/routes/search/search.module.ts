@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { CommonModule } from '@angular/common';
@@ -10,17 +11,8 @@ import { SearchResultResolver } from './search-result.resolver';
 import { SearchRoutingModule } from './search-routing.module';
 import { SearchComponent } from './search.component';
 @NgModule({
-    declarations: [
-        SearchComponent,
-    ],
-    imports: [
-        CommonModule,
-        SearchRoutingModule,
-        MatIconModule,
-        MatListModule,
-    ],
-    providers: [
-        SearchResultResolver,
-    ],
+    declarations: [SearchComponent],
+    imports: [CommonModule, SearchRoutingModule, MatIconModule, MatListModule],
+    providers: [SearchResultResolver],
 })
-export class SearchModule { }
+export class SearchModule {}

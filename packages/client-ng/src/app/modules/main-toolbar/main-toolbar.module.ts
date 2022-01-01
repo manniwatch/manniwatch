@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { CommonModule } from '@angular/common';
@@ -18,11 +19,7 @@ import { RouteLoadingIndicatorComponent } from './route-loading-indicator.compon
 import { ToolbarSearchBoxComponent } from './search-box.component';
 
 @NgModule({
-    declarations: [
-        MainToolbarComponent,
-        ToolbarSearchBoxComponent,
-        RouteLoadingIndicatorComponent,
-    ],
+    declarations: [MainToolbarComponent, ToolbarSearchBoxComponent, RouteLoadingIndicatorComponent],
     exports: [
         MainToolbarComponent,
         CommonModule,
@@ -52,7 +49,6 @@ import { ToolbarSearchBoxComponent } from './search-box.component';
         RouterModule,
         MatProgressBarModule,
     ],
-    providers: [
-    ],
+    providers: [],
 })
-export class MainToolbarModule { }
+export class MainToolbarModule {}

@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { NgModule } from '@angular/core';
@@ -19,11 +20,7 @@ const tripPassagesRoute: Routes = [
 ];
 
 @NgModule({
-    exports: [
-        RouterModule,
-    ],
-    imports: [
-        RouterModule.forChild(tripPassagesRoute),
-    ],
+    exports: [RouterModule],
+    imports: [RouterModule.forChild(tripPassagesRoute)],
 })
-export class SearchRoutingModule { }
+export class SearchRoutingModule {}

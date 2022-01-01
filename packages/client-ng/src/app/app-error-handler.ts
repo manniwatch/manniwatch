@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { HttpErrorResponse } from '@angular/common/http';
@@ -11,20 +12,22 @@ import { AppNotificationService, AppNotificationType } from './services/app-noti
  */
 @Injectable()
 export class AppErrorHandler implements ErrorHandler {
-
-    public constructor(private injector: Injector) { }
+    public constructor(private injector: Injector) {}
 
     /**
      * If the browser supports the online tag it will
      * returns its value. otherwise it will always be true
+     *
      * @returns true if the navigator is offline
      */
     public isClientOffline(): boolean {
-        return (!navigator.onLine);
+        return !navigator.onLine;
     }
 
     /**
      * Handles all errors
+     *
+     * @param error
      */
     public handleError(error: Error | HttpErrorResponse | any): void {
         // The notification service
@@ -32,8 +35,9 @@ export class AppErrorHandler implements ErrorHandler {
         if (error instanceof HttpErrorResponse) {
             return this.handleHttpErrorResponse(error, notificationService);
         } else {
+            const message: string = 'message' in error ? (error as { message: string }).message : 'Unknown error';
             notificationService.notify({
-                message: error.message,
+                message,
                 reportable: true,
                 title: 'Uncaught error occured',
                 type: AppNotificationType.ERROR,
@@ -45,6 +49,7 @@ export class AppErrorHandler implements ErrorHandler {
 
     /**
      * Handles HttpErrorResponses
+     *
      * @param errorResponse the response to handle
      * @param notificationService the notification service to be used
      */

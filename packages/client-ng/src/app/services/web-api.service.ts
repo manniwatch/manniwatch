@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { HttpClient } from '@angular/common/http';
@@ -23,20 +24,25 @@ import { SettingsService } from './settings';
 
 @Injectable()
 export class WebApiService implements ApiService {
-
-    public constructor(public http: HttpClient, private config: SettingsService) { }
+    public constructor(public http: HttpClient, private config: SettingsService) {}
 
     public baseUrl(): string {
         const basePath: string = this.config.config.apiEndpoint;
-        return basePath.endsWith('\/') ? basePath : (`${basePath}\/`);
+        return basePath.endsWith('/') ? basePath : `${basePath}/`;
     }
 
     public getTripPassages(tripId: string): Observable<TripInfoWithId> {
-        return this.http.get<ITripPassages>(`${this.baseUrl()}trip/${tripId}/passages?mode=departure`)
-            .pipe(map((trip: ITripPassages): TripInfoWithId =>
-                Object.assign({
-                    tripId,
-                }, trip)));
+        return this.http.get<ITripPassages>(`${this.baseUrl()}trip/${tripId}/passages?mode=departure`).pipe(
+            map(
+                (trip: ITripPassages): TripInfoWithId =>
+                    Object.assign(
+                        {
+                            tripId,
+                        },
+                        trip
+                    )
+            )
+        );
     }
     public getRouteByVehicleId(vehicleId: string): Observable<IVehiclePathInfo> {
         return this.http.get<IVehiclePathInfo>(`${this.baseUrl()}vehicle/${vehicleId}/route`);
@@ -53,14 +59,14 @@ export class WebApiService implements ApiService {
     public getStopPointPassages(stopPointId: string): Observable<IStopPassage> {
         return this.http.get<IStopPassage>(`${this.baseUrl()}stopPoint/${stopPointId}/passages`);
     }
-    public getVehicleLocations(lastUpdate: number = 0): Observable<IVehicleLocationList> {
+    public getVehicleLocations(lastUpdate = 0): Observable<IVehicleLocationList> {
         return this.http.get<IVehicleLocationList>(`${this.baseUrl()}geo/vehicles`, {
             params: {
                 lastUpdate: `${lastUpdate}`,
             },
         });
     }
-    public getVehicleLocation(vehicleId: string, lastUpdate: number = 0): Observable<IVehicleLocation> {
+    public getVehicleLocation(vehicleId: string, lastUpdate = 0): Observable<IVehicleLocation> {
         return this.http.get<IVehicleLocation>(`${this.baseUrl()}geo/vehicle/${vehicleId}`, {
             params: {
                 lastUpdate: `${lastUpdate}`,
@@ -79,8 +85,9 @@ export class WebApiService implements ApiService {
                 },
             });
         }
-        return this.http.get<IStopLocations>(`${this.baseUrl()}` +
-            `geo/stops?left=-648000000&bottom=-324000000&right=648000000&top=324000000`);
+        return this.http.get<IStopLocations>(
+            `${this.baseUrl()}` + `geo/stops?left=-648000000&bottom=-324000000&right=648000000&top=324000000`
+        );
     }
     public getStopPointLocations(bounds?: IBounds): Observable<IStopPointLocations> {
         if (bounds) {
@@ -93,19 +100,23 @@ export class WebApiService implements ApiService {
                 },
             });
         }
-        return this.http.get<IStopPointLocations>(`${this.baseUrl()}` +
-            `geo/stopPoints?left=-648000000&bottom=-324000000&right=648000000&top=324000000`);
+        return this.http.get<IStopPointLocations>(
+            `${this.baseUrl()}` + `geo/stopPoints?left=-648000000&bottom=-324000000&right=648000000&top=324000000`
+        );
     }
 
     public getSettings(): Observable<ISettings> {
-        return this.http.get(`${this.baseUrl()}settings`, {
-            responseType: 'text',
-        })
-            .pipe(map((body: string): ISettings => {
-                const firstBracket: number = body.indexOf('{');
-                const lastBracket: number = body.lastIndexOf('}');
-                const parsedBody: string = body.substr(firstBracket, lastBracket - firstBracket + 1);
-                return JSON.parse(parsedBody);
-            }));
+        return this.http
+            .get(`${this.baseUrl()}settings`, {
+                responseType: 'text',
+            })
+            .pipe(
+                map((body: string): ISettings => {
+                    const firstBracket: number = body.indexOf('{');
+                    const lastBracket: number = body.lastIndexOf('}');
+                    const parsedBody: string = body.substr(firstBracket, lastBracket - firstBracket + 1);
+                    return JSON.parse(parsedBody) as ISettings;
+                })
+            );
     }
 }

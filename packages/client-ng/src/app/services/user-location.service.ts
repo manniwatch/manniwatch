@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-ng
+/*
+ * Package @manniwatch/client-ng
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Injectable } from '@angular/core';
@@ -10,9 +11,8 @@ import { catchError, debounceTime, mergeMap } from 'rxjs/operators';
     providedIn: 'root',
 })
 export class UserLocationService {
-
     public get featureAvailable(): boolean {
-        return (navigator.geolocation) ? true : false;
+        return navigator.geolocation ? true : false;
     }
 
     public get location(): GeolocationPosition {
@@ -25,27 +25,27 @@ export class UserLocationService {
         return this.locationSubject.asObservable();
     }
 
-    private locationErrorSubject: BehaviorSubject<GeolocationPositionError> = new BehaviorSubject(undefined);
+    private locationErrorSubject: BehaviorSubject<GeolocationPositionError> = new BehaviorSubject<GeolocationPositionError>(undefined);
 
-    private locationSubject: BehaviorSubject<GeolocationPosition> = new BehaviorSubject(undefined);
+    private locationSubject: BehaviorSubject<GeolocationPosition> = new BehaviorSubject<GeolocationPosition>(undefined);
     public constructor() {
         this.locationErrorObservable
-            .pipe(debounceTime(30000),
-                mergeMap((val: GeolocationPositionError): Observable<GeolocationPosition> =>
-                    this.createPositionRequest()),
-                catchError((err: any): Observable<any> => {
+            .pipe(
+                debounceTime(30000),
+                mergeMap((val: GeolocationPositionError): Observable<GeolocationPosition> => this.createPositionRequest()),
+                catchError((err: GeolocationPositionError): Observable<never> => {
                     this.locationErrorSubject.next(err);
                     return EMPTY;
-                }))
+                })
+            )
             .subscribe((val: GeolocationPosition): void => {
                 this.locationErrorSubject.next(undefined);
                 this.locationSubject.next(val);
             });
     }
 
-    public createPositionRequest(timeout: number = 10000, highAccuracy: boolean = false): Observable<GeolocationPosition> {
-        return new Observable<any>((subscriber: Subscriber<GeolocationPosition>): void => {
-
+    public createPositionRequest(timeout = 10000, highAccuracy = false): Observable<GeolocationPosition> {
+        return new Observable<GeolocationPosition>((subscriber: Subscriber<GeolocationPosition>): void => {
             const geoSuccess: (position: GeolocationPosition) => void = (position: GeolocationPosition): void => {
                 subscriber.next(position);
                 subscriber.complete();
@@ -60,5 +60,4 @@ export class UserLocationService {
             });
         });
     }
-
 }
