@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.29.0](https://github.com/manniwatch/manniwatch/compare/v0.28.3...v0.29.0) (2022-01-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency date-fns to v2.28.0 ([2feab28](https://github.com/manniwatch/manniwatch/commit/2feab2844916cbc35cc7ced65fc59f280c6817c2))
+* **deps:** update dependency rxjs to v7.5.1 ([1768815](https://github.com/manniwatch/manniwatch/commit/176881541c206d40be5a66be3fbd3aaaee81274a))
+
+
+
+
+
 ## [0.28.3](https://github.com/manniwatch/manniwatch/compare/v0.28.2...v0.28.3) (2021-12-25)
 
 

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.29.0](https://github.com/manniwatch/manniwatch/compare/v0.28.3...v0.29.0) (2022-01-01)
+
+
+### Bug Fixes
+
+* **deps:** update angular packages to v13 ([#2495](https://github.com/manniwatch/manniwatch/issues/2495)) ([674ae73](https://github.com/manniwatch/manniwatch/commit/674ae73a4060ce3d8a2cc9ef391a422a9eda6616))
+* **deps:** update dependency date-fns to v2.28.0 ([2feab28](https://github.com/manniwatch/manniwatch/commit/2feab2844916cbc35cc7ced65fc59f280c6817c2))
+* **deps:** update dependency rxjs to v7.5.1 ([1768815](https://github.com/manniwatch/manniwatch/commit/176881541c206d40be5a66be3fbd3aaaee81274a))
+
+
+### Features
+
+* **client-ng:** add retry logic to failed requests ([#2647](https://github.com/manniwatch/manniwatch/issues/2647)) ([5ffe8f0](https://github.com/manniwatch/manniwatch/commit/5ffe8f04da0438c25addb47c31fe10863a0de02b))
+
+
+
+
+
 ## [0.28.3](https://github.com/manniwatch/manniwatch/compare/v0.28.2...v0.28.3) (2021-12-25)
 
 
