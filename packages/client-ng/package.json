@@ -93,7 +93,7 @@
     "@compodoc/compodoc": "1.1.16",
     "@manniwatch/api-client": "^0.29.0",
     "@manniwatch/client-types": "^0.29.0",
-    "@types/jasmine": "3.10.2",
+    "@types/jasmine": "3.10.3",
     "@types/jasminewd2": "2.0.10",
     "@types/node": "16.11.17",
     "apply-loader": "2.0.0",
