@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.1](https://github.com/manniwatch/manniwatch/compare/v0.29.0...v0.29.1) (2022-01-07)
+
+
+### Bug Fixes
+
+* **deps:** update @donmahallem/turbo packages ([#2666](https://github.com/manniwatch/manniwatch/issues/2666)) ([164e36d](https://github.com/manniwatch/manniwatch/commit/164e36d253b65340c105324438aad92481eac2a8))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.3 ([#2667](https://github.com/manniwatch/manniwatch/issues/2667)) ([f3f2145](https://github.com/manniwatch/manniwatch/commit/f3f21457775eb7f1b27832ee743a5d42563d4563))
+* **deps:** update dependency helmet to ~5.0.1 ([#2668](https://github.com/manniwatch/manniwatch/issues/2668)) ([0606abc](https://github.com/manniwatch/manniwatch/commit/0606abcc3e0cc723e15219023eee3502e1b59afe))
+* **deps:** update dependency helmet to v5 ([5837a27](https://github.com/manniwatch/manniwatch/commit/5837a2736b5c6b741d12098eaaa72c5641705088))
+
+
+
+
+
 # [0.29.0](https://github.com/manniwatch/manniwatch/compare/v0.28.3...v0.29.0) (2022-01-01)
 
 
