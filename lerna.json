@@ -10,7 +10,7 @@
     "version": {
       "conventionalCommits": true,
       "changelogPreset": "conventional-changelog-angular",
-      "message": "chore(release): publish %s"
+      "message": "chore(release): publish %s [skip ci]"
     }
   },
   "ignoreChanges": [
