@@ -27,7 +27,7 @@
     "dependencies": {
         "@manniwatch/api-types": "^0.29.0",
         "axios": "~0.25.0",
-        "qs": "~6.10.2"
+        "qs": "~6.10.3"
     },
     "devDependencies": {
         "@types/qs": "6.9.7",
