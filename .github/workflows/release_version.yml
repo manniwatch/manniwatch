@@ -1,9 +1,7 @@
 name: Version Releases
 on:
-  workflow_run:
-    workflows: [Test]
-    types: [completed]
-    branches: [master]
+  schedule:
+    - cron: '0 23 * * *'
 
 jobs:
   build_suite:
