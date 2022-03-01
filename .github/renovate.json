@@ -1,6 +1,6 @@
 {
     "baseBranches": [
-        "dev"
+        "master"
     ],
     "extends": [
         "@donmahallem"
