@@ -11,7 +11,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.0.0
         with:
           fetch-depth: 0
           ref:  ${{ github.event.workflow_run.head_branch }}
@@ -40,7 +40,7 @@ jobs:
     name: Publish Package to GITHUB
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.0.0
         with:
           fetch-depth: 0
           ref:  ${{ github.event.workflow_run.head_branch }}
