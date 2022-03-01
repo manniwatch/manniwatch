@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.2](https://github.com/manniwatch/manniwatch/compare/v0.29.1...v0.29.2) (2022-03-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency rxjs to v7.5.2 ([#2707](https://github.com/manniwatch/manniwatch/issues/2707)) ([e40e71a](https://github.com/manniwatch/manniwatch/commit/e40e71a03c97beacb97eccb2468f4ba701bcebdb))
+* **deps:** update dependency rxjs to v7.5.3 ([3c5d559](https://github.com/manniwatch/manniwatch/commit/3c5d559ff1a9239463b22ee4013fc505e958bc05))
+* **deps:** update dependency rxjs to v7.5.4 ([cd17d5f](https://github.com/manniwatch/manniwatch/commit/cd17d5f200bf2ce4b2aa0df980744d5887f82012))
+
+
+
+
+
 ## [0.29.1](https://github.com/manniwatch/manniwatch/compare/v0.29.0...v0.29.1) (2022-01-07)
 
 **Note:** Version bump only for package @manniwatch/vehicle-cache

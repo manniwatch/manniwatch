@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.2](https://github.com/manniwatch/manniwatch/compare/v0.29.1...v0.29.2) (2022-03-01)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v13.1.2 ([dc5cdb5](https://github.com/manniwatch/manniwatch/commit/dc5cdb5be39990cdf1e465af8d434defa92a1119))
+* **deps:** update angular monorepo to v13.1.3 ([3687764](https://github.com/manniwatch/manniwatch/commit/368776454083616763e44430d444bcce2f610e17))
+* **deps:** update angular monorepo to v13.2.0 ([5145622](https://github.com/manniwatch/manniwatch/commit/51456224497207e63829e222b5d16d92e39e5132))
+* **deps:** update angular monorepo to v13.2.1 ([6b75063](https://github.com/manniwatch/manniwatch/commit/6b75063301c3b4d9f031352c8878df7057c4adcc))
+* **deps:** update angular monorepo to v13.2.2 ([fed3af2](https://github.com/manniwatch/manniwatch/commit/fed3af225f4f1adbb2d80558bde93161f2dae170))
+* **deps:** update angular monorepo to v13.2.3 ([375d7c8](https://github.com/manniwatch/manniwatch/commit/375d7c819540c18699a2bd1d2cf34178d2c093fc))
+* **deps:** update angular monorepo to v13.2.4 ([4e309dd](https://github.com/manniwatch/manniwatch/commit/4e309dde7963af0a7b47edd14468477f67a9e516))
+* **deps:** update angularmaterial monorepo to v13.1.2 ([ecd580f](https://github.com/manniwatch/manniwatch/commit/ecd580f349fc60ba08ab62da94fcbf623b9d1482))
+* **deps:** update angularmaterial monorepo to v13.1.3 ([f717ec2](https://github.com/manniwatch/manniwatch/commit/f717ec2c5ad52383e3f70d1b465cb1613d246d98))
+* **deps:** update angularmaterial monorepo to v13.2.0 ([caa3688](https://github.com/manniwatch/manniwatch/commit/caa3688b8d1cb001050e54b304ca25c0f76dd963))
+* **deps:** update angularmaterial monorepo to v13.2.1 ([6669ea0](https://github.com/manniwatch/manniwatch/commit/6669ea0152211b644cc6ce72dde0ad42b3e3643c))
+* **deps:** update angularmaterial monorepo to v13.2.2 ([d45bc0d](https://github.com/manniwatch/manniwatch/commit/d45bc0d3694ae933f5cbe3ba0a4efadfd672da1c))
+* **deps:** update angularmaterial monorepo to v13.2.3 ([35cc1d4](https://github.com/manniwatch/manniwatch/commit/35cc1d41a2c88d5756929ad7484965fd063b8349))
+* **deps:** update angularmaterial monorepo to v13.2.4 ([2fbeca9](https://github.com/manniwatch/manniwatch/commit/2fbeca97fd19292a4660d40116e2b535b5cca28b))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.5 ([2075c2c](https://github.com/manniwatch/manniwatch/commit/2075c2c24004c45c2cd852a8b8ce41dd53872687))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.6 ([1cfcf82](https://github.com/manniwatch/manniwatch/commit/1cfcf8231f8f28e5d9bb0f65c650c96c85caf307))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.7 ([95c741d](https://github.com/manniwatch/manniwatch/commit/95c741d67e2efd192badf4dec123d3f86693ad80))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.8 ([1f85b2b](https://github.com/manniwatch/manniwatch/commit/1f85b2b4e0b148262d07fd84c16810bc16e08f96))
+* **deps:** update dependency ol-mapbox-style to v6.8.2 ([37ab984](https://github.com/manniwatch/manniwatch/commit/37ab98465eab8e16dfd30350f9a6f34d631cc5be))
+* **deps:** update dependency ol-mapbox-style to v6.8.3 ([c8f5e2f](https://github.com/manniwatch/manniwatch/commit/c8f5e2f1ec6c2d7081bb2fbf038a3b2456d8148a))
+* **deps:** update dependency ol-mapbox-style to v6.9.0 ([f69e666](https://github.com/manniwatch/manniwatch/commit/f69e66642d00dbc20b48c122201fd7354c28e2d5))
+* **deps:** update dependency ol-mapbox-style to v7 ([f76b84d](https://github.com/manniwatch/manniwatch/commit/f76b84d722aa73eb49b0c22869e5417249a125e8))
+* **deps:** update dependency rxjs to v7.5.2 ([#2707](https://github.com/manniwatch/manniwatch/issues/2707)) ([e40e71a](https://github.com/manniwatch/manniwatch/commit/e40e71a03c97beacb97eccb2468f4ba701bcebdb))
+* **deps:** update dependency rxjs to v7.5.3 ([3c5d559](https://github.com/manniwatch/manniwatch/commit/3c5d559ff1a9239463b22ee4013fc505e958bc05))
+* **deps:** update dependency rxjs to v7.5.4 ([cd17d5f](https://github.com/manniwatch/manniwatch/commit/cd17d5f200bf2ce4b2aa0df980744d5887f82012))
+
+
+
+
+
 ## [0.29.1](https://github.com/manniwatch/manniwatch/compare/v0.29.0...v0.29.1) (2022-01-07)
 
 

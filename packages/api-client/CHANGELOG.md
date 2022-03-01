@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.2](https://github.com/manniwatch/manniwatch/compare/v0.29.1...v0.29.2) (2022-03-01)
+
+
+### Bug Fixes
+
+* **deps:** bump qs to v6.10.3 ([#2792](https://github.com/manniwatch/manniwatch/issues/2792)) ([bf64449](https://github.com/manniwatch/manniwatch/commit/bf644490072848c4d39489b6c8c1c3f57d40df92))
+
+
+
+
+
 ## [0.29.1](https://github.com/manniwatch/manniwatch/compare/v0.29.0...v0.29.1) (2022-01-07)
 
 **Note:** Version bump only for package @manniwatch/api-client

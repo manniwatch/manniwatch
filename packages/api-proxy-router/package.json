@@ -1,6 +1,6 @@
 {
   "name": "@manniwatch/api-proxy-router",
-  "version": "0.29.1",
+  "version": "0.29.2",
   "description": "An express api router used to proxy requests to the upstream server",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
@@ -59,9 +59,9 @@
   "dependencies": {
     "@donmahallem/turbo": "~2.3.9",
     "@donmahallem/turbo-validate-request": "~0.3.10",
-    "@manniwatch/api-client": "^0.29.1",
-    "@manniwatch/api-types": "^0.29.0",
-    "@manniwatch/schemas": "^0.29.1",
+    "@manniwatch/api-client": "^0.29.2",
+    "@manniwatch/api-types": "^0.29.2",
+    "@manniwatch/schemas": "^0.29.2",
     "ajv": "~8.10.0",
     "async-mutex": "~0.3.2",
     "node-cache": "~5.1.2"

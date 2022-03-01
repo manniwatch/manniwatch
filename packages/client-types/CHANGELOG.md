@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.2](https://github.com/manniwatch/manniwatch/compare/v0.29.1...v0.29.2) (2022-03-01)
+
+
+### Bug Fixes
+
+* **client-types:** move dependencies ([#2794](https://github.com/manniwatch/manniwatch/issues/2794)) ([3c78b99](https://github.com/manniwatch/manniwatch/commit/3c78b9926b0e59bc666e3636ad0c66726605effb))
+* **deps:** update @donmahallem/turbo packages ([dbc0496](https://github.com/manniwatch/manniwatch/commit/dbc0496ba006f67cf7ffd6f1508250011fa6e273))
+* **deps:** update @donmahallem/turbo packages ([9339416](https://github.com/manniwatch/manniwatch/commit/9339416010b28075dde0a940ea5818413ce81bff))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.5 ([2075c2c](https://github.com/manniwatch/manniwatch/commit/2075c2c24004c45c2cd852a8b8ce41dd53872687))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.6 ([1cfcf82](https://github.com/manniwatch/manniwatch/commit/1cfcf8231f8f28e5d9bb0f65c650c96c85caf307))
+* **deps:** update dependency ol-mapbox-style to v6.8.2 ([37ab984](https://github.com/manniwatch/manniwatch/commit/37ab98465eab8e16dfd30350f9a6f34d631cc5be))
+* **deps:** update dependency ol-mapbox-style to v6.8.3 ([c8f5e2f](https://github.com/manniwatch/manniwatch/commit/c8f5e2f1ec6c2d7081bb2fbf038a3b2456d8148a))
+* **deps:** update dependency ol-mapbox-style to v6.9.0 ([f69e666](https://github.com/manniwatch/manniwatch/commit/f69e66642d00dbc20b48c122201fd7354c28e2d5))
+* **deps:** update dependency ol-mapbox-style to v7 ([f76b84d](https://github.com/manniwatch/manniwatch/commit/f76b84d722aa73eb49b0c22869e5417249a125e8))
+
+
+
+
+
 ## [0.29.1](https://github.com/manniwatch/manniwatch/compare/v0.29.0...v0.29.1) (2022-01-07)
 
 

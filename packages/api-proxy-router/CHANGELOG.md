@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.2](https://github.com/manniwatch/manniwatch/compare/v0.29.1...v0.29.2) (2022-03-01)
+
+
+### Bug Fixes
+
+* **deps:** bump ajv to v8.10.0 ([#2793](https://github.com/manniwatch/manniwatch/issues/2793)) ([664cfcf](https://github.com/manniwatch/manniwatch/commit/664cfcf964d370252f62fa02f25cad755f0b9313))
+* **deps:** update @donmahallem/turbo packages ([dbc0496](https://github.com/manniwatch/manniwatch/commit/dbc0496ba006f67cf7ffd6f1508250011fa6e273))
+* **deps:** update @donmahallem/turbo packages ([9339416](https://github.com/manniwatch/manniwatch/commit/9339416010b28075dde0a940ea5818413ce81bff))
+* **deps:** update @donmahallem/turbo packages ([#2697](https://github.com/manniwatch/manniwatch/issues/2697)) ([43b91cf](https://github.com/manniwatch/manniwatch/commit/43b91cf17597f2b746fa353284c22beaa3bff118))
+* **deps:** update @donmahallem/turbo packages ([#2786](https://github.com/manniwatch/manniwatch/issues/2786)) ([457722d](https://github.com/manniwatch/manniwatch/commit/457722d0b89d9b64056ee15ebf6895884e98371a))
+* **deps:** update @donmahallem/turbo packages ([#2849](https://github.com/manniwatch/manniwatch/issues/2849)) ([cfc9559](https://github.com/manniwatch/manniwatch/commit/cfc95590bb635845d1ed8db25ccef82edc51b3a7))
+* **deps:** update angular monorepo to v13.2.2 ([fed3af2](https://github.com/manniwatch/manniwatch/commit/fed3af225f4f1adbb2d80558bde93161f2dae170))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.5 ([2075c2c](https://github.com/manniwatch/manniwatch/commit/2075c2c24004c45c2cd852a8b8ce41dd53872687))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.6 ([1cfcf82](https://github.com/manniwatch/manniwatch/commit/1cfcf8231f8f28e5d9bb0f65c650c96c85caf307))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.8 ([1f85b2b](https://github.com/manniwatch/manniwatch/commit/1f85b2b4e0b148262d07fd84c16810bc16e08f96))
+* **deps:** update dependency @donmahallem/turbo-validate-request to ~0.3.9 ([e8895bf](https://github.com/manniwatch/manniwatch/commit/e8895bf452b4a9c8655a62c18fb5d6cdcec6997e))
+* **deps:** update dependency helmet to ~5.0.2 ([fbd0242](https://github.com/manniwatch/manniwatch/commit/fbd024203de2c017a155b9f929890ea993044884))
+* **deps:** update dependency ol-mapbox-style to v6.8.2 ([37ab984](https://github.com/manniwatch/manniwatch/commit/37ab98465eab8e16dfd30350f9a6f34d631cc5be))
+* **deps:** update dependency ol-mapbox-style to v7 ([f76b84d](https://github.com/manniwatch/manniwatch/commit/f76b84d722aa73eb49b0c22869e5417249a125e8))
+
+
+
+
+
 ## [0.29.1](https://github.com/manniwatch/manniwatch/compare/v0.29.0...v0.29.1) (2022-01-07)
 
 

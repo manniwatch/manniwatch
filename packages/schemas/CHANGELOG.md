@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.2](https://github.com/manniwatch/manniwatch/compare/v0.29.1...v0.29.2) (2022-03-01)
+
+
+### Bug Fixes
+
+* **deps:** bump ajv to v8.10.0 ([#2793](https://github.com/manniwatch/manniwatch/issues/2793)) ([664cfcf](https://github.com/manniwatch/manniwatch/commit/664cfcf964d370252f62fa02f25cad755f0b9313))
+
+
+
+
+
 ## [0.29.1](https://github.com/manniwatch/manniwatch/compare/v0.29.0...v0.29.1) (2022-01-07)
 
 **Note:** Version bump only for package @manniwatch/schemas
