@@ -1,0 +1,50 @@
+name: Version Releases
+on:
+  workflow_run:
+    workflows: [Test]
+    types: [completed]
+    branches: [master]
+
+jobs:
+  build_suite:
+    runs-on: ${{ matrix.os }}
+    name: Version Release
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    timeout-minutes: 30
+    strategy:
+      max-parallel: 4
+      matrix:
+        node: [ 16]
+        os: [ubuntu-latest] #, windows-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref:  ${{ github.event.workflow_run.head_branch }}
+      - name: Setup Node
+        uses: actions/setup-node@v2.5.1
+        with:
+          node-version: ${{ matrix.node }}
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install Deps
+        run: |
+          npm ci
+          npx lerna bootstrap --ci
+      - name: Run Build
+        run: npx lerna run build
+      - name: Setup GIT
+        run: |
+          git config --local user.email "donmahallem@users.noreply.github.com"
+          git config --local user.name "donmahallem"
+      - name: Version Packages
+        run: npx lerna version --create-release github -y
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - uses: connor-baer/action-sync-branch@main
+        with:
+          branch: dev
+          token: ${{ secrets.GITHUB_TOKEN }}
+          force: false
