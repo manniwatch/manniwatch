@@ -18,6 +18,6 @@ jobs:
           github_secret: "${{ secrets.GITHUB_TOKEN }}"
           prefix: "pkg"
       - name: Label PRs
-        uses: actions/labeler@v3
+        uses: actions/labeler@v4
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
