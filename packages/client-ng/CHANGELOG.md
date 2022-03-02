@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.3](https://github.com/manniwatch/manniwatch/compare/v0.29.2...v0.29.3) (2022-03-02)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v13.2.5 ([88a21c2](https://github.com/manniwatch/manniwatch/commit/88a21c20bd008815c3746085a338d4299551d9aa))
+
+
+
+
+
 ## [0.29.2](https://github.com/manniwatch/manniwatch/compare/v0.29.1...v0.29.2) (2022-03-01)
 
 
