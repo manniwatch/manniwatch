@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.4](https://github.com/manniwatch/manniwatch/compare/v0.29.3...v0.29.4) (2022-03-03)
+
+
+### Bug Fixes
+
+* **deps:** update angularmaterial monorepo to v13.2.5 ([afcacfb](https://github.com/manniwatch/manniwatch/commit/afcacfbeb8e6be3f0d7892057b02007079c35941))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.13 ([87a4618](https://github.com/manniwatch/manniwatch/commit/87a4618b0bdfec14c676ce2013392d4575b0f960))
+
+
+
+
+
 ## [0.29.3](https://github.com/manniwatch/manniwatch/compare/v0.29.2...v0.29.3) (2022-03-02)
 
 
