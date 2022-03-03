@@ -28,7 +28,7 @@
     "nyc": "15.1.0",
     "prettier": "2.5.1",
     "rollup": "2.69.0",
-    "rollup-plugin-dts": "4.1.0",
+    "rollup-plugin-dts": "4.2.0",
     "sinon": "13.0.1",
     "ts-node": "10.6.0",
     "tslib": "2.3.1",
