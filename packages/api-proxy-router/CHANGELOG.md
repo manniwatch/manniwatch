@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.5](https://github.com/manniwatch/manniwatch/compare/v0.29.4...v0.29.5) (2022-03-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zone.js to v0.11.5 ([d35c5b7](https://github.com/manniwatch/manniwatch/commit/d35c5b781494d9d2121102925cd1d07f45271760))
+
+
+
+
+
 ## [0.29.4](https://github.com/manniwatch/manniwatch/compare/v0.29.3...v0.29.4) (2022-03-03)
 
 **Note:** Version bump only for package @manniwatch/api-proxy-router
