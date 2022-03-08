@@ -5,7 +5,7 @@
     "@appnest/readme": "1.2.7",
     "@donmahallem/eslint-config": "1.0.24",
     "@donmahallem/lerna-fixer": "0.1.7",
-    "@donmahallem/rollup-config": "2.0.4",
+    "@donmahallem/rollup-config": "2.0.5",
     "@donmahallem/tslint-config": "0.3.2",
     "@rollup/plugin-commonjs": "21.0.2",
     "@rollup/plugin-json": "4.1.0",
