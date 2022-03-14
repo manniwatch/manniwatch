@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.7](https://github.com/manniwatch/manniwatch/compare/v0.29.6...v0.29.7) (2022-03-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ol-mapbox-style to v7.1.0 ([e8adf4f](https://github.com/manniwatch/manniwatch/commit/e8adf4f3ad90c0967d389960d0f5d14a53b90cb6))
+
+
+
+
+
 ## [0.29.2](https://github.com/manniwatch/manniwatch/compare/v0.29.1...v0.29.2) (2022-03-01)
 
 

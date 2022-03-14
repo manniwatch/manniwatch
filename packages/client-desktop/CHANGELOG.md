@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.7](https://github.com/manniwatch/manniwatch/compare/v0.29.6...v0.29.7) (2022-03-14)
+
+
+### Bug Fixes
+
+* **deps:** update angularmaterial monorepo to v13.2.6 ([9e434fc](https://github.com/manniwatch/manniwatch/commit/9e434fcf199242bba9017e206df248a307ff7eee))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.14 ([b24617d](https://github.com/manniwatch/manniwatch/commit/b24617d5f2e62f2ff80add2f804d95ee1d9685a6))
+* **deps:** update dependency electron to ~17.1.1 ([ecee580](https://github.com/manniwatch/manniwatch/commit/ecee5809ee8557def730ffbb22fd529a004c1a08))
+* **deps:** update dependency electron to ~17.1.2 ([c64a669](https://github.com/manniwatch/manniwatch/commit/c64a669b9ed65b4092d680a134b2a2c85b786d80))
+* **deps:** update dependency ol-mapbox-style to v7.1.0 ([e8adf4f](https://github.com/manniwatch/manniwatch/commit/e8adf4f3ad90c0967d389960d0f5d14a53b90cb6))
+
+
+
+
+
 ## [0.29.6](https://github.com/manniwatch/manniwatch/compare/v0.29.5...v0.29.6) (2022-03-07)
 
 **Note:** Version bump only for package @manniwatch/client-desktop

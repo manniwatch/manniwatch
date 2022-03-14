@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.7](https://github.com/manniwatch/manniwatch/compare/v0.29.6...v0.29.7) (2022-03-14)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v13.2.6 ([e8d014b](https://github.com/manniwatch/manniwatch/commit/e8d014b0944dd7d059f84afea6105085110bd347))
+* **deps:** update angularmaterial monorepo to v13.2.6 ([9e434fc](https://github.com/manniwatch/manniwatch/commit/9e434fcf199242bba9017e206df248a307ff7eee))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.14 ([b24617d](https://github.com/manniwatch/manniwatch/commit/b24617d5f2e62f2ff80add2f804d95ee1d9685a6))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.16 ([f8267d2](https://github.com/manniwatch/manniwatch/commit/f8267d2a5ab156ac0786e981b17cac33c0e5980a))
+* **deps:** update dependency ol-mapbox-style to v7.1.0 ([e8adf4f](https://github.com/manniwatch/manniwatch/commit/e8adf4f3ad90c0967d389960d0f5d14a53b90cb6))
+* **deps:** update dependency rxjs to v7.5.5 ([98fb183](https://github.com/manniwatch/manniwatch/commit/98fb183bf75f4a20c31620712ccc82e3cf2abcb1))
+
+
+
+
+
 ## [0.29.6](https://github.com/manniwatch/manniwatch/compare/v0.29.5...v0.29.6) (2022-03-07)
 
 **Note:** Version bump only for package @manniwatch/client-ng

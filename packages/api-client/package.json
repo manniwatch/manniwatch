@@ -1,6 +1,6 @@
 {
     "name": "@manniwatch/api-client",
-    "version": "0.29.2",
+    "version": "0.29.7",
     "description": "Node Client to consume the Api",
     "main": "dist/cjs/index.cjs",
     "module": "dist/esm/index.mjs",

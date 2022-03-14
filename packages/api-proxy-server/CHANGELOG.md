@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.7](https://github.com/manniwatch/manniwatch/compare/v0.29.6...v0.29.7) (2022-03-14)
+
+
+### Bug Fixes
+
+* **deps:** update angularmaterial monorepo to v13.2.6 ([9e434fc](https://github.com/manniwatch/manniwatch/commit/9e434fcf199242bba9017e206df248a307ff7eee))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.14 ([b24617d](https://github.com/manniwatch/manniwatch/commit/b24617d5f2e62f2ff80add2f804d95ee1d9685a6))
+
+
+
+
+
 ## [0.29.6](https://github.com/manniwatch/manniwatch/compare/v0.29.5...v0.29.6) (2022-03-07)
 
 **Note:** Version bump only for package @manniwatch/api-proxy-server
