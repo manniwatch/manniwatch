@@ -1,0 +1,3 @@
+# Client Api Ng
+
+[![codecov](https://codecov.io/gh/manniwatch/manniwatch/branch/master/graph/badge.svg?flag=ClientApiNg)](https://codecov.io/gh/manniwatch/manniwatch/manniwatch/master/packages/client-api-ng) [![npm version](https://badge.fury.io/js/%40manniwatch%2Fclient-api-ng.svg)](https://badge.fury.io/js/%40manniwatch%2Fclient-api-ng) [![dependencies Status](https://david-dm.org/manniwatch/manniwatch/status.svg?path=packages/client-api-ng)](https://david-dm.org/manniwatch/manniwatch?path=packages/client-api-ng) [![devDependencies Status](https://david-dm.org/manniwatch/manniwatch/dev-status.svg?path=packages/client-api-ng)](https://david-dm.org/manniwatch/manniwatch?path=packages/client-api-ng&type=dev)
