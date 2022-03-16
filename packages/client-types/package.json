@@ -48,10 +48,10 @@
     "access": "public"
   },
   "devDependencies": {
-    "ol": "6.9.0"
+    "ol": "6.13.0"
   },
   "peerDependencies": {
-    "ol": "~6.9.0"
+    "ol": "~6.13.0"
   },
   "dependencies": {
     "@manniwatch/api-client": "^0.29.7",
