@@ -1,6 +1,8 @@
 name: Test
 on: [push,pull_request]
-
+concurrency: 
+  group: ${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   build_suite:
     runs-on: ${{ matrix.os }}
