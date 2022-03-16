@@ -42,8 +42,3 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-      - uses: connor-baer/action-sync-branch@main
-        with:
-          branch: dev
-          token: ${{ secrets.GITHUB_TOKEN }}
-          force: false
