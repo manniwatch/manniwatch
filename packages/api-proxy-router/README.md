@@ -39,4 +39,4 @@ npm install @manniwatch/api-proxy-router
 ## ➤ Docs
 
 [Typedoc](https://manniwatch.github.io/docs/api-proxy-router/index.html)
-[Apidoc](https://manniwatch.github.io/docs/api-proxy-router/apidoc/index.html)
+[Apidoc](pkg.apidoc)
