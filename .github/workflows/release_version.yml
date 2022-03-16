@@ -1,7 +1,7 @@
 name: Version Releases
 on:
   schedule:
-    - cron: '0 23 * * *'
+    - cron: '*/5 * * * *'
 
 jobs:
   build_suite:
