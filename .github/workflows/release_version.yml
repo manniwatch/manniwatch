@@ -7,6 +7,8 @@ jobs:
   build_suite:
     runs-on: ${{ matrix.os }}
     name: Version Release
+    concurrency: 
+      group: release_version
     timeout-minutes: 30
     strategy:
       max-parallel: 4
