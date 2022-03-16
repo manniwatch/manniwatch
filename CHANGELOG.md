@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.13](https://github.com/manniwatch/manniwatch/compare/v0.29.12...v0.29.13) (2022-03-16)
+
+**Note:** Version bump only for package root
+
+
+
+
+
 ## [0.29.12](https://github.com/manniwatch/manniwatch/compare/v0.29.11...v0.29.12) (2022-03-16)
 
 **Note:** Version bump only for package root
