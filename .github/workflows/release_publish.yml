@@ -2,12 +2,15 @@ name: Publish Packages
 on:
   release:
     types: [published]
-
+  workflow_run:
+    workflows: [Version Releases]
+    types:
+      - completed
 jobs:
-  
   release_npm:
     runs-on: ubuntu-latest
     name: Publish Package to NPM
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'release' }}
     timeout-minutes: 30
     steps:
       - name: Checkout
@@ -38,6 +41,7 @@ jobs:
     needs: [build_suite]
     runs-on: ubuntu-latest
     name: Publish Package to GITHUB
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'release' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3.0.0
