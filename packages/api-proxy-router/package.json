@@ -32,7 +32,6 @@
     "import": "./dist/esm/index.mjs"
   },
   "homepage": "https://manniwatch.github.io/docs/api-proxy-router/index.html",
-  "apidoc": "https://manniwatch.github.io/docs/api-proxy-router/apidoc/index.html",
   "author": {
     "name": "donmahallem",
     "email": "donmahallem@users.noreply.github.com",
