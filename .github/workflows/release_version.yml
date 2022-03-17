@@ -1,44 +1,49 @@
 name: Version Releases
 on:
-  schedule:
-    - cron: '*/5 * * * *'
+    push:
+        branches:
+            - master # Support wildcard matching
 
 jobs:
-  build_suite:
-    runs-on: ${{ matrix.os }}
-    name: Version Release
-    concurrency: 
-      group: release_version
-    timeout-minutes: 30
-    strategy:
-      max-parallel: 4
-      matrix:
-        node: [ 16]
-        os: [ubuntu-latest] #, windows-latest]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3.0.0
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
-          ref:  ${{ github.event.workflow_run.head_branch }}
-      - name: Setup Node
-        uses: actions/setup-node@v3.0.0
-        with:
-          node-version: ${{ matrix.node }}
-          registry-url: 'https://registry.npmjs.org'
-      - name: Install Deps
-        run: |
-          npm ci
-          npx lerna bootstrap --ci
-      - name: Run Build
-        run: npx lerna run build
-      - name: Setup GIT
-        run: |
-          git config --local user.email "donmahallem@users.noreply.github.com"
-          git config --local user.name "donmahallem"
-      - name: Version Packages
-        run: npx lerna version --create-release github -y
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+    build_suite:
+        runs-on: ${{ matrix.os }}
+        name: Version Release
+        concurrency:
+            group: release_version
+        timeout-minutes: 30
+        strategy:
+            max-parallel: 4
+            matrix:
+                node: [16]
+                os: [ubuntu-latest] #, windows-latest]
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3.0.0
+              with:
+                  fetch-depth: 0
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  ref: ${{ github.event.workflow_run.head_branch }}
+            - name: Setup Node
+              uses: actions/setup-node@v3.0.0
+              with:
+                  node-version: ${{ matrix.node }}
+                  registry-url: 'https://registry.npmjs.org'
+            - name: Install Deps
+              run: |
+                  npm ci
+                  npx lerna bootstrap --ci
+            - name: Run Build
+              run: npx lerna run build
+            - name: Setup GIT
+              run: |
+                  git config --local user.email "donmahallem@users.noreply.github.com"
+                  git config --local user.name "donmahallem"
+            - name: Version Packages
+              run: npx lerna version --create-release github -y --no-push --no-git-tag-version
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+            - name: Prepare Release
+              run: |
+                  git checkout -b staging
+                  git push origin staging --force
