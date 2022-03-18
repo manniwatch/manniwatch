@@ -50,4 +50,8 @@ jobs:
               with:
                   branch: release-staging
                   title: 'chore: staging next release'
+                  body: 'Staged next manniwatch release'
                   token: ${{ secrets.GITHUB_TOKEN }}
+                  base: master
+                  commit-message: 'chore: stage next release'
+                  reviewers: donmahallem
