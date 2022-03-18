@@ -1,206 +1,212 @@
 name: Test
-on: [push,pull_request]
-concurrency: 
-  group: ${{ github.event_name }}-${{ github.ref }}
-  cancel-in-progress: true
+on:
+    push:
+    pull_request:
+    pull_request_review:
+        types: [submitted]
+        branches:
+            - staging
+concurrency:
+    group: ${{ github.event_name }}-${{ github.ref }}
+    cancel-in-progress: true
 jobs:
-  build_suite:
-    runs-on: ${{ matrix.os }}
-    name: Build - ${{ matrix.os }} - Node ${{ matrix.node }}
-    timeout-minutes: 30
-    strategy:
-      max-parallel: 4
-      matrix:
-        node: [14, 16]
-        os: [ubuntu-latest] #, windows-latest]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 200
-      - name: Setup Node
-        uses: actions/setup-node@v3.0.0
-        with:
-          node-version: ${{ matrix.node }}
-      - name: Update NPM
-        run: |
-          npm install -g npm
-          npm -v
-      - name: Get npm cache directory
-        id: npm-cache
-        run: |
-          echo "::set-output name=dir::$(npm config get cache)"
-      - name: Setup Cache
-        uses: actions/cache@v2.1.7
-        with:
-          path: |
-            ${{ steps.npm-cache.outputs.dir }}
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-node${{ matrix.node }}-npm-${{ hashFiles('**/package-lock.json') }}
-      - name: Install Deps
-        run: |
-          npm ci
-          npx lerna bootstrap --ci
-      - name: Run Build
-        run: npx lerna run build
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v3.0.0
-        with:
-          name: build-${{matrix.os}}-${{matrix.node}}
-          path: |
-            packages/*/dist
-  test_suite:
-    needs: build_suite
-    runs-on: ${{ matrix.os }}
-    name: Test - ${{ matrix.os }} - Node ${{ matrix.node }}
-    timeout-minutes: 30
-    strategy:
-      max-parallel: 4
-      matrix:
-        node: [14, 16]
-        os: [ubuntu-latest] #, windows-latest]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 200
-      - name: Setup Node
-        uses: actions/setup-node@v3.0.0
-        with:
-          node-version: ${{ matrix.node }}
-      - name: Update NPM
-        run: |
-          npm install -g npm
-          npm -v
-      - name: Get npm cache directory
-        id: npm-cache
-        run: |
-          echo "::set-output name=dir::$(npm config get cache)"
-      - name: Setup Cache
-        uses: actions/cache@v2.1.7
-        with:
-          path: |
-            ${{ steps.npm-cache.outputs.dir }}
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-node${{ matrix.node }}-npm-${{ hashFiles('**/package-lock.json') }}
-      - name: Install Deps
-        run: |
-          npm ci
-          npx lerna bootstrap --ci
-      - name: Download Build artifacts
-        uses: actions/download-artifact@v3.0.0
-        with:
-          name: build-${{matrix.os}}-${{matrix.node}}
-          path: ./packages
-      - name: Run Test
-        run: npx lerna run test:coverage
-      - name: Upload coverage to Codecov Monorepo
-        uses: codecov/codecov-action@v2.1.0
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: unit_test
-          directory: ${{ matrix.package.location }}
-          name: Test
-          fail_ci_if_error: false
-          verbose: false
-  lint_suite:
-    needs: build_suite
-    runs-on: ${{ matrix.os }}
-    name: Lint - ${{ matrix.os }} - Node ${{ matrix.node }}
-    timeout-minutes: 30
-    strategy:
-      max-parallel: 4
-      matrix:
-        node: [16]
-        os: [ubuntu-latest] #, windows-latest]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 200
-      - name: Setup Node
-        uses: actions/setup-node@v3.0.0
-        with:
-          node-version: ${{ matrix.node }}
-      - name: Update NPM
-        run: |
-          npm install -g npm
-          npm -v
-      - name: Get npm cache directory
-        id: npm-cache
-        run: |
-          echo "::set-output name=dir::$(npm config get cache)"
-      - name: Setup Cache
-        uses: actions/cache@v2.1.7
-        with:
-          path: |
-            ${{ steps.npm-cache.outputs.dir }}
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-node${{ matrix.node }}-npm-${{ hashFiles('**/package-lock.json') }}
-      - name: Install Deps
-        run: |
-          npm ci
-          npx lerna bootstrap --ci
-      - name: Download Build artifacts
-        uses: actions/download-artifact@v3.0.0
-        with:
-          name: build-${{matrix.os}}-${{matrix.node}}
-          path: ./packages
-      - name: Run Lint
-        run: npx lerna run lint
-  docs_suite:
-    needs: build_suite
-    runs-on: ${{ matrix.os }}
-    name: Docs - ${{ matrix.os }} - Node ${{ matrix.node }}
-    timeout-minutes: 30
-    strategy:
-      max-parallel: 4
-      matrix:
-        node: [16]
-        os: [ubuntu-latest] #, windows-latest]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 200
-      - name: Setup Node
-        uses: actions/setup-node@v3.0.0
-        with:
-          node-version: ${{ matrix.node }}
-      - name: Update NPM
-        run: |
-          npm install -g npm
-          npm -v
-      - name: Get npm cache directory
-        id: npm-cache
-        run: |
-          echo "::set-output name=dir::$(npm config get cache)"
-      - name: Setup Cache
-        uses: actions/cache@v2.1.7
-        with:
-          path: |
-            ${{ steps.npm-cache.outputs.dir }}
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-node${{ matrix.node }}-npm-${{ hashFiles('**/package-lock.json') }}
-      - name: Install Deps
-        run: |
-          npm ci
-          npx lerna bootstrap --ci
-      - name: Download Build artifacts
-        uses: actions/download-artifact@v3.0.0
-        with:
-          name: build-${{matrix.os}}-${{matrix.node}}
-          path: ./packages
-      - name: Run Docs
-        run: npx lerna run docs
-  finish:
-    needs: [test_suite, lint_suite, docs_suite]
-    name: Finish Test
-    runs-on: ubuntu-latest
-    steps:
-    - name: Coveralls Finished
-      run: echo "Test Finished"
+    build_suite:
+        runs-on: ${{ matrix.os }}
+        name: Build - ${{ matrix.os }} - Node ${{ matrix.node }}
+        timeout-minutes: 30
+        strategy:
+            max-parallel: 4
+            matrix:
+                node: [14, 16]
+                os: [ubuntu-latest] #, windows-latest]
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 200
+            - name: Setup Node
+              uses: actions/setup-node@v3.0.0
+              with:
+                  node-version: ${{ matrix.node }}
+            - name: Update NPM
+              run: |
+                  npm install -g npm
+                  npm -v
+            - name: Get npm cache directory
+              id: npm-cache
+              run: |
+                  echo "::set-output name=dir::$(npm config get cache)"
+            - name: Setup Cache
+              uses: actions/cache@v2.1.7
+              with:
+                  path: |
+                      ${{ steps.npm-cache.outputs.dir }}
+                      node_modules
+                      */*/node_modules
+                  key: ${{ runner.os }}-node${{ matrix.node }}-npm-${{ hashFiles('**/package-lock.json') }}
+            - name: Install Deps
+              run: |
+                  npm ci
+                  npx lerna bootstrap --ci
+            - name: Run Build
+              run: npx lerna run build
+            - name: Archive production artifacts
+              uses: actions/upload-artifact@v3.0.0
+              with:
+                  name: build-${{matrix.os}}-${{matrix.node}}
+                  path: |
+                      packages/*/dist
+    test_suite:
+        needs: build_suite
+        runs-on: ${{ matrix.os }}
+        name: Test - ${{ matrix.os }} - Node ${{ matrix.node }}
+        timeout-minutes: 30
+        strategy:
+            max-parallel: 4
+            matrix:
+                node: [14, 16]
+                os: [ubuntu-latest] #, windows-latest]
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 200
+            - name: Setup Node
+              uses: actions/setup-node@v3.0.0
+              with:
+                  node-version: ${{ matrix.node }}
+            - name: Update NPM
+              run: |
+                  npm install -g npm
+                  npm -v
+            - name: Get npm cache directory
+              id: npm-cache
+              run: |
+                  echo "::set-output name=dir::$(npm config get cache)"
+            - name: Setup Cache
+              uses: actions/cache@v2.1.7
+              with:
+                  path: |
+                      ${{ steps.npm-cache.outputs.dir }}
+                      node_modules
+                      */*/node_modules
+                  key: ${{ runner.os }}-node${{ matrix.node }}-npm-${{ hashFiles('**/package-lock.json') }}
+            - name: Install Deps
+              run: |
+                  npm ci
+                  npx lerna bootstrap --ci
+            - name: Download Build artifacts
+              uses: actions/download-artifact@v3.0.0
+              with:
+                  name: build-${{matrix.os}}-${{matrix.node}}
+                  path: ./packages
+            - name: Run Test
+              run: npx lerna run test:coverage
+            - name: Upload coverage to Codecov Monorepo
+              uses: codecov/codecov-action@v2.1.0
+              with:
+                  token: ${{ secrets.CODECOV_TOKEN }}
+                  flags: unit_test
+                  directory: ${{ matrix.package.location }}
+                  name: Test
+                  fail_ci_if_error: false
+                  verbose: false
+    lint_suite:
+        needs: build_suite
+        runs-on: ${{ matrix.os }}
+        name: Lint - ${{ matrix.os }} - Node ${{ matrix.node }}
+        timeout-minutes: 30
+        strategy:
+            max-parallel: 4
+            matrix:
+                node: [16]
+                os: [ubuntu-latest] #, windows-latest]
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 200
+            - name: Setup Node
+              uses: actions/setup-node@v3.0.0
+              with:
+                  node-version: ${{ matrix.node }}
+            - name: Update NPM
+              run: |
+                  npm install -g npm
+                  npm -v
+            - name: Get npm cache directory
+              id: npm-cache
+              run: |
+                  echo "::set-output name=dir::$(npm config get cache)"
+            - name: Setup Cache
+              uses: actions/cache@v2.1.7
+              with:
+                  path: |
+                      ${{ steps.npm-cache.outputs.dir }}
+                      node_modules
+                      */*/node_modules
+                  key: ${{ runner.os }}-node${{ matrix.node }}-npm-${{ hashFiles('**/package-lock.json') }}
+            - name: Install Deps
+              run: |
+                  npm ci
+                  npx lerna bootstrap --ci
+            - name: Download Build artifacts
+              uses: actions/download-artifact@v3.0.0
+              with:
+                  name: build-${{matrix.os}}-${{matrix.node}}
+                  path: ./packages
+            - name: Run Lint
+              run: npx lerna run lint
+    docs_suite:
+        needs: build_suite
+        runs-on: ${{ matrix.os }}
+        name: Docs - ${{ matrix.os }} - Node ${{ matrix.node }}
+        timeout-minutes: 30
+        strategy:
+            max-parallel: 4
+            matrix:
+                node: [16]
+                os: [ubuntu-latest] #, windows-latest]
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 200
+            - name: Setup Node
+              uses: actions/setup-node@v3.0.0
+              with:
+                  node-version: ${{ matrix.node }}
+            - name: Update NPM
+              run: |
+                  npm install -g npm
+                  npm -v
+            - name: Get npm cache directory
+              id: npm-cache
+              run: |
+                  echo "::set-output name=dir::$(npm config get cache)"
+            - name: Setup Cache
+              uses: actions/cache@v2.1.7
+              with:
+                  path: |
+                      ${{ steps.npm-cache.outputs.dir }}
+                      node_modules
+                      */*/node_modules
+                  key: ${{ runner.os }}-node${{ matrix.node }}-npm-${{ hashFiles('**/package-lock.json') }}
+            - name: Install Deps
+              run: |
+                  npm ci
+                  npx lerna bootstrap --ci
+            - name: Download Build artifacts
+              uses: actions/download-artifact@v3.0.0
+              with:
+                  name: build-${{matrix.os}}-${{matrix.node}}
+                  path: ./packages
+            - name: Run Docs
+              run: npx lerna run docs
+    finish:
+        needs: [test_suite, lint_suite, docs_suite]
+        name: Finish Test
+        runs-on: ubuntu-latest
+        steps:
+            - name: Coveralls Finished
+              run: echo "Test Finished"
