@@ -33,9 +33,6 @@ jobs:
             - name: Install Deps
               run: |
                   npm ci
-                  npx lerna bootstrap --ci
-            - name: Run Build
-              run: npx lerna run build
             - name: Setup GIT
               run: |
                   git config --local user.email "donmahallem@users.noreply.github.com"
