@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.13](https://github.com/manniwatch/manniwatch/compare/v0.29.12...v0.29.13) (2022-03-20)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v13.3.0 ([24d14b9](https://github.com/manniwatch/manniwatch/commit/24d14b934cd67261b4b57515da1e0a1b4867c925))
+* **deps:** update angularmaterial monorepo to v13.3.0 ([4deb4ea](https://github.com/manniwatch/manniwatch/commit/4deb4ea5977e364f266f6ad4b6516765d300cfc1))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.17 ([0310d7a](https://github.com/manniwatch/manniwatch/commit/0310d7aff0e844df81b83b1b3320829a4bf09909))
+
+
+### Reverts
+
+* fix broken renovate PRs ([#2962](https://github.com/manniwatch/manniwatch/issues/2962)) ([1856d5d](https://github.com/manniwatch/manniwatch/commit/1856d5d6da6cb9162d51772e419927fa2f6df5d4))
+
+
+
+
+
 ## [0.29.10](https://github.com/manniwatch/manniwatch/compare/v0.29.9...v0.29.10) (2022-03-16)
 
 **Note:** Version bump only for package @manniwatch/client-ng
