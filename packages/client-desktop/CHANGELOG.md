@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.13](https://github.com/manniwatch/manniwatch/compare/v0.29.12...v0.29.13) (2022-03-20)
+
+
+### Reverts
+
+* fix broken renovate PRs ([#2962](https://github.com/manniwatch/manniwatch/issues/2962)) ([1856d5d](https://github.com/manniwatch/manniwatch/commit/1856d5d6da6cb9162d51772e419927fa2f6df5d4))
+
+
+
+
+
 ## [0.29.11](https://github.com/manniwatch/manniwatch/compare/v0.29.10...v0.29.11) (2022-03-16)
 
 **Note:** Version bump only for package @manniwatch/client-desktop
