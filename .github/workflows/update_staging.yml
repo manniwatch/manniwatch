@@ -55,7 +55,7 @@ jobs:
               uses: peter-evans/create-pull-request@v3.14.0
               with:
                   branch: release-staging
-                  title: 'chore: stage release ${{ steps.get-pr-body.outputs.version }}'
+                  title: 'chore: stage release ${{ steps.get-pr-body.outputs.version }} [skip ci]'
                   body: ${{ steps.get-pr-body.outputs.body }}
                   token: ${{ secrets.GITHUB_TOKEN }}
                   base: master
