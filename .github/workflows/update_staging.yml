@@ -45,12 +45,20 @@ jobs:
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+            - name: Create Release Body
+              id: get-pr-body
+              run: |
+                  body=$(npx conventional-changelog -r 1)
+                  body="${body//'%'/'%25'}"
+                  body="${body//$'\n'/'%0A'}"
+                  body="${body//$'\r'/'%0D'}" 
+                  echo ::set-output name=body::$body
             - name: Prepare Release
               uses: peter-evans/create-pull-request@v3.14.0
               with:
                   branch: release-staging
                   title: 'chore: staging next release'
-                  body: 'Staged next manniwatch release'
+                  body: ${{ steps.get-pr-body.outputs.body }}
                   token: ${{ secrets.GITHUB_TOKEN }}
                   base: master
                   commit-message: 'chore: stage next release'
