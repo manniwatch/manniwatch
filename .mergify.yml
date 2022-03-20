@@ -1,24 +1,33 @@
 queue_rules:
-  - name: default
-    conditions:
-      # Conditions to get out of the queue (= merged)
-      - check-success=Finish Test
+    - name: default
+      conditions:
+          # Conditions to get out of the queue (= merged)
+          - check-success=Finish Test
 pull_request_rules:
-  - name: merge PRs labeled ready-to-merge
-    conditions:
-      - status-success=Finish Test
-      - label=ready-to-merge
-    actions:
-      queue:
-        method: squash
-        name: default
-  - name: delete head branch on merged pull requests
-    conditions:
-      - merged
-      - -head~=^(master|dev)$
-      - -author~=^dependabot(|-preview)\[bot\]$
-    actions:
-      label:
-        remove:
-          - ready-to-merge
-      delete_head_branch:
+    - name: merge PRs labeled ready-to-merge
+      conditions:
+          - status-success=Finish Test
+          - label=ready-to-merge
+      actions:
+          queue:
+              method: squash
+              name: default
+    - name: Merge staged release
+      conditions:
+          - status-success=Finish Test
+          - head=staging
+          - approved-reviews-by=donmahallem
+      actions:
+          queue:
+              method: squash
+              name: default
+    - name: delete head branch on merged pull requests
+      conditions:
+          - merged
+          - -head~=^(master|dev)$
+          - -author~=^dependabot(|-preview)\[bot\]$
+      actions:
+          label:
+              remove:
+                  - ready-to-merge
+          delete_head_branch:
