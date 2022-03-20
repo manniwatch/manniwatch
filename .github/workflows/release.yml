@@ -1,14 +1,42 @@
-name: Test
+name: Release merged
 on:
-    pull_request_review:
-        types: [submitted]
+    pull_request:
+        types:
+            - closed
         branches:
-            - staging
+            - 'master'
 concurrency:
     group: publish_release
     cancel-in-progress: true
 jobs:
-    approved:
-        if: github.event.review.state == 'approved'
-        name: Release - ${{ matrix.os }} - Node ${{ matrix.node }}
-        uses: ./.github/workflows/test.yml
+    build:
+        if: github.event.pull_request.merged == true && github.event.pull_request.head.sha == "release-staging"
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3.0.0
+              with:
+                  fetch-depth: 0
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  ref: ${{ github.event.workflow_run.head_branch }}
+            - name: Setup Node
+              uses: actions/setup-node@v3.0.0
+              with:
+                  node-version: 16
+                  registry-url: 'https://registry.npmjs.org'
+            - name: Create Release Body
+              id: get-pr-body
+              run: |
+                  node ./.github/extract-version.js
+            - name: Bump version and push tag
+              id: tag_version
+              uses: mathieudutour/github-tag-action@v6.0
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  custom_tag: v${{ steps.get-pr-body.outputs.version }}
+            - name: Create a GitHub release
+              uses: ncipollo/release-action@v1.9.0
+              with:
+                  tag: ${{ steps.tag_version.outputs.new_tag }}
+                  name: Release ${{ steps.tag_version.outputs.new_tag }}
+                  body: ${{ steps.tag_version.outputs.changelog }}
