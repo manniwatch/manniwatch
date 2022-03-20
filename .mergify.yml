@@ -14,7 +14,7 @@ pull_request_rules:
               name: default
     - name: Merge staged release
       conditions:
-          - status-success=Finish Test
+          - check-success=Finish Test
           - head=release-staging
           - approved-reviews-by=donmahallem
       actions:
