@@ -1,0 +1,14 @@
+name: Test
+on:
+    pull_request_review:
+        types: [submitted]
+        branches:
+            - staging
+concurrency:
+    group: publish_release
+    cancel-in-progress: true
+jobs:
+    approved:
+        if: github.event.review.state == 'approved'
+        name: Release - ${{ matrix.os }} - Node ${{ matrix.node }}
+        uses: ./.github/workflows/test.yml
