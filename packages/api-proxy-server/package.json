@@ -59,7 +59,7 @@
     "@types/express": "4.17.13",
     "@types/helmet": "4.0.0",
     "@types/nconf": "0.10.2",
-    "apidoc": "0.50.5",
+    "apidoc": "0.51.0",
     "supertest": "6.2.2"
   }
 }
