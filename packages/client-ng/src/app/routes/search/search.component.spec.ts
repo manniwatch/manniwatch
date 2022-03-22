@@ -1,6 +1,6 @@
 /*
  * Package @manniwatch/client-ng
- * Source https://manniwatch.github.io/manniwatch/
+ * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
 import { Component, Input } from '@angular/core';
@@ -48,33 +48,28 @@ describe('src/modules/routing/search/search.component.ts', (): void => {
         beforeAll((): void => {
             getTitleSpy = jasmine.createSpy();
         });
-        beforeEach(
-            waitForAsync((): void => {
-                TestBed.configureTestingModule({
-                    declarations: [SearchComponent, TestMatIconComponent, TestMatNavListComponent, TestMatListItemComponent],
-                    imports: [RouterTestingModule],
-                    providers: [
-                        {
-                            provide: Title,
-                            useValue: {
-                                getTitle: getTitleSpy,
-                            },
+        beforeEach(waitForAsync((): void => {
+            TestBed.configureTestingModule({
+                declarations: [SearchComponent, TestMatIconComponent, TestMatNavListComponent, TestMatListItemComponent],
+                imports: [RouterTestingModule],
+                providers: [
+                    {
+                        provide: Title,
+                        useValue: {
+                            getTitle: getTitleSpy,
                         },
-                    ],
-                }).compileComponents();
-                fixture = TestBed.createComponent(SearchComponent);
-                cmp = fixture.debugElement.componentInstance as SearchComponent;
-            })
-        );
+                    },
+                ],
+            }).compileComponents();
+            fixture = TestBed.createComponent(SearchComponent);
+            cmp = fixture.debugElement.componentInstance as SearchComponent;
+        }));
         afterEach((): void => {
             getTitleSpy.calls.reset();
         });
 
-        it(
-            'should create the component',
-            waitForAsync((): void => {
-                expect(cmp).toBeTruthy();
-            })
-        );
+        it('should create the component', waitForAsync((): void => {
+            expect(cmp).toBeTruthy();
+        }));
     });
 });

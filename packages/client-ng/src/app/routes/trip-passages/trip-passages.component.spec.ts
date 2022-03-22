@@ -1,6 +1,6 @@
 /*
  * Package @manniwatch/client-ng
- * Source https://manniwatch.github.io/manniwatch/
+ * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
 import { Component, DebugElement, Directive, Input } from '@angular/core';
@@ -46,29 +46,27 @@ describe('src/app/routes/trip-passages/trip-passage.component', (): void => {
     describe('TripPassagesComponent', (): void => {
         const testStatusSubject: Subject<IPassageStatus> = new Subject();
         const testVehicleLocationSubject: Subject<IVehicleLocation> = new Subject();
-        beforeEach(
-            waitForAsync((): void => {
-                TestBed.configureTestingModule({
-                    declarations: [TripPassagesComponent, TestTripPassagesListComponent, TestStaticMapDirective, TestAppHeaderBoxComponent],
-                    providers: [
-                        {
-                            provide: TripPassagesService,
-                            useValue: {
-                                createStopLocationObservable: (): Observable<IVehicleLocation> => testVehicleLocationSubject,
-                                statusObservable: testStatusSubject,
-                            },
-                        },
-                    ],
-                })
-                    .overrideProvider(TripPassagesService, {
+        beforeEach(waitForAsync((): void => {
+            TestBed.configureTestingModule({
+                declarations: [TripPassagesComponent, TestTripPassagesListComponent, TestStaticMapDirective, TestAppHeaderBoxComponent],
+                providers: [
+                    {
+                        provide: TripPassagesService,
                         useValue: {
                             createStopLocationObservable: (): Observable<IVehicleLocation> => testVehicleLocationSubject,
                             statusObservable: testStatusSubject,
                         },
-                    })
-                    .compileComponents();
+                    },
+                ],
             })
-        );
+                .overrideProvider(TripPassagesService, {
+                    useValue: {
+                        createStopLocationObservable: (): Observable<IVehicleLocation> => testVehicleLocationSubject,
+                        statusObservable: testStatusSubject,
+                    },
+                })
+                .compileComponents();
+        }));
         let cmpFixture: ComponentFixture<TripPassagesComponent>;
         let cmp: TripPassagesComponent;
         beforeEach((): void => {

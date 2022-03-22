@@ -1,6 +1,6 @@
 /*
  * Package @manniwatch/client-ng
- * Source https://manniwatch.github.io/manniwatch/
+ * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
 import { Component, Directive, EventEmitter, Input, Output } from '@angular/core';
@@ -63,35 +63,30 @@ class TestStopPointService {}
 
 describe('src/modules/main-toolbar/search-box.component.ts', (): void => {
     describe('ToolbarSearchBoxComponent', (): void => {
-        beforeEach(
-            waitForAsync((): void => {
-                TestBed.configureTestingModule({
-                    declarations: [
-                        ToolbarSearchBoxComponent,
-                        TestMatIconComponent,
-                        TestMatAutoCompleteComponent,
-                        TestMatOptionComponent,
-                        TestMatFormFieldComponent,
-                        TestFormControlDirective,
-                    ],
-                    imports: [RouterTestingModule],
-                    providers: [
-                        {
-                            provide: StopPointService,
-                            useValue: new TestStopPointService(),
-                        },
-                    ],
-                }).compileComponents();
-            })
-        );
+        beforeEach(waitForAsync((): void => {
+            TestBed.configureTestingModule({
+                declarations: [
+                    ToolbarSearchBoxComponent,
+                    TestMatIconComponent,
+                    TestMatAutoCompleteComponent,
+                    TestMatOptionComponent,
+                    TestMatFormFieldComponent,
+                    TestFormControlDirective,
+                ],
+                imports: [RouterTestingModule],
+                providers: [
+                    {
+                        provide: StopPointService,
+                        useValue: new TestStopPointService(),
+                    },
+                ],
+            }).compileComponents();
+        }));
 
-        it(
-            'should create the app',
-            waitForAsync((): void => {
-                const fixture: ComponentFixture<ToolbarSearchBoxComponent> = TestBed.createComponent(ToolbarSearchBoxComponent);
-                const app: ToolbarSearchBoxComponent = fixture.debugElement.componentInstance;
-                expect(app).toBeTruthy();
-            })
-        );
+        it('should create the app', waitForAsync((): void => {
+            const fixture: ComponentFixture<ToolbarSearchBoxComponent> = TestBed.createComponent(ToolbarSearchBoxComponent);
+            const app: ToolbarSearchBoxComponent = fixture.debugElement.componentInstance;
+            expect(app).toBeTruthy();
+        }));
     });
 });

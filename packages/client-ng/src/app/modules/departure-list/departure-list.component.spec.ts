@@ -1,6 +1,6 @@
 /*
  * Package @manniwatch/client-ng
- * Source https://manniwatch.github.io/manniwatch/
+ * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
 import { Component, Input } from '@angular/core';
@@ -29,21 +29,16 @@ export class TestDepartureListItemComponent {
 // tslint:enable:directive-selector
 describe('src/app/modules/stop/departure-list.component', (): void => {
     describe('DepartureListComponent', (): void => {
-        beforeEach(
-            waitForAsync((): void => {
-                TestBed.configureTestingModule({
-                    declarations: [DepartureListComponent, TestMatNavListComponent, TestDepartureListItemComponent],
-                }).compileComponents();
-            })
-        );
-        it(
-            'should create the app',
-            waitForAsync((): void => {
-                const fixture: ComponentFixture<DepartureListComponent> = TestBed.createComponent(DepartureListComponent);
-                const app: DepartureListComponent = fixture.debugElement.componentInstance as DepartureListComponent;
-                expect(app).toBeTruthy();
-            })
-        );
+        beforeEach(waitForAsync((): void => {
+            TestBed.configureTestingModule({
+                declarations: [DepartureListComponent, TestMatNavListComponent, TestDepartureListItemComponent],
+            }).compileComponents();
+        }));
+        it('should create the app', waitForAsync((): void => {
+            const fixture: ComponentFixture<DepartureListComponent> = TestBed.createComponent(DepartureListComponent);
+            const app: DepartureListComponent = fixture.debugElement.componentInstance as DepartureListComponent;
+            expect(app).toBeTruthy();
+        }));
         describe('layout', (): void => {
             it('needs to be implemented');
         });
