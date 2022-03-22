@@ -1,6 +1,6 @@
 /*
  * Package @manniwatch/client-ng
- * Source https://manniwatch.github.io/manniwatch/
+ * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
 import { DebugElement, Injectable } from '@angular/core';
@@ -33,26 +33,21 @@ describe('src/modules/error/not-found-msg-switch.component.ts', (): void => {
         let cmp: NotFoundComponent;
         let testActivatedRoute: TestActivatedRoute;
         let infoBoxDebugElement: DebugElement;
-        beforeEach(
-            waitForAsync((): void => {
-                TestBed.configureTestingModule({
-                    declarations: [NotFoundMessageSwitchComponent],
-                    imports: [RouterTestingModule],
-                    providers: [{ provide: ActivatedRoute, useClass: TestActivatedRoute }],
-                }).compileComponents();
-                cmpFixture = TestBed.createComponent(NotFoundMessageSwitchComponent);
-                cmp = cmpFixture.debugElement.componentInstance;
-                testActivatedRoute = TestBed.inject(ActivatedRoute) as any;
-                infoBoxDebugElement = cmpFixture.debugElement.query(By.css('div.info'));
-            })
-        );
-        it(
-            'should create the app',
-            waitForAsync((): void => {
-                expect(cmp).toBeTruthy();
-                expect(infoBoxDebugElement.componentInstance).toBeTruthy();
-            })
-        );
+        beforeEach(waitForAsync((): void => {
+            TestBed.configureTestingModule({
+                declarations: [NotFoundMessageSwitchComponent],
+                imports: [RouterTestingModule],
+                providers: [{ provide: ActivatedRoute, useClass: TestActivatedRoute }],
+            }).compileComponents();
+            cmpFixture = TestBed.createComponent(NotFoundMessageSwitchComponent);
+            cmp = cmpFixture.debugElement.componentInstance;
+            testActivatedRoute = TestBed.inject(ActivatedRoute) as any;
+            infoBoxDebugElement = cmpFixture.debugElement.query(By.css('div.info'));
+        }));
+        it('should create the app', waitForAsync((): void => {
+            expect(cmp).toBeTruthy();
+            expect(infoBoxDebugElement.componentInstance).toBeTruthy();
+        }));
         describe('error type is provided', (): void => {
             describe(`error type is ${ErrorType.PASSAGE_NOT_FOUND}`, (): void => {
                 beforeEach((): void => {

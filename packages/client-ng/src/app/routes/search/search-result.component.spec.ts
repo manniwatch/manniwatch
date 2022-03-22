@@ -1,6 +1,6 @@
 /*
  * Package @manniwatch/client-ng
- * Source https://manniwatch.github.io/manniwatch/
+ * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
 import { Component, Input } from '@angular/core';
@@ -47,33 +47,28 @@ describe('src/modules/routing/search/search-result.resolver.ts', (): void => {
         beforeAll((): void => {
             stopLocationSpy = jasmine.createSpy();
         });
-        beforeEach(
-            waitForAsync((): void => {
-                TestBed.configureTestingModule({
-                    declarations: [SearchComponent, TestMatIconComponent, TestMatNavListComponent, TestMatListItemComponent],
-                    imports: [RouterTestingModule],
-                    providers: [
-                        SearchResultResolver,
-                        {
-                            provide: StopPointService,
-                            useValue: {
-                                stopLocationsObservable: stopLocationSpy,
-                            },
+        beforeEach(waitForAsync((): void => {
+            TestBed.configureTestingModule({
+                declarations: [SearchComponent, TestMatIconComponent, TestMatNavListComponent, TestMatListItemComponent],
+                imports: [RouterTestingModule],
+                providers: [
+                    SearchResultResolver,
+                    {
+                        provide: StopPointService,
+                        useValue: {
+                            stopLocationsObservable: stopLocationSpy,
                         },
-                    ],
-                }).compileComponents();
-                testResolver = TestBed.inject(SearchResultResolver);
-            })
-        );
+                    },
+                ],
+            }).compileComponents();
+            testResolver = TestBed.inject(SearchResultResolver);
+        }));
         afterEach((): void => {
             stopLocationSpy.calls.reset();
         });
 
-        it(
-            'should create the component',
-            waitForAsync((): void => {
-                expect(testResolver).toBeTruthy();
-            })
-        );
+        it('should create the component', waitForAsync((): void => {
+            expect(testResolver).toBeTruthy();
+        }));
     });
 });

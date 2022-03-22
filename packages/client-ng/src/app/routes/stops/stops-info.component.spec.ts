@@ -1,6 +1,6 @@
 /*
  * Package @manniwatch/client-ng
- * Source https://manniwatch.github.io/manniwatch/
+ * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
 import { Component } from '@angular/core';
@@ -41,43 +41,38 @@ describe('src/modules/stops/stops-info.component.ts', (): void => {
     describe('StopsInfoComponent', (): void => {
         let fixture: ComponentFixture<StopsInfoComponent>;
         let app: StopsInfoComponent;
-        beforeEach(
-            waitForAsync((): void => {
-                TestBed.configureTestingModule({
-                    declarations: [
-                        StopsInfoComponent,
-                        TestMatListComponent,
-                        TestMatDividerComponent,
-                        TestMatListItemComponent,
-                        TestMatIconComponent,
-                    ],
-                    imports: [RouterTestingModule],
-                    providers: [
-                        {
-                            provide: ActivatedRoute,
-                            useValue: {
-                                snapshot: {
-                                    data: {
-                                        stops: {
-                                            stops: [{ name: 'c' }, { name: 'aa' }, { name: 'b' }, { name: 'ab' }],
-                                        },
+        beforeEach(waitForAsync((): void => {
+            TestBed.configureTestingModule({
+                declarations: [
+                    StopsInfoComponent,
+                    TestMatListComponent,
+                    TestMatDividerComponent,
+                    TestMatListItemComponent,
+                    TestMatIconComponent,
+                ],
+                imports: [RouterTestingModule],
+                providers: [
+                    {
+                        provide: ActivatedRoute,
+                        useValue: {
+                            snapshot: {
+                                data: {
+                                    stops: {
+                                        stops: [{ name: 'c' }, { name: 'aa' }, { name: 'b' }, { name: 'ab' }],
                                     },
                                 },
                             },
                         },
-                    ],
-                }).compileComponents();
-                fixture = TestBed.createComponent(StopsInfoComponent);
-                app = fixture.debugElement.componentInstance;
-            })
-        );
+                    },
+                ],
+            }).compileComponents();
+            fixture = TestBed.createComponent(StopsInfoComponent);
+            app = fixture.debugElement.componentInstance;
+        }));
 
-        it(
-            'should create the app',
-            waitForAsync((): void => {
-                expect(app).toBeTruthy();
-            })
-        );
+        it('should create the app', waitForAsync((): void => {
+            expect(app).toBeTruthy();
+        }));
         describe('layout', (): void => {
             it('needs to done');
         });

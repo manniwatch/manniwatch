@@ -1,6 +1,6 @@
 /*
  * Package @manniwatch/client-ng
- * Source https://manniwatch.github.io/manniwatch/
+ * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
 import { Component, Directive, Input } from '@angular/core';
@@ -49,21 +49,16 @@ const STATUS_TEST_CASES: IStatusTest[] = [
 
 describe('src/app/modules/stop/departure-list-item.component', (): void => {
     describe('DepartureListItemComponent', (): void => {
-        beforeEach(
-            waitForAsync((): void => {
-                TestBed.configureTestingModule({
-                    declarations: [DepartureListItemComponent, TestMatIconComponent, TestMatListItemComponent, TestRouterLinkDirective],
-                }).compileComponents();
-            })
-        );
-        it(
-            'should create the app',
-            waitForAsync((): void => {
-                const fixture: ComponentFixture<DepartureListItemComponent> = TestBed.createComponent(DepartureListItemComponent);
-                const app: DepartureListItemComponent = fixture.debugElement.componentInstance;
-                expect(app).toBeTruthy();
-            })
-        );
+        beforeEach(waitForAsync((): void => {
+            TestBed.configureTestingModule({
+                declarations: [DepartureListItemComponent, TestMatIconComponent, TestMatListItemComponent, TestRouterLinkDirective],
+            }).compileComponents();
+        }));
+        it('should create the app', waitForAsync((): void => {
+            const fixture: ComponentFixture<DepartureListItemComponent> = TestBed.createComponent(DepartureListItemComponent);
+            const app: DepartureListItemComponent = fixture.debugElement.componentInstance;
+            expect(app).toBeTruthy();
+        }));
         describe('layout', (): void => {
             it('needs to be implemented');
         });

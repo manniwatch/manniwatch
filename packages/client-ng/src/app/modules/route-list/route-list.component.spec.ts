@@ -1,6 +1,6 @@
 /*
  * Package @manniwatch/client-ng
- * Source https://manniwatch.github.io/manniwatch/
+ * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
 import { Component } from '@angular/core';
@@ -41,21 +41,19 @@ export class TestParentComponent {
 
 describe('src/modules/stop/route-list.component.ts', (): void => {
     describe('RouteListComponent', (): void => {
-        beforeEach(
-            waitForAsync((): void => {
-                TestBed.configureTestingModule({
-                    declarations: [
-                        RouteListComponent,
-                        TestMatDividerComponent,
-                        TestMatListItemComponent,
-                        TestMatListComponent,
-                        TestParentComponent,
-                    ],
-                    imports: [RouterTestingModule],
-                    providers: [],
-                }).compileComponents();
-            })
-        );
+        beforeEach(waitForAsync((): void => {
+            TestBed.configureTestingModule({
+                declarations: [
+                    RouteListComponent,
+                    TestMatDividerComponent,
+                    TestMatListItemComponent,
+                    TestMatListComponent,
+                    TestParentComponent,
+                ],
+                imports: [RouterTestingModule],
+                providers: [],
+            }).compileComponents();
+        }));
 
         beforeEach((): void => {
             // testUploadDataService.

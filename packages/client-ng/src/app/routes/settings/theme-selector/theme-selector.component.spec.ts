@@ -1,6 +1,6 @@
 /*
  * Package @manniwatch/client-ng
- * Source https://manniwatch.github.io/manniwatch/
+ * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
 import { Component } from '@angular/core';
@@ -43,40 +43,35 @@ describe('src/routes/settings/theme-selector/theme-selector.component.ts', (): v
             setThemeSpy = jasmine.createSpy('setTheme');
             themeObservableSubscribeSpy = jasmine.createSpy('themeObservable.subscribe');
         });
-        beforeEach(
-            waitForAsync((): void => {
-                TestBed.configureTestingModule({
-                    declarations: [ThemeSelectorComponent, TestMatSelectionListComponent, TestMatListOptionComponent, TestMatIconComponent],
-                    imports: [RouterTestingModule],
-                    providers: [
-                        {
-                            provide: SettingsService,
-                            useValue: {
-                                set theme(th: Theme) {
-                                    setThemeSpy(th);
-                                },
-                                get themeObservable(): any {
-                                    return themeObservableSubscribeSpy();
-                                },
+        beforeEach(waitForAsync((): void => {
+            TestBed.configureTestingModule({
+                declarations: [ThemeSelectorComponent, TestMatSelectionListComponent, TestMatListOptionComponent, TestMatIconComponent],
+                imports: [RouterTestingModule],
+                providers: [
+                    {
+                        provide: SettingsService,
+                        useValue: {
+                            set theme(th: Theme) {
+                                setThemeSpy(th);
+                            },
+                            get themeObservable(): any {
+                                return themeObservableSubscribeSpy();
                             },
                         },
-                    ],
-                }).compileComponents();
-                fixture = TestBed.createComponent(ThemeSelectorComponent);
-                app = fixture.debugElement.componentInstance;
-            })
-        );
+                    },
+                ],
+            }).compileComponents();
+            fixture = TestBed.createComponent(ThemeSelectorComponent);
+            app = fixture.debugElement.componentInstance;
+        }));
         afterEach((): void => {
             setThemeSpy.calls.reset();
             themeObservableSubscribeSpy.calls.reset();
         });
 
-        it(
-            'should create the app',
-            waitForAsync((): void => {
-                expect(app).toBeTruthy();
-            })
-        );
+        it('should create the app', waitForAsync((): void => {
+            expect(app).toBeTruthy();
+        }));
         describe('layout', (): void => {
             it('needs to be implemented');
         });

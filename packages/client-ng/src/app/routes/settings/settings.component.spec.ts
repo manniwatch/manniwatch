@@ -1,6 +1,6 @@
 /*
  * Package @manniwatch/client-ng
- * Source https://manniwatch.github.io/manniwatch/
+ * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
 import { Component } from '@angular/core';
@@ -40,30 +40,25 @@ describe('src/routes/settings/settings.component.ts', (): void => {
     describe('SettingsComponent', (): void => {
         let fixture: ComponentFixture<SettingsComponent>;
         let app: SettingsComponent;
-        beforeEach(
-            waitForAsync((): void => {
-                TestBed.configureTestingModule({
-                    declarations: [
-                        SettingsComponent,
-                        TestMatListComponent,
-                        TestMatDividerComponent,
-                        TestMatListItemComponent,
-                        TestMatIconComponent,
-                    ],
-                    imports: [RouterTestingModule],
-                    providers: [],
-                }).compileComponents();
-                fixture = TestBed.createComponent(SettingsComponent);
-                app = fixture.debugElement.componentInstance;
-            })
-        );
+        beforeEach(waitForAsync((): void => {
+            TestBed.configureTestingModule({
+                declarations: [
+                    SettingsComponent,
+                    TestMatListComponent,
+                    TestMatDividerComponent,
+                    TestMatListItemComponent,
+                    TestMatIconComponent,
+                ],
+                imports: [RouterTestingModule],
+                providers: [],
+            }).compileComponents();
+            fixture = TestBed.createComponent(SettingsComponent);
+            app = fixture.debugElement.componentInstance;
+        }));
 
-        it(
-            'should create the app',
-            waitForAsync((): void => {
-                expect(app).toBeTruthy();
-            })
-        );
+        it('should create the app', waitForAsync((): void => {
+            expect(app).toBeTruthy();
+        }));
         describe('layout', (): void => {
             it('needs to be implemented');
         });

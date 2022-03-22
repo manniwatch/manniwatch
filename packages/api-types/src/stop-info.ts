@@ -1,6 +1,6 @@
 /*
  * Package @manniwatch/api-types
- * Source https://manniwatch.github.io/manniwatch/
+ * Source https://github.com/manniwatch/manniwatch/tree/master/packages/api-types
  */
 
 export interface IStopInfo {

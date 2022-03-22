@@ -1,6 +1,6 @@
 /*
  * Package @manniwatch/client-ng
- * Source https://manniwatch.github.io/manniwatch/
+ * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
 import { Component, DebugElement } from '@angular/core';
@@ -46,32 +46,27 @@ describe('src/modules/error/not-found.component.ts', (): void => {
         let cmpFixture: ComponentFixture<NotFoundComponent>;
         let cmp: NotFoundComponent;
         let matListDebugElements: DebugElement[];
-        beforeEach(
-            waitForAsync((): void => {
-                TestBed.configureTestingModule({
-                    declarations: [
-                        NotFoundComponent,
-                        TestMatIconComponent,
-                        TestMatListItemComponent,
-                        TestMatNavListComponent,
-                        TestNotFoundMessageSwitchComponent,
-                        TestMatDividerComponent,
-                    ],
-                    imports: [RouterTestingModule],
-                    providers: [],
-                }).compileComponents();
-                cmpFixture = TestBed.createComponent(NotFoundComponent);
-                cmpFixture.detectChanges();
-                cmp = cmpFixture.debugElement.componentInstance;
-                matListDebugElements = cmpFixture.debugElement.queryAll(By.css('mat-list-item'));
-            })
-        );
-        it(
-            'should create the app',
-            waitForAsync((): void => {
-                expect(cmp).toBeTruthy();
-            })
-        );
+        beforeEach(waitForAsync((): void => {
+            TestBed.configureTestingModule({
+                declarations: [
+                    NotFoundComponent,
+                    TestMatIconComponent,
+                    TestMatListItemComponent,
+                    TestMatNavListComponent,
+                    TestNotFoundMessageSwitchComponent,
+                    TestMatDividerComponent,
+                ],
+                imports: [RouterTestingModule],
+                providers: [],
+            }).compileComponents();
+            cmpFixture = TestBed.createComponent(NotFoundComponent);
+            cmpFixture.detectChanges();
+            cmp = cmpFixture.debugElement.componentInstance;
+            matListDebugElements = cmpFixture.debugElement.queryAll(By.css('mat-list-item'));
+        }));
+        it('should create the app', waitForAsync((): void => {
+            expect(cmp).toBeTruthy();
+        }));
         it('should create the correct number of list items', (): void => {
             expect(matListDebugElements.length).toEqual(2);
         });

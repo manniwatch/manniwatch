@@ -1,6 +1,6 @@
 /*
  * Package @manniwatch/client-ng
- * Source https://manniwatch.github.io/manniwatch/
+ * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
 import { Component, DebugElement } from '@angular/core';
@@ -42,74 +42,56 @@ describe('src/app/modules/request-update-dialog/request-update-dialog.component.
             statusObservable: statusSubject,
         };
         const testDialogRef: any = {};
-        beforeEach(
-            waitForAsync((): void => {
-                TestBed.configureTestingModule({
-                    declarations: [
-                        RequestUpdateDialogComponent,
-                        TestMatIconComponent,
-                        TestMatDialogActionsComponent,
-                        TestMatSpinnerComponent,
-                    ],
-                    imports: [],
-                    providers: [
-                        {
-                            provide: RequestUpdateDialogService,
-                            useValue: testDialogService,
-                        },
-                        {
-                            provide: MatDialogRef,
-                            useValue: testDialogRef,
-                        },
-                    ],
-                })
-                    .overrideComponent(RequestUpdateDialogComponent, {
-                        set: {
-                            providers: [{ provide: RequestUpdateDialogService, useValue: testDialogService }],
-                        },
-                    })
-                    .compileComponents();
+        beforeEach(waitForAsync((): void => {
+            TestBed.configureTestingModule({
+                declarations: [RequestUpdateDialogComponent, TestMatIconComponent, TestMatDialogActionsComponent, TestMatSpinnerComponent],
+                imports: [],
+                providers: [
+                    {
+                        provide: RequestUpdateDialogService,
+                        useValue: testDialogService,
+                    },
+                    {
+                        provide: MatDialogRef,
+                        useValue: testDialogRef,
+                    },
+                ],
             })
-        );
+                .overrideComponent(RequestUpdateDialogComponent, {
+                    set: {
+                        providers: [{ provide: RequestUpdateDialogService, useValue: testDialogService }],
+                    },
+                })
+                .compileComponents();
+        }));
 
         describe('layout', (): void => {
             let cmpFixture: ComponentFixture<RequestUpdateDialogComponent>;
             let cmp: RequestUpdateDialogComponent;
-            beforeEach(
-                waitForAsync((): void => {
-                    cmpFixture = TestBed.createComponent(RequestUpdateDialogComponent);
-                    cmp = cmpFixture.debugElement.componentInstance;
-                })
-            );
-            it(
-                'should create the component',
-                waitForAsync((): void => {
-                    expect(cmp).toBeTruthy();
-                })
-            );
-            it(
-                'should display loading spinner if status equals "loading"',
-                waitForAsync(async (): Promise<void> => {
-                    statusSubject.next(SW_STATUS.LOADING);
-                    cmpFixture.detectChanges();
-                    statusSubject.next(SW_STATUS.LOADING);
-                    cmpFixture.detectChanges();
-                    await cmpFixture.whenStable();
-                    const debugElement: DebugElement = cmpFixture.debugElement.query(By.directive(TestMatSpinnerComponent));
-                    expect(debugElement).toBeTruthy();
-                })
-            );
-            it(
-                'should display that no update is available',
-                waitForAsync(async (): Promise<void> => {
-                    statusSubject.next('unknown status' as SW_STATUS);
-                    cmpFixture.detectChanges();
-                    await cmpFixture.whenStable();
-                    const debugElement: DebugElement = cmpFixture.debugElement.query(By.css('mat-dialog-content'));
-                    expect(debugElement).toBeTruthy();
-                    expect(debugElement.nativeElement.innerText).toEqual('No Update available!');
-                })
-            );
+            beforeEach(waitForAsync((): void => {
+                cmpFixture = TestBed.createComponent(RequestUpdateDialogComponent);
+                cmp = cmpFixture.debugElement.componentInstance;
+            }));
+            it('should create the component', waitForAsync((): void => {
+                expect(cmp).toBeTruthy();
+            }));
+            it('should display loading spinner if status equals "loading"', waitForAsync(async (): Promise<void> => {
+                statusSubject.next(SW_STATUS.LOADING);
+                cmpFixture.detectChanges();
+                statusSubject.next(SW_STATUS.LOADING);
+                cmpFixture.detectChanges();
+                await cmpFixture.whenStable();
+                const debugElement: DebugElement = cmpFixture.debugElement.query(By.directive(TestMatSpinnerComponent));
+                expect(debugElement).toBeTruthy();
+            }));
+            it('should display that no update is available', waitForAsync(async (): Promise<void> => {
+                statusSubject.next('unknown status' as SW_STATUS);
+                cmpFixture.detectChanges();
+                await cmpFixture.whenStable();
+                const debugElement: DebugElement = cmpFixture.debugElement.query(By.css('mat-dialog-content'));
+                expect(debugElement).toBeTruthy();
+                expect(debugElement.nativeElement.innerText).toEqual('No Update available!');
+            }));
         });
     });
 });

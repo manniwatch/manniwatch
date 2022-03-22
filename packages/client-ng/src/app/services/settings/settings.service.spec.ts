@@ -1,6 +1,6 @@
 /*
  * Package @manniwatch/client-ng
- * Source https://manniwatch.github.io/manniwatch/
+ * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
@@ -21,29 +21,27 @@ describe('src/app/services/settings.service', (): void => {
         beforeAll((): void => {
             getSettingsSpy = jasmine.createSpy();
         });
-        beforeEach(
-            waitForAsync((): void => {
-                storageSpy = jasmine.createSpyObj<IStorage>('StorageSpy', ['getItem', 'setItem', 'removeItem']);
-                TestBed.configureTestingModule({
-                    imports: [HttpClientTestingModule],
-                    providers: [
-                        SettingsService,
-                        {
-                            provide: ApiService,
-                            useValue: {
-                                getSettings: getSettingsSpy,
-                            },
+        beforeEach(waitForAsync((): void => {
+            storageSpy = jasmine.createSpyObj<IStorage>('StorageSpy', ['getItem', 'setItem', 'removeItem']);
+            TestBed.configureTestingModule({
+                imports: [HttpClientTestingModule],
+                providers: [
+                    SettingsService,
+                    {
+                        provide: ApiService,
+                        useValue: {
+                            getSettings: getSettingsSpy,
                         },
-                        {
-                            provide: LOCAL_STORAGE_TOKEN,
-                            useValue: storageSpy,
-                        },
-                    ],
-                });
-                settingsService = TestBed.inject(SettingsService);
-                httpMock = TestBed.inject(HttpTestingController);
-            })
-        );
+                    },
+                    {
+                        provide: LOCAL_STORAGE_TOKEN,
+                        useValue: storageSpy,
+                    },
+                ],
+            });
+            settingsService = TestBed.inject(SettingsService);
+            httpMock = TestBed.inject(HttpTestingController);
+        }));
 
         afterEach((): void => {
             getSettingsSpy.calls.reset();

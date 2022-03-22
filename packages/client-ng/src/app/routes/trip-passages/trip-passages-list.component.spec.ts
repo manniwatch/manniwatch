@@ -1,6 +1,6 @@
 /*
  * Package @manniwatch/client-ng
- * Source https://manniwatch.github.io/manniwatch/
+ * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
 import { ChangeDetectionStrategy, Component, DebugElement, Input } from '@angular/core';
@@ -101,22 +101,15 @@ const testOldPassages: IDepartedTripPassage[] = [
 ];
 describe('src/app/routes/trip-passages/trip-passages-list.component', (): void => {
     describe('TripPassagesListComponent', (): void => {
-        beforeEach(
-            waitForAsync((): void => {
-                TestBed.configureTestingModule({
-                    declarations: [
-                        TripPassagesListComponent,
-                        TestMatNavListComponent,
-                        TestTripPassagesListItemComponent,
-                        TestParentComponent,
-                    ],
-                })
-                    .overrideComponent(TripPassagesListComponent, {
-                        set: { changeDetection: ChangeDetectionStrategy.Default },
-                    })
-                    .compileComponents();
+        beforeEach(waitForAsync((): void => {
+            TestBed.configureTestingModule({
+                declarations: [TripPassagesListComponent, TestMatNavListComponent, TestTripPassagesListItemComponent, TestParentComponent],
             })
-        );
+                .overrideComponent(TripPassagesListComponent, {
+                    set: { changeDetection: ChangeDetectionStrategy.Default },
+                })
+                .compileComponents();
+        }));
         describe('properties', (): void => {
             let cmpFixture: ComponentFixture<TripPassagesListComponent>;
             let cmp: TripPassagesListComponent;
