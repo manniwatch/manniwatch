@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.14](https://github.com/manniwatch/manniwatch/compare/v0.29.13...v0.29.14) (2022-03-22)
+
+**Note:** Version bump only for package @manniwatch/pb-types
+
+
+
+
+
 ## [0.29.2](https://github.com/manniwatch/manniwatch/compare/v0.29.1...v0.29.2) (2022-03-01)
 
 **Note:** Version bump only for package @manniwatch/pb-types

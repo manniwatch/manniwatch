@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.14](https://github.com/manniwatch/manniwatch/compare/v0.29.13...v0.29.14) (2022-03-22)
+
+**Note:** Version bump only for package @manniwatch/client-types
+
+
+
+
+
 ## [0.29.8](https://github.com/manniwatch/manniwatch/compare/v0.29.7...v0.29.8) (2022-03-15)
 
 
