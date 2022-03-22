@@ -1,7 +1,10 @@
 # {{ template:title }}
+
 {{ template:badges }}
 
 {{ template:description }}
+
+[Homepage]({{pkg.homepage}})
 
 ## Install
 
