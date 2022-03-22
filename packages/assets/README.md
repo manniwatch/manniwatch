@@ -2,6 +2,7 @@
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)](#h1-aligncentermanniwatchassetsh1)
 
 # ➤ <h1 align="center">@manniwatch/assets</h1>
+
 <p align="center">
 		<a href="https://github.com/manniwatch/manniwatch/actions?query=workflow%3ATest+branch%3Amaster"><img alt="Test" src="https://github.com/manniwatch/manniwatch/workflows/Test/badge.svg?branch=master&event=push" height="20"/></a>
 <a href="https://badge.fury.io/js/%40manniwatch%2Fassets"><img alt="npm version" src="https://badge.fury.io/js/%40manniwatch%2Fassets.svg" height="20"/></a>
@@ -19,6 +20,8 @@
 
 <br />
 
+
+[Homepage](https://manniwatch.github.io/manniwatch/)
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)](#install)
