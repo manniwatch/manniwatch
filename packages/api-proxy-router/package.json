@@ -61,7 +61,7 @@
     "@manniwatch/api-client": "^0.29.15",
     "@manniwatch/api-types": "^0.29.15",
     "@manniwatch/schemas": "^0.29.15",
-    "ajv": "~8.10.0",
+    "ajv": "~8.11.0",
     "async-mutex": "~0.3.2",
     "node-cache": "~5.1.2"
   },
