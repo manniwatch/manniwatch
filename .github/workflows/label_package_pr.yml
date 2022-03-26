@@ -11,7 +11,7 @@ jobs:
       - name: "Checkout code"
         uses: actions/checkout@v3.0.0
       - name: Label the PR
-        uses: donmahallem/lerna-label@v0.1.16
+        uses: donmahallem/lerna-label@v0.1.17
         with:
           github_secret: "${{ secrets.GITHUB_TOKEN }}"
           prefix: "pkg"
