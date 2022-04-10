@@ -7,8 +7,7 @@
     "types": "dist/types/index.d.ts",
     "private": false,
     "scripts": {
-        "build": "rollup -c ./rollup.config.js && npm run build:types",
-        "build:types": "tsc --project ./tsconfig.json  -d --declarationDir dist/types --declarationMap --emitDeclarationOnly",
+        "build": "rollup -c ./rollup.config.js",
         "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
         "test": "mocha --config ../../.mocharc.yml",
         "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",

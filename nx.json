@@ -8,9 +8,7 @@
         "cacheableOperations": [
           "build",
           "test",
-          "lint",
-          "package",
-          "prepare"
+          "lint"
         ]
       }
     }
@@ -22,21 +20,21 @@
         "projects": "dependencies"
       }
     ],
-    "prepare": [
+    "test": [
       {
-        "target": "prepare",
+        "target": "build",
         "projects": "dependencies"
       }
     ],
-    "package": [
+    "test:coverage": [
       {
-        "target": "package",
+        "target": "build",
         "projects": "dependencies"
       }
     ]
   },
   "affected": {
-    "defaultBase": "dev"
+    "defaultBase": "master"
   },
   "pluginsConfig": {
     "@nrwl/js": {
