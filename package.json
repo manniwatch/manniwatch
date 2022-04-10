@@ -7,6 +7,8 @@
     "@donmahallem/lerna-fixer": "0.1.12",
     "@donmahallem/rollup-config": "2.0.11",
     "@donmahallem/tslint-config": "0.3.2",
+    "@nrwl/cli": "13.10.1",
+    "@nrwl/workspace": "13.10.1",
     "@rollup/plugin-commonjs": "21.0.3",
     "@rollup/plugin-json": "4.1.0",
     "@rollup/plugin-node-resolve": "13.1.3",
@@ -24,11 +26,12 @@
     "cz-conventional-changelog": "3.3.0",
     "eslint": "8.12.0",
     "fs-extra": "10.0.1",
-    "lerna": "4.0.0",
     "mocha": "9.2.2",
+    "nx": "13.10.1",
     "nyc": "15.1.0",
     "prettier": "2.6.1",
     "rollup": "2.70.1",
+    "rollup-plugin-delete": "2.0.0",
     "rollup-plugin-dts": "4.2.0",
     "sinon": "13.0.1",
     "ts-node": "10.7.0",
@@ -38,16 +41,16 @@
     "typescript": "4.6.3"
   },
   "scripts": {
-    "build": "lerna run build",
+    "build": "nx run-many --target=build --all",
     "prebuild:readme": "node ./scripts/extract_packages.js",
     "postbuild:readme": "node ./scripts/extract_packages.js clear",
     "build:readme": "npx @appnest/readme generate --input readme_blueprint.md --config readme_config_root.json && lerna run build:readme",
-    "test": "lerna run test",
-    "test:coverage": "lerna run test:coverage",
+    "test": "nx run-many --target=test --all",
+    "coverage": "nx run-many --target=test:coverage --all",
     "coverage:merge": "node ./scripts/merge_coverage.js",
-    "lint": "lerna run lint",
-    "docs": "lerna run docs",
-    "lint:fix": "lerna run lint:fix",
+    "lint": "nx run-many --target=lint --all",
+    "docs": "nx run-many --target=docs --al",
+    "lint:fix": "nx run-many --target=lint:fix --all",
     "version": "npx @donmahallem/lerna-fixer lockfile fixversion && npm run build:readme && git add README.md"
   },
   "nyc": {
@@ -83,5 +86,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

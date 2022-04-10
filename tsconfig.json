@@ -1,13 +1,16 @@
 {
     "compilerOptions": {
-        "target": "es2018",
+        "target": "ES2019",
         "module": "commonjs",
-        "esModuleInterop": true,
         "sourceMap": true,
+        "esModuleInterop": true,
         "declaration": true,
         "moduleResolution": "node",
         "strictNullChecks": true,
-        "noUnusedLocals": true
+        "noUnusedLocals": true,
+        "lib": [
+            "ES2019"
+        ]
     },
     "typeAcquisition": {
         "enable": true

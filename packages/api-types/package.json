@@ -2,8 +2,8 @@
     "name": "@manniwatch/api-types",
     "version": "0.29.15",
     "description": "Api Types and helper for Trapeze Api",
-    "main": "dist/cjs/index.js",
-    "module": "dist/esm/index.js",
+    "main": "dist/cjs/index.cjs",
+    "module": "dist/esm/index.mjs",
     "types": "dist/types/index.d.ts",
     "private": false,
     "keywords": [
@@ -11,9 +11,8 @@
         "types"
     ],
     "scripts": {
-        "build": "rollup -c ./rollup.config.js && npm run build:types",
+        "build": "rollup -c ./rollup.config.js",
         "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
-        "build:types": "tsc --project ./tsconfig.json  -d --declarationDir dist/types --declarationMap --emitDeclarationOnly",
         "test": "mocha --config ../../.mocharc.yml",
         "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
         "lint": "eslint -c .eslintrc.js --ext .ts ./src",
