@@ -31,7 +31,20 @@
         "target": "build",
         "projects": "dependencies"
       }
+    ],
+    "lint": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ],
+    "lint:fix": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
     ]
+
   },
   "affected": {
     "defaultBase": "master"
