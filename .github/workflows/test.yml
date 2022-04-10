@@ -47,7 +47,6 @@ jobs:
             - name: Install Deps
               run: |
                   npm ci
-                  npx lerna bootstrap --ci
             - name: Run Build
               run: npx lerna run build
             - name: Archive production artifacts
@@ -94,7 +93,6 @@ jobs:
             - name: Install Deps
               run: |
                   npm ci
-                  npx lerna bootstrap --ci
             - name: Download Build artifacts
               uses: actions/download-artifact@v3.0.0
               with:
@@ -149,7 +147,6 @@ jobs:
             - name: Install Deps
               run: |
                   npm ci
-                  npx lerna bootstrap --ci
             - name: Download Build artifacts
               uses: actions/download-artifact@v3.0.0
               with:
@@ -195,7 +192,6 @@ jobs:
             - name: Install Deps
               run: |
                   npm ci
-                  npx lerna bootstrap --ci
             - name: Download Build artifacts
               uses: actions/download-artifact@v3.0.0
               with:
