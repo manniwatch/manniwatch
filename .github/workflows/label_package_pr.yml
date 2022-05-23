@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout code"
-        uses: actions/checkout@v3.0.0
+        uses: actions/checkout@v3.0.2
       - name: Label the PR
         uses: donmahallem/lerna-label@v0.1.17
         with:
