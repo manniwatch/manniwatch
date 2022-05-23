@@ -20,7 +20,7 @@ jobs:
                   token: ${{ secrets.GITHUB_TOKEN }}
                   ref: ${{ github.event.workflow_run.head_branch }}
             - name: Setup Node
-              uses: actions/setup-node@v3.1.0
+              uses: actions/setup-node@v3.2.0
               with:
                   node-version: 16
                   registry-url: 'https://registry.npmjs.org'
