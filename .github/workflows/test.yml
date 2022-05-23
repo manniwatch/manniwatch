@@ -25,7 +25,7 @@ jobs:
               with:
                   fetch-depth: 200
             - name: Setup Node
-              uses: actions/setup-node@v3.1.0
+              uses: actions/setup-node@v3.2.0
               with:
                   node-version: ${{ matrix.node }}
             - name: Update NPM
@@ -72,7 +72,7 @@ jobs:
               with:
                   fetch-depth: 200
             - name: Setup Node
-              uses: actions/setup-node@v3.1.0
+              uses: actions/setup-node@v3.2.0
               with:
                   node-version: ${{ matrix.node }}
             - name: Update NPM
@@ -127,7 +127,7 @@ jobs:
               with:
                   fetch-depth: 200
             - name: Setup Node
-              uses: actions/setup-node@v3.1.0
+              uses: actions/setup-node@v3.2.0
               with:
                   node-version: ${{ matrix.node }}
             - name: Update NPM
@@ -173,7 +173,7 @@ jobs:
               with:
                   fetch-depth: 200
             - name: Setup Node
-              uses: actions/setup-node@v3.1.0
+              uses: actions/setup-node@v3.2.0
               with:
                   node-version: ${{ matrix.node }}
             - name: Update NPM
