@@ -56,8 +56,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@donmahallem/turbo": "~2.3.16",
-    "@donmahallem/turbo-validate-request": "~0.3.19",
+    "@donmahallem/turbo": "~2.3.18",
+    "@donmahallem/turbo-validate-request": "~0.3.22",
     "@manniwatch/api-client": "^0.29.15",
     "@manniwatch/api-types": "^0.29.15",
     "@manniwatch/schemas": "^0.29.15",
