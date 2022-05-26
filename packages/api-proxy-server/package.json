@@ -51,7 +51,7 @@
   "dependencies": {
     "@manniwatch/api-proxy-router": "^0.29.15",
     "@manniwatch/api-types": "^0.29.15",
-    "express": "~4.17.3",
+    "express": "~4.18.1",
     "helmet": "~5.0.2",
     "nconf": "~0.12.0"
   },
