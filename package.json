@@ -30,7 +30,7 @@
     "prettier": "2.6.2",
     "rollup": "2.75.0",
     "rollup-plugin-dts": "4.2.2",
-    "sinon": "13.0.2",
+    "sinon": "14.0.0",
     "ts-node": "10.8.0",
     "tslib": "2.4.0",
     "tslint": "6.1.3",
