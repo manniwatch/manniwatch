@@ -1,86 +1,96 @@
 {
-  "name": "root",
-  "private": true,
-  "devDependencies": {
-    "@appnest/readme": "1.2.7",
-    "@donmahallem/eslint-config": "1.0.86",
-    "@donmahallem/lerna-fixer": "0.1.21",
-    "@donmahallem/rollup-config": "2.0.36",
-    "@donmahallem/tslint-config": "0.3.2",
-    "@rollup/plugin-commonjs": "22.0.0",
-    "@rollup/plugin-json": "4.1.0",
-    "@rollup/plugin-node-resolve": "13.3.0",
-    "@rollup/plugin-replace": "4.0.0",
-    "@rollup/plugin-typescript": "8.3.2",
-    "@types/chai": "4.3.1",
-    "@types/mocha": "9.1.1",
-    "@types/node": "16.11.36",
-    "@types/sinon": "10.0.11",
-    "chai": "4.3.6",
-    "commitizen": "4.2.4",
-    "conventional-changelog-angular": "5.0.13",
-    "conventional-changelog-cli": "2.2.2",
-    "coveralls": "3.1.1",
-    "cz-conventional-changelog": "3.3.0",
-    "eslint": "8.16.0",
-    "fs-extra": "10.1.0",
-    "mocha": "10.0.0",
-    "nyc": "15.1.0",
-    "prettier": "2.6.2",
-    "rollup": "2.75.3",
-    "rollup-plugin-dts": "4.2.2",
-    "sinon": "14.0.0",
-    "ts-node": "10.8.0",
-    "tslib": "2.4.0",
-    "tslint": "6.1.3",
-    "typedoc": "0.22.15",
-    "typescript": "4.6.4"
-  },
-  "scripts": {
-    "build": "lerna run build",
-    "prebuild:readme": "node ./scripts/extract_packages.js",
-    "postbuild:readme": "node ./scripts/extract_packages.js clear",
-    "build:readme": "npx @appnest/readme generate --input readme_blueprint.md --config readme_config_root.json && lerna run build:readme",
-    "test": "lerna run test",
-    "test:coverage": "lerna run test:coverage",
-    "coverage:merge": "node ./scripts/merge_coverage.js",
-    "lint": "lerna run lint",
-    "docs": "lerna run docs",
-    "lint:fix": "lerna run lint:fix",
-    "version": "npx @donmahallem/lerna-fixer lockfile fixversion && npm run build:readme && git add README.md"
-  },
-  "nyc": {
-    "include": [
-      "src/*.ts",
-      "src/**/*.ts"
-    ],
-    "exclude": [
-      "typings",
-      "src/**/*.spec.ts",
-      "**/*.d.ts"
-    ],
-    "extension": [
-      ".ts"
-    ],
-    "require": [
-      "ts-node/register"
-    ],
-    "reporter": [
-      "json",
-      "html",
-      "text-summary",
-      "lcov"
-    ],
-    "sourceMap": true,
-    "instrument": true,
-    "all": true
-  },
-  "engines": {
-    "node": ">=14"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  }
+    "name": "root",
+    "private": true,
+    "devDependencies": {
+        "@appnest/readme": "1.2.7",
+        "@donmahallem/eslint-config": "1.0.86",
+        "@donmahallem/lerna-fixer": "0.1.21",
+        "@donmahallem/rollup-config": "2.0.36",
+        "@donmahallem/tslint-config": "0.3.2",
+        "@rollup/plugin-commonjs": "22.0.0",
+        "@rollup/plugin-json": "4.1.0",
+        "@rollup/plugin-node-resolve": "13.3.0",
+        "@rollup/plugin-replace": "4.0.0",
+        "@rollup/plugin-typescript": "8.3.2",
+        "@types/chai": "4.3.1",
+        "@types/mocha": "9.1.1",
+        "@types/node": "16.11.36",
+        "@types/sinon": "10.0.11",
+        "chai": "4.3.6",
+        "commitizen": "4.2.4",
+        "conventional-changelog-angular": "5.0.13",
+        "conventional-changelog-cli": "2.2.2",
+        "coveralls": "3.1.1",
+        "cz-conventional-changelog": "3.3.0",
+        "eslint": "8.16.0",
+        "fs-extra": "10.1.0",
+        "lerna": "4.0.0",
+        "mocha": "10.0.0",
+        "nyc": "15.1.0",
+        "prettier": "2.6.2",
+        "rollup": "2.75.3",
+        "rollup-plugin-dts": "4.2.2",
+        "sinon": "14.0.0",
+        "ts-node": "10.8.0",
+        "tslib": "2.4.0",
+        "tslint": "6.1.3",
+        "typedoc": "0.22.15",
+        "typescript": "4.6.4"
+    },
+    "scripts": {
+        "build": "lerna run build",
+        "prebuild:readme": "node ./scripts/extract_packages.js",
+        "postbuild:readme": "node ./scripts/extract_packages.js clear",
+        "build:readme": "npx @appnest/readme generate --input readme_blueprint.md --config readme_config_root.json && lerna run build:readme",
+        "test": "lerna run test",
+        "test:coverage": "lerna run test:coverage",
+        "coverage:merge": "node ./scripts/merge_coverage.js",
+        "lint": "lerna run lint",
+        "docs": "lerna run docs",
+        "lint:fix": "lerna run lint:fix",
+        "version": "npx @donmahallem/lerna-fixer lockfile fixversion && npm run build:readme && git add README.md"
+    },
+    "nyc": {
+        "include": [
+            "src/*.ts",
+            "src/**/*.ts"
+        ],
+        "exclude": [
+            "typings",
+            "src/**/*.spec.ts",
+            "**/*.d.ts"
+        ],
+        "extension": [
+            ".ts"
+        ],
+        "require": [
+            "ts-node/register"
+        ],
+        "reporter": [
+            "json",
+            "html",
+            "text-summary",
+            "lcov"
+        ],
+        "sourceMap": true,
+        "instrument": true,
+        "all": true
+    },
+    "engines": {
+        "node": ">=14"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    },
+    "workspaces": [
+        "packages/api-types",
+        "packages/client-types",
+        "packages/api-client",
+        "packages/api-proxy-router",
+        "packages/api-proxy-server",
+        "packages/client-ng",
+        "packages/*"
+    ]
 }
