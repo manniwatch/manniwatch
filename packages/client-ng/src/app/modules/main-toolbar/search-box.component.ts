@@ -4,7 +4,7 @@
  */
 
 import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { debounceTime, filter, startWith } from 'rxjs/operators';
@@ -14,7 +14,7 @@ import { debounceTime, filter, startWith } from 'rxjs/operators';
     templateUrl: './search-box.component.html',
 })
 export class ToolbarSearchBoxComponent implements OnInit, OnDestroy {
-    public searchControl: FormControl = new FormControl();
+    public searchControl: UntypedFormControl = new UntypedFormControl();
 
     @ViewChild('searchInput')
     public searchInput: ElementRef;
