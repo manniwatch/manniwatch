@@ -6,7 +6,7 @@
     "@donmahallem/eslint-config": "1.0.91",
     "@donmahallem/lerna-fixer": "0.1.24",
     "@donmahallem/rollup-config": "2.0.42",
-    "@donmahallem/tslint-config": "0.3.2",
+    "@donmahallem/tslint-config": "0.4.1",
     "@rollup/plugin-commonjs": "22.0.0",
     "@rollup/plugin-json": "4.1.0",
     "@rollup/plugin-node-resolve": "13.3.0",
