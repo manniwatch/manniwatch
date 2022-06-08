@@ -5,7 +5,7 @@
 
 import { AfterViewInit, Directive, ElementRef, NgZone } from '@angular/core';
 import { Map, View } from 'ol';
-import stylefunction from 'ol-mapbox-style/dist/stylefunction';
+import { stylefunction } from 'ol-mapbox-style';
 import { Coordinate } from 'ol/coordinate';
 import MVT from 'ol/format/MVT';
 import { defaults } from 'ol/interaction';
@@ -79,7 +79,7 @@ export abstract class VectorOlMapDirective extends BaseOlMapDirective<VectorTile
      */
     public applyTheme(theme: Theme): void {
         NgZone.assertNotInAngularZone();
-        stylefunction(this.mBackgroundMapLayer, theme === Theme.DARK ? DARK_THEME : LIGHT_THEME, 'openmaptiles');
+        stylefunction(this.mBackgroundMapLayer as VectorTileLayer, theme === Theme.DARK ? DARK_THEME : LIGHT_THEME, 'openmaptiles');
     }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
