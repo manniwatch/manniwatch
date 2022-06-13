@@ -4,7 +4,7 @@
   "devDependencies": {
     "@appnest/readme": "1.2.7",
     "@donmahallem/eslint-config": "1.0.93",
-    "@donmahallem/lerna-fixer": "0.1.25",
+    "@donmahallem/lerna-fixer": "0.1.27",
     "@donmahallem/rollup-config": "2.0.43",
     "@donmahallem/tslint-config": "0.4.1",
     "@rollup/plugin-commonjs": "22.0.0",
