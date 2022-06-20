@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.16](https://github.com/manniwatch/manniwatch/compare/v0.29.15...v0.29.16) (2022-06-20)
+
+
+### Bug Fixes
+
+* **deps:** bump angular to v14 ([#3150](https://github.com/manniwatch/manniwatch/issues/3150)) ([04defb8](https://github.com/manniwatch/manniwatch/commit/04defb8d3d8a7bc58eca896443c2586a28e9c1df))
+* **deps:** fix package lock files ([#3055](https://github.com/manniwatch/manniwatch/issues/3055)) ([22f415f](https://github.com/manniwatch/manniwatch/commit/22f415f78a668c738097dfcecd10fe0aeda40558))
+* **deps:** update @donmahallem/turbo packages ([7998e5c](https://github.com/manniwatch/manniwatch/commit/7998e5ce927a818d71aa8bc79f4d461a94ae4988))
+* **deps:** update dependency electron to ~17.2.0 ([766ab0c](https://github.com/manniwatch/manniwatch/commit/766ab0ca99744640666494c19e1f7aa736911c0f))
+* **deps:** update dependency helmet to ~5.1.0 ([5eeda8f](https://github.com/manniwatch/manniwatch/commit/5eeda8f0828d30a21c2ffe04aafea69cdd46ab2e))
+
+
+
+
+
 ## [0.29.15](https://github.com/manniwatch/manniwatch/compare/v0.29.14...v0.29.15) (2022-03-22)
 
 **Note:** Version bump only for package @manniwatch/api-proxy-server

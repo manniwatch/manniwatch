@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.16](https://github.com/manniwatch/manniwatch/compare/v0.29.15...v0.29.16) (2022-06-20)
+
+
+### Bug Fixes
+
+* **deps:** fix package lock files ([#3055](https://github.com/manniwatch/manniwatch/issues/3055)) ([22f415f](https://github.com/manniwatch/manniwatch/commit/22f415f78a668c738097dfcecd10fe0aeda40558))
+
+
+
+
+
 ## [0.29.15](https://github.com/manniwatch/manniwatch/compare/v0.29.14...v0.29.15) (2022-03-22)
 
 **Note:** Version bump only for package @manniwatch/api-types

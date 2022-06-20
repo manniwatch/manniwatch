@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.16](https://github.com/manniwatch/manniwatch/compare/v0.29.15...v0.29.16) (2022-06-20)
+
+
+### Bug Fixes
+
+* **deps:** bump angular to v14 ([#3150](https://github.com/manniwatch/manniwatch/issues/3150)) ([04defb8](https://github.com/manniwatch/manniwatch/commit/04defb8d3d8a7bc58eca896443c2586a28e9c1df))
+* **deps:** fix package lock files ([#3055](https://github.com/manniwatch/manniwatch/issues/3055)) ([22f415f](https://github.com/manniwatch/manniwatch/commit/22f415f78a668c738097dfcecd10fe0aeda40558))
+* **deps:** update angular monorepo ([944baa1](https://github.com/manniwatch/manniwatch/commit/944baa17ad69c4f74f543cc823861308ae4a8b85))
+* **deps:** update angular monorepo to v13.3.1 ([f57ee02](https://github.com/manniwatch/manniwatch/commit/f57ee026199ec489521211774cf44918732aff4c))
+* **deps:** update angular monorepo to v13.3.10 ([e4228b9](https://github.com/manniwatch/manniwatch/commit/e4228b9a039bd95a293f0e8ae69d7357ff7573a7))
+* **deps:** update angular monorepo to v13.3.11 ([1bf76e8](https://github.com/manniwatch/manniwatch/commit/1bf76e8ba5a8358ba48a69ec3ba433ec4d7d31a1))
+* **deps:** update angular monorepo to v13.3.9 ([7097f4d](https://github.com/manniwatch/manniwatch/commit/7097f4ddbb8227e43e6a22afeb2f278e1fba1a48))
+* **deps:** update angular monorepo to v14.0.1 ([de708fc](https://github.com/manniwatch/manniwatch/commit/de708fc567e64f1b9e84a7937189f8d5a10a4248))
+* **deps:** update angularmaterial monorepo to v13.3.1 ([1c6d6db](https://github.com/manniwatch/manniwatch/commit/1c6d6db4700d1688d8672b84a084aba33273b547))
+* **deps:** update angularmaterial monorepo to v13.3.2 ([a1c2562](https://github.com/manniwatch/manniwatch/commit/a1c25620cde9cf018a9acdd908d570a3a6f3a807))
+* **deps:** update angularmaterial monorepo to v13.3.7 ([86ec47d](https://github.com/manniwatch/manniwatch/commit/86ec47d7cc3ad70f9d9425ca1d877950f0b466ba))
+* **deps:** update angularmaterial monorepo to v13.3.8 ([27cf58b](https://github.com/manniwatch/manniwatch/commit/27cf58b940c4f2a640c39dca1f269a1ca35b6767))
+* **deps:** update angularmaterial monorepo to v13.3.9 ([a68aa0c](https://github.com/manniwatch/manniwatch/commit/a68aa0c29d1ab2d274afff0ed8333d3643ca1143))
+* **deps:** update angularmaterial monorepo to v14.0.1 ([b1f5979](https://github.com/manniwatch/manniwatch/commit/b1f5979defa05866622d6ef928b7d64f9d4af825))
+* **deps:** update angularmaterial monorepo to v14.0.2 ([973681d](https://github.com/manniwatch/manniwatch/commit/973681dc56a921b599224f77b3d79bf6a851204f))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.18 ([38deb5e](https://github.com/manniwatch/manniwatch/commit/38deb5edc166f6f4aac00e56360e3f1523ec037e))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.19 ([f9f8dbd](https://github.com/manniwatch/manniwatch/commit/f9f8dbdb58a5f343da5ff60ce0ca0dd63b5c2196))
+* **deps:** update dependency commander to ~9.3.0 ([226eb61](https://github.com/manniwatch/manniwatch/commit/226eb6172bde1580306e3ebfdcf05d2a772db151))
+* **deps:** update dependency ol-mapbox-style to v8 ([#3169](https://github.com/manniwatch/manniwatch/issues/3169)) ([da1fd18](https://github.com/manniwatch/manniwatch/commit/da1fd18a276c7a0c3ea10295d10e85b013a42fef))
+
+
+
+
+
 ## [0.29.15](https://github.com/manniwatch/manniwatch/compare/v0.29.14...v0.29.15) (2022-03-22)
 
 **Note:** Version bump only for package @manniwatch/client-ng

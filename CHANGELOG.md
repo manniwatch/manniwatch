@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.16](https://github.com/manniwatch/manniwatch/compare/v0.29.15...v0.29.16) (2022-06-20)
+
+
+### Bug Fixes
+
+* **deps:** bump ajv to 8.11.0 ([#3012](https://github.com/manniwatch/manniwatch/issues/3012)) ([c85d128](https://github.com/manniwatch/manniwatch/commit/c85d128b23a3f832bd5d20aa6198f4678252ae8b))
+* **deps:** bump angular to v14 ([#3150](https://github.com/manniwatch/manniwatch/issues/3150)) ([04defb8](https://github.com/manniwatch/manniwatch/commit/04defb8d3d8a7bc58eca896443c2586a28e9c1df))
+* **deps:** fix package lock files ([#3055](https://github.com/manniwatch/manniwatch/issues/3055)) ([22f415f](https://github.com/manniwatch/manniwatch/commit/22f415f78a668c738097dfcecd10fe0aeda40558))
+* **deps:** update @donmahallem/turbo packages ([376d56a](https://github.com/manniwatch/manniwatch/commit/376d56a01b9dfc9972970ebbd805697d7ac30a47))
+* **deps:** update @donmahallem/turbo packages ([6ff134b](https://github.com/manniwatch/manniwatch/commit/6ff134bc501aeafe3d0e91c964ce26cf0f450d3b))
+* **deps:** update @donmahallem/turbo packages ([7998e5c](https://github.com/manniwatch/manniwatch/commit/7998e5ce927a818d71aa8bc79f4d461a94ae4988))
+* **deps:** update @donmahallem/turbo packages ([#3041](https://github.com/manniwatch/manniwatch/issues/3041)) ([cd0771f](https://github.com/manniwatch/manniwatch/commit/cd0771f7bc00fe7f9fabb28a3bdc2c1dd1b1ed11))
+* **deps:** update angular monorepo ([944baa1](https://github.com/manniwatch/manniwatch/commit/944baa17ad69c4f74f543cc823861308ae4a8b85))
+* **deps:** update angular monorepo to v13.3.1 ([f57ee02](https://github.com/manniwatch/manniwatch/commit/f57ee026199ec489521211774cf44918732aff4c))
+* **deps:** update angular monorepo to v13.3.10 ([e4228b9](https://github.com/manniwatch/manniwatch/commit/e4228b9a039bd95a293f0e8ae69d7357ff7573a7))
+* **deps:** update angular monorepo to v13.3.11 ([1bf76e8](https://github.com/manniwatch/manniwatch/commit/1bf76e8ba5a8358ba48a69ec3ba433ec4d7d31a1))
+* **deps:** update angular monorepo to v13.3.9 ([7097f4d](https://github.com/manniwatch/manniwatch/commit/7097f4ddbb8227e43e6a22afeb2f278e1fba1a48))
+* **deps:** update angular monorepo to v14.0.1 ([de708fc](https://github.com/manniwatch/manniwatch/commit/de708fc567e64f1b9e84a7937189f8d5a10a4248))
+* **deps:** update angularmaterial monorepo to v13.3.1 ([1c6d6db](https://github.com/manniwatch/manniwatch/commit/1c6d6db4700d1688d8672b84a084aba33273b547))
+* **deps:** update angularmaterial monorepo to v13.3.2 ([a1c2562](https://github.com/manniwatch/manniwatch/commit/a1c25620cde9cf018a9acdd908d570a3a6f3a807))
+* **deps:** update angularmaterial monorepo to v13.3.7 ([86ec47d](https://github.com/manniwatch/manniwatch/commit/86ec47d7cc3ad70f9d9425ca1d877950f0b466ba))
+* **deps:** update angularmaterial monorepo to v13.3.8 ([27cf58b](https://github.com/manniwatch/manniwatch/commit/27cf58b940c4f2a640c39dca1f269a1ca35b6767))
+* **deps:** update angularmaterial monorepo to v13.3.9 ([a68aa0c](https://github.com/manniwatch/manniwatch/commit/a68aa0c29d1ab2d274afff0ed8333d3643ca1143))
+* **deps:** update angularmaterial monorepo to v14.0.1 ([b1f5979](https://github.com/manniwatch/manniwatch/commit/b1f5979defa05866622d6ef928b7d64f9d4af825))
+* **deps:** update angularmaterial monorepo to v14.0.2 ([973681d](https://github.com/manniwatch/manniwatch/commit/973681dc56a921b599224f77b3d79bf6a851204f))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.18 ([38deb5e](https://github.com/manniwatch/manniwatch/commit/38deb5edc166f6f4aac00e56360e3f1523ec037e))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.3.19 ([f9f8dbd](https://github.com/manniwatch/manniwatch/commit/f9f8dbdb58a5f343da5ff60ce0ca0dd63b5c2196))
+* **deps:** update dependency commander to ~9.2.0 ([d15e9ff](https://github.com/manniwatch/manniwatch/commit/d15e9ff49c6f79b9c0419ef609e9a592fb136f80))
+* **deps:** update dependency commander to ~9.3.0 ([226eb61](https://github.com/manniwatch/manniwatch/commit/226eb6172bde1580306e3ebfdcf05d2a772db151))
+* **deps:** update dependency electron to ~17.2.0 ([766ab0c](https://github.com/manniwatch/manniwatch/commit/766ab0ca99744640666494c19e1f7aa736911c0f))
+* **deps:** update dependency electron to ~17.3.0 ([9af5f3c](https://github.com/manniwatch/manniwatch/commit/9af5f3cddd478bbc966c110e54b3f77b4a6c13ab))
+* **deps:** update dependency electron to ~18.0.1 ([dc6f76e](https://github.com/manniwatch/manniwatch/commit/dc6f76ede221a5f3ae217a8eae8fc3bb81f9148d))
+* **deps:** update dependency electron to ~18.2.4 ([#3050](https://github.com/manniwatch/manniwatch/issues/3050)) ([ee8ed37](https://github.com/manniwatch/manniwatch/commit/ee8ed37423ce2df1cdd99c3cbb89b177e64f106c))
+* **deps:** update dependency electron to ~18.3.1 ([0734539](https://github.com/manniwatch/manniwatch/commit/0734539016101ca546fea8e34f9b8f6e22926fec))
+* **deps:** update dependency electron to ~19.0.2 ([fef8658](https://github.com/manniwatch/manniwatch/commit/fef8658678a10e785e9cacd741a8a93a2841ba46))
+* **deps:** update dependency electron to ~19.0.3 ([8124f8e](https://github.com/manniwatch/manniwatch/commit/8124f8eb21ad74682ac86a9820a4dc9d8951bc70))
+* **deps:** update dependency electron to ~19.0.4 ([5777b78](https://github.com/manniwatch/manniwatch/commit/5777b786c0f835bbff9e0a0c53f8b570af14b795))
+* **deps:** update dependency electron to v18 ([d8c8fbb](https://github.com/manniwatch/manniwatch/commit/d8c8fbb3a38c1348b6e50bea046919c62dcbcd97))
+* **deps:** update dependency electron to v19 ([e5693e9](https://github.com/manniwatch/manniwatch/commit/e5693e9aaabc1c7773902dd9e2686b0dd5089d93))
+* **deps:** update dependency helmet to ~5.1.0 ([5eeda8f](https://github.com/manniwatch/manniwatch/commit/5eeda8f0828d30a21c2ffe04aafea69cdd46ab2e))
+* **deps:** update dependency ol-mapbox-style to v8 ([#3169](https://github.com/manniwatch/manniwatch/issues/3169)) ([da1fd18](https://github.com/manniwatch/manniwatch/commit/da1fd18a276c7a0c3ea10295d10e85b013a42fef))
+* **deps:** update dependency protobufjs to ~6.11.3 ([0defdfa](https://github.com/manniwatch/manniwatch/commit/0defdfa6a5b34a446bdd66982a58e2e9fba87959))
+* **deps:** update dependency qs to ~6.10.5 ([ce95fc7](https://github.com/manniwatch/manniwatch/commit/ce95fc79bdf18f7f9d01dacb50deccefb7a15da7))
+
+
+
+
+
 ## [0.29.15](https://github.com/manniwatch/manniwatch/compare/v0.29.14...v0.29.15) (2022-03-22)
 
 **Note:** Version bump only for package root

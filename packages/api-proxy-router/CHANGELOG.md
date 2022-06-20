@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.16](https://github.com/manniwatch/manniwatch/compare/v0.29.15...v0.29.16) (2022-06-20)
+
+
+### Bug Fixes
+
+* **deps:** bump ajv to 8.11.0 ([#3012](https://github.com/manniwatch/manniwatch/issues/3012)) ([c85d128](https://github.com/manniwatch/manniwatch/commit/c85d128b23a3f832bd5d20aa6198f4678252ae8b))
+* **deps:** bump angular to v14 ([#3150](https://github.com/manniwatch/manniwatch/issues/3150)) ([04defb8](https://github.com/manniwatch/manniwatch/commit/04defb8d3d8a7bc58eca896443c2586a28e9c1df))
+* **deps:** fix package lock files ([#3055](https://github.com/manniwatch/manniwatch/issues/3055)) ([22f415f](https://github.com/manniwatch/manniwatch/commit/22f415f78a668c738097dfcecd10fe0aeda40558))
+* **deps:** update @donmahallem/turbo packages ([376d56a](https://github.com/manniwatch/manniwatch/commit/376d56a01b9dfc9972970ebbd805697d7ac30a47))
+* **deps:** update @donmahallem/turbo packages ([6ff134b](https://github.com/manniwatch/manniwatch/commit/6ff134bc501aeafe3d0e91c964ce26cf0f450d3b))
+* **deps:** update @donmahallem/turbo packages ([7998e5c](https://github.com/manniwatch/manniwatch/commit/7998e5ce927a818d71aa8bc79f4d461a94ae4988))
+* **deps:** update @donmahallem/turbo packages ([#3041](https://github.com/manniwatch/manniwatch/issues/3041)) ([cd0771f](https://github.com/manniwatch/manniwatch/commit/cd0771f7bc00fe7f9fabb28a3bdc2c1dd1b1ed11))
+* **deps:** update dependency electron to ~17.2.0 ([766ab0c](https://github.com/manniwatch/manniwatch/commit/766ab0ca99744640666494c19e1f7aa736911c0f))
+
+
+
+
+
 ## [0.29.15](https://github.com/manniwatch/manniwatch/compare/v0.29.14...v0.29.15) (2022-03-22)
 
 **Note:** Version bump only for package @manniwatch/api-proxy-router
