@@ -31,7 +31,7 @@
     },
     "devDependencies": {
         "@types/qs": "6.9.7",
-        "nock": "13.2.7"
+        "nock": "13.2.8"
     },
     "files": [
         "dist/*",
