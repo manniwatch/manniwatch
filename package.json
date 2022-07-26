@@ -28,7 +28,7 @@
     "mocha": "10.0.0",
     "nyc": "15.1.0",
     "prettier": "2.7.1",
-    "rollup": "2.77.0",
+    "rollup": "2.77.1",
     "rollup-plugin-dts": "4.2.2",
     "sinon": "14.0.0",
     "ts-node": "10.9.1",
