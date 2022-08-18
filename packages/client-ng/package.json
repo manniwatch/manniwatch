@@ -71,7 +71,7 @@
     "@donmahallem/rxjs-zone": "0.3.19",
     "@manniwatch/api-types": "^0.29.16",
     "@manniwatch/assets": "^0.29.16",
-    "date-fns": "2.29.1",
+    "date-fns": "2.29.2",
     "deepmerge": "4.2.2",
     "karma": "6.4.0",
     "material-design-icons": "3.0.1",
