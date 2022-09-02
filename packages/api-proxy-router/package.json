@@ -62,7 +62,7 @@
     "@manniwatch/api-types": "^0.29.16",
     "@manniwatch/schemas": "^0.29.16",
     "ajv": "~8.11.0",
-    "async-mutex": "~0.3.2",
+    "async-mutex": "~0.4.0",
     "node-cache": "~5.1.2"
   },
   "devDependencies": {
