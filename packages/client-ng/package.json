@@ -97,7 +97,7 @@
     "@manniwatch/client-types": "^0.29.16",
     "@types/jasmine": "4.0.0",
     "@types/jasminewd2": "2.0.10",
-    "@types/node": "16.11.57",
+    "@types/node": "16.11.58",
     "apply-loader": "2.0.0",
     "codelyzer": "6.0.2",
     "eslint": "8.23.0",
