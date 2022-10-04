@@ -60,6 +60,6 @@
     "@types/helmet": "4.0.0",
     "@types/nconf": "0.10.3",
     "apidoc": "0.53.0",
-    "supertest": "6.2.4"
+    "supertest": "6.3.0"
   }
 }
