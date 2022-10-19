@@ -14,7 +14,7 @@
     "@rollup/plugin-typescript": "9.0.0",
     "@types/chai": "4.3.3",
     "@types/mocha": "10.0.0",
-    "@types/node": "16.11.64",
+    "@types/node": "16.11.68",
     "@types/sinon": "10.0.13",
     "chai": "4.3.6",
     "commitizen": "4.2.5",
