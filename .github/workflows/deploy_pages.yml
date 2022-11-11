@@ -134,7 +134,7 @@ jobs:
           npm ci
           npx lerna bootstrap --ci
       - name: Download Build artifacts
-        uses: actions/download-artifact@v3.0.0
+        uses: actions/download-artifact@v3.0.1
         with:
           name: build-${{matrix.os}}-${{matrix.node}}
           path: ./packages
