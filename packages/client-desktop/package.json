@@ -68,7 +68,7 @@
 		"ajv-formats": "~2.1.1",
 		"commander": "~9.4.1",
 		"deepmerge": "~4.2.2",
-		"electron": "~21.2.3",
+		"electron": "~21.3.0",
 		"ol": "~6.9.0",
 		"webpack": "5.70.0"
 	}
