@@ -1,156 +1,159 @@
 name: Deploy to Github Pages
 on:
-  workflow_run:
-    workflows: [Test]
-    types: [completed]
-    branches: [master]
+    workflow_run:
+        workflows: [Test]
+        types: [completed]
+        branches: [master]
 
 jobs:
-  build_suite:
-    runs-on: ${{ matrix.os }}
-    name: Build - ${{ matrix.os }} - Node ${{ matrix.node }}
-    timeout-minutes: 30
-    strategy:
-      max-parallel: 4
-      matrix:
-        node: [ 16]
-        os: [ubuntu-latest] #, windows-latest]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 200
-      - name: Setup Node
-        uses: actions/setup-node@v3.5.1
-        with:
-          node-version: ${{ matrix.node }}
-      - name: Update NPM
-        run: |
-          npm install -g npm
-          npm -v
-      - name: Get npm cache directory
-        id: npm-cache
-        run: |
-          echo "::set-output name=dir::$(npm config get cache)"
-      - name: Setup Cache
-        uses: actions/cache@v3.0.11
-        with:
-          path: |
-            ${{ steps.npm-cache.outputs.dir }}
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-node${{ matrix.node }}-npm-${{ hashFiles('**/package-lock.json') }}
-      - name: Install Deps
-        run: |
-          npm ci
-          npx lerna bootstrap --ci
-      - name: Run Build
-        run: npx lerna run build
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v3.1.1
-        with:
-          name: build-${{matrix.os}}-${{matrix.node}}
-          retention-days: 5
-          path: |
-            packages/*/dist
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    name: Deploy App
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          persist-credentials: false
-      - name: Setup Node
-        uses: actions/setup-node@v3.5.1
-        with:
-          node-version: '14'
-      - name: Setup Cache
-        uses: actions/cache@v3.0.11
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-node14-npm-${{ hashFiles('**/package-lock.json') }}
+    build_suite:
+        runs-on: ${{ matrix.os }}
+        name: Build - ${{ matrix.os }} - Node ${{ matrix.node }}
+        timeout-minutes: 30
+        strategy:
+            max-parallel: 4
+            matrix:
+                node: [18]
+                os: [ubuntu-latest] #, windows-latest]
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 200
+            - name: Setup Node
+              uses: actions/setup-node@v3.5.1
+              with:
+                  node-version: ${{ matrix.node }}
+            - name: Update NPM
+              run: |
+                  npm install -g npm
+                  npm -v
+            - name: Get npm cache directory
+              id: npm-cache
+              run: |
+                  echo "::set-output name=dir::$(npm config get cache)"
+            - name: Setup Cache
+              uses: actions/cache@v3.0.11
+              with:
+                  path: |
+                      ${{ steps.npm-cache.outputs.dir }}
+                      node_modules
+                      */*/node_modules
+                  key: ${{ runner.os }}-node${{ matrix.node }}-npm-${{ hashFiles('**/package-lock.json') }}
+            - name: Install Deps
+              run: |
+                  npm ci
+                  npx lerna bootstrap --ci
+            - name: Run Build
+              run: npx lerna run build
+            - name: Archive production artifacts
+              uses: actions/upload-artifact@v3.1.1
+              with:
+                  name: build-${{matrix.os}}-${{matrix.node}}
+                  retention-days: 5
+                  path: |
+                      packages/*/dist
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        name: Deploy App
+        strategy:
+            matrix:
+                node: [20]
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  persist-credentials: false
+            - name: Setup Node
+              uses: actions/setup-node@v3.5.1
+              with:
+                  node-version: ${{matrix.node}}
+            - name: Setup Cache
+              uses: actions/cache@v3.0.11
+              with:
+                  path: |
+                      node_modules
+                      */*/node_modules
+                  key: ${{ runner.os }}-node${{matrix.node}}-npm-${{ hashFiles('**/package-lock.json') }}
 
-      - name: Install
-        run: |
-          npm ci
-          npx lerna bootstrap --ci
-      - name: Build
-        run: |
-          echo "${{ secrets.APP_DEPLOY_ENVIRONMENT }}" > "./packages/client-ng/src/environments/environment.ts"
-          echo "${{ secrets.APP_DEPLOY_ENVIRONMENT }}" > "./packages/client-ng/src/environments/environment.prod.ts"
-          npx lerna run build --scope @manniwatch/client-ng --include-dependencies
-          npx lerna run build:prod --scope=@manniwatch/client-ng
-          cp ./packages/client-ng/dist/manniwatch/vector/index.html ./packages/client-ng/dist/manniwatch/vector/404.html
-      - name: Install SSH Client
-        uses: webfactory/ssh-agent@v0.7.0
-        with:
-          ssh-private-key: ${{ secrets.APP_DEPLOY_KEY }}
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          SSH: true
-          BRANCH: master # The branch the action should deploy to.
-          FOLDER: packages/client-ng/dist/manniwatch/vector # The folder the action should deploy.
-          REPOSITORY_NAME: manniwatch/manniwatch.github.io
-          TARGET_FOLDER: .
-          CLEAN: true
+            - name: Install
+              run: |
+                  npm ci
+                  npx lerna bootstrap --ci
+            - name: Build
+              run: |
+                  echo "${{ secrets.APP_DEPLOY_ENVIRONMENT }}" > "./packages/client-ng/src/environments/environment.ts"
+                  echo "${{ secrets.APP_DEPLOY_ENVIRONMENT }}" > "./packages/client-ng/src/environments/environment.prod.ts"
+                  npx lerna run build --scope @manniwatch/client-ng --include-dependencies
+                  npx lerna run build:prod --scope=@manniwatch/client-ng
+                  cp ./packages/client-ng/dist/manniwatch/vector/index.html ./packages/client-ng/dist/manniwatch/vector/404.html
+            - name: Install SSH Client
+              uses: webfactory/ssh-agent@v0.7.0
+              with:
+                  ssh-private-key: ${{ secrets.APP_DEPLOY_KEY }}
+            - name: Deploy 🚀
+              uses: JamesIves/github-pages-deploy-action@releases/v3
+              with:
+                  SSH: true
+                  BRANCH: master # The branch the action should deploy to.
+                  FOLDER: packages/client-ng/dist/manniwatch/vector # The folder the action should deploy.
+                  REPOSITORY_NAME: manniwatch/manniwatch.github.io
+                  TARGET_FOLDER: .
+                  CLEAN: true
 
-  build-and-deploy-docs:
-    runs-on: ubuntu-latest
-    name: Deploy Documentation
-    needs: [build_suite]
-    continue-on-error: true
-    strategy:
-      max-parallel: 4
-      matrix:
-        node: [16]
-        os: [ubuntu-latest] #, windows-latest]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 200
-      - name: Setup Node
-        uses: actions/setup-node@v3.5.1
-        with:
-          node-version: ${{ matrix.node }}
-      - name: Get npm cache directory
-        id: npm-cache
-        run: |
-          echo "::set-output name=dir::$(npm config get cache)"
-      - name: Setup Cache
-        uses: actions/cache@v3.0.11
-        with:
-          path: |
-            ${{ steps.npm-cache.outputs.dir }}
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-node${{ matrix.node }}-npm-${{ hashFiles('**/package-lock.json') }}
-      - name: Install
-        run: |
-          npm ci
-          npx lerna bootstrap --ci
-      - name: Download Build artifacts
-        uses: actions/download-artifact@v3.0.1
-        with:
-          name: build-${{matrix.os}}-${{matrix.node}}
-          path: ./packages
-      - name: Build
-        run: |
-          npx lerna run docs
-          node .github/workflows/prepare_docs_deploy.js
-      - name: Install SSH Client 🔑
-        uses: webfactory/ssh-agent@v0.7.0
-        with:
-          ssh-private-key: ${{ secrets.DOCS_DEPLOY_KEY }}
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          SSH: true
-          BRANCH: master # The branch the action should deploy to.
-          FOLDER: docs # The folder the action should deploy.
-          REPOSITORY_NAME: manniwatch/docs
-          TARGET_FOLDER: .
+    build-and-deploy-docs:
+        runs-on: ubuntu-latest
+        name: Deploy Documentation
+        needs: [build_suite]
+        continue-on-error: true
+        strategy:
+            max-parallel: 4
+            matrix:
+                node: [20]
+                os: [ubuntu-latest] #, windows-latest]
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 200
+            - name: Setup Node
+              uses: actions/setup-node@v3.5.1
+              with:
+                  node-version: ${{ matrix.node }}
+            - name: Get npm cache directory
+              id: npm-cache
+              run: |
+                  echo "::set-output name=dir::$(npm config get cache)"
+            - name: Setup Cache
+              uses: actions/cache@v3.0.11
+              with:
+                  path: |
+                      ${{ steps.npm-cache.outputs.dir }}
+                      node_modules
+                      */*/node_modules
+                  key: ${{ runner.os }}-node${{ matrix.node }}-npm-${{ hashFiles('**/package-lock.json') }}
+            - name: Install
+              run: |
+                  npm ci
+                  npx lerna bootstrap --ci
+            - name: Download Build artifacts
+              uses: actions/download-artifact@v3.0.1
+              with:
+                  name: build-${{matrix.os}}-${{matrix.node}}
+                  path: ./packages
+            - name: Build
+              run: |
+                  npx lerna run docs
+                  node .github/workflows/prepare_docs_deploy.js
+            - name: Install SSH Client 🔑
+              uses: webfactory/ssh-agent@v0.7.0
+              with:
+                  ssh-private-key: ${{ secrets.DOCS_DEPLOY_KEY }}
+            - name: Deploy 🚀
+              uses: JamesIves/github-pages-deploy-action@releases/v3
+              with:
+                  SSH: true
+                  BRANCH: master # The branch the action should deploy to.
+                  FOLDER: docs # The folder the action should deploy.
+                  REPOSITORY_NAME: manniwatch/docs
+                  TARGET_FOLDER: .
