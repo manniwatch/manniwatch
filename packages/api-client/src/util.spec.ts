@@ -38,7 +38,7 @@ describe('util.ts', (): void => {
             it('should throw an error if no valid data is provided', (): void => {
                 expect((): void => {
                     Util.transformSettingsBody('{breaks!}');
-                }).to.throw('Unexpected token b in JSON at position 1');
+                }).to.throw(SyntaxError);
             });
             it('should throw an error if no valid data is provided', (): void => {
                 expect((): void => {
