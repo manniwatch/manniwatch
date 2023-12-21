@@ -1,8 +1,11 @@
 {
-    "baseBranches": [
-        "master"
-    ],
-    "extends": [
-        "@donmahallem"
+    "baseBranches": ["master"],
+    "extends": ["@donmahallem"],
+    "packageRules": [
+        {
+            "groupName": "axios/turbo update {{currentVersion}}",
+            "matchPackagePatterns": ["^axios$", "^@donmahallem/turbo"],
+            "matchUpdateTypes": ["major"]
+        }
     ]
 }
