@@ -43,7 +43,6 @@ jobs:
             - name: Install Deps
               run: |
                   npm ci
-                  npx lerna bootstrap --ci
             - name: Run Build
               run: npx lerna run build
             - name: Archive production artifacts
@@ -79,7 +78,6 @@ jobs:
             - name: Install
               run: |
                   npm ci
-                  npx lerna bootstrap --ci
             - name: Build
               run: |
                   echo "${{ secrets.APP_DEPLOY_ENVIRONMENT }}" > "./packages/client-ng/src/environments/environment.ts"
@@ -135,7 +133,6 @@ jobs:
             - name: Install
               run: |
                   npm ci
-                  npx lerna bootstrap --ci
             - name: Download Build artifacts
               uses: actions/download-artifact@v3.0.1
               with:
