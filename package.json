@@ -76,8 +76,11 @@
     "all": true
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
+  "workspaces":[
+    "packages/*"
+  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
