@@ -19,7 +19,7 @@
         "postlint": "prettier --config ./../../.prettierrc src/**/*.ts --check",
         "lint:fix": "eslint -c .eslintrc.cjs --ext .ts ./src --fix",
         "postlint:fix": "prettier --config ./../../.prettierrc src/**/*.ts --write",
-        "docs": "typedoc --options ./typedoc.config.js",
+        "docs": "typedoc --options ./typedoc.config.cjs",
         "apidocs": "apidoc --line-ending LF README.md -i ./src/ -o ./docs/apidoc",
         "postdocs": "npm run apidocs",
         "prepublishOnly": "npm run test && npm run docs && npm run build",

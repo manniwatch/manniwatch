@@ -3,7 +3,7 @@
     "compilerOptions": {
         "outDir": "./dist",
         "rootDir": "./src",
-        "module": "es6",
+        "module": "ESNext",
         "target": "ES5",
         "moduleResolution": "Node",
         "importHelpers": true,
