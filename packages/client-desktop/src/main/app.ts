@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-desktop
+/*
+ * Package @manniwatch/client-desktop
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
@@ -11,6 +12,14 @@ import { AppConfig } from './config/config';
 import { createMwFileProtocolHandler } from './mw-file-protocol-handler';
 import { createMwTilesHttpProtocolHandler } from './mw-tiles-protocol-handler';
 
+/* eslint-disable @typescript-eslint/no-explicit-any,
+  @typescript-eslint/no-unsafe-member-access,
+  @typescript-eslint/no-unsafe-argument,
+  @typescript-eslint/no-unsafe-assignment,
+  @typescript-eslint/no-floating-promises,
+  @typescript-eslint/no-unused-vars,
+  @typescript-eslint/require-await,
+  jsdoc/require-param-type */
 export class ManniWatchApp {
     /**
      * Main Window

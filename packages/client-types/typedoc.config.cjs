@@ -1,1 +1,1 @@
-module.exports = require("./../../typedoc.json");
+module.exports = require('../../typedoc.json');

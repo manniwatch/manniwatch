@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-desktop
+/*
+ * Package @manniwatch/client-desktop
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import {
@@ -13,13 +14,16 @@ import {
     IVehiclePathInfo,
     PositionType,
 } from '@manniwatch/api-types';
-import {
-    ApiService, IBounds, TripInfoWithId,
-} from '@manniwatch/client-types';
+import { ApiService, IBounds, TripInfoWithId } from '@manniwatch/client-types';
 import { ipcRenderer } from 'electron';
 
+/* eslint-disable @typescript-eslint/no-explicit-any,
+  @typescript-eslint/no-unsafe-member-access,
+  @typescript-eslint/no-unsafe-argument,
+  @typescript-eslint/no-unsafe-assignment,
+  @typescript-eslint/no-unsafe-return,
+  sort-keys */
 export const manniwatchApi: ApiService = {
-
     getTripPassages(tripId: string, mode: string = 'departure'): Promise<TripInfoWithId> {
         return ipcRenderer.invoke('api/trip/passages', tripId, mode);
     },

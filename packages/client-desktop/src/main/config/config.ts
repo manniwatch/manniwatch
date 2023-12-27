@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-desktop
+/*
+ * Package @manniwatch/client-desktop
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { CoordinateFormat, IEnvironmentBase, IMapCoordinate } from '@manniwatch/client-types';

@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-desktop
+/*
+ * Package @manniwatch/client-desktop
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { expect } from 'chai';
@@ -7,6 +8,12 @@ import 'mocha';
 import { IFileConfig } from './config';
 import { validateConfigFile } from './validate-file-config';
 
+/* eslint-disable @typescript-eslint/no-explicit-any,
+  @typescript-eslint/no-unsafe-member-access,
+  @typescript-eslint/no-unsafe-argument,
+  @typescript-eslint/no-unsafe-assignment,
+  @typescript-eslint/no-unsafe-return,
+  sort-keys */
 describe('./shared/validate-file-config.ts', (): void => {
     it('should validate with center provided', async (): Promise<void> => {
         const testObject: any = {
