@@ -3,4 +3,4 @@
  * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
 
-export { createGeoRouter } from './router';
+export { createGeoRouter } from './router.js';

@@ -11,7 +11,7 @@ import { TripPassagesService } from './trip-passages.service';
 import { IPassageStatus, TripPassagesUtil, UpdateStatus } from './trip-util';
 
 type PartialPassageStatus = Partial<IPassageStatus>;
-describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
+describe('src/app/routes/trip-passages/trip-passages.service', (): void => {
     describe('TripPassagesService', (): void => {
         const initialTripData: any = {
             id: 'tripId1',
@@ -48,7 +48,6 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                         error: doneFn.fail,
                         next: (val: any): void => {
                             expect(val).toEqual(initialTripData);
-                            doneFn();
                         },
                     });
                 });
@@ -61,7 +60,6 @@ describe('src/app/modules/trip-passages/trip-passages.service', (): void => {
                         error: doneFn.fail,
                         next: (val: any): void => {
                             expect(val).toEqual(initialTripData);
-                            doneFn();
                         },
                     });
                     refreshSubject.next(initialTripData);

@@ -7,7 +7,7 @@ import { StopMode } from '@manniwatch/api-types';
 import Ajv, { ValidateFunction } from 'ajv';
 import { expect } from 'chai';
 import 'mocha';
-import { STOP_MODE_SCHEMA } from './stop-mode';
+import { STOP_MODE_SCHEMA } from './stop-mode.js';
 
 const validOptions: StopMode[] = ['departure', 'arrival'];
 

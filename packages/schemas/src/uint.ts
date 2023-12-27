@@ -3,7 +3,7 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { RequireIdJSONSchemaType } from './util';
+import { RequireIdJSONSchemaType } from './util.js';
 
 export const UINT_SCHEMA: RequireIdJSONSchemaType<string | number> = {
     $id: '#manniwatch/uint',

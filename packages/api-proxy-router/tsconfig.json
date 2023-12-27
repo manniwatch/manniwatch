@@ -3,7 +3,8 @@
     "compilerOptions": {
         "rootDir": "./src",
         "declaration": false,
-        "strictNullChecks": true
+        "strictNullChecks": true,
+        "types": []
     },
     "include": [
         "./src"

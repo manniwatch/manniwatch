@@ -4,7 +4,7 @@
 
 import { expect } from 'chai';
 import 'mocha';
-import { convertTo, CoordinateFormat } from './map-coordinate';
+import { convertTo, CoordinateFormat } from './map-coordinate.js';
 
 describe('map-coordinate', (): void => {
     describe('expect ARC_MILISECOND as default', (): void => {

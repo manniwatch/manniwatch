@@ -58,7 +58,6 @@ export class AppNotificationService {
     private notificationSubject: Subject<IAppNotification> = new Subject<IAppNotification>();
     /**
      * Will publish the notification
-     *
      * @param noti the notification
      */
     public notify(noti: IAppNotification): void {
@@ -68,11 +67,11 @@ export class AppNotificationService {
     /**
      * The notification observable
      */
-    public get notificationObservable(): Observable<any> {
+    public get notificationObservable(): Observable<unknown> {
         return this.notificationSubject.asObservable();
     }
 
-    public report(err: any): void {
+    public report(err: unknown): void {
         // TODO
     }
 }

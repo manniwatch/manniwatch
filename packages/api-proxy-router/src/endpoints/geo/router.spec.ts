@@ -5,15 +5,15 @@
 
 import { RequestError } from '@donmahallem/turbo';
 import { IBoundingBox, ManniWatchApiClient } from '@manniwatch/api-client';
-import { IStopLocations, IStopPointLocations, IVehicleLocationList, PositionType } from '@manniwatch/api-types';
 import { GEO_FENCE_SCHEMA, GET_VEHICLE_LOCATION_SCHEMA } from '@manniwatch/schemas';
 import { expect } from 'chai';
+import { strict as esmock } from 'esmock';
 import express from 'express';
 import 'mocha';
-import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 import supertest from 'supertest';
-import { delayPromise } from '../common-test.spec';
+import { delayPromise } from '../common-test.spec.js';
+import type { IStopLocations, IStopPointLocations, IVehicleLocationList, PositionType } from '@manniwatch/api-types';
 
 const validCoordinates: TestIBoundingBox[] = [
     { bottom: '-1000', left: '-1000', right: '1000', top: '1000' },
@@ -35,11 +35,11 @@ const validCoordinatesNumbers: { [key in keyof IBoundingBox]: number }[] = valid
 const positionTypes: PositionType[] = ['RAW', 'CORRECTED'];
 const lastUpdates: string[] = ['22929299292', '2938'];
 type TestIBoundingBox = { [key in keyof IBoundingBox]: string };
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access */
 describe('endpoints/geo/router.ts', (): void => {
     describe('createGeoRouter()', (): void => {
         let app: express.Express;
-        let routeErrorStub: sinon.SinonStub<Parameters<express.ErrorRequestHandler>, void>;
+        let routeErrorStub: sinon.SinonStub<Parameters<express.ErrorRequestHandler>, ReturnType<express.ErrorRequestHandler>>;
         let sandbox: sinon.SinonSandbox;
         const NOT_FOUND_RESPONSE: object = { error: true, status: 404 };
         const NOT_FOUND_RESPONSE_LENGTH = `${JSON.stringify(NOT_FOUND_RESPONSE).length}`;
@@ -50,7 +50,7 @@ describe('endpoints/geo/router.ts', (): void => {
         let geoFenceValidateStub: sinon.SinonStub;
         let vehicleValidateStub: sinon.SinonStub;
         let createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router;
-        before((): void => {
+        before(async (): Promise<void> => {
             sandbox = sinon.createSandbox();
             stubClient = sandbox.createStubInstance(ManniWatchApiClient);
             routeErrorStub = sandbox.stub();
@@ -58,11 +58,13 @@ describe('endpoints/geo/router.ts', (): void => {
             geoFenceValidateStub = sandbox.stub();
             vehicleValidateStub = sandbox.stub();
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-            createGeoRouter = proxyquire('./router', {
-                '@donmahallem/turbo-validate-request': {
-                    validateRequest: validateStubParent,
-                },
-            }).createGeoRouter as (apiClient: ManniWatchApiClient) => express.Router;
+            createGeoRouter = (
+                await esmock('./router.js', {
+                    '@donmahallem/turbo-validate-request': {
+                        validateRequest: validateStubParent,
+                    },
+                })
+            ).createGeoRouter as (apiClient: ManniWatchApiClient) => express.Router;
         });
         beforeEach((): void => {
             validateStubParent.callsFake((type: string, schema: any): sinon.SinonStub => {

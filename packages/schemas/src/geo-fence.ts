@@ -4,7 +4,7 @@
  */
 
 import { JSONSchemaType } from 'ajv';
-import { INT_SCHEMA } from './int';
+import { INT_SCHEMA } from './int.js';
 
 export interface IGeoFenceSchema {
     bottom: string;

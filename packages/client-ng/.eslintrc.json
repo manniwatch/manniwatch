@@ -63,6 +63,19 @@
     },
     {
       "files": [
+        "*.ts"
+      ],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "args": "none"
+          }
+        ]
+      }
+    },
+    {
+      "files": [
         "*.html"
       ],
       "extends": [

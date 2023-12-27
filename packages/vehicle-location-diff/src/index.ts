@@ -6,4 +6,4 @@ export {
     ITimestampedVehicleLocation,
     VehicleDiffHandler,
     IVehicleLocationDiff,
-} from './vehicle-diff-handler';
+} from './vehicle-diff-handler.js';

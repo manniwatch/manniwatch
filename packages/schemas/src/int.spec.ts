@@ -6,7 +6,7 @@
 import Ajv, { ValidateFunction } from 'ajv';
 import { expect } from 'chai';
 import 'mocha';
-import { INT_SCHEMA } from './int';
+import { INT_SCHEMA } from './int.js';
 
 const validValues: (string | number)[] = ['1', '+0', '-200', 0, 2, -5];
 const invalidValues: (string | number)[] = ['-1a', 'b', '200.2', 0.39];

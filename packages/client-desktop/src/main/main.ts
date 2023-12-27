@@ -3,6 +3,6 @@
  */
 
 import { appCallback } from './app-callback';
-import { handleCli } from './cli';
+import { handleCli } from './cli/index';
 
 handleCli(appCallback);

@@ -9,8 +9,9 @@ import { fromLonLat } from 'ol/proj';
 import { LOCAL_STORAGE_TOKEN } from 'src/app/util/storage';
 import { IStorage } from 'src/app/util/storage/storage';
 import { environment } from 'src/environments';
-import { ApiService, Theme } from '..';
+import { Environment } from 'src/environments/environment.base';
 import { SettingsService } from './settings.service';
+import { ApiService, Theme } from '..';
 
 describe('src/app/services/settings.service', (): void => {
     describe('SettingsService', (): void => {
@@ -62,7 +63,7 @@ describe('src/app/services/settings.service', (): void => {
                             lon: 3600000,
                         },
                     },
-                });
+                } as Environment);
                 expect(settingsService.getInitialMapCenter()).toEqual(fromLonLat([1, 2]));
             });
         });
@@ -73,7 +74,7 @@ describe('src/app/services/settings.service', (): void => {
                     map: {
                         zoom: 15,
                     },
-                });
+                } as Environment);
                 expect(settingsService.getInitialMapZoom()).toEqual(15);
             });
             it(`should return zoom level 0`, (): void => {
@@ -82,7 +83,7 @@ describe('src/app/services/settings.service', (): void => {
                     map: {
                         zoom: 0,
                     },
-                });
+                } as Environment);
                 expect(settingsService.getInitialMapZoom()).toEqual(0);
             });
             it(`should return default zoom level 13`, (): void => {
@@ -107,7 +108,7 @@ describe('src/app/services/settings.service', (): void => {
             });
             it(`should remove the theme preference for unknown values`, (): void => {
                 expect(storageSpy.setItem.calls.count()).toEqual(0);
-                settingsService.theme = -2000;
+                settingsService.theme = -2000 as Theme;
                 expect(storageSpy.setItem.calls.count()).toEqual(0);
                 expect(storageSpy.removeItem.calls.count()).toEqual(1);
                 expect(storageSpy.removeItem.calls.argsFor(0)).toEqual(['theme']);

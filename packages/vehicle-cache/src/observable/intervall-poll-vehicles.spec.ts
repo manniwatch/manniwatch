@@ -10,7 +10,7 @@ import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
 import { PollResult } from '../operators';
-import { intervallPollVehicles } from './intervall-poll-vehicles';
+import { intervallPollVehicles } from './intervall-poll-vehicles.js';
 
 const testParameter: any[] = [];
 [undefined, 1000].forEach((lastUpdate: any): any => {

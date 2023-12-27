@@ -33,7 +33,6 @@ export class Config {
 
     /**
      * gets the port for the server
-     *
      * @returns {number} server port
      */
     public static get port(): number {

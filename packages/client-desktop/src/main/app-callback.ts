@@ -8,7 +8,8 @@ import { AppConfig } from './config/config';
 
 export const appCallback: ArgsCallback = (config: AppConfig): void => {
     const trapezeApp: ManniWatchApp = new ManniWatchApp(config);
-    trapezeApp.init()
+    trapezeApp
+        .init()
         .then((): void => {
             // tslint:disable-next-line:no-console
             console.log('App started');

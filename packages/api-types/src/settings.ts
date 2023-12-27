@@ -142,7 +142,7 @@ type CountryCodes = [
     'xh',
     'ji',
     'yo',
-    'zu'
+    'zu',
 ];
 /**
  * @hidden

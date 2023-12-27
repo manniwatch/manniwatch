@@ -3,8 +3,8 @@
  * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
 
-import * as prom from '@donmahallem/turbo';
-import * as turboval from '@donmahallem/turbo-validate-request';
+import { promiseToResponse } from '@donmahallem/turbo';
+import { validateRequest } from '@donmahallem/turbo-validate-request';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { StopMode } from '@manniwatch/api-types';
 import { TRIP_PASSAGES_SCHEMA } from '@manniwatch/schemas';
@@ -30,7 +30,7 @@ export const createTripRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
      */
     // eslint-disable-next-line no-useless-escape
     router.get('/:id([a-z0-9A-Z-+]+)/route', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
-        prom.promiseToResponse(apiClient.getRouteByTripId(req.params.id), res, next);
+        promiseToResponse(apiClient.getRouteByTripId(req.params.id), res, next);
     });
 
     /**
@@ -44,10 +44,10 @@ export const createTripRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
     // eslint-disable-next-line no-useless-escape
     router.get(
         '/:id([a-z0-9A-Z-+]+)/passages',
-        turboval.validateRequest('query', TRIP_PASSAGES_SCHEMA, ajvInstance),
+        validateRequest('query', TRIP_PASSAGES_SCHEMA, ajvInstance),
         (req: express.Request, res: express.Response, next: express.NextFunction): void => {
             const departureMode: StopMode = (req.query.mode as StopMode) || 'departure';
-            prom.promiseToResponse(apiClient.getTripPassages(req.params.id, departureMode), res, next);
+            promiseToResponse(apiClient.getTripPassages(req.params.id, departureMode), res, next);
         }
     );
     return router;

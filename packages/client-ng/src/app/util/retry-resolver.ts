@@ -5,12 +5,15 @@
 
 import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
-import { EMPTY, filter, from, mergeMap, NEVER, Observable, of, retryWhen, tap, throwError } from 'rxjs';
+import { EMPTY, from, mergeMap, Observable, of, retryWhen, throwError } from 'rxjs';
 import { AppDialogService } from '../services';
 
-export type ErrorTypes = any | Error | HttpErrorResponse;
+export type ErrorTypes = Error | HttpErrorResponse;
 export abstract class RetryResolver<T> implements Resolve<T> {
-    public constructor(public router: Router, public dialog: AppDialogService) {}
+    public constructor(
+        public router: Router,
+        public dialog: AppDialogService
+    ) {}
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<T> {
         return this.createLoader(route, state).pipe(
             retryWhen((obs: Observable<ErrorTypes>): Observable<boolean> => {

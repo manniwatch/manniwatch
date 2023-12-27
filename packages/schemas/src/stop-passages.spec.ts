@@ -7,13 +7,13 @@ import { StopMode } from '@manniwatch/api-types';
 import Ajv, { ValidateFunction } from 'ajv';
 import { expect } from 'chai';
 import 'mocha';
-import { STOP_PASSAGES_SCHEMA } from './stop-passages';
+import { STOP_PASSAGES_SCHEMA } from './stop-passages.js';
 
 const validOptions: StopMode[] = ['departure', 'arrival'];
 const validTestNumbers: (number | string)[] = [3, '2', '0', '+4'];
 const invalidTestNumbers: (number | string)[] = [-1, '-2'];
 
-// tslint:disable:no-unused-expression
+/* eslint-disable @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-assignment */
 describe('endpoints/schema/stop-passages', (): void => {
     let ajvInstance: Ajv;
     let validator: ValidateFunction;

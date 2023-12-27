@@ -1,89 +1,91 @@
 {
-  "name": "root",
-  "private": true,
-  "devDependencies": {
-    "@appnest/readme": "1.2.7",
-    "@donmahallem/eslint-config": "1.0.170",
-    "@donmahallem/rollup-config": "2.0.89",
-    "@donmahallem/tslint-config": "0.4.1",
-    "@rollup/plugin-commonjs": "23.0.2",
-    "@rollup/plugin-json": "5.0.1",
-    "@rollup/plugin-node-resolve": "15.0.1",
-    "@rollup/plugin-replace": "5.0.1",
-    "@rollup/plugin-typescript": "9.0.2",
-    "@types/chai": "4.3.4",
-    "@types/mocha": "10.0.0",
-    "@types/node": "18.11.9",
-    "@types/sinon": "10.0.13",
-    "chai": "4.3.7",
-    "commitizen": "4.2.5",
-    "conventional-changelog-angular": "5.0.13",
-    "conventional-changelog-cli": "2.2.2",
-    "coveralls": "3.1.1",
-    "cz-conventional-changelog": "3.3.0",
-    "eslint": "8.28.0",
-    "fs-extra": "10.1.0",
-    "lerna": "6.0.3",
-    "mocha": "10.1.0",
-    "nyc": "15.1.0",
-    "prettier": "2.7.1",
-    "rollup": "2.79.1",
-    "rollup-plugin-dts": "4.2.3",
-    "sinon": "14.0.2",
-    "ts-node": "10.9.1",
-    "tslib": "2.4.1",
-    "tslint": "6.1.3",
-    "typedoc": "0.23.21",
-    "typescript": "4.8.4"
-  },
-  "scripts": {
-    "build": "lerna run build",
-    "prebuild:readme": "node ./scripts/extract_packages.js",
-    "postbuild:readme": "node ./scripts/extract_packages.js clear",
-    "build:readme": "npx @appnest/readme generate --input readme_blueprint.md --config readme_config_root.json && lerna run build:readme",
-    "test": "lerna run test",
-    "test:coverage": "lerna run test:coverage",
-    "coverage:merge": "node ./scripts/merge_coverage.js",
-    "lint": "lerna run lint",
-    "docs": "lerna run docs",
-    "lint:fix": "lerna run lint:fix",
-    "version": "npm run build:readme && git add README.md"
-  },
-  "nyc": {
-    "include": [
-      "src/*.ts",
-      "src/**/*.ts"
+    "name": "root",
+    "private": true,
+    "devDependencies": {
+        "@appnest/readme": "1.2.7",
+        "@donmahallem/eslint-config": "2.0.9",
+        "@donmahallem/rollup-config": "4.1.0",
+        "@donmahallem/tslint-config": "0.4.1",
+        "@rollup/plugin-commonjs": "25.0.7",
+        "@rollup/plugin-json": "6.1.0",
+        "@rollup/plugin-node-resolve": "15.2.3",
+        "@rollup/plugin-replace": "5.0.5",
+        "@rollup/plugin-typescript": "11.1.5",
+        "@types/chai": "4.3.11",
+        "@types/mocha": "10.0.6",
+        "@types/node": "20.10.5",
+        "@types/sinon": "17.0.2",
+        "c8": "8.0.1",
+        "chai": "4.3.10",
+        "commitizen": "4.3.0",
+        "conventional-changelog-angular": "7.0.0",
+        "conventional-changelog-cli": "4.1.0",
+        "coveralls": "3.1.1",
+        "cz-conventional-changelog": "3.3.0",
+        "eslint": "8.56.0",
+        "esmock": "2.6.0",
+        "fs-extra": "11.2.0",
+        "lerna": "6.0.3",
+        "mocha": "10.2.0",
+        "nyc": "15.1.0",
+        "prettier": "3.1.1",
+        "rollup": "4.9.1",
+        "rollup-plugin-dts": "6.1.0",
+        "sinon": "17.0.1",
+        "ts-node": "10.9.2",
+        "tslib": "2.6.2",
+        "tslint": "6.1.3",
+        "typedoc": "0.25.4",
+        "typescript": "5.3.3"
+    },
+    "scripts": {
+        "build": "lerna run build",
+        "prebuild:readme": "node ./scripts/extract_packages.js",
+        "postbuild:readme": "node ./scripts/extract_packages.js clear",
+        "build:readme": "npx @appnest/readme generate --input readme_blueprint.md --config readme_config_root.json && lerna run build:readme",
+        "test": "lerna run test",
+        "test:coverage": "lerna run test:coverage",
+        "coverage:merge": "node ./scripts/merge_coverage.js",
+        "lint": "lerna run lint",
+        "docs": "lerna run docs",
+        "lint:fix": "lerna run lint:fix",
+        "version": "npm run build:readme && git add README.md"
+    },
+    "nyc": {
+        "include": [
+            "src/*.ts",
+            "src/**/*.ts"
+        ],
+        "exclude": [
+            "typings",
+            "src/**/*.spec.ts",
+            "**/*.d.ts"
+        ],
+        "extension": [
+            ".ts"
+        ],
+        "require": [
+            "ts-node/register"
+        ],
+        "reporter": [
+            "json",
+            "html",
+            "text-summary",
+            "lcov"
+        ],
+        "sourceMap": true,
+        "instrument": true,
+        "all": true
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "workspaces": [
+        "packages/*"
     ],
-    "exclude": [
-      "typings",
-      "src/**/*.spec.ts",
-      "**/*.d.ts"
-    ],
-    "extension": [
-      ".ts"
-    ],
-    "require": [
-      "ts-node/register"
-    ],
-    "reporter": [
-      "json",
-      "html",
-      "text-summary",
-      "lcov"
-    ],
-    "sourceMap": true,
-    "instrument": true,
-    "all": true
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "workspaces":[
-    "packages/*"
-  ],
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
     }
-  }
 }

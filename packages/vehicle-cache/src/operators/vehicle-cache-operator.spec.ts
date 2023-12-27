@@ -9,7 +9,7 @@ import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
 import { CacheEntry } from '../types';
-import { vehicleCacheOperator } from './vehicle-cache-operator';
+import { vehicleCacheOperator } from './vehicle-cache-operator.js';
 
 interface IMarbleMap { [key: string]: Partial<CacheEntry>; }
 describe('operators/vehicle-cache-operator', (): void => {

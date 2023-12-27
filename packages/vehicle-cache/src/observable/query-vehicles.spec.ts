@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
-import { queryVehicles } from './query-vehicles';
+import { queryVehicles } from './query-vehicles.js';
 
 describe('observable/query-vehicles', (): void => {
     describe('queryVehicles', (): void => {

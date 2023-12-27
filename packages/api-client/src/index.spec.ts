@@ -5,7 +5,7 @@
 
 import { expect } from 'chai';
 import 'mocha';
-import * as instance from './index';
+import * as instance from './index.js';
 
 // tslint:disable:no-unused-expression
 describe('index.ts', (): void => {

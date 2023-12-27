@@ -5,8 +5,8 @@
 
 import { Inject, InjectionToken, Optional } from '@angular/core';
 import { from, EMPTY, Observable } from 'rxjs';
-import { getManniwatchDesktopApi } from '../util/electron';
 import { ApiService as RootApiService } from './api.service';
+import { getManniwatchDesktopApi } from '../util/electron';
 import type {
     ISettings,
     IStopInfo,
@@ -67,7 +67,7 @@ export class ElectronApiService implements RootApiService {
         return from(this.service.getVehicleLocations('RAW', lastUpdate));
     }
 
-    public getVehicleLocation(vehicleId: string, lastUpdate = 0): Observable<IVehicleLocation> {
+    public getVehicleLocation(vehicleId: string): Observable<IVehicleLocation> {
         return EMPTY; // from(this.service.getVehicleLocation(vehicleId, lastUpdate));
     }
 

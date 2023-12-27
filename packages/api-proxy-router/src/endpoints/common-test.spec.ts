@@ -39,6 +39,7 @@ export type ErrorSpy = sinon.SinonSpy<[(err: any) => void], void>;
 export const createTestErrorRequestHandler: (innerSpy: ErrorSpy) => ErrorRequestHandler = (
     innerSpy: sinon.SinonSpy
 ): ErrorRequestHandler => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     return (err: any, req: Request, res: Response, next: NextFunction): void => {
         innerSpy(err);
         res.json(NOT_FOUND_RESPONSE);
@@ -46,3 +47,14 @@ export const createTestErrorRequestHandler: (innerSpy: ErrorSpy) => ErrorRequest
 };
 
 export const testStopModes: (StopMode | undefined)[] = ['arrival', 'departure', undefined];
+
+export type MethodStub<T extends (...args: any) => any> = sinon.SinonStub<Parameters<T>, ReturnType<T>>;
+
+import type { promiseToResponse } from '@donmahallem/turbo';
+import type { validateRequest } from '@donmahallem/turbo-validate-request';
+export type ValidateRequestParameters = Parameters<typeof validateRequest>;
+export type ValidateRequestReturnType = ReturnType<typeof validateRequest>;
+export type ValidateRequestStub = sinon.SinonStub<ValidateRequestParameters, ValidateRequestReturnType>;
+export type PromiseToResponseParameters = Parameters<typeof promiseToResponse>;
+export type PromiseToResponseReturnType = ReturnType<typeof promiseToResponse>;
+export type PromiseToResponseStub = sinon.SinonStub<PromiseToResponseParameters, PromiseToResponseReturnType>;

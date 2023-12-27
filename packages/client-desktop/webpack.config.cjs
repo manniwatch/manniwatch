@@ -2,7 +2,11 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const CopyPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
+const mod = require("module");
 
+const clientPackagePath=require.resolve('@manniwatch/client-ng/package.json');
+const clientPackageRoot=path.dirname(clientPackagePath)
+console.log(clientPackageRoot);
 module.exports = (env, argv) => {
     console.log(env, argv);
     const baseConfig = {
@@ -14,7 +18,17 @@ module.exports = (env, argv) => {
         },
         module: {
             rules: [{
-                test: /\.ts$/,
+                test: /\.tsx?$/,
+                include: /src/,
+                exclude: /node_modules/,
+                use: [
+                    { loader: 'ts-loader',
+                options:{
+                    configFile:"tsconfig.webpack.json"
+                } }
+                ]
+            },{
+                test: /\.js$/,
                 include: /src/,
                 exclude: /node_modules/,
                 use: [
@@ -55,7 +69,7 @@ module.exports = (env, argv) => {
                             to: path.resolve(__dirname, "./dist/config-schema.json")
                         },
                         {
-                            from: path.resolve(__dirname, "./node_modules/@manniwatch/client-ng/dist/manniwatch/"),
+                            from: path.resolve(clientPackageRoot, "./dist/manniwatch/"),
                             to: path.resolve(__dirname, "./dist/static")
                         },
                     ],

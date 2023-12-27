@@ -5,7 +5,6 @@
 
 /**
  * Vehicle status
- *
  * @since 1.0.0
  */
 export enum VEHICLE_STATUS {

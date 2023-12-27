@@ -38,7 +38,6 @@ export class TripPassagesListComponent {
 
     /**
      * Returns if the atleast one passages was provided
-     *
      * @returns true if there is atleast one departure
      */
     public hasPassages(): boolean {

@@ -3,7 +3,7 @@
  * Source https://github.com/manniwatch/manniwatch/tree/master/packages/api-types
  */
 
-export type VehicleCategory = string | 'bus' | 'tram';
+export type VehicleCategory = 'bus' | 'tram';
 /**
  * Stop Mode to query
  */

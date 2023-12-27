@@ -5,7 +5,7 @@
 import { IVehicleLocationList } from '@manniwatch/api-types';
 import { concat, of, Observable, Subject, Subscriber, Subscription } from 'rxjs';
 import { delay, switchMap, tap } from 'rxjs/operators';
-import { convertPollResult, PollResult } from '../operators';
+import { convertPollResult, PollResult } from '../operators/index.js';
 
 export type QueryFactory = (lastUpdate: number) => Observable<IVehicleLocationList>;
 export const intervallPollVehicles = (queryFactory: QueryFactory, refreshInterval: number = 60000): Observable<PollResult> => {

@@ -10,7 +10,7 @@ import { of, Observable } from 'rxjs';
 import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
-import { queryVehiclesOperator } from './query-vehicles';
+import { queryVehiclesOperator } from './query-vehicles.js';
 
 const testParameter: any[] = [];
 [undefined, 1000].forEach((lastUpdate: any): any => {

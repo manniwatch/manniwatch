@@ -4,7 +4,7 @@
  */
 
 /* eslint-disable sort-keys */
-export const LIGHT_THEME: any = {
+export const LIGHT_THEME: unknown = {
     version: 8,
     name: 'Bright',
     metadata: {

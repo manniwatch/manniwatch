@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: client-desktop
  */
 
-import { app, Protocol, ProtocolRequest, ProtocolResponse } from 'electron';
+import electron from 'electron';
 import { existsSync, promises as fsp } from 'fs';
 import { basename, join, normalize, resolve } from 'path';
 import { URL } from 'url';
@@ -21,13 +21,13 @@ const guessMimeType = (filepath: string): string | undefined => {
     }
     return undefined;
 };
-type HandlerType = Parameters<Protocol['registerFileProtocol']>[1];
+type HandlerType = Parameters<electron.Protocol['registerFileProtocol']>[1];
 export const createMwFileProtocolHandler: () => HandlerType = (): HandlerType => {
-    const distType: string = normalize(`${app.getAppPath()}/../static/`);
+    const distType: string = normalize(`${electron.app.getAppPath()}/../static/`);
     if (!existsSync(distType)) {
         throw new Error(`Could not find dist folder '${distType}'`);
     }
-    return async (request: ProtocolRequest, callback: (response: string | ProtocolResponse) => void): Promise<void> => {
+    return async (request: electron.ProtocolRequest, callback: (response: string | electron.ProtocolResponse) => void): Promise<void> => {
         const parsedUrl: URL = new URL(request.url);
         if (parsedUrl.protocol === 'mw:' && parsedUrl.host === 'static') {
             const normalizedPath: string = normalize(join(distType, parsedUrl.pathname));

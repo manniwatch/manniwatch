@@ -1,0 +1,17 @@
+{
+    "node-option": ["import=./../../mocha-ts-loader.mjs"],
+    "spec": "src/**/*.spec.ts",
+    "allow-uncaught": false,
+    "async-only": false,
+    "bail": false,
+    "check-leaks": true,
+    "color": true,
+    "delay": false,
+    "diff": true,
+    "exit": false,
+    "extension": ["ts"],
+    "inline-diffs": false,
+    "package": "./package.json",
+    "recursive": true,
+    "reporter": "spec"
+}

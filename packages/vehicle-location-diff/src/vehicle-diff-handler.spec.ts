@@ -4,7 +4,7 @@
 
 import { expect } from 'chai';
 import sinon from 'sinon';
-import { vehicleMapReduce, VehicleDiffHandler, VehicleHashMap } from './vehicle-diff-handler';
+import { vehicleMapReduce, VehicleDiffHandler, VehicleHashMap } from './vehicle-diff-handler.js';
 
 interface ISimpleVehicle {
     id: string;

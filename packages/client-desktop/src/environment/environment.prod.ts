@@ -8,7 +8,5 @@ export const environment: AppConfig = {
     configs: [],
     debug: false,
     endpoint: '',
-    environment: {
-
-    } as any,
+    environment: {} as any,
 };

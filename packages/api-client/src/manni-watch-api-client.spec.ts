@@ -9,8 +9,8 @@ import { expect } from 'chai';
 import 'mocha';
 import nock from 'nock';
 import sinon from 'sinon';
-import { IBoundingBox, ManniWatchApiClient } from './manni-watch-api-client';
-import { Util } from './util';
+import { IBoundingBox, ManniWatchApiClient } from './manni-watch-api-client.js';
+import { Util } from './util.js';
 
 interface ITestSuccessResponse {
     message: string;
@@ -32,7 +32,7 @@ const testBoxParams: Record<keyof IBoundingBox, string> = {
     right: '2',
     top: '1',
 };
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-assignment */
 const STOP_MODES: StopMode[] = ['departure', 'arrival'];
 describe('manni-watch-api-client.ts', (): void => {
     describe('ManniWatchApiClient', (): void => {

@@ -11,9 +11,6 @@ const electronConfig: IElectronInterface = {
     environment: ipcRenderer.sendSync('getEnvironment'),
 };
 
-contextBridge.exposeInMainWorld(
-    'electron',
-    {
-        manniwatch: electronConfig,
-    },
-);
+contextBridge.exposeInMainWorld('electron', {
+    manniwatch: electronConfig,
+});

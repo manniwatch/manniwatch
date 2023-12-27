@@ -2,18 +2,21 @@
     "name": "@manniwatch/vehicle-cache",
     "version": "0.29.16",
     "description": "Caching for vehicle locations",
-    "main": "dist/cjs/index.js",
-    "module": "dist/esm/index.js",
-    "types": "dist/index.d.ts",
+    "type": "module",
+    "types": "./dist/types/index.d.ts",
+    "exports": {
+        "require": "./dist/cjs/index.js",
+        "import": "./dist/esm/index.js",
+        "default": "./dist/cjs/index.js"
+    },
     "private": false,
     "scripts": {
-        "build": "npm run build:cjs && npm run build:esm && npm run build:types",
-        "build:esm": "tsc --module es6 --outDir ./dist/esm --project tsconfig.prod.json",
-        "build:cjs": "tsc --module CommonJS --outDir ./dist/cjs --project tsconfig.prod.json",
-        "build:types": "tsc --emitDeclarationOnly --declaration --outDir ./dist --project tsconfig.prod.json",
-        "test": "mocha --config ../../.mocharc.yml",
+        "build": "rollup -c ./rollup.config.mjs && npm run build:types",
+        "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
+        "build:types": "tsc --project ./tsconfig.json  -d --declarationDir dist/types --declarationMap --emitDeclarationOnly",
+        "test": "mocha --config ../../.mocharc.json",
         "test:watch": "mocha --config ../../.mocharc.yml --watch",
-        "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
+        "test:coverage": "c8 --config ../../.nycrc.json npm run test",
         "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
         "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json src/**/*.ts",
         "docs": "typedoc --options ./typedoc.config.js",
@@ -24,7 +27,7 @@
         "@manniwatch/api-types": "^0.29.16",
         "@manniwatch/vehicle-location-diff": "^0.29.16",
         "node-cache": "~5.1.2",
-        "rxjs": "~7.5.7"
+        "rxjs": "~7.8.1"
     },
     "files": [
         "dist/*",

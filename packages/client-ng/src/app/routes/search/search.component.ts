@@ -21,7 +21,10 @@ export class SearchComponent implements OnInit, OnDestroy {
     public data = '';
     private searchParamSubscription: Subscription;
     private resultObservable: Observable<IStopLocation[]> = NEVER;
-    public constructor(private activatedRoute: ActivatedRoute, private titleService: Title) {}
+    public constructor(
+        private activatedRoute: ActivatedRoute,
+        private titleService: Title
+    ) {}
 
     public ngOnInit(): void {
         this.searchParamSubscription = this.activatedRoute.queryParams.subscribe((value: Params & { q?: string }): void => {

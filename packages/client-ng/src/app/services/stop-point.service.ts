@@ -19,7 +19,10 @@ import { AppNotificationService } from './app-notification.service';
 export class StopPointService {
     private mStopPointObservable: Observable<IStopPointLocation[]>;
     private mStopObservable: Observable<IStopLocation[]>;
-    constructor(private api: ApiService, private notificationService: AppNotificationService) {
+    constructor(
+        private api: ApiService,
+        private notificationService: AppNotificationService
+    ) {
         this.mStopObservable = this.setupLocationsPoll(
             this.api.getStopLocations().pipe(map((stops: IStopLocations): IStopLocation[] => stops.stops))
         );
@@ -31,9 +34,9 @@ export class StopPointService {
     public setupLocationsPoll<T extends IStopLocation | IStopPointLocation>(pollObservable: Observable<T[]>): Observable<T[]> {
         return pollObservable.pipe(
             retryWhen(
-                (errors: Observable<any>): Observable<any> =>
+                (errors: Observable<unknown>): Observable<unknown> =>
                     errors.pipe(
-                        tap((err: any): void => this.notificationService.report(err)),
+                        tap((err: unknown): void => this.notificationService.report(err)),
                         debounceTime(5000)
                     )
             ),

@@ -4,7 +4,7 @@
 
 import { expect } from 'chai';
 import 'mocha';
-import * as instance from './index';
+import * as instance from './index.js';
 
 describe('index.ts', (): void => {
     describe('index exports', (): void => {

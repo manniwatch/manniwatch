@@ -5,12 +5,12 @@
 import Ajv from 'ajv';
 import { ValidateFunction } from 'ajv/dist/types';
 import { IFileConfig } from '../config/config';
+import joo from './../../config-schema.json' assert { type: 'json' };
 
 const ajvInstance: Ajv = new Ajv();
+const validateFunction: ValidateFunction = ajvInstance.compile(joo);
 // tslint:disable-next-line:no-var-requires
-const sourceSchema: any = require('./../../config-schema.json');
-const validateFunction: ValidateFunction = ajvInstance.compile(sourceSchema);
-export const validateConfigFile = (fileContent: any | IFileConfig): boolean => {
+export const validateConfigFile = async (fileContent: any | IFileConfig): Promise<boolean> => {
     if (validateFunction(fileContent)) {
         return true;
     } else {

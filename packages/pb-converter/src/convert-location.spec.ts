@@ -4,7 +4,7 @@
 
 import { expect } from 'chai';
 import 'mocha';
-import * as testObject from './convert-location';
+import * as testObject from './convert-location.js';
 describe('convert-location.ts', (): void => {
     describe('convertLocation(location)', (): void => {
         it('should convert location with lat and lon provided', (): void => {

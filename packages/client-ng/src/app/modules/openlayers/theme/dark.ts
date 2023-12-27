@@ -4,7 +4,9 @@
  */
 
 /* eslint-disable sort-keys */
-export const DARK_THEME: any = {
+export const DARK_THEME: {
+    [name: string]: unknown;
+} = {
     version: 8,
     name: 'Dark Matter',
     metadata: {

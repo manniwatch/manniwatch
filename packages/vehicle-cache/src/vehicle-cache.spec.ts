@@ -7,7 +7,7 @@ import 'mocha';
 import { Done } from 'mocha';
 import { tap } from 'rxjs/operators';
 import sinon from 'sinon';
-import { VehicleCache } from './vehicle-cache';
+import { VehicleCache } from './vehicle-cache.js';
 
 describe('vehicle-cache', (): void => {
     describe('VehicleCache', (): void => {

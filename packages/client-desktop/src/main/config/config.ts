@@ -14,6 +14,6 @@ export interface IFileConfig {
     map: IFileConfigMap;
 }
 export type AppConfig = Omit<ICliConfig, 'config'> & {
-    configs: string[],
-    environment: IEnvironmentBase,
+    configs: string[];
+    environment: IEnvironmentBase;
 };

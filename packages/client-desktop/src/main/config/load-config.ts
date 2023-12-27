@@ -11,7 +11,7 @@ export const loadConfig = async (cfgPath: string): Promise<AppConfig> => {
     const resolvedPath: string = resolve(cfgPath);
     const fileContent: string = await readFile(resolvedPath, 'utf-8');
     const parsedContent: AppConfig = JSON.parse(fileContent);
-    validateConfigFile(parsedContent);
+    await validateConfigFile(parsedContent);
     parsedContent.configs = [resolvedPath];
     return parsedContent;
 };

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 import { map, mergeMap, skipWhile } from 'rxjs/operators';
 import { RetryDialogComponent } from '../modules/common/retry-dialog';
 
-export type ErrorItem = any | HttpErrorResponse;
+export type ErrorItem = HttpErrorResponse;
 export type CreateDialogFuncResponse = MatDialogRef<RetryDialogComponent, boolean>;
 export type CreateDialogFunc = (error?: ErrorItem) => CreateDialogFuncResponse;
 export type RetryDialogStrategyFuncResponse = (errors: Observable<ErrorItem>) => Observable<true>;
@@ -18,7 +18,6 @@ export type RetryDialogStrategyFunc = (createDialog: CreateDialogFunc) => RetryD
 /**
  * If an error occurs it will call the dialog and waits for its result.
  * If the result equals true the stream will be retried
- *
  * @param createDialog a method that returns valid Dialog
  */
 export const retryDialogStrategy: RetryDialogStrategyFunc =

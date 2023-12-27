@@ -3,8 +3,8 @@
  * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
 
-import * as prom from '@donmahallem/turbo';
-import * as turboval from '@donmahallem/turbo-validate-request';
+import { promiseToResponse } from '@donmahallem/turbo';
+import { validateRequest } from '@donmahallem/turbo-validate-request';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { StopMode } from '@manniwatch/api-types';
 import { STOP_PASSAGES_SCHEMA } from '@manniwatch/schemas';
@@ -17,8 +17,7 @@ import express from 'express';
  * @returns {express.Router} a express router instance
  */
 export const createStopPointRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Ajv) => express.Router = (
-    apiClient: ManniWatchApiClient,
-    ajvInstance: Ajv = new Ajv()
+    apiClient: ManniWatchApiClient
 ): express.Router => {
     const router: express.Router = express.Router();
     /**
@@ -34,7 +33,7 @@ export const createStopPointRouter: (apiClient: ManniWatchApiClient, ajvInstance
     // eslint-disable-next-line no-useless-escape
     router.get(
         '/:id([a-z0-9A-Z-+]+)/passages',
-        turboval.validateRequest('query', STOP_PASSAGES_SCHEMA),
+        validateRequest('query', STOP_PASSAGES_SCHEMA),
         (req: express.Request, res: express.Response, next: express.NextFunction): void => {
             const mode: StopMode = (req.query.mode as StopMode) || undefined;
             // tslint:disable-next-line:triple-equals
@@ -43,7 +42,7 @@ export const createStopPointRouter: (apiClient: ManniWatchApiClient, ajvInstance
             // tslint:disable-next-line:triple-equals
             const timeFrame: number | undefined =
                 req.query.timeFrame == undefined ? undefined : parseInt(req.query.timeFrame as string, 10);
-            prom.promiseToResponse(apiClient.getStopPointPassages(req.params.id, mode, startTime, timeFrame), res, next);
+            promiseToResponse(apiClient.getStopPointPassages(req.params.id, mode, startTime, timeFrame), res, next);
         }
     );
     /**
@@ -55,7 +54,7 @@ export const createStopPointRouter: (apiClient: ManniWatchApiClient, ajvInstance
      */
     // eslint-disable-next-line no-useless-escape
     router.get('/:id([a-z0-9A-Z-+]+)/info', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
-        prom.promiseToResponse(apiClient.getStopPointInfo(req.params.id), res, next);
+        promiseToResponse(apiClient.getStopPointInfo(req.params.id), res, next);
     });
     return router;
 };

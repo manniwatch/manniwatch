@@ -3,16 +3,16 @@
  */
 
 import { VehicleCategory } from '@manniwatch/api-types';
-import { manniwatch } from '@manniwatch/pb-types';
+import manniwatch from '@manniwatch/pb-types';
 
-export const convertVehicleCategory: (cat: VehicleCategory) => manniwatch.VehicleCategory =
-    (cat: VehicleCategory): manniwatch.VehicleCategory => {
+export const convertVehicleCategory: (cat: VehicleCategory) => manniwatch.manniwatch.VehicleCategory =
+    (cat: VehicleCategory): manniwatch.manniwatch.VehicleCategory => {
         switch (cat) {
             case 'bus':
-                return manniwatch.VehicleCategory.BUS;
+                return manniwatch.manniwatch.VehicleCategory.BUS;
             case 'tram':
-                return manniwatch.VehicleCategory.TRAM;
+                return manniwatch.manniwatch.VehicleCategory.TRAM;
             default:
-                return manniwatch.VehicleCategory.OTHER;
+                return manniwatch.manniwatch.VehicleCategory.OTHER;
         }
     };

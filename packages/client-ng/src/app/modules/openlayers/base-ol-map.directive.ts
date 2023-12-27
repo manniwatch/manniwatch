@@ -19,7 +19,11 @@ export abstract class BaseOlMapDirective<TILE extends VectorTile | OSM> implemen
     private locationSubscription: Subscription;
     protected mBackgroundMapLayer: BaseTileLayer<TILE>;
     private themeSubscription: Subscription;
-    constructor(protected elRef: ElementRef, public readonly zone: NgZone, public readonly settings: SettingsService) {}
+    constructor(
+        protected elRef: ElementRef,
+        public readonly zone: NgZone,
+        public readonly settings: SettingsService
+    ) {}
     public ngAfterViewInit(): void {
         this.zone.runOutsideAngular((): void => {
             // Seems to be necessary to run ngZone updates EVERY SINGLE TIME!!!! the map is firing a drag event
@@ -58,7 +62,6 @@ export abstract class BaseOlMapDirective<TILE extends VectorTile | OSM> implemen
 
     /**
      * Selected theme
-     *
      * @param theme theme to set
      */
     public abstract applyTheme(theme: Theme): void;

@@ -11,7 +11,7 @@ import { map, take } from 'rxjs/operators';
 import { StopPointService } from 'src/app/services/stop-point.service';
 
 @Injectable()
-export class SearchResultResolver implements Resolve<any> {
+export class SearchResultResolver implements Resolve<IStopLocation[]> {
     public constructor(private stopService: StopPointService) {}
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IStopLocation[]> {
         return this.stopService.stopObservable.pipe(

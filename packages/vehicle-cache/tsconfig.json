@@ -1,12 +1,6 @@
 {
-    "extends": "../../tsconfig.json",
-    "compilerOptions": {
-        "outDir": "./dist",
-        "rootDir": "./src",
-        "target": "ES2015",
-        "declaration": false,
-    },
-    "include": [
-        "./src"
+    "extends": "./tsconfig.spec.json",
+    "exclude": [
+        "**/*.spec.ts"
     ],
 }

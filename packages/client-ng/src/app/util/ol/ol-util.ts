@@ -65,7 +65,7 @@ const DEFAULT_STYLES: { [key: string]: StyleLike } = {
         }),
         zIndex: 1000,
     }),
-    vehicle: (p0: FeatureLike, p1: number): Style => {
+    vehicle: (p0: FeatureLike): Style => {
         const vehicle: IVehicleLocation = p0.get('vehicle') as IVehicleLocation;
         // tslint:disable-next-line:triple-equals
         if (vehicle != undefined) {
@@ -97,7 +97,7 @@ const DEFAULT_STYLES: { [key: string]: StyleLike } = {
         }),
         zIndex: 600,
     }),
-    vehicle_selected: (p0: FeatureLike, p1: number): Style => {
+    vehicle_selected: (p0: FeatureLike): Style => {
         const vehicle: IVehicleLocation = p0.get('vehicle') as IVehicleLocation;
         // tslint:disable-next-line:triple-equals
         if (vehicle != undefined) {
@@ -125,7 +125,7 @@ const DEFAULT_STYLES: { [key: string]: StyleLike } = {
 };
 export class OlUtil {
     public static createVehicleMarkerStyle(selected = false): (p0: FeatureLike, p1: number) => Style {
-        return (p0: FeatureLike, p1: number): Style => {
+        return (p0: FeatureLike): Style => {
             const vehicle: IVehicleLocation = p0.get('vehicle') as IVehicleLocation;
             // tslint:disable-next-line:triple-equals
             if (vehicle != undefined) {

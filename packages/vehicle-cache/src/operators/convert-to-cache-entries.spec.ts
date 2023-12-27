@@ -10,7 +10,7 @@ import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
 import * as sinon from 'sinon';
 import { CacheEntry } from '../types';
-import { convertToCacheEntries } from './convert-to-cache-entries';
+import { convertToCacheEntries } from './convert-to-cache-entries.js';
 
 describe('operators/convert-to-cache-entries', (): void => {
     describe('convertToCacheEntries', (): void => {

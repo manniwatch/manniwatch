@@ -24,7 +24,6 @@ export class StopsInfoComponent {
     }
     /**
      * The stops to be displayed
-     *
      * @returns a list of stops to be used
      */
     public get stops(): IStopLocation[] {

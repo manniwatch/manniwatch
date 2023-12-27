@@ -15,7 +15,11 @@ export class ManniWatchProxyServer {
     private app: express.Application;
     private server: Server;
     private ngModulePath: string;
-    constructor(public readonly endpoint: string, public readonly port: number, public readonly clientFiles?: string) {
+    constructor(
+        public readonly endpoint: string,
+        public readonly port: number,
+        public readonly clientFiles?: string
+    ) {
         // tslint:disable-next-line:triple-equals
         if (clientFiles == undefined) {
             // Check if @manniwatch/client-ng is installed

@@ -16,7 +16,7 @@ export type TimestampedVehicles = VehicleLocations & {
     lastUpdate: number;
 };
 export interface IData {
-    error?: any;
+    error?: unknown;
     lastUpdate: number;
     vehicles: TimestampedVehicleLocation[];
 }
@@ -59,7 +59,7 @@ export const findInKeys: (inp: IVehicleDiff, keys: DiffKey[], id: string) => IIn
     return undefined;
 };
 export const createVehicleDiff: <T extends TimestampedVehicleLocation[]>(previousState: IVehicleDiff, newVehicles: T) => IVehicleDiff = <
-    T extends TimestampedVehicleLocation[]
+    T extends TimestampedVehicleLocation[],
 >(
     previousState: IVehicleDiff,
     newVehicles: T
@@ -109,7 +109,10 @@ type VehicleMap = Map<string, TimestampedVehicles>;
 })
 export class VehicleService {
     private state: BehaviorSubject<IData> = new BehaviorSubject({ lastUpdate: 0, vehicles: [] });
-    constructor(private api: ApiService, appRef: ApplicationRef) {
+    constructor(
+        private api: ApiService,
+        appRef: ApplicationRef
+    ) {
         appRef.isStable
             .pipe(
                 first((item: boolean): boolean => item),
@@ -168,7 +171,7 @@ export class VehicleService {
                             };
                         }),
                         catchError(
-                            (err: any): Observable<IData> =>
+                            (err: unknown): Observable<IData> =>
                                 of(
                                     Object.assign(
                                         {

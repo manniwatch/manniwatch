@@ -6,8 +6,8 @@ import { IBoundingBox, ManniWatchApiClient } from '@manniwatch/api-client';
 import {
     ITripPassages,
 } from '@manniwatch/api-types';
-import { IEnvironmentBase } from './environment.base';
-export { IEnvironmentBase } from './environment.base';
+import { IEnvironmentBase } from './environment.base.js';
+export { IEnvironmentBase } from './environment.base.js';
 export type TripInfoWithId = ITripPassages & { tripId: string };
 export type IBounds = IBoundingBox;
 type ApiMethods = Exclude<keyof ManniWatchApiClient, 'endpoint' |
@@ -29,4 +29,4 @@ export {
     convertTo,
     CoordinateFormat,
     IMapCoordinate,
-} from './map-coordinate';
+} from './map-coordinate.js';

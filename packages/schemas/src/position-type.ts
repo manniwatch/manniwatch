@@ -4,7 +4,7 @@
  */
 
 import { PositionType } from '@manniwatch/api-types';
-import { RequireIdJSONSchemaType } from './util';
+import { RequireIdJSONSchemaType } from './util.js';
 
 export const POSITION_TYPE_SCHEMA: RequireIdJSONSchemaType<PositionType> = {
     $id: '#manniwatch/position_type',

@@ -3,11 +3,10 @@
  * Source https://github.com/manniwatch/manniwatch/tree/master/packages/api-types
  */
 
-import { VehicleCategory } from './type-util';
+import { VehicleCategory } from './type-util.js';
 
 /**
  * Information about the stop location
- *
  * @since 2.0.0
  * @category geo
  */
@@ -51,7 +50,6 @@ export interface IStopPointLocation {
  * ```
  * /internetservice/geoserviceDispatcher/services/stopinfo/stopPoints
  * ```
- *
  * @since 2.0.0
  * @category Cat2
  */
