@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
+/*
+ * Package @manniwatch/vehicle-cache
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import NodeCache from 'node-cache';
@@ -26,8 +27,7 @@ export class VehicleCache {
     public constructor(opts?: ModifiedCacheOptions) {
         this.nodeCache = new NodeCache(opts);
         this.eventSubject = new Subject();
-        this.eventObservable = this.eventSubject
-            .pipe(share());
+        this.eventObservable = this.eventSubject.pipe(share());
         this.nodeCache.on('set', (key: string, value: CacheEntry): void => {
             this.eventSubject.next({
                 location: value,
@@ -68,23 +68,21 @@ export class VehicleCache {
                 updateLocations.push(location);
             }
         });
-        this.nodeCache.mset(updateLocations
-            .map((loc: CacheEntry): NodeCache.ValueSetItem<CacheEntry> => {
+        this.nodeCache.mset(
+            updateLocations.map((loc: CacheEntry): NodeCache.ValueSetItem<CacheEntry> => {
                 return {
                     key: loc.id,
                     val: loc,
                 };
-            }));
-        this.nodeCache.del(deletedLocations
-            .map((loc: CacheEntry): string => loc.id));
+            })
+        );
+        this.nodeCache.del(deletedLocations.map((loc: CacheEntry): string => loc.id));
     }
 
     public getState(): CacheEntry[] {
         this.assertClosed();
-        const vehicles: { [key: string]: CacheEntry } = this.
-            nodeCache.mget<CacheEntry>(this.nodeCache.keys());
-        return Object.entries(vehicles)
-            .map((vehicle: [string, CacheEntry]): CacheEntry => vehicle[1]);
+        const vehicles: { [key: string]: CacheEntry } = this.nodeCache.mget<CacheEntry>(this.nodeCache.keys());
+        return Object.entries(vehicles).map((vehicle: [string, CacheEntry]): CacheEntry => vehicle[1]);
     }
 
     public close(): void {

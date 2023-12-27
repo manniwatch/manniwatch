@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
+/*
+ * Package @manniwatch/vehicle-cache
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
@@ -12,6 +13,10 @@ import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
 import { queryVehicles } from './query-vehicles.js';
 
+/* eslint-disable @typescript-eslint/no-explicit-any,
+  @typescript-eslint/no-unsafe-member-access,
+  @typescript-eslint/no-unsafe-argument,
+  @typescript-eslint/no-unsafe-assignment */
 describe('observable/query-vehicles', (): void => {
     describe('queryVehicles', (): void => {
         let testScheduler: TestScheduler;
@@ -39,19 +44,19 @@ describe('observable/query-vehicles', (): void => {
                         const { expectObservable, flush, cold } = helpers;
                         const coldTest: Observable<IVehicleLocationList> = cold<IVehicleLocationList>('---a|', { a: testResponse });
                         // Omitting this arg may crash the test suite.
-                        stubInstance
-                            .getVehicleLocations
-                            .returns(coldTest as any);
+                        stubInstance.getVehicleLocations.returns(coldTest as any);
                         const unsub: string = '14ms ^ 250ms !';
-                        const testObservable: Observable<IVehicleLocationList> =
-                            queryVehicles(stubInstance as any, posType, testLastUpdate);
+                        const testObservable: Observable<IVehicleLocationList> = queryVehicles(
+                            stubInstance as any,
+                            posType,
+                            testLastUpdate
+                        );
                         expectObservable(testObservable, unsub).toBe('17ms a|', {
                             a: testResponse,
                         });
                         flush();
                         expect(stubInstance.getVehicleLocations.callCount).to.equal(1);
-                        expect(stubInstance.getVehicleLocations.args)
-                            .to.deep.equal([[posType || 'RAW', testLastUpdate || 0]]);
+                        expect(stubInstance.getVehicleLocations.args).to.deep.equal([[posType || 'RAW', testLastUpdate || 0]]);
                     });
                 });
             });
@@ -62,17 +67,13 @@ describe('observable/query-vehicles', (): void => {
                 const { expectObservable, flush, cold } = helpers;
                 const coldTest: Observable<IVehicleLocationList> = cold<IVehicleLocationList>('---#|', undefined, testError);
                 // Omitting this arg may crash the test suite.
-                stubInstance
-                    .getVehicleLocations
-                    .returns(coldTest as any);
+                stubInstance.getVehicleLocations.returns(coldTest as any);
                 const unsub: string = '14ms ^ 250ms !';
-                const testObservable: Observable<IVehicleLocationList> =
-                    queryVehicles(stubInstance as any);
+                const testObservable: Observable<IVehicleLocationList> = queryVehicles(stubInstance as any);
                 expectObservable(testObservable, unsub).toBe('17ms #', undefined, testError);
                 flush();
                 expect(stubInstance.getVehicleLocations.callCount).to.equal(1);
-                expect(stubInstance.getVehicleLocations.args)
-                    .to.deep.equal([['RAW', 0]]);
+                expect(stubInstance.getVehicleLocations.args).to.deep.equal([['RAW', 0]]);
             });
         });
     });

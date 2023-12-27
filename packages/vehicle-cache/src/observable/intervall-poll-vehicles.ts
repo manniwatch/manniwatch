@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
+/*
+ * Package @manniwatch/vehicle-cache
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { IVehicleLocationList } from '@manniwatch/api-types';
@@ -12,21 +13,25 @@ export const intervallPollVehicles = (queryFactory: QueryFactory, refreshInterva
     return new Observable<PollResult>((subscriber: Subscriber<PollResult>): Subscription => {
         const updateSubject: Subject<number> = new Subject<number>();
         return concat(of(0), updateSubject.pipe(delay(refreshInterval)))
-            .pipe(switchMap((timestamp: number): Observable<PollResult> => {
-                let lastUpdate: number = timestamp;
-                return queryFactory(timestamp)
-                    .pipe(tap({
-                        complete: (): void => {
-                            updateSubject.next(lastUpdate);
-                        },
-                        error: (): void => {
-                            updateSubject.next(lastUpdate);
-                        },
-                        next: (locs: IVehicleLocationList): void => {
-                            lastUpdate = locs.lastUpdate;
-                        },
-                    }), convertPollResult());
-            }))
+            .pipe(
+                switchMap((timestamp: number): Observable<PollResult> => {
+                    let lastUpdate: number = timestamp;
+                    return queryFactory(timestamp).pipe(
+                        tap({
+                            complete: (): void => {
+                                updateSubject.next(lastUpdate);
+                            },
+                            error: (): void => {
+                                updateSubject.next(lastUpdate);
+                            },
+                            next: (locs: IVehicleLocationList): void => {
+                                lastUpdate = locs.lastUpdate;
+                            },
+                        }),
+                        convertPollResult()
+                    );
+                })
+            )
             .subscribe(subscriber);
     });
 };

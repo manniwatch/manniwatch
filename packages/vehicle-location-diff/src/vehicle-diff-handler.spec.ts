@@ -1,11 +1,16 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-location-diff
+/*
+ * Package @manniwatch/vehicle-location-diff
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { expect } from 'chai';
 import sinon from 'sinon';
 import { vehicleMapReduce, VehicleDiffHandler, VehicleHashMap } from './vehicle-diff-handler.js';
 
+/* eslint-disable @typescript-eslint/no-explicit-any,
+  @typescript-eslint/no-unsafe-member-access,
+  @typescript-eslint/no-unsafe-argument,
+  @typescript-eslint/no-unsafe-assignment */
 interface ISimpleVehicle {
     id: string;
     isDeleted: boolean;
@@ -49,32 +54,44 @@ describe('vehicle-diff-handler', (): void => {
 
         describe('convert(list)', (): void => {
             it('should convert an empty list correctly', (): void => {
-                expect(VehicleDiffHandler.convert({
-                    lastUpdate: 1234,
-                    vehicles: [],
-                })).to.deep.equal([]);
+                expect(
+                    VehicleDiffHandler.convert({
+                        lastUpdate: 1234,
+                        vehicles: [],
+                    })
+                ).to.deep.equal([]);
             });
             it('should add lastUpdate properties to items in vehicles', (): void => {
-                const testVehicles: any[] = [{
-                    a: 1,
-                }, {
-                    b: 2,
-                }, {
-                    c: 3,
-                }];
-                expect(VehicleDiffHandler.convert({
-                    lastUpdate: 1234,
-                    vehicles: testVehicles,
-                })).to.deep.equal([{
-                    a: 1,
-                    lastUpdate: 1234,
-                }, {
-                    b: 2,
-                    lastUpdate: 1234,
-                }, {
-                    c: 3,
-                    lastUpdate: 1234,
-                }]);
+                const testVehicles: any[] = [
+                    {
+                        a: 1,
+                    },
+                    {
+                        b: 2,
+                    },
+                    {
+                        c: 3,
+                    },
+                ];
+                expect(
+                    VehicleDiffHandler.convert({
+                        lastUpdate: 1234,
+                        vehicles: testVehicles,
+                    })
+                ).to.deep.equal([
+                    {
+                        a: 1,
+                        lastUpdate: 1234,
+                    },
+                    {
+                        b: 2,
+                        lastUpdate: 1234,
+                    },
+                    {
+                        c: 3,
+                        lastUpdate: 1234,
+                    },
+                ]);
             });
         });
         describe('diff(oldState, newState)', (): void => {
@@ -86,7 +103,8 @@ describe('vehicle-diff-handler', (): void => {
                             { id: '1', isDeleted: true, lastUpdate: 2831 },
                             { id: '2', isDeleted: false, lastUpdate: 2832 },
                             { id: '3', isDeleted: true, lastUpdate: 2833 },
-                            { id: '4', isDeleted: false, lastUpdate: 2834 }];
+                            { id: '4', isDeleted: false, lastUpdate: 2834 },
+                        ];
                         expect(VehicleDiffHandler.diff(testUndefined, vehicles as any[])).to.deep.equal({
                             added: [vehicles[1], vehicles[3]],
                             changed: [],
@@ -102,13 +120,19 @@ describe('vehicle-diff-handler', (): void => {
                         { id: '1', isDeleted: true, lastUpdate: 2831 },
                         { id: '2', isDeleted: false, lastUpdate: 2832 },
                         { id: '3', isDeleted: true, lastUpdate: 2833 },
-                        { id: '4', isDeleted: false, lastUpdate: 2834 }];
-                    expect(VehicleDiffHandler.diff({
-                        added: [],
-                        changed: [],
-                        old: [],
-                        removed: [],
-                    }, vehicles as any[])).to.deep.equal({
+                        { id: '4', isDeleted: false, lastUpdate: 2834 },
+                    ];
+                    expect(
+                        VehicleDiffHandler.diff(
+                            {
+                                added: [],
+                                changed: [],
+                                old: [],
+                                removed: [],
+                            },
+                            vehicles as any[]
+                        )
+                    ).to.deep.equal({
                         added: [vehicles[1], vehicles[3]],
                         changed: [],
                         old: [],
@@ -116,20 +140,17 @@ describe('vehicle-diff-handler', (): void => {
                     });
                 });
                 it('handle ids not present in the new data', (): void => {
-                    expect(VehicleDiffHandler.diff({
-                        added: [
-                            { id: '1', isDeleted: false, lastUpdate: 2831 } as any,
-                        ],
-                        changed: [
-                            { id: '2', isDeleted: false, lastUpdate: 2831 } as any,
-                        ],
-                        old: [
-                            { id: '3', isDeleted: false, lastUpdate: 2831 } as any,
-                        ],
-                        removed: [
-                            { id: '4', isDeleted: true, lastUpdate: 2831 } as any,
-                        ],
-                    }, [])).to.deep.equal({
+                    expect(
+                        VehicleDiffHandler.diff(
+                            {
+                                added: [{ id: '1', isDeleted: false, lastUpdate: 2831 } as any],
+                                changed: [{ id: '2', isDeleted: false, lastUpdate: 2831 } as any],
+                                old: [{ id: '3', isDeleted: false, lastUpdate: 2831 } as any],
+                                removed: [{ id: '4', isDeleted: true, lastUpdate: 2831 } as any],
+                            },
+                            []
+                        )
+                    ).to.deep.equal({
                         added: [],
                         changed: [],
                         old: [
@@ -137,9 +158,7 @@ describe('vehicle-diff-handler', (): void => {
                             { id: '2', isDeleted: false, lastUpdate: 2831 } as any,
                             { id: '3', isDeleted: false, lastUpdate: 2831 } as any,
                         ],
-                        removed: [
-                            { id: '4', isDeleted: true, lastUpdate: 2831 } as any,
-                        ],
+                        removed: [{ id: '4', isDeleted: true, lastUpdate: 2831 } as any],
                     });
                 });
                 it('should use always the latest deleted item', (): void => {
@@ -148,17 +167,20 @@ describe('vehicle-diff-handler', (): void => {
                         { id: '2', isDeleted: true, lastUpdate: 10 },
                         { id: '3', isDeleted: true, lastUpdate: 20 },
                     ];
-                    expect(VehicleDiffHandler.diff({
-                        added: [],
-                        changed: [
-                            { id: '1', isDeleted: false, lastUpdate: 10 } as any,
-                        ],
-                        old: [],
-                        removed: [
-                            { id: '2', isDeleted: true, lastUpdate: 20 } as any,
-                            { id: '3', isDeleted: true, lastUpdate: 20 } as any,
-                        ],
-                    }, vehicles as any[])).to.deep.equal({
+                    expect(
+                        VehicleDiffHandler.diff(
+                            {
+                                added: [],
+                                changed: [{ id: '1', isDeleted: false, lastUpdate: 10 } as any],
+                                old: [],
+                                removed: [
+                                    { id: '2', isDeleted: true, lastUpdate: 20 } as any,
+                                    { id: '3', isDeleted: true, lastUpdate: 20 } as any,
+                                ],
+                            },
+                            vehicles as any[]
+                        )
+                    ).to.deep.equal({
                         added: [],
                         changed: [],
                         old: [],
@@ -183,7 +205,8 @@ describe('vehicle-diff-handler', (): void => {
                         { id: '10', isDeleted: false, lastUpdate: 6 },
                         { id: '11', isDeleted: false, lastUpdate: 6 },
                         { id: '12', isDeleted: true, lastUpdate: 6 },
-                        { id: '13', isDeleted: false, lastUpdate: 6 }];
+                        { id: '13', isDeleted: false, lastUpdate: 6 },
+                    ];
                     const testOldState: ISimpleVehicleLocationDiff = {
                         added: [
                             { id: '1', isDeleted: false, lastUpdate: 5 },

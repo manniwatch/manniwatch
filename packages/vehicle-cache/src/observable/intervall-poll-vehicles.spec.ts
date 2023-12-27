@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
+/*
+ * Package @manniwatch/vehicle-cache
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { IVehicleLocationList } from '@manniwatch/api-types';
@@ -9,9 +10,13 @@ import { Observable } from 'rxjs';
 import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
-import { PollResult } from '../operators';
 import { intervallPollVehicles } from './intervall-poll-vehicles.js';
+import { PollResult } from '../operators';
 
+/* eslint-disable @typescript-eslint/no-explicit-any,
+  @typescript-eslint/no-unsafe-member-access,
+  @typescript-eslint/no-unsafe-argument,
+  @typescript-eslint/no-unsafe-assignment */
 const testParameter: any[] = [];
 [undefined, 1000].forEach((lastUpdate: any): any => {
     ['RAW', 'CORRECT', undefined].forEach((queryType: string): any => {
@@ -25,23 +30,30 @@ const testParameter: any[] = [];
 const testResponses: any = {
     d: {
         lastUpdate: 1000,
-        vehicles: [{
-            id: '1',
-        }],
+        vehicles: [
+            {
+                id: '1',
+            },
+        ],
     },
     e: {
         lastUpdate: 2000,
-        vehicles: [{
-            id: '2',
-        }],
+        vehicles: [
+            {
+                id: '2',
+            },
+        ],
     },
     f: {
         lastUpdate: 3000,
-        vehicles: [{
-            id: '3',
-        }, {
-            id: '4',
-        }],
+        vehicles: [
+            {
+                id: '3',
+            },
+            {
+                id: '4',
+            },
+        ],
     },
 };
 console.log(testParameter);
@@ -104,9 +116,7 @@ describe('observable/intervall-poll-vehicles', (): void => {
                     },
                 };
                 const queryFacStub: sinon.SinonStub = sandbox.stub();
-                const coldTest: Observable<IVehicleLocationList> = cold<IVehicleLocationList>('---d--#',
-                    testResponses,
-                    testError);
+                const coldTest: Observable<IVehicleLocationList> = cold<IVehicleLocationList>('---d--#', testResponses, testError);
                 queryFacStub.returns(coldTest);
                 const testObservable: Observable<PollResult> = intervallPollVehicles(queryFacStub, 100);
                 expectObservable(testObservable, unsub).toBe('17ms a--b 102ms a--b 102ms a--b', testValues);

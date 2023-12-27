@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-types
+/*
+ * Package @manniwatch/client-types
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Options as OsmOption } from 'ol/source/OSM';

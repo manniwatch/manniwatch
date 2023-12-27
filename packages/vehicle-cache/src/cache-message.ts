@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
+/*
+ * Package @manniwatch/vehicle-cache
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { IVehicleLocationDiff } from '@manniwatch/vehicle-location-diff';
@@ -12,7 +13,7 @@ interface ICacheMessage {
     type: CacheMessageType;
 }
 export interface IErrorCacheMessage extends ICacheMessage {
-    error: any;
+    error: unknown;
     type: CacheMessageType.ERROR;
 }
 

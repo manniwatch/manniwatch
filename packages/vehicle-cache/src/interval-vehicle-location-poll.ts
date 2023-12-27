@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
+/*
+ * Package @manniwatch/vehicle-cache
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { IVehicleLocationList, PositionType } from '@manniwatch/api-types';
@@ -19,7 +20,7 @@ export interface IPollUpdateEvent extends IPollEvent {
     vehicles: IVehicleLocationList;
 }
 export interface IPollErrorEvent extends IPollEvent {
-    error: any;
+    error: unknown;
     type: IPollEventType.ERROR;
 }
 export type QueryFactory = (positionType: PositionType, timestamp: number) => Observable<IVehicleLocationList>;
@@ -28,15 +29,21 @@ export type QueryFactory = (positionType: PositionType, timestamp: number) => Ob
  * @param queryFac factory method to create poll
  * @param refreshInterval delay between refreshes
  */
-export const intervalVehicleLocationPoll: (queryFac: QueryFactory, refreshInterval: number) => Observable<IVehicleLocationList> =
-    (queryFac: QueryFactory, refreshInterval: number = 60000): Observable<IVehicleLocationList> => {
-        return new Observable<IVehicleLocationList>((subscriber: Subscriber<IVehicleLocationList>): Subscription => {
-            const updateSubject: Subject<number> = new Subject<number>();
-            return concat(of(0), updateSubject.pipe(delay(refreshInterval)))
-                .pipe(switchMap((timestamp: number): Observable<IVehicleLocationList> => {
+export const intervalVehicleLocationPoll: (queryFac: QueryFactory, refreshInterval: number) => Observable<IVehicleLocationList> = (
+    queryFac: QueryFactory,
+    refreshInterval: number = 60000
+): Observable<IVehicleLocationList> => {
+    return new Observable<IVehicleLocationList>((subscriber: Subscriber<IVehicleLocationList>): Subscription => {
+        const updateSubject: Subject<number> = new Subject<number>();
+        return concat(of(0), updateSubject.pipe(delay(refreshInterval)))
+            .pipe(
+                switchMap((timestamp: number): Observable<IVehicleLocationList> => {
                     return queryFac('RAW', timestamp);
-                }), tap((locs: IVehicleLocationList): void => {
+                }),
+                tap((locs: IVehicleLocationList): void => {
                     updateSubject.next(locs.lastUpdate);
-                })).subscribe(subscriber);
-        });
-    };
+                })
+            )
+            .subscribe(subscriber);
+    });
+};

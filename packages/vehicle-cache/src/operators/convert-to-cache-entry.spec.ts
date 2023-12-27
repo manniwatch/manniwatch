@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
+/*
+ * Package @manniwatch/vehicle-cache
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { IVehicleLocationList } from '@manniwatch/api-types';
@@ -9,32 +10,43 @@ import { Observable } from 'rxjs';
 import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
-import { CacheEntry } from '../types';
 import { convertToCacheEntry } from './convert-to-cache-entry.js';
+import { CacheEntry } from '../types';
 
+/* eslint-disable @typescript-eslint/no-explicit-any,
+  @typescript-eslint/no-unsafe-member-access,
+  @typescript-eslint/no-unsafe-argument,
+  @typescript-eslint/no-unsafe-assignment */
 describe('operators/convert-to-cache-entry', (): void => {
     describe('convertToCacheEntry', (): void => {
         const testError: Error = new Error('This is a test error');
         const sourceValues: any = {
             d: {
                 lastUpdate: 1000,
-                vehicles: [{
-                    id: '1',
-                }],
+                vehicles: [
+                    {
+                        id: '1',
+                    },
+                ],
             },
             e: {
                 lastUpdate: 2000,
-                vehicles: [{
-                    id: '2',
-                }],
+                vehicles: [
+                    {
+                        id: '2',
+                    },
+                ],
             },
             f: {
                 lastUpdate: 3000,
-                vehicles: [{
-                    id: '3',
-                }, {
-                    id: '4',
-                }],
+                vehicles: [
+                    {
+                        id: '3',
+                    },
+                    {
+                        id: '4',
+                    },
+                ],
             },
         };
         let testScheduler: TestScheduler;
@@ -75,9 +87,9 @@ describe('operators/convert-to-cache-entry', (): void => {
             it('should pass on values', (): void => {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold } = helpers;
-                    const foreverStream$: Observable<CacheEntry> =
-                        cold<IVehicleLocationList>('---d--e---f---|', sourceValues)
-                            .pipe(convertToCacheEntry());
+                    const foreverStream$: Observable<CacheEntry> = cold<IVehicleLocationList>('---d--e---f---|', sourceValues).pipe(
+                        convertToCacheEntry()
+                    );
                     // Omitting this arg may crash the test suite.
                     expectObservable(foreverStream$, unsub).toBe('17ms a 2ms b 3ms (cd)|', expectedValues);
                 });
@@ -85,9 +97,11 @@ describe('operators/convert-to-cache-entry', (): void => {
             it('should pass on errors', (): void => {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold } = helpers;
-                    const foreverStream$: Observable<CacheEntry> =
-                        cold<IVehicleLocationList>('---d--e--#-f---|', sourceValues, testError)
-                            .pipe(convertToCacheEntry());
+                    const foreverStream$: Observable<CacheEntry> = cold<IVehicleLocationList>(
+                        '---d--e--#-f---|',
+                        sourceValues,
+                        testError
+                    ).pipe(convertToCacheEntry());
                     // Omitting this arg may crash the test suite.
                     expectObservable(foreverStream$, unsub).toBe('17ms a 2ms b 2ms #', expectedValues, testError);
                 });
@@ -112,9 +126,9 @@ describe('operators/convert-to-cache-entry', (): void => {
             it('should convert all values', (): void => {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, hot } = helpers;
-                    const foreverStream$: Observable<CacheEntry> =
-                        hot<IVehicleLocationList>('---d--e---f---|', sourceValues)
-                            .pipe(convertToCacheEntry());
+                    const foreverStream$: Observable<CacheEntry> = hot<IVehicleLocationList>('---d--e---f---|', sourceValues).pipe(
+                        convertToCacheEntry()
+                    );
                     // Omitting this arg may crash the test suite.
                     expectObservable(foreverStream$, unsub).toBe('6ms a---(bc)|', expectedValues);
                 });
@@ -122,9 +136,11 @@ describe('operators/convert-to-cache-entry', (): void => {
             it('should pass on errors', (): void => {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, hot } = helpers;
-                    const foreverStream$: Observable<CacheEntry> =
-                        hot<IVehicleLocationList>('---d--e--#-f---|', sourceValues, testError)
-                            .pipe(convertToCacheEntry());
+                    const foreverStream$: Observable<CacheEntry> = hot<IVehicleLocationList>(
+                        '---d--e--#-f---|',
+                        sourceValues,
+                        testError
+                    ).pipe(convertToCacheEntry());
                     // Omitting this arg may crash the test suite.
                     expectObservable(foreverStream$, unsub).toBe('6ms a -- #', expectedValues, testError);
                 });

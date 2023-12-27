@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-location-diff
+/*
+ * Package @manniwatch/vehicle-location-diff
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { expect } from 'chai';
