@@ -1,58 +1,58 @@
 {
-  "name": "@manniwatch/pb-types",
-  "version": "0.29.16",
-  "description": "PB Types and helper for Trapeze Api",
-  "type": "module",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    "require": "./dist/cjs/index.cjs",
-    "import": "./dist/esm/index.mjs",
-    "default": "./dist/cjs/index.cjs"
-  },
-  "private": false,
-  "keywords": [
-    "api",
-    "types"
-  ],
-  "scripts": {
-    "build": "npm run prepare && npm run build:pbjs:es6 && npm run build:pbjs:cjs && npm run build:pbts",
-    "build:pbjs:es6": "pbjs -t static-module -w ./pbjs-wrapper.js --dependency protobufjs/minimal.js --force-number -o ./dist/esm/index.mjs ./src/*.proto",
-    "build:pbjs:cjs": "pbjs -t static-module -w commonjs --dependency protobufjs/minimal.js --force-number -o ./dist/cjs/index.cjs ./src/*.proto",
-    "build:pbts": "pbts -o ./dist/index.d.ts ./dist/cjs/index.js",
-    "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
-    "prepare": "node ./scripts/mkdist.mjs",
-    "prepublishOnly": "npm run build",
-    "version": "npm run build:readme && git add README.md"
-  },
-  "homepage": "https://manniwatch.github.io/manniwatch/",
-  "author": {
-    "name": "donmahallem",
-    "email": "donmahallem@users.noreply.github.com",
-    "url": "https://github.com/donmahallem"
-  },
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/manniwatch/manniwatch/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/manniwatch/manniwatch.git"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "files": [
-    "dist/*",
-    "src/*",
-    "!src/**/*.spec.ts"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "dependencies": {
-    "protobufjs": "~7.2.5"
-  },
-  "devDependencies": {
-    "protobufjs-cli":"1.1.2"
-  }
+    "name": "@manniwatch/pb-types",
+    "version": "0.29.16",
+    "description": "PB Types and helper for Trapeze Api",
+    "type": "module",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        "require": "./dist/cjs/index.cjs",
+        "import": "./dist/esm/index.mjs",
+        "default": "./dist/cjs/index.cjs"
+    },
+    "private": false,
+    "keywords": [
+        "api",
+        "types"
+    ],
+    "scripts": {
+        "build": "npm run prepare && npm run build:pbjs:es6 && npm run build:pbjs:cjs && npm run build:pbts",
+        "build:pbjs:es6": "pbjs -t static-module -w ./pbjs-wrapper.js --dependency protobufjs/minimal.js --force-number -o ./dist/esm/index.mjs ./src/*.proto",
+        "build:pbjs:cjs": "pbjs -t static-module -w commonjs --dependency protobufjs/minimal.js --force-number -o ./dist/cjs/index.cjs ./src/*.proto",
+        "build:pbts": "pbts -o ./dist/index.d.ts ./dist/cjs/index.cjs",
+        "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
+        "prepare": "node ./scripts/mkdist.mjs",
+        "prepublishOnly": "npm run build",
+        "version": "npm run build:readme && git add README.md"
+    },
+    "homepage": "https://manniwatch.github.io/manniwatch/",
+    "author": {
+        "name": "donmahallem",
+        "email": "donmahallem@users.noreply.github.com",
+        "url": "https://github.com/donmahallem"
+    },
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/manniwatch/manniwatch/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/manniwatch/manniwatch.git"
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "files": [
+        "dist/*",
+        "src/*",
+        "!src/**/*.spec.ts"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "dependencies": {
+        "protobufjs": "~7.2.5"
+    },
+    "devDependencies": {
+        "protobufjs-cli": "1.1.2"
+    }
 }
