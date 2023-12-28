@@ -46,7 +46,7 @@ jobs:
             - name: Run Build
               run: npx lerna run build
             - name: Archive production artifacts
-              uses: actions/upload-artifact@v3.1.1
+              uses: actions/upload-artifact@v3.1.3
               with:
                   name: build-${{matrix.os}}-${{matrix.node}}
                   retention-days: 5
