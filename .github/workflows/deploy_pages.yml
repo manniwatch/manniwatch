@@ -90,7 +90,7 @@ jobs:
               with:
                   ssh-private-key: ${{ secrets.APP_DEPLOY_KEY }}
             - name: Deploy 🚀
-              uses: JamesIves/github-pages-deploy-action@releases/v3
+              uses: JamesIves/github-pages-deploy-action@v4.5.0
               with:
                   SSH: true
                   BRANCH: master # The branch the action should deploy to.
