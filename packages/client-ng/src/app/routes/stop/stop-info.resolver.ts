@@ -17,7 +17,11 @@ import { RetryResolver } from 'src/app/util/retry-resolver';
  */
 @Injectable()
 export class StopInfoResolver extends RetryResolver<IStopPassage> {
-    public constructor(public api: ApiService, router: Router, dialog: AppDialogService) {
+    public constructor(
+        public api: ApiService,
+        router: Router,
+        dialog: AppDialogService
+    ) {
         super(router, dialog);
     }
 

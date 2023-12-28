@@ -6,7 +6,7 @@
 import { PositionType, StopMode } from '@manniwatch/api-types';
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import qs from 'qs';
-import { Util } from './util';
+import { Util } from './util.js';
 import type {
     ISettings,
     IStopInfo,
@@ -34,7 +34,10 @@ export class ManniWatchApiClient {
      * @param axiosInstance
      * @since 1.0.0
      */
-    public constructor(public readonly endpoint: string, axiosInstance?: AxiosInstance) {
+    public constructor(
+        public readonly endpoint: string,
+        axiosInstance?: AxiosInstance
+    ) {
         if (axiosInstance) {
             this.httpClient = axiosInstance;
             this.httpClient.defaults.baseURL = endpoint;
@@ -48,7 +51,7 @@ export class ManniWatchApiClient {
         }
     }
 
-    public async request<T, REQUEST_DATA = any>(reqOpts: AxiosRequestConfig<REQUEST_DATA>): Promise<T> {
+    public async request<T, REQUEST_DATA = unknown>(reqOpts: AxiosRequestConfig<REQUEST_DATA>): Promise<T> {
         return this.httpClient.request(reqOpts).then((data: AxiosResponse<T, REQUEST_DATA>): T => {
             return data.data;
         });
@@ -59,7 +62,6 @@ export class ManniWatchApiClient {
      */
     /**
      * Correct
-     *
      * @param positionType coordinate type
      * @param lastUpdate timestamp of last update
      */

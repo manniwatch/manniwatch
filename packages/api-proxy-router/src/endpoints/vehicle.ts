@@ -3,7 +3,7 @@
  * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
 
-import * as prom from '@donmahallem/turbo';
+import { promiseToResponse } from '@donmahallem/turbo';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import express from 'express';
 
@@ -22,7 +22,7 @@ export const createVehicleRouter: (apiClient: ManniWatchApiClient) => express.Ro
      */
     // eslint-disable-next-line no-useless-escape
     router.get('/:id([a-z0-9A-Z-+]+)/route', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
-        prom.promiseToResponse(apiClient.getRouteByVehicleId(req.params.id), res, next);
+        promiseToResponse(apiClient.getRouteByVehicleId(req.params.id), res, next);
     });
     return router;
 };

@@ -61,7 +61,7 @@ const appRoutes: Routes = [
             {
                 enableTracing: false,
                 preloadingStrategy: AppPreloadingStrategy,
-                relativeLinkResolution: 'legacy',
+                //relativeLinkResolution: 'legacy',
             } // <-- debugging purposes only
         ),
     ],

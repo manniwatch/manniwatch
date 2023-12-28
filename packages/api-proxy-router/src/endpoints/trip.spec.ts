@@ -3,14 +3,12 @@
  * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
 
-import * as prom from '@donmahallem/turbo';
-import * as turboval from '@donmahallem/turbo-validate-request';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { ITripPassages, IVehiclePathInfo } from '@manniwatch/api-types';
 import { expect } from 'chai';
+import { strict as esmock } from 'esmock';
 import express from 'express';
 import 'mocha';
-import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 import supertest from 'supertest';
 import {
@@ -18,36 +16,40 @@ import {
     ErrorSpy,
     NOT_FOUND_RESPONSE,
     NOT_FOUND_RESPONSE_LENGTH,
+    PromiseToResponseStub,
     SUCCESS_RESPONSE,
     SUCCESS_RESPONSE_LENGTH,
-} from './common-test.spec';
+    ValidateRequestStub,
+} from './common-test.spec.js';
 const testIds: string[] = ['-12883', 'kasd'];
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access */
 describe('endpoints/trip.ts', (): void => {
     describe('createTripRouter', (): void => {
         let app: express.Express;
-        let promiseStub: sinon.SinonStub<Parameters<typeof prom['promiseToResponse']>>;
+        let promiseStub: PromiseToResponseStub;
         let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
-        let validateStub: sinon.SinonStub<Parameters<typeof turboval['validateRequest']>>;
-        let validateStubHandler: sinon.SinonStub<[ReturnType<typeof turboval['validateRequest']>], void>;
+        let validateStub: ValidateRequestStub;
+        let validateStubHandler: sinon.SinonStub;
         let sandbox: sinon.SinonSandbox;
         let errorSpy: ErrorSpy;
         let createTripRouter: (apiClient: ManniWatchApiClient) => express.Router;
-        before((): void => {
+        before(async (): Promise<void> => {
             sandbox = sinon.createSandbox();
             promiseStub = sandbox.stub();
             validateStub = sandbox.stub();
             errorSpy = sandbox.spy() as ErrorSpy;
             apiClientStub = sandbox.createStubInstance(ManniWatchApiClient);
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-            createTripRouter = proxyquire('./trip', {
-                '@donmahallem/turbo': {
-                    promiseToResponse: promiseStub,
-                },
-                '@donmahallem/turbo-validate-request': {
-                    validateRequest: validateStub,
-                },
-            }).createTripRouter;
+            createTripRouter = (
+                await esmock('./trip.js', {
+                    '@donmahallem/turbo': {
+                        promiseToResponse: promiseStub,
+                    },
+                    '@donmahallem/turbo-validate-request': {
+                        validateRequest: validateStub,
+                    },
+                })
+            ).createTripRouter;
         });
 
         beforeEach((): void => {
@@ -80,7 +82,7 @@ describe('endpoints/trip.ts', (): void => {
                         .expect('Content-Type', /json/)
                         .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
                         .expect(200, SUCCESS_RESPONSE)
-                        .then((res: supertest.Response): void => {
+                        .then((): void => {
                             expect(apiClientStub.getRouteByTripId.callCount).to.equal(1, 'getSettings should only be called once');
                             expect(apiClientStub.getRouteByTripId.getCall(0).args).to.deep.equal([testId]);
                         });
@@ -118,7 +120,7 @@ describe('endpoints/trip.ts', (): void => {
                             .expect('Content-Type', /json/)
                             .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
                             .expect(200, SUCCESS_RESPONSE)
-                            .then((res: supertest.Response): void => {
+                            .then((): void => {
                                 expect(apiClientStub.getTripPassages.callCount).to.equal(1, 'getTripPassages should only be called once');
                                 expect(apiClientStub.getTripPassages.getCall(0).args).to.deep.equal([testId, 'departure']);
                             });
@@ -139,7 +141,7 @@ describe('endpoints/trip.ts', (): void => {
                                 .expect('Content-Type', /json/)
                                 .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
                                 .expect(200, SUCCESS_RESPONSE)
-                                .then((res: supertest.Response): void => {
+                                .then((): void => {
                                     expect(apiClientStub.getTripPassages.callCount).to.equal(
                                         1,
                                         'getTripPassages should only be called once'
@@ -178,7 +180,7 @@ describe('endpoints/trip.ts', (): void => {
                             .expect('Content-Type', /json/)
                             .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
                             .expect(200, NOT_FOUND_RESPONSE)
-                            .then((res: supertest.Response): void => {
+                            .then((): void => {
                                 expect(apiClientStub.getTripPassages.callCount).to.equal(0, 'getTripPassages should not be called');
                             });
                     });

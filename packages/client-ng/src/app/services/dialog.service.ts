@@ -65,7 +65,7 @@ export class AppDialogService {
         return this.getConfirmation(cfg, RetryDialogComponent).pipe(defaultIfEmpty(false));
     }
 
-    public getConfirmation<T, D = any, R = boolean>(cfg: D, cmp: ComponentType<T>): Observable<R> {
+    public getConfirmation<T, D = unknown, R = boolean>(cfg: D, cmp: ComponentType<T>): Observable<R> {
         return this.dialog
             .open<T, D, R>(cmp, {
                 data: cfg,

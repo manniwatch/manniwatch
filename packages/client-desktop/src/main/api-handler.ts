@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-desktop
+/*
+ * Package @manniwatch/client-desktop
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
@@ -16,50 +17,61 @@ import {
     StopMode,
 } from '@manniwatch/api-types';
 import { IBounds, TripInfoWithId } from '@manniwatch/client-types';
-import { ipcMain, IpcMainInvokeEvent } from 'electron';
+import electron from 'electron';
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
 export const createApiHandler = (client: ManniWatchApiClient): void => {
-    ipcMain.handle('api/settings', (event: IpcMainInvokeEvent): Promise<ISettings> => {
+    electron.ipcMain.handle('api/settings', (event: electron.IpcMainInvokeEvent): Promise<ISettings> => {
         return client.getSettings();
     });
-    ipcMain.handle('api/vehicle/route', (event: IpcMainInvokeEvent, vehicleId: string): Promise<IVehiclePathInfo> => {
+    electron.ipcMain.handle('api/vehicle/route', (event: electron.IpcMainInvokeEvent, vehicleId: string): Promise<IVehiclePathInfo> => {
         return client.getRouteByVehicleId(vehicleId);
     });
-    ipcMain.handle('api/geo/vehicles', (event: IpcMainInvokeEvent,
-        positionType: PositionType,
-        lastUpdate: number): Promise<IVehicleLocationList> => {
-        return client.getVehicleLocations(positionType, lastUpdate);
-    });
-    ipcMain.handle('api/geo/stops', (event: IpcMainInvokeEvent,
-        box: IBounds): Promise<IStopLocations> => {
+    electron.ipcMain.handle(
+        'api/geo/vehicles',
+        (event: electron.IpcMainInvokeEvent, positionType: PositionType, lastUpdate: number): Promise<IVehicleLocationList> => {
+            return client.getVehicleLocations(positionType, lastUpdate);
+        }
+    );
+    electron.ipcMain.handle('api/geo/stops', (event: electron.IpcMainInvokeEvent, box: IBounds): Promise<IStopLocations> => {
         return client.getStopLocations(box);
     });
-    ipcMain.handle('api/geo/stopPoints', (event: IpcMainInvokeEvent,
-        box: IBounds): Promise<IStopPointLocations> => {
+    electron.ipcMain.handle('api/geo/stopPoints', (event: electron.IpcMainInvokeEvent, box: IBounds): Promise<IStopPointLocations> => {
         return client.getStopPointLocations(box);
     });
-    ipcMain.handle('api/stop/passages', (event: IpcMainInvokeEvent,
-        stopId: string,
-        mode: StopMode = 'departure',
-        startTime?: number,
-        timeFrame?: number): Promise<IStopPassage> => {
-        return client.getStopPassages(stopId, mode, startTime, timeFrame);
-    });
-    ipcMain.handle('api/stopPoint/passages', (event: IpcMainInvokeEvent,
-        stopId: string,
-        mode: StopMode = 'departure',
-        startTime?: number,
-        timeFrame?: number): Promise<IStopPassage> => {
-        return client.getStopPointPassages(stopId, mode, startTime, timeFrame);
-    });
-    ipcMain.handle('api/trip/passages', (event: IpcMainInvokeEvent,
-        tripId: string,
-        mode?: StopMode): Promise<TripInfoWithId> => {
-        return client.getTripPassages(tripId, mode)
-            .then((passages: ITripPassages): TripInfoWithId => Object.assign({ tripId }, passages));
-    });
-    ipcMain.handle('api/trip/route', (event: IpcMainInvokeEvent,
-        tripId: string): Promise<ITripRoute> => {
+    electron.ipcMain.handle(
+        'api/stop/passages',
+        (
+            event: electron.IpcMainInvokeEvent,
+            stopId: string,
+            mode: StopMode = 'departure',
+            startTime?: number,
+            timeFrame?: number
+        ): Promise<IStopPassage> => {
+            return client.getStopPassages(stopId, mode, startTime, timeFrame);
+        }
+    );
+    electron.ipcMain.handle(
+        'api/stopPoint/passages',
+        (
+            event: electron.IpcMainInvokeEvent,
+            stopId: string,
+            mode: StopMode = 'departure',
+            startTime?: number,
+            timeFrame?: number
+        ): Promise<IStopPassage> => {
+            return client.getStopPointPassages(stopId, mode, startTime, timeFrame);
+        }
+    );
+    electron.ipcMain.handle(
+        'api/trip/passages',
+        (event: electron.IpcMainInvokeEvent, tripId: string, mode?: StopMode): Promise<TripInfoWithId> => {
+            return client
+                .getTripPassages(tripId, mode)
+                .then((passages: ITripPassages): TripInfoWithId => Object.assign({ tripId }, passages));
+        }
+    );
+    electron.ipcMain.handle('api/trip/route', (event: electron.IpcMainInvokeEvent, tripId: string): Promise<ITripRoute> => {
         return client.getRouteByTripId(tripId);
     });
 };

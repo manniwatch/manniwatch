@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
+/*
+ * Package @manniwatch/vehicle-cache
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
@@ -10,8 +11,12 @@ import { of, Observable } from 'rxjs';
 import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
-import { queryVehiclesOperator } from './query-vehicles';
+import { queryVehiclesOperator } from './query-vehicles.js';
 
+/* eslint-disable @typescript-eslint/no-explicit-any,
+  @typescript-eslint/no-unsafe-member-access,
+  @typescript-eslint/no-unsafe-argument,
+  @typescript-eslint/no-unsafe-assignment */
 const testParameter: any[] = [];
 [undefined, 1000].forEach((lastUpdate: any): any => {
     ['RAW', 'CORRECT', undefined].forEach((queryType: string): any => {
@@ -25,23 +30,30 @@ const testParameter: any[] = [];
 const testResponses: any = {
     d: {
         lastUpdate: 1000,
-        vehicles: [{
-            id: '1',
-        }],
+        vehicles: [
+            {
+                id: '1',
+            },
+        ],
     },
     e: {
         lastUpdate: 2000,
-        vehicles: [{
-            id: '2',
-        }],
+        vehicles: [
+            {
+                id: '2',
+            },
+        ],
     },
     f: {
         lastUpdate: 3000,
-        vehicles: [{
-            id: '3',
-        }, {
-            id: '4',
-        }],
+        vehicles: [
+            {
+                id: '3',
+            },
+            {
+                id: '4',
+            },
+        ],
     },
 };
 const testSources: any = {
@@ -64,30 +76,12 @@ describe('operators/query-vehicles', (): void => {
                 // e.g. using chai.
                 expect(actual).deep.equal(expected);
             });
-            testApiClient
-                .getVehicleLocations
-                .onCall(0)
-                .returns(of(testResponses.d) as any);
-            testApiClient
-                .getVehicleLocations
-                .onCall(1)
-                .returns(of(testResponses.e) as any);
-            testApiClient
-                .getVehicleLocations
-                .onCall(2)
-                .returns(of(testResponses.f) as any);
-            testApiClient
-                .getVehicleLocations
-                .onCall(3)
-                .returns(of(testResponses.d) as any);
-            testApiClient
-                .getVehicleLocations
-                .onCall(4)
-                .returns(of(testResponses.e) as any);
-            testApiClient
-                .getVehicleLocations
-                .onCall(5)
-                .returns(of(testResponses.f) as any);
+            testApiClient.getVehicleLocations.onCall(0).returns(of(testResponses.d) as any);
+            testApiClient.getVehicleLocations.onCall(1).returns(of(testResponses.e) as any);
+            testApiClient.getVehicleLocations.onCall(2).returns(of(testResponses.f) as any);
+            testApiClient.getVehicleLocations.onCall(3).returns(of(testResponses.d) as any);
+            testApiClient.getVehicleLocations.onCall(4).returns(of(testResponses.e) as any);
+            testApiClient.getVehicleLocations.onCall(5).returns(of(testResponses.f) as any);
         });
         afterEach((): void => {
             sandbox.reset();
@@ -96,16 +90,14 @@ describe('operators/query-vehicles', (): void => {
             it('should pass on all parameters correctly', (): void => {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold, flush } = helpers;
-                    const foreverStream$: Observable<IVehicleLocationList> =
-                        cold<IVehicleLocationList>('abcdef|', {
-                            a: testParameter[0],
-                            b: testParameter[1],
-                            c: testParameter[2],
-                            d: testParameter[3],
-                            e: testParameter[4],
-                            f: testParameter[5],
-                        })
-                            .pipe(queryVehiclesOperator(testApiClient as any));
+                    const foreverStream$: Observable<IVehicleLocationList> = cold<IVehicleLocationList>('abcdef|', {
+                        a: testParameter[0],
+                        b: testParameter[1],
+                        c: testParameter[2],
+                        d: testParameter[3],
+                        e: testParameter[4],
+                        f: testParameter[5],
+                    }).pipe(queryVehiclesOperator(testApiClient as any));
                     // Omitting this arg may crash the test suite.
                     const unsub: string = '--------------^-------------!';
                     const testValues: any = {
@@ -123,9 +115,10 @@ describe('operators/query-vehicles', (): void => {
             it('should convert all non errors', (): void => {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold, flush } = helpers;
-                    const foreverStream$: Observable<IVehicleLocationList> =
-                        cold<IVehicleLocationList>('---d--e---f---|', testSources)
-                            .pipe(queryVehiclesOperator(testApiClient as any));
+                    const foreverStream$: Observable<IVehicleLocationList> = cold<IVehicleLocationList>(
+                        '---d--e---f---|',
+                        testSources
+                    ).pipe(queryVehiclesOperator(testApiClient as any));
                     // Omitting this arg may crash the test suite.
                     const unsub: string = '--------------^-------------!';
                     const testValues: any = {
@@ -141,9 +134,11 @@ describe('operators/query-vehicles', (): void => {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold, flush } = helpers;
                     const testError: Error = new Error('This is a test error');
-                    const foreverStream$: Observable<IVehicleLocationList> =
-                        cold<IVehicleLocationList>('---d--e--#-f---|', testSources, testError)
-                            .pipe(queryVehiclesOperator(testApiClient as any));
+                    const foreverStream$: Observable<IVehicleLocationList> = cold<IVehicleLocationList>(
+                        '---d--e--#-f---|',
+                        testSources,
+                        testError
+                    ).pipe(queryVehiclesOperator(testApiClient as any));
                     // Omitting this arg may crash the test suite.
                     const unsub: string = '--------------^----------------!';
                     const testValues: any = {
@@ -159,9 +154,9 @@ describe('operators/query-vehicles', (): void => {
             it('should convert all non errors', (): void => {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, hot } = helpers;
-                    const foreverStream$: Observable<IVehicleLocationList> =
-                        hot<IVehicleLocationList>('---d--e---f---|', testSources)
-                            .pipe(queryVehiclesOperator(testApiClient as any));
+                    const foreverStream$: Observable<IVehicleLocationList> = hot<IVehicleLocationList>('---d--e---f---|', testSources).pipe(
+                        queryVehiclesOperator(testApiClient as any)
+                    );
                     // Omitting this arg may crash the test suite.
                     const unsub: string = '-------^-------------!';
                     const testValues: any = {
@@ -174,9 +169,11 @@ describe('operators/query-vehicles', (): void => {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, hot } = helpers;
                     const testError: Error = new Error('This is a test error');
-                    const foreverStream$: Observable<IVehicleLocationList> =
-                        hot<IVehicleLocationList>('---d--e--#-f---|', testSources, testError)
-                            .pipe(queryVehiclesOperator(testApiClient as any));
+                    const foreverStream$: Observable<IVehicleLocationList> = hot<IVehicleLocationList>(
+                        '---d--e--#-f---|',
+                        testSources,
+                        testError
+                    ).pipe(queryVehiclesOperator(testApiClient as any));
                     // Omitting this arg may crash the test suite.
                     const unsub: string = '-----^-------------!';
                     const testValues: any = {

@@ -3,18 +3,20 @@
     "compilerOptions": {
         "outDir": "./dist",
         "rootDir": "./src",
-        "module": "CommonJS",
-        "moduleResolution": "node",
+        "module": "ESNext",
+        "target": "ES5",
+        "moduleResolution": "Node",
         "importHelpers": true,
-        "target": "ES2018",
         "declaration": true,
         "allowSyntheticDefaultImports": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "resolveJsonModule": true,
     },
     "include": [
         "./src/**/*.ts"
     ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "src/**/*.spec.ts"
     ],
 }

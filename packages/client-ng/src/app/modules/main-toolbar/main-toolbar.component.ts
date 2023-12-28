@@ -4,16 +4,14 @@
  */
 
 import { Component, ViewChild } from '@angular/core';
-import { NavigationEnd, NavigationStart, Router, RouterEvent } from '@angular/router';
-import { Subscriber } from 'rxjs';
+import { NavigationEnd, NavigationStart, Router, Event as RouterEvent } from '@angular/router';
+import { NextObserver } from 'rxjs';
 import { SidebarService } from 'src/app/modules/sidebar';
 import { ToolbarSearchBoxComponent } from './search-box.component';
 
 // tslint:disable:max-classes-per-file
-export class NavigationSubscriber extends Subscriber<RouterEvent> {
-    public constructor(private toolbar: MainToolbarComponent) {
-        super();
-    }
+export class NavigationSubscriber implements NextObserver<RouterEvent> {
+    public constructor(private toolbar: MainToolbarComponent) {}
     public next(event: RouterEvent): void {
         if (event instanceof NavigationEnd && event.url.length > 1) {
             this.toolbar.closeable = true;
@@ -42,7 +40,10 @@ export class MainToolbarComponent {
 
     private mSearchOpen = false;
 
-    constructor(private sidebarService: SidebarService, private router: Router) {
+    constructor(
+        private sidebarService: SidebarService,
+        private router: Router
+    ) {
         this.router.events.subscribe(new NavigationSubscriber(this));
     }
 

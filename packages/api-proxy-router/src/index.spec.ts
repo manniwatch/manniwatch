@@ -5,7 +5,7 @@
 
 import { expect } from 'chai';
 import 'mocha';
-import * as mod from './index';
+import * as mod from './index.js';
 // tslint:disable:no-unused-expression
 describe('index.ts', (): void => {
     it('should export correct modules', (): void => {

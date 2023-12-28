@@ -2,35 +2,36 @@
     "name": "@manniwatch/api-client",
     "version": "0.29.16",
     "description": "Node Client to consume the Api",
-    "main": "dist/cjs/index.cjs",
-    "module": "dist/esm/index.mjs",
-    "types": "dist/types/index.d.ts",
+    "type": "module",
+    "types": "./dist/types/index.d.ts",
+    "exports": {
+        "require": "./dist/cjs/index.cjs",
+        "import": "./dist/esm/index.mjs",
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/cjs/index.cjs"
+    },
     "private": false,
     "scripts": {
-        "build": "rollup -c ./rollup.config.js && npm run build:types",
+        "build": "rollup -c ./rollup.config.mjs && npm run build:types",
         "build:types": "tsc --project ./tsconfig.json  -d --declarationDir dist/types --declarationMap --emitDeclarationOnly",
         "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
-        "test": "mocha --config ../../.mocharc.yml",
-        "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
-        "lint": "eslint -c .eslintrc.js --ext .ts ./src",
+        "test": "mocha --config ../../.mocharc.json",
+        "test:coverage": "c8 --config ../../.nycrc.json npm run test",
+        "lint": "eslint -c .eslintrc.cjs --ext .ts ./src",
         "postlint": "prettier --config ./../../.prettierrc src/**/*.ts --check",
-        "lint:fix": "eslint -c .eslintrc.js --ext .ts ./src --fix",
+        "lint:fix": "eslint -c .eslintrc.cjs --ext .ts ./src --fix",
         "postlint:fix": "prettier --config ./../../.prettierrc src/**/*.ts --write",
-        "docs": "typedoc --options ./typedoc.config.js",
+        "docs": "typedoc --options ./typedoc.config.cjs",
         "prepublishOnly": "npm run test && npm run docs && npm run build",
         "version": "npm run build:readme && git add README.md"
     },
-    "exports": {
-        "import": "./dist/esm/index.mjs",
-        "require": "./dist/cjs/index.cjs"
-    },
     "dependencies": {
         "@manniwatch/api-types": "^0.29.16",
-        "axios": "~0.27.2",
+        "axios": "~1.6.2",
         "qs": "~6.11.0"
     },
     "devDependencies": {
-        "@types/qs": "6.9.7",
+        "@types/qs": "6.9.11",
         "nock": "13.2.9"
     },
     "files": [

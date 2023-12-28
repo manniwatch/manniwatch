@@ -8,11 +8,11 @@ import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/ro
 import { defer, EMPTY, Observable, of } from 'rxjs';
 import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 import { RunHelpers, TestScheduler } from 'rxjs/testing';
-import { AppDialogService } from '../services';
 import { RetryResolver } from './retry-resolver';
+import { AppDialogService } from '../services';
 
 class TestRetryResolver extends RetryResolver<string> {
-    public createLoader(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<string> {
+    public createLoader(): Observable<string> {
         return undefined;
     }
 }

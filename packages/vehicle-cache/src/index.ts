@@ -1,16 +1,10 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
+/*
+ * Package @manniwatch/vehicle-cache
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
-export {
-    intervalVehicleLocationPoll,
-    QueryFactory,
-} from './interval-vehicle-location-poll';
-export {
-    CacheEventType,
-    ICacheEvent,
-    VehicleCache,
-} from './vehicle-cache';
-export * from './observable';
-export * from './operators';
-export * from './types';
+export { intervalVehicleLocationPoll, QueryFactory } from './interval-vehicle-location-poll.js';
+export { CacheEventType, ICacheEvent, VehicleCache } from './vehicle-cache.js';
+export * from './observable/index.js';
+export * from './operators/index.js';
+export * from './types/index.js';

@@ -16,13 +16,13 @@ export class AppComponent implements OnInit {
     public get isSidenavOpen(): boolean {
         return this.sidenav.opened;
     }
-    prediction: any;
+    prediction: unknown;
 
     @ViewChild(MatSidenavContainer, { static: true })
     sidenavContainer: MatSidenavContainer;
     @ViewChild(MatSidenav, { static: true })
     sidenav: MatSidenav;
-    predictions: any;
+    predictions: unknown;
     tripId: string;
     constructor(private sidebarService: SidebarService) {}
     public ngOnInit(): void {

@@ -1,10 +1,11 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-location-diff
+/*
+ * Package @manniwatch/vehicle-location-diff
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { expect } from 'chai';
 import 'mocha';
-import * as instance from './index';
+import * as instance from './index.js';
 
 describe('index.ts', (): void => {
     describe('index exports', (): void => {

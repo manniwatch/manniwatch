@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-desktop
+/*
+ * Package @manniwatch/client-desktop
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { CoordinateFormat, IEnvironmentBase, IMapCoordinate } from '@manniwatch/client-types';
@@ -14,6 +15,6 @@ export interface IFileConfig {
     map: IFileConfigMap;
 }
 export type AppConfig = Omit<ICliConfig, 'config'> & {
-    configs: string[],
-    environment: IEnvironmentBase,
+    configs: string[];
+    environment: IEnvironmentBase;
 };

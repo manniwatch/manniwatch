@@ -17,7 +17,6 @@ export class AppErrorHandler implements ErrorHandler {
     /**
      * If the browser supports the online tag it will
      * returns its value. otherwise it will always be true
-     *
      * @returns true if the navigator is offline
      */
     public isClientOffline(): boolean {
@@ -26,10 +25,9 @@ export class AppErrorHandler implements ErrorHandler {
 
     /**
      * Handles all errors
-     *
      * @param error
      */
-    public handleError(error: Error | HttpErrorResponse | any): void {
+    public handleError(error: Error | HttpErrorResponse): void {
         // The notification service
         const notificationService: AppNotificationService = this.injector.get(AppNotificationService);
         if (error instanceof HttpErrorResponse) {
@@ -49,7 +47,6 @@ export class AppErrorHandler implements ErrorHandler {
 
     /**
      * Handles HttpErrorResponses
-     *
      * @param errorResponse the response to handle
      * @param notificationService the notification service to be used
      */

@@ -22,7 +22,7 @@ export class DepartureListItemComponent {
      * The delay of the departure. Can be positive or negative excluding zero
      * or false if no delay is to be expected
      */
-    private mDelay: boolean | number = false;
+    private mDelay: false | number = false;
     /**
      * The time of arrival
      */
@@ -30,7 +30,6 @@ export class DepartureListItemComponent {
 
     /**
      * Sets the departure
-     *
      * @param deps The departures
      */
     @Input()
@@ -42,7 +41,6 @@ export class DepartureListItemComponent {
 
     /**
      * gets the departure
-     *
      * @returns the departure or undefined
      */
     public get departure(): IDeparture {
@@ -72,7 +70,6 @@ export class DepartureListItemComponent {
 
     /**
      * Returns the DepartureStatus
-     *
      * @returns vehicle status {@VEHICLE_STATUS}
      */
     public get status(): VEHICLE_STATUS {
@@ -95,16 +92,31 @@ export class DepartureListItemComponent {
 
     /**
      * Returns the delay
-     *
      * @returns false or an integer except 0
      */
-    public get delay(): boolean | number {
-        return this.mDelay;
+    public get delay(): number {
+        if (this.mDelay !== false) {
+            return this.mDelay;
+        } else return 0;
+    }
+
+    public get hasDelay(): boolean {
+        return this.mDelay === false;
+    }
+
+    public get delayStyle(): { late?: true; early?: true } {
+        if (!this.hasDelay) {
+            return {};
+        }
+        if (this.delay > 0) {
+            return { late: true };
+        } else {
+            return { early: true };
+        }
     }
 
     /**
      * Calculates the delay
-     *
      * @param data a number except 0 or false
      */
     public calculateDelay(data: IDeparture): false | number {

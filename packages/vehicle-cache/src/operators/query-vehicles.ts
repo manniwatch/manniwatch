@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
+/*
+ * Package @manniwatch/vehicle-cache
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
@@ -10,9 +11,10 @@ import { IQuerySettings } from '../types';
 
 export const queryVehiclesOperator = (client: ManniWatchApiClient): OperatorFunction<IQuerySettings, IVehicleLocationList> => {
     return (source: Observable<IQuerySettings>): Observable<IVehicleLocationList> => {
-        return source
-            .pipe(mergeMap((settings: IQuerySettings): Observable<IVehicleLocationList> => {
+        return source.pipe(
+            mergeMap((settings: IQuerySettings): Observable<IVehicleLocationList> => {
                 return from(client.getVehicleLocations(settings.type || 'RAW', settings.lastUpdate || 0));
-            }));
+            })
+        );
     };
 };

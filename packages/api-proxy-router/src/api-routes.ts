@@ -6,7 +6,7 @@
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import express from 'express';
 import NodeCache from 'node-cache';
-import * as endpoints from './endpoints';
+import * as endpoints from './endpoints/index.js';
 
 /**
  * @param {string|ManniWatchApiClient} endpoint example: http://test.domain/

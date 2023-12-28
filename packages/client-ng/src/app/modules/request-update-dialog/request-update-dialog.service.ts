@@ -28,7 +28,7 @@ export class RequestUpdateDialogService {
             .then((): void => {
                 this.statusSubject.next(SW_STATUS.UPDATE_AVAILABLE);
             })
-            .catch((err: any): void => {
+            .catch((err: unknown): void => {
                 this.statusSubject.next(SW_STATUS.UNKNOWN_ERROR);
             });
     }

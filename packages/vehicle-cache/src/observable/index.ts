@@ -1,6 +1,7 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
+/*
+ * Package @manniwatch/vehicle-cache
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
-export { QueryFactory, intervallPollVehicles } from './intervall-poll-vehicles';
-export { queryVehicles } from './query-vehicles';
+export { QueryFactory, intervallPollVehicles } from './intervall-poll-vehicles.js';
+export { queryVehicles } from './query-vehicles.js';

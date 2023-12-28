@@ -24,7 +24,10 @@ import { SettingsService } from './settings';
 
 @Injectable()
 export class WebApiService implements ApiService {
-    public constructor(public http: HttpClient, private config: SettingsService) {}
+    public constructor(
+        public http: HttpClient,
+        private config: SettingsService
+    ) {}
 
     public baseUrl(): string {
         const basePath: string = this.config.config.apiEndpoint;

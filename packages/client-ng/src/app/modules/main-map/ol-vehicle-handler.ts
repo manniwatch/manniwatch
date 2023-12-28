@@ -15,7 +15,7 @@ import VectorSource from 'ol/source/Vector';
 import Stroke from 'ol/style/Stroke';
 import Style from 'ol/style/Style';
 import { combineLatest, of, Observable, Subscription } from 'rxjs';
-import { catchError, distinctUntilChanged, pluck, switchMap } from 'rxjs/operators';
+import { catchError, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 import { TimestampedVehicleLocation } from 'src/app/services';
 import { IData } from 'src/app/services/vehicle.service';
 import { OlUtil } from 'src/app/util/ol';
@@ -56,7 +56,7 @@ export class OlVehicleHandler {
                 }
                 return false;
             }),
-            pluck('vehicles')
+            map((x) => x?.vehicles)
         );
 
         const obs2: Observable<IVehiclePathInfo> = this.mainMap.mainMapService.statusObservable.pipe(
@@ -64,7 +64,7 @@ export class OlVehicleHandler {
             switchMap((tripId: string): Observable<IVehiclePathInfo> => {
                 if (tripId) {
                     return this.mainMap.apiService.getRouteByTripId(tripId).pipe(
-                        catchError((err: any): Observable<IVehiclePathInfo> => {
+                        catchError((err: unknown): Observable<IVehiclePathInfo> => {
                             return of(undefined);
                         })
                     );

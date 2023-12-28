@@ -69,7 +69,6 @@ export abstract class OsmOlMapDirective extends BaseOlMapDirective<OSM> implemen
 
     /**
      * Selected theme
-     *
      * @param theme theme to set
      */
     public applyTheme(theme: Theme): void {

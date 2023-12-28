@@ -5,7 +5,7 @@
 
 import { expect } from 'chai';
 import 'mocha';
-import { Util } from './util';
+import { Util } from './util.js';
 
 describe('util.ts', (): void => {
     describe('Util', (): void => {

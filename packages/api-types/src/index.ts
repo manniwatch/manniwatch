@@ -3,15 +3,15 @@
  * Source https://github.com/manniwatch/manniwatch/tree/master/packages/api-types
  */
 
-export * from './vehicle-locations';
-export * from './vehicle-path-info';
-export * from './trip-passages';
-export * from './stop-info';
-export * from './stop-point-info';
-export * from './stop-passage';
-export * from './settings';
-export * from './trip-route';
-export * from './type-util';
-export * from './stop-locations';
-export * from './stop-point-locations';
-export * from './vehicle-status';
+export * from './vehicle-locations.js';
+export * from './vehicle-path-info.js';
+export * from './trip-passages.js';
+export * from './stop-info.js';
+export * from './stop-point-info.js';
+export * from './stop-passage.js';
+export * from './settings.js';
+export * from './trip-route.js';
+export * from './type-util.js';
+export * from './stop-locations.js';
+export * from './stop-point-locations.js';
+export * from './vehicle-status.js';

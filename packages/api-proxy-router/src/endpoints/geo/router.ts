@@ -3,12 +3,12 @@
  * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
 
-import * as turbo from '@donmahallem/turbo';
-import * as turboval from '@donmahallem/turbo-validate-request';
+import { promiseToResponse } from '@donmahallem/turbo';
+import { validateRequest } from '@donmahallem/turbo-validate-request';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { PositionType } from '@manniwatch/api-types';
 import { GEO_FENCE_SCHEMA, GET_VEHICLE_LOCATION_SCHEMA } from '@manniwatch/schemas';
-import express from 'express';
+import { default as express } from 'express';
 
 /**
  * @param {ManniWatchApiClient} apiClient api client
@@ -28,9 +28,9 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
      */
     router.get(
         '/stops',
-        turboval.validateRequest('query', GEO_FENCE_SCHEMA),
+        validateRequest('query', GEO_FENCE_SCHEMA),
         (req: express.Request, res: express.Response, next: express.NextFunction): void => {
-            turbo.promiseToResponse(
+            promiseToResponse(
                 apiClient.getStopLocations({
                     bottom: parseInt(req.query.bottom as string, 10),
                     left: parseInt(req.query.left as string, 10),
@@ -54,9 +54,9 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
      */
     router.get(
         '/stopPoints',
-        turboval.validateRequest('query', GEO_FENCE_SCHEMA),
+        validateRequest('query', GEO_FENCE_SCHEMA),
         (req: express.Request, res: express.Response, next: express.NextFunction): void => {
-            turbo.promiseToResponse(
+            promiseToResponse(
                 apiClient.getStopPointLocations({
                     bottom: parseInt(req.query.bottom as string, 10),
                     left: parseInt(req.query.left as string, 10),
@@ -78,12 +78,12 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
      */
     router.get(
         '/vehicles',
-        turboval.validateRequest('query', GET_VEHICLE_LOCATION_SCHEMA),
+        validateRequest('query', GET_VEHICLE_LOCATION_SCHEMA),
         (req: express.Request, res: express.Response, next: express.NextFunction): void => {
             // tslint:disable-next-line:triple-equals
             const positionType: PositionType = (req.query.positionType as PositionType) || 'RAW';
             const lastUpdate: number | undefined = req.query.lastUpdate ? parseInt(req.query.lastUpdate as string, 10) : undefined;
-            turbo.promiseToResponse(apiClient.getVehicleLocations(positionType, lastUpdate), res, next);
+            promiseToResponse(apiClient.getVehicleLocations(positionType, lastUpdate), res, next);
         }
     );
     return router;

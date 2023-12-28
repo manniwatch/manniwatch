@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-location-diff
+/*
+ * Package @manniwatch/vehicle-location-diff
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { IVehicleLocation, IVehicleLocationList } from '@manniwatch/api-types';
@@ -17,46 +18,54 @@ export interface IVehicleLocationDiff {
 export type VehicleHashMap = Map<string, ITimestampedVehicleLocation>;
 /**
  * Reduces list to a Map with the ids as keys
+ * @param prev
+ * @param curr
  */
-export const vehicleMapReduce: (prev: VehicleHashMap, curr: ITimestampedVehicleLocation) => VehicleHashMap =
-    (prev: VehicleHashMap, curr: ITimestampedVehicleLocation): VehicleHashMap => {
-        prev.set(curr.id, curr);
-        return prev;
-    };
+export const vehicleMapReduce: (prev: VehicleHashMap, curr: ITimestampedVehicleLocation) => VehicleHashMap = (
+    prev: VehicleHashMap,
+    curr: ITimestampedVehicleLocation
+): VehicleHashMap => {
+    prev.set(curr.id, curr);
+    return prev;
+};
 export class VehicleDiffHandler {
-
     public static convert(list: IVehicleLocationList): ITimestampedVehicleLocation[] {
-        return list.vehicles
-            .map((loc: IVehicleLocation): ITimestampedVehicleLocation => {
-                return Object.assign({
+        return list.vehicles.map((loc: IVehicleLocation): ITimestampedVehicleLocation => {
+            return Object.assign(
+                {
                     lastUpdate: list.lastUpdate,
-                }, loc);
-            });
+                },
+                loc
+            );
+        });
     }
 
     public static diff(oldState: IVehicleLocationDiff | undefined, newState: ITimestampedVehicleLocation[]): IVehicleLocationDiff {
         // tslint:disable-next-line:triple-equals
         if (oldState == undefined) {
-            return newState.reduce((prev: IVehicleLocationDiff, curr: ITimestampedVehicleLocation): IVehicleLocationDiff => {
-                if (curr.isDeleted === true) {
-                    prev.removed.push(curr);
-                } else {
-                    prev.added.push(curr);
+            return newState.reduce(
+                (prev: IVehicleLocationDiff, curr: ITimestampedVehicleLocation): IVehicleLocationDiff => {
+                    if (curr.isDeleted === true) {
+                        prev.removed.push(curr);
+                    } else {
+                        prev.added.push(curr);
+                    }
+                    return prev;
+                },
+                {
+                    added: [],
+                    changed: [],
+                    old: [],
+                    removed: [],
                 }
-                return prev;
-            }, {
-                added: [],
-                changed: [],
-                old: [],
-                removed: [],
-            });
+            );
         }
         const keysOld: VehicleHashMap = new Map();
         oldState.added.reduce(vehicleMapReduce, keysOld);
         oldState.changed.reduce(vehicleMapReduce, keysOld);
         oldState.old.reduce(vehicleMapReduce, keysOld);
         oldState.removed.reduce(vehicleMapReduce, keysOld);
-        const keysNew: VehicleHashMap = newState.reduce(vehicleMapReduce, new Map());
+        const keysNew: VehicleHashMap = newState.reduce(vehicleMapReduce, new Map<string, ITimestampedVehicleLocation>());
         const changed: ITimestampedVehicleLocation[] = [];
         const removed: ITimestampedVehicleLocation[] = [];
         const added: ITimestampedVehicleLocation[] = [];
@@ -108,7 +117,5 @@ export class VehicleDiffHandler {
             old,
             removed,
         };
-
     }
-
 }

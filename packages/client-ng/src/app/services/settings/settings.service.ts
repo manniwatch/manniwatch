@@ -14,8 +14,8 @@ import { OlUtil } from 'src/app/util/ol';
 import { IStorage, LOCAL_STORAGE_TOKEN } from 'src/app/util/storage';
 import { environment } from 'src/environments';
 import { Environment } from 'src/environments/environment.base';
-import { Theme } from '../theme';
 import { createCssThemeWatcher } from './css-theme-watcher';
+import { Theme } from '../theme';
 
 export interface IConfig {
     apiBasePath?: string;
@@ -28,7 +28,10 @@ export class SettingsService {
     private cssThemeObservable: Observable<Theme>;
     private sourceConfig: Partial<IConfig>;
     private mergedConfig: IConfig & Environment;
-    constructor(public httpClient: HttpClient, @Inject(LOCAL_STORAGE_TOKEN) public lStorage: IStorage) {
+    constructor(
+        public httpClient: HttpClient,
+        @Inject(LOCAL_STORAGE_TOKEN) public lStorage: IStorage
+    ) {
         this.themeSubject = new BehaviorSubject(this.getThemePreference());
         this.cssThemeObservable = createCssThemeWatcher();
         this.themeObservable = combineLatest([this.themeSubject, this.cssThemeObservable]).pipe(
@@ -48,17 +51,16 @@ export class SettingsService {
 
     /**
      * Function loading initial config
-     *
      * @returns Observable
      */
     public load(): Observable<void> {
         const configPath: string = environment.configUrl || '/config/config.json';
         return this.httpClient.get(configPath).pipe(
-            tap((resp: IConfig): void => {
+            tap((): void => {
                 // tslint:disable-next-line:no-console
                 console.info('Config loaded');
             }),
-            catchError((err: any): Observable<IConfig> => {
+            catchError((err: unknown): Observable<IConfig> => {
                 console.group(`Unable to load config`);
                 console.log(`Path: ${configPath}`);
                 if (err instanceof HttpErrorResponse && err.status !== 200) {
@@ -121,7 +123,6 @@ export class SettingsService {
 
     /**
      * Persists the theme preference in storageProvider
-     *
      * @param theme theme to store
      */
     protected setThemePreference(theme: Theme): void {

@@ -6,7 +6,7 @@
 import Ajv, { ValidateFunction } from 'ajv';
 import { expect } from 'chai';
 import 'mocha';
-import { UINT_SCHEMA } from './uint';
+import { UINT_SCHEMA } from './uint.js';
 
 const validValues: (string | number)[] = ['1', '+0', '200', 0, 2, 5];
 const invalidValues: (string | number)[] = ['-1a', 'b', '-200.2', 0.39, -10];

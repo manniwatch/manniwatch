@@ -7,7 +7,6 @@ import express from 'express';
 
 /**
  * Common error catcher
- *
  * @param {Error} err error
  * @param {express.Request} req Request
  * @param {express.Response} res Response

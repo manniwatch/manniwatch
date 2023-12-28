@@ -3,7 +3,7 @@
  * Source https://github.com/manniwatch/manniwatch/tree/master/packages/api-types
  */
 
-import { VehicleCategory } from './type-util';
+import { VehicleCategory } from './type-util.js';
 
 /**
  * Base Vehicle Location.

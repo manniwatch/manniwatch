@@ -27,7 +27,7 @@ describe('src/app/modules/trip-passages/trip-util', (): void => {
                             (val: number): TripInfoWithId =>
                                 ({
                                     tripId: `${val}`,
-                                } as TripInfoWithId)
+                                }) as TripInfoWithId
                         ),
                         TripPassagesUtil.convertResponse(undefined),
                         toArray()

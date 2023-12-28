@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
+/*
+ * Package @manniwatch/vehicle-cache
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { IVehicleLocationList, VehicleLocations } from '@manniwatch/api-types';
@@ -9,15 +10,17 @@ import { CacheEntry } from '../types';
 
 export const convertToCacheEntries = (): OperatorFunction<IVehicleLocationList, CacheEntry[]> => {
     return (source: Observable<IVehicleLocationList>): Observable<CacheEntry[]> => {
-        return source
-            .pipe(map((inputList: IVehicleLocationList): CacheEntry[] => {
-                return inputList
-                    .vehicles
-                    .map((loc: VehicleLocations): CacheEntry => {
-                        return Object.assign({
+        return source.pipe(
+            map((inputList: IVehicleLocationList): CacheEntry[] => {
+                return inputList.vehicles.map((loc: VehicleLocations): CacheEntry => {
+                    return Object.assign(
+                        {
                             lastUpdate: inputList.lastUpdate,
-                        }, loc);
-                    });
-            }));
+                        },
+                        loc
+                    );
+                });
+            })
+        );
     };
 };

@@ -12,7 +12,10 @@ import { serverErrorHandler } from './server-error-handler';
 export class ManniWatchApiProxyServer {
     private app: express.Application;
     private server: Server;
-    constructor(public readonly endpoint: string, public readonly port: number) {
+    constructor(
+        public readonly endpoint: string,
+        public readonly port: number
+    ) {
         this.app = express();
         this.app.use((req: express.Request, res: express.Response, next: express.NextFunction): void => {
             res.set({

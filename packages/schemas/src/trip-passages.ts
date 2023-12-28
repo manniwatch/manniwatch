@@ -5,7 +5,7 @@
 
 import { StopMode } from '@manniwatch/api-types';
 import { JSONSchemaType } from 'ajv';
-import { STOP_MODE_SCHEMA } from './stop-mode';
+import { STOP_MODE_SCHEMA } from './stop-mode.js';
 
 export interface ITripPassagesSchema {
     mode: StopMode;

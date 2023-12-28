@@ -1,13 +1,15 @@
 {
     "compilerOptions": {
-        "target": "es2018",
-        "module": "commonjs",
+        "target": "ES2022",
+        "module": "ESNext",
         "esModuleInterop": true,
         "sourceMap": true,
         "declaration": true,
-        "moduleResolution": "node",
+        "moduleResolution": "Bundler",
         "strictNullChecks": true,
-        "noUnusedLocals": true
+        "noUnusedLocals": true,
+        "skipLibCheck": false,
+        "types": []
     },
     "typeAcquisition": {
         "enable": true

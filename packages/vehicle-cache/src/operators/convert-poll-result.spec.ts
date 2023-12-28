@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
+/*
+ * Package @manniwatch/vehicle-cache
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { IVehicleLocationList } from '@manniwatch/api-types';
@@ -9,30 +10,41 @@ import { Observable } from 'rxjs';
 import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
-import { convertPollResult, PollResult } from './convert-poll-result';
+import { convertPollResult, PollResult } from './convert-poll-result.js';
 
+/* eslint-disable @typescript-eslint/no-explicit-any,
+  @typescript-eslint/no-unsafe-member-access,
+  @typescript-eslint/no-unsafe-argument,
+  @typescript-eslint/no-unsafe-assignment */
 describe('operators/convert-poll-result', (): void => {
     describe('convertPollResult', (): void => {
         const sourceValues: any = {
             d: {
                 lastUpdate: 1000,
-                vehicles: [{
-                    id: '1',
-                }],
+                vehicles: [
+                    {
+                        id: '1',
+                    },
+                ],
             },
             e: {
                 lastUpdate: 2000,
-                vehicles: [{
-                    id: '2',
-                }],
+                vehicles: [
+                    {
+                        id: '2',
+                    },
+                ],
             },
             f: {
                 lastUpdate: 3000,
-                vehicles: [{
-                    id: '3',
-                }, {
-                    id: '4',
-                }],
+                vehicles: [
+                    {
+                        id: '3',
+                    },
+                    {
+                        id: '4',
+                    },
+                ],
             },
         };
         let testScheduler: TestScheduler;
@@ -54,9 +66,9 @@ describe('operators/convert-poll-result', (): void => {
             it('should convert all non errors', (): void => {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold } = helpers;
-                    const foreverStream$: Observable<PollResult> =
-                        cold<IVehicleLocationList>('---d--e---f---|', sourceValues)
-                            .pipe(convertPollResult());
+                    const foreverStream$: Observable<PollResult> = cold<IVehicleLocationList>('---d--e---f---|', sourceValues).pipe(
+                        convertPollResult()
+                    );
                     // Omitting this arg may crash the test suite.
                     const unsub: string = '--------------^-------------!';
                     const testValues: any = {
@@ -80,9 +92,11 @@ describe('operators/convert-poll-result', (): void => {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold } = helpers;
                     const testError: Error = new Error('This is a test error');
-                    const foreverStream$: Observable<PollResult> =
-                        cold<IVehicleLocationList>('---d--e--#-f---|', sourceValues, testError)
-                            .pipe(convertPollResult());
+                    const foreverStream$: Observable<PollResult> = cold<IVehicleLocationList>(
+                        '---d--e--#-f---|',
+                        sourceValues,
+                        testError
+                    ).pipe(convertPollResult());
                     // Omitting this arg may crash the test suite.
                     const unsub: string = '--------------^----------------!';
                     const testValues: any = {
@@ -107,9 +121,9 @@ describe('operators/convert-poll-result', (): void => {
             it('should convert all non errors', (): void => {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, hot } = helpers;
-                    const foreverStream$: Observable<PollResult> =
-                        hot<IVehicleLocationList>('---d--e---f---|', sourceValues)
-                            .pipe(convertPollResult());
+                    const foreverStream$: Observable<PollResult> = hot<IVehicleLocationList>('---d--e---f---|', sourceValues).pipe(
+                        convertPollResult()
+                    );
                     // Omitting this arg may crash the test suite.
                     const unsub: string = '-------^-------------!';
                     const testValues: any = {
@@ -125,9 +139,11 @@ describe('operators/convert-poll-result', (): void => {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, hot } = helpers;
                     const testError: Error = new Error('This is a test error');
-                    const foreverStream$: Observable<PollResult> =
-                        hot<IVehicleLocationList>('---d--e--#-f---|', sourceValues, testError)
-                            .pipe(convertPollResult());
+                    const foreverStream$: Observable<PollResult> = hot<IVehicleLocationList>(
+                        '---d--e--#-f---|',
+                        sourceValues,
+                        testError
+                    ).pipe(convertPollResult());
                     // Omitting this arg may crash the test suite.
                     const unsub: string = '-----^-------------!';
                     const testValues: any = {

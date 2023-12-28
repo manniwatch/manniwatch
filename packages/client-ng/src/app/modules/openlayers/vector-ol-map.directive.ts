@@ -5,7 +5,6 @@
 
 import { AfterViewInit, Directive, ElementRef, NgZone } from '@angular/core';
 import { Map, View } from 'ol';
-import { stylefunction } from 'ol-mapbox-style';
 import { Coordinate } from 'ol/coordinate';
 import MVT from 'ol/format/MVT';
 import { defaults } from 'ol/interaction';
@@ -13,6 +12,7 @@ import BaseTileLayer from 'ol/layer/BaseTile';
 import VectorTileLayer from 'ol/layer/VectorTile';
 import { fromLonLat } from 'ol/proj';
 import { VectorTile } from 'ol/source';
+import { stylefunction } from 'ol-mapbox-style';
 import { SettingsService, Theme } from 'src/app/services';
 import { environment } from 'src/environments';
 import { BaseOlMapDirective } from './base-ol-map.directive';
@@ -74,7 +74,6 @@ export abstract class VectorOlMapDirective extends BaseOlMapDirective<VectorTile
 
     /**
      * Selected theme
-     *
      * @param theme theme to set
      */
     public applyTheme(theme: Theme): void {

@@ -1,60 +1,66 @@
 {
-  "name": "@manniwatch/client-types",
-  "version": "0.29.16",
-  "description": "Api Types and helper for Client Api",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
-  "private": false,
-  "keywords": [
-    "api",
-    "types"
-  ],
-  "scripts": {
-    "build": "rollup -c ./rollup.config.js && npm run build:types",
-    "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
-    "build:types": "tsc --project ./tsconfig.json  -d --declarationDir dist/types --declarationMap --emitDeclarationOnly",
-    "test": "mocha --config ../../.mocharc.yml",
-    "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
-    "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
-    "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json src/**/*.ts",
-    "docs": "typedoc --options ./typedoc.config.js",
-    "prepublishOnly": "npm run test && npm run docs && npm run build",
-    "version": "npm run build:readme && git add README.md"
-  },
-  "homepage": "https://manniwatch.github.io/manniwatch/",
-  "author": {
-    "name": "donmahallem",
-    "email": "donmahallem@users.noreply.github.com",
-    "url": "https://github.com/donmahallem"
-  },
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/manniwatch/manniwatch/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/manniwatch/manniwatch.git"
-  },
-  "engines": {
-    "node": ">=14"
-  },
-  "files": [
-    "dist/*",
-    "src/*",
-    "!src/**/*.spec.ts"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "devDependencies": {
-    "ol": "6.9.0"
-  },
-  "peerDependencies": {
-    "ol": "~6.9.0"
-  },
-  "dependencies": {
-    "@manniwatch/api-client": "^0.29.16",
-    "@manniwatch/api-types": "^0.29.16"
-  }
+    "name": "@manniwatch/client-types",
+    "version": "0.29.16",
+    "description": "Api Types and helper for Client Api",
+    "type": "module",
+    "types": "./dist/types/index.d.ts",
+    "exports": {
+        "require": "./dist/cjs/index.cjs",
+        "import": "./dist/esm/index.mjs",
+        "default": "./dist/cjs/index.cjs"
+    },
+    "private": false,
+    "keywords": [
+        "api",
+        "types"
+    ],
+    "scripts": {
+        "build": "rollup -c ./rollup.config.mjs && npm run build:types",
+        "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
+        "build:types": "tsc --project ./tsconfig.json  -d --declarationDir dist/types --declarationMap --emitDeclarationOnly",
+        "test": "mocha --config ../../.mocharc.json",
+        "test:coverage": "c8 --config ../../.nycrc.json npm run test",
+        "lint": "eslint -c .eslintrc.cjs --ext .ts ./src",
+        "postlint": "prettier --config ./../../.prettierrc src/**/*.ts --check",
+        "lint:fix": "eslint -c .eslintrc.cjs --ext .ts ./src --fix",
+        "postlint:fix": "prettier --config ./../../.prettierrc src/**/*.ts --write",
+        "docs": "typedoc --options ./typedoc.config.cjs",
+        "prepublishOnly": "npm run test && npm run docs && npm run build",
+        "version": "npm run build:readme && git add README.md"
+    },
+    "homepage": "https://manniwatch.github.io/manniwatch/",
+    "author": {
+        "name": "donmahallem",
+        "email": "donmahallem@users.noreply.github.com",
+        "url": "https://github.com/donmahallem"
+    },
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/manniwatch/manniwatch/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/manniwatch/manniwatch.git"
+    },
+    "engines": {
+        "node": ">=14"
+    },
+    "files": [
+        "dist/*",
+        "src/*",
+        "!src/**/*.spec.ts"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "devDependencies": {
+        "ol": "6.9.0"
+    },
+    "peerDependencies": {
+        "ol": "~6.9.0"
+    },
+    "dependencies": {
+        "@manniwatch/api-client": "^0.29.16",
+        "@manniwatch/api-types": "^0.29.16"
+    }
 }

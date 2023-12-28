@@ -5,15 +5,15 @@
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { expect } from 'chai';
+import { strict as esmock } from 'esmock';
 import express from 'express';
 import 'mocha';
-import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 import supertest from 'supertest';
-import * as endpoints from './endpoints';
-import { createTestErrorRequestHandler, ErrorSpy, NOT_FOUND_RESPONSE, NOT_FOUND_RESPONSE_LENGTH } from './endpoints/common-test.spec';
+import { createTestErrorRequestHandler, ErrorSpy, NOT_FOUND_RESPONSE, NOT_FOUND_RESPONSE_LENGTH } from './endpoints/common-test.spec.js';
+import * as endpoints from './endpoints/index.js';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access */
 interface ITestEndpoint {
     endpointName: string;
     path: string;
@@ -50,9 +50,9 @@ describe('api-routes.ts', (): void => {
         let sandbox: sinon.SinonSandbox;
         const routerKeys: EndpointTypes[] = Object.keys(endpoints) as EndpointTypes[];
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        const endpointStubs: Record<EndpointTypes, sinon.SinonStub> = {} as any;
+        const endpointStubs: Record<EndpointTypes, sinon.SinonStub> = {} as Record<EndpointTypes, sinon.SinonStub>;
         let createApiProxyRouter: (apiClient: ManniWatchApiClient | string) => express.Router;
-        before((): void => {
+        before(async (): Promise<void> => {
             sandbox = sinon.createSandbox();
             for (const key of routerKeys) {
                 endpointStubs[key] = sandbox.stub();
@@ -65,9 +65,11 @@ describe('api-routes.ts', (): void => {
                 });
             }
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-            createApiProxyRouter = proxyquire('./api-routes', {
-                './endpoints': endpointStubs,
-            }).createApiProxyRouter;
+            createApiProxyRouter = (
+                await esmock('./api-routes.js', {
+                    './endpoints/index.js': endpointStubs,
+                })
+            ).createApiProxyRouter;
         });
         afterEach((): void => {
             sandbox.resetHistory();

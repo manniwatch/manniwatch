@@ -3,8 +3,8 @@
  * Source https://github.com/manniwatch/manniwatch/tree/master/packages/api-types
  */
 
-import { VehicleCategory } from './type-util';
-import { VEHICLE_STATUS } from './vehicle-status';
+import { VehicleCategory } from './type-util.js';
+import { VEHICLE_STATUS } from './vehicle-status.js';
 
 /**
  * Departure information for vehicles
@@ -78,12 +78,12 @@ export interface IStopPassage {
      * Actual/Future Departures
      */
     actual: IActualDeparture[];
-    directions: any[];
+    directions: unknown[];
     firstPassageTime: number;
     /**
      * TODO: Need schema
      */
-    generalAlerts: any[];
+    generalAlerts: unknown[];
     lastPassageTime: number;
     /**
      * Previous departures

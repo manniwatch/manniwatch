@@ -18,18 +18,20 @@ import { RetryResolver } from 'src/app/util/retry-resolver';
 export class StopsResolver extends RetryResolver<IStopLocations> {
     /**
      * Constructor
-     *
      * @param api the {@ApiService}
      * @param router
      * @param dialog
      */
-    public constructor(public api: ApiService, router: Router, dialog: AppDialogService) {
+    public constructor(
+        public api: ApiService,
+        router: Router,
+        dialog: AppDialogService
+    ) {
         super(router, dialog);
     }
 
     /**
      * Resolves the station response
-     *
      * @param route The activated RouteSnapshot
      * @param state The router state snapshot
      * @returns An observable that resolves the {@StationsResponse}

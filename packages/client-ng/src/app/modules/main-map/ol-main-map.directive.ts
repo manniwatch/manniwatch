@@ -21,10 +21,10 @@ import { AbstractOlMapDirective } from 'src/app/modules/openlayers';
 import { ApiService, SettingsService } from 'src/app/services';
 import { VehicleService } from 'src/app/services';
 import { OlUtil } from 'src/app/util/ol';
-import { StopPointService } from '../../services/stop-point.service';
 import { OlMainMapService } from './ol-main-map.service';
 import { OlMarkerHandler } from './ol-marker-handler';
 import { OlVehicleHandler } from './ol-vehicle-handler';
+import { StopPointService } from '../../services/stop-point.service';
 @Directive({
     selector: 'map[appOlMainMap]',
 })
@@ -42,7 +42,6 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
     private vehicleHandler: OlVehicleHandler;
     /**
      * Constructor
-     *
      * @param elRef injected elementRef of the component root
      * @param apiService ApiService instance
      * @param router Router Instance

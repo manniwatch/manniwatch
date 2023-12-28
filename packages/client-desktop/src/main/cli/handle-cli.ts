@@ -1,20 +1,26 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-desktop
+/*
+ * Package @manniwatch/client-desktop
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import commander from 'commander';
 import { all as mergeAll } from 'deepmerge';
-import { loadConfig } from '../config';
-import { AppConfig } from '../config/config';
-import { validateConfigFile } from '../config/validate-file-config';
 import { ICliConfig } from './cli-config';
+import { AppConfig } from '../config/config';
+import { loadConfig } from '../config/index';
+import { validateConfigFile } from '../config/validate-file-config';
 
+/* eslint-disable @typescript-eslint/no-explicit-any,
+  @typescript-eslint/no-unsafe-member-access,
+  @typescript-eslint/no-unsafe-argument,
+  @typescript-eslint/no-floating-promises,
+  @typescript-eslint/no-unsafe-assignment,
+  @typescript-eslint/no-var-requires */
 export type ArgsCallback = (config: AppConfig) => void;
 export const handleCli: (cb: ArgsCallback) => void = (cb: ArgsCallback): void => {
     // tslint:disable-next-line:no-unused-expression
     const cmd: commander.Command = new commander.Command('Run Manniwatch');
-    cmd
-        .version('0.1.0')
+    cmd.version('0.1.0')
         .description('default', {
             endpoint: 'endpoint to query for data',
         })
@@ -25,9 +31,7 @@ export const handleCli: (cb: ArgsCallback) => void = (cb: ArgsCallback): void =>
             if (options.debug) {
                 console.error('Called %s with options %o', command.name(), options);
             }
-            const sourceConfigs: Partial<AppConfig>[] = [
-                require('./../../environment/environment').environment,
-            ];
+            const sourceConfigs: Partial<AppConfig>[] = [require('./../../environment/environment').environment];
             if (options.config) {
                 sourceConfigs.push(await loadConfig(options.config));
             }
@@ -42,7 +46,7 @@ export const handleCli: (cb: ArgsCallback) => void = (cb: ArgsCallback): void =>
                 });
             }
             const config: AppConfig = mergeAll<AppConfig>(sourceConfigs);
-            if (validateConfigFile(config)) {
+            if (await validateConfigFile(config)) {
                 cb(config);
             }
         })

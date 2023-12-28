@@ -2,18 +2,26 @@
     "name": "@manniwatch/vehicle-location-diff",
     "version": "0.29.16",
     "description": "Tool to calculate diff between vehicle location snapshots",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
+    "type": "module",
+    "types": "./dist/types/index.d.ts",
+    "exports": {
+        "require": "./dist/cjs/index.cjs",
+        "import": "./dist/esm/index.mjs",
+        "default": "./dist/cjs/index.cjs"
+    },
     "private": false,
     "scripts": {
-        "build": "tsc",
+        "build": "rollup -c ./rollup.config.mjs && npm run build:types",
         "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
-        "test": "mocha --config ../../.mocharc.yml",
+        "build:types": "tsc --project ./tsconfig.json  -d --declarationDir dist/types --declarationMap --emitDeclarationOnly",
+        "test": "mocha --config ../../.mocharc.json",
         "test:watch": "mocha --config ../../.mocharc.yml --watch",
-        "test:coverage": "nyc --nycrc-path ../../.nycrc.json npm run test",
-        "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
-        "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json src/**/*.ts",
-        "docs": "typedoc --options ./typedoc.config.js",
+        "test:coverage": "c8 --config ../../.nycrc.json npm run test",
+        "lint": "eslint -c .eslintrc.cjs --ext .ts ./src",
+        "postlint": "prettier --config ./../../.prettierrc src/**/*.ts --check",
+        "lint:fix": "eslint -c .eslintrc.cjs --ext .ts ./src --fix",
+        "postlint:fix": "prettier --config ./../../.prettierrc src/**/*.ts --write",
+        "docs": "typedoc --options ./typedoc.config.cjs",
         "prepublishOnly": "npm run test && npm run docs && npm run build",
         "version": "npm run build:readme && git add README.md"
     },
@@ -39,7 +47,7 @@
         "url": "https://github.com/manniwatch/manniwatch.git"
     },
     "engines": {
-        "node": ">=14"
+        "node": ">=18"
     },
     "publishConfig": {
         "access": "public"

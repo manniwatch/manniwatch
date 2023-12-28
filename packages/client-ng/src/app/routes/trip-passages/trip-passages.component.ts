@@ -23,7 +23,10 @@ export class TripPassagesComponent implements OnInit, OnDestroy {
     private subscriptions: Subscription[] = [];
     public headerMapData: IStaticMapData;
     public readonly STATUS_OPS: typeof UpdateStatus = UpdateStatus;
-    constructor(public readonly zone: NgZone, public readonly passageService: TripPassagesService) {}
+    constructor(
+        public readonly zone: NgZone,
+        public readonly passageService: TripPassagesService
+    ) {}
 
     public ngOnInit(): void {
         this.subscriptions.push(

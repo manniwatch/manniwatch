@@ -4,7 +4,7 @@
 
 import { expect } from 'chai';
 import 'mocha';
-import * as index from './index';
+import * as index from './index.js';
 
 describe('index', (): void => {
     it('should contain convertVehicleLocation', (): void => {

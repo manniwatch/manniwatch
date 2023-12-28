@@ -3,7 +3,7 @@
  * Source https://github.com/manniwatch/manniwatch/tree/master/packages/api-types
  */
 
-import { VEHICLE_STATUS } from './vehicle-status';
+import { VEHICLE_STATUS } from './vehicle-status.js';
 
 export interface ITripPassage {
     /**
@@ -34,7 +34,6 @@ export interface IActualTripPassage extends ITripPassage {
  * ```
  * /internetservice/services/tripInfo/tripPassages
  * ```
- *
  * @since 0.5.0
  */
 export interface ITripPassages {

@@ -14,12 +14,11 @@ import { EMPTY, Observable } from 'rxjs';
 export class AppPreloadingStrategy implements PreloadingStrategy {
     /**
      * Function to preload
-     *
      * @param route route to preload
      * @param load callback
      * @returns to preload
      */
-    preload(route: Route, load: () => Observable<any>): Observable<any> {
+    preload(route: Route, load: () => Observable<unknown>): Observable<unknown> {
         return route.path.startsWith('error') ? load() : EMPTY;
     }
 }

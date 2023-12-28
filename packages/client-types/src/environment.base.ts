@@ -1,10 +1,11 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: client-types
+/*
+ * Package @manniwatch/client-types
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { Options as OsmOption } from 'ol/source/OSM';
 import { Options as VectorOptions } from 'ol/source/VectorTile';
-import { IMapCoordinate } from './map-coordinate';
+import { IMapCoordinate } from './map-coordinate.js';
 
 export interface IVectorMapProvider {
     type: 'vector';

@@ -5,8 +5,8 @@
 
 import { PositionType } from '@manniwatch/api-types';
 import { JSONSchemaType } from 'ajv';
-import { POSITION_TYPE_SCHEMA } from './position-type';
-import { UINT_SCHEMA } from './uint';
+import { POSITION_TYPE_SCHEMA } from './position-type.js';
+import { UINT_SCHEMA } from './uint.js';
 
 export interface IGeoLocationSchema {
     lastUpdate?: string;

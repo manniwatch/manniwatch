@@ -17,7 +17,10 @@ import { RequestUpdateDialogService, SW_STATUS } from './request-update-dialog.s
 export class RequestUpdateDialogComponent implements OnInit, OnDestroy {
     private subscription: Subscription;
     public status: SW_STATUS = SW_STATUS.LOADING;
-    constructor(public dialogService: RequestUpdateDialogService, public dialogRef: MatDialogRef<RequestUpdateDialogComponent>) {}
+    constructor(
+        public dialogService: RequestUpdateDialogService,
+        public dialogRef: MatDialogRef<RequestUpdateDialogComponent>
+    ) {}
 
     public ngOnInit(): void {
         this.subscription = this.dialogService.statusObservable.subscribe({

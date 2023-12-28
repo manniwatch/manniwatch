@@ -6,7 +6,7 @@
 import Ajv, { ValidateFunction } from 'ajv';
 import { expect } from 'chai';
 import 'mocha';
-import { GEO_FENCE_SCHEMA, IGeoFenceSchema } from './geo-fence';
+import { GEO_FENCE_SCHEMA, IGeoFenceSchema } from './geo-fence.js';
 
 const validCoordinates: TestIBoundingBox[] = [
     { bottom: '-1000', left: '-1000', right: '1000', top: '1000' },

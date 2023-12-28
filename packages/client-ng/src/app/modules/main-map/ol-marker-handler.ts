@@ -26,7 +26,10 @@ export class OlMarkerHandler {
     private stopPointMarkerVectorSource: VectorSource<Point> = undefined;
     private stopMarkerVectorSource: VectorSource<Point> = undefined;
     private loadSubscription: Subscription;
-    public constructor(private mainMap: OlMainMapDirective, private readonly zoomBorder: number) {}
+    public constructor(
+        private mainMap: OlMainMapDirective,
+        private readonly zoomBorder: number
+    ) {}
 
     public getStopLocations(): Observable<IStopLocation[]> {
         return this.mainMap.stopService.stopObservable.pipe(take(1), startWith([]));

@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
+/*
+ * Package @manniwatch/vehicle-cache
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { IVehicleLocationList, PositionType } from '@manniwatch/api-types';
@@ -10,8 +11,12 @@ import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { delay } from 'rxjs/operators';
 import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
-import { intervalVehicleLocationPoll } from './interval-vehicle-location-poll';
+import { intervalVehicleLocationPoll } from './interval-vehicle-location-poll.js';
 
+/* eslint-disable @typescript-eslint/no-explicit-any,
+  @typescript-eslint/no-unsafe-member-access,
+  @typescript-eslint/no-unsafe-argument,
+  @typescript-eslint/no-unsafe-assignment */
 describe('interval-vehicle-location-poll', (): void => {
     describe('intervalVehicleLocationPoll()', (): void => {
         let testScheduler: TestScheduler;
@@ -32,13 +37,15 @@ describe('interval-vehicle-location-poll', (): void => {
         it('should constantly poll', (): void => {
             testScheduler.run((helpers: RunHelpers): void => {
                 const { expectObservable } = helpers;
-                const foreverStream$: Observable<IVehicleLocationList> =
-                    intervalVehicleLocationPoll((mode: PositionType, lastUpdate: number): Observable<IVehicleLocationList> => {
+                const foreverStream$: Observable<IVehicleLocationList> = intervalVehicleLocationPoll(
+                    (mode: PositionType, lastUpdate: number): Observable<IVehicleLocationList> => {
                         return of({
                             lastUpdate: lastUpdate + 1000,
                             vehicles: [],
                         }).pipe(delay(1000));
-                    }, 10000);
+                    },
+                    10000
+                );
                 // Omitting this arg may crash the test suite.
                 const unsub: string = '^ 50s !';
                 const unsub2: string = '25s ^ 9s !';

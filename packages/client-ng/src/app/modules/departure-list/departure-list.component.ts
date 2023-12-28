@@ -35,7 +35,6 @@ export class DepartureListComponent {
 
     /**
      * Returns if the atleast one departure was provided
-     *
      * @returns true if there is atleast one departure
      */
     public hasDepartures(): boolean {

@@ -1,5 +1,6 @@
-/*!
- * Source https://github.com/manniwatch/manniwatch Package: vehicle-cache
+/*
+ * Package @manniwatch/vehicle-cache
+ * Source https://manniwatch.github.io/manniwatch/
  */
 
 import { IVehicleLocationList } from '@manniwatch/api-types';
@@ -11,27 +12,31 @@ export enum PollResultStatus {
     TIMEOUT = 'timeout',
     ERROR = 'error',
 }
-export type PollResult = {
-    type: PollResultStatus.SUCCESS,
-    result: IVehicleLocationList,
-} | {
-    type: PollResultStatus.ERROR,
-    error: any,
-};
+export type PollResult =
+    | {
+          type: PollResultStatus.SUCCESS;
+          result: IVehicleLocationList;
+      }
+    | {
+          type: PollResultStatus.ERROR;
+          error: unknown;
+      };
 
 export const convertPollResult = (): OperatorFunction<IVehicleLocationList, PollResult> => {
     return (source: Observable<IVehicleLocationList>): Observable<PollResult> => {
-        return source
-            .pipe(map((inputList: IVehicleLocationList): PollResult => {
+        return source.pipe(
+            map((inputList: IVehicleLocationList): PollResult => {
                 return {
                     result: inputList,
                     type: PollResultStatus.SUCCESS,
                 };
-            }), catchError((error: any): Observable<PollResult> => {
+            }),
+            catchError((error: unknown): Observable<PollResult> => {
                 return of({
                     error,
                     type: PollResultStatus.ERROR,
                 });
-            }));
+            })
+        );
     };
 };

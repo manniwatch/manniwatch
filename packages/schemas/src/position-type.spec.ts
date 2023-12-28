@@ -7,7 +7,7 @@ import { PositionType } from '@manniwatch/api-types';
 import Ajv, { ValidateFunction } from 'ajv';
 import { expect } from 'chai';
 import 'mocha';
-import { POSITION_TYPE_SCHEMA } from './position-type';
+import { POSITION_TYPE_SCHEMA } from './position-type.js';
 
 const validOptions: PositionType[] = ['RAW', 'CORRECTED'];
 
