@@ -69,7 +69,7 @@
         "@angular/router": "17.0.8",
         "@angular/service-worker": "17.0.8",
         "@angular/ssr": "17.0.8",
-        "@donmahallem/rxjs-zone": "0.4.9",
+        "@donmahallem/rxjs-zone": "0.4.10",
         "@manniwatch/api-types": "0.29.16",
         "@manniwatch/assets": "0.29.16",
         "date-fns": "3.0.6",
