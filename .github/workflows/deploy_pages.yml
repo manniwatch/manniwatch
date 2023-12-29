@@ -93,9 +93,10 @@ jobs:
               uses: JamesIves/github-pages-deploy-action@v4.5.0
               with:
                   SSH: true
+                  ssh-key: ${{ secrets.APP_DEPLOY_KEY }}
                   BRANCH: master # The branch the action should deploy to.
                   FOLDER: packages/client-ng/dist/manniwatch/vector # The folder the action should deploy.
-                  REPOSITORY_NAME: manniwatch/manniwatch.github.io
+                  repository-name: manniwatch/manniwatch.github.io
                   TARGET_FOLDER: .
                   CLEAN: true
 
