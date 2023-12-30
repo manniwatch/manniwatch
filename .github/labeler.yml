@@ -1,4 +1,6 @@
 ci:
-  - .github/*
-  - .github/**/*
-  - .mergify.yml
+    - changed-files:
+          - any-glob-to-any-file:
+                - .github/*
+                - .github/**/*
+                - .mergify.yml
