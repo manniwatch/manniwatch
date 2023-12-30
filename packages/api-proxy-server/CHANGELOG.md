@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.17](https://github.com/manniwatch/manniwatch/compare/v0.29.16...v0.29.17) (2023-12-30)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo ([db175d0](https://github.com/manniwatch/manniwatch/commit/db175d04b66ce4bd6387fe7f4183499b74b3b0e6))
+* **deps:** update angular monorepo to v14.2.2 ([63dc39e](https://github.com/manniwatch/manniwatch/commit/63dc39e7cc85c033b0738ea4d5eaa6c000fc1fd2))
+* **deps:** update angular monorepo to v14.2.6 ([94dbf59](https://github.com/manniwatch/manniwatch/commit/94dbf591be920f2b6f62fc32fc3c1d6db85bc702))
+* **deps:** update dependency date-fns to v2.29.3 ([0848ae8](https://github.com/manniwatch/manniwatch/commit/0848ae8843331e31870dc8b4faf17b619bcbf0fc))
+* **deps:** update dependency electron to ~20.1.2 ([f3bd527](https://github.com/manniwatch/manniwatch/commit/f3bd5275a4e6e0672bcd6cd1704ec55eb93d74cd))
+* **deps:** update dependency electron to ~20.1.3 ([5583aae](https://github.com/manniwatch/manniwatch/commit/5583aae6a2d864527c46f78739d21466dc88e25a))
+* **deps:** update dependency electron to ~20.1.4 ([4b102e0](https://github.com/manniwatch/manniwatch/commit/4b102e0de5706cad13bacfcf0c3a2524c37c62eb))
+* **deps:** update dependency electron to ~21.0.1 ([5452459](https://github.com/manniwatch/manniwatch/commit/5452459400b43b50e55c8c80a38c8fb6c5b76b06))
+* **deps:** update dependency electron to ~21.1.1 ([7028aa7](https://github.com/manniwatch/manniwatch/commit/7028aa76703b520afdf2e7c426420daa72734093))
+* **deps:** update dependency electron to v21 ([98fa85b](https://github.com/manniwatch/manniwatch/commit/98fa85b913e7cfc6f7689942efdf1057f3d7dfaa))
+* **deps:** update dependency helmet to ~5.1.1 ([2ee7e1a](https://github.com/manniwatch/manniwatch/commit/2ee7e1ad083158e76687c5b0405479b9090a3710))
+* **deps:** update dependency helmet to v6 ([2e766b5](https://github.com/manniwatch/manniwatch/commit/2e766b56b69c151c8a218dee6a66b4cef6eed286))
+* fix dependencies and build system issues ([#3585](https://github.com/manniwatch/manniwatch/issues/3585)) ([21b9f36](https://github.com/manniwatch/manniwatch/commit/21b9f361934c137a013974d40e4e49d2bf6d9552))
+
+
+
+
+
 ## [0.29.16](https://github.com/manniwatch/manniwatch/compare/v0.29.15...v0.29.16) (2022-06-20)
 
 

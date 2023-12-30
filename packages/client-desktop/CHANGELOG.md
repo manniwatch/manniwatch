@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.17](https://github.com/manniwatch/manniwatch/compare/v0.29.16...v0.29.17) (2023-12-30)
+
+
+### Bug Fixes
+
+* **deps:** update angular monorepo ([db175d0](https://github.com/manniwatch/manniwatch/commit/db175d04b66ce4bd6387fe7f4183499b74b3b0e6))
+* **deps:** update angular monorepo to v14.2.2 ([63dc39e](https://github.com/manniwatch/manniwatch/commit/63dc39e7cc85c033b0738ea4d5eaa6c000fc1fd2))
+* **deps:** update angular monorepo to v14.2.6 ([94dbf59](https://github.com/manniwatch/manniwatch/commit/94dbf591be920f2b6f62fc32fc3c1d6db85bc702))
+* **deps:** update dependency ajv to ~8.12.0 ([b8993a0](https://github.com/manniwatch/manniwatch/commit/b8993a0fe9f0b13cdb36c1c7fbbebdde8103f910))
+* **deps:** update dependency commander to ~9.4.0 ([5f0d23f](https://github.com/manniwatch/manniwatch/commit/5f0d23f3585872b704d218e42a7a591a9f59a216))
+* **deps:** update dependency commander to ~9.4.1 ([a1371ef](https://github.com/manniwatch/manniwatch/commit/a1371ef28d9e1e12ec7f092ee6fd5723c03f5e19))
+* **deps:** update dependency commander to ~9.5.0 ([3c41aeb](https://github.com/manniwatch/manniwatch/commit/3c41aebeca388bd82acae28ddeac656bc70c0211))
+* **deps:** update dependency date-fns to v2.29.3 ([0848ae8](https://github.com/manniwatch/manniwatch/commit/0848ae8843331e31870dc8b4faf17b619bcbf0fc))
+* **deps:** update dependency electron to ~19.0.10 ([3800d85](https://github.com/manniwatch/manniwatch/commit/3800d856af9435d965e143e9d097d5cfbc8a5ba8))
+* **deps:** update dependency electron to ~19.0.5 ([c5613be](https://github.com/manniwatch/manniwatch/commit/c5613beedbfa8b3e5d9785be8ba0670174cde619))
+* **deps:** update dependency electron to ~19.0.6 ([09cfce5](https://github.com/manniwatch/manniwatch/commit/09cfce5796b351912ad0542cd5924a2642ef61dd))
+* **deps:** update dependency electron to ~19.0.7 ([e542773](https://github.com/manniwatch/manniwatch/commit/e542773e8f5f1e33c214411493529f09b0a29047))
+* **deps:** update dependency electron to ~19.0.8 ([50ccd44](https://github.com/manniwatch/manniwatch/commit/50ccd447f61dfd944150ed9c745defb6ef1da76a))
+* **deps:** update dependency electron to ~19.0.9 ([5867ddb](https://github.com/manniwatch/manniwatch/commit/5867ddb69470a01baddc883feb6ef8311c8e45cf))
+* **deps:** update dependency electron to ~20.0.1 ([6bc52f2](https://github.com/manniwatch/manniwatch/commit/6bc52f2bc4cefef6dbd6c2f637366e996b2cae7c))
+* **deps:** update dependency electron to ~20.0.2 ([07ef809](https://github.com/manniwatch/manniwatch/commit/07ef809158b0b4d648a0afded829df34b3f146c1))
+* **deps:** update dependency electron to ~20.0.3 ([53344d8](https://github.com/manniwatch/manniwatch/commit/53344d8fe353a785a55f05aec1fc0163a26cecaf))
+* **deps:** update dependency electron to ~20.1.0 ([5210fb1](https://github.com/manniwatch/manniwatch/commit/5210fb1abda941dbcc5a172fb284487265ee1190))
+* **deps:** update dependency electron to ~20.1.1 ([481787e](https://github.com/manniwatch/manniwatch/commit/481787e4a60274513a68962a2f9a09bb82c001f4))
+* **deps:** update dependency electron to ~20.1.2 ([f3bd527](https://github.com/manniwatch/manniwatch/commit/f3bd5275a4e6e0672bcd6cd1704ec55eb93d74cd))
+* **deps:** update dependency electron to ~20.1.3 ([5583aae](https://github.com/manniwatch/manniwatch/commit/5583aae6a2d864527c46f78739d21466dc88e25a))
+* **deps:** update dependency electron to ~20.1.4 ([4b102e0](https://github.com/manniwatch/manniwatch/commit/4b102e0de5706cad13bacfcf0c3a2524c37c62eb))
+* **deps:** update dependency electron to ~20.2.0 ([a171ed9](https://github.com/manniwatch/manniwatch/commit/a171ed93e73460a3053328c9e18fb246436d6b8d))
+* **deps:** update dependency electron to ~21.0.1 ([5452459](https://github.com/manniwatch/manniwatch/commit/5452459400b43b50e55c8c80a38c8fb6c5b76b06))
+* **deps:** update dependency electron to ~21.1.0 ([4286fc9](https://github.com/manniwatch/manniwatch/commit/4286fc96cae8b13dfc8d77aef74fee3a3e3073e7))
+* **deps:** update dependency electron to ~21.1.1 ([7028aa7](https://github.com/manniwatch/manniwatch/commit/7028aa76703b520afdf2e7c426420daa72734093))
+* **deps:** update dependency electron to ~21.2.3 ([#3556](https://github.com/manniwatch/manniwatch/issues/3556)) ([82f336e](https://github.com/manniwatch/manniwatch/commit/82f336eabdddd658e476738a0fd12e7813e2e618))
+* **deps:** update dependency electron to ~21.3.0 ([e5276cd](https://github.com/manniwatch/manniwatch/commit/e5276cdf997a2b317bab7f1853b6566becb182b9))
+* **deps:** update dependency electron to ~21.4.4 ([#3611](https://github.com/manniwatch/manniwatch/issues/3611)) ([2721d05](https://github.com/manniwatch/manniwatch/commit/2721d05333418a4f23dc31ed66cad796f852b1c8))
+* **deps:** update dependency electron to v20 ([e5d39c7](https://github.com/manniwatch/manniwatch/commit/e5d39c71fb1951a2fd5b2475e29c2e975d76cba4))
+* **deps:** update dependency electron to v21 ([98fa85b](https://github.com/manniwatch/manniwatch/commit/98fa85b913e7cfc6f7689942efdf1057f3d7dfaa))
+* fix dependencies and build system issues ([#3585](https://github.com/manniwatch/manniwatch/issues/3585)) ([21b9f36](https://github.com/manniwatch/manniwatch/commit/21b9f361934c137a013974d40e4e49d2bf6d9552))
+
+
+
+
+
 ## [0.29.16](https://github.com/manniwatch/manniwatch/compare/v0.29.15...v0.29.16) (2022-06-20)
 
 

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.17](https://github.com/manniwatch/manniwatch/compare/v0.29.16...v0.29.17) (2023-12-30)
+
+
+### Bug Fixes
+
+* **deps:** update dependency rxjs to v7.5.6 ([b3163ed](https://github.com/manniwatch/manniwatch/commit/b3163ed4b4179069fc90bcc052e4123b63802692))
+* **deps:** update dependency rxjs to v7.5.7 ([7956136](https://github.com/manniwatch/manniwatch/commit/7956136a52ca3375aa57463e9ac8e1abd2155743))
+* fix dependencies and build system issues ([#3585](https://github.com/manniwatch/manniwatch/issues/3585)) ([21b9f36](https://github.com/manniwatch/manniwatch/commit/21b9f361934c137a013974d40e4e49d2bf6d9552))
+* remove proxyquire dependencies ([#3600](https://github.com/manniwatch/manniwatch/issues/3600)) ([38729fd](https://github.com/manniwatch/manniwatch/commit/38729fd76f9e2617286d4c755f90df7ad03ad832))
+
+
+
+
+
 ## [0.29.16](https://github.com/manniwatch/manniwatch/compare/v0.29.15...v0.29.16) (2022-06-20)
 
 
