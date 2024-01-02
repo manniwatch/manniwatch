@@ -32,8 +32,8 @@ export class OlStaticMapDirective extends AbstractOlMapDirective implements OnCh
     private readonly KEY_MAP_DATA: string = 'mapData';
     @HostBinding('class.no-location')
     public blur = false;
-    protected readonly markerVectorSource: VectorSource<Point> = undefined;
-    protected readonly markerLayer: VectorLayer<VectorSource<Point>> = undefined;
+    protected readonly markerVectorSource: VectorSource<Feature<Point>> = undefined;
+    protected readonly markerLayer: VectorLayer<VectorSource<Feature<Point>>> = undefined;
 
     @Input()
     public mapData: IStaticMapData;

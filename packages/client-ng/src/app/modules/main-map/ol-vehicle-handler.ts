@@ -24,10 +24,10 @@ export class OlVehicleHandler {
     /**
      * Layer for the stop markers to be displayed on the map
      */
-    private vehicleMarkerLayer: VectorLayer<VectorSource<Point>>;
-    private vehicleMarkerVectorSource: VectorSource<Point>;
-    private vehicleRouteLayer: VectorLayer<VectorSource<LineString>>;
-    private vehicleRouteVectorSource: VectorSource<LineString>;
+    private vehicleMarkerLayer: VectorLayer<VectorSource<Feature<Point>>>;
+    private vehicleMarkerVectorSource: VectorSource<Feature<Point>>;
+    private vehicleRouteLayer: VectorLayer<VectorSource<Feature<LineString>>>;
+    private vehicleRouteVectorSource: VectorSource<Feature<LineString>>;
 
     private loadSubscription: Subscription;
     private mouseHoverSubscription: Subscription;

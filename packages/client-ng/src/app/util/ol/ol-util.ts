@@ -20,8 +20,8 @@ const DEFAULT_STYLES: { [key: string]: StyleLike } = {
         image: new Icon({
             anchor: [0.5, 0.5],
             // size: [32, 32],
-            imgSize: [64, 44],
             scale: 0.5,
+            size: [64, 44],
             src: 'assets/vehicle-icon-24.svg',
         }),
     }),
@@ -74,9 +74,9 @@ const DEFAULT_STYLES: { [key: string]: StyleLike } = {
                 image: new Icon({
                     anchor: [24 / 68, 0.5],
                     color: '#FF0000',
-                    imgSize: [64, 44],
                     rotation: rot,
                     scale: 0.6,
+                    size: [64, 44],
                     src: 'assets/vehicle-icon-white-64.svg',
                 }),
                 text: new Text({
@@ -106,9 +106,9 @@ const DEFAULT_STYLES: { [key: string]: StyleLike } = {
                 image: new Icon({
                     anchor: [24 / 68, 0.5],
                     color: '#0000FF',
-                    imgSize: [64, 44],
                     rotation: rot,
                     scale: 0.6,
+                    size: [64, 44],
                     src: 'assets/vehicle-icon-white-64.svg',
                 }),
                 text: new Text({
@@ -134,9 +134,9 @@ export class OlUtil {
                     image: new Icon({
                         anchor: [24 / 68, 0.5],
                         color: selected ? '#0000FF' : '#FF0000',
-                        imgSize: [64, 44],
                         rotation: rot,
                         scale: 0.6,
+                        size: [64, 44],
                         src: 'assets/vehicle-icon-white-64.svg',
                     }),
                     text: new Text({

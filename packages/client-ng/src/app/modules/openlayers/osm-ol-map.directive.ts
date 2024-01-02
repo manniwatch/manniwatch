@@ -15,7 +15,7 @@ import { environment } from 'src/environments';
 import { BaseOlMapDirective } from './base-ol-map.directive';
 
 @Directive()
-export abstract class OsmOlMapDirective extends BaseOlMapDirective<OSM> implements AfterViewInit {
+export abstract class OsmOlMapDirective extends BaseOlMapDirective<TileLayer<OSM>> implements AfterViewInit {
     constructor(elRef: ElementRef, zone: NgZone, settings: SettingsService) {
         super(elRef, zone, settings);
     }
@@ -41,7 +41,7 @@ export abstract class OsmOlMapDirective extends BaseOlMapDirective<OSM> implemen
         });
     }
 
-    public createMapLayer(): BaseTileLayer<OSM> {
+    public createMapLayer(): TileLayer<OSM> {
         if (environment.map.mapProvider?.options) {
             return new TileLayer({
                 source: new OSM(environment.map.mapProvider.options),
