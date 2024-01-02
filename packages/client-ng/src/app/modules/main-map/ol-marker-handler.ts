@@ -18,13 +18,13 @@ export class OlMarkerHandler {
     /**
      * Layer for the stop markers to be displayed on the map
      */
-    private stopMarkerLayer: VectorLayer<VectorSource<Point>> = undefined;
+    private stopMarkerLayer: VectorLayer<VectorSource<Feature<Point>>> = undefined;
     /**
      * Layer for the stop markers to be displayed on the map
      */
-    private stopPointMarkerLayer: VectorLayer<VectorSource<Point>> = undefined;
-    private stopPointMarkerVectorSource: VectorSource<Point> = undefined;
-    private stopMarkerVectorSource: VectorSource<Point> = undefined;
+    private stopPointMarkerLayer: VectorLayer<VectorSource<Feature<Point>>> = undefined;
+    private stopPointMarkerVectorSource: VectorSource<Feature<Point>> = undefined;
+    private stopMarkerVectorSource: VectorSource<Feature<Point>> = undefined;
     private loadSubscription: Subscription;
     public constructor(
         private mainMap: OlMainMapDirective,
@@ -41,8 +41,8 @@ export class OlMarkerHandler {
 
     public start(leafletMap: OlMap): void {
         NgZone.assertNotInAngularZone();
-        this.stopPointMarkerVectorSource = new VectorSource();
-        this.stopMarkerVectorSource = new VectorSource({
+        this.stopPointMarkerVectorSource = new VectorSource<Feature<Point>>();
+        this.stopMarkerVectorSource = new VectorSource<Feature<Point>>({
             features: [],
         });
         const zoomBorder: number = leafletMap.getView().getResolutionForZoom(this.zoomBorder);

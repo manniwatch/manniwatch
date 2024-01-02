@@ -19,7 +19,7 @@ import { BaseOlMapDirective } from './base-ol-map.directive';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 
 @Directive()
-export abstract class VectorOlMapDirective extends BaseOlMapDirective<VectorTile> implements AfterViewInit {
+export abstract class VectorOlMapDirective extends BaseOlMapDirective<VectorTileLayer> implements AfterViewInit {
     constructor(elRef: ElementRef, zone: NgZone, settings: SettingsService) {
         super(elRef, zone, settings);
     }
@@ -45,7 +45,7 @@ export abstract class VectorOlMapDirective extends BaseOlMapDirective<VectorTile
         });
     }
 
-    public createMapLayer(): BaseTileLayer<VectorTile> {
+    public createMapLayer(): VectorTileLayer {
         return new VectorTileLayer({
             declutter: false,
             source: new VectorTile({
@@ -78,7 +78,7 @@ export abstract class VectorOlMapDirective extends BaseOlMapDirective<VectorTile
      */
     public applyTheme(theme: Theme): void {
         NgZone.assertNotInAngularZone();
-        stylefunction(this.mBackgroundMapLayer as VectorTileLayer, theme === Theme.DARK ? DARK_THEME : LIGHT_THEME, 'openmaptiles');
+        stylefunction(this.mBackgroundMapLayer, theme === Theme.DARK ? DARK_THEME : LIGHT_THEME, 'openmaptiles');
     }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function

@@ -14,7 +14,9 @@ import Point from 'ol/geom/Point';
 import { Select } from 'ol/interaction';
 import { SelectEvent } from 'ol/interaction/Select';
 import BaseTileLayer from 'ol/layer/BaseTile';
+import LayerRenderer from 'ol/renderer/Layer';
 import { OSM, VectorTile } from 'ol/source';
+import TileSource from 'ol/source/Tile';
 import Style from 'ol/style/Style';
 import { Subscription } from 'rxjs';
 import { AbstractOlMapDirective } from 'src/app/modules/openlayers';
@@ -68,7 +70,8 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
         this.vehicleHandler = new OlVehicleHandler(this);
         this.mapSelectInteraction = new Select({
             condition: OlCondition.click,
-            filter: (p0: FeatureLike, p1: BaseTileLayer<OSM | VectorTile>): boolean => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            filter: (p0: FeatureLike, p1: BaseTileLayer<TileSource, LayerRenderer<any>>): boolean => {
                 switch (p0.get('type')) {
                     case 'vehicle':
                     case 'stop':
@@ -78,7 +81,8 @@ export class OlMainMapDirective extends AbstractOlMapDirective implements OnDest
                         return false;
                 }
             },
-            layers: (p0: BaseTileLayer<OSM | VectorTile>): boolean => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            layers: (p0: BaseTileLayer<TileSource, LayerRenderer<any>>): boolean => {
                 return !(p0 === this.backgroundMapLayer);
             },
             multi: false,

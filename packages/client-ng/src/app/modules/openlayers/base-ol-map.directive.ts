@@ -9,15 +9,19 @@ import { Collection, Map, View } from 'ol';
 import { Coordinate } from 'ol/coordinate';
 import { defaults, Interaction } from 'ol/interaction';
 import BaseTileLayer from 'ol/layer/BaseTile';
+import LayerRenderer from 'ol/renderer/Layer';
 import { OSM, VectorTile } from 'ol/source';
+import TileSource from 'ol/source/Tile';
 import { Subscription } from 'rxjs';
 import { SettingsService, Theme } from 'src/app/services';
 
-@Directive()
-export abstract class BaseOlMapDirective<TILE extends VectorTile | OSM> implements AfterViewInit, OnDestroy, OnChanges {
+@Directive() // eslint-disable-next-line @typescript-eslint/no-explicit-any
+export abstract class BaseOlMapDirective<TILE extends BaseTileLayer<TileSource, LayerRenderer<any>>>
+    implements AfterViewInit, OnDestroy, OnChanges
+{
     protected map: Map;
     private locationSubscription: Subscription;
-    protected mBackgroundMapLayer: BaseTileLayer<TILE>;
+    protected mBackgroundMapLayer: TILE;
     private themeSubscription: Subscription;
     constructor(
         protected elRef: ElementRef,
@@ -46,7 +50,7 @@ export abstract class BaseOlMapDirective<TILE extends VectorTile | OSM> implemen
         });
     }
 
-    public abstract createMapLayer(): BaseTileLayer<TILE>;
+    public abstract createMapLayer(): TILE;
 
     public panMapTo(panTo: Coordinate, zoom?: number): void {
         NgZone.assertNotInAngularZone();
@@ -66,7 +70,7 @@ export abstract class BaseOlMapDirective<TILE extends VectorTile | OSM> implemen
      */
     public abstract applyTheme(theme: Theme): void;
 
-    public get backgroundMapLayer(): BaseTileLayer<VectorTile | OSM> {
+    public get backgroundMapLayer(): TILE {
         return this.mBackgroundMapLayer;
     }
 
