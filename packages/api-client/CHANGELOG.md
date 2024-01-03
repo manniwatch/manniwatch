@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.17](https://github.com/manniwatch/manniwatch/compare/v0.29.16...v0.29.17) (2023-12-30)
+
+
+### Bug Fixes
+
+* **deps:** update dependency qs to ~6.11.0 ([f692ab2](https://github.com/manniwatch/manniwatch/commit/f692ab2a0d728595f1eee81ff357196c98feef59))
+* **deps:** update dependency qs to ~6.11.2 ([#3599](https://github.com/manniwatch/manniwatch/issues/3599)) ([4c8cb32](https://github.com/manniwatch/manniwatch/commit/4c8cb32a61bb2559058f2bc24d82406564e94a0e))
+* fix dependencies and build system issues ([#3585](https://github.com/manniwatch/manniwatch/issues/3585)) ([21b9f36](https://github.com/manniwatch/manniwatch/commit/21b9f361934c137a013974d40e4e49d2bf6d9552))
+
+
+
+
+
 ## [0.29.16](https://github.com/manniwatch/manniwatch/compare/v0.29.15...v0.29.16) (2022-06-20)
 
 

@@ -1,6 +1,6 @@
 {
     "name": "@manniwatch/api-client",
-    "version": "0.29.16",
+    "version": "0.29.17",
     "description": "Node Client to consume the Api",
     "type": "module",
     "types": "./dist/types/index.d.ts",
@@ -26,7 +26,7 @@
         "version": "npm run build:readme && git add README.md"
     },
     "dependencies": {
-        "@manniwatch/api-types": "^0.29.16",
+        "@manniwatch/api-types": "^0.29.17",
         "axios": "~1.6.3",
         "qs": "~6.11.2"
     },

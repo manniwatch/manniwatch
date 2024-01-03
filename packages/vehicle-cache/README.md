@@ -1,6 +1,27 @@
-Node client for the trapeze api
+<!-- ⚠️ This README has been generated from the file(s) "../package_readme_blueprint.md" ⚠️-->
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#h1-aligncentermanniwatchvehicle-cacheh1)
 
-[![Build Status](https://travis-ci.com/manniwatch/manniwatch.svg?branch=master)](https://travis-ci.com/manniwatch/manniwatch) [![Coverage Status](https://coveralls.io/repos/github/manniwatch/manniwatch/badge.svg?branch=master)](https://coveralls.io/github/manniwatch/manniwatch?branch=master) [![npm version](https://badge.fury.io/js/%40manniwatch%2Fvehicle-cache.svg)](https://badge.fury.io/js/%40manniwatch%2Fvehicle-cache) [![dependencies Status](https://david-dm.org/manniwatch/manniwatch/status.svg?path=packages/vehicle-cache)](https://david-dm.org/manniwatch/manniwatch?path=packages/vehicle-cache) [![devDependencies Status](https://david-dm.org/manniwatch/manniwatch/dev-status.svg?path=packages/vehicle-cache)](https://david-dm.org/manniwatch/manniwatch?path=packages/vehicle-cache&type=dev)
+# ➤ <h1 align="center">@manniwatch/vehicle-cache</h1>
+
+{{ template:badges }}
+
+<p align="center">
+  <b>Caching for vehicle locations</b></br>
+  <sub><sub>
+</p>
+
+<br />
 
 
-[Documentation](https://manniwatch.github.io/manniwatch/)
+[Homepage](https://manniwatch.github.io/manniwatch/)
+
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#install)
+
+## ➤ Install
+
+Run the following command to install the package:
+
+```
+npm install @manniwatch/vehicle-cache
+```
