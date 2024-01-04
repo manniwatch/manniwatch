@@ -1,0 +1,14 @@
+
+<mat-sidenav-container class="main-container" #sidenavContainer [hasBackdrop]="true">
+  <mat-sidenav class="main-nav" #sidenav mode="over">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content><map appOlMainMap></map>
+    <div class="overlay-box">
+      <div class="router-box">
+        <router-outlet></router-outlet>
+      </div>
+      <app-main-toolbar></app-main-toolbar>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

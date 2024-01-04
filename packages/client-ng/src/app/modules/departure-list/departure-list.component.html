@@ -1,0 +1,7 @@
+
+<mat-nav-list *ngIf="hasDepartures()" role="list">
+  <app-departure-list-item *ngFor="let passage of departures" [departure]="passage"></app-departure-list-item>
+</mat-nav-list>
+<div class="no-departures" *ngIf="!hasDepartures()">
+  <h4>No Departures</h4>
+</div>

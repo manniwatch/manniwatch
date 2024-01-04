@@ -1,0 +1,15 @@
+
+<mat-toolbar class="main-toolbar" color="primary" [ngClass]="{'search-open':(searchOpen===true),'navigation-closeable':(closeable===true)}">
+  <button class="sidebar-toggle" mat-icon-button (click)="toggleSidebar()" i18n-aria-label="Toggle Sidebar@@toggleSidebar" aria-label="Toggle Sidebar" role="button" aria-pressed="false">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <app-toolbar-search (focusSearch)="onFocusSearch($event)"></app-toolbar-search>
+  <button id="btnSearch" mat-icon-button (click)="toggleSearch()">
+    <mat-icon>search</mat-icon>
+  </button>
+  <mat-divider class="close-divider" [vertical]="true"></mat-divider>
+  <button class="close" mat-icon-button [routerLink]="['/']">
+    <mat-icon></mat-icon>
+  </button>
+</mat-toolbar>
+<app-route-loading-indicator></app-route-loading-indicator>
