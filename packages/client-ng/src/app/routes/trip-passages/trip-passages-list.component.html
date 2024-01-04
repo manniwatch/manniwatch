@@ -1,0 +1,7 @@
+
+<mat-nav-list *ngIf="hasPassages(); else noPassagesBlock" role="list">
+  <app-trip-passages-list-item *ngFor="let passageItem of passages" [passage]="passageItem"></app-trip-passages-list-item>
+</mat-nav-list>
+<ng-template #noPassagesBlock>
+  <h3>No Passages</h3>
+</ng-template>

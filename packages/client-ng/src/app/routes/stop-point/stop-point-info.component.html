@@ -1,0 +1,16 @@
+
+<app-header-box title="{{stopPassage?.stopName}}"><map appOlStatic [mapData]="headerMapData"></map></app-header-box>
+<mat-tab-group mat-stretch-tabs dynamicHeight>
+  <mat-tab i18n-label="tab header departures|Departures@@departures" label="Departures">
+    <app-departure-list [departures]="stopPassage?.actual"></app-departure-list>
+  </mat-tab>
+  <mat-tab i18n-label="tab header routes|Routes@@Routes" label="Routes">
+    <app-route-list [routes]="stopPassage?.routes"></app-route-list>
+  </mat-tab>
+</mat-tab-group>
+<ng-template *ngIf="false">
+  <div class="error-box">
+    <h3>Error occured</h3>
+    <p>Will retry in a 0s</p>
+  </div>
+</ng-template>

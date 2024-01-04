@@ -1,0 +1,23 @@
+
+<button mat-icon-button (click)="closeSidebar()">
+  <mat-icon>close</mat-icon>
+</button>
+<mat-nav-list (click)="closeSidebar()">
+  <h3 matSubheader>Head</h3><a mat-list-item [routerLink]="['/']" [queryParams]="{utm_source: 'sidebar'}" role="navigation">
+    <mat-icon matListIcon>home</mat-icon>
+    <h4 matLine>Home</h4>
+    <p matLine>Home</p></a><a mat-list-item [routerLink]="['/stops']" role="navigation">
+    <mat-icon matListIcon>place</mat-icon>
+    <h4 matLine>Stops</h4>
+    <p matLine>List of stops</p></a>
+  <mat-divider></mat-divider>
+  <button mat-list-item (click)="checkForUpdate()">
+    <mat-icon matListIcon>system_update_alt</mat-icon>
+    <h4 matLine>Check for Update</h4>
+    <p matLine>Check if an update is available</p>
+  </button><a mat-list-item [routerLink]="['/settings']" role="navigation">
+    <mat-icon matListIcon>settings</mat-icon>
+    <h4 matLine>Settings</h4>
+    <p matLine>Change Settings</p></a>
+</mat-nav-list>
+<div class="info-box"><span title="App Version">App: {{appVersion}}</span><span title="Angular Version">Angular: {{angularVersion}}</span></div>

@@ -1,0 +1,16 @@
+
+<div class="header">
+  <mat-icon>help_outline</mat-icon>
+</div>
+<div class="content">
+  <h3>Not Found</h3>
+  <app-not-found-msg-switch></app-not-found-msg-switch>
+  <mat-divider></mat-divider>
+  <h5>You might want to go to:</h5>
+  <mat-nav-list role="list">
+    <mat-list-item *ngFor="let endpoint of endpoints" role="listitem" [routerLink]="[endpoint.path]">
+      <mat-icon matListIcon>{{endpoint.icon}}</mat-icon>
+      <h3 matLine>{{endpoint.title}}</h3>
+    </mat-list-item>
+  </mat-nav-list>
+</div>

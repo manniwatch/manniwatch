@@ -1,0 +1,13 @@
+
+<div class="info" [ngSwitch]="errorTypeObservable|async">
+  <ng-container *ngSwitchCase="1">
+    <p>The passage could not be found. It either expired or has yet to start.</p>
+    <p>Please select another passage.</p>
+  </ng-container>
+  <ng-container *ngSwitchCase="2">
+    <p>The requested vehicle could not be found. It might not be active at the moment.</p>
+  </ng-container>
+  <ng-container *ngSwitchDefault>
+    <p>The requested resource can not be found.</p>
+  </ng-container>
+</div>

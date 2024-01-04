@@ -46,10 +46,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Pug Files
-/src/**/*.html
-/src/*.html
-
 !.npmrc
 
 # Project custom
