@@ -4,7 +4,7 @@
     "devDependencies": {
         "@appnest/readme": "1.2.7",
         "@donmahallem/eslint-config": "2.0.14",
-        "@donmahallem/rollup-config": "4.1.3",
+        "@donmahallem/rollup-config": "4.1.4",
         "@donmahallem/tslint-config": "0.4.1",
         "@rollup/plugin-commonjs": "25.0.7",
         "@rollup/plugin-json": "6.1.0",
