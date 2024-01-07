@@ -37,6 +37,7 @@ export class DepartureListItemComponent {
         this.mDeparture = deps;
         this.mDelay = this.calculateDelay(deps);
         this.mTime = this.convertTime(deps);
+        console.log(this.mDeparture, this.mDelay);
     }
 
     /**
@@ -101,7 +102,7 @@ export class DepartureListItemComponent {
     }
 
     public get hasDelay(): boolean {
-        return this.mDelay === false;
+        return this.mDelay !== false;
     }
 
     public get delayStyle(): { late?: true; early?: true } {
