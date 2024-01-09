@@ -75,7 +75,7 @@
         "ol": "8.2.0",
         "ol-mapbox-style": "12.1.1",
         "rxjs": "7.8.1",
-        "zone.js": "0.14.2"
+        "zone.js": "0.14.3"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "17.0.8",
