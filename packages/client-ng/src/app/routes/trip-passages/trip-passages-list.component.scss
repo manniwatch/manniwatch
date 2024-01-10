@@ -1,3 +1,22 @@
 :host {
     display: block;
+    
 }
+
+mat-nav-list{ 
+    & > a[mat-list-item]{
+    &.departed {
+            opacity: 0.75 !important;
+            background-color: rgba(0, 0, 0, 0.1);
+        mat-icon[matListIcon]::after {
+            content: 'transfer_within_a_station';
+        }
+    }
+    
+   &.stopping {
+            background-color: rgba(0, 255, 0, 0.1);
+        mat-icon[matListIcon]::after {
+            content: 'place';
+        }
+    }
+}}
