@@ -28,7 +28,7 @@
         "lerna": "8.0.2",
         "mocha": "10.2.0",
         "nyc": "15.1.0",
-        "prettier": "3.2.1",
+        "prettier": "3.2.2",
         "rollup": "4.9.5",
         "rollup-plugin-dts": "6.1.0",
         "sinon": "17.0.1",
