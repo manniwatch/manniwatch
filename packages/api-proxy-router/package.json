@@ -72,7 +72,7 @@
         "@types/helmet": "4.0.0",
         "@types/supertest": "6.0.2",
         "apidoc": "1.2.0",
-        "axios": "1.6.5",
+        "axios": "1.6.6",
         "express": "4.18.2",
         "supertest": "6.3.4"
     },
