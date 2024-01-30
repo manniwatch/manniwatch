@@ -101,7 +101,7 @@ jobs:
             - name: Run Test
               run: npx lerna run test:coverage
             - name: Upload coverage to Codecov Monorepo
-              uses: codecov/codecov-action@v3.1.5
+              uses: codecov/codecov-action@v3.1.6
               with:
                   token: ${{ secrets.CODECOV_TOKEN }}
                   flags: unit_test
