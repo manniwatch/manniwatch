@@ -73,7 +73,7 @@
         "karma": "6.4.3",
         "material-design-icons": "3.0.1",
         "ol": "8.2.0",
-        "ol-mapbox-style": "12.2.0",
+        "ol-mapbox-style": "12.2.1",
         "rxjs": "7.8.1",
         "zone.js": "0.14.3"
     },
