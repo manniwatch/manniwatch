@@ -112,7 +112,7 @@
         "protractor": "7.0.0",
         "tslib": "2.6.2",
         "typed-assert": "1.0.9",
-        "typescript": "5.3.3",
+        "typescript": "5.4.2",
         "webpack": "5.90.3",
         "webpack-bundle-analyzer": "4.10.1"
     }
