@@ -52,7 +52,7 @@ jobs:
                   echo ::set-output name=body::$body
                   node ./.github/extract-version.js
             - name: Prepare Release
-              uses: peter-evans/create-pull-request@v6.0.1
+              uses: peter-evans/create-pull-request@v6.0.2
               with:
                   branch: release-staging
                   title: 'chore: stage release ${{ steps.get-pr-body.outputs.version }} [skip ci]'
