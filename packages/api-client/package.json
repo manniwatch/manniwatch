@@ -31,7 +31,7 @@
         "qs": "~6.12.0"
     },
     "devDependencies": {
-        "@types/qs": "6.9.12",
+        "@types/qs": "6.9.13",
         "nock": "13.5.4"
     },
     "files": [
