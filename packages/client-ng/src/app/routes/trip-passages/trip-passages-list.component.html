@@ -1,6 +1,20 @@
 
+<ng-template #tplListItem let-item>
+  <a mat-list-item [routerLink]="['/stop', item?.stop?.shortName]" role="listitem" [ngClass]="listItemStyle(item)">
+    <mat-icon matListItemIcon role="figure" i18n-aria-label="@@busStopIcon" aria-label="Bus stop icon" [fontIcon]="getIcon(item)"></mat-icon>
+    <h4 matListItemTitle aria-label="Stop name" i18n-aria-label="@@stopName">{{item?.stop?.name}}</h4>
+    <p matListItemLine><span role="timer">
+        {{passageTime(item)}}<span class="demo-2" role="status">&nbsp;-- {{item?.status}}</span></span></p></a>
+</ng-template>
 <mat-nav-list *ngIf="hasPassages(); else noPassagesBlock" role="list">
-  <app-trip-passages-list-item *ngFor="let passageItem of passages" [passage]="passageItem"></app-trip-passages-list-item>
+  @if (displayPrevious) {
+    @for (passage of previousPassages; track passage.stop_seq_num) {
+      <ng-template *ngTemplateOutlet="tplListItem; context: {$implicit: passage}"></ng-template>
+    }
+  }
+  @for (passage of passages; track passage.stop_seq_num) {
+    <ng-template *ngTemplateOutlet="tplListItem; context: {$implicit: passage}"></ng-template>
+  }
 </mat-nav-list>
 <ng-template #noPassagesBlock>
   <h3>No Passages</h3>

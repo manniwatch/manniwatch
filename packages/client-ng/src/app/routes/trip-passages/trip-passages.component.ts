@@ -4,6 +4,7 @@
  */
 
 import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { runInsideZone } from '@donmahallem/rxjs-zone';
 import { IVehicleLocation } from '@manniwatch/api-types';
 import { Subscription } from 'rxjs';
@@ -23,6 +24,7 @@ export class TripPassagesComponent implements OnInit, OnDestroy {
     private subscriptions: Subscription[] = [];
     public headerMapData: IStaticMapData;
     public readonly STATUS_OPS: typeof UpdateStatus = UpdateStatus;
+    public displayPrevious:boolean=false;
     constructor(
         public readonly zone: NgZone,
         public readonly passageService: TripPassagesService
@@ -54,6 +56,10 @@ export class TripPassagesComponent implements OnInit, OnDestroy {
                     },
                 })
         );
+    }
+
+    public previousToggle(d:MatSlideToggleChange):void{
+        this.displayPrevious=d.checked;
     }
     public ngOnDestroy(): void {
         this.subscriptions.forEach((sub: Subscription): void => {

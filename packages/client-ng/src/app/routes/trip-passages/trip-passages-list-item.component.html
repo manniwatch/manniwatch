@@ -1,5 +1,0 @@
-<a mat-list-item [routerLink]="['/stop', passage?.stop?.shortName]" role="listitem">
-  <mat-icon matListIcon role="figure" i18n-aria-label="@@busStopIcon" aria-label="Bus stop icon"></mat-icon>
-  <h4 class="title" matLine aria-label="Stop name" i18n-aria-label="@@stopName">{{passage?.stop?.name}}</h4>
-  <p class="subtitle" matLine><span role="timer">
-      {{passageTime}}<span class="demo-2" role="status">&nbsp;-- {{passage?.status}}</span></span></p></a>
