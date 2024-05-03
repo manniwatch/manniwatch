@@ -18,7 +18,7 @@
         "c8": "9.1.0",
         "chai": "5.1.0",
         "commitizen": "4.3.0",
-        "conventional-changelog-angular": "7.0.0",
+        "conventional-changelog-angular": "8.0.0",
         "conventional-changelog-cli": "4.1.0",
         "coveralls": "3.1.1",
         "cz-conventional-changelog": "3.3.0",
