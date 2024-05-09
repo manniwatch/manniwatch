@@ -16,7 +16,7 @@
         "@types/node": "20.12.11",
         "@types/sinon": "17.0.3",
         "c8": "9.1.0",
-        "chai": "5.1.0",
+        "chai": "5.1.1",
         "commitizen": "4.3.0",
         "conventional-changelog-angular": "8.0.0",
         "conventional-changelog-cli": "4.1.0",
