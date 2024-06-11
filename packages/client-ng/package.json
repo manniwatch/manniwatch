@@ -110,7 +110,7 @@
         "karma-jasmine-html-reporter": "2.1.0",
         "ng-packagr": "17.0.3",
         "protractor": "7.0.0",
-        "tslib": "2.6.2",
+        "tslib": "2.6.3",
         "typed-assert": "1.0.9",
         "typescript": "5.4.5",
         "webpack": "5.91.0",
