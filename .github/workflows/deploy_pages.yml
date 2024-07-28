@@ -90,7 +90,7 @@ jobs:
               with:
                   ssh-private-key: ${{ secrets.APP_DEPLOY_KEY }}
             - name: Deploy 🚀
-              uses: JamesIves/github-pages-deploy-action@v4.6.1
+              uses: JamesIves/github-pages-deploy-action@v4.6.3
               with:
                   SSH: true
                   ssh-key: ${{ secrets.APP_DEPLOY_KEY }}
