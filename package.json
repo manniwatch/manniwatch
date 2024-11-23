@@ -4,7 +4,7 @@
     "devDependencies": {
         "@appnest/readme": "1.2.7",
         "@donmahallem/eslint-config": "2.0.25",
-        "@donmahallem/rollup-config": "4.1.64",
+        "@donmahallem/rollup-config": "4.1.65",
         "@donmahallem/tslint-config": "0.4.1",
         "@rollup/plugin-commonjs": "26.0.3",
         "@rollup/plugin-json": "6.1.0",
@@ -29,7 +29,7 @@
         "mocha": "10.7.0",
         "nyc": "15.1.0",
         "prettier": "3.3.3",
-        "rollup": "4.27.3",
+        "rollup": "4.27.4",
         "rollup-plugin-dts": "6.1.1",
         "sinon": "17.0.2",
         "ts-node": "10.9.2",
