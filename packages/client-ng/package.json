@@ -108,7 +108,7 @@
         "karma-coverage-istanbul-reporter": "3.0.3",
         "karma-jasmine": "5.1.0",
         "karma-jasmine-html-reporter": "2.1.0",
-        "ng-packagr": "17.0.3",
+        "ng-packagr": "17.3.0",
         "protractor": "7.0.0",
         "tslib": "2.8.1",
         "typed-assert": "1.0.9",
