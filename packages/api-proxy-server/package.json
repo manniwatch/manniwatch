@@ -2,20 +2,20 @@
     "name": "@manniwatch/api-proxy-server",
     "version": "0.29.16",
     "description": "Server Helper helper for TrapezeApi",
-    "types": "dist/types/index.d.ts",
     "private": false,
     "type": "module",
+    "types": "./dist/index.d.ts",
+    "main": "./dist/index.mjs",
     "exports": {
-        "require": "./dist/cjs/index.cjs",
-        "import": "./dist/esm/index.mjs",
-        "default": "./dist/cjs/index.cjs"
+        "import": "./dist/index.mjs",
+        "types": "./dist/index.d.ts"
     },
     "keywords": [
         "api",
         "types"
     ],
     "scripts": {
-        "build": "rollup -c ./rollup.config.mjs && npm run build:types",
+        "build": "tsc -p ./tsconfig.json",
         "build:types": "tsc --project ./tsconfig.json  -d --declarationDir dist/types --declarationMap --emitDeclarationOnly",
         "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json --silent true",
         "test": "mocha --config ../../.mocharc.json",

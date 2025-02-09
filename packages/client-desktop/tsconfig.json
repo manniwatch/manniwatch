@@ -3,20 +3,8 @@
     "compilerOptions": {
         "outDir": "./dist",
         "rootDir": "./src",
-        "module": "ESNext",
-        "target": "ES5",
-        "moduleResolution": "Node",
-        "importHelpers": true,
-        "declaration": true,
-        "allowSyntheticDefaultImports": true,
-        "skipLibCheck": true,
-        "resolveJsonModule": true,
+        "resolveJsonModule": true
     },
-    "include": [
-        "./src/**/*.ts"
-    ],
-    "exclude": [
-        "node_modules",
-        "src/**/*.spec.ts"
-    ],
+    "include": ["./src"],
+    "exclude": ["node_modules"]
 }

@@ -1,9 +1,7 @@
 module.exports = {
-    "extends": [
-        "@donmahallem/eslint-config"
-    ],
-    "rules": {},
-    "parserOptions": {
-        "project": "./tsconfig.spec.json",
+    extends: ['@donmahallem/eslint-config'],
+    rules: {},
+    parserOptions: {
+        project: './tsconfig.json',
     },
 };
