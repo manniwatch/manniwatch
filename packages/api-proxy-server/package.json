@@ -5,9 +5,9 @@
     "private": false,
     "type": "module",
     "types": "./dist/index.d.ts",
-    "main": "./dist/index.mjs",
+    "main": "./dist/index.js",
     "exports": {
-        "import": "./dist/index.mjs",
+        "import": "./dist/index.js",
         "types": "./dist/index.d.ts"
     },
     "keywords": [
@@ -15,7 +15,7 @@
         "types"
     ],
     "scripts": {
-        "build": "tsc -p ./tsconfig.json",
+        "build": "tsc -p ./tsconfig.lib.json",
         "build:types": "tsc --project ./tsconfig.json  -d --declarationDir dist/types --declarationMap --emitDeclarationOnly",
         "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json --silent true",
         "test": "mocha --config ../../.mocharc.json",

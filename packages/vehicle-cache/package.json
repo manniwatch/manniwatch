@@ -4,9 +4,9 @@
     "description": "Caching for vehicle locations",
     "type": "module",
     "types": "./dist/index.d.ts",
-    "main": "./dist/index.mjs",
+    "main": "./dist/index.js",
     "exports": {
-        "import": "./dist/index.mjs",
+        "import": "./dist/index.js",
         "types": "./dist/index.d.ts"
     },
     "private": false,

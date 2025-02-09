@@ -3,10 +3,10 @@
     "version": "0.29.16",
     "description": "An express api router used to proxy requests to the upstream server",
     "type": "module",
-    "main": "./dist/index.mjs",
+    "main": "./dist/index.js",
     "types": "./dist/types/index.d.ts",
     "exports": {
-        "import": "./dist/index.mjs",
+        "import": "./dist/index.js",
         "types": "./dist/index.d.ts"
     },
     "private": false,
