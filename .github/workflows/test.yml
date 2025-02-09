@@ -28,22 +28,7 @@ jobs:
               uses: actions/setup-node@v4.1.0
               with:
                   node-version: ${{ matrix.node }}
-            - name: Update NPM
-              run: |
-                  npm install -g npm
-                  npm -v
-            - name: Get npm cache directory
-              id: npm-cache
-              run: |
-                  echo "::set-output name=dir::$(npm config get cache)"
-            - name: Setup Cache
-              uses: actions/cache@v4.1.2
-              with:
-                  path: |
-                      ${{ steps.npm-cache.outputs.dir }}
-                      node_modules
-                      */*/node_modules
-                  key: ${{ runner.os }}-node${{ matrix.node }}-npm-${{ hashFiles('**/package-lock.json') }}
+                  cache: 'npm'
             - name: Install Deps
               run: |
                   npm ci
@@ -74,22 +59,7 @@ jobs:
               uses: actions/setup-node@v4.1.0
               with:
                   node-version: ${{ matrix.node }}
-            - name: Update NPM
-              run: |
-                  npm install -g npm
-                  npm -v
-            - name: Get npm cache directory
-              id: npm-cache
-              run: |
-                  echo "::set-output name=dir::$(npm config get cache)"
-            - name: Setup Cache
-              uses: actions/cache@v4.1.2
-              with:
-                  path: |
-                      ${{ steps.npm-cache.outputs.dir }}
-                      node_modules
-                      */*/node_modules
-                  key: ${{ runner.os }}-node${{ matrix.node }}-npm-${{ hashFiles('**/package-lock.json') }}
+                  cache: 'npm'
             - name: Install Deps
               run: |
                   npm ci
@@ -128,22 +98,7 @@ jobs:
               uses: actions/setup-node@v4.1.0
               with:
                   node-version: ${{ matrix.node }}
-            - name: Update NPM
-              run: |
-                  npm install -g npm
-                  npm -v
-            - name: Get npm cache directory
-              id: npm-cache
-              run: |
-                  echo "::set-output name=dir::$(npm config get cache)"
-            - name: Setup Cache
-              uses: actions/cache@v4.1.2
-              with:
-                  path: |
-                      ${{ steps.npm-cache.outputs.dir }}
-                      node_modules
-                      */*/node_modules
-                  key: ${{ runner.os }}-node${{ matrix.node }}-npm-${{ hashFiles('**/package-lock.json') }}
+                  cache: 'npm'
             - name: Install Deps
               run: |
                   npm ci
@@ -173,22 +128,7 @@ jobs:
               uses: actions/setup-node@v4.1.0
               with:
                   node-version: ${{ matrix.node }}
-            - name: Update NPM
-              run: |
-                  npm install -g npm
-                  npm -v
-            - name: Get npm cache directory
-              id: npm-cache
-              run: |
-                  echo "::set-output name=dir::$(npm config get cache)"
-            - name: Setup Cache
-              uses: actions/cache@v4.1.2
-              with:
-                  path: |
-                      ${{ steps.npm-cache.outputs.dir }}
-                      node_modules
-                      */*/node_modules
-                  key: ${{ runner.os }}-node${{ matrix.node }}-npm-${{ hashFiles('**/package-lock.json') }}
+                  cache: 'npm'
             - name: Install Deps
               run: |
                   npm ci
