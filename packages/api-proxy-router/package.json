@@ -2,7 +2,12 @@
     "name": "@manniwatch/api-proxy-router",
     "version": "0.29.16",
     "description": "An express api router used to proxy requests to the upstream server",
-    "types": "dist/types/index.d.ts",
+    "types": "./dist/index.d.ts",
+    "main": "./dist/index.js",
+    "exports": {
+        "import": "./dist/index.js",
+        "types": "./dist/index.d.ts"
+    },
     "private": false,
     "keywords": [
         "api",
@@ -10,7 +15,7 @@
         "manniwatch"
     ],
     "scripts": {
-        "build": "rollup -c ./rollup.config.mjs && npm run build:types",
+        "build": "tsc -p ./tsconfig.lib.json",
         "build:types": "tsc --project ./tsconfig.json  -d --declarationDir dist/types --declarationMap --emitDeclarationOnly",
         "build:readme": "npx @appnest/readme generate --input ./readme_blueprint.md --config readme_config.json",
         "test": "mocha --config ../../.mocharc.json --timeout 30000",
@@ -27,12 +32,6 @@
         "postclean": "npx rimraf ./dist ./docs ./coverage"
     },
     "type": "module",
-    "exports": {
-        "require": "./dist/cjs/index.cjs",
-        "import": "./dist/esm/index.mjs",
-        "types": "./dist/types/index.d.ts",
-        "default": "./dist/cjs/index.cjs"
-    },
     "homepage": "https://manniwatch.github.io/docs/api-proxy-router/index.html",
     "author": {
         "name": "donmahallem",

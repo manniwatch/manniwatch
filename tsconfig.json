@@ -2,14 +2,16 @@
     "compilerOptions": {
         "target": "ES2022",
         "module": "ESNext",
-        "esModuleInterop": true,
         "sourceMap": true,
+        "esModuleInterop": true,
         "declaration": true,
-        "moduleResolution": "Bundler",
+        "moduleResolution": "bundler",
         "strictNullChecks": true,
         "noUnusedLocals": true,
-        "skipLibCheck": false,
-        "types": []
+        "skipLibCheck": true,
+        "lib": [
+            "ES2022"
+        ]
     },
     "typeAcquisition": {
         "enable": true

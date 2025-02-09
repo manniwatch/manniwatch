@@ -8,9 +8,9 @@ import 'mocha';
 import sinon from 'sinon';
 import type{convertVehicleLocations} from './convert-vehicle-locations.js';
 describe('convert-vehicle-locations.ts', (): void => {
-    describe('convertVehicleLocations(locs)', ():void => {
+    describe('convertVehicleLocations(locs)', (): void => {
         let convertVehicleLocationStub: sinon.SinonStub;
-        let testMethod:typeof convertVehicleLocations;
+        let testMethod: typeof convertVehicleLocations;
         before(async ():  Promise<void> => {
             convertVehicleLocationStub = sinon.stub().named('convertVehicleLocation');
             testMethod = (

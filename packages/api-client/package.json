@@ -3,16 +3,15 @@
     "version": "0.29.16",
     "description": "Node Client to consume the Api",
     "type": "module",
-    "types": "./dist/types/index.d.ts",
+    "types": "./dist/index.d.ts",
+    "main": "./dist/index.js",
     "exports": {
-        "require": "./dist/cjs/index.cjs",
-        "import": "./dist/esm/index.mjs",
-        "types": "./dist/types/index.d.ts",
-        "default": "./dist/cjs/index.cjs"
+        "import": "./dist/index.js",
+        "types": "./dist/index.d.ts"
     },
     "private": false,
     "scripts": {
-        "build": "rollup -c ./rollup.config.mjs && npm run build:types",
+        "build": "tsc -p ./tsconfig.lib.json",
         "build:types": "tsc --project ./tsconfig.json  -d --declarationDir dist/types --declarationMap --emitDeclarationOnly",
         "build:readme": "npx @appnest/readme generate --input ../package_readme_blueprint.md --config readme_config.json",
         "test": "mocha --config ../../.mocharc.json",

@@ -5,11 +5,12 @@
 import { IVehicleLocation } from '@manniwatch/api-types';
 import manniwatch from '@manniwatch/pb-types';
 import { expect } from 'chai';
-import{strict as esmock}from 'esmock';
+import { strict as esmock } from 'esmock';
 import 'mocha';
 import sinon from 'sinon';
-import {convertLocation}from './convert-location.js';
-import type {convertVehicleLocation} from './convert-vehicle-location.js';
+import { convertLocation } from './convert-location.js';
+import type { convertVehicleLocation } from './convert-vehicle-location.js';
+
 const TEST_VEHICLE_LOCATION: IVehicleLocation | any = {
     category: 'bus',
     color: '#FF0000',
@@ -25,13 +26,13 @@ const TEST_VEHICLE_LOCATION: IVehicleLocation | any = {
 describe('convert-vehicle-location.ts', (): void => {
     describe('convertVehicleLocation(loc,timestamp)', (): void => {
         let convertCategoryStub: sinon.SinonStub;
-        let testMethod:typeof convertVehicleLocation;
+        let testMethod: typeof convertVehicleLocation;
         before(async (): Promise<void> => {
             convertCategoryStub = sinon.stub().named('convertVehicleCategory');
             testMethod = (
                 await esmock('./convert-vehicle-location.js', {
                     './convert-location.js': {
-                        convertLocation: convertLocation,
+                        convertLocation,
                     },
                     './convert-vehicle-category.js': {
                         convertVehicleCategory: convertCategoryStub,
