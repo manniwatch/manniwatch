@@ -2,7 +2,7 @@ name: Update staging branch
 on:
     push:
         branches:
-            - master # Support wildcard matching
+            - mastera # Support wildcard matching
 concurrency:
     group: update_staging_branch
     cancel-in-progress: true
