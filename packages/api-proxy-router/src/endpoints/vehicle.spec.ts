@@ -13,7 +13,7 @@ import supertest from 'supertest';
 import { PromiseToResponseStub, SUCCESS_RESPONSE, SUCCESS_RESPONSE_LENGTH } from './common-test.spec.js';
 const testIds: string[] = ['-12883', 'kasd'];
 
-/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-misused-promises */
 describe('endpoints/vehicle.ts', (): void => {
     describe('createVehicleRouter', (): void => {
         let app: express.Express;
@@ -49,7 +49,7 @@ describe('endpoints/vehicle.ts', (): void => {
         });
         testIds.forEach((testId: string): void => {
             describe(`query '/vehicle/${testId}/route'`, (): void => {
-                it('should pass on the provided parameters', (): Promise<void> => {
+                it('should pass on the provided parameters', async () => {
                     getRouteByVehicleIdStub.resolves(SUCCESS_RESPONSE);
                     promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                         source
@@ -58,7 +58,7 @@ describe('endpoints/vehicle.ts', (): void => {
                             })
                             .catch(next);
                     });
-                    return supertest(app)
+                    await supertest(app)
                         .get(`/vehicle/${testId}/route`)
                         .expect('Content-Type', /json/)
                         .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)

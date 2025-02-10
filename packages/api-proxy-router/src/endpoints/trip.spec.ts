@@ -22,7 +22,7 @@ import {
     ValidateRequestStub,
 } from './common-test.spec.js';
 const testIds: string[] = ['-12883', 'kasd'];
-/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-misused-promises */
 describe('endpoints/trip.ts', (): void => {
     describe('createTripRouter', (): void => {
         let app: express.Express;
@@ -68,7 +68,7 @@ describe('endpoints/trip.ts', (): void => {
         });
         testIds.forEach((testId: string): void => {
             describe(`query '/trip/${testId}/route'`, (): void => {
-                it('should pass on the provided parameters', (): Promise<void> => {
+                it('should pass on the provided parameters', async (): Promise<void> => {
                     apiClientStub.getRouteByTripId.resolves(SUCCESS_RESPONSE as IVehiclePathInfo);
                     promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                         source
@@ -106,7 +106,7 @@ describe('endpoints/trip.ts', (): void => {
                 });
                 testIds.forEach((testId: string): void => {
                     const queryUrl = `/trip/${testId}/passages`;
-                    it(`should query '${queryUrl}'`, (): Promise<void> => {
+                    it(`should query '${queryUrl}'`, async (): Promise<void> => {
                         apiClientStub.getTripPassages.resolves(SUCCESS_RESPONSE as ITripPassages);
                         promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                             source
@@ -127,7 +127,7 @@ describe('endpoints/trip.ts', (): void => {
                     });
                     ['departure', 'arrival'].forEach((testMode: string): void => {
                         const queryUrlWithParam = `${queryUrl}?mode=${testMode}`;
-                        it(`should query '${queryUrlWithParam}'`, (): Promise<void> => {
+                        it(`should query '${queryUrlWithParam}'`, async (): Promise<void> => {
                             apiClientStub.getTripPassages.resolves(SUCCESS_RESPONSE as ITripPassages);
                             promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                                 source
@@ -166,7 +166,7 @@ describe('endpoints/trip.ts', (): void => {
                 });
                 testIds.forEach((testId: string): void => {
                     const queryUrl = `/trip/${testId}/passages`;
-                    it(`should query '${queryUrl}'`, (): Promise<void> => {
+                    it(`should query '${queryUrl}'`, async (): Promise<void> => {
                         apiClientStub.getTripPassages.resolves(SUCCESS_RESPONSE as ITripPassages);
                         promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                             source

@@ -13,6 +13,7 @@ import supertest from 'supertest';
 import { SUCCESS_RESPONSE, SUCCESS_RESPONSE_LENGTH } from './common-test.spec.js';
 import { createSettingsRouter } from './settings.js';
 
+/* eslint-disable @typescript-eslint/no-misused-promises */
 describe('endpoints/settings.ts', (): void => {
     describe('createSettingsRouter', (): void => {
         let app: express.Express;
@@ -44,10 +45,10 @@ describe('endpoints/settings.ts', (): void => {
             fakeTimer.restore();
         });
         describe(`query ''`, (): void => {
-            it('should proxy the request and cache the response', async (): Promise<void> => {
+            it('should proxy the request and cache the response', (): Promise<void> => {
                 getSettingsStub.resolves(SUCCESS_RESPONSE);
                 fakeCache.get.returns(undefined);
-                await supertest(app)
+                return supertest(app)
                     .get('/settings')
                     .expect('Content-Type', /json/)
                     .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
@@ -67,7 +68,7 @@ describe('endpoints/settings.ts', (): void => {
                     etag: 'testtag',
                     lastModified: testLastModified,
                 });
-                await supertest(app)
+                return supertest(app)
                     .get('/settings')
                     .expect('Content-Type', /json/)
                     .expect('Content-Length', SUCCESS_RESPONSE_LENGTH)
