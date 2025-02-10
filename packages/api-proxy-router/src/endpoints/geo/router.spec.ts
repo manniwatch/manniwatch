@@ -35,7 +35,7 @@ const validCoordinatesNumbers: { [key in keyof IBoundingBox]: number }[] = valid
 const positionTypes: PositionType[] = ['RAW', 'CORRECTED'];
 const lastUpdates: string[] = ['22929299292', '2938'];
 type TestIBoundingBox = { [key in keyof IBoundingBox]: string };
-/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-misused-promises */
 describe('endpoints/geo/router.ts', (): void => {
     describe('createGeoRouter()', (): void => {
         let app: express.Express;
@@ -85,8 +85,8 @@ describe('endpoints/geo/router.ts', (): void => {
                 res.status(404);
                 res.json(NOT_FOUND_RESPONSE);
             });
-            app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction): void => {
-                routeErrorStub(err, req, res, next);
+            app.use(async (err: any, req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
+                await routeErrorStub(err, req, res, next);
             });
             routeErrorStub.callsFake((err: any, req: express.Request, res: express.Response): void => {
                 res.status(501).json(NOT_FOUND_RESPONSE);
@@ -102,7 +102,7 @@ describe('endpoints/geo/router.ts', (): void => {
         after((): void => {
             sandbox.restore();
         });
-        it('should use the 404 handler', (): Promise<void> => {
+        it('should use the 404 handler', async (): Promise<void> => {
             return supertest(app)
                 .get('/unknown/route')
                 .expect('Content-Type', /json/)
@@ -127,7 +127,7 @@ describe('endpoints/geo/router.ts', (): void => {
                     const basePath: string =
                         `/stopPoints?bottom=${testCoordinate.bottom}&top=${testCoordinate.top}` +
                         `&left=${testCoordinate.left}&right=${testCoordinate.right}`;
-                    it(`should query the stops with '${basePath}'`, (): Promise<void> => {
+                    it(`should query the stops with '${basePath}'`, async (): Promise<void> => {
                         stubClient.getStopPointLocations.returns(delayPromise(SUCCESS_RESPONSE) as Promise<IStopPointLocations>);
                         return supertest(app)
                             .get(basePath)
@@ -158,7 +158,7 @@ describe('endpoints/geo/router.ts', (): void => {
                     const basePath: string =
                         `/stopPoints?bottom=${testCoordinate.bottom}&top=${testCoordinate.top}` +
                         `&left=${testCoordinate.left}&right=${testCoordinate.right}`;
-                    it(`should reject '${basePath}'`, (): Promise<void> => {
+                    it(`should reject '${basePath}'`, async (): Promise<void> => {
                         stubClient.getStopLocations.returns(delayPromise(SUCCESS_RESPONSE) as Promise<IStopLocations>);
                         return supertest(app)
                             .get(basePath)
@@ -191,7 +191,7 @@ describe('endpoints/geo/router.ts', (): void => {
                     const basePath: string =
                         `/stops?bottom=${testCoordinate.bottom}&top=${testCoordinate.top}` +
                         `&left=${testCoordinate.left}&right=${testCoordinate.right}`;
-                    it(`should query the stops with '${basePath}'`, (): Promise<void> => {
+                    it(`should query the stops with '${basePath}'`, async (): Promise<void> => {
                         stubClient.getStopLocations.returns(delayPromise(SUCCESS_RESPONSE) as Promise<IStopLocations>);
                         return supertest(app)
                             .get(basePath)
@@ -219,7 +219,7 @@ describe('endpoints/geo/router.ts', (): void => {
                     const basePath: string =
                         `/stops?bottom=${testCoordinate.bottom}&top=${testCoordinate.top}` +
                         `&left=${testCoordinate.left}&right=${testCoordinate.right}`;
-                    it(`should reject '${basePath}'`, (): Promise<void> => {
+                    it(`should reject '${basePath}'`, async (): Promise<void> => {
                         stubClient.getStopLocations.returns(delayPromise(SUCCESS_RESPONSE) as Promise<IStopLocations>);
                         return supertest(app)
                             .get(basePath)
@@ -257,7 +257,7 @@ describe('endpoints/geo/router.ts', (): void => {
                         if (testLastUpdate !== undefined) {
                             basePath += `${testPositionType !== undefined ? '&' : '?'}lastUpdate=${testLastUpdate}`;
                         }
-                        it(`should query the vehicles with '${basePath}'`, (): Promise<void> => {
+                        it(`should query the vehicles with '${basePath}'`, async (): Promise<void> => {
                             stubClient.getVehicleLocations.returns(delayPromise(SUCCESS_RESPONSE) as Promise<IVehicleLocationList>);
                             return supertest(app)
                                 .get(basePath)
@@ -299,7 +299,7 @@ describe('endpoints/geo/router.ts', (): void => {
                         if (testLastUpdate !== undefined) {
                             basePath += `${testPositionType !== undefined ? '&' : '?'}lastUpdate=${testLastUpdate}`;
                         }
-                        it(`should query the vehicles with '${basePath}'`, (): Promise<void> => {
+                        it(`should query the vehicles with '${basePath}'`, async (): Promise<void> => {
                             stubClient.getVehicleLocations.returns(delayPromise(SUCCESS_RESPONSE) as Promise<IVehicleLocationList>);
                             return supertest(app)
                                 .get(basePath)

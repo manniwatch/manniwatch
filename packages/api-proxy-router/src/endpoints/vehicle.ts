@@ -17,11 +17,11 @@ export const createVehicleRouter: (apiClient: ManniWatchApiClient) => express.Ro
      * @api {get} /vehicle/:id/route Request Vehicle Route
      * @apiName GetVehicleRoute
      * @apiGroup Vehicle
-     * @apiParam {string} id Vehicle id
+     * @apiParam {string} id Vehicle id ([a-z0-9A-Z-+]+)
      * @apiVersion 1.5.0
      */
     // eslint-disable-next-line no-useless-escape
-    router.get('/:id([a-z0-9A-Z-+]+)/route', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
+    router.get('/:id/route', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
         promiseToResponse(apiClient.getRouteByVehicleId(req.params.id), res, next);
     });
     return router;

@@ -24,7 +24,7 @@ import {
 import { ValidateRequestStub } from './common-test.spec.js';
 const testIds: string[] = ['-12883', 'kasd'];
 
-/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-misused-promises */
 describe('endpoints/stop-point.ts', (): void => {
     describe('createStopPointRouter', (): void => {
         let app: express.Express;
@@ -84,7 +84,7 @@ describe('endpoints/stop-point.ts', (): void => {
             });
             testIds.forEach((testId: string): void => {
                 const queryUrl = `/stopPoint/${testId}/info`;
-                it(`should query '${queryUrl}'`, (): Promise<void> => {
+                it(`should query '${queryUrl}'`, async (): Promise<void> => {
                     getStopPointInfoStub.resolves(SUCCESS_RESPONSE);
                     promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                         source
@@ -124,7 +124,7 @@ describe('endpoints/stop-point.ts', (): void => {
                 });
                 testIds.forEach((testId: string): void => {
                     const queryUrl = `/stopPoint/${testId}/passages`;
-                    it(`should query '${queryUrl}'`, (): Promise<void> => {
+                    it(`should query '${queryUrl}'`, async (): Promise<void> => {
                         getStopPointPassagesStub.resolves(SUCCESS_RESPONSE);
                         promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                             source
@@ -212,7 +212,7 @@ describe('endpoints/stop-point.ts', (): void => {
                 });
                 testIds.forEach((testId: string): void => {
                     const queryUrl = `/stopPoint/${testId}/passages`;
-                    it(`should query '${queryUrl}'`, (): Promise<void> => {
+                    it(`should query '${queryUrl}'`, async (): Promise<void> => {
                         getStopPointPassagesStub.resolves(SUCCESS_RESPONSE);
                         promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                             source
@@ -221,7 +221,7 @@ describe('endpoints/stop-point.ts', (): void => {
                                 })
                                 .catch(next);
                         });
-                        return supertest(app)
+                        await supertest(app)
                             .get(queryUrl)
                             .expect('Content-Type', /json/)
                             .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)

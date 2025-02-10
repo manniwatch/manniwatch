@@ -27,7 +27,7 @@ import type { createStopRouter } from './stop.js';
 const testIds: string[] = ['-12883', 'kasd'];
 type GetStopPassagesStub = MethodStub<ManniWatchApiClient['getStopPassages']>;
 type GetStopInfoStub = MethodStub<ManniWatchApiClient['getStopInfo']>;
-/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-misused-promises */
 describe('endpoints/stop.ts', (): void => {
     describe('createStopRouter', (): void => {
         let app: express.Express;
@@ -87,7 +87,7 @@ describe('endpoints/stop.ts', (): void => {
             });
             testIds.forEach((testId: string): void => {
                 const queryUrl = `/stop/${testId}/info`;
-                it(`should query '${queryUrl}'`, (): Promise<void> => {
+                it(`should query '${queryUrl}'`, async (): Promise<void> => {
                     getStopInfoStub.resolves(SUCCESS_RESPONSE as IStopInfo);
                     promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
                         source

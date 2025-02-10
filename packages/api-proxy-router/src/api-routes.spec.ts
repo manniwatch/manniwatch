@@ -13,7 +13,7 @@ import supertest from 'supertest';
 import { createTestErrorRequestHandler, ErrorSpy, NOT_FOUND_RESPONSE, NOT_FOUND_RESPONSE_LENGTH } from './endpoints/common-test.spec.js';
 import * as endpoints from './endpoints/index.js';
 
-/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-misused-promises */
 interface ITestEndpoint {
     endpointName: string;
     path: string;

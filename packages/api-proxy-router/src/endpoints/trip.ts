@@ -25,11 +25,11 @@ export const createTripRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
      * @api {get} /trip/:id/route Request Vehicle Route
      * @apiName GetTripRoute
      * @apiGroup Trip
-     * @apiParam {string} id Vehicle id
+     * @apiParam {string} id Vehicle id ([a-z0-9A-Z-+]+)
      * @apiVersion 0.1.0
      */
     // eslint-disable-next-line no-useless-escape
-    router.get('/:id([a-z0-9A-Z-+]+)/route', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
+    router.get('/:id/route', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
         promiseToResponse(apiClient.getRouteByTripId(req.params.id), res, next);
     });
 
@@ -37,13 +37,13 @@ export const createTripRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
      * @api {get} /trip/:id/passages Request Trip Passages
      * @apiName GetTripPassages
      * @apiGroup Trip
-     * @apiParam {string} id Vehicle id
+     * @apiParam {string} id Vehicle id ([a-z0-9A-Z-+]+)
      * @apiQuery {string="arrival","departure"} [departureMode="departure"] Default departure mode
      * @apiVersion 0.5.0
      */
     // eslint-disable-next-line no-useless-escape
     router.get(
-        '/:id([a-z0-9A-Z-+]+)/passages',
+        '/:id/passages',
         validateRequest('query', TRIP_PASSAGES_SCHEMA, ajvInstance),
         (req: express.Request, res: express.Response, next: express.NextFunction): void => {
             const departureMode: StopMode = (req.query.mode as StopMode) || 'departure';

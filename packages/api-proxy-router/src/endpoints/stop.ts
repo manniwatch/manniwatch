@@ -24,7 +24,7 @@ export const createStopRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
      * @api {get} /stop/:id/passages Request Stop Passages
      * @apiName GetStopPassages
      * @apiGroup Stop
-     * @apiParam (Path Parameters) {string} id Stop id
+     * @apiParam (Path Parameters) {string} id Stop id ([a-z0-9A-Z-+]+)
      * @apiQuery {string="arrival","departure"} mode="departure" Departure Mode to Query
      * @apiQuery {string} startTime Start time to query
      * @apiQuery {string} timeFrame Time frame to query
@@ -32,7 +32,7 @@ export const createStopRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
      */
     // eslint-disable-next-line no-useless-escape
     router.get(
-        '/:id([a-z0-9A-Z-+]+)/passages',
+        '/:id/passages',
         validateRequest('query', STOP_PASSAGES_SCHEMA),
         (req: express.Request, res: express.Response, next: express.NextFunction): void => {
             const mode: StopMode = (req.query.mode as StopMode) || undefined;
@@ -49,11 +49,11 @@ export const createStopRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
      * @api {get} /stop/:id/info Request Stop Info
      * @apiName GetStopInfo
      * @apiGroup Stop
-     * @apiParam (Path Parameters) {String} id Stop id
+     * @apiParam (Path Parameters) {String} id Stop id ([a-z0-9A-Z-+]+)
      * @apiVersion 0.1.0
      */
     // eslint-disable-next-line no-useless-escape
-    router.get('/:id([a-z0-9A-Z-+]+)/info', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
+    router.get('/:id/info', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
         promiseToResponse(apiClient.getStopInfo(req.params.id), res, next);
     });
     return router;
