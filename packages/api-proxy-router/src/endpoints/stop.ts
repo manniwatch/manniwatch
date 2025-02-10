@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
 
-import { promiseToResponse } from '@donmahallem/turbo';
 import { validateRequest } from '@donmahallem/turbo-validate-request';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { StopMode } from '@manniwatch/api-types';
@@ -34,7 +33,7 @@ export const createStopRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
     router.get(
         '/:id/passages',
         validateRequest('query', STOP_PASSAGES_SCHEMA),
-        (req: express.Request, res: express.Response, next: express.NextFunction): void => {
+        async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
             const mode: StopMode = (req.query.mode as StopMode) || undefined;
             // tslint:disable-next-line:triple-equals
             const startTime: number | undefined =
@@ -42,7 +41,7 @@ export const createStopRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
             // tslint:disable-next-line:triple-equals
             const timeFrame: number | undefined =
                 req.query.timeFrame == undefined ? undefined : parseInt(req.query.timeFrame as string, 10);
-            promiseToResponse(apiClient.getStopPassages(req.params.id, mode, startTime, timeFrame), res, next);
+            res.json(await apiClient.getStopPassages(req.params.id, mode, startTime, timeFrame));
         }
     );
     /**
@@ -53,8 +52,8 @@ export const createStopRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
      * @apiVersion 0.1.0
      */
     // eslint-disable-next-line no-useless-escape
-    router.get('/:id/info', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
-        promiseToResponse(apiClient.getStopInfo(req.params.id), res, next);
+    router.get('/:id/info', async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
+        res.json(await apiClient.getStopInfo(req.params.id));
     });
     return router;
 };
