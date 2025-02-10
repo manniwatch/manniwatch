@@ -68,7 +68,6 @@
     },
     "devDependencies": {
         "@types/express": "5.0.0",
-        "@types/helmet": "4.0.0",
         "@types/supertest": "6.0.2",
         "apidoc": "1.2.0",
         "axios": "1.7.9",
