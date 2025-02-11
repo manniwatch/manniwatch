@@ -20,7 +20,7 @@ export const createVehicleRouter: (apiClient: ManniWatchApiClient) => express.Ro
      * @apiVersion 1.5.0
      */
     // eslint-disable-next-line no-useless-escape
-    router.get('/:id/route', async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
+    router.get('/:id/route', async (req: express.Request, res: express.Response): Promise<void> => {
         res.json(await apiClient.getRouteByVehicleId(req.params.id));
     });
     return router;

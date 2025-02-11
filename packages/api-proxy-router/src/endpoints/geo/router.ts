@@ -25,20 +25,16 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
      * @apiQuery {number} top Top Geo Border
      * @apiVersion 0.1.0
      */
-    router.get(
-        '/stops',
-        validateRequest('query', GEO_FENCE_SCHEMA),
-        async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
-            res.json(
-                await apiClient.getStopLocations({
-                    bottom: parseInt(req.query.bottom as string, 10),
-                    left: parseInt(req.query.left as string, 10),
-                    right: parseInt(req.query.right as string, 10),
-                    top: parseInt(req.query.top as string, 10),
-                })
-            );
-        }
-    );
+    router.get('/stops', validateRequest('query', GEO_FENCE_SCHEMA), async (req: express.Request, res: express.Response): Promise<void> => {
+        res.json(
+            await apiClient.getStopLocations({
+                bottom: parseInt(req.query.bottom as string, 10),
+                left: parseInt(req.query.left as string, 10),
+                right: parseInt(req.query.right as string, 10),
+                top: parseInt(req.query.top as string, 10),
+            })
+        );
+    });
     /**
      * @api {get} /geo/stopPoints Request stop locations
      * @apiName StopPointLocations
@@ -52,7 +48,7 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
     router.get(
         '/stopPoints',
         validateRequest('query', GEO_FENCE_SCHEMA),
-        async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
+        async (req: express.Request, res: express.Response): Promise<void> => {
             res.json(
                 await apiClient.getStopPointLocations({
                     bottom: parseInt(req.query.bottom as string, 10),
@@ -74,7 +70,7 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
     router.get(
         '/vehicles',
         validateRequest('query', GET_VEHICLE_LOCATION_SCHEMA),
-        async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
+        async (req: express.Request, res: express.Response): Promise<void> => {
             // tslint:disable-next-line:triple-equals
             const positionType: PositionType = (req.query.positionType as PositionType) || 'RAW';
             const lastUpdate: number | undefined = req.query.lastUpdate ? parseInt(req.query.lastUpdate as string, 10) : undefined;

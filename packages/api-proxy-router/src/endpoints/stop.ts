@@ -33,7 +33,7 @@ export const createStopRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
     router.get(
         '/:id/passages',
         validateRequest('query', STOP_PASSAGES_SCHEMA),
-        async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
+        async (req: express.Request, res: express.Response): Promise<void> => {
             const mode: StopMode = (req.query.mode as StopMode) || undefined;
             // tslint:disable-next-line:triple-equals
             const startTime: number | undefined =
@@ -52,7 +52,7 @@ export const createStopRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
      * @apiVersion 0.1.0
      */
     // eslint-disable-next-line no-useless-escape
-    router.get('/:id/info', async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
+    router.get('/:id/info', async (req: express.Request, res: express.Response): Promise<void> => {
         res.json(await apiClient.getStopInfo(req.params.id));
     });
     return router;

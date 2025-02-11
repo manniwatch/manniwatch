@@ -28,7 +28,7 @@ export const createTripRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
      * @apiVersion 0.1.0
      */
     // eslint-disable-next-line no-useless-escape
-    router.get('/:id/route', async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
+    router.get('/:id/route', async (req: express.Request, res: express.Response): Promise<void> => {
         res.json(await apiClient.getRouteByTripId(req.params.id));
     });
 
@@ -44,7 +44,7 @@ export const createTripRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
     router.get(
         '/:id/passages',
         validateRequest('query', TRIP_PASSAGES_SCHEMA, ajvInstance),
-        async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
+        async (req: express.Request, res: express.Response): Promise<void> => {
             const departureMode: StopMode = (req.query.mode as StopMode) || 'departure';
             res.json(await apiClient.getTripPassages(req.params.id, departureMode));
         }

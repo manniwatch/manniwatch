@@ -33,7 +33,7 @@ export const createSettingsRouter: (apiClient: ManniWatchApiClient, cache: NodeC
      * @apiGroup Settings
      * @apiVersion 0.1.0
      */
-    router.get('', async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
+    router.get('', async (req: express.Request, res: express.Response): Promise<void> => {
         await settingsMutex
             .runExclusive(async (): Promise<ISettingsEntry> => {
                 const cacheContent: ISettingsEntry | undefined = cache.get(CACHE_KEY_SETTINGS);
