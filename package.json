@@ -23,7 +23,7 @@
         "coveralls": "3.1.1",
         "cz-conventional-changelog": "3.3.0",
         "eslint": "8.57.1",
-        "esmock": "2.6.9",
+        "esmock": "2.7.0",
         "fs-extra": "11.3.0",
         "lerna": "8.1.9",
         "mocha": "11.1.0",
