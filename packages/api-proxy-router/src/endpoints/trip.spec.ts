@@ -16,7 +16,6 @@ import {
     ErrorSpy,
     NOT_FOUND_RESPONSE,
     NOT_FOUND_RESPONSE_LENGTH,
-    PromiseToResponseStub,
     SUCCESS_RESPONSE,
     SUCCESS_RESPONSE_LENGTH,
     ValidateRequestStub,
@@ -26,7 +25,6 @@ const testIds: string[] = ['-12883', 'kasd'];
 describe('endpoints/trip.ts', (): void => {
     describe('createTripRouter', (): void => {
         let app: express.Express;
-        let promiseStub: PromiseToResponseStub;
         let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
         let validateStub: ValidateRequestStub;
         let validateStubHandler: sinon.SinonStub;
@@ -35,16 +33,12 @@ describe('endpoints/trip.ts', (): void => {
         let createTripRouter: (apiClient: ManniWatchApiClient) => express.Router;
         before(async (): Promise<void> => {
             sandbox = sinon.createSandbox();
-            promiseStub = sandbox.stub();
             validateStub = sandbox.stub();
             errorSpy = sandbox.spy() as ErrorSpy;
             apiClientStub = sandbox.createStubInstance(ManniWatchApiClient);
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
             createTripRouter = (
                 await esmock('./trip.js', {
-                    '@donmahallem/turbo': {
-                        promiseToResponse: promiseStub,
-                    },
                     '@donmahallem/turbo-validate-request': {
                         validateRequest: validateStub,
                     },
@@ -70,13 +64,6 @@ describe('endpoints/trip.ts', (): void => {
             describe(`query '/trip/${testId}/route'`, (): void => {
                 it('should pass on the provided parameters', async (): Promise<void> => {
                     apiClientStub.getRouteByTripId.resolves(SUCCESS_RESPONSE as IVehiclePathInfo);
-                    promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
-                        source
-                            .then((responseObject: any): void => {
-                                res.json(responseObject);
-                            })
-                            .catch(next);
-                    });
                     return supertest(app)
                         .get(`/trip/${testId}/route`)
                         .expect('Content-Type', /json/)
@@ -108,13 +95,6 @@ describe('endpoints/trip.ts', (): void => {
                     const queryUrl = `/trip/${testId}/passages`;
                     it(`should query '${queryUrl}'`, async (): Promise<void> => {
                         apiClientStub.getTripPassages.resolves(SUCCESS_RESPONSE as ITripPassages);
-                        promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
-                            source
-                                .then((responseObject: any): void => {
-                                    res.json(responseObject);
-                                })
-                                .catch(next);
-                        });
                         return supertest(app)
                             .get(queryUrl)
                             .expect('Content-Type', /json/)
@@ -129,13 +109,6 @@ describe('endpoints/trip.ts', (): void => {
                         const queryUrlWithParam = `${queryUrl}?mode=${testMode}`;
                         it(`should query '${queryUrlWithParam}'`, async (): Promise<void> => {
                             apiClientStub.getTripPassages.resolves(SUCCESS_RESPONSE as ITripPassages);
-                            promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
-                                source
-                                    .then((responseObject: any): void => {
-                                        res.json(responseObject);
-                                    })
-                                    .catch(next);
-                            });
                             return supertest(app)
                                 .get(queryUrlWithParam)
                                 .expect('Content-Type', /json/)
@@ -168,13 +141,6 @@ describe('endpoints/trip.ts', (): void => {
                     const queryUrl = `/trip/${testId}/passages`;
                     it(`should query '${queryUrl}'`, async (): Promise<void> => {
                         apiClientStub.getTripPassages.resolves(SUCCESS_RESPONSE as ITripPassages);
-                        promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
-                            source
-                                .then((responseObject: any): void => {
-                                    res.json(responseObject);
-                                })
-                                .catch(next);
-                        });
                         return supertest(app)
                             .get(queryUrl)
                             .expect('Content-Type', /json/)

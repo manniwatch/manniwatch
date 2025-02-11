@@ -10,31 +10,23 @@ import express from 'express';
 import 'mocha';
 import sinon from 'sinon';
 import supertest from 'supertest';
-import { PromiseToResponseStub, SUCCESS_RESPONSE, SUCCESS_RESPONSE_LENGTH } from './common-test.spec.js';
+import { SUCCESS_RESPONSE, SUCCESS_RESPONSE_LENGTH } from './common-test.spec.js';
 const testIds: string[] = ['-12883', 'kasd'];
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-misused-promises */
 describe('endpoints/vehicle.ts', (): void => {
     describe('createVehicleRouter', (): void => {
         let app: express.Express;
-        let promiseStub: PromiseToResponseStub;
         let getRouteByVehicleIdStub: sinon.SinonStub<Parameters<ManniWatchApiClient['getRouteByVehicleId']>>;
         let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
         let createVehicleRouter: (apiClient: ManniWatchApiClient) => express.Router;
         before(async (): Promise<void> => {
-            promiseStub = sinon.stub().named('promiseToResponse') as PromiseToResponseStub;
             getRouteByVehicleIdStub = sinon.stub();
             apiClientStub = sinon.createStubInstance(ManniWatchApiClient, {
                 getRouteByVehicleId: getRouteByVehicleIdStub,
             });
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-            createVehicleRouter = (
-                await esmock('./vehicle.js', {
-                    '@donmahallem/turbo': {
-                        promiseToResponse: promiseStub,
-                    },
-                })
-            ).createVehicleRouter;
+            createVehicleRouter = (await esmock('./vehicle.js')).createVehicleRouter;
         });
 
         beforeEach((): void => {
@@ -43,21 +35,12 @@ describe('endpoints/vehicle.ts', (): void => {
             app.use('/vehicle', route);
         });
         afterEach('test and reset promise stub', (): void => {
-            expect(promiseStub.callCount).to.equal(1);
-            promiseStub.resetHistory();
             getRouteByVehicleIdStub.resetHistory();
         });
         testIds.forEach((testId: string): void => {
             describe(`query '/vehicle/${testId}/route'`, (): void => {
                 it('should pass on the provided parameters', async () => {
                     getRouteByVehicleIdStub.resolves(SUCCESS_RESPONSE);
-                    promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
-                        source
-                            .then((responseObject: any): void => {
-                                res.json(responseObject);
-                            })
-                            .catch(next);
-                    });
                     await supertest(app)
                         .get(`/vehicle/${testId}/route`)
                         .expect('Content-Type', /json/)

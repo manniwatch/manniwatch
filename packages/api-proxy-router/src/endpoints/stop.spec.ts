@@ -19,7 +19,6 @@ import {
     SUCCESS_RESPONSE,
     SUCCESS_RESPONSE_LENGTH,
     ErrorSpy,
-    PromiseToResponseStub,
     ValidateRequestStub,
     MethodStub,
 } from './common-test.spec.js';
@@ -31,7 +30,6 @@ type GetStopInfoStub = MethodStub<ManniWatchApiClient['getStopInfo']>;
 describe('endpoints/stop.ts', (): void => {
     describe('createStopRouter', (): void => {
         let app: express.Express;
-        let promiseStub: PromiseToResponseStub;
         let getStopInfoStub: GetStopInfoStub;
         let getStopPassagesStub: GetStopPassagesStub;
         let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
@@ -41,7 +39,6 @@ describe('endpoints/stop.ts', (): void => {
         let createStopRouterMethod: typeof createStopRouter;
         before(async (): Promise<void> => {
             validateStub = sinon.stub().named('validateRequest') as ValidateRequestStub;
-            promiseStub = sinon.stub().named('promiseToResponse') as PromiseToResponseStub;
             getStopInfoStub = sinon.stub().named('ManniWatchApiClient.getStopInfo') as GetStopInfoStub;
             getStopPassagesStub = sinon.stub().named('ManniWatchApiClient.getStopPassages') as GetStopPassagesStub;
             validateStubHandler = sinon.stub().named('validateRequestStub');
@@ -54,9 +51,6 @@ describe('endpoints/stop.ts', (): void => {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
             createStopRouterMethod = (
                 await esmock('./stop.js', {
-                    '@donmahallem/turbo': {
-                        promiseToResponse: promiseStub,
-                    },
                     '@donmahallem/turbo-validate-request': {
                         validateRequest: validateStub,
                     },
@@ -71,7 +65,6 @@ describe('endpoints/stop.ts', (): void => {
         });
 
         afterEach('test and reset promise stub', (): void => {
-            promiseStub.resetHistory();
             getStopInfoStub.reset();
             getStopPassagesStub.reset();
             validateStubHandler.reset();
@@ -80,7 +73,6 @@ describe('endpoints/stop.ts', (): void => {
         });
         describe(`query '/stop/:id/info'`, (): void => {
             afterEach((): void => {
-                sinon.assert.calledOnce(promiseStub);
                 sinon.assert.notCalled(errorSpy);
                 sinon.assert.notCalled(validateStubHandler);
                 sinon.assert.notCalled(apiClientStub.getStopPassages);
@@ -89,13 +81,6 @@ describe('endpoints/stop.ts', (): void => {
                 const queryUrl = `/stop/${testId}/info`;
                 it(`should query '${queryUrl}'`, async (): Promise<void> => {
                     getStopInfoStub.resolves(SUCCESS_RESPONSE as IStopInfo);
-                    promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
-                        source
-                            .then((responseObject: any): void => {
-                                res.json(responseObject);
-                            })
-                            .catch(next);
-                    });
                     return supertest(app)
                         .get(queryUrl)
                         .expect('Content-Type', /json/)
@@ -128,13 +113,6 @@ describe('endpoints/stop.ts', (): void => {
                     const queryUrl = `/stop/${testId}/passages`;
                     it(`should query '${queryUrl}'`, async (): Promise<void> => {
                         getStopPassagesStub.resolves(SUCCESS_RESPONSE as IStopPassage);
-                        promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
-                            source
-                                .then((responseObject: any): void => {
-                                    res.json(responseObject);
-                                })
-                                .catch(next);
-                        });
                         return supertest(app)
                             .get(queryUrl)
                             .expect('Content-Type', /json/)
@@ -159,15 +137,6 @@ describe('endpoints/stop.ts', (): void => {
                                 }
                                 it(`should query '${queryPath}'`, async (): Promise<void> => {
                                     getStopPassagesStub.resolves(SUCCESS_RESPONSE as IStopPassage);
-                                    promiseStub.callsFake(
-                                        (source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
-                                            source
-                                                .then((responseObject: any): void => {
-                                                    res.json(responseObject);
-                                                })
-                                                .catch(next);
-                                        }
-                                    );
                                     return supertest(app)
                                         .get(queryPath)
                                         .expect('Content-Type', /json/)
@@ -204,13 +173,6 @@ describe('endpoints/stop.ts', (): void => {
                     const queryUrl = `/stop/${testId}/passages`;
                     it(`should query '${queryUrl}'`, async (): Promise<supertest.Test> => {
                         getStopPassagesStub.resolves(SUCCESS_RESPONSE as IStopPassage);
-                        promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
-                            source
-                                .then((responseObject: any): void => {
-                                    res.json(responseObject);
-                                })
-                                .catch(next);
-                        });
                         return supertest(app)
                             .get(queryUrl)
                             .expect(200, NOT_FOUND_RESPONSE)
