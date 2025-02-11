@@ -19,7 +19,6 @@ import {
     SUCCESS_RESPONSE,
     SUCCESS_RESPONSE_LENGTH,
     ErrorSpy,
-    PromiseToResponseStub,
 } from './common-test.spec.js';
 import { ValidateRequestStub } from './common-test.spec.js';
 const testIds: string[] = ['-12883', 'kasd'];
@@ -28,7 +27,6 @@ const testIds: string[] = ['-12883', 'kasd'];
 describe('endpoints/stop-point.ts', (): void => {
     describe('createStopPointRouter', (): void => {
         let app: express.Express;
-        let promiseStub: PromiseToResponseStub;
         let getStopPointInfoStub: sinon.SinonStub<Parameters<ManniWatchApiClient['getStopPointInfo']>>;
         let getStopPointPassagesStub: sinon.SinonStub<Parameters<ManniWatchApiClient['getStopPointPassages']>>;
         let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
@@ -38,7 +36,6 @@ describe('endpoints/stop-point.ts', (): void => {
         let createStopPointRouter: (apiClient: ManniWatchApiClient) => express.Router;
         before(async (): Promise<void> => {
             validateStub = sinon.stub().named('validateRequest') as ValidateRequestStub;
-            promiseStub = sinon.stub().named('promiseToResponse') as PromiseToResponseStub;
             getStopPointInfoStub = sinon.stub();
             getStopPointPassagesStub = sinon.stub();
             validateStubHandler = sinon.stub();
@@ -51,9 +48,6 @@ describe('endpoints/stop-point.ts', (): void => {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
             createStopPointRouter = (
                 await esmock('./stop-point.js', {
-                    '@donmahallem/turbo': {
-                        promiseToResponse: promiseStub,
-                    },
                     '@donmahallem/turbo-validate-request': {
                         validateRequest: validateStub,
                     },
@@ -70,7 +64,6 @@ describe('endpoints/stop-point.ts', (): void => {
         afterEach('test and reset promise stub', (): void => {
             expect(validateStub.callCount).to.equal(1, 'validateRequest should be called once');
             expect(validateStub.args[0]).to.deep.equal(['query', STOP_PASSAGES_SCHEMA], 'should be called with correct schema');
-            promiseStub.resetHistory();
             getStopPointInfoStub.reset();
             getStopPointPassagesStub.reset();
             validateStubHandler.reset();
@@ -79,20 +72,12 @@ describe('endpoints/stop-point.ts', (): void => {
         });
         describe(`query '/stopPoint/:id/route'`, (): void => {
             afterEach((): void => {
-                expect(promiseStub.callCount).to.equal(1);
                 expect(errorSpy.callCount).to.equal(0, 'No route error should occur');
             });
             testIds.forEach((testId: string): void => {
                 const queryUrl = `/stopPoint/${testId}/info`;
                 it(`should query '${queryUrl}'`, async (): Promise<void> => {
                     getStopPointInfoStub.resolves(SUCCESS_RESPONSE);
-                    promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
-                        source
-                            .then((responseObject: any): void => {
-                                res.json(responseObject);
-                            })
-                            .catch(next);
-                    });
                     return supertest(app)
                         .get(queryUrl)
                         .expect('Content-Type', /json/)
@@ -126,13 +111,6 @@ describe('endpoints/stop-point.ts', (): void => {
                     const queryUrl = `/stopPoint/${testId}/passages`;
                     it(`should query '${queryUrl}'`, async (): Promise<void> => {
                         getStopPointPassagesStub.resolves(SUCCESS_RESPONSE);
-                        promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
-                            source
-                                .then((responseObject: any): void => {
-                                    res.json(responseObject);
-                                })
-                                .catch(next);
-                        });
                         return supertest(app)
                             .get(queryUrl)
                             .expect('Content-Type', /json/)
@@ -166,15 +144,6 @@ describe('endpoints/stop-point.ts', (): void => {
                                 }
                                 it(`should query '${queryPath}'`, async (): Promise<void> => {
                                     getStopPointPassagesStub.resolves(SUCCESS_RESPONSE);
-                                    promiseStub.callsFake(
-                                        (source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
-                                            source
-                                                .then((responseObject: any): void => {
-                                                    res.json(responseObject);
-                                                })
-                                                .catch(next);
-                                        }
-                                    );
                                     return supertest(app)
                                         .get(queryPath)
                                         .expect('Content-Type', /json/)
@@ -214,13 +183,6 @@ describe('endpoints/stop-point.ts', (): void => {
                     const queryUrl = `/stopPoint/${testId}/passages`;
                     it(`should query '${queryUrl}'`, async (): Promise<void> => {
                         getStopPointPassagesStub.resolves(SUCCESS_RESPONSE);
-                        promiseStub.callsFake((source: Promise<any>, res: express.Response, next: express.NextFunction): void => {
-                            source
-                                .then((responseObject: any): void => {
-                                    res.json(responseObject);
-                                })
-                                .catch(next);
-                        });
                         await supertest(app)
                             .get(queryUrl)
                             .expect('Content-Type', /json/)

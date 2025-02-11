@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
 
-import { promiseToResponse } from '@donmahallem/turbo';
 import { validateRequest } from '@donmahallem/turbo-validate-request';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
 import { PositionType } from '@manniwatch/api-types';
@@ -29,16 +28,14 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
     router.get(
         '/stops',
         validateRequest('query', GEO_FENCE_SCHEMA),
-        (req: express.Request, res: express.Response, next: express.NextFunction): void => {
-            promiseToResponse(
-                apiClient.getStopLocations({
+        async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
+            res.json(
+                await apiClient.getStopLocations({
                     bottom: parseInt(req.query.bottom as string, 10),
                     left: parseInt(req.query.left as string, 10),
                     right: parseInt(req.query.right as string, 10),
                     top: parseInt(req.query.top as string, 10),
-                }),
-                res,
-                next
+                })
             );
         }
     );
@@ -55,16 +52,14 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
     router.get(
         '/stopPoints',
         validateRequest('query', GEO_FENCE_SCHEMA),
-        (req: express.Request, res: express.Response, next: express.NextFunction): void => {
-            promiseToResponse(
-                apiClient.getStopPointLocations({
+        async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
+            res.json(
+                await apiClient.getStopPointLocations({
                     bottom: parseInt(req.query.bottom as string, 10),
                     left: parseInt(req.query.left as string, 10),
                     right: parseInt(req.query.right as string, 10),
                     top: parseInt(req.query.top as string, 10),
-                }),
-                res,
-                next
+                })
             );
         }
     );
@@ -79,11 +74,11 @@ export const createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router
     router.get(
         '/vehicles',
         validateRequest('query', GET_VEHICLE_LOCATION_SCHEMA),
-        (req: express.Request, res: express.Response, next: express.NextFunction): void => {
+        async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
             // tslint:disable-next-line:triple-equals
             const positionType: PositionType = (req.query.positionType as PositionType) || 'RAW';
             const lastUpdate: number | undefined = req.query.lastUpdate ? parseInt(req.query.lastUpdate as string, 10) : undefined;
-            promiseToResponse(apiClient.getVehicleLocations(positionType, lastUpdate), res, next);
+            res.json(await apiClient.getVehicleLocations(positionType, lastUpdate));
         }
     );
     return router;

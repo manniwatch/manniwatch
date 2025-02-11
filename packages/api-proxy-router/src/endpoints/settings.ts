@@ -33,8 +33,8 @@ export const createSettingsRouter: (apiClient: ManniWatchApiClient, cache: NodeC
      * @apiGroup Settings
      * @apiVersion 0.1.0
      */
-    router.get('', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
-        settingsMutex
+    router.get('', async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
+        await settingsMutex
             .runExclusive(async (): Promise<ISettingsEntry> => {
                 const cacheContent: ISettingsEntry | undefined = cache.get(CACHE_KEY_SETTINGS);
                 if (cacheContent) {
@@ -56,8 +56,7 @@ export const createSettingsRouter: (apiClient: ManniWatchApiClient, cache: NodeC
                     .set('Last-Modified', data.lastModified.toUTCString())
                     .contentType('application/json; charset=utf-8')
                     .send(data.data);
-            })
-            .catch(next);
+            });
     });
     return router;
 };
