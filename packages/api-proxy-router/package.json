@@ -57,7 +57,6 @@
         "access": "public"
     },
     "dependencies": {
-        "@donmahallem/turbo": "~3.2.0",
         "@donmahallem/turbo-validate-request": "~3.2.0",
         "@manniwatch/api-client": "^0.29.16",
         "@manniwatch/api-types": "^0.29.16",
@@ -75,6 +74,6 @@
         "supertest": "7.0.0"
     },
     "peerDependencies": {
-        "express": "~4.21.0"
+        "express": "~5.0.0"
     }
 }
