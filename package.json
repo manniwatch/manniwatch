@@ -22,7 +22,7 @@
         "conventional-changelog-cli": "5.0.0",
         "coveralls": "3.1.1",
         "cz-conventional-changelog": "3.3.0",
-        "eslint": "8.57.1",
+        "eslint": "9.20.1",
         "esmock": "2.7.0",
         "fs-extra": "11.3.0",
         "lerna": "8.1.9",
