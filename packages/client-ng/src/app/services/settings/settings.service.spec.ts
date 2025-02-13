@@ -3,7 +3,7 @@
  * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
-import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
+import { HttpTestingController, TestRequest, provideHttpClientTesting } from '@angular/common/http/testing';
 import { waitForAsync, TestBed } from '@angular/core/testing';
 import { fromLonLat } from 'ol/proj';
 import { LOCAL_STORAGE_TOKEN } from 'src/app/util/storage';
@@ -12,6 +12,7 @@ import { environment } from 'src/environments';
 import { Environment } from 'src/environments/environment.base';
 import { SettingsService } from './settings.service';
 import { ApiService, Theme } from '..';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('src/app/services/settings.service', (): void => {
     describe('SettingsService', (): void => {
@@ -25,21 +26,23 @@ describe('src/app/services/settings.service', (): void => {
         beforeEach(waitForAsync((): void => {
             storageSpy = jasmine.createSpyObj<IStorage>('StorageSpy', ['getItem', 'setItem', 'removeItem']);
             TestBed.configureTestingModule({
-                imports: [HttpClientTestingModule],
-                providers: [
-                    SettingsService,
-                    {
-                        provide: ApiService,
-                        useValue: {
-                            getSettings: getSettingsSpy,
-                        },
-                    },
-                    {
-                        provide: LOCAL_STORAGE_TOKEN,
-                        useValue: storageSpy,
-                    },
-                ],
-            });
+    imports: [],
+    providers: [
+        SettingsService,
+        {
+            provide: ApiService,
+            useValue: {
+                getSettings: getSettingsSpy,
+            },
+        },
+        {
+            provide: LOCAL_STORAGE_TOKEN,
+            useValue: storageSpy,
+        },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+    ]
+});
             settingsService = TestBed.inject(SettingsService);
             httpMock = TestBed.inject(HttpTestingController);
         }));

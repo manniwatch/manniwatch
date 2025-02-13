@@ -3,7 +3,7 @@
  * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { APP_INITIALIZER, ClassProvider, ErrorHandler, FactoryProvider, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
