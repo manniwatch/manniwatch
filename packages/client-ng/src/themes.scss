@@ -3,15 +3,23 @@
 
 //@include mat.core();
 // Define the default theme (same as the example above).
-$manniwatch-light-primary: mat.m2-define-palette(mat.$m2-indigo-palette);
-$manniwatch-light-accent: mat.m2-define-palette(mat.$m2-pink-palette, A200, A100, A400);
-$manniwatch-light-theme: mat.m2-define-light-theme($manniwatch-light-primary, $manniwatch-light-accent);
-
+$manniwatch-light-theme: mat.define-theme(
+    (
+        color: (
+            theme-type: light,
+            primary: mat.$violet-palette,
+        ),
+    )
+);
 // Include the default theme styles.
 // @include mat.all-component-themes($candy-app-theme);
 
 // Define an alternate dark theme.
-$manniwatch-dark-primary: mat.m2-define-palette(mat.$m2-blue-grey-palette);
-$manniwatch-dark-accent: mat.m2-define-palette(mat.$m2-amber-palette, A200, A100, A400);
-$manniwatch-dark-warn: mat.m2-define-palette(mat.$m2-deep-orange-palette);
-$manniwatch-dark-theme: mat.m2-define-dark-theme($manniwatch-dark-primary, $manniwatch-dark-accent, $manniwatch-dark-warn);
+$manniwatch-dark-theme: mat.define-theme(
+    (
+        color: (
+            theme-type: dark,
+            primary: mat.$azure-palette,
+        ),
+    )
+);

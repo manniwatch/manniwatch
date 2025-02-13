@@ -12,31 +12,16 @@
 // CSS class whatever you want. In this example, any component inside of an element with
 // `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
 
-@mixin manniwatch-base-theme($theme) {
-    $background: map-get($theme, background);
-    $background-background: map-get($background, background);
-    div.overlay-box {
-        div.router-box {
-            > *:not(:first-child) {
-                background-color: $background-background;
-            }
-        }
-    }
-    background-color: $background-background;
-}
-
 .manniwatch-theme {
-    @include mat.all-component-themes($manniwatch-light-theme);
-    @include manniwatch-base-theme($manniwatch-light-theme);
-    @media (prefers-color-scheme: dark) {
-        @include manniwatch-base-theme($manniwatch-dark-theme);
-    }
+    color-scheme: light-dark;
+    @include mat.all-component-themes($manniwatch-dark-theme);
 }
 .manniwatch-theme[theme='dark'] {
-    @include mat.all-component-colors($manniwatch-dark-theme);
-    @include manniwatch-base-theme($manniwatch-dark-theme);
+    color-scheme: dark;
+    @include mat.all-component-themes($manniwatch-dark-theme);
 }
 
 .manniwatch-theme[theme='light'] {
-    @include manniwatch-base-theme($manniwatch-light-theme);
+    color-scheme: light;
+    @include mat.all-component-themes($manniwatch-light-theme);
 }
