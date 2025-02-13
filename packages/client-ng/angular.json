@@ -15,12 +15,15 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/manniwatch/osm",
+            "outputPath": {
+              "base": "dist/manniwatch/osm"
+            },
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "src/polyfills.ts"
+            ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
@@ -42,16 +45,22 @@
             ],
             "scripts": [],
             "preserveSymlinks": true,
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "browser": "src/main.ts",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "."
+              ]
+            }
           },
           "configurations": {
             "olvector": {
-              "outputPath": "dist/manniwatch/vector",
+              "outputPath": {
+                "base": "dist/manniwatch/vector"
+              },
               "fileReplacements": [
                 {
                   "replace": "src/app/modules/openlayers/abstract-ol-map.directive.ts",
@@ -71,8 +80,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -85,8 +92,7 @@
                   "maximumError": "10kb"
                 }
               ],
-              "serviceWorker": true,
-              "ngswConfigPath": "ngsw-config.json"
+              "serviceWorker": "ngsw-config.json"
             },
             "desktop": {
               "fileReplacements": [
@@ -95,7 +101,9 @@
                   "with": "src/app/services/electron-api.service.ts"
                 }
               ],
-              "outputPath": "dist/desktop",
+              "outputPath": {
+                "base": "dist/desktop"
+              },
               "tsConfig": "tsconfig.desktop.json"
             }
           }

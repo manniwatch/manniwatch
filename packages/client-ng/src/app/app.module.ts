@@ -3,7 +3,7 @@
  * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { APP_INITIALIZER, ClassProvider, ErrorHandler, FactoryProvider, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -29,7 +29,6 @@ import { environment } from '../environments';
 
 const moduleImports: NgModule['imports'] = [
     BrowserModule,
-    HttpClientModule,
     BrowserAnimationsModule,
     MatSidenavModule,
     AppRoutingModule,
@@ -84,6 +83,7 @@ const ERROR_HANDLER_PROVIDER: ClassProvider = {
         API_FACTORY_PROVIDER,
         SETTINGS_FACTORY_PROVIDER,
         BROWSER_LOCAL_STORAGE_PROVIDER,
+        provideHttpClient(),
     ],
 })
 export class AppModule {}

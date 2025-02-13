@@ -3,7 +3,8 @@
  * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
-import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpTestingController, TestRequest, provideHttpClientTesting } from '@angular/common/http/testing';
 import { waitForAsync, TestBed } from '@angular/core/testing';
 import { fromLonLat } from 'ol/proj';
 import { LOCAL_STORAGE_TOKEN } from 'src/app/util/storage';
@@ -25,7 +26,7 @@ describe('src/app/services/settings.service', (): void => {
         beforeEach(waitForAsync((): void => {
             storageSpy = jasmine.createSpyObj<IStorage>('StorageSpy', ['getItem', 'setItem', 'removeItem']);
             TestBed.configureTestingModule({
-                imports: [HttpClientTestingModule],
+                imports: [],
                 providers: [
                     SettingsService,
                     {
@@ -38,6 +39,8 @@ describe('src/app/services/settings.service', (): void => {
                         provide: LOCAL_STORAGE_TOKEN,
                         useValue: storageSpy,
                     },
+                    provideHttpClient(withInterceptorsFromDi()),
+                    provideHttpClientTesting(),
                 ],
             });
             settingsService = TestBed.inject(SettingsService);
