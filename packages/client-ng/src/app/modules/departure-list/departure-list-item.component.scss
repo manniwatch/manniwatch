@@ -10,18 +10,18 @@ div[matlistitemline].subheader {
         margin-left: 10px;
         font-weight: bold;
         &.late {
-            color: mat.get-color-from-palette(map-get($manniwatch-light-theme, warn));
+            color: mat.m2-get-color-from-palette(map-get($manniwatch-light-theme, warn));
             @media (prefers-color-scheme: dark) {
-                color: mat.get-color-from-palette(map-get($manniwatch-dark-theme, warn));
+                color: mat.m2-get-color-from-palette(map-get($manniwatch-dark-theme, warn));
             }
             &:before {
                 content: '+';
             }
         }
         &.early {
-            color: mat.get-color-from-palette(map-get($manniwatch-light-theme, accent));
+            color: mat.m2-get-color-from-palette(map-get($manniwatch-light-theme, accent));
             @media (prefers-color-scheme: dark) {
-                color: mat.get-color-from-palette(map-get($manniwatch-dark-theme, accent));
+                color: mat.m2-get-color-from-palette(map-get($manniwatch-dark-theme, accent));
             }
         }
     }
