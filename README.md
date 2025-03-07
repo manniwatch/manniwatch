@@ -10,7 +10,7 @@
 <a href="https://github.com/manniwatch/manniwatch"><img alt="David" src="https://img.shields.io/david/dev/manniwatch/manniwatch" height="20"/></a>
 <a href="https://github.com/manniwatch/manniwatch/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors-anon/manniwatch/manniwatch" height="20"/></a>
 	</p>
-<code style="red">Haven't had time to keep this up to date so proceed with caution as this repo was taken over by robots.</code>
+
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)](#packages)
 
