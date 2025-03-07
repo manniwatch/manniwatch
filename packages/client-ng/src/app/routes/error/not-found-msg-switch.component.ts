@@ -12,7 +12,6 @@ import { ErrorType } from './error-type';
     selector: 'app-not-found-msg-switch',
     styleUrls: ['./not-found-msg-switch.component.scss'],
     templateUrl: './not-found-msg-switch.component.html',
-    standalone: false
 })
 /**
  * Component showing eventually more helpful error message for non found elements.

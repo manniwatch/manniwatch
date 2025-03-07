@@ -12,7 +12,6 @@ import { debounceTime, filter, startWith } from 'rxjs/operators';
     selector: 'app-toolbar-search',
     styleUrls: ['./search-box.component.scss'],
     templateUrl: './search-box.component.html',
-    standalone: false
 })
 export class ToolbarSearchBoxComponent implements OnInit, OnDestroy {
     public searchControl: UntypedFormControl = new UntypedFormControl();

@@ -16,13 +16,11 @@ import { TripPassagesListComponent } from './trip-passages-list.component';
 @Component({
     selector: 'mat-nav-list',
     template: '<ng-content></ng-content>',
-    standalone: false
 })
 export class TestMatNavListComponent {}
 @Component({
     selector: 'app-trip-passages-list-item',
     template: '<p>list-item</p>',
-    standalone: false
 })
 export class TestTripPassagesListItemComponent {
     @Input()
@@ -31,7 +29,6 @@ export class TestTripPassagesListItemComponent {
 
 @Component({
     template: '<app-trip-passages-list [tripInfo]="testPassage"></app-trip-passages-list>',
-    standalone: false
 })
 export class TestParentComponent {
     public testPassage: ITripPassages;

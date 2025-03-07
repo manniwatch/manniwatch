@@ -148,6 +148,7 @@ describe('endpoints/geo/router.ts', (): void => {
             describe('rejects', (): void => {
                 beforeEach((): void => {
                     geoFenceValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
                         next(new RequestError('Caught by schema', 1234));
                     });
                 });
@@ -209,6 +210,7 @@ describe('endpoints/geo/router.ts', (): void => {
             describe('rejects', (): void => {
                 beforeEach((): void => {
                     geoFenceValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
                         next(new RequestError('Caught by schema', 1234));
                     });
                 });
@@ -284,6 +286,7 @@ describe('endpoints/geo/router.ts', (): void => {
             describe('rejects', (): void => {
                 beforeEach((): void => {
                     vehicleValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
                         next(new RequestError('Caught by schema', 4321));
                     });
                 });

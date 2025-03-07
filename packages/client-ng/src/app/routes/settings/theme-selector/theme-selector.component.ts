@@ -12,7 +12,6 @@ import { SettingsService, Theme } from 'src/app/services';
     selector: 'app-theme-selector',
     styleUrls: ['./theme-selector.component.scss'],
     templateUrl: './theme-selector.component.html',
-    standalone: false
 })
 export class ThemeSelectorComponent implements OnInit, OnDestroy {
     public theme: Theme;

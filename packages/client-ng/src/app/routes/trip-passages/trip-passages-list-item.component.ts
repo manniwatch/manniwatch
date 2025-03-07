@@ -16,7 +16,6 @@ import {
     selector: 'app-trip-passages-list-item',
     styleUrls: ['./trip-passages-list-item.component.scss'],
     templateUrl: './trip-passages-list-item.component.html',
-    standalone: false
 })
 export class TripPassagesListItemComponent {
     @Input()

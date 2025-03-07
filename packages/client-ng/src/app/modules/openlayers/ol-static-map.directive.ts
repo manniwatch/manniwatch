@@ -27,7 +27,6 @@ export interface IStaticMapData {
  */
 @Directive({
     selector: 'map[appOlStatic]',
-    standalone: false
 })
 export class OlStaticMapDirective extends AbstractOlMapDirective implements OnChanges {
     private readonly KEY_MAP_DATA: string = 'mapData';

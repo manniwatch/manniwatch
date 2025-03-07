@@ -10,7 +10,6 @@ import { IDeparture } from '@manniwatch/api-types';
     selector: 'app-route-list',
     styleUrls: ['./route-list.component.scss'],
     templateUrl: './route-list.component.html',
-    standalone: false
 })
 export class RouteListComponent {
     private mDepartures: IDeparture[] = [];

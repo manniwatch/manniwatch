@@ -15,19 +15,16 @@ import { TripPassagesListItemComponent } from './trip-passages-list-item.compone
 @Component({
     selector: 'mat-icon',
     template: '<ng-content></ng-content>',
-    standalone: false
 })
 export class TestMatIconComponent {}
 @Component({
     selector: 'a[mat-list-item]',
     template: '<ng-content></ng-content>',
-    standalone: false
 })
 export class TestMatListItemComponent {}
 
 @Directive({
     selector: 'a[role="listitem"]',
-    standalone: false
 })
 export class TestRouterLinkDirective {
     @Input()
@@ -35,7 +32,6 @@ export class TestRouterLinkDirective {
 }
 @Component({
     template: '<app-trip-passages-list-item [passage]="testPassage"></app-trip-passages-list-item>',
-    standalone: false
 })
 export class TestParentComponent {
     public testPassage: ITripPassage;

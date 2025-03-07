@@ -15,27 +15,23 @@ import { RouteListComponent } from './route-list.component';
 @Component({
     selector: 'mat-divider',
     template: '<div></div>',
-    standalone: false
 })
 export class TestMatDividerComponent {}
 
 @Component({
     selector: 'mat-list-item',
     template: '<div></div>',
-    standalone: false
 })
 export class TestMatListItemComponent {}
 
 @Component({
     selector: 'mat-list',
     template: '<div></div>',
-    standalone: false
 })
 export class TestMatListComponent {}
 
 @Component({
     template: '<app-route-list [routes]="testData"></app-route-list>',
-    standalone: false
 })
 export class TestParentComponent {
     public testData: any[];

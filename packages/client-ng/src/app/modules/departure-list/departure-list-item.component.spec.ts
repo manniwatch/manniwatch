@@ -15,19 +15,16 @@ import { DepartureListItemComponent } from './departure-list-item.component';
 @Component({
     selector: 'mat-icon',
     template: '<ng-content></ng-content>',
-    standalone: false
 })
 export class TestMatIconComponent {}
 @Component({
     selector: 'a[mat-list-item]',
     template: '<ng-content></ng-content>',
-    standalone: false
 })
 export class TestMatListItemComponent {}
 
 @Directive({
     selector: 'a[routerLink]',
-    standalone: false
 })
 export class TestRouterLinkDirective {
     @Input()

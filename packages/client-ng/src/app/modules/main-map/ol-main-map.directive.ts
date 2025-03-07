@@ -29,7 +29,6 @@ import { OlVehicleHandler } from './ol-vehicle-handler';
 import { StopPointService } from '../../services/stop-point.service';
 @Directive({
     selector: 'map[appOlMainMap]',
-    standalone: false
 })
 /**
  * Directive for the main background map

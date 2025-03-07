@@ -18,7 +18,6 @@ import { UpdateStatus } from './trip-util';
     selector: 'app-trip-passages',
     styleUrls: ['./trip-passages.component.scss'],
     templateUrl: './trip-passages.component.html',
-    standalone: false
 })
 export class TripPassagesComponent implements OnInit, OnDestroy {
     private subscriptions: Subscription[] = [];

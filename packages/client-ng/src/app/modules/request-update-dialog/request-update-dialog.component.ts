@@ -13,7 +13,6 @@ import { RequestUpdateDialogService, SW_STATUS } from './request-update-dialog.s
     selector: 'app-request-update-dialog',
     styleUrls: ['./request-update-dialog.component.scss'],
     templateUrl: './request-update-dialog.component.html',
-    standalone: false
 })
 export class RequestUpdateDialogComponent implements OnInit, OnDestroy {
     private subscription: Subscription;

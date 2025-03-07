@@ -14,7 +14,6 @@ import { IDeparture } from '@manniwatch/api-types';
     selector: 'app-departure-list',
     styleUrls: ['./departure-list.component.scss'],
     templateUrl: './departure-list.component.html',
-    standalone: false
 })
 export class DepartureListComponent {
     private mDepartures: IDeparture[] = [];

@@ -14,7 +14,6 @@ import { CommonErrorComponent } from './common-error.component';
 @Component({
     selector: 'mat-icon',
     template: '<div></div>',
-    standalone: false
 })
 class TestMatIconComponent {}
 
