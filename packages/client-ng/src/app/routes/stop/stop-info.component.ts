@@ -17,6 +17,7 @@ export interface IData {
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [StopInfoService],
     selector: 'app-stop-info',
+    standalone: false,
     styleUrls: ['./stop-info.component.scss'],
     templateUrl: './stop-info.component.html',
 })

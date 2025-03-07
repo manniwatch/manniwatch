@@ -13,22 +13,26 @@ import { SettingsComponent } from './settings.component';
 // tslint:disable:directive-selector
 @Component({
     selector: 'mat-nav-list',
+    standalone: false,
     template: '<div></div>',
 })
 class TestMatListComponent {}
 @Component({
     selector: 'mat-list-item',
+    standalone: false,
     template: '<div></div>',
 })
 class TestMatListItemComponent {}
 @Component({
     selector: 'mat-divider',
+    standalone: false,
     template: '<div></div>',
 })
 class TestMatDividerComponent {}
 
 @Component({
     selector: 'mat-icon',
+    standalone: false,
     template: '<div></div>',
 })
 class TestMatIconComponent {}

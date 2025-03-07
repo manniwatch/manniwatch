@@ -16,6 +16,7 @@ import { UpdateStatus } from './trip-util';
 @Component({
     providers: [TripPassagesService],
     selector: 'app-trip-passages',
+    standalone: false,
     styleUrls: ['./trip-passages.component.scss'],
     templateUrl: './trip-passages.component.html',
 })

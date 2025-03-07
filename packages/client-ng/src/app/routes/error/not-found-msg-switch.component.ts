@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 import { ErrorType } from './error-type';
 @Component({
     selector: 'app-not-found-msg-switch',
+    standalone: false,
     styleUrls: ['./not-found-msg-switch.component.scss'],
     templateUrl: './not-found-msg-switch.component.html',
 })

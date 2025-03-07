@@ -11,6 +11,7 @@ import { RequestUpdateDialogService, SW_STATUS } from './request-update-dialog.s
 @Component({
     providers: [RequestUpdateDialogService],
     selector: 'app-request-update-dialog',
+    standalone: false,
     styleUrls: ['./request-update-dialog.component.scss'],
     templateUrl: './request-update-dialog.component.html',
 })

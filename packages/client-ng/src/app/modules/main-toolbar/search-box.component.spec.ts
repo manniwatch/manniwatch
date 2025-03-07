@@ -15,12 +15,14 @@ import { ToolbarSearchBoxComponent } from './search-box.component';
 // tslint:disable:directive-selector
 @Component({
     selector: 'mat-form-field',
+    standalone: false,
     template: '<div></div>',
 })
 class TestMatFormFieldComponent {}
 
 @Directive({
     selector: 'input',
+    standalone: false,
 })
 class TestFormControlDirective {
     @Input()
@@ -31,6 +33,7 @@ class TestFormControlDirective {
 
 @Component({
     selector: 'mat-option',
+    standalone: false,
     template: '<div></div>',
 })
 class TestMatOptionComponent {
@@ -41,6 +44,7 @@ class TestMatOptionComponent {
 @Component({
     exportAs: 'matAutocomplete',
     selector: 'mat-autocomplete',
+    standalone: false,
     template: '<div></div>',
 })
 class TestMatAutoCompleteComponent {
@@ -52,6 +56,7 @@ class TestMatAutoCompleteComponent {
 
 @Component({
     selector: 'mat-icon',
+    standalone: false,
     template: '<div></div>',
 })
 class TestMatIconComponent {}

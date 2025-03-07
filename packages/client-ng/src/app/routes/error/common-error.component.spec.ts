@@ -13,6 +13,7 @@ import { CommonErrorComponent } from './common-error.component';
 // tslint:disable:directive-selector
 @Component({
     selector: 'mat-icon',
+    standalone: false,
     template: '<div></div>',
 })
 class TestMatIconComponent {}

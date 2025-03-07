@@ -12,6 +12,7 @@ import { IDeparture } from '@manniwatch/api-types';
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-departure-list',
+    standalone: false,
     styleUrls: ['./departure-list.component.scss'],
     templateUrl: './departure-list.component.html',
 })

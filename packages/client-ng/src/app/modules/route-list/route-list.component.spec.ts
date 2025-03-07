@@ -14,23 +14,27 @@ import { RouteListComponent } from './route-list.component';
 // tslint:disable:directive-selector
 @Component({
     selector: 'mat-divider',
+    standalone: false,
     template: '<div></div>',
 })
 export class TestMatDividerComponent {}
 
 @Component({
     selector: 'mat-list-item',
+    standalone: false,
     template: '<div></div>',
 })
 export class TestMatListItemComponent {}
 
 @Component({
     selector: 'mat-list',
+    standalone: false,
     template: '<div></div>',
 })
 export class TestMatListComponent {}
 
 @Component({
+    standalone: false,
     template: '<app-route-list [routes]="testData"></app-route-list>',
 })
 export class TestParentComponent {

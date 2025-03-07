@@ -13,11 +13,13 @@ import { DepartureListComponent } from './departure-list.component';
 // tslint:disable:directive-selector
 @Component({
     selector: 'mat-nav-list',
+    standalone: false,
     template: '<div></div>',
 })
 export class TestMatNavListComponent {}
 @Component({
     selector: 'app-departure-list-item',
+    standalone: false,
     template: '<div></div>',
 })
 export class TestDepartureListItemComponent {

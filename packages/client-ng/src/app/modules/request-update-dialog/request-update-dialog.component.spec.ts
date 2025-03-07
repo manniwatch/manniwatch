@@ -16,18 +16,21 @@ import { RequestUpdateDialogService, SW_STATUS } from './request-update-dialog.s
 // tslint:disable:directive-selector
 @Component({
     selector: 'mat-spinner',
+    standalone: false,
     template: '',
 })
 class TestMatSpinnerComponent {}
 
 @Component({
     selector: 'mat-dialog-actions',
+    standalone: false,
     template: '<ng-content></ng-content>',
 })
 class TestMatDialogActionsComponent {}
 
 @Component({
     selector: 'mat-icon',
+    standalone: false,
     template: '<div></div>',
 })
 class TestMatIconComponent {}

@@ -11,6 +11,7 @@ import { NEVER, Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 @Component({
     selector: 'app-search',
+    standalone: false,
     styleUrls: ['./search.component.scss'],
     templateUrl: './search.component.html',
 })

@@ -9,6 +9,7 @@ import { add, differenceInMinutes, format, formatDistanceToNow, parse } from 'da
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-departure-list-item',
+    standalone: false,
     styleUrls: ['./departure-list-item.component.scss'],
     templateUrl: './departure-list-item.component.html',
 })

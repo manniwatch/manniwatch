@@ -8,6 +8,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-header-box',
+    standalone: false,
     styleUrls: ['./header-box.component.scss'],
     templateUrl: './header-box.component.html',
 })

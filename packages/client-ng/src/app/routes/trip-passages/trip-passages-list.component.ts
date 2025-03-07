@@ -13,6 +13,7 @@ import { TripInfoWithId } from '@manniwatch/client-types';
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-trip-passages-list',
+    standalone: false,
     styleUrls: ['./trip-passages-list.component.scss'],
     templateUrl: './trip-passages-list.component.html',
 })

@@ -10,6 +10,7 @@ import { SettingsService, Theme } from 'src/app/services';
 
 @Component({
     selector: 'app-theme-selector',
+    standalone: false,
     styleUrls: ['./theme-selector.component.scss'],
     templateUrl: './theme-selector.component.html',
 })

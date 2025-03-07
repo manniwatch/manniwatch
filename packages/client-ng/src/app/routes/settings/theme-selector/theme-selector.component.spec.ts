@@ -16,16 +16,19 @@ import { ThemeSelectorComponent } from './theme-selector.component';
 // tslint:disable:directive-selector
 @Component({
     selector: 'mat-selection-list',
+    standalone: false,
     template: '<ng-content></ng-content>',
 })
 class TestMatSelectionListComponent {}
 @Component({
     selector: 'mat-list-option',
+    standalone: false,
     template: '<ng-content></ng-content>',
 })
 class TestMatListOptionComponent {}
 @Component({
     selector: 'mat-icon',
+    standalone: false,
     template: '<ng-content></ng-content>',
 })
 class TestMatIconComponent {}
