@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-settings',
+    standalone: false,
     styleUrls: ['./settings.component.scss'],
     templateUrl: './settings.component.html',
 })

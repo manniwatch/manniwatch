@@ -14,7 +14,7 @@ export abstract class RetryResolver<T> implements Resolve<T> {
         public router: Router,
         public dialog: AppDialogService
     ) {}
-    public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<T> {
+    public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<T> {
         return this.createLoader(route, state).pipe(
             retry({
                 delay: (obs: Observable<ErrorTypes>): Observable<boolean> => {
@@ -44,7 +44,7 @@ export abstract class RetryResolver<T> implements Resolve<T> {
                     );
                 },
             })
-        ) as MaybeAsync<T>;
+        );
     }
 
     public navigate(...args: Parameters<Router['navigate']>): Observable<boolean> {

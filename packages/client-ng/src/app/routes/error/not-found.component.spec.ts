@@ -14,26 +14,31 @@ import { NotFoundComponent } from './not-found.component';
 // tslint:disable:directive-selector
 @Component({
     selector: 'mat-icon',
+    standalone: false,
     template: '<div></div>',
 })
 class TestMatIconComponent {}
 @Component({
     selector: 'mat-divider',
+    standalone: false,
     template: '<div></div>',
 })
 class TestMatDividerComponent {}
 @Component({
     selector: 'mat-list-item',
+    standalone: false,
     template: '<div></div>',
 })
 class TestMatListItemComponent {}
 @Component({
     selector: 'mat-nav-list',
+    standalone: false,
     template: '<ng-content></ng-content>',
 })
 class TestMatNavListComponent {}
 @Component({
     selector: 'app-not-found-msg-switch',
+    standalone: false,
     template: '<div></div>',
 })
 class TestNotFoundMessageSwitchComponent {}

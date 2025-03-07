@@ -14,23 +14,27 @@ import { TripPassagesListItemComponent } from './trip-passages-list-item.compone
 // tslint:disable:directive-selector
 @Component({
     selector: 'mat-icon',
+    standalone: false,
     template: '<ng-content></ng-content>',
 })
 export class TestMatIconComponent {}
 @Component({
     selector: 'a[mat-list-item]',
+    standalone: false,
     template: '<ng-content></ng-content>',
 })
 export class TestMatListItemComponent {}
 
 @Directive({
     selector: 'a[role="listitem"]',
+    standalone: false,
 })
 export class TestRouterLinkDirective {
     @Input()
     public routerLink: any[];
 }
 @Component({
+    standalone: false,
     template: '<app-trip-passages-list-item [passage]="testPassage"></app-trip-passages-list-item>',
 })
 export class TestParentComponent {

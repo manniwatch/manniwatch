@@ -28,6 +28,7 @@ export class RouteLoadingSubscriber extends Subscriber<Event> {
 
 @Component({
     selector: 'app-route-loading-indicator',
+    standalone: false,
     styleUrls: ['./route-loading-indicator.component.scss'],
     templateUrl: './route-loading-indicator.component.html',
 })

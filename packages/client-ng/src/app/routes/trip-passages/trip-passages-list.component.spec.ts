@@ -15,11 +15,13 @@ import { TripPassagesListComponent } from './trip-passages-list.component';
 // tslint:disable:directive-selector
 @Component({
     selector: 'mat-nav-list',
+    standalone: false,
     template: '<ng-content></ng-content>',
 })
 export class TestMatNavListComponent {}
 @Component({
     selector: 'app-trip-passages-list-item',
+    standalone: false,
     template: '<p>list-item</p>',
 })
 export class TestTripPassagesListItemComponent {
@@ -28,6 +30,7 @@ export class TestTripPassagesListItemComponent {
 }
 
 @Component({
+    standalone: false,
     template: '<app-trip-passages-list [tripInfo]="testPassage"></app-trip-passages-list>',
 })
 export class TestParentComponent {

@@ -16,6 +16,7 @@ import { SearchModule } from '.';
 
 @Component({
     selector: 'mat-nav-list',
+    standalone: false,
     template: '<ng-content></ng-content>',
 })
 class TestMatNavListComponent {
@@ -24,6 +25,7 @@ class TestMatNavListComponent {
 }
 @Component({
     selector: 'mat-list-item',
+    standalone: false,
     template: '<div></div>',
 })
 class TestMatListItemComponent {
@@ -33,6 +35,7 @@ class TestMatListItemComponent {
 
 @Component({
     selector: 'mat-icon',
+    standalone: false,
     template: '<div></div>',
 })
 class TestMatIconComponent {}

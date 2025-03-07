@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { debounceTime, filter, startWith } from 'rxjs/operators';
 @Component({
     selector: 'app-toolbar-search',
+    standalone: false,
     styleUrls: ['./search-box.component.scss'],
     templateUrl: './search-box.component.html',
 })

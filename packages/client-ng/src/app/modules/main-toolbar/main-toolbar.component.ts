@@ -23,6 +23,7 @@ export class NavigationSubscriber implements NextObserver<RouterEvent> {
 
 @Component({
     selector: 'app-main-toolbar',
+    standalone: false,
     styleUrls: ['./main-toolbar.component.scss'],
     templateUrl: './main-toolbar.component.html',
 })

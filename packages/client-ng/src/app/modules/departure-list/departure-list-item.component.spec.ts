@@ -14,17 +14,20 @@ import { DepartureListItemComponent } from './departure-list-item.component';
 // tslint:disable:directive-selector
 @Component({
     selector: 'mat-icon',
+    standalone: false,
     template: '<ng-content></ng-content>',
 })
 export class TestMatIconComponent {}
 @Component({
     selector: 'a[mat-list-item]',
+    standalone: false,
     template: '<ng-content></ng-content>',
 })
 export class TestMatListItemComponent {}
 
 @Directive({
     selector: 'a[routerLink]',
+    standalone: false,
 })
 export class TestRouterLinkDirective {
     @Input()

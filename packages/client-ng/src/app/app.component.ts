@@ -9,6 +9,7 @@ import { TripInfoWithId } from '@manniwatch/client-types';
 import { SidebarService } from 'src/app/modules/sidebar';
 @Component({
     selector: 'app-root',
+    standalone: false,
     styleUrls: ['./app.component.scss'],
     templateUrl: './app.component.html',
 })

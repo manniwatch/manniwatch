@@ -13,6 +13,7 @@ import { StopPointInfoService } from './stop-point-info.service';
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [StopPointInfoService],
     selector: 'app-stop-point-info',
+    standalone: false,
     styleUrls: ['./stop-point-info.component.scss'],
     templateUrl: './stop-point-info.component.html',
 })

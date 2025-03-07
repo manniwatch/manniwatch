@@ -14,6 +14,7 @@ import {
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-trip-passages-list-item',
+    standalone: false,
     styleUrls: ['./trip-passages-list-item.component.scss'],
     templateUrl: './trip-passages-list-item.component.html',
 })

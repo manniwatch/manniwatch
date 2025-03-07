@@ -3,7 +3,6 @@
  * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
 
-import { RequestError } from '@donmahallem/turbo';
 import { IBoundingBox, ManniWatchApiClient } from '@manniwatch/api-client';
 import { GEO_FENCE_SCHEMA, GET_VEHICLE_LOCATION_SCHEMA } from '@manniwatch/schemas';
 import { expect } from 'chai';
@@ -149,7 +148,7 @@ describe('endpoints/geo/router.ts', (): void => {
                 beforeEach((): void => {
                     geoFenceValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
                         // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-                        next(new RequestError('Caught by schema', 1234));
+                        next(new Error('Caught by schema'));
                     });
                 });
                 afterEach((): void => {
@@ -169,9 +168,8 @@ describe('endpoints/geo/router.ts', (): void => {
                             .then((): void => {
                                 expect(routeErrorStub.callCount).to.equal(1, 'error handler should be called');
                                 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-                                const testError: RequestError = routeErrorStub.getCall(0).args[0];
+                                const testError: Error = routeErrorStub.getCall(0).args[0];
                                 expect(testError.message).to.equal('Caught by schema');
-                                expect(testError.status).to.equal(1234);
                             });
                     });
                 });
@@ -211,7 +209,7 @@ describe('endpoints/geo/router.ts', (): void => {
                 beforeEach((): void => {
                     geoFenceValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
                         // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-                        next(new RequestError('Caught by schema', 1234));
+                        next(new Error('Caught by schema'));
                     });
                 });
                 afterEach((): void => {
@@ -231,9 +229,8 @@ describe('endpoints/geo/router.ts', (): void => {
                             .then((): void => {
                                 expect(routeErrorStub.callCount).to.equal(1, 'error handler should be called');
                                 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-                                const testError: RequestError = routeErrorStub.getCall(0).args[0];
+                                const testError: Error = routeErrorStub.getCall(0).args[0];
                                 expect(testError.message).to.equal('Caught by schema');
-                                expect(testError.status).to.equal(1234);
                             });
                     });
                 });
@@ -287,7 +284,7 @@ describe('endpoints/geo/router.ts', (): void => {
                 beforeEach((): void => {
                     vehicleValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
                         // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-                        next(new RequestError('Caught by schema', 4321));
+                        next(new Error('Caught by schema'));
                     });
                 });
                 afterEach((): void => {
@@ -312,9 +309,8 @@ describe('endpoints/geo/router.ts', (): void => {
                                 .then((): void => {
                                     expect(routeErrorStub.callCount).to.equal(1, 'error handler should be called');
                                     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-                                    const testError: RequestError = routeErrorStub.getCall(0).args[0];
+                                    const testError: Error = routeErrorStub.getCall(0).args[0];
                                     expect(testError.message).to.equal('Caught by schema');
-                                    expect(testError.status).to.equal(4321);
                                 });
                         });
                     });

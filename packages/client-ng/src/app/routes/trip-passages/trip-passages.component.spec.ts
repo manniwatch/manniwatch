@@ -18,6 +18,7 @@ import { IPassageStatus, UpdateStatus } from './trip-util';
 // tslint:disable:directive-selector
 @Component({
     selector: 'app-trip-passages-list',
+    standalone: false,
     template: '<div></div>',
 })
 export class TestTripPassagesListComponent {
@@ -26,6 +27,7 @@ export class TestTripPassagesListComponent {
 }
 @Component({
     selector: 'app-header-box',
+    standalone: false,
     template: '<ng-content></ng-content>',
 })
 export class TestAppHeaderBoxComponent {
@@ -34,6 +36,7 @@ export class TestAppHeaderBoxComponent {
 }
 @Directive({
     selector: 'map[appOlStatic]',
+    standalone: false,
 })
 export class TestStaticMapDirective {
     @Input()

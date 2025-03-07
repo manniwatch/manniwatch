@@ -8,6 +8,7 @@ import { ActivatedRoute, Data } from '@angular/router';
 import { IStopLocation, IStopLocations } from '@manniwatch/api-types';
 @Component({
     selector: 'app-stops-info',
+    standalone: false,
     styleUrls: ['./stops-info.component.scss'],
     templateUrl: './stops-info.component.html',
 })

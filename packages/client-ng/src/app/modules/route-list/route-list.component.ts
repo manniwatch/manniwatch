@@ -8,6 +8,7 @@ import { IDeparture } from '@manniwatch/api-types';
 
 @Component({
     selector: 'app-route-list',
+    standalone: false,
     styleUrls: ['./route-list.component.scss'],
     templateUrl: './route-list.component.html',
 })

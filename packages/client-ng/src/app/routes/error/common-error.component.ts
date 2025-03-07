@@ -6,6 +6,7 @@
 import { Component } from '@angular/core';
 @Component({
     selector: 'app-common-error',
+    standalone: false,
     styleUrls: ['./common-error.component.scss'],
     templateUrl: './common-error.component.html',
 })

@@ -11,6 +11,7 @@ import { RequestUpdateDialogComponent } from '../request-update-dialog';
 
 @Component({
     selector: 'app-sidebar',
+    standalone: false,
     styleUrls: ['./sidebar.component.scss'],
     templateUrl: './sidebar.component.html',
 })

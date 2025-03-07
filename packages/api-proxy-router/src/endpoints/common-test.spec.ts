@@ -50,11 +50,7 @@ export const testStopModes: (StopMode | undefined)[] = ['arrival', 'departure', 
 
 export type MethodStub<T extends (...args: any) => any> = sinon.SinonStub<Parameters<T>, ReturnType<T>>;
 
-import type { promiseToResponse } from '@donmahallem/turbo';
 import type { validateRequest } from '@donmahallem/turbo-validate-request';
 export type ValidateRequestParameters = Parameters<typeof validateRequest>;
 export type ValidateRequestReturnType = ReturnType<typeof validateRequest>;
 export type ValidateRequestStub = sinon.SinonStub<ValidateRequestParameters, ValidateRequestReturnType>;
-export type PromiseToResponseParameters = Parameters<typeof promiseToResponse>;
-export type PromiseToResponseReturnType = ReturnType<typeof promiseToResponse>;
-export type PromiseToResponseStub = sinon.SinonStub<PromiseToResponseParameters, PromiseToResponseReturnType>;

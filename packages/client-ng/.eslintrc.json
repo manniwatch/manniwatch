@@ -36,7 +36,8 @@
             "prefix": "app",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/prefer-standalone": "warn"
       }
     },
     {
@@ -58,7 +59,8 @@
             "ignoreParameters": true,
             "ignoreProperties": true
           }
-        ]
+        ],
+        "@angular-eslint/prefer-standalone": "warn"
       }
     },
     {
