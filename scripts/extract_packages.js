@@ -1,13 +1,11 @@
 const path = require('path');
 const { detectProjects, getPackage } = require('lerna/utils');
 const { exit } = require('process');
-console.log(Object.keys(require('lerna/utils')));
 const tempFileName = './temp_readme_config.json';
 async function createTempFile() {
     const { projectGraph, projectFileMap } = await detectProjects();
     //console.log(projectGraph.nodes, typeof projectGraph, typeof projectGraph.nodes);
     const projectNames = Object.keys(projectGraph.nodes);
-    console.log('a', projectNames);
     const projectPackages = projectNames.map((a) => projectGraph.nodes[a].package);
     function createVersionLabel(packageName) {
         const encodedName = encodeURIComponent(packageName);
@@ -28,7 +26,6 @@ async function createTempFile() {
             return [`[${name}](${relativePath})`, description ? description : ' - ', version ? createVersionLabel(name) : ' - '];
         })
     );
-    console.log(dataArray);
     const fs = require('fs');
 
     fs.writeFileSync(tempFileName, JSON.stringify({ toc_data: dataArray }));
