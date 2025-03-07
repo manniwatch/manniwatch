@@ -6,7 +6,8 @@
 @import 'ol/ol.css';
 //@import '@angular/material/theming';
 
-@include mat.core();
+@include mat.elevation-classes();
+@include mat.app-background();
 @import './themes.scss';
 // Include the alternative theme styles inside of a block with a CSS class. You can make this
 // CSS class whatever you want. In this example, any component inside of an element with
