@@ -11,6 +11,7 @@ import { SidebarService } from 'src/app/modules/sidebar';
     selector: 'app-root',
     styleUrls: ['./app.component.scss'],
     templateUrl: './app.component.html',
+    standalone: false
 })
 export class AppComponent implements OnInit {
     public get isSidenavOpen(): boolean {

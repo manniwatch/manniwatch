@@ -14,11 +14,13 @@ import { DepartureListComponent } from './departure-list.component';
 @Component({
     selector: 'mat-nav-list',
     template: '<div></div>',
+    standalone: false
 })
 export class TestMatNavListComponent {}
 @Component({
     selector: 'app-departure-list-item',
     template: '<div></div>',
+    standalone: false
 })
 export class TestDepartureListItemComponent {
     @Input()

@@ -14,22 +14,26 @@ import { SettingsComponent } from './settings.component';
 @Component({
     selector: 'mat-nav-list',
     template: '<div></div>',
+    standalone: false
 })
 class TestMatListComponent {}
 @Component({
     selector: 'mat-list-item',
     template: '<div></div>',
+    standalone: false
 })
 class TestMatListItemComponent {}
 @Component({
     selector: 'mat-divider',
     template: '<div></div>',
+    standalone: false
 })
 class TestMatDividerComponent {}
 
 @Component({
     selector: 'mat-icon',
     template: '<div></div>',
+    standalone: false
 })
 class TestMatIconComponent {}
 

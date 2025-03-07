@@ -13,6 +13,7 @@ import { RequestUpdateDialogComponent } from '../request-update-dialog';
     selector: 'app-sidebar',
     styleUrls: ['./sidebar.component.scss'],
     templateUrl: './sidebar.component.html',
+    standalone: false
 })
 export class SidebarComponent {
     public constructor(

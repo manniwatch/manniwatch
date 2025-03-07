@@ -13,6 +13,7 @@ import { map } from 'rxjs/operators';
     selector: 'app-search',
     styleUrls: ['./search.component.scss'],
     templateUrl: './search.component.html',
+    standalone: false
 })
 export class SearchComponent implements OnInit, OnDestroy {
     public get results(): Observable<IStopLocation[]> {

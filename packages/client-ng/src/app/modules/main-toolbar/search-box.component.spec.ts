@@ -16,11 +16,13 @@ import { ToolbarSearchBoxComponent } from './search-box.component';
 @Component({
     selector: 'mat-form-field',
     template: '<div></div>',
+    standalone: false
 })
 class TestMatFormFieldComponent {}
 
 @Directive({
     selector: 'input',
+    standalone: false
 })
 class TestFormControlDirective {
     @Input()
@@ -32,6 +34,7 @@ class TestFormControlDirective {
 @Component({
     selector: 'mat-option',
     template: '<div></div>',
+    standalone: false
 })
 class TestMatOptionComponent {
     @Input()
@@ -42,6 +45,7 @@ class TestMatOptionComponent {
     exportAs: 'matAutocomplete',
     selector: 'mat-autocomplete',
     template: '<div></div>',
+    standalone: false
 })
 class TestMatAutoCompleteComponent {
     @Input()
@@ -53,6 +57,7 @@ class TestMatAutoCompleteComponent {
 @Component({
     selector: 'mat-icon',
     template: '<div></div>',
+    standalone: false
 })
 class TestMatIconComponent {}
 

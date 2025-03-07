@@ -9,5 +9,6 @@ import { Component } from '@angular/core';
     selector: 'app-settings',
     styleUrls: ['./settings.component.scss'],
     templateUrl: './settings.component.html',
+    standalone: false
 })
 export class SettingsComponent {}

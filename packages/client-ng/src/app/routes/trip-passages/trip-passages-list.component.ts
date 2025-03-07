@@ -15,6 +15,7 @@ import { TripInfoWithId } from '@manniwatch/client-types';
     selector: 'app-trip-passages-list',
     styleUrls: ['./trip-passages-list.component.scss'],
     templateUrl: './trip-passages-list.component.html',
+    standalone: false
 })
 export class TripPassagesListComponent {
     @Input()

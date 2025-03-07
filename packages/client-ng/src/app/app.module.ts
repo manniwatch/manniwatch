@@ -4,7 +4,7 @@
  */
 
 import { HttpClient, provideHttpClient } from '@angular/common/http';
-import { APP_INITIALIZER, ClassProvider, ErrorHandler, FactoryProvider, NgModule } from '@angular/core';
+import { ClassProvider, ErrorHandler, FactoryProvider, NgModule, inject, provideAppInitializer } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -54,12 +54,10 @@ const API_FACTORY_PROVIDER: FactoryProvider = {
         }
     },
 };
-const SETTINGS_FACTORY_PROVIDER: FactoryProvider = {
-    deps: [SettingsService],
-    multi: true,
-    provide: APP_INITIALIZER,
-    useFactory: SETTINGS_SERVICE_FACTORY,
-};
+const SETTINGS_FACTORY_PROVIDER: FactoryProvider = provideAppInitializer(() => {
+        const initializerFn = (SETTINGS_SERVICE_FACTORY)(inject(SettingsService));
+        return initializerFn();
+      });
 
 const BROWSER_LOCAL_STORAGE_PROVIDER: FactoryProvider = {
     provide: LOCAL_STORAGE_TOKEN,

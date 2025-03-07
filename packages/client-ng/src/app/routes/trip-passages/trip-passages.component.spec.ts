@@ -19,6 +19,7 @@ import { IPassageStatus, UpdateStatus } from './trip-util';
 @Component({
     selector: 'app-trip-passages-list',
     template: '<div></div>',
+    standalone: false
 })
 export class TestTripPassagesListComponent {
     @Input()
@@ -27,6 +28,7 @@ export class TestTripPassagesListComponent {
 @Component({
     selector: 'app-header-box',
     template: '<ng-content></ng-content>',
+    standalone: false
 })
 export class TestAppHeaderBoxComponent {
     @Input()
@@ -34,6 +36,7 @@ export class TestAppHeaderBoxComponent {
 }
 @Directive({
     selector: 'map[appOlStatic]',
+    standalone: false
 })
 export class TestStaticMapDirective {
     @Input()

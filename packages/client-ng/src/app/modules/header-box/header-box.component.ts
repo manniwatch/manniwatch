@@ -10,6 +10,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     selector: 'app-header-box',
     styleUrls: ['./header-box.component.scss'],
     templateUrl: './header-box.component.html',
+    standalone: false
 })
 export class HeaderBoxComponent {
     @Input()

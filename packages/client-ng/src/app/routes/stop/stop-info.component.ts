@@ -19,6 +19,7 @@ export interface IData {
     selector: 'app-stop-info',
     styleUrls: ['./stop-info.component.scss'],
     templateUrl: './stop-info.component.html',
+    standalone: false
 })
 export class StopInfoComponent implements OnInit, OnDestroy {
     public headerMapData: IStaticMapData;

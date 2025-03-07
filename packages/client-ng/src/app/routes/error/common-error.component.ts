@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
     selector: 'app-common-error',
     styleUrls: ['./common-error.component.scss'],
     templateUrl: './common-error.component.html',
+    standalone: false
 })
 /**
  * Common Error component

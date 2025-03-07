@@ -17,18 +17,21 @@ import { RequestUpdateDialogService, SW_STATUS } from './request-update-dialog.s
 @Component({
     selector: 'mat-spinner',
     template: '',
+    standalone: false
 })
 class TestMatSpinnerComponent {}
 
 @Component({
     selector: 'mat-dialog-actions',
     template: '<ng-content></ng-content>',
+    standalone: false
 })
 class TestMatDialogActionsComponent {}
 
 @Component({
     selector: 'mat-icon',
     template: '<div></div>',
+    standalone: false
 })
 class TestMatIconComponent {}
 

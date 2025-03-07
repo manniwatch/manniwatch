@@ -18,6 +18,7 @@ export interface IRetryDialogData {
     selector: 'app-retry-dialog',
     styleUrls: ['./retry-dialog.component.scss'],
     templateUrl: './retry-dialog.component.html',
+    standalone: false
 })
 export class RetryDialogComponent {
     /**

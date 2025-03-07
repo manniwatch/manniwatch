@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
     selector: 'app-not-found',
     styleUrls: ['./not-found.component.scss'],
     templateUrl: './not-found.component.html',
+    standalone: false
 })
 /**
  * Component to be displayed for Errors with non found resources.

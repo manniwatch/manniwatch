@@ -25,6 +25,7 @@ export class NavigationSubscriber implements NextObserver<RouterEvent> {
     selector: 'app-main-toolbar',
     styleUrls: ['./main-toolbar.component.scss'],
     templateUrl: './main-toolbar.component.html',
+    standalone: false
 })
 export class MainToolbarComponent {
     public get searchOpen(): boolean {

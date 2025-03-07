@@ -15,26 +15,31 @@ import { NotFoundComponent } from './not-found.component';
 @Component({
     selector: 'mat-icon',
     template: '<div></div>',
+    standalone: false
 })
 class TestMatIconComponent {}
 @Component({
     selector: 'mat-divider',
     template: '<div></div>',
+    standalone: false
 })
 class TestMatDividerComponent {}
 @Component({
     selector: 'mat-list-item',
     template: '<div></div>',
+    standalone: false
 })
 class TestMatListItemComponent {}
 @Component({
     selector: 'mat-nav-list',
     template: '<ng-content></ng-content>',
+    standalone: false
 })
 class TestMatNavListComponent {}
 @Component({
     selector: 'app-not-found-msg-switch',
     template: '<div></div>',
+    standalone: false
 })
 class TestNotFoundMessageSwitchComponent {}
 

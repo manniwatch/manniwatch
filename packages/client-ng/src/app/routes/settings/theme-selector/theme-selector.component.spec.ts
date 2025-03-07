@@ -17,16 +17,19 @@ import { ThemeSelectorComponent } from './theme-selector.component';
 @Component({
     selector: 'mat-selection-list',
     template: '<ng-content></ng-content>',
+    standalone: false
 })
 class TestMatSelectionListComponent {}
 @Component({
     selector: 'mat-list-option',
     template: '<ng-content></ng-content>',
+    standalone: false
 })
 class TestMatListOptionComponent {}
 @Component({
     selector: 'mat-icon',
     template: '<ng-content></ng-content>',
+    standalone: false
 })
 class TestMatIconComponent {}
 

@@ -11,6 +11,7 @@ import { add, differenceInMinutes, format, formatDistanceToNow, parse } from 'da
     selector: 'app-departure-list-item',
     styleUrls: ['./departure-list-item.component.scss'],
     templateUrl: './departure-list-item.component.html',
+    standalone: false
 })
 export class DepartureListItemComponent {
     /**

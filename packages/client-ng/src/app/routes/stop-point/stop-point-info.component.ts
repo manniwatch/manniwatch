@@ -15,6 +15,7 @@ import { StopPointInfoService } from './stop-point-info.service';
     selector: 'app-stop-point-info',
     styleUrls: ['./stop-point-info.component.scss'],
     templateUrl: './stop-point-info.component.html',
+    standalone: false
 })
 export class StopPointInfoComponent implements OnInit, OnDestroy {
     public headerMapData: IStaticMapData;
