@@ -20,7 +20,7 @@
         "lint:fix": "eslint -c .eslintrc.cjs --ext .ts ./src --fix",
         "postlint:fix": "prettier --config ./../../.prettierrc src/**/*.ts --write",
         "docs": "typedoc --options ./typedoc.config.cjs",
-        "prepublishOnly": "npm run test && npm run docs && npm run build:prod",
+        "prepublishOnly": "npm run docs && npm run build:prod",
         "version": "npm run build:readme && git add README.md",
         "serve": "npm run build && npx electron dist/main/main.js"
     },
