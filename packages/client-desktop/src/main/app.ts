@@ -111,8 +111,8 @@ export class ManniWatchApp {
             // when you should delete the corresponding element.
             this.mainWindow = undefined as any;
         });
-        electron.ipcMain.handle('getEnvironment', (event: IpcMainInvokeEvent, ...args: any[]): void => {
-            event.returnValue = {
+        electron.ipcMain.handle('getEnvironment', (event: IpcMainInvokeEvent, ...args: any[]): any => {
+            return {
                 apiEndpoint: 'mwa://api',
                 map: {
                     center: {
