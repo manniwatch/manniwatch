@@ -29,7 +29,7 @@ describe('endpoints/settings.ts', (): void => {
                 getSettings: getSettingsStub,
             });
             fakeCache = sandbox.createStubInstance(NodeCache);
-            fakeTimer = sandbox.useFakeTimers(30000);
+            fakeTimer = sandbox.useFakeTimers({ now: 30000, toFake: ['Date'] });
         });
 
         beforeEach((): void => {
