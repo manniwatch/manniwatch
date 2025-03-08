@@ -8,8 +8,8 @@ import express from 'express';
 import helmet from 'helmet';
 import { Server } from 'http';
 import path from 'path';
-import { api404Handler } from './api-not-found-handler';
-import { serverErrorHandler } from './server-error-handler';
+import { api404Handler } from './api-not-found-handler.js';
+import { serverErrorHandler } from './server-error-handler.js';
 
 export class ManniWatchProxyServer {
     private app: express.Application;

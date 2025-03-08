@@ -3,5 +3,5 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-export { ManniWatchApiProxyServer } from './proxy-api-server';
-export { ManniWatchProxyServer } from './proxy-server';
+export { ManniWatchApiProxyServer } from './proxy-api-server.js';
+export { ManniWatchProxyServer } from './proxy-server.js';

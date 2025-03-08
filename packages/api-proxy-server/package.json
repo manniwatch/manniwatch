@@ -6,13 +6,10 @@
     "type": "module",
     "types": "./dist/index.d.ts",
     "main": "./dist/index.js",
-    "exports": {
-        "import": "./dist/index.js",
-        "types": "./dist/index.d.ts"
-    },
     "keywords": [
         "api",
-        "types"
+        "manniwatch",
+        "server"
     ],
     "scripts": {
         "build": "tsc -p ./tsconfig.lib.json",
