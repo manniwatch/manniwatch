@@ -23,6 +23,9 @@ export class ManniWatchApiProxyServer {
             });
             next();
         });
+        this.app.get('/api/live', (req, res, next) => {
+            res.json({ success: true });
+        });
         this.app.use('/api', createApiProxyRouter(endpoint));
         this.app.use(api404Handler);
         this.app.use(serverErrorHandler);

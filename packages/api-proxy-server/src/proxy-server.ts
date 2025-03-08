@@ -57,6 +57,9 @@ export class ManniWatchProxyServer {
                 },
             })
         );
+        this.app.get('/api/live', (req, res, next) => {
+            res.json({ success: true });
+        });
         this.app.use('/api', createApiProxyRouter(endpoint));
         this.app.use('/api', api404Handler);
         this.app.use(express.static(this.ngModulePath));
