@@ -23,7 +23,7 @@ export class ManniWatchApiProxyServer {
             });
             next();
         });
-        this.app.get('/api/live', (req, res, next) => {
+        this.app.get('/api/live', (req, res) => {
             res.json({ success: true });
         });
         this.app.use('/api', createApiProxyRouter(endpoint));
