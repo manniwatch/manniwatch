@@ -6,8 +6,8 @@
 import { createApiProxyRouter } from '@manniwatch/api-proxy-router';
 import express from 'express';
 import { Server } from 'http';
-import { api404Handler } from './api-not-found-handler';
-import { serverErrorHandler } from './server-error-handler';
+import { api404Handler } from './api-not-found-handler.js';
+import { serverErrorHandler } from './server-error-handler.js';
 
 export class ManniWatchApiProxyServer {
     private app: express.Application;
