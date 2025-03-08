@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.30.1](https://github.com/manniwatch/manniwatch/compare/v0.30.0...v0.30.1) (2025-03-08)
+
+### Bug Fixes
+
+- **api-proxy-server:** fix relative module references ([#4068](https://github.com/manniwatch/manniwatch/issues/4068)) ([938803f](https://github.com/manniwatch/manniwatch/commit/938803f7f0037857f8798ef2c220c1602445a216))
+
 # [0.30.0](https://github.com/manniwatch/manniwatch/compare/v0.29.16...v0.30.0) (2025-03-07)
 
 ### Bug Fixes

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.30.1](https://github.com/manniwatch/manniwatch/compare/v0.30.0...v0.30.1) (2025-03-08)
+
+### Bug Fixes
+
+- **api-proxy-router:** fix breaking change in sinon19 ([#4050](https://github.com/manniwatch/manniwatch/issues/4050)) ([a118aa6](https://github.com/manniwatch/manniwatch/commit/a118aa6a6badd73e571b4af01babf711ed9fb9eb))
+- **deps:** update dependency @donmahallem/turbo-validate-request to ~3.2.1 ([#4041](https://github.com/manniwatch/manniwatch/issues/4041)) ([0883fe3](https://github.com/manniwatch/manniwatch/commit/0883fe375a21bb090c0462bb408d7f4531b794e6))
+
 # [0.30.0](https://github.com/manniwatch/manniwatch/compare/v0.29.16...v0.30.0) (2025-03-07)
 
 ### Bug Fixes

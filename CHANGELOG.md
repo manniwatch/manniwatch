@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.30.1](https://github.com/manniwatch/manniwatch/compare/v0.30.0...v0.30.1) (2025-03-08)
+
+### Bug Fixes
+
+- **api-proxy-router:** fix breaking change in sinon19 ([#4050](https://github.com/manniwatch/manniwatch/issues/4050)) ([a118aa6](https://github.com/manniwatch/manniwatch/commit/a118aa6a6badd73e571b4af01babf711ed9fb9eb))
+- **api-proxy-server:** fix relative module references ([#4068](https://github.com/manniwatch/manniwatch/issues/4068)) ([938803f](https://github.com/manniwatch/manniwatch/commit/938803f7f0037857f8798ef2c220c1602445a216))
+- **client-desktop:** change how relectorn works ([#4045](https://github.com/manniwatch/manniwatch/issues/4045)) ([9e67c63](https://github.com/manniwatch/manniwatch/commit/9e67c63711c6b29210292f5618fa04e4793e212c))
+- **client-desktop:** fix prepublishScript ([809e8df](https://github.com/manniwatch/manniwatch/commit/809e8df5375ba2f694825432c883576dc3acae42))
+- **deps:** update dependency @donmahallem/turbo-validate-request to ~3.2.1 ([#4041](https://github.com/manniwatch/manniwatch/issues/4041)) ([0883fe3](https://github.com/manniwatch/manniwatch/commit/0883fe375a21bb090c0462bb408d7f4531b794e6))
+- **deps:** update dependency electron to v33 ([#4063](https://github.com/manniwatch/manniwatch/issues/4063)) ([205b23c](https://github.com/manniwatch/manniwatch/commit/205b23c9e862cd6c1400fb5e81e8e96dac8bf41f))
+- **deps:** update dependency electron to v35 ([#4065](https://github.com/manniwatch/manniwatch/issues/4065)) ([342dc7e](https://github.com/manniwatch/manniwatch/commit/342dc7ea6bf1723ba855644c59fc58ab592188a5))
+- **deps:** update dependency ol-mapbox-style to v12.5.0 ([#4058](https://github.com/manniwatch/manniwatch/issues/4058)) ([1bf7650](https://github.com/manniwatch/manniwatch/commit/1bf7650234617cce4c75e3e22ec6c8bb399be2a6))
+
 # [0.30.0](https://github.com/manniwatch/manniwatch/compare/v0.29.16...v0.30.0) (2025-03-07)
 
 ### Bug Fixes

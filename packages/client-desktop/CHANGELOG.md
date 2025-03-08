@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.30.1](https://github.com/manniwatch/manniwatch/compare/v0.30.0...v0.30.1) (2025-03-08)
+
+### Bug Fixes
+
+- **client-desktop:** change how relectorn works ([#4045](https://github.com/manniwatch/manniwatch/issues/4045)) ([9e67c63](https://github.com/manniwatch/manniwatch/commit/9e67c63711c6b29210292f5618fa04e4793e212c))
+- **client-desktop:** fix prepublishScript ([809e8df](https://github.com/manniwatch/manniwatch/commit/809e8df5375ba2f694825432c883576dc3acae42))
+- **deps:** update dependency electron to v33 ([#4063](https://github.com/manniwatch/manniwatch/issues/4063)) ([205b23c](https://github.com/manniwatch/manniwatch/commit/205b23c9e862cd6c1400fb5e81e8e96dac8bf41f))
+- **deps:** update dependency electron to v35 ([#4065](https://github.com/manniwatch/manniwatch/issues/4065)) ([342dc7e](https://github.com/manniwatch/manniwatch/commit/342dc7ea6bf1723ba855644c59fc58ab592188a5))
+
 # [0.30.0](https://github.com/manniwatch/manniwatch/compare/v0.29.16...v0.30.0) (2025-03-07)
 
 ### Bug Fixes
