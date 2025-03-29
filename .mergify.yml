@@ -37,3 +37,9 @@ pull_request_rules:
     conditions: []
     actions:
       queue:
+priority_rules:
+  - name: priority for queue `duplicated default from merge PRs labeled ready-to-merge`
+    conditions:
+      - status-success=Finish Test
+      - label=ready-to-merge
+    priority: 2250
