@@ -33,7 +33,7 @@ jobs:
               run: |
                   echo "::set-output name=dir::$(npm config get cache)"
             - name: Setup Cache
-              uses: actions/cache@v4.2.2
+              uses: actions/cache@v4.3.0
               with:
                   path: |
                       ${{ steps.npm-cache.outputs.dir }}
@@ -68,7 +68,7 @@ jobs:
               with:
                   node-version: ${{matrix.node}}
             - name: Setup Cache
-              uses: actions/cache@v4.2.2
+              uses: actions/cache@v4.3.0
               with:
                   path: |
                       node_modules
@@ -124,7 +124,7 @@ jobs:
               run: |
                   echo "::set-output name=dir::$(npm config get cache)"
             - name: Setup Cache
-              uses: actions/cache@v4.2.2
+              uses: actions/cache@v4.3.0
               with:
                   path: |
                       ${{ steps.npm-cache.outputs.dir }}
