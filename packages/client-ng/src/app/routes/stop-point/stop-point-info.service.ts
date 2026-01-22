@@ -3,7 +3,7 @@
  * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
-import { ApplicationRef, Injectable } from '@angular/core';
+import { ApplicationRef, Injectable, inject } from '@angular/core';
 import { ActivatedRoute, Data } from '@angular/router';
 import { IStopPassage, IStopPointLocation } from '@manniwatch/api-types';
 import { interval, Observable } from 'rxjs';
@@ -19,12 +19,11 @@ export interface IStatus {
 @Injectable()
 export class StopPointInfoService {
     public readonly stopPassageObservable: Observable<IStopPassage>;
-    constructor(
-        private route: ActivatedRoute,
-        private apiService: ApiService,
-        public stopService: StopPointService,
-        private appRef: ApplicationRef
-    ) {
+    private apiService: ApiService = inject(ApiService);
+    private appRef: ApplicationRef = inject(ApplicationRef);
+    private route: ActivatedRoute = inject(ActivatedRoute);
+    public stopService: StopPointService = inject(StopPointService);
+    constructor() {
         this.stopPassageObservable = this.route.data.pipe(
             map((params: Data): IStopPassage => {
                 return params.stopPoint as IStopPassage;

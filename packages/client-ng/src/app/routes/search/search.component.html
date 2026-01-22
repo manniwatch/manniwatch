@@ -1,6 +1,8 @@
 
-<mat-nav-list role="navigation"><a *ngFor="let item of results | async" [routerLink]="['/stop', item.shortName]" role="listitem">
+<mat-nav-list role="navigation">@for (item of results | async; track item) {
+  <a [routerLink]="['/stop', item.shortName]" role="listitem">
     <mat-list-item>
       <mat-icon mat-list-icon>place</mat-icon>
       <h4 mat-line>{{item?.name}}</h4>
-    </mat-list-item></a></mat-nav-list>
+    </mat-list-item></a>
+  }</mat-nav-list>

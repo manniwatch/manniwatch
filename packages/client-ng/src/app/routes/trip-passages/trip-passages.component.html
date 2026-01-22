@@ -1,8 +1,10 @@
 
-<ng-container *ngIf="passageService.statusObservable | async as status">
+@if (passageService.statusObservable | async; as status) {
   <app-header-box title="{{status?.tripInfo.routeName}} - {{status?.tripInfo.directionText}}"><map appOlStatic [mapData]="headerMapData"></map></app-header-box>
-  <div class="not-found" *ngIf="status.status===STATUS_OPS.NOT_FOUND">
-    <h4>not found</h4>
-  </div>
+  @if (status.status===STATUS_OPS.NOT_FOUND) {
+    <div class="not-found">
+      <h4>not found</h4>
+    </div>
+  }
   <app-trip-passages-list [tripInfo]="status.tripInfo"></app-trip-passages-list>
-</ng-container>
+}

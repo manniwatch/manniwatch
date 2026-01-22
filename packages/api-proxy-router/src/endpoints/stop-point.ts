@@ -41,7 +41,8 @@ export const createStopPointRouter: (apiClient: ManniWatchApiClient, ajvInstance
             // tslint:disable-next-line:triple-equals
             const timeFrame: number | undefined =
                 req.query.timeFrame == undefined ? undefined : parseInt(req.query.timeFrame as string, 10);
-            res.json(await apiClient.getStopPointPassages(req.params.id, mode, startTime, timeFrame));
+            const stopPointId: string = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+            res.json(await apiClient.getStopPointPassages(stopPointId, mode, startTime, timeFrame));
         }
     );
     /**
@@ -53,7 +54,8 @@ export const createStopPointRouter: (apiClient: ManniWatchApiClient, ajvInstance
      */
     // eslint-disable-next-line no-useless-escape
     router.get('/:id/info', async (req: express.Request, res: express.Response): Promise<void> => {
-        res.json(await apiClient.getStopPointInfo(req.params.id));
+        const reqParamsId: string = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+        res.json(await apiClient.getStopPointInfo(reqParamsId));
     });
     return router;
 };

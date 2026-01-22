@@ -3,7 +3,7 @@
  * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/services';
@@ -16,19 +16,9 @@ import { IPassageStatus, TripPassagesUtil } from './trip-util';
  */
 @Injectable()
 export class TripPassagesResolver extends RetryResolver<IPassageStatus> {
-    /**
-     * Constructor
-     * @param api the {@ApiService}
-     * @param router
-     * @param dialog
-     */
-    public constructor(
-        public api: ApiService,
-        router: Router,
-        dialog: AppDialogService
-    ) {
-        super(router, dialog);
-    }
+    api: ApiService = inject(ApiService);
+    readonly router: Router = inject(Router);
+    readonly dialog: AppDialogService = inject(AppDialogService);
 
     /**
      * Resolves the station response
