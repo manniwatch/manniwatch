@@ -3,7 +3,7 @@
  * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
-import { enableProdMode } from '@angular/core';
+import { enableProdMode, provideZoneChangeDetection } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
@@ -14,7 +14,7 @@ if (environment.production) {
 }
 
 platformBrowserDynamic()
-    .bootstrapModule(AppModule)
+    .bootstrapModule(AppModule, { applicationProviders: [provideZoneChangeDetection()], })
     .then((): void => {
         if ('serviceWorker' in navigator && environment.production) {
             void navigator.serviceWorker.register('/ngsw-worker.js');

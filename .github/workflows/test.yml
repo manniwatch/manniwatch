@@ -19,7 +19,7 @@ jobs:
         strategy:
             max-parallel: 4
             matrix:
-                node: [18, 20]
+                node: [22, 24]
                 os: [ubuntu-latest] #, windows-latest]
         steps:
             - name: Checkout
@@ -50,7 +50,7 @@ jobs:
         strategy:
             max-parallel: 4
             matrix:
-                node: [18, 20]
+                node: [22, 24]
                 os: [ubuntu-latest] #, windows-latest]
         steps:
             - name: Checkout
@@ -89,7 +89,7 @@ jobs:
         strategy:
             max-parallel: 4
             matrix:
-                node: [20]
+                node: [24]
                 os: [ubuntu-latest] #, windows-latest]
         steps:
             - name: Checkout
@@ -119,7 +119,7 @@ jobs:
         strategy:
             max-parallel: 4
             matrix:
-                node: [20]
+                node: [24]
                 os: [ubuntu-latest] #, windows-latest]
         steps:
             - name: Checkout

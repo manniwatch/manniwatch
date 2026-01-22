@@ -1,8 +1,10 @@
 <a mat-list-item [routerLink]="['/passages', departure.tripId]" role="listitem">
-    <mat-icon matListItemIcon title="{{ status }}">{{ statusIcon }}</mat-icon>
-    <div matListItemTitle>{{ departure?.patternText }} {{ departure?.direction }}</div>
-    <div matListItemLine class="subheader">
-        <span title="Planned: {{ departure?.plannedTime }}">{{ time }}</span>
-        <span class="pattern-text" *ngIf="hasDelay" [ngClass]="delayStyle">{{ delay }}</span>
-    </div></a
->
+  <mat-icon matListItemIcon title="{{ status }}">{{ statusIcon }}</mat-icon>
+  <div matListItemTitle>{{ departure?.patternText }} {{ departure?.direction }}</div>
+  <div matListItemLine class="subheader">
+    <span title="Planned: {{ departure?.plannedTime }}">{{ time }}</span>
+    @if (hasDelay) {
+      <span class="pattern-text" [ngClass]="delayStyle">{{ delay }}</span>
+    }
+  </div></a
+  >

@@ -8,7 +8,7 @@
     "esModuleInterop": true,
     "declaration": false,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "importHelpers": true,
     "target": "ES2022",
@@ -17,10 +17,6 @@
     "typeRoots": [
       "node_modules/@types",
       "./../../node_modules/@types"
-    ],
-    "lib": [
-      "es2022",
-      "dom"
     ]
   },
   "angularCompilerOptions": {

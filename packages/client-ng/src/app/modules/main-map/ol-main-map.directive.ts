@@ -4,7 +4,7 @@
  */
 
 import { Location } from '@angular/common';
-import { Directive, ElementRef, NgZone, OnDestroy } from '@angular/core';
+import { Directive, ElementRef, NgZone, OnDestroy, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { IStopLocation, IStopPointLocation, IVehicleLocation } from '@manniwatch/api-types';
 import { Map as OLMap } from 'ol';

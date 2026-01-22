@@ -6,6 +6,7 @@
 import { Component, DebugElement } from '@angular/core';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { By } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
 import { RequestUpdateDialogComponent } from './request-update-dialog.component';
@@ -48,7 +49,7 @@ describe('src/app/modules/request-update-dialog/request-update-dialog.component.
         beforeEach(waitForAsync((): void => {
             TestBed.configureTestingModule({
                 declarations: [RequestUpdateDialogComponent, TestMatIconComponent, TestMatDialogActionsComponent, TestMatSpinnerComponent],
-                imports: [],
+                imports: [MatDialogModule],
                 providers: [
                     {
                         provide: RequestUpdateDialogService,

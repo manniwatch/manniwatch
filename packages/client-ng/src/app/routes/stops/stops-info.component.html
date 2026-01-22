@@ -1,11 +1,15 @@
 
 <mat-nav-list class="stoplist" role="list">
-  <ng-container *ngFor="let item of stops;let idx = index;">
-    <mat-divider *ngIf="hasHeader(idx)&amp;&amp;idx&gt;0"></mat-divider>
-    <h3 *ngIf="hasHeader(idx)" mat-subheader>{{item.name.charAt(0)}}</h3><a [routerLink]="['/stop', item.shortName]" title="{{item?.name}}">
+  @for (item of stops; track item; let idx = $index) {
+    @if (hasHeader(idx)&&idx>0) {
+      <mat-divider></mat-divider>
+    }
+    @if (hasHeader(idx)) {
+      <h3 mat-subheader>{{item.name.charAt(0)}}</h3>
+      }<a [routerLink]="['/stop', item.shortName]" title="{{item?.name}}">
       <mat-list-item role="listitem">
         <mat-icon mat-list-icon>place</mat-icon>
         <h4 mat-line>{{item?.name}}</h4>
       </mat-list-item></a>
-  </ng-container>
-</mat-nav-list>
+    }
+  </mat-nav-list>

@@ -2,7 +2,9 @@
 <h1 mat-dialog-title>Error</h1>
 <div mat-dialog-content>
   <p>{{data.message}}</p>
-  <p *ngIf="data.code">Code: {{data.code}}</p>
+  @if (data.code) {
+    <p>Code: {{data.code}}</p>
+  }
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>

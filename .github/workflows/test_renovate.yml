@@ -15,7 +15,7 @@ jobs:
             - name: Setup Node
               uses: actions/setup-node@v4.4.0
               with:
-                  node-version: 20
+                  node-version: 24
             - name: Install renovate
               run: npm install renovate -g
             - name: Run Test

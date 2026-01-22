@@ -4,7 +4,7 @@
  */
 
 import { Component, Input } from '@angular/core';
-import { IDeparture } from '@manniwatch/api-types';
+import { IDeparture, IRoute } from '@manniwatch/api-types';
 
 @Component({
     selector: 'app-route-list',
@@ -13,13 +13,13 @@ import { IDeparture } from '@manniwatch/api-types';
     templateUrl: './route-list.component.html',
 })
 export class RouteListComponent {
-    private mDepartures: IDeparture[] = [];
+    private mDepartures: IRoute[] = [];
     @Input()
-    public set routes(deps: IDeparture[]) {
+    public set routes(deps: IRoute[]) {
         this.mDepartures = deps ? deps : [];
     }
 
-    public get routes(): IDeparture[] {
+    public get routes(): IRoute[] {
         return this.mDepartures;
     }
 

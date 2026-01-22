@@ -13,7 +13,7 @@ jobs:
         strategy:
             max-parallel: 4
             matrix:
-                node: [18]
+                node: [24]
                 os: [ubuntu-latest] #, windows-latest]
         steps:
             - name: Checkout
@@ -57,7 +57,7 @@ jobs:
         name: Deploy App
         strategy:
             matrix:
-                node: [20]
+                node: [24]
         steps:
             - name: Checkout
               uses: actions/checkout@v4
@@ -108,7 +108,7 @@ jobs:
         strategy:
             max-parallel: 4
             matrix:
-                node: [20]
+                node: [24]
                 os: [ubuntu-latest] #, windows-latest]
         steps:
             - name: Checkout

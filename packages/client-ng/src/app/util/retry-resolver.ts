@@ -4,16 +4,16 @@
  */
 
 import { HttpErrorResponse } from '@angular/common/http';
+import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot, MaybeAsync } from '@angular/router';
 import { EMPTY, from, mergeMap, Observable, of, retry, throwError } from 'rxjs';
 import { AppDialogService } from '../services';
 
 export type ErrorTypes = Error | HttpErrorResponse;
 export abstract class RetryResolver<T> implements Resolve<T> {
-    public constructor(
-        public router: Router,
-        public dialog: AppDialogService
-    ) {}
+    public readonly router: Router = inject(Router);
+    public readonly dialog: AppDialogService = inject(AppDialogService);
+
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<T> {
         return this.createLoader(route, state).pipe(
             retry({

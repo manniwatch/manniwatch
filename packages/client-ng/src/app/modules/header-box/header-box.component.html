@@ -1,4 +1,8 @@
 
 <ng-content></ng-content>
-<div class="title-box"><span class="title" *ngIf="title!==undefined" role="heading" aria-level="2" title="{{title}}">{{title}}</span><span class="subtitle" *ngIf="lastUpdate!==undefined" title="{{ lastUpdate  | date:'full'}}">Last Update: {{ lastUpdate  | date:'mediumTime'}}</span></div>
+<div class="title-box">@if (title!==undefined) {
+  <span class="title" role="heading" aria-level="2" title="{{title}}">{{title}}</span>
+  }@if (lastUpdate!==undefined) {
+  <span class="subtitle" title="{{ lastUpdate  | date:'full'}}">Last Update: {{ lastUpdate  | date:'mediumTime'}}</span>
+}</div>
 <mat-icon>location_off</mat-icon>
