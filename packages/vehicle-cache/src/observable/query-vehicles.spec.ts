@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/vehicle-cache
  * Source https://manniwatch.github.io/manniwatch/
  */
@@ -13,19 +13,18 @@ import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
 import { queryVehicles } from './query-vehicles.js';
 
-/* eslint-disable @typescript-eslint/no-explicit-any,
-  @typescript-eslint/no-unsafe-member-access,
-  @typescript-eslint/no-unsafe-argument,
-  @typescript-eslint/no-unsafe-assignment */
-describe('observable/query-vehicles', (): void => {
-    describe('queryVehicles', (): void => {
+/* eslint-disable @typescript-eslint/no-explicit-any, mocha/no-setup-in-describe */
+describe('observable/query-vehicles', function (): void {
+    describe('queryVehicles', function (): void {
         let testScheduler: TestScheduler;
         let sandbox: sinon.SinonSandbox;
         let stubInstance: sinon.SinonStubbedInstance<ManniWatchApiClient>;
-        before((): void => {
+
+        before(function (): void {
             sandbox = sinon.createSandbox();
         });
-        beforeEach((): void => {
+
+        beforeEach(function (): void {
             stubInstance = sandbox.createStubInstance(ManniWatchApiClient);
             testScheduler = new TestScheduler((actual: any, expected: any): void => {
                 // asserting the two objects are equal
@@ -33,12 +32,13 @@ describe('observable/query-vehicles', (): void => {
                 expect(actual).deep.equal(expected);
             });
         });
-        afterEach((): void => {
+
+        afterEach(function (): void {
             sandbox.reset();
         });
         [0, undefined, 2000].forEach((testLastUpdate: any): void => {
             [undefined, 'RAW', 'CORRECTED'].forEach((posType: any): void => {
-                it(`should query for vehicles with (${posType},${testLastUpdate})`, (): void => {
+                it(`should query for vehicles with (${posType},${testLastUpdate})`, function (): void {
                     const testResponse: any = { lastUpdate: 123, vehicles: [] };
                     testScheduler.run((helpers: RunHelpers): void => {
                         const { expectObservable, flush, cold } = helpers;
@@ -61,7 +61,8 @@ describe('observable/query-vehicles', (): void => {
                 });
             });
         });
-        it(`should pass on errors`, (): void => {
+
+        it(`should pass on errors`, function (): void {
             const testError: Error = new Error('This is a test error');
             testScheduler.run((helpers: RunHelpers): void => {
                 const { expectObservable, flush, cold } = helpers;

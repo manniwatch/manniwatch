@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/api-client
  * Source https://manniwatch.github.io/manniwatch/
  */

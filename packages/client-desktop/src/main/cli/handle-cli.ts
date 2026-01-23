@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/client-desktop
  * Source https://manniwatch.github.io/manniwatch/
  */
@@ -10,12 +10,6 @@ import { AppConfig } from '../config/config';
 import { loadConfig } from '../config/index';
 import { validateConfigFile } from '../config/validate-file-config';
 
-/* eslint-disable @typescript-eslint/no-explicit-any,
-  @typescript-eslint/no-unsafe-member-access,
-  @typescript-eslint/no-unsafe-argument,
-  @typescript-eslint/no-floating-promises,
-  @typescript-eslint/no-unsafe-assignment,
-  @typescript-eslint/no-var-requires */
 export type ArgsCallback = (config: AppConfig) => void;
 export const handleCli: (cb: ArgsCallback) => void = (cb: ArgsCallback): void => {
     // tslint:disable-next-line:no-unused-expression
@@ -31,6 +25,7 @@ export const handleCli: (cb: ArgsCallback) => void = (cb: ArgsCallback): void =>
             if (options.debug) {
                 console.error('Called %s with options %o', command.name(), options);
             }
+            // eslint-disable-next-line @typescript-eslint/no-require-imports
             const sourceConfigs: Partial<AppConfig>[] = [require('./../../environment/environment').environment];
             if (options.config) {
                 sourceConfigs.push(await loadConfig(options.config));

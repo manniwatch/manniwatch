@@ -3,10 +3,7 @@
  * Source https://github.com/manniwatch/manniwatch/tree/master/packages/client-types
  */
 
-/* eslint-disable sort-keys */
-export const DARK_THEME: {
-    [name: string]: unknown;
-} = {
+export const DARK_THEME: Record<string, unknown> = {
     version: 8,
     name: 'Dark Matter',
     metadata: {

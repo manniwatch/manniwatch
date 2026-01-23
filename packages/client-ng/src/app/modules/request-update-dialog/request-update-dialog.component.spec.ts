@@ -12,9 +12,6 @@ import { BehaviorSubject } from 'rxjs';
 import { RequestUpdateDialogComponent } from './request-update-dialog.component';
 import { RequestUpdateDialogService, SW_STATUS } from './request-update-dialog.service';
 
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
 @Component({
     selector: 'mat-spinner',
     standalone: false,
@@ -36,12 +33,9 @@ class TestMatDialogActionsComponent {}
 })
 class TestMatIconComponent {}
 
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
-
 describe('src/app/modules/request-update-dialog/request-update-dialog.component.ts', (): void => {
     describe('RequestUpdateDialogComponent', (): void => {
-        const statusSubject: BehaviorSubject<SW_STATUS> = new BehaviorSubject(SW_STATUS.LOADING);
+        const statusSubject = new BehaviorSubject<SW_STATUS>(SW_STATUS.LOADING);
         const testDialogService: any = {
             statusObservable: statusSubject,
         };

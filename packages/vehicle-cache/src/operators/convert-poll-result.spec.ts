@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/vehicle-cache
  * Source https://manniwatch.github.io/manniwatch/
  */
@@ -12,12 +12,9 @@ import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
 import { convertPollResult, PollResult } from './convert-poll-result.js';
 
-/* eslint-disable @typescript-eslint/no-explicit-any,
-  @typescript-eslint/no-unsafe-member-access,
-  @typescript-eslint/no-unsafe-argument,
-  @typescript-eslint/no-unsafe-assignment */
-describe('operators/convert-poll-result', (): void => {
-    describe('convertPollResult', (): void => {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+describe('operators/convert-poll-result', function (): void {
+    describe('convertPollResult', function (): void {
         const sourceValues: any = {
             d: {
                 lastUpdate: 1000,
@@ -49,21 +46,25 @@ describe('operators/convert-poll-result', (): void => {
         };
         let testScheduler: TestScheduler;
         let sandbox: sinon.SinonSandbox;
-        before((): void => {
+
+        before(function (): void {
             sandbox = sinon.createSandbox();
         });
-        beforeEach((): void => {
+
+        beforeEach(function (): void {
             testScheduler = new TestScheduler((actual: any, expected: any): void => {
                 // asserting the two objects are equal
                 // e.g. using chai.
                 expect(actual).deep.equal(expected);
             });
         });
-        afterEach((): void => {
+
+        afterEach(function (): void {
             sandbox.reset();
         });
-        describe('test cold observable', (): void => {
-            it('should convert all non errors', (): void => {
+
+        describe('test cold observable', function (): void {
+            it('should convert all non errors', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold } = helpers;
                     const foreverStream$: Observable<PollResult> = cold<IVehicleLocationList>('---d--e---f---|', sourceValues).pipe(
@@ -88,7 +89,8 @@ describe('operators/convert-poll-result', (): void => {
                     expectObservable(foreverStream$, unsub).toBe('17ms a 2ms b 3ms c', testValues);
                 });
             });
-            it('should not stop observable on error', (): void => {
+
+            it('should not stop observable on error', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold } = helpers;
                     const testError: Error = new Error('This is a test error');
@@ -117,8 +119,9 @@ describe('operators/convert-poll-result', (): void => {
                 });
             });
         });
-        describe('test hot observable', (): void => {
-            it('should convert all non errors', (): void => {
+
+        describe('test hot observable', function (): void {
+            it('should convert all non errors', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, hot } = helpers;
                     const foreverStream$: Observable<PollResult> = hot<IVehicleLocationList>('---d--e---f---|', sourceValues).pipe(
@@ -135,7 +138,8 @@ describe('operators/convert-poll-result', (): void => {
                     expectObservable(foreverStream$, unsub).toBe('10ms a --- |', testValues);
                 });
             });
-            it('should not stop observable on error', (): void => {
+
+            it('should not stop observable on error', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, hot } = helpers;
                     const testError: Error = new Error('This is a test error');

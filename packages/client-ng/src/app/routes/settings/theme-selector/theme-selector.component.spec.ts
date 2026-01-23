@@ -11,9 +11,6 @@ import { startWith } from 'rxjs/operators';
 import { SettingsService, Theme } from 'src/app/services';
 import { ThemeSelectorComponent } from './theme-selector.component';
 
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
 @Component({
     selector: 'mat-selection-list',
     standalone: false,
@@ -32,9 +29,6 @@ class TestMatListOptionComponent {}
     template: '<ng-content></ng-content>',
 })
 class TestMatIconComponent {}
-
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
 
 describe('src/routes/settings/theme-selector/theme-selector.component.ts', (): void => {
     describe('ThemeSelectorComponent', (): void => {

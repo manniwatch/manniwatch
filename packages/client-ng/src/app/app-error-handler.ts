@@ -41,7 +41,6 @@ export class AppErrorHandler implements ErrorHandler {
                 type: AppNotificationType.ERROR,
             });
         }
-        // tslint:disable-next-line:no-console
         console.error('It happens: ', error);
     }
 

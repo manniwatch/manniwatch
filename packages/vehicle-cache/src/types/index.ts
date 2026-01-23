@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/vehicle-cache
  * Source https://manniwatch.github.io/manniwatch/
  */

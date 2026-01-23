@@ -9,7 +9,6 @@ import { NextObserver } from 'rxjs';
 import { SidebarService } from 'src/app/modules/sidebar';
 import { ToolbarSearchBoxComponent } from './search-box.component';
 
-// tslint:disable:max-classes-per-file
 export class NavigationSubscriber implements NextObserver<RouterEvent> {
     public constructor(private toolbar: MainToolbarComponent) {}
     public next(event: RouterEvent): void {

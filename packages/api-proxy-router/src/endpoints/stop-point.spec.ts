@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/api-proxy-router
  * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
@@ -23,9 +23,9 @@ import {
 import { ValidateRequestStub } from './common-test.spec.js';
 const testIds: string[] = ['-12883', 'kasd'];
 
-/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-misused-promises */
-describe('endpoints/stop-point.ts', (): void => {
-    describe('createStopPointRouter', (): void => {
+/* eslint-disable @typescript-eslint/no-explicit-any, mocha/no-setup-in-describe */
+describe('endpoints/stop-point.ts', function (): void {
+    describe('createStopPointRouter', function (): void {
         let app: express.Express;
         let getStopPointInfoStub: sinon.SinonStub<Parameters<ManniWatchApiClient['getStopPointInfo']>>;
         let getStopPointPassagesStub: sinon.SinonStub<Parameters<ManniWatchApiClient['getStopPointPassages']>>;
@@ -34,7 +34,8 @@ describe('endpoints/stop-point.ts', (): void => {
         let validateStubHandler: sinon.SinonStub;
         let errorSpy: ErrorSpy;
         let createStopPointRouter: (apiClient: ManniWatchApiClient) => express.Router;
-        before(async (): Promise<void> => {
+
+        before(async function (): Promise<void> {
             validateStub = sinon.stub().named('validateRequest') as ValidateRequestStub;
             getStopPointInfoStub = sinon.stub();
             getStopPointPassagesStub = sinon.stub();
@@ -45,7 +46,7 @@ describe('endpoints/stop-point.ts', (): void => {
                 getStopPointPassages: getStopPointPassagesStub,
             });
             validateStub.returns(validateStubHandler);
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+
             createStopPointRouter = (
                 await esmock('./stop-point.js', {
                     '@donmahallem/turbo-validate-request': {
@@ -55,13 +56,14 @@ describe('endpoints/stop-point.ts', (): void => {
             ).createStopPointRouter;
         });
 
-        beforeEach((): void => {
+        beforeEach(function (): void {
             const route: express.Router = createStopPointRouter(apiClientStub);
             app = express();
             app.use('/stopPoint', route);
             app.use(createTestErrorRequestHandler(errorSpy));
         });
-        afterEach('test and reset promise stub', (): void => {
+
+        afterEach('test and reset promise stub', function (): void {
             expect(validateStub.callCount).to.equal(1, 'validateRequest should be called once');
             expect(validateStub.args[0]).to.deep.equal(['query', STOP_PASSAGES_SCHEMA], 'should be called with correct schema');
             getStopPointInfoStub.reset();
@@ -70,13 +72,14 @@ describe('endpoints/stop-point.ts', (): void => {
             validateStub.resetHistory();
             errorSpy.resetHistory();
         });
-        describe(`query '/stopPoint/:id/route'`, (): void => {
-            afterEach((): void => {
+
+        describe(`query '/stopPoint/:id/route'`, function (): void {
+            afterEach(function (): void {
                 expect(errorSpy.callCount).to.equal(0, 'No route error should occur');
             });
             testIds.forEach((testId: string): void => {
                 const queryUrl = `/stopPoint/${testId}/info`;
-                it(`should query '${queryUrl}'`, async (): Promise<void> => {
+                it(`should query '${queryUrl}'`, async function (): Promise<void> {
                     getStopPointInfoStub.resolves(SUCCESS_RESPONSE);
                     return supertest(app)
                         .get(queryUrl)
@@ -92,24 +95,26 @@ describe('endpoints/stop-point.ts', (): void => {
                 });
             });
         });
-        describe(`query '/stopPoint/:id/passages'`, (): void => {
-            afterEach((): void => {
+
+        describe(`query '/stopPoint/:id/passages'`, function (): void {
+            afterEach(function (): void {
                 expect(validateStubHandler.callCount).to.equal(1, 'should be called once');
                 expect(apiClientStub.getStopPointInfo.callCount).to.equal(0, 'getStopPointInfo should not be called');
             });
-            describe('query validation passes', (): void => {
-                beforeEach((): void => {
+
+            describe('query validation passes', function (): void {
+                beforeEach(function (): void {
                     validateStubHandler.callsFake((...args: any[]): void => {
-                        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
                         args[2]();
                     });
                 });
-                afterEach((): void => {
+
+                afterEach(function (): void {
                     expect(errorSpy.callCount).to.equal(0, 'no route error should occur');
                 });
                 testIds.forEach((testId: string): void => {
                     const queryUrl = `/stopPoint/${testId}/passages`;
-                    it(`should query '${queryUrl}'`, async (): Promise<void> => {
+                    it(`should query '${queryUrl}'`, async function (): Promise<void> {
                         getStopPointPassagesStub.resolves(SUCCESS_RESPONSE);
                         return supertest(app)
                             .get(queryUrl)
@@ -142,7 +147,7 @@ describe('endpoints/stop-point.ts', (): void => {
                                 if (testTimeFrame) {
                                     queryPath += `timeFrame=${testTimeFrame}&`;
                                 }
-                                it(`should query '${queryPath}'`, async (): Promise<void> => {
+                                it(`should query '${queryPath}'`, async function (): Promise<void> {
                                     getStopPointPassagesStub.resolves(SUCCESS_RESPONSE);
                                     return supertest(app)
                                         .get(queryPath)
@@ -166,22 +171,24 @@ describe('endpoints/stop-point.ts', (): void => {
                     });
                 });
             });
-            describe('query validation does not pass', (): void => {
+
+            describe('query validation does not pass', function (): void {
                 const testError: Error = new Error('test error');
-                beforeEach((): void => {
+
+                beforeEach(function (): void {
                     validateStubHandler.callsFake((...args: any[]): void => {
-                        // eslint-disable-next-line  @typescript-eslint/no-unsafe-call
                         args[2](testError);
                     });
                     console.info(validateStub);
                 });
-                afterEach((): void => {
+
+                afterEach(function (): void {
                     expect(errorSpy.callCount).to.equal(1, 'one route error should occur');
                     expect(errorSpy.getCall(0).args).to.deep.equal([testError]);
                 });
                 testIds.forEach((testId: string): void => {
                     const queryUrl = `/stopPoint/${testId}/passages`;
-                    it(`should query '${queryUrl}'`, async (): Promise<void> => {
+                    it(`should query '${queryUrl}'`, async function (): Promise<void> {
                         getStopPointPassagesStub.resolves(SUCCESS_RESPONSE);
                         await supertest(app)
                             .get(queryUrl)

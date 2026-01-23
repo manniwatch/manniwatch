@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/api-proxy-router
  * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
@@ -26,9 +26,9 @@ import type { createStopRouter } from './stop.js';
 const testIds: string[] = ['-12883', 'kasd'];
 type GetStopPassagesStub = MethodStub<ManniWatchApiClient['getStopPassages']>;
 type GetStopInfoStub = MethodStub<ManniWatchApiClient['getStopInfo']>;
-/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-misused-promises */
-describe('endpoints/stop.ts', (): void => {
-    describe('createStopRouter', (): void => {
+/* eslint-disable @typescript-eslint/no-explicit-any, mocha/no-setup-in-describe */
+describe('endpoints/stop.ts', function (): void {
+    describe('createStopRouter', function (): void {
         let app: express.Express;
         let getStopInfoStub: GetStopInfoStub;
         let getStopPassagesStub: GetStopPassagesStub;
@@ -37,7 +37,8 @@ describe('endpoints/stop.ts', (): void => {
         let validateStubHandler: sinon.SinonStub;
         let errorSpy: ErrorSpy;
         let createStopRouterMethod: typeof createStopRouter;
-        before(async (): Promise<void> => {
+
+        before(async function (): Promise<void> {
             validateStub = sinon.stub().named('validateRequest') as ValidateRequestStub;
             getStopInfoStub = sinon.stub().named('ManniWatchApiClient.getStopInfo') as GetStopInfoStub;
             getStopPassagesStub = sinon.stub().named('ManniWatchApiClient.getStopPassages') as GetStopPassagesStub;
@@ -48,7 +49,7 @@ describe('endpoints/stop.ts', (): void => {
                 getStopPassages: getStopPassagesStub,
             });
             validateStub.returns(validateStubHandler);
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+
             createStopRouterMethod = (
                 await esmock('./stop.js', {
                     '@donmahallem/turbo-validate-request': {
@@ -57,29 +58,31 @@ describe('endpoints/stop.ts', (): void => {
                 })
             ).createStopRouter;
         });
-        beforeEach(() => {
+
+        beforeEach(function () {
             const route: express.Router = createStopRouterMethod(apiClientStub);
             app = express();
             app.use('/stop', route);
             app.use(createTestErrorRequestHandler(errorSpy));
         });
 
-        afterEach('test and reset promise stub', (): void => {
+        afterEach('test and reset promise stub', function (): void {
             getStopInfoStub.reset();
             getStopPassagesStub.reset();
             validateStubHandler.reset();
             validateStub.resetHistory();
             errorSpy.resetHistory();
         });
-        describe(`query '/stop/:id/info'`, (): void => {
-            afterEach((): void => {
+
+        describe(`query '/stop/:id/info'`, function (): void {
+            afterEach(function (): void {
                 sinon.assert.notCalled(errorSpy);
                 sinon.assert.notCalled(validateStubHandler);
                 sinon.assert.notCalled(apiClientStub.getStopPassages);
             });
             testIds.forEach((testId: string): void => {
                 const queryUrl = `/stop/${testId}/info`;
-                it(`should query '${queryUrl}'`, async (): Promise<void> => {
+                it(`should query '${queryUrl}'`, async function (): Promise<void> {
                     getStopInfoStub.resolves(SUCCESS_RESPONSE as IStopInfo);
                     return supertest(app)
                         .get(queryUrl)
@@ -92,26 +95,27 @@ describe('endpoints/stop.ts', (): void => {
                 });
             });
         });
-        describe(`query '/stop/:id/passages'`, (): void => {
-            afterEach((): void => {
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+
+        describe(`query '/stop/:id/passages'`, function (): void {
+            afterEach(function (): void {
                 sinon.assert.calledOnceWithExactly(validateStub, 'query', STOP_PASSAGES_SCHEMA as any);
                 sinon.assert.calledOnce(validateStubHandler);
                 sinon.assert.notCalled(apiClientStub.getStopInfo);
             });
-            describe('query validation passes', (): void => {
-                beforeEach((): void => {
+
+            describe('query validation passes', function (): void {
+                beforeEach(function (): void {
                     validateStubHandler.callsFake((...args: any[]): void => {
-                        // eslint-disable-next-line  @typescript-eslint/no-unsafe-call
                         args[2]();
                     });
                 });
-                afterEach((): void => {
+
+                afterEach(function (): void {
                     sinon.assert.notCalled(errorSpy);
                 });
                 testIds.forEach((testId: string): void => {
                     const queryUrl = `/stop/${testId}/passages`;
-                    it(`should query '${queryUrl}'`, async (): Promise<void> => {
+                    it(`should query '${queryUrl}'`, async function (): Promise<void> {
                         getStopPassagesStub.resolves(SUCCESS_RESPONSE as IStopPassage);
                         return supertest(app)
                             .get(queryUrl)
@@ -135,7 +139,7 @@ describe('endpoints/stop.ts', (): void => {
                                 if (testTimeFrame) {
                                     queryPath += `timeFrame=${testTimeFrame}&`;
                                 }
-                                it(`should query '${queryPath}'`, async (): Promise<void> => {
+                                it(`should query '${queryPath}'`, async function (): Promise<void> {
                                     getStopPassagesStub.resolves(SUCCESS_RESPONSE as IStopPassage);
                                     return supertest(app)
                                         .get(queryPath)
@@ -157,21 +161,23 @@ describe('endpoints/stop.ts', (): void => {
                     });
                 });
             });
-            describe('query validation does not pass', (): void => {
+
+            describe('query validation does not pass', function (): void {
                 const testError: Error = new Error('test error');
-                beforeEach((): void => {
+
+                beforeEach(function (): void {
                     validateStubHandler.callsFake((...args: any[]): void => {
-                        // eslint-disable-next-line  @typescript-eslint/no-unsafe-call
                         args[2](testError);
                     });
                 });
-                afterEach((): void => {
+
+                afterEach(function (): void {
                     sinon.assert.calledOnceWithExactly(errorSpy, testError);
                     sinon.assert.notCalled(apiClientStub.getStopPassages);
                 });
                 testIds.forEach((testId: string): void => {
                     const queryUrl = `/stop/${testId}/passages`;
-                    it(`should query '${queryUrl}'`, async (): Promise<supertest.Test> => {
+                    it(`should query '${queryUrl}'`, async function (): Promise<supertest.Test> {
                         getStopPassagesStub.resolves(SUCCESS_RESPONSE as IStopPassage);
                         return supertest(app)
                             .get(queryUrl)

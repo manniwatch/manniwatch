@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/client-desktop
  * Source https://manniwatch.github.io/manniwatch/
  */
@@ -8,14 +8,9 @@ import 'mocha';
 import { IFileConfig } from './config';
 import { validateConfigFile } from './validate-file-config';
 
-/* eslint-disable @typescript-eslint/no-explicit-any,
-  @typescript-eslint/no-unsafe-member-access,
-  @typescript-eslint/no-unsafe-argument,
-  @typescript-eslint/no-unsafe-assignment,
-  @typescript-eslint/no-unsafe-return,
-  sort-keys */
-describe('./shared/validate-file-config.ts', (): void => {
-    it('should validate with center provided', async (): Promise<void> => {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+describe('./shared/validate-file-config.ts', function (): void {
+    it('should validate with center provided', async function (): Promise<void> {
         const testObject: any = {
             map: {
                 center: {
@@ -26,14 +21,16 @@ describe('./shared/validate-file-config.ts', (): void => {
         };
         expect(await validateConfigFile(testObject)).to.equal(true);
     });
-    it('should validate with no center provided', async (): Promise<void> => {
+
+    it('should validate with no center provided', async function (): Promise<void> {
         const testObject: any = {
             map: {},
         };
         expect(await validateConfigFile(testObject)).to.equal(true);
     });
-    describe('url', (): void => {
-        it('should accept a string', async (): Promise<void> => {
+
+    describe('url', function (): void {
+        it('should accept a string', async function (): Promise<void> {
             const testObject: IFileConfig = {
                 map: {
                     url: 'any url',
@@ -41,7 +38,8 @@ describe('./shared/validate-file-config.ts', (): void => {
             };
             expect(await validateConfigFile(testObject)).to.equal(true);
         });
-        it('should accept an array', async (): Promise<void> => {
+
+        it('should accept an array', async function (): Promise<void> {
             const testObject: IFileConfig = {
                 map: {
                     url: ['any url'],

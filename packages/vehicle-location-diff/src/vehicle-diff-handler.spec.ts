@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/vehicle-location-diff
  * Source https://manniwatch.github.io/manniwatch/
  */
@@ -7,10 +7,7 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import { vehicleMapReduce, VehicleDiffHandler, VehicleHashMap } from './vehicle-diff-handler.js';
 
-/* eslint-disable @typescript-eslint/no-explicit-any,
-  @typescript-eslint/no-unsafe-member-access,
-  @typescript-eslint/no-unsafe-argument,
-  @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 interface ISimpleVehicle {
     id: string;
     isDeleted: boolean;
@@ -22,16 +19,18 @@ interface ISimpleVehicleLocationDiff {
     old: ISimpleVehicle[];
     removed: ISimpleVehicle[];
 }
-describe('vehicle-diff-handler', (): void => {
-    describe('vehicleMapReduce', (): void => {
-        it('should add the item at the correct key', (): void => {
+/* eslint-disable mocha/no-setup-in-describe */
+describe('vehicle-diff-handler', function (): void {
+    describe('vehicleMapReduce', function (): void {
+        it('should add the item at the correct key', function (): void {
             const testInput: any = {
                 id: 'testKey',
             };
             const testResult: VehicleHashMap = vehicleMapReduce(new Map(), testInput);
             expect(testResult.get('testKey')).to.deep.equal(testInput);
         });
-        it('should keep old entries and add the new item at the correct key', (): void => {
+
+        it('should keep old entries and add the new item at the correct key', function (): void {
             const testInput: any = {
                 id: 'testKey',
             };
@@ -39,21 +38,25 @@ describe('vehicle-diff-handler', (): void => {
             expect(testResult.get('testKey')).to.deep.equal(testInput);
         });
     });
-    describe('VehicleDiffHandler', (): void => {
+
+    describe('VehicleDiffHandler', function (): void {
         let testInstance: VehicleDiffHandler;
         let sandbox: sinon.SinonSandbox;
-        before((): void => {
+
+        before(function (): void {
             sandbox = sinon.createSandbox();
         });
-        beforeEach((): void => {
+
+        beforeEach(function (): void {
             testInstance = new VehicleDiffHandler();
         });
-        afterEach((): void => {
+
+        afterEach(function (): void {
             sandbox.resetHistory();
         });
 
-        describe('convert(list)', (): void => {
-            it('should convert an empty list correctly', (): void => {
+        describe('convert(list)', function (): void {
+            it('should convert an empty list correctly', function (): void {
                 expect(
                     VehicleDiffHandler.convert({
                         lastUpdate: 1234,
@@ -61,7 +64,8 @@ describe('vehicle-diff-handler', (): void => {
                     })
                 ).to.deep.equal([]);
             });
-            it('should add lastUpdate properties to items in vehicles', (): void => {
+
+            it('should add lastUpdate properties to items in vehicles', function (): void {
                 const testVehicles: any[] = [
                     {
                         a: 1,
@@ -94,11 +98,12 @@ describe('vehicle-diff-handler', (): void => {
                 ]);
             });
         });
-        describe('diff(oldState, newState)', (): void => {
+
+        describe('diff(oldState, newState)', function (): void {
             // tslint:disable-next-line:no-null-keyword
             [undefined, null].forEach((testUndefined: any): void => {
-                describe(`old state is ${testUndefined}`, (): void => {
-                    it('should convert an empty list correctly', (): void => {
+                describe(`old state is ${testUndefined}`, function (): void {
+                    it('should convert an empty list correctly', function (): void {
                         const vehicles: ISimpleVehicle[] = [
                             { id: '1', isDeleted: true, lastUpdate: 2831 },
                             { id: '2', isDeleted: false, lastUpdate: 2832 },
@@ -114,8 +119,9 @@ describe('vehicle-diff-handler', (): void => {
                     });
                 });
             });
-            describe('old state is defined', (): void => {
-                it('should work if oldstate is empty', (): void => {
+
+            describe('old state is defined', function (): void {
+                it('should work if oldstate is empty', function (): void {
                     const vehicles: ISimpleVehicle[] = [
                         { id: '1', isDeleted: true, lastUpdate: 2831 },
                         { id: '2', isDeleted: false, lastUpdate: 2832 },
@@ -139,7 +145,8 @@ describe('vehicle-diff-handler', (): void => {
                         removed: [vehicles[0], vehicles[2]],
                     });
                 });
-                it('handle ids not present in the new data', (): void => {
+
+                it('handle ids not present in the new data', function (): void {
                     expect(
                         VehicleDiffHandler.diff(
                             {
@@ -161,7 +168,8 @@ describe('vehicle-diff-handler', (): void => {
                         removed: [{ id: '4', isDeleted: true, lastUpdate: 2831 } as any],
                     });
                 });
-                it('should use always the latest deleted item', (): void => {
+
+                it('should use always the latest deleted item', function (): void {
                     const vehicles: ISimpleVehicle[] = [
                         { id: '1', isDeleted: true, lastUpdate: 20 },
                         { id: '2', isDeleted: true, lastUpdate: 10 },
@@ -191,7 +199,8 @@ describe('vehicle-diff-handler', (): void => {
                         ],
                     });
                 });
-                it('move entries to updated if not changed', (): void => {
+
+                it('move entries to updated if not changed', function (): void {
                     const vehicles: ISimpleVehicle[] = [
                         { id: '1', isDeleted: false, lastUpdate: 6 },
                         { id: '2', isDeleted: false, lastUpdate: 6 },
@@ -255,7 +264,8 @@ describe('vehicle-diff-handler', (): void => {
                 });
             });
         });
-        it('needs impl', (): void => {
+
+        it('needs impl', function (): void {
             expect(testInstance).to.not.equal(false);
         });
     });

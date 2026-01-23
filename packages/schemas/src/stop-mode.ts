@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/schemas
  * Source https://manniwatch.github.io/manniwatch/
  */

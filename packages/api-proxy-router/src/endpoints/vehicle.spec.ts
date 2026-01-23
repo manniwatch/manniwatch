@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/api-proxy-router
  * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
@@ -13,33 +13,35 @@ import supertest from 'supertest';
 import { SUCCESS_RESPONSE, SUCCESS_RESPONSE_LENGTH } from './common-test.spec.js';
 const testIds: string[] = ['-12883', 'kasd'];
 
-/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-misused-promises */
-describe('endpoints/vehicle.ts', (): void => {
-    describe('createVehicleRouter', (): void => {
+/* eslint-disable mocha/no-setup-in-describe */
+describe('endpoints/vehicle.ts', function (): void {
+    describe('createVehicleRouter', function (): void {
         let app: express.Express;
         let getRouteByVehicleIdStub: sinon.SinonStub<Parameters<ManniWatchApiClient['getRouteByVehicleId']>>;
         let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
         let createVehicleRouter: (apiClient: ManniWatchApiClient) => express.Router;
-        before(async (): Promise<void> => {
+
+        before(async function (): Promise<void> {
             getRouteByVehicleIdStub = sinon.stub();
             apiClientStub = sinon.createStubInstance(ManniWatchApiClient, {
                 getRouteByVehicleId: getRouteByVehicleIdStub,
             });
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+
             createVehicleRouter = (await esmock('./vehicle.js')).createVehicleRouter;
         });
 
-        beforeEach((): void => {
+        beforeEach(function (): void {
             const route: express.Router = createVehicleRouter(apiClientStub);
             app = express();
             app.use('/vehicle', route);
         });
-        afterEach('test and reset promise stub', (): void => {
+
+        afterEach('test and reset promise stub', function (): void {
             getRouteByVehicleIdStub.resetHistory();
         });
         testIds.forEach((testId: string): void => {
-            describe(`query '/vehicle/${testId}/route'`, (): void => {
-                it('should pass on the provided parameters', async () => {
+            describe(`query '/vehicle/${testId}/route'`, function (): void {
+                it('should pass on the provided parameters', async function () {
                     getRouteByVehicleIdStub.resolves(SUCCESS_RESPONSE);
                     await supertest(app)
                         .get(`/vehicle/${testId}/route`)

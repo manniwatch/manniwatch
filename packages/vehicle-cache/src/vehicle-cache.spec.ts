@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/vehicle-cache
  * Source https://manniwatch.github.io/manniwatch/
  */
@@ -10,50 +10,55 @@ import { tap } from 'rxjs/operators';
 import sinon from 'sinon';
 import { VehicleCache } from './vehicle-cache.js';
 
-/* eslint-disable @typescript-eslint/no-explicit-any,
-  @typescript-eslint/no-unsafe-member-access,
-  @typescript-eslint/no-unsafe-argument,
-  @typescript-eslint/no-unsafe-assignment */
-describe('vehicle-cache', (): void => {
-    describe('VehicleCache', (): void => {
+/* eslint-disable @typescript-eslint/no-explicit-any, mocha/no-setup-in-describe*/
+describe('vehicle-cache', function (): void {
+    describe('VehicleCache', function (): void {
         let sandbox: sinon.SinonSandbox;
         let testCache: VehicleCache;
-        before((): void => {
+
+        before(function (): void {
             sandbox = sinon.createSandbox();
         });
-        beforeEach((): void => {
+
+        beforeEach(function (): void {
             testCache = new VehicleCache();
         });
-        afterEach((): void => {
+
+        afterEach(function (): void {
             testCache.close();
             sandbox.reset();
         });
-        it('should constantly poll', (): void => {
+
+        it('should constantly poll', function (): void {
             testCache.update({ id: '1' } as any);
             testCache.update({ id: '2' } as any);
             testCache.update({ id: '1', isDeleted: true } as any);
             expect(testCache.getState()).to.deep.equal([{ id: '2' }]);
         });
-        describe('check if close check is working', (): void => {
+
+        describe('check if close check is working', function (): void {
             const keys: (keyof VehicleCache)[] = ['update', 'updateMultiple', 'getState'];
-            beforeEach((): void => {
+
+            beforeEach(function (): void {
                 testCache.close();
             });
             keys.forEach((key: string): void => {
-                it(`should throw error for method '${key}()'`, (): void => {
+                it(`should throw error for method '${key}()'`, function (): void {
                     expect((): void => {
-                        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
                         testCache[key]();
                     }).to.throw('The cache has been closed');
                 });
             });
         });
-        describe('check delete event stream', (): void => {
+
+        describe('check delete event stream', function (): void {
             let nextSpy: sinon.SinonSpy;
-            before((): void => {
+
+            before(function (): void {
                 nextSpy = sandbox.spy();
             });
-            it(`should emit 'del' events`, (done: Done): void => {
+
+            it(`should emit 'del' events`, function (done: Done): void {
                 testCache.eventObservable
                     .pipe(
                         tap({
@@ -73,7 +78,8 @@ describe('vehicle-cache', (): void => {
                 testCache.update({ id: '1', isDeleted: true } as any);
                 testCache.close();
             });
-            it(`should emit 'del' events correctly for multi update`, (done: Done): void => {
+
+            it(`should emit 'del' events correctly for multi update`, function (done: Done): void {
                 testCache.eventObservable
                     .pipe(
                         tap({

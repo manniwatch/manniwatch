@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/client-types
  * Source https://manniwatch.github.io/manniwatch/
  */
@@ -7,9 +7,9 @@ import { expect } from 'chai';
 import 'mocha';
 import { convertTo, CoordinateFormat } from './map-coordinate.js';
 
-describe('map-coordinate', (): void => {
-    describe('expect ARC_MILISECOND as default', (): void => {
-        it('should convert to ARC_MILISECOND', (): void => {
+describe('map-coordinate', function (): void {
+    describe('expect ARC_MILISECOND as default', function (): void {
+        it('should convert to ARC_MILISECOND', function (): void {
             expect(convertTo({ lat: 9293, lon: 2939 }, CoordinateFormat.ARC_MILISECOND)).to.deep.equal(
                 {
                     format: CoordinateFormat.ARC_MILISECOND,
@@ -19,7 +19,8 @@ describe('map-coordinate', (): void => {
                 'format should be arc milisecond'
             );
         });
-        it('should convert to ARC_SECOND', (): void => {
+
+        it('should convert to ARC_SECOND', function (): void {
             expect(convertTo({ lat: 9293, lon: 2939 }, CoordinateFormat.ARC_SECOND)).to.deep.equal(
                 {
                     format: CoordinateFormat.ARC_SECOND,
@@ -30,7 +31,8 @@ describe('map-coordinate', (): void => {
             );
         });
     });
-    it('should convert ARC_HOUR to ARC_SECOND', (): void => {
+
+    it('should convert ARC_HOUR to ARC_SECOND', function (): void {
         expect(convertTo({ format: CoordinateFormat.ARC_HOUR, lat: 9293, lon: 2939 }, CoordinateFormat.ARC_SECOND)).to.deep.equal(
             {
                 format: CoordinateFormat.ARC_SECOND,
@@ -40,7 +42,8 @@ describe('map-coordinate', (): void => {
             'format should be arc second'
         );
     });
-    it('should convert ARC_MINUTE to ARC_SECOND', (): void => {
+
+    it('should convert ARC_MINUTE to ARC_SECOND', function (): void {
         expect(convertTo({ format: CoordinateFormat.ARC_MINUTE, lat: 9293, lon: 2939 }, CoordinateFormat.ARC_SECOND)).to.deep.equal(
             {
                 format: CoordinateFormat.ARC_SECOND,
@@ -50,7 +53,8 @@ describe('map-coordinate', (): void => {
             'format should be arc second'
         );
     });
-    it('should convert ARC_MINUTE to ARC_MILISECOND', (): void => {
+
+    it('should convert ARC_MINUTE to ARC_MILISECOND', function (): void {
         expect(convertTo({ format: CoordinateFormat.ARC_MINUTE, lat: 9293, lon: 2939 }, CoordinateFormat.ARC_MILISECOND)).to.deep.equal(
             {
                 format: CoordinateFormat.ARC_MILISECOND,
@@ -60,7 +64,8 @@ describe('map-coordinate', (): void => {
             'format should be arc second'
         );
     });
-    it('should convert ARC_MILISECOND to ARC_MINUTE', (): void => {
+
+    it('should convert ARC_MILISECOND to ARC_MINUTE', function (): void {
         expect(convertTo({ format: CoordinateFormat.ARC_MILISECOND, lat: 9293, lon: 2939 }, CoordinateFormat.ARC_MINUTE)).to.deep.equal(
             {
                 format: CoordinateFormat.ARC_MINUTE,

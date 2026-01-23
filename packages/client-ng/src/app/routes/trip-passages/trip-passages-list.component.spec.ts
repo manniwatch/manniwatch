@@ -10,9 +10,6 @@ import { IActualTripPassage, IDepartedTripPassage, ITripPassage, ITripPassages, 
 import { TripInfoWithId } from '@manniwatch/client-types';
 import { TripPassagesListComponent } from './trip-passages-list.component';
 
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
 @Component({
     selector: 'mat-nav-list',
     standalone: false,
@@ -36,8 +33,6 @@ export class TestTripPassagesListItemComponent {
 export class TestParentComponent {
     public testPassage: ITripPassages;
 }
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
 const testActualPassages: IActualTripPassage[] = [
     {
         actualTime: '09:30',
@@ -122,7 +117,6 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
             });
             describe('set - tripInfo', (): void => {
                 it('should set passages to an empty array for null', (): void => {
-                    // tslint:disable-next-line:no-null-keyword
                     cmp.tripInfo = null;
                     expect(cmp.passages).toEqual([]);
                 });
@@ -181,7 +175,6 @@ describe('src/app/routes/trip-passages/trip-passages-list.component', (): void =
                 cmp = cmpFixture.componentInstance;
             });
             describe('hasPassages()', (): void => {
-                // tslint:disable-next-line:no-null-keyword
                 [undefined, null, [], 1, 'k'].forEach((testValue: any): void => {
                     it(`should return false for passages being "${testValue as string}"`, (): void => {
                         cmp.passages = testValue;

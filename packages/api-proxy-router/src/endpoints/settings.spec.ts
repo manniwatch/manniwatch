@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/api-proxy-router
  * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
@@ -13,16 +13,16 @@ import supertest from 'supertest';
 import { SUCCESS_RESPONSE, SUCCESS_RESPONSE_LENGTH } from './common-test.spec.js';
 import { createSettingsRouter } from './settings.js';
 
-/* eslint-disable @typescript-eslint/no-misused-promises */
-describe('endpoints/settings.ts', (): void => {
-    describe('createSettingsRouter', (): void => {
+describe('endpoints/settings.ts', function (): void {
+    describe('createSettingsRouter', function (): void {
         let app: express.Express;
         let getSettingsStub: sinon.SinonStub<Parameters<ManniWatchApiClient['getSettings']>>;
         let apiClientStub: sinon.SinonStubbedInstance<ManniWatchApiClient>;
         let fakeCache: sinon.SinonStubbedInstance<NodeCache>;
         let sandbox: sinon.SinonSandbox;
         let fakeTimer: SinonFakeTimers;
-        before((): void => {
+
+        before(function (): void {
             sandbox = sinon.createSandbox();
             getSettingsStub = sandbox.stub();
             apiClientStub = sandbox.createStubInstance(ManniWatchApiClient, {
@@ -32,20 +32,23 @@ describe('endpoints/settings.ts', (): void => {
             fakeTimer = sandbox.useFakeTimers({ now: 30000, toFake: ['Date'] });
         });
 
-        beforeEach((): void => {
+        beforeEach(function (): void {
             const route: express.Router = createSettingsRouter(apiClientStub, fakeCache);
             app = express();
             app.use('/settings', route);
         });
-        afterEach('test and reset promise stub', (): void => {
+
+        afterEach('test and reset promise stub', function (): void {
             sandbox.reset();
         });
-        after((): void => {
+
+        after(function (): void {
             sandbox.restore();
             fakeTimer.restore();
         });
-        describe(`query ''`, (): void => {
-            it('should proxy the request and cache the response', (): Promise<void> => {
+
+        describe(`query ''`, function (): void {
+            it('should proxy the request and cache the response', function (): Promise<void> {
                 getSettingsStub.resolves(SUCCESS_RESPONSE);
                 fakeCache.get.returns(undefined);
                 return supertest(app)
@@ -61,7 +64,8 @@ describe('endpoints/settings.ts', (): void => {
                         expect(fakeCache.set.callCount).to.equal(1, 'cache should be updated once');
                     });
             });
-            it('should return value from cache', async (): Promise<void> => {
+
+            it('should return value from cache', async function (): Promise<void> {
                 const testLastModified: Date = new Date(10000);
                 fakeCache.get.returns({
                     data: SUCCESS_RESPONSE,

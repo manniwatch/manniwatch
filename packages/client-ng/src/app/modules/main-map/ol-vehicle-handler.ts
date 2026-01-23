@@ -86,7 +86,7 @@ export class OlVehicleHandler {
             });
 
             const polyline: LineString = new LineString(locations);
-            const feature: Feature<LineString> = new Feature(polyline);
+            const feature = new Feature<LineString>(polyline);
             feature.setStyle(
                 new Style({
                     stroke: new Stroke({

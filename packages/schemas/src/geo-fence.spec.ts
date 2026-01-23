@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/schemas
  * Source https://manniwatch.github.io/manniwatch/
  */
@@ -17,12 +17,15 @@ const validCoordinates: TestIBoundingBox[] = [
     { bottom: '-1000', left: '500', right: 1000, top: 1000 },
 ];
 type TestIBoundingBox = { [key in keyof IGeoFenceSchema]: string | number };
-describe('geo-fence.ts', (): void => {
+/* eslint-disable mocha/no-setup-in-describe */
+describe('geo-fence.ts', function (): void {
     let ajvInstance: Ajv;
-    beforeEach('setup Ajv and validation function', (): void => {
+
+    beforeEach('setup Ajv and validation function', function (): void {
         ajvInstance = new Ajv({ strict: true });
     });
-    describe('GEO_FENCE_SCHEMA', (): void => {
+
+    describe('GEO_FENCE_SCHEMA', function (): void {
         const parameters: string[] = ['top', 'bottom', 'right', 'left'];
         const combinations: Partial<TestIBoundingBox>[] = [{}];
         const paramMap: TestIBoundingBox = { bottom: '-1000', left: '-1000', right: '1000', top: '1000' };
@@ -51,20 +54,23 @@ describe('geo-fence.ts', (): void => {
             }
         }
         let ajvValidationFunction: ValidateFunction;
-        beforeEach('setup Ajv and validation function', (): void => {
+
+        beforeEach('setup Ajv and validation function', function (): void {
             ajvValidationFunction = ajvInstance.compile(GEO_FENCE_SCHEMA);
         });
-        describe('reject', (): void => {
+
+        describe('reject', function (): void {
             combinations.forEach((testBoundingBox: Partial<TestIBoundingBox>): void => {
-                it(`should reject: ${JSON.stringify(testBoundingBox)}`, (): void => {
+                it(`should reject: ${JSON.stringify(testBoundingBox)}`, function (): void {
                     // tslint:disable-next-line:no-unused-expression
                     expect(ajvValidationFunction(testBoundingBox), 'schema should not be valid').to.be.false;
                 });
             });
         });
-        describe('resolve', (): void => {
+
+        describe('resolve', function (): void {
             validCoordinates.forEach((testBoundingBox: TestIBoundingBox): void => {
-                it(`should resolve: ${JSON.stringify(testBoundingBox)}`, (): void => {
+                it(`should resolve: ${JSON.stringify(testBoundingBox)}`, function (): void {
                     // tslint:disable-next-line:no-unused-expression
                     expect(ajvValidationFunction(testBoundingBox), 'schema should not be valid').to.be.true;
                 });

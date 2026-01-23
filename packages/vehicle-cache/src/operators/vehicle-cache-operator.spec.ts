@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/vehicle-cache
  * Source https://manniwatch.github.io/manniwatch/
  */
@@ -12,15 +12,12 @@ import sinon from 'sinon';
 import { vehicleCacheOperator } from './vehicle-cache-operator.js';
 import { CacheEntry } from '../types';
 
-/* eslint-disable @typescript-eslint/no-explicit-any,
-  @typescript-eslint/no-unsafe-member-access,
-  @typescript-eslint/no-unsafe-argument,
-  @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-explicit-any, mocha/no-setup-in-describe */
 interface IMarbleMap {
     [key: string]: Partial<CacheEntry>;
 }
-describe('operators/vehicle-cache-operator', (): void => {
-    describe('vehicleCacheOperator', (): void => {
+describe('operators/vehicle-cache-operator', function (): void {
+    describe('vehicleCacheOperator', function (): void {
         const testError: Error = new Error('This is a test error');
         const sourceValues: IMarbleMap = {
             a: {
@@ -70,20 +67,24 @@ describe('operators/vehicle-cache-operator', (): void => {
         };
         let testScheduler: TestScheduler;
         let sandbox: sinon.SinonSandbox;
-        before((): void => {
+
+        before(function (): void {
             sandbox = sinon.createSandbox();
         });
-        beforeEach((): void => {
+
+        beforeEach(function (): void {
             testScheduler = new TestScheduler((actual: any, expected: any): void => {
                 // asserting the two objects are equal
                 // e.g. using chai.
                 expect(actual).deep.equal(expected);
             });
         });
-        afterEach((): void => {
+
+        afterEach(function (): void {
             sandbox.reset();
         });
-        describe('test cold observable', (): void => {
+
+        describe('test cold observable', function (): void {
             const unsub: string = '--------------^-------------!';
             const testValues: IMarbleMap = {
                 a: sourceValues.a,
@@ -92,14 +93,16 @@ describe('operators/vehicle-cache-operator', (): void => {
                 d: sourceValues.d,
                 e: sourceValues.e,
             };
-            it('should pass on complete events', (): void => {
+
+            it('should pass on complete events', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold } = helpers;
                     const foreverStream$: Observable<CacheEntry> = cold<CacheEntry>('-|').pipe(vehicleCacheOperator());
                     expectObservable(foreverStream$, '--^-----').toBe('---|');
                 });
             });
-            it('should pass on values and unsubscribe', (): void => {
+
+            it('should pass on values and unsubscribe', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold } = helpers;
                     const foreverStream$: Observable<CacheEntry> = cold<CacheEntry>('-a-b-c--d--e---f---|', sourceValues as any).pipe(
@@ -108,7 +111,8 @@ describe('operators/vehicle-cache-operator', (): void => {
                     expectObservable(foreverStream$, unsub).toBe('15ms a-b-c-----e-', sourceValues);
                 });
             });
-            it('should pass on values and complete', (): void => {
+
+            it('should pass on values and complete', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold } = helpers;
                     const foreverStream$: Observable<CacheEntry> = cold<CacheEntry>('-a-b-c--d--e|', sourceValues as any).pipe(
@@ -117,7 +121,8 @@ describe('operators/vehicle-cache-operator', (): void => {
                     expectObservable(foreverStream$, unsub).toBe('15ms a-b-c-----e|', sourceValues);
                 });
             });
-            it('should pass on errors', (): void => {
+
+            it('should pass on errors', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold } = helpers;
                     const foreverStream$: Observable<CacheEntry> = cold<CacheEntry>(
@@ -128,7 +133,8 @@ describe('operators/vehicle-cache-operator', (): void => {
                     expectObservable(foreverStream$, unsub).toBe('17ms d 2ms e 2ms #', testValues, testError);
                 });
             });
-            it('should not emit previously already deleted locations', (): void => {
+
+            it('should not emit previously already deleted locations', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold } = helpers;
                     const foreverStream$: Observable<CacheEntry> = cold<CacheEntry>('--g--h--i|', sourceValues as any).pipe(
@@ -139,7 +145,8 @@ describe('operators/vehicle-cache-operator', (): void => {
                     });
                 });
             });
-            it('should emit new if previously deleted', (): void => {
+
+            it('should emit new if previously deleted', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold } = helpers;
                     const foreverStream$: Observable<CacheEntry> = cold<CacheEntry>('--g--j|', sourceValues as any).pipe(
@@ -152,20 +159,23 @@ describe('operators/vehicle-cache-operator', (): void => {
                 });
             });
         });
-        describe('test hot observable', (): void => {
+
+        describe('test hot observable', function (): void {
             const unsub: string = '-------^-------------!';
             const expectedValues: IMarbleMap = {
                 a: sourceValues.e,
                 b: sourceValues.f,
             };
-            it('should pass on complete events', (): void => {
+
+            it('should pass on complete events', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, hot } = helpers;
                     const foreverStream$: Observable<CacheEntry> = hot<CacheEntry>('-|').pipe(vehicleCacheOperator());
                     expectObservable(foreverStream$, '--^-----').toBe('--|');
                 });
             });
-            it('should pass on values', (): void => {
+
+            it('should pass on values', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, hot } = helpers;
                     const foreverStream$: Observable<CacheEntry> = hot<CacheEntry>('---d--e---f---|', sourceValues as any).pipe(
@@ -174,7 +184,8 @@ describe('operators/vehicle-cache-operator', (): void => {
                     expectObservable(foreverStream$, unsub).toBe('10ms b --- |', expectedValues);
                 });
             });
-            it('should pass on errors', (): void => {
+
+            it('should pass on errors', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, hot } = helpers;
                     const foreverStream$: Observable<CacheEntry> = hot<CacheEntry>(
@@ -185,7 +196,8 @@ describe('operators/vehicle-cache-operator', (): void => {
                     expectObservable(foreverStream$, unsub).toBe('8ms a -- #', expectedValues, testError);
                 });
             });
-            it('should not emit previously already deleted locations', (): void => {
+
+            it('should not emit previously already deleted locations', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, hot } = helpers;
                     const foreverStream$: Observable<CacheEntry> = hot<CacheEntry>('--g--h--i|', sourceValues as any).pipe(
@@ -196,7 +208,8 @@ describe('operators/vehicle-cache-operator', (): void => {
                     });
                 });
             });
-            it('should emit new if previously deleted', (): void => {
+
+            it('should emit new if previously deleted', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, hot } = helpers;
                     const foreverStream$: Observable<CacheEntry> = hot<CacheEntry>('10ms g--j|', sourceValues as any).pipe(

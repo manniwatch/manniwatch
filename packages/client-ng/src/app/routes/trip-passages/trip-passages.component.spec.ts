@@ -13,9 +13,6 @@ import { TripPassagesComponent } from './trip-passages.component';
 import { TripPassagesService } from './trip-passages.service';
 import { IPassageStatus, UpdateStatus } from './trip-util';
 
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
 @Component({
     selector: 'app-trip-passages-list',
     standalone: false,
@@ -43,12 +40,10 @@ export class TestStaticMapDirective {
     public mapData: IStaticMapData;
 }
 
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
 describe('src/app/routes/trip-passages/trip-passage.component', (): void => {
     describe('TripPassagesComponent', (): void => {
-        const testStatusSubject: Subject<IPassageStatus> = new Subject();
-        const testVehicleLocationSubject: Subject<IVehicleLocation> = new Subject();
+        const testStatusSubject = new Subject<IPassageStatus>();
+        const testVehicleLocationSubject = new Subject<IVehicleLocation>();
         beforeEach(waitForAsync((): void => {
             TestBed.configureTestingModule({
                 declarations: [TripPassagesComponent, TestTripPassagesListComponent, TestStaticMapDirective, TestAppHeaderBoxComponent],

@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/api-proxy-router
  * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
@@ -29,7 +29,7 @@ export const createStopPointRouter: (apiClient: ManniWatchApiClient, ajvInstance
      * @apiQuery {string} timeFrame Time frame to query
      * @apiVersion 0.6.0
      */
-    // eslint-disable-next-line no-useless-escape
+
     router.get(
         '/:id/passages',
         validateRequest('query', STOP_PASSAGES_SCHEMA),
@@ -52,7 +52,7 @@ export const createStopPointRouter: (apiClient: ManniWatchApiClient, ajvInstance
      * @apiParam {string} id Stop Point ID ([a-z0-9A-Z-+]+)
      * @apiVersion 1.5.0
      */
-    // eslint-disable-next-line no-useless-escape
+
     router.get('/:id/info', async (req: express.Request, res: express.Response): Promise<void> => {
         const reqParamsId: string = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
         res.json(await apiClient.getStopPointInfo(reqParamsId));

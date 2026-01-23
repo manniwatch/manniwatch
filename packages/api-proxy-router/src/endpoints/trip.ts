@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/api-proxy-router
  * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
@@ -27,7 +27,7 @@ export const createTripRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
      * @apiParam {string} id Vehicle id ([a-z0-9A-Z-+]+)
      * @apiVersion 0.1.0
      */
-    // eslint-disable-next-line no-useless-escape
+
     router.get('/:id/route', async (req: express.Request, res: express.Response): Promise<void> => {
         const reqId: string = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
         res.json(await apiClient.getRouteByTripId(reqId));
@@ -41,7 +41,7 @@ export const createTripRouter: (apiClient: ManniWatchApiClient, ajvInstance?: Aj
      * @apiQuery {string="arrival","departure"} [departureMode="departure"] Default departure mode
      * @apiVersion 0.5.0
      */
-    // eslint-disable-next-line no-useless-escape
+
     router.get(
         '/:id/passages',
         validateRequest('query', TRIP_PASSAGES_SCHEMA, ajvInstance),

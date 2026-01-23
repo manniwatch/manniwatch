@@ -40,7 +40,7 @@ describe('src/app/rxjs-util/retry-dialog-strategy.ts', (): void => {
         });
         describe('Error occurs', (): void => {
             const testError: Error = new Error('testError');
-            const afterClosedSubject: Subject<boolean> = new Subject();
+            const afterClosedSubject = new Subject<boolean>();
             beforeEach((): void => {
                 createDialogSpy.and.callFake(() => ({
                     afterClosed: () => afterClosedSubject.pipe(delay(100)),

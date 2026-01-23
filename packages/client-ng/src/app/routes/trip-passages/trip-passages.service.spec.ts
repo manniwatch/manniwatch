@@ -20,9 +20,9 @@ describe('src/app/routes/trip-passages/trip-passages.service', (): void => {
             tripPassages: initialTripData,
         };
         describe('constructor()', (): void => {
-            const routeDataSubject: Subject<any> = new Subject();
+            const routeDataSubject = new Subject<any>();
             let createStatusObservableSpy: jasmine.Spy<jasmine.Func>;
-            const refreshSubject: Subject<any> = new Subject();
+            const refreshSubject = new Subject<any>();
             const testRoute: any = {
                 data: routeDataSubject.asObservable(),
                 snapshot: { data: initialRouteData },
@@ -42,7 +42,7 @@ describe('src/app/routes/trip-passages/trip-passages.service', (): void => {
                         undefined,
                         undefined
                     );
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+
                     (service as any as { statusSubject: Subject<IPassageStatus> }).statusSubject.pipe(take(1)).subscribe({
                         complete: doneFn,
                         error: doneFn.fail,
@@ -125,8 +125,8 @@ describe('src/app/routes/trip-passages/trip-passages.service', (): void => {
             let testService: TripPassagesService;
             let createRefreshPollObservableSpy: jasmine.Spy<jasmine.Func>;
             let createStatusObservableSpy: jasmine.Spy<jasmine.Func>;
-            let routeDataSubject: Subject<any> = new Subject();
-            let statusSubject: Subject<IPassageStatus> = new Subject();
+            let routeDataSubject = new Subject<any>();
+            let statusSubject = new Subject<IPassageStatus>();
             let statusSubjectNextSpy: jasmine.Spy<jasmine.Func>;
             beforeEach((): void => {
                 routeDataSubject = new Subject();
@@ -294,7 +294,7 @@ describe('src/app/routes/trip-passages/trip-passages.service', (): void => {
         });
         describe('createRefreshPollObservable()', (): void => {
             let testObservable: Observable<IPassageStatus>;
-            const statusSubject: Subject<PartialPassageStatus> = new Subject();
+            const statusSubject = new Subject<PartialPassageStatus>();
             let createStatusObservableSpy: jasmine.Spy<jasmine.Func>;
             let testService: TripPassagesService;
             let createDelayedPassageRequestSpy: jasmine.Spy<jasmine.Func>;

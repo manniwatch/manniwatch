@@ -9,9 +9,6 @@ import { IDeparture, VEHICLE_STATUS } from '@manniwatch/api-types';
 import * as dateFns from 'date-fns';
 import { DepartureListItemComponent } from './departure-list-item.component';
 
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
 @Component({
     selector: 'mat-icon',
     standalone: false,
@@ -33,9 +30,6 @@ export class TestRouterLinkDirective {
     @Input()
     public routerLink: string;
 }
-
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
 
 interface IStatusTest {
     status: VEHICLE_STATUS;
