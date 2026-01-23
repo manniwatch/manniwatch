@@ -99,7 +99,7 @@
         "apply-loader": "2.0.0",
         "codelyzer": "6.0.2",
         "copy-webpack-plugin": "13.0.1",
-        "eslint": "8.57.1",
+        "eslint": "9.39.2",
         "express": "4.22.1",
         "jasmine-core": "5.13.0",
         "jasmine-spec-reporter": "7.0.0",
