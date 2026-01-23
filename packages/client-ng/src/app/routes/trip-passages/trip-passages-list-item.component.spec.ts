@@ -9,9 +9,6 @@ import { By } from '@angular/platform-browser';
 import { ITripPassage, VEHICLE_STATUS } from '@manniwatch/api-types';
 import { format as dateFormat, formatDistanceToNow as dateFormatDistanceToNow } from 'date-fns';
 import { TripPassagesListItemComponent } from './trip-passages-list-item.component';
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
 @Component({
     selector: 'mat-icon',
     standalone: false,
@@ -40,9 +37,6 @@ export class TestRouterLinkDirective {
 export class TestParentComponent {
     public testPassage: ITripPassage;
 }
-
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
 
 const testPassages: ITripPassage[] = [
     {
@@ -101,7 +95,6 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', (): 
                 cmp = cmpFixture.componentInstance;
             });
             describe('departed', (): void => {
-                // tslint:disable-next-line:no-null-keyword
                 [null, undefined, { status: VEHICLE_STATUS.STOPPING }].forEach((testValue: any): void => {
                     it(`should return false for:${JSON.stringify(testValue)}`, (): void => {
                         cmp.passage = testValue;
@@ -114,7 +107,6 @@ describe('src/app/modules/trip-passages/trip-passages-list-item.component', (): 
                 });
             });
             describe('stopping', (): void => {
-                // tslint:disable-next-line:no-null-keyword
                 [null, undefined, { status: VEHICLE_STATUS.DEPARTED }].forEach((testValue: any): void => {
                     it(`should return false for:${JSON.stringify(testValue)}`, (): void => {
                         cmp.passage = testValue;

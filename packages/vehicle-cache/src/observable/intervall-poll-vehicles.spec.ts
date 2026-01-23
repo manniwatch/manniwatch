@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/vehicle-cache
  * Source https://manniwatch.github.io/manniwatch/
  */
@@ -13,10 +13,7 @@ import sinon from 'sinon';
 import { intervallPollVehicles } from './intervall-poll-vehicles.js';
 import { PollResult } from '../operators';
 
-/* eslint-disable @typescript-eslint/no-explicit-any,
-  @typescript-eslint/no-unsafe-member-access,
-  @typescript-eslint/no-unsafe-argument,
-  @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const testParameter: any[] = [];
 [undefined, 1000].forEach((lastUpdate: any): any => {
     ['RAW', 'CORRECT', undefined].forEach((queryType: string): any => {
@@ -57,24 +54,28 @@ const testResponses: any = {
     },
 };
 console.log(testParameter);
-describe('observable/intervall-poll-vehicles', (): void => {
-    describe('intervallPollVehicles', (): void => {
+describe('observable/intervall-poll-vehicles', function (): void {
+    describe('intervallPollVehicles', function (): void {
         let testScheduler: TestScheduler;
         let sandbox: sinon.SinonSandbox;
-        before((): void => {
+
+        before(function (): void {
             sandbox = sinon.createSandbox();
         });
-        beforeEach((): void => {
+
+        beforeEach(function (): void {
             testScheduler = new TestScheduler((actual: any, expected: any): void => {
                 // asserting the two objects are equal
                 // e.g. using chai.
                 expect(actual).deep.equal(expected);
             });
         });
-        afterEach((): void => {
+
+        afterEach(function (): void {
             sandbox.reset();
         });
-        it('should pass on all parameters correctly', (): void => {
+
+        it('should pass on all parameters correctly', function (): void {
             testScheduler.run((helpers: RunHelpers): void => {
                 const { expectObservable, flush, cold } = helpers;
                 // Omitting this arg may crash the test suite.
@@ -99,7 +100,8 @@ describe('observable/intervall-poll-vehicles', (): void => {
                 expect(queryFacStub.args).to.deep.equal([[0], [2000], [2000]]);
             });
         });
-        it('should not cancel on error', (): void => {
+
+        it('should not cancel on error', function (): void {
             testScheduler.run((helpers: RunHelpers): void => {
                 const { expectObservable, flush, cold } = helpers;
                 // Omitting this arg may crash the test suite.

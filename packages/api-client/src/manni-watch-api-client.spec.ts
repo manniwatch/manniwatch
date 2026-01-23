@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/api-client
  * Source https://manniwatch.github.io/manniwatch/
  */
@@ -32,37 +32,43 @@ const testBoxParams: Record<keyof IBoundingBox, string> = {
     right: '2',
     top: '1',
 };
-/* eslint-disable @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-assignment */
+
+/* eslint-disable mocha/no-setup-in-describe */
 const STOP_MODES: StopMode[] = ['departure', 'arrival'];
-describe('manni-watch-api-client.ts', (): void => {
-    describe('ManniWatchApiClient', (): void => {
+describe('manni-watch-api-client.ts', function (): void {
+    describe('ManniWatchApiClient', function (): void {
         const testDomain = 'http://test.domain';
         let instance: ManniWatchApiClient;
-        before('create Sandbox', (): void => {
+
+        before('create Sandbox', function (): void {
             if (!nock.isActive()) {
                 nock.activate();
             }
             nock.disableNetConnect();
         });
-        beforeEach((): void => {
+
+        beforeEach(function (): void {
             instance = new ManniWatchApiClient(testDomain);
             expect(nock.isActive()).to.eq(true);
         });
 
-        afterEach('clear history', (): void => {
+        afterEach('clear history', function (): void {
             nock.cleanAll();
         });
-        after((): void => {
+
+        after(function (): void {
             nock.restore();
             nock.enableNetConnect();
         });
-        describe('constructor()', (): void => {
+
+        describe('constructor()', function (): void {
             const testAxios: AxiosInstance = axios.create({ baseURL: 'testinstance' });
             const testInstance: ManniWatchApiClient = new ManniWatchApiClient('test.url', testAxios);
             expect(testInstance.endpoint).to.equal('test.url');
         });
-        describe('request()', (): void => {
-            it('should return undefined if no proxy is defined', (): Promise<void> => {
+
+        describe('request()', function (): void {
+            it('should return undefined if no proxy is defined', function (): Promise<void> {
                 const testOpts: AxiosRequestConfig = {
                     url: '/test/path',
                 };
@@ -76,24 +82,28 @@ describe('manni-watch-api-client.ts', (): void => {
                 });
             });
         });
-        describe('api methods', (): void => {
+
+        describe('api methods', function (): void {
             let requestStub: sinon.SinonStub;
             const reqpDefault: AxiosInstance = axios.create({
                 baseURL: testDomain,
             });
-            beforeEach((): void => {
+
+            beforeEach(function (): void {
                 requestStub = sinon.stub(instance, 'request');
                 requestStub.callsFake((opts: AxiosRequestConfig): Promise<unknown> => {
                     return reqpDefault(opts).then((data: AxiosResponse<unknown>): unknown => data.data);
                 });
             });
-            afterEach((): void => {
+
+            afterEach(function (): void {
                 requestStub.restore();
             });
-            describe('api methods', (): void => {
-                describe('getStopPointInfo', (): void => {
+
+            describe('api methods', function (): void {
+                describe('getStopPointInfo', function (): void {
                     ['id1', 'id2'].forEach((testId: string): void => {
-                        it(`should query stop point info with id "${testId}"`, (): Promise<void> => {
+                        it(`should query stop point info with id "${testId}"`, function (): Promise<void> {
                             const scope: nock.Scope = nock(testDomain)
                                 .post('/internetservice/services/stopInfo/stopPoint', `stopPoint=${testId}`)
                                 .reply(200, testSuccessResponse);
@@ -104,9 +114,10 @@ describe('manni-watch-api-client.ts', (): void => {
                         });
                     });
                 });
-                describe('getStopInfo', (): void => {
+
+                describe('getStopInfo', function (): void {
                     ['id1', 'id2'].forEach((testId: string): void => {
-                        it(`should query stop info "${testId}" with default parameters`, (): Promise<void> => {
+                        it(`should query stop info "${testId}" with default parameters`, function (): Promise<void> {
                             const scope: nock.Scope = nock(testDomain)
                                 .post('/internetservice/services/stopInfo/stop', `stop=${testId}`)
                                 .reply(200, testSuccessResponse);
@@ -117,9 +128,10 @@ describe('manni-watch-api-client.ts', (): void => {
                         });
                     });
                 });
-                describe('getRouteByTripId()', (): void => {
+
+                describe('getRouteByTripId()', function (): void {
                     ['id1', 'id2'].forEach((testId: string): void => {
-                        it(`should query route with id: ${testId}`, (): Promise<void> => {
+                        it(`should query route with id: ${testId}`, function (): Promise<void> {
                             const scope: nock.Scope = nock(testDomain)
                                 .post('/internetservice/geoserviceDispatcher/services/pathinfo/trip')
                                 .query({ id: testId })
@@ -131,18 +143,23 @@ describe('manni-watch-api-client.ts', (): void => {
                         });
                     });
                 });
-                describe('getSettings()', (): void => {
+
+                describe('getSettings()', function (): void {
                     let transformBodyStub: sinon.SinonStub;
-                    before((): void => {
+
+                    before(function (): void {
                         transformBodyStub = sinon.stub(Util, 'transformSettingsBody');
                     });
-                    afterEach((): void => {
+
+                    afterEach(function (): void {
                         transformBodyStub.reset();
                     });
-                    after((): void => {
+
+                    after(function (): void {
                         transformBodyStub.restore();
                     });
-                    it('should get and transform settings as expected', (): Promise<void> => {
+
+                    it('should get and transform settings as expected', function (): Promise<void> {
                         transformBodyStub.returns(testSuccessResponse);
                         const testResponse = 'test = {};';
                         const scope: nock.Scope = nock(testDomain).get('/internetservice/settings').reply(200, testResponse);
@@ -154,9 +171,10 @@ describe('manni-watch-api-client.ts', (): void => {
                         });
                     });
                 });
-                describe('getRouteByVehicleId()', (): void => {
+
+                describe('getRouteByVehicleId()', function (): void {
                     ['id1', 'id2'].forEach((testId: string): void => {
-                        it(`should query route with id: ${testId}`, (): Promise<void> => {
+                        it(`should query route with id: ${testId}`, function (): Promise<void> {
                             const scope: nock.Scope = nock(testDomain)
                                 .post('/internetservice/geoserviceDispatcher/services/pathinfo/vehicle')
                                 .query({ id: testId })
@@ -168,10 +186,11 @@ describe('manni-watch-api-client.ts', (): void => {
                         });
                     });
                 });
-                describe('getRouteByRouteId()', (): void => {
+
+                describe('getRouteByRouteId()', function (): void {
                     ['id1', 'id2'].forEach((testId: string): void => {
                         ['direction1', 'direction2'].forEach((testDirection: string): void => {
-                            it(`should query route with id "${testId}" and direction "${testDirection}"`, (): Promise<void> => {
+                            it(`should query route with id "${testId}" and direction "${testDirection}"`, function (): Promise<void> {
                                 const scope: nock.Scope = nock(testDomain)
                                     .post('/internetservice/geoserviceDispatcher/services/pathinfo/route')
                                     .query({ direction: testDirection, id: testId })
@@ -184,8 +203,9 @@ describe('manni-watch-api-client.ts', (): void => {
                         });
                     });
                 });
-                describe('getStopLocations()', (): void => {
-                    it(`should query route with ${JSON.stringify(testBox)}`, (): Promise<void> => {
+
+                describe('getStopLocations()', function (): void {
+                    it(`should query route with ${JSON.stringify(testBox)}`, function (): Promise<void> {
                         const scope: nock.Scope = nock(testDomain)
                             .get('/internetservice/geoserviceDispatcher/services/stopinfo/stops')
                             .query(testBoxParams)
@@ -195,7 +215,8 @@ describe('manni-watch-api-client.ts', (): void => {
                             expect(scope.isDone()).to.eq(true, 'scope should be done');
                         });
                     });
-                    it('should query vehicle locations with default parameters', (): Promise<void> => {
+
+                    it('should query vehicle locations with default parameters', function (): Promise<void> {
                         const scope: nock.Scope = nock(testDomain)
                             .get('/internetservice/geoserviceDispatcher/services/stopinfo/stops')
                             .query({
@@ -211,8 +232,9 @@ describe('manni-watch-api-client.ts', (): void => {
                         });
                     });
                 });
-                describe('getStopPointLocations()', (): void => {
-                    it(`should query route with ${JSON.stringify(testBox)}`, (): Promise<void> => {
+
+                describe('getStopPointLocations()', function (): void {
+                    it(`should query route with ${JSON.stringify(testBox)}`, function (): Promise<void> {
                         const scope: nock.Scope = nock(testDomain)
                             .get('/internetservice/geoserviceDispatcher/services/stopinfo/stopPoints')
                             .query(testBoxParams)
@@ -222,7 +244,8 @@ describe('manni-watch-api-client.ts', (): void => {
                             expect(scope.isDone()).to.eq(true, 'scope should be done');
                         });
                     });
-                    it('should query vehicle locations with default parameters', (): Promise<void> => {
+
+                    it('should query vehicle locations with default parameters', function (): Promise<void> {
                         const scope: nock.Scope = nock(testDomain)
                             .get('/internetservice/geoserviceDispatcher/services/stopinfo/stopPoints')
                             .query({
@@ -238,10 +261,11 @@ describe('manni-watch-api-client.ts', (): void => {
                         });
                     });
                 });
-                describe('getTripPassages()', (): void => {
+
+                describe('getTripPassages()', function (): void {
                     ['id1', 'id2'].forEach((testId: string): void => {
                         STOP_MODES.forEach((mode: StopMode): void => {
-                            it(`should query stop point info with mode: ${mode}`, (): Promise<void> => {
+                            it(`should query stop point info with mode: ${mode}`, function (): Promise<void> {
                                 const scope: nock.Scope = nock(testDomain)
                                     .post('/internetservice/services/tripInfo/tripPassages', `mode=${mode}&tripId=${testId}`)
                                     .reply(200, testSuccessResponse);
@@ -251,7 +275,7 @@ describe('manni-watch-api-client.ts', (): void => {
                                 });
                             });
                         });
-                        it(`should query trip "${testId}" info with default parameters`, (): Promise<void> => {
+                        it(`should query trip "${testId}" info with default parameters`, function (): Promise<void> {
                             const scope: nock.Scope = nock(testDomain)
                                 .post('/internetservice/services/tripInfo/tripPassages', `mode=departure&tripId=${testId}`)
                                 .reply(200, testSuccessResponse);
@@ -262,7 +286,8 @@ describe('manni-watch-api-client.ts', (): void => {
                         });
                     });
                 });
-                describe('getStopPassages()', (): void => {
+
+                describe('getStopPassages()', function (): void {
                     // eslint:disable-next-line:@typescript-eslint/no-unsafe-assignment
                     const optionalTimes: (number | null | undefined)[] = [12598, null, undefined];
                     ['id1', 'id2'].forEach((testId: string): void => {
@@ -271,7 +296,7 @@ describe('manni-watch-api-client.ts', (): void => {
                                 optionalTimes.forEach((testTimeFrame: number): void => {
                                     const caseTitle: string =
                                         `should query stop passages for ("${testId}",` + `"${mode}",${testStartTime},${testTimeFrame})`;
-                                    it(caseTitle, async (): Promise<void> => {
+                                    it(caseTitle, async function (): Promise<void> {
                                         let expectedFormBody = `mode=${mode}`;
                                         // tslint:disable-next-line:triple-equals
                                         if (testStartTime != undefined) {
@@ -295,7 +320,7 @@ describe('manni-watch-api-client.ts', (): void => {
                                 });
                             });
                         });
-                        it(`should query stop passages for "${testId}" with default parameters`, (): Promise<void> => {
+                        it(`should query stop passages for "${testId}" with default parameters`, function (): Promise<void> {
                             const scope: nock.Scope = nock(testDomain)
                                 .post('/internetservice/services/passageInfo/stopPassages/stop', `mode=departure&stop=${testId}`)
                                 .reply(200, testSuccessResponse);
@@ -306,7 +331,8 @@ describe('manni-watch-api-client.ts', (): void => {
                         });
                     });
                 });
-                describe('getStopPointPassages()', (): void => {
+
+                describe('getStopPointPassages()', function (): void {
                     // eslint:disable-next-line:@typescript-eslint/no-unsafe-assignment
                     const optionalTimes: (number | null | undefined)[] = [12598, null, undefined];
                     ['id1', 'id2'].forEach((testId: string): void => {
@@ -315,7 +341,7 @@ describe('manni-watch-api-client.ts', (): void => {
                                 optionalTimes.forEach((testTimeFrame: number): void => {
                                     const testTitle: string =
                                         `should query stop passages for ("${testId}",` + ` "${mode}", ${testStartTime}, ${testTimeFrame})`;
-                                    it(testTitle, async (): Promise<void> => {
+                                    it(testTitle, async function (): Promise<void> {
                                         let expectedFormBody = `mode=${mode}`;
                                         // tslint:disable-next-line:triple-equals
                                         if (testStartTime != undefined) {
@@ -339,7 +365,7 @@ describe('manni-watch-api-client.ts', (): void => {
                                 });
                             });
                         });
-                        it(`should query stop passages for "${testId}" with default parameters`, (): Promise<void> => {
+                        it(`should query stop passages for "${testId}" with default parameters`, function (): Promise<void> {
                             const scope: nock.Scope = nock(testDomain)
                                 .post('/internetservice/services/passageInfo/stopPassages/stopPoint', `mode=departure&stopPoint=${testId}`)
                                 .reply(200, testSuccessResponse);
@@ -350,12 +376,13 @@ describe('manni-watch-api-client.ts', (): void => {
                         });
                     });
                 });
-                describe('getVehicleLocations()', (): void => {
+
+                describe('getVehicleLocations()', function (): void {
                     const POS_TYPES: PositionType[] = ['CORRECTED', 'RAW'];
 
                     POS_TYPES.forEach((mode: PositionType): void => {
                         [10, 100, undefined].forEach((lastUpdate: number): void => {
-                            it(`should query vehicles with positionType "${mode}" and lastUpdate ${lastUpdate} `, (): Promise<void> => {
+                            it(`should query vehicles with positionType "${mode}" and lastUpdate ${lastUpdate} `, function (): Promise<void> {
                                 // tslint:disable-next-line:triple-equals
                                 const expectedQueryParams: {
                                     colorType: 'ROUTE_BASED';
@@ -382,7 +409,8 @@ describe('manni-watch-api-client.ts', (): void => {
                             });
                         });
                     });
-                    it('should query vehicle locations with default parameters', (): Promise<void> => {
+
+                    it('should query vehicle locations with default parameters', function (): Promise<void> {
                         const scope: nock.Scope = nock(testDomain)
                             .get('/internetservice/geoserviceDispatcher/services/vehicleinfo/vehicles')
                             .query({

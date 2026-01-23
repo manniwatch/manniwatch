@@ -57,7 +57,6 @@ export class SettingsService {
         const configPath: string = environment.configUrl || '/config/config.json';
         return this.httpClient.get(configPath).pipe(
             tap((): void => {
-                // tslint:disable-next-line:no-console
                 console.info('Config loaded');
             }),
             catchError((err: unknown): Observable<IConfig> => {

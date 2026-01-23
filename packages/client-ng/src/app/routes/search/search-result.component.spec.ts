@@ -10,10 +10,6 @@ import { StopPointService } from 'src/app/services';
 import { SearchResultResolver } from './search-result.resolver';
 import { SearchComponent } from './search.component';
 
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
-
 @Component({
     selector: 'mat-nav-list',
     standalone: false,
@@ -39,9 +35,6 @@ class TestMatListItemComponent {
     template: '<div></div>',
 })
 class TestMatIconComponent {}
-
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
 
 describe('src/modules/routing/search/search-result.resolver.ts', (): void => {
     describe('SearchResultResolver', (): void => {

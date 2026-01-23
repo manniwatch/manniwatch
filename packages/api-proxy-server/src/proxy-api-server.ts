@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/api-proxy-server
  * Source https://manniwatch.github.io/manniwatch/
  */
@@ -9,6 +9,7 @@ import { Server } from 'http';
 import { api404Handler } from './api-not-found-handler.js';
 import { serverErrorHandler } from './server-error-handler.js';
 
+/* eslint-disable chai-friendly/no-unused-expressions */
 export class ManniWatchApiProxyServer {
     private app: express.Application;
     private server: Server;

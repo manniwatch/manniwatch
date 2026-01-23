@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/schemas
  * Source https://manniwatch.github.io/manniwatch/
  */
@@ -13,18 +13,20 @@ const validOptions: StopMode[] = ['departure', 'arrival'];
 const validTestNumbers: (number | string)[] = [3, '2', '0', '+4'];
 const invalidTestNumbers: (number | string)[] = [-1, '-2'];
 
-/* eslint-disable @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-assignment */
-describe('endpoints/schema/stop-passages', (): void => {
+/* eslint-disable mocha/no-setup-in-describe */
+describe('endpoints/schema/stop-passages', function (): void {
     let ajvInstance: Ajv;
     let validator: ValidateFunction;
-    beforeEach('setup Ajv and validation function', (): void => {
+
+    beforeEach('setup Ajv and validation function', function (): void {
         ajvInstance = new Ajv({ strict: true });
         validator = ajvInstance.compile(STOP_PASSAGES_SCHEMA);
     });
-    describe('STOP_PASSAGES_SCHEMA', (): void => {
-        describe('$root.mode', (): void => {
+
+    describe('STOP_PASSAGES_SCHEMA', function (): void {
+        describe('$root.mode', function (): void {
             validOptions.forEach((mode: StopMode): void => {
-                it(`should accept '${mode}'`, (): void => {
+                it(`should accept '${mode}'`, function (): void {
                     expect(
                         validator({
                             mode,
@@ -33,9 +35,10 @@ describe('endpoints/schema/stop-passages', (): void => {
                 });
             });
         });
-        describe('$root.timeFrame', (): void => {
+
+        describe('$root.timeFrame', function (): void {
             validTestNumbers.forEach((testValue: string | number): void => {
-                it(`should pass for ${testValue}`, (): void => {
+                it(`should pass for ${testValue}`, function (): void {
                     expect(
                         validator({
                             timeFrame: testValue,
@@ -45,7 +48,7 @@ describe('endpoints/schema/stop-passages', (): void => {
                 });
             });
             invalidTestNumbers.forEach((testValue: string | number): void => {
-                it(`should reject for ${testValue}`, (): void => {
+                it(`should reject for ${testValue}`, function (): void {
                     expect(
                         validator({
                             timeFrame: testValue,
@@ -55,9 +58,10 @@ describe('endpoints/schema/stop-passages', (): void => {
                 });
             });
         });
-        describe('$root.startTime', (): void => {
+
+        describe('$root.startTime', function (): void {
             validTestNumbers.forEach((testValue: string | number): void => {
-                it(`should pass for ${testValue}`, (): void => {
+                it(`should pass for ${testValue}`, function (): void {
                     expect(
                         validator({
                             startTime: testValue,
@@ -67,7 +71,7 @@ describe('endpoints/schema/stop-passages', (): void => {
                 });
             });
             invalidTestNumbers.forEach((testValue: string | number): void => {
-                it(`should reject for ${testValue}`, (): void => {
+                it(`should reject for ${testValue}`, function (): void {
                     expect(
                         validator({
                             startTime: testValue,
@@ -77,7 +81,8 @@ describe('endpoints/schema/stop-passages', (): void => {
                 });
             });
         });
-        it(`should reject unknown properties`, (): void => {
+
+        it(`should reject unknown properties`, function (): void {
             expect(
                 validator({
                     unknown: 'property',

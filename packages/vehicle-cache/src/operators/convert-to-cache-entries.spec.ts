@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/vehicle-cache
  * Source https://manniwatch.github.io/manniwatch/
  */
@@ -13,12 +13,9 @@ import * as sinon from 'sinon';
 import { convertToCacheEntries } from './convert-to-cache-entries.js';
 import { CacheEntry } from '../types';
 
-/* eslint-disable @typescript-eslint/no-explicit-any,
-  @typescript-eslint/no-unsafe-member-access,
-  @typescript-eslint/no-unsafe-argument,
-  @typescript-eslint/no-unsafe-assignment */
-describe('operators/convert-to-cache-entries', (): void => {
-    describe('convertToCacheEntries', (): void => {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+describe('operators/convert-to-cache-entries', function (): void {
+    describe('convertToCacheEntries', function (): void {
         const testError: Error = new Error('This is a test error');
         const sourceValues: any = {
             d: {
@@ -51,20 +48,24 @@ describe('operators/convert-to-cache-entries', (): void => {
         };
         let testScheduler: TestScheduler;
         let sandbox: sinon.SinonSandbox;
-        before((): void => {
+
+        before(function (): void {
             sandbox = sinon.createSandbox();
         });
-        beforeEach((): void => {
+
+        beforeEach(function (): void {
             testScheduler = new TestScheduler((actual: any, expected: any): void => {
                 // asserting the two objects are equal
                 // e.g. using chai.
                 expect(actual).deep.equal(expected);
             });
         });
-        afterEach((): void => {
+
+        afterEach(function (): void {
             sandbox.reset();
         });
-        describe('test cold observable', (): void => {
+
+        describe('test cold observable', function (): void {
             const unsub: string = '--------------^----------------!';
             const expectedValues: any = {
                 a: [
@@ -90,7 +91,8 @@ describe('operators/convert-to-cache-entries', (): void => {
                     },
                 ],
             };
-            it('should pass on values', (): void => {
+
+            it('should pass on values', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold } = helpers;
                     const foreverStream$: Observable<CacheEntry[]> = cold<IVehicleLocationList>('---d--e---f---|', sourceValues).pipe(
@@ -100,7 +102,8 @@ describe('operators/convert-to-cache-entries', (): void => {
                     expectObservable(foreverStream$, unsub).toBe('17ms a 2ms b 3ms c---|', expectedValues);
                 });
             });
-            it('should pass on errors', (): void => {
+
+            it('should pass on errors', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold } = helpers;
                     const foreverStream$: Observable<CacheEntry[]> = cold<IVehicleLocationList>(
@@ -113,7 +116,8 @@ describe('operators/convert-to-cache-entries', (): void => {
                 });
             });
         });
-        describe('test hot observable', (): void => {
+
+        describe('test hot observable', function (): void {
             const expectedValues: any = {
                 a: [
                     {
@@ -133,7 +137,8 @@ describe('operators/convert-to-cache-entries', (): void => {
                 ],
             };
             const unsub: string = '-----^-----------------!';
-            it('should convert all values', (): void => {
+
+            it('should convert all values', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, hot } = helpers;
                     const foreverStream$: Observable<CacheEntry[]> = hot<IVehicleLocationList>('---d--e---f---|', sourceValues).pipe(
@@ -143,7 +148,8 @@ describe('operators/convert-to-cache-entries', (): void => {
                     expectObservable(foreverStream$, unsub).toBe('6ms a---b---|', expectedValues);
                 });
             });
-            it('should pass on errors', (): void => {
+
+            it('should pass on errors', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, hot } = helpers;
                     const foreverStream$: Observable<CacheEntry[]> = hot<IVehicleLocationList>(

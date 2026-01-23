@@ -10,9 +10,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { StopPointService } from './../../services/stop-point.service';
 import { ToolbarSearchBoxComponent } from './search-box.component';
 
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
 @Component({
     selector: 'mat-form-field',
     standalone: false,
@@ -60,9 +57,6 @@ class TestMatAutoCompleteComponent {
     template: '<div></div>',
 })
 class TestMatIconComponent {}
-
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
 
 class TestStopPointService {}
 

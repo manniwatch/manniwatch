@@ -14,7 +14,7 @@ if (environment.production) {
 }
 
 platformBrowserDynamic()
-    .bootstrapModule(AppModule, { applicationProviders: [provideZoneChangeDetection()], })
+    .bootstrapModule(AppModule, { applicationProviders: [provideZoneChangeDetection()] })
     .then((): void => {
         if ('serviceWorker' in navigator && environment.production) {
             void navigator.serviceWorker.register('/ngsw-worker.js');

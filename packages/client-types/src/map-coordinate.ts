@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/client-types
  * Source https://manniwatch.github.io/manniwatch/
  */

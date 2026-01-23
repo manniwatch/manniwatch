@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/api-proxy-router
  * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
@@ -34,9 +34,9 @@ const validCoordinatesNumbers: { [key in keyof IBoundingBox]: number }[] = valid
 const positionTypes: PositionType[] = ['RAW', 'CORRECTED'];
 const lastUpdates: string[] = ['22929299292', '2938'];
 type TestIBoundingBox = { [key in keyof IBoundingBox]: string };
-/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-misused-promises */
-describe('endpoints/geo/router.ts', (): void => {
-    describe('createGeoRouter()', (): void => {
+/* eslint-disable @typescript-eslint/no-explicit-any, mocha/no-setup-in-describe */
+describe('endpoints/geo/router.ts', function (): void {
+    describe('createGeoRouter()', function (): void {
         let app: express.Express;
         let routeErrorStub: sinon.SinonStub<Parameters<express.ErrorRequestHandler>, ReturnType<express.ErrorRequestHandler>>;
         let sandbox: sinon.SinonSandbox;
@@ -49,14 +49,15 @@ describe('endpoints/geo/router.ts', (): void => {
         let geoFenceValidateStub: sinon.SinonStub;
         let vehicleValidateStub: sinon.SinonStub;
         let createGeoRouter: (apiClient: ManniWatchApiClient) => express.Router;
-        before(async (): Promise<void> => {
+
+        before(async function (): Promise<void> {
             sandbox = sinon.createSandbox();
             stubClient = sandbox.createStubInstance(ManniWatchApiClient);
             routeErrorStub = sandbox.stub();
             validateStubParent = sandbox.stub();
             geoFenceValidateStub = sandbox.stub();
             vehicleValidateStub = sandbox.stub();
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+
             createGeoRouter = (
                 await esmock('./router.js', {
                     '@donmahallem/turbo-validate-request': {
@@ -65,13 +66,12 @@ describe('endpoints/geo/router.ts', (): void => {
                 })
             ).createGeoRouter as (apiClient: ManniWatchApiClient) => express.Router;
         });
-        beforeEach((): void => {
+
+        beforeEach(function (): void {
             validateStubParent.callsFake((type: string, schema: any): sinon.SinonStub => {
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                 if (schema.$id === GEO_FENCE_SCHEMA.$id) {
                     return geoFenceValidateStub;
-                } // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                else if (schema.$id === GET_VEHICLE_LOCATION_SCHEMA.$id) {
+                } else if (schema.$id === GET_VEHICLE_LOCATION_SCHEMA.$id) {
                     return vehicleValidateStub;
                 } else {
                     throw new Error('Unknown Schema');
@@ -91,17 +91,20 @@ describe('endpoints/geo/router.ts', (): void => {
                 res.status(501).json(NOT_FOUND_RESPONSE);
             });
         });
-        afterEach((): void => {
+
+        afterEach(function (): void {
             expect(validateStubParent.callCount).to.equal(3, 'validate method should be called twice');
             expect(validateStubParent.getCall(0).args).to.deep.equal(['query', GEO_FENCE_SCHEMA]);
             expect(validateStubParent.getCall(1).args).to.deep.equal(['query', GEO_FENCE_SCHEMA]);
             expect(validateStubParent.getCall(2).args).to.deep.equal(['query', GET_VEHICLE_LOCATION_SCHEMA]);
             sandbox.reset();
         });
-        after((): void => {
+
+        after(function (): void {
             sandbox.restore();
         });
-        it('should use the 404 handler', async (): Promise<void> => {
+
+        it('should use the 404 handler', async function (): Promise<void> {
             return supertest(app)
                 .get('/unknown/route')
                 .expect('Content-Type', /json/)
@@ -111,13 +114,15 @@ describe('endpoints/geo/router.ts', (): void => {
                     expect(routeErrorStub.callCount).to.equal(0);
                 });
         });
-        describe('/stopPoints', (): void => {
-            afterEach((): void => {
+
+        describe('/stopPoints', function (): void {
+            afterEach(function (): void {
                 expect(vehicleValidateStub.callCount).to.equal(0, `vehicle schema shouldn't be evaluated against this route`);
                 expect(geoFenceValidateStub.callCount).to.equal(1, 'geo fence validation should only happen once');
             });
-            describe('resolves', (): void => {
-                beforeEach((): void => {
+
+            describe('resolves', function (): void {
+                beforeEach(function (): void {
                     geoFenceValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
                         next();
                     });
@@ -126,7 +131,7 @@ describe('endpoints/geo/router.ts', (): void => {
                     const basePath: string =
                         `/stopPoints?bottom=${testCoordinate.bottom}&top=${testCoordinate.top}` +
                         `&left=${testCoordinate.left}&right=${testCoordinate.right}`;
-                    it(`should query the stops with '${basePath}'`, async (): Promise<void> => {
+                    it(`should query the stops with '${basePath}'`, async function (): Promise<void> {
                         stubClient.getStopPointLocations.returns(delayPromise(SUCCESS_RESPONSE) as Promise<IStopPointLocations>);
                         return supertest(app)
                             .get(basePath)
@@ -144,21 +149,22 @@ describe('endpoints/geo/router.ts', (): void => {
                     });
                 });
             });
-            describe('rejects', (): void => {
-                beforeEach((): void => {
+
+            describe('rejects', function (): void {
+                beforeEach(function (): void {
                     geoFenceValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
-                        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
                         next(new Error('Caught by schema'));
                     });
                 });
-                afterEach((): void => {
+
+                afterEach(function (): void {
                     expect(stubClient.getStopPointLocations.callCount).to.equal(0, 'proxy method should never be called');
                 });
                 validCoordinates.forEach((testCoordinate: TestIBoundingBox): void => {
                     const basePath: string =
                         `/stopPoints?bottom=${testCoordinate.bottom}&top=${testCoordinate.top}` +
                         `&left=${testCoordinate.left}&right=${testCoordinate.right}`;
-                    it(`should reject '${basePath}'`, async (): Promise<void> => {
+                    it(`should reject '${basePath}'`, async function (): Promise<void> {
                         stubClient.getStopLocations.returns(delayPromise(SUCCESS_RESPONSE) as Promise<IStopLocations>);
                         return supertest(app)
                             .get(basePath)
@@ -167,7 +173,7 @@ describe('endpoints/geo/router.ts', (): void => {
                             .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
                             .then((): void => {
                                 expect(routeErrorStub.callCount).to.equal(1, 'error handler should be called');
-                                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
                                 const testError: Error = routeErrorStub.getCall(0).args[0];
                                 expect(testError.message).to.equal('Caught by schema');
                             });
@@ -175,13 +181,15 @@ describe('endpoints/geo/router.ts', (): void => {
                 });
             });
         });
-        describe('/stops', (): void => {
-            afterEach((): void => {
+
+        describe('/stops', function (): void {
+            afterEach(function (): void {
                 expect(vehicleValidateStub.callCount).to.equal(0, `vehicle schema shouldn't be evaluated against this route`);
                 expect(geoFenceValidateStub.callCount).to.equal(1, 'geo fence validation should only happen once');
             });
-            describe('resolves', (): void => {
-                beforeEach((): void => {
+
+            describe('resolves', function (): void {
+                beforeEach(function (): void {
                     geoFenceValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
                         next();
                     });
@@ -190,7 +198,7 @@ describe('endpoints/geo/router.ts', (): void => {
                     const basePath: string =
                         `/stops?bottom=${testCoordinate.bottom}&top=${testCoordinate.top}` +
                         `&left=${testCoordinate.left}&right=${testCoordinate.right}`;
-                    it(`should query the stops with '${basePath}'`, async (): Promise<void> => {
+                    it(`should query the stops with '${basePath}'`, async function (): Promise<void> {
                         stubClient.getStopLocations.returns(delayPromise(SUCCESS_RESPONSE) as Promise<IStopLocations>);
                         return supertest(app)
                             .get(basePath)
@@ -205,21 +213,22 @@ describe('endpoints/geo/router.ts', (): void => {
                     });
                 });
             });
-            describe('rejects', (): void => {
-                beforeEach((): void => {
+
+            describe('rejects', function (): void {
+                beforeEach(function (): void {
                     geoFenceValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
-                        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
                         next(new Error('Caught by schema'));
                     });
                 });
-                afterEach((): void => {
+
+                afterEach(function (): void {
                     expect(stubClient.getStopLocations.callCount).to.equal(0, 'proxy method should never be called');
                 });
                 validCoordinates.forEach((testCoordinate: TestIBoundingBox): void => {
                     const basePath: string =
                         `/stops?bottom=${testCoordinate.bottom}&top=${testCoordinate.top}` +
                         `&left=${testCoordinate.left}&right=${testCoordinate.right}`;
-                    it(`should reject '${basePath}'`, async (): Promise<void> => {
+                    it(`should reject '${basePath}'`, async function (): Promise<void> {
                         stubClient.getStopLocations.returns(delayPromise(SUCCESS_RESPONSE) as Promise<IStopLocations>);
                         return supertest(app)
                             .get(basePath)
@@ -228,7 +237,7 @@ describe('endpoints/geo/router.ts', (): void => {
                             .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
                             .then((): void => {
                                 expect(routeErrorStub.callCount).to.equal(1, 'error handler should be called');
-                                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
                                 const testError: Error = routeErrorStub.getCall(0).args[0];
                                 expect(testError.message).to.equal('Caught by schema');
                             });
@@ -236,13 +245,15 @@ describe('endpoints/geo/router.ts', (): void => {
                 });
             });
         });
-        describe('/vehicles', (): void => {
-            afterEach((): void => {
+
+        describe('/vehicles', function (): void {
+            afterEach(function (): void {
                 expect(geoFenceValidateStub.callCount).to.equal(0, `fence schema shouldn't be evaluated against this route`);
                 expect(vehicleValidateStub.callCount).to.equal(1, 'query param validation should only happen once');
             });
-            describe('resolves', (): void => {
-                beforeEach((): void => {
+
+            describe('resolves', function (): void {
+                beforeEach(function (): void {
                     vehicleValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
                         next();
                     });
@@ -256,7 +267,7 @@ describe('endpoints/geo/router.ts', (): void => {
                         if (testLastUpdate !== undefined) {
                             basePath += `${testPositionType !== undefined ? '&' : '?'}lastUpdate=${testLastUpdate}`;
                         }
-                        it(`should query the vehicles with '${basePath}'`, async (): Promise<void> => {
+                        it(`should query the vehicles with '${basePath}'`, async function (): Promise<void> {
                             stubClient.getVehicleLocations.returns(delayPromise(SUCCESS_RESPONSE) as Promise<IVehicleLocationList>);
                             return supertest(app)
                                 .get(basePath)
@@ -280,14 +291,15 @@ describe('endpoints/geo/router.ts', (): void => {
                     });
                 });
             });
-            describe('rejects', (): void => {
-                beforeEach((): void => {
+
+            describe('rejects', function (): void {
+                beforeEach(function (): void {
                     vehicleValidateStub.callsFake((req: express.Request, res: express.Response, next: express.NextFunction): void => {
-                        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
                         next(new Error('Caught by schema'));
                     });
                 });
-                afterEach((): void => {
+
+                afterEach(function (): void {
                     expect(stubClient.getVehicleLocations.callCount).to.equal(0, 'proxy method should never be called');
                 });
                 [...lastUpdates, undefined].forEach((testLastUpdate: string): void => {
@@ -299,7 +311,7 @@ describe('endpoints/geo/router.ts', (): void => {
                         if (testLastUpdate !== undefined) {
                             basePath += `${testPositionType !== undefined ? '&' : '?'}lastUpdate=${testLastUpdate}`;
                         }
-                        it(`should query the vehicles with '${basePath}'`, async (): Promise<void> => {
+                        it(`should query the vehicles with '${basePath}'`, async function (): Promise<void> {
                             stubClient.getVehicleLocations.returns(delayPromise(SUCCESS_RESPONSE) as Promise<IVehicleLocationList>);
                             return supertest(app)
                                 .get(basePath)
@@ -308,7 +320,7 @@ describe('endpoints/geo/router.ts', (): void => {
                                 .expect('Content-Length', NOT_FOUND_RESPONSE_LENGTH)
                                 .then((): void => {
                                     expect(routeErrorStub.callCount).to.equal(1, 'error handler should be called');
-                                    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
                                     const testError: Error = routeErrorStub.getCall(0).args[0];
                                     expect(testError.message).to.equal('Caught by schema');
                                 });

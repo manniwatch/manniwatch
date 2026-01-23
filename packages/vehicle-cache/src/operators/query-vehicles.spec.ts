@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/vehicle-cache
  * Source https://manniwatch.github.io/manniwatch/
  */
@@ -13,10 +13,7 @@ import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
 import { queryVehiclesOperator } from './query-vehicles.js';
 
-/* eslint-disable @typescript-eslint/no-explicit-any,
-  @typescript-eslint/no-unsafe-member-access,
-  @typescript-eslint/no-unsafe-argument,
-  @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const testParameter: any[] = [];
 [undefined, 1000].forEach((lastUpdate: any): any => {
     ['RAW', 'CORRECT', undefined].forEach((queryType: string): any => {
@@ -61,16 +58,18 @@ const testSources: any = {
     e: testParameter[1],
     f: testParameter[2],
 };
-describe('operators/query-vehicles', (): void => {
-    describe('queryVehiclesOperator', (): void => {
+describe('operators/query-vehicles', function (): void {
+    describe('queryVehiclesOperator', function (): void {
         let testScheduler: TestScheduler;
         let sandbox: sinon.SinonSandbox;
         let testApiClient: sinon.SinonStubbedInstance<ManniWatchApiClient>;
-        before((): void => {
+
+        before(function (): void {
             sandbox = sinon.createSandbox();
             testApiClient = sandbox.createStubInstance(ManniWatchApiClient);
         });
-        beforeEach((): void => {
+
+        beforeEach(function (): void {
             testScheduler = new TestScheduler((actual: any, expected: any): void => {
                 // asserting the two objects are equal
                 // e.g. using chai.
@@ -83,11 +82,13 @@ describe('operators/query-vehicles', (): void => {
             testApiClient.getVehicleLocations.onCall(4).returns(of(testResponses.e) as any);
             testApiClient.getVehicleLocations.onCall(5).returns(of(testResponses.f) as any);
         });
-        afterEach((): void => {
+
+        afterEach(function (): void {
             sandbox.reset();
         });
-        describe('test cold observable', (): void => {
-            it('should pass on all parameters correctly', (): void => {
+
+        describe('test cold observable', function (): void {
+            it('should pass on all parameters correctly', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold, flush } = helpers;
                     const foreverStream$: Observable<IVehicleLocationList> = cold<IVehicleLocationList>('abcdef|', {
@@ -112,7 +113,8 @@ describe('operators/query-vehicles', (): void => {
                     flush();
                 });
             });
-            it('should convert all non errors', (): void => {
+
+            it('should convert all non errors', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold, flush } = helpers;
                     const foreverStream$: Observable<IVehicleLocationList> = cold<IVehicleLocationList>(
@@ -130,7 +132,8 @@ describe('operators/query-vehicles', (): void => {
                     flush();
                 });
             });
-            it('should not stop observable on error', (): void => {
+
+            it('should not stop observable on error', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, cold, flush } = helpers;
                     const testError: Error = new Error('This is a test error');
@@ -150,8 +153,9 @@ describe('operators/query-vehicles', (): void => {
                 });
             });
         });
-        describe('test hot observable', (): void => {
-            it('should convert all non errors', (): void => {
+
+        describe('test hot observable', function (): void {
+            it('should convert all non errors', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, hot } = helpers;
                     const foreverStream$: Observable<IVehicleLocationList> = hot<IVehicleLocationList>('---d--e---f---|', testSources).pipe(
@@ -165,7 +169,8 @@ describe('operators/query-vehicles', (): void => {
                     expectObservable(foreverStream$, unsub).toBe('10ms a --- |', testValues);
                 });
             });
-            it('should not stop observable on error', (): void => {
+
+            it('should not stop observable on error', function (): void {
                 testScheduler.run((helpers: RunHelpers): void => {
                     const { expectObservable, hot } = helpers;
                     const testError: Error = new Error('This is a test error');

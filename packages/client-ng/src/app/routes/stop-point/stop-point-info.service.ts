@@ -54,7 +54,6 @@ export class StopPointInfoService {
                     .pipe(startWith<IStopPointLocation>(undefined as IStopPointLocation));
             }),
             map((stop: IStopPointLocation): IStaticMapData => {
-                // tslint:disable-next-line:triple-equals
                 if (stop == undefined) {
                     return { map: { blur: true } };
                 } else {

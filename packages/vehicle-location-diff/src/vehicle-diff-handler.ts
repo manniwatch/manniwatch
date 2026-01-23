@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/vehicle-location-diff
  * Source https://manniwatch.github.io/manniwatch/
  */

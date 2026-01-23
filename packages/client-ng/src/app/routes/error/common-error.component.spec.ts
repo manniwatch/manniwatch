@@ -8,18 +8,12 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CommonErrorComponent } from './common-error.component';
 
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
 @Component({
     selector: 'mat-icon',
     standalone: false,
     template: '<div></div>',
 })
 class TestMatIconComponent {}
-
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
 
 describe('src/modules/error/common.component.ts', (): void => {
     describe('CommonComponent', (): void => {

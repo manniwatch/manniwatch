@@ -9,9 +9,6 @@ import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RouteListComponent } from './route-list.component';
 
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
 @Component({
     selector: 'mat-divider',
     standalone: false,
@@ -40,8 +37,6 @@ export class TestMatListComponent {}
 export class TestParentComponent {
     public testData: any[];
 }
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
 
 describe('src/modules/stop/route-list.component.ts', (): void => {
     describe('RouteListComponent', (): void => {

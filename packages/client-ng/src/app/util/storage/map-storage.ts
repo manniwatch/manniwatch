@@ -6,7 +6,7 @@
 import { IStorage } from './storage';
 
 export class MapStorage implements IStorage {
-    private data: { [key: string]: string } = {};
+    private data: Record<string, string> = {};
 
     readonly length: number;
     public clear(): void {

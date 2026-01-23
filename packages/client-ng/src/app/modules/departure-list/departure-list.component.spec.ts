@@ -8,9 +8,6 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IDeparture } from '@manniwatch/api-types';
 import { DepartureListComponent } from './departure-list.component';
 
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
 @Component({
     selector: 'mat-nav-list',
     standalone: false,
@@ -27,8 +24,6 @@ export class TestDepartureListItemComponent {
     public departure: IDeparture;
 }
 
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
 describe('src/app/modules/stop/departure-list.component', (): void => {
     describe('DepartureListComponent', (): void => {
         beforeEach(waitForAsync((): void => {

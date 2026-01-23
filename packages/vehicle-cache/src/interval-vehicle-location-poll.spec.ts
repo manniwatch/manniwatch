@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/vehicle-cache
  * Source https://manniwatch.github.io/manniwatch/
  */
@@ -13,28 +13,29 @@ import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
 import { intervalVehicleLocationPoll } from './interval-vehicle-location-poll.js';
 
-/* eslint-disable @typescript-eslint/no-explicit-any,
-  @typescript-eslint/no-unsafe-member-access,
-  @typescript-eslint/no-unsafe-argument,
-  @typescript-eslint/no-unsafe-assignment */
-describe('interval-vehicle-location-poll', (): void => {
-    describe('intervalVehicleLocationPoll()', (): void => {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+describe('interval-vehicle-location-poll', function (): void {
+    describe('intervalVehicleLocationPoll()', function (): void {
         let testScheduler: TestScheduler;
         let sandbox: sinon.SinonSandbox;
-        before((): void => {
+
+        before(function (): void {
             sandbox = sinon.createSandbox();
         });
-        beforeEach((): void => {
+
+        beforeEach(function (): void {
             testScheduler = new TestScheduler((actual: any, expected: any): void => {
                 // asserting the two objects are equal
                 // e.g. using chai.
                 expect(actual).deep.equal(expected);
             });
         });
-        afterEach((): void => {
+
+        afterEach(function (): void {
             sandbox.reset();
         });
-        it('should constantly poll', (): void => {
+
+        it('should constantly poll', function (): void {
             testScheduler.run((helpers: RunHelpers): void => {
                 const { expectObservable } = helpers;
                 const foreverStream$: Observable<IVehicleLocationList> = intervalVehicleLocationPoll(

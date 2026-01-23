@@ -9,9 +9,6 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StopsInfoComponent } from './stops-info.component';
 
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
 @Component({
     selector: 'mat-nav-list',
     standalone: false,
@@ -37,9 +34,6 @@ class TestMatDividerComponent {}
     template: '<div></div>',
 })
 class TestMatIconComponent {}
-
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
 
 describe('src/modules/stops/stops-info.component.ts', (): void => {
     describe('StopsInfoComponent', (): void => {

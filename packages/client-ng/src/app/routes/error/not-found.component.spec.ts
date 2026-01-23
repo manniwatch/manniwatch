@@ -9,9 +9,6 @@ import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NotFoundComponent } from './not-found.component';
 
-// tslint:disable:max-classes-per-file
-// tslint:disable:component-selector
-// tslint:disable:directive-selector
 @Component({
     selector: 'mat-icon',
     standalone: false,
@@ -42,9 +39,6 @@ class TestMatNavListComponent {}
     template: '<div></div>',
 })
 class TestNotFoundMessageSwitchComponent {}
-
-// tslint:enable:component-selector
-// tslint:enable:directive-selector
 
 describe('src/modules/error/not-found.component.ts', (): void => {
     describe('NotFoundComponent', (): void => {

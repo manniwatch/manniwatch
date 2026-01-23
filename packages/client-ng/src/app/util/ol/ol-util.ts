@@ -15,7 +15,7 @@ import Style, { StyleLike } from 'ol/style/Style';
 import Text from 'ol/style/Text';
 import { TrapezeCoord } from './trapeze-coord';
 
-const DEFAULT_STYLES: { [key: string]: StyleLike } = {
+const DEFAULT_STYLES: Record<string, StyleLike> = {
     icon: new Style({
         image: new Icon({
             anchor: [0.5, 0.5],
@@ -67,7 +67,6 @@ const DEFAULT_STYLES: { [key: string]: StyleLike } = {
     }),
     vehicle: (p0: FeatureLike): Style => {
         const vehicle: IVehicleLocation = p0.get('vehicle') as IVehicleLocation;
-        // tslint:disable-next-line:triple-equals
         if (vehicle != undefined) {
             const rot: number = (Math.PI / 180) * ((vehicle.heading + 270) % 360);
             return new Style({
@@ -99,7 +98,6 @@ const DEFAULT_STYLES: { [key: string]: StyleLike } = {
     }),
     vehicle_selected: (p0: FeatureLike): Style => {
         const vehicle: IVehicleLocation = p0.get('vehicle') as IVehicleLocation;
-        // tslint:disable-next-line:triple-equals
         if (vehicle != undefined) {
             const rot: number = (Math.PI / 180) * ((vehicle.heading + 270) % 360);
             return new Style({
@@ -127,7 +125,6 @@ export class OlUtil {
     public static createVehicleMarkerStyle(selected = false): (p0: FeatureLike, p1: number) => Style {
         return (p0: FeatureLike): Style => {
             const vehicle: IVehicleLocation = p0.get('vehicle') as IVehicleLocation;
-            // tslint:disable-next-line:triple-equals
             if (vehicle != undefined) {
                 const rot: number = (Math.PI / 180) * ((vehicle.heading + 270) % 360);
                 return new Style({
@@ -155,7 +152,6 @@ export class OlUtil {
         return selected ? (DEFAULT_STYLES.stop_selected as Style) : (DEFAULT_STYLES.stop as Style);
     }
     public static createStyleByFeature(feature: FeatureLike): StyleLike {
-        // tslint:disable-next-line:triple-equals
         if (feature.get('type') != undefined) {
             return OlUtil.createStyleByType(feature.get('type') as string);
         }

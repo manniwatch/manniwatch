@@ -70,7 +70,6 @@ export const createVehicleDiff: <T extends TimestampedVehicleLocation[]>(previou
         removed: [],
         unchanged: [],
     };
-    // tslint:disable-next-line:triple-equals
     const oldDiff: IVehicleDiff =
         previousState == undefined
             ? {
@@ -108,7 +107,7 @@ type VehicleMap = Map<string, TimestampedVehicles>;
     providedIn: 'root',
 })
 export class VehicleService {
-    private state: BehaviorSubject<IData> = new BehaviorSubject({ lastUpdate: 0, vehicles: [] });
+    private state = new BehaviorSubject<IData>({ lastUpdate: 0, vehicles: [] });
     constructor(
         private api: ApiService,
         appRef: ApplicationRef

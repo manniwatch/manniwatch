@@ -1,4 +1,4 @@
-/*
+/**
  * Package @manniwatch/client-desktop
  * Source https://manniwatch.github.io/manniwatch/
  */
@@ -8,12 +8,7 @@ import { existsSync, promises as fsp } from 'fs';
 import { basename, join, normalize, resolve } from 'path';
 import { URL } from 'url';
 
-/* eslint-disable @typescript-eslint/no-explicit-any,
-  @typescript-eslint/no-unsafe-member-access,
-  @typescript-eslint/no-unsafe-argument,
-  @typescript-eslint/no-unsafe-assignment,
-  @typescript-eslint/no-unsafe-return,
-  sort-keys */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const guessMimeType = (filepath: string): string | undefined => {
     const fileparts: string[] = basename(filepath).split('.');
     if (fileparts.length > 1) {
@@ -34,7 +29,7 @@ export const createMwFileProtocolHandler: () => HandlerType = (): HandlerType =>
     if (!existsSync(distType)) {
         throw new Error(`Could not find dist folder '${distType}'`);
     }
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+
     return async (request: electron.ProtocolRequest, callback: (response: string | electron.ProtocolResponse) => void): Promise<void> => {
         const parsedUrl: URL = new URL(request.url);
         if (parsedUrl.protocol === 'mw:' && parsedUrl.host === 'static') {
