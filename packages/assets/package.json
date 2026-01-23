@@ -11,7 +11,7 @@
     "devDependencies": {
         "@donmahallem/gulp-sharp": "2.5.11",
         "@types/gulp": "4.0.18",
-        "del": "8.0.0",
+        "del": "8.0.1",
         "flat-map": "1.0.0",
         "gulp": "5.0.1",
         "gulp-cli": "3.0.0",
