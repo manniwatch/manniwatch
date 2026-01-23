@@ -5,7 +5,7 @@
         "@appnest/readme": "1.2.7",
         "@donmahallem/eslint-config": "2.0.25",
         "@donmahallem/rollup-config": "4.1.141",
-        "@donmahallem/tslint-config": "0.6.0",
+        "@donmahallem/tslint-config": "0.6.1",
         "@rollup/plugin-commonjs": "28.0.9",
         "@rollup/plugin-json": "6.1.0",
         "@rollup/plugin-node-resolve": "16.0.3",
