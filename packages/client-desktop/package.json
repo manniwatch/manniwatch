@@ -52,7 +52,7 @@
     "devDependencies": {
         "@types/ol": "6.5.3",
         "asar": "3.2.0",
-        "chai": "5.3.3",
+        "chai": "6.2.2",
         "copy-webpack-plugin": "13.0.1",
         "nyc": "17.1.0",
         "pug-cli": "1.0.0-alpha6",
