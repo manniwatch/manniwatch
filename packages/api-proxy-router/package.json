@@ -71,7 +71,7 @@
         "apidoc": "1.2.0",
         "axios": "1.13.2",
         "express": "5.0.1",
-        "supertest": "7.0.0"
+        "supertest": "7.2.2"
     },
     "peerDependencies": {
         "express": "~5.0.0"
