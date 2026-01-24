@@ -53,6 +53,6 @@
         "protobufjs": "~7.4.0"
     },
     "devDependencies": {
-        "protobufjs-cli": "1.2.0"
+        "protobufjs-cli": "2.0.0"
     }
 }
