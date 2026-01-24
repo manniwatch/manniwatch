@@ -50,7 +50,7 @@
         "access": "public"
     },
     "dependencies": {
-        "protobufjs": "~7.4.0"
+        "protobufjs": "~7.5.4"
     },
     "devDependencies": {
         "protobufjs-cli": "2.0.0"
