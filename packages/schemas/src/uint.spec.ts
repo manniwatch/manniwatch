@@ -3,7 +3,7 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import Ajv, { ValidateFunction } from 'ajv';
+import Ajv, { type ValidateFunction } from 'ajv';
 import { expect } from 'chai';
 import 'mocha';
 import { UINT_SCHEMA } from './uint.js';

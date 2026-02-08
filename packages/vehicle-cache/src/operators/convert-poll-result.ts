@@ -3,7 +3,7 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { IVehicleLocationList } from '@manniwatch/api-types';
+import { type IVehicleLocationList } from '@manniwatch/api-types';
 import { of, Observable, OperatorFunction } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 

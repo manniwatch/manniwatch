@@ -3,7 +3,7 @@
  * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
 
-import { StopMode } from '@manniwatch/api-types';
+import { type StopMode } from '@manniwatch/api-types';
 import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */

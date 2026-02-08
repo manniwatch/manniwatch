@@ -3,14 +3,15 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { IVehicleLocationList } from '@manniwatch/api-types';
+import { type IVehicleLocationList } from '@manniwatch/api-types';
 import { expect } from 'chai';
 import 'mocha';
 import { Observable } from 'rxjs';
-import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
+// import type { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
+type RunHelpers = any;
 import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
-import { convertPollResult, PollResult } from './convert-poll-result.js';
+import { convertPollResult, type PollResult } from './convert-poll-result.js';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 describe('operators/convert-poll-result', function (): void {

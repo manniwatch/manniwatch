@@ -3,7 +3,7 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { StopMode } from '@manniwatch/api-types';
+import { type StopMode } from '@manniwatch/api-types';
 import { JSONSchemaType } from 'ajv';
 import { STOP_MODE_SCHEMA } from './stop-mode.js';
 

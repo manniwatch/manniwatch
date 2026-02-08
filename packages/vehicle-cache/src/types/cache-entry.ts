@@ -3,7 +3,7 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { VehicleLocations } from '@manniwatch/api-types';
+import { type VehicleLocations } from '@manniwatch/api-types';
 
 export type CacheEntry = VehicleLocations & {
     lastUpdate: number;

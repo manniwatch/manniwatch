@@ -5,7 +5,7 @@
 
 import { validateRequest } from '@donmahallem/turbo-validate-request';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import { PositionType } from '@manniwatch/api-types';
+import { type PositionType } from '@manniwatch/api-types';
 import { GEO_FENCE_SCHEMA, GET_VEHICLE_LOCATION_SCHEMA } from '@manniwatch/schemas';
 import { default as express } from 'express';
 

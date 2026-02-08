@@ -3,8 +3,8 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { StopMode } from '@manniwatch/api-types';
-import Ajv, { ValidateFunction } from 'ajv';
+import { type StopMode } from '@manniwatch/api-types';
+import Ajv, { type ValidateFunction } from 'ajv';
 import { expect } from 'chai';
 import 'mocha';
 import { STOP_MODE_SCHEMA } from './stop-mode.js';

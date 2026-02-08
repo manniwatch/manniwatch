@@ -5,7 +5,7 @@
 
 import { validateRequest } from '@donmahallem/turbo-validate-request';
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import { StopMode } from '@manniwatch/api-types';
+import { type StopMode } from '@manniwatch/api-types';
 import { STOP_PASSAGES_SCHEMA } from '@manniwatch/schemas';
 import Ajv from 'ajv';
 import express from 'express';

@@ -4,7 +4,7 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import { ITripPassages, IVehiclePathInfo } from '@manniwatch/api-types';
+import type { ITripPassages, IVehiclePathInfo } from '@manniwatch/api-types';
 import { expect } from 'chai';
 import { strict as esmock } from 'esmock';
 import express from 'express';
@@ -13,12 +13,12 @@ import sinon from 'sinon';
 import supertest from 'supertest';
 import {
     createTestErrorRequestHandler,
-    ErrorSpy,
+    type ErrorSpy,
     NOT_FOUND_RESPONSE,
     NOT_FOUND_RESPONSE_LENGTH,
     SUCCESS_RESPONSE,
     SUCCESS_RESPONSE_LENGTH,
-    ValidateRequestStub,
+    type ValidateRequestStub,
 } from './common-test.spec.js';
 const testIds: string[] = ['-12883', 'kasd'];
 /* eslint-disable @typescript-eslint/no-explicit-any, mocha/no-setup-in-describe */

@@ -10,7 +10,12 @@ import express from 'express';
 import 'mocha';
 import sinon from 'sinon';
 import supertest from 'supertest';
-import { createTestErrorRequestHandler, ErrorSpy, NOT_FOUND_RESPONSE, NOT_FOUND_RESPONSE_LENGTH } from './endpoints/common-test.spec.js';
+import {
+    createTestErrorRequestHandler,
+    type ErrorSpy,
+    NOT_FOUND_RESPONSE,
+    NOT_FOUND_RESPONSE_LENGTH,
+} from './endpoints/common-test.spec.js';
 import * as endpoints from './endpoints/index.js';
 
 interface ITestEndpoint {

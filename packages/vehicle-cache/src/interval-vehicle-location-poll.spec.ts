@@ -3,11 +3,12 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { IVehicleLocationList, PositionType } from '@manniwatch/api-types';
+import { type IVehicleLocationList, type PositionType } from '@manniwatch/api-types';
 import { expect } from 'chai';
 import 'mocha';
 import { of, Observable } from 'rxjs';
-import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
+// import type { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
+type RunHelpers = any;
 import { delay } from 'rxjs/operators';
 import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';

@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: pb-converter
  */
 
-import { IVehicleLocation } from '@manniwatch/api-types';
+import type { IVehicleLocation } from '@manniwatch/api-types';
 import manniwatch from '@manniwatch/pb-types';
 import { expect } from 'chai';
 import { strict as esmock } from 'esmock';

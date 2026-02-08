@@ -6,11 +6,11 @@
 import { expect } from 'chai';
 import 'mocha';
 import { Observable } from 'rxjs';
-import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
+import { type RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
 import { vehicleCacheOperator } from './vehicle-cache-operator.js';
-import { CacheEntry } from '../types';
+import { type CacheEntry } from '../types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any, mocha/no-setup-in-describe */
 interface IMarbleMap {
