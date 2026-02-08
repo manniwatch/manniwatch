@@ -51,7 +51,7 @@
     },
     "devDependencies": {
         "@types/ol": "6.5.3",
-        "asar": "3.2.0",
+        "@electron/asar": "4.0.1",
         "chai": "6.2.2",
         "copy-webpack-plugin": "13.0.1",
         "nyc": "17.1.0",
