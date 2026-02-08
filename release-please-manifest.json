@@ -1,0 +1,15 @@
+{
+    "packages/api-client": "0.30.0",
+    "packages/api-proxy-router": "0.30.1",
+    "packages/api-proxy-server": "0.30.1",
+    "packages/api-types": "0.30.0",
+    "packages/assets": "0.30.0",
+    "packages/client-desktop": "0.30.1",
+    "packages/client-ng": "0.30.1",
+    "packages/client-types": "0.30.0",
+    "packages/pb-converter": "0.30.0",
+    "packages/pb-types": "0.30.0",
+    "packages/schemas": "0.30.0",
+    "packages/vehicle-cache": "0.30.0",
+    "packages/vehicle-location-diff": "0.30.0"
+}
