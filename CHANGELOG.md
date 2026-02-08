@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.31.0](https://github.com/manniwatch/manniwatch/compare/v0.30.1...v0.31.0) (2026-02-08)
+
+### Bug Fixes
+
+- **deps-dev:** bump eslint dependencies ([#4133](https://github.com/manniwatch/manniwatch/issues/4133)) ([d9bf75e](https://github.com/manniwatch/manniwatch/commit/d9bf75e5f34fc3de844a27703088f3e033253a0a))
+- **deps-dev:** bump eslint dependencies ([#4142](https://github.com/manniwatch/manniwatch/issues/4142)) ([2113839](https://github.com/manniwatch/manniwatch/commit/2113839c4f142a8a696fcb98b802dfb99b21b252))
+- **deps:** update angular monorepo to v21.1.2 ([#4164](https://github.com/manniwatch/manniwatch/issues/4164)) ([b916d60](https://github.com/manniwatch/manniwatch/commit/b916d603c2f2d693f6f4e5ecfbc0bcd2e3a9c622))
+- **deps:** update angular-cli monorepo to v21.1.2 ([#4078](https://github.com/manniwatch/manniwatch/issues/4078)) ([840bef6](https://github.com/manniwatch/manniwatch/commit/840bef63b02077b0a78a1899dbf90537ea7fe622))
+- **deps:** update angularmaterial monorepo to v21.1.2 ([#4165](https://github.com/manniwatch/manniwatch/issues/4165)) ([bb87f90](https://github.com/manniwatch/manniwatch/commit/bb87f90199475e95e4610304cff660404697a698))
+- **deps:** update dependency @donmahallem/rxjs-zone to v0.6.37 ([#4166](https://github.com/manniwatch/manniwatch/issues/4166)) ([0fc94b0](https://github.com/manniwatch/manniwatch/commit/0fc94b06c4cf9948c4798d6af60e5595ba7973ff))
+- **deps:** update dependency axios to v1.13.2 ([#4077](https://github.com/manniwatch/manniwatch/issues/4077)) ([14a8cdd](https://github.com/manniwatch/manniwatch/commit/14a8cdddfa9fa975ee0e64a76e7c6f0d8b7e58ac))
+- **deps:** update dependency axios to v1.13.3 ([#4159](https://github.com/manniwatch/manniwatch/issues/4159)) ([6ec2916](https://github.com/manniwatch/manniwatch/commit/6ec2916651ee6455a684353cc0d575ddc37ee79e))
+- **deps:** update dependency axios to v1.13.4 ([#4162](https://github.com/manniwatch/manniwatch/issues/4162)) ([90a3e3b](https://github.com/manniwatch/manniwatch/commit/90a3e3b8c48ec215cbb19f23fbc4306fcb019840))
+- **deps:** update dependency commander to v14 ([#4149](https://github.com/manniwatch/manniwatch/issues/4149)) ([5bbc0bf](https://github.com/manniwatch/manniwatch/commit/5bbc0bf3ca9da8b75b834d4f95c7afa8e682cd0c))
+- **deps:** update dependency electron to ~35.0.1 ([#4073](https://github.com/manniwatch/manniwatch/issues/4073)) ([8e4007a](https://github.com/manniwatch/manniwatch/commit/8e4007aa43adcc6de01961976cdfa904b0cf02d8))
+- **deps:** update dependency electron to ~35.7.5 ([#4132](https://github.com/manniwatch/manniwatch/issues/4132)) ([b1376cc](https://github.com/manniwatch/manniwatch/commit/b1376cc8c7ead892e64acacfb4fc4d94a422341b))
+- **deps:** update dependency electron to ~40.1.0 ([#4167](https://github.com/manniwatch/manniwatch/issues/4167)) ([88642bc](https://github.com/manniwatch/manniwatch/commit/88642bce1e6164308b6f00f3c74698ff6ab3dc1d))
+- **deps:** update dependency electron to v40 ([#4150](https://github.com/manniwatch/manniwatch/issues/4150)) ([8aec087](https://github.com/manniwatch/manniwatch/commit/8aec087fd10416b282c2b414e6ab0587dc75735a))
+- **deps:** update dependency express to v5 ([#4154](https://github.com/manniwatch/manniwatch/issues/4154)) ([5cb0488](https://github.com/manniwatch/manniwatch/commit/5cb0488e75830205ff2d519581c96af300d29be8))
+- **deps:** update dependency helmet to ~8.1.0 ([#4126](https://github.com/manniwatch/manniwatch/issues/4126)) ([c096a36](https://github.com/manniwatch/manniwatch/commit/c096a36bf4bb58fa0c5d502e7e16abf36c4f3f07))
+- **deps:** update dependency nconf to ~0.13.0 ([#4127](https://github.com/manniwatch/manniwatch/issues/4127)) ([521e114](https://github.com/manniwatch/manniwatch/commit/521e114f9ffcd7387fc20a88aa59f7cb82519dc4))
+- **deps:** update dependency ol-mapbox-style to v12.6.1 ([#4134](https://github.com/manniwatch/manniwatch/issues/4134)) ([8b4308a](https://github.com/manniwatch/manniwatch/commit/8b4308adc00178a10e8d86d536f6010270025710))
+- **deps:** update dependency ol-mapbox-style to v13 ([#4155](https://github.com/manniwatch/manniwatch/issues/4155)) ([42cfa7f](https://github.com/manniwatch/manniwatch/commit/42cfa7f6b840e8b54ba4eb9e5bab19d70ef96715))
+- **deps:** update dependency qs to ~6.14.1 ([#4114](https://github.com/manniwatch/manniwatch/issues/4114)) ([5264388](https://github.com/manniwatch/manniwatch/commit/5264388a364f8eee17cd4b59d36f9138330cf239))
+- **deps:** update dependency zone.js to v0.16.0 ([#3662](https://github.com/manniwatch/manniwatch/issues/3662)) ([559d968](https://github.com/manniwatch/manniwatch/commit/559d968abfaaa5cf597cde33aeff44cb072752df))
+
+### Features
+
+- **api-proxy-server:** add live check endpoint ([#4069](https://github.com/manniwatch/manniwatch/issues/4069)) ([b1be510](https://github.com/manniwatch/manniwatch/commit/b1be5105d22e8c63519fe69a92e1e2a609533a00))
+- **deps:** bump protobufjs to v8 ([#4157](https://github.com/manniwatch/manniwatch/issues/4157)) ([a9da0f8](https://github.com/manniwatch/manniwatch/commit/a9da0f851ecd998c76f3293ff39bea1398c26377))
+- **deps:** update many deps ([#4089](https://github.com/manniwatch/manniwatch/issues/4089)) ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+
 ## [0.30.1](https://github.com/manniwatch/manniwatch/compare/v0.30.0...v0.30.1) (2025-03-08)
 
 ### Bug Fixes

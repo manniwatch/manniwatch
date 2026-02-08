@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.31.0](https://github.com/manniwatch/manniwatch/compare/v0.30.1...v0.31.0) (2026-02-08)
+
+### Bug Fixes
+
+- **deps-dev:** bump eslint dependencies ([#4142](https://github.com/manniwatch/manniwatch/issues/4142)) ([2113839](https://github.com/manniwatch/manniwatch/commit/2113839c4f142a8a696fcb98b802dfb99b21b252))
+- **deps:** update dependency express to v5 ([#4154](https://github.com/manniwatch/manniwatch/issues/4154)) ([5cb0488](https://github.com/manniwatch/manniwatch/commit/5cb0488e75830205ff2d519581c96af300d29be8))
+- **deps:** update dependency helmet to ~8.1.0 ([#4126](https://github.com/manniwatch/manniwatch/issues/4126)) ([c096a36](https://github.com/manniwatch/manniwatch/commit/c096a36bf4bb58fa0c5d502e7e16abf36c4f3f07))
+- **deps:** update dependency nconf to ~0.13.0 ([#4127](https://github.com/manniwatch/manniwatch/issues/4127)) ([521e114](https://github.com/manniwatch/manniwatch/commit/521e114f9ffcd7387fc20a88aa59f7cb82519dc4))
+
+### Features
+
+- **api-proxy-server:** add live check endpoint ([#4069](https://github.com/manniwatch/manniwatch/issues/4069)) ([b1be510](https://github.com/manniwatch/manniwatch/commit/b1be5105d22e8c63519fe69a92e1e2a609533a00))
+
 ## [0.30.1](https://github.com/manniwatch/manniwatch/compare/v0.30.0...v0.30.1) (2025-03-08)
 
 ### Bug Fixes

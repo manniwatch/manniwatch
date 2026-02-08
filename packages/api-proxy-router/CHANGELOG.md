@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.31.0](https://github.com/manniwatch/manniwatch/compare/v0.30.1...v0.31.0) (2026-02-08)
+
+### Bug Fixes
+
+- **deps-dev:** bump eslint dependencies ([#4142](https://github.com/manniwatch/manniwatch/issues/4142)) ([2113839](https://github.com/manniwatch/manniwatch/commit/2113839c4f142a8a696fcb98b802dfb99b21b252))
+- **deps:** update dependency axios to v1.13.2 ([#4077](https://github.com/manniwatch/manniwatch/issues/4077)) ([14a8cdd](https://github.com/manniwatch/manniwatch/commit/14a8cdddfa9fa975ee0e64a76e7c6f0d8b7e58ac))
+- **deps:** update dependency axios to v1.13.3 ([#4159](https://github.com/manniwatch/manniwatch/issues/4159)) ([6ec2916](https://github.com/manniwatch/manniwatch/commit/6ec2916651ee6455a684353cc0d575ddc37ee79e))
+- **deps:** update dependency axios to v1.13.4 ([#4162](https://github.com/manniwatch/manniwatch/issues/4162)) ([90a3e3b](https://github.com/manniwatch/manniwatch/commit/90a3e3b8c48ec215cbb19f23fbc4306fcb019840))
+- **deps:** update dependency express to v5 ([#4154](https://github.com/manniwatch/manniwatch/issues/4154)) ([5cb0488](https://github.com/manniwatch/manniwatch/commit/5cb0488e75830205ff2d519581c96af300d29be8))
+
+### Features
+
+- **deps:** update many deps ([#4089](https://github.com/manniwatch/manniwatch/issues/4089)) ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+
 ## [0.30.1](https://github.com/manniwatch/manniwatch/compare/v0.30.0...v0.30.1) (2025-03-08)
 
 ### Bug Fixes

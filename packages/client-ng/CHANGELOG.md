@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.31.0](https://github.com/manniwatch/manniwatch/compare/v0.30.1...v0.31.0) (2026-02-08)
+
+### Bug Fixes
+
+- **deps-dev:** bump eslint dependencies ([#4133](https://github.com/manniwatch/manniwatch/issues/4133)) ([d9bf75e](https://github.com/manniwatch/manniwatch/commit/d9bf75e5f34fc3de844a27703088f3e033253a0a))
+- **deps-dev:** bump eslint dependencies ([#4142](https://github.com/manniwatch/manniwatch/issues/4142)) ([2113839](https://github.com/manniwatch/manniwatch/commit/2113839c4f142a8a696fcb98b802dfb99b21b252))
+- **deps:** update angular monorepo to v21.1.2 ([#4164](https://github.com/manniwatch/manniwatch/issues/4164)) ([b916d60](https://github.com/manniwatch/manniwatch/commit/b916d603c2f2d693f6f4e5ecfbc0bcd2e3a9c622))
+- **deps:** update angular-cli monorepo to v21.1.2 ([#4078](https://github.com/manniwatch/manniwatch/issues/4078)) ([840bef6](https://github.com/manniwatch/manniwatch/commit/840bef63b02077b0a78a1899dbf90537ea7fe622))
+- **deps:** update angularmaterial monorepo to v21.1.2 ([#4165](https://github.com/manniwatch/manniwatch/issues/4165)) ([bb87f90](https://github.com/manniwatch/manniwatch/commit/bb87f90199475e95e4610304cff660404697a698))
+- **deps:** update dependency @donmahallem/rxjs-zone to v0.6.37 ([#4166](https://github.com/manniwatch/manniwatch/issues/4166)) ([0fc94b0](https://github.com/manniwatch/manniwatch/commit/0fc94b06c4cf9948c4798d6af60e5595ba7973ff))
+- **deps:** update dependency express to v5 ([#4154](https://github.com/manniwatch/manniwatch/issues/4154)) ([5cb0488](https://github.com/manniwatch/manniwatch/commit/5cb0488e75830205ff2d519581c96af300d29be8))
+- **deps:** update dependency ol-mapbox-style to v12.6.1 ([#4134](https://github.com/manniwatch/manniwatch/issues/4134)) ([8b4308a](https://github.com/manniwatch/manniwatch/commit/8b4308adc00178a10e8d86d536f6010270025710))
+- **deps:** update dependency ol-mapbox-style to v13 ([#4155](https://github.com/manniwatch/manniwatch/issues/4155)) ([42cfa7f](https://github.com/manniwatch/manniwatch/commit/42cfa7f6b840e8b54ba4eb9e5bab19d70ef96715))
+- **deps:** update dependency zone.js to v0.16.0 ([#3662](https://github.com/manniwatch/manniwatch/issues/3662)) ([559d968](https://github.com/manniwatch/manniwatch/commit/559d968abfaaa5cf597cde33aeff44cb072752df))
+
+### Features
+
+- **deps:** update many deps ([#4089](https://github.com/manniwatch/manniwatch/issues/4089)) ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+
 ## [0.30.1](https://github.com/manniwatch/manniwatch/compare/v0.30.0...v0.30.1) (2025-03-08)
 
 ### Bug Fixes

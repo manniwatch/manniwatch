@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.31.0](https://github.com/manniwatch/manniwatch/compare/v0.30.1...v0.31.0) (2026-02-08)
+
+### Bug Fixes
+
+- **deps-dev:** bump eslint dependencies ([#4142](https://github.com/manniwatch/manniwatch/issues/4142)) ([2113839](https://github.com/manniwatch/manniwatch/commit/2113839c4f142a8a696fcb98b802dfb99b21b252))
+- **deps:** update dependency commander to v14 ([#4149](https://github.com/manniwatch/manniwatch/issues/4149)) ([5bbc0bf](https://github.com/manniwatch/manniwatch/commit/5bbc0bf3ca9da8b75b834d4f95c7afa8e682cd0c))
+- **deps:** update dependency electron to ~35.0.1 ([#4073](https://github.com/manniwatch/manniwatch/issues/4073)) ([8e4007a](https://github.com/manniwatch/manniwatch/commit/8e4007aa43adcc6de01961976cdfa904b0cf02d8))
+- **deps:** update dependency electron to ~35.7.5 ([#4132](https://github.com/manniwatch/manniwatch/issues/4132)) ([b1376cc](https://github.com/manniwatch/manniwatch/commit/b1376cc8c7ead892e64acacfb4fc4d94a422341b))
+- **deps:** update dependency electron to ~40.1.0 ([#4167](https://github.com/manniwatch/manniwatch/issues/4167)) ([88642bc](https://github.com/manniwatch/manniwatch/commit/88642bce1e6164308b6f00f3c74698ff6ab3dc1d))
+- **deps:** update dependency electron to v40 ([#4150](https://github.com/manniwatch/manniwatch/issues/4150)) ([8aec087](https://github.com/manniwatch/manniwatch/commit/8aec087fd10416b282c2b414e6ab0587dc75735a))
+
+### Features
+
+- **deps:** update many deps ([#4089](https://github.com/manniwatch/manniwatch/issues/4089)) ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+
 ## [0.30.1](https://github.com/manniwatch/manniwatch/compare/v0.30.0...v0.30.1) (2025-03-08)
 
 ### Bug Fixes
