@@ -1,0 +1,44 @@
+{
+    "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+    "packages": {
+        "packages/api-client": {
+            "release-type": "node"
+        },
+        "packages/api-proxy-router": {
+            "release-type": "node"
+        },
+        "packages/api-proxy-server": {
+            "release-type": "node"
+        },
+        "packages/api-types": {
+            "release-type": "node"
+        },
+        "packages/assets": {
+            "release-type": "node"
+        },
+        "packages/client-desktop": {
+            "release-type": "node"
+        },
+        "packages/client-ng": {
+            "release-type": "node"
+        },
+        "packages/client-types": {
+            "release-type": "node"
+        },
+        "packages/pb-converter": {
+            "release-type": "node"
+        },
+        "packages/pb-types": {
+            "release-type": "node"
+        },
+        "packages/schemas": {
+            "release-type": "node"
+        },
+        "packages/vehicle-cache": {
+            "release-type": "node"
+        },
+        "packages/vehicle-location-diff": {
+            "release-type": "node"
+        }
+    }
+}
