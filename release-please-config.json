@@ -40,5 +40,26 @@
         "packages/vehicle-location-diff": {
             "release-type": "node"
         }
-    }
+    },
+    "plugins": [
+        {
+            "type": "linked-versions",
+            "groupName": "manniwatch",
+            "components": [
+                "packages/api-client",
+                "packages/api-proxy-router",
+                "packages/api-proxy-server",
+                "packages/api-types",
+                "packages/assets",
+                "packages/client-desktop",
+                "packages/client-ng",
+                "packages/client-types",
+                "packages/pb-converter",
+                "packages/pb-types",
+                "packages/schemas",
+                "packages/vehicle-cache",
+                "packages/vehicle-location-diff"
+            ]
+        }
+    ]
 }
