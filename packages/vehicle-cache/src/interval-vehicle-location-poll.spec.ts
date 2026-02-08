@@ -7,8 +7,7 @@ import { type IVehicleLocationList, type PositionType } from '@manniwatch/api-ty
 import { expect } from 'chai';
 import 'mocha';
 import { of, Observable } from 'rxjs';
-// import type { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
-type RunHelpers = any;
+import type { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { delay } from 'rxjs/operators';
 import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
