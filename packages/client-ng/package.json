@@ -94,7 +94,7 @@
         "@manniwatch/client-types": "^0.30.0",
         "@types/jasmine": "6.0.0",
         "@types/jasminewd2": "2.0.13",
-        "@types/node": "24.10.9",
+        "@types/node": "24.10.12",
         "@typescript-eslint/parser": "8.54.0",
         "angular-eslint": "21.2.0",
         "apply-loader": "2.0.0",
