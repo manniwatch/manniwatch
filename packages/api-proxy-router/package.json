@@ -57,7 +57,7 @@
         "access": "public"
     },
     "dependencies": {
-        "@donmahallem/turbo-validate-request": "~3.2.27",
+        "@donmahallem/turbo-validate-request": "~3.2.1",
         "@manniwatch/api-client": "^0.30.0",
         "@manniwatch/api-types": "^0.30.0",
         "@manniwatch/schemas": "^0.30.0",
@@ -69,7 +69,7 @@
         "@types/express": "5.0.6",
         "@types/supertest": "6.0.3",
         "apidoc": "1.2.0",
-        "axios": "1.13.5",
+        "axios": "1.13.4",
         "express": "5.2.1",
         "supertest": "7.2.2"
     },
