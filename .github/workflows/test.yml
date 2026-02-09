@@ -143,8 +143,14 @@ jobs:
               run: npx lerna run docs
     finish:
         needs: [test_suite, lint_suite, docs_suite]
+        if: always()
         name: Finish Test
         runs-on: ubuntu-latest
         steps:
+            - name: Check for Failures
+              if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+              run: |
+                  echo "One of the dependent jobs failed or was cancelled."
+                  exit 1
             - name: Coveralls Finished
               run: echo "Test Finished"
