@@ -3,13 +3,20 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { IStopLocations, IStopPointInfo, IStopPointLocations, IVehicleLocationList, PositionType, StopMode } from '@manniwatch/api-types';
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import type {
+    IStopLocations,
+    IStopPointInfo,
+    IStopPointLocations,
+    IVehicleLocationList,
+    PositionType,
+    StopMode,
+} from '@manniwatch/api-types';
+import axios, { type AxiosInstance, type AxiosRequestConfig, type AxiosResponse } from 'axios';
 import { expect } from 'chai';
 import 'mocha';
 import nock from 'nock';
 import sinon from 'sinon';
-import { IBoundingBox, ManniWatchApiClient } from './manni-watch-api-client.js';
+import { type IBoundingBox, ManniWatchApiClient } from './manni-watch-api-client.js';
 import { Util } from './util.js';
 
 interface ITestSuccessResponse {

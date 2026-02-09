@@ -3,7 +3,7 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { PositionType } from '@manniwatch/api-types';
+import { type PositionType } from '@manniwatch/api-types';
 import { RequireIdJSONSchemaType } from './util.js';
 
 export const POSITION_TYPE_SCHEMA: RequireIdJSONSchemaType<PositionType> = {

@@ -3,7 +3,7 @@
  * Source https://manniwatch.github.io/docs/api-proxy-router/index.html
  */
 
-import { IBoundingBox, ManniWatchApiClient } from '@manniwatch/api-client';
+import { type IBoundingBox, ManniWatchApiClient } from '@manniwatch/api-client';
 import { GEO_FENCE_SCHEMA, GET_VEHICLE_LOCATION_SCHEMA } from '@manniwatch/schemas';
 import { expect } from 'chai';
 import { strict as esmock } from 'esmock';

@@ -3,7 +3,7 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { PositionType } from '@manniwatch/api-types';
+import { type PositionType } from '@manniwatch/api-types';
 import { JSONSchemaType } from 'ajv';
 import { POSITION_TYPE_SCHEMA } from './position-type.js';
 import { UINT_SCHEMA } from './uint.js';

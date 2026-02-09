@@ -3,7 +3,7 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { IVehicleLocationList } from '@manniwatch/api-types';
+import { type IVehicleLocationList } from '@manniwatch/api-types';
 import { concat, of, Observable, Subject, Subscriber, Subscription } from 'rxjs';
 import { delay, switchMap, tap } from 'rxjs/operators';
 import { convertPollResult, PollResult } from '../operators/index.js';

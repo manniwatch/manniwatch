@@ -4,7 +4,7 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import { IVehicleLocationList } from '@manniwatch/api-types';
+import { type IVehicleLocationList } from '@manniwatch/api-types';
 import { expect } from 'chai';
 import 'mocha';
 import { Observable } from 'rxjs';

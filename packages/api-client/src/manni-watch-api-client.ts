@@ -3,8 +3,8 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { PositionType, StopMode } from '@manniwatch/api-types';
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import type { PositionType, StopMode } from '@manniwatch/api-types';
+import axios, { type AxiosInstance, type AxiosRequestConfig, type AxiosResponse } from 'axios';
 import qs from 'qs';
 import { Util } from './util.js';
 import type {

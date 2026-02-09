@@ -4,7 +4,7 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import { IVehicleLocationList } from '@manniwatch/api-types';
+import type { IVehicleLocationList } from '@manniwatch/api-types';
 import { from, Observable, OperatorFunction } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 import { IQuerySettings } from '../types';

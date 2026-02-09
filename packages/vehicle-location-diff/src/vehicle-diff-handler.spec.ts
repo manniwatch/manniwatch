@@ -5,7 +5,7 @@
 
 import { expect } from 'chai';
 import sinon from 'sinon';
-import { vehicleMapReduce, VehicleDiffHandler, VehicleHashMap } from './vehicle-diff-handler.js';
+import { vehicleMapReduce, VehicleDiffHandler, type VehicleHashMap } from './vehicle-diff-handler.js';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 interface ISimpleVehicle {

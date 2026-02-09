@@ -3,7 +3,7 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { StopMode } from '@manniwatch/api-types';
+import { type StopMode } from '@manniwatch/api-types';
 import { RequireIdJSONSchemaType } from './util.js';
 
 export const STOP_MODE_SCHEMA: RequireIdJSONSchemaType<StopMode> = {

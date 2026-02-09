@@ -4,7 +4,7 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import { IVehicleLocationList, PositionType } from '@manniwatch/api-types';
+import { type IVehicleLocationList, type PositionType } from '@manniwatch/api-types';
 import { from, Observable } from 'rxjs';
 
 /**

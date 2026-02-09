@@ -3,7 +3,7 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { IVehicleLocationList } from '@manniwatch/api-types';
+import { type IVehicleLocationList } from '@manniwatch/api-types';
 import { expect } from 'chai';
 import 'mocha';
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
 import { intervallPollVehicles } from './intervall-poll-vehicles.js';
-import { PollResult } from '../operators';
+import { type PollResult } from '../operators';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const testParameter: any[] = [];

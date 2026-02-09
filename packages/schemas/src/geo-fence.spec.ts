@@ -3,10 +3,10 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import Ajv, { ValidateFunction } from 'ajv';
+import Ajv, { type ValidateFunction } from 'ajv';
 import { expect } from 'chai';
 import 'mocha';
-import { GEO_FENCE_SCHEMA, IGeoFenceSchema } from './geo-fence.js';
+import { GEO_FENCE_SCHEMA, type IGeoFenceSchema } from './geo-fence.js';
 
 const validCoordinates: TestIBoundingBox[] = [
     { bottom: '-1000', left: '-1000', right: '1000', top: '1000' },

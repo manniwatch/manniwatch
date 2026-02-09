@@ -4,7 +4,7 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import { IStopInfo, IStopPassage, StopMode } from '@manniwatch/api-types';
+import type { IStopInfo, IStopPassage, StopMode } from '@manniwatch/api-types';
 import { STOP_PASSAGES_SCHEMA } from '@manniwatch/schemas';
 import { strict as esmock } from 'esmock';
 import express from 'express';
@@ -18,9 +18,9 @@ import {
     NOT_FOUND_RESPONSE_LENGTH,
     SUCCESS_RESPONSE,
     SUCCESS_RESPONSE_LENGTH,
-    ErrorSpy,
-    ValidateRequestStub,
-    MethodStub,
+    type ErrorSpy,
+    type ValidateRequestStub,
+    type MethodStub,
 } from './common-test.spec.js';
 import type { createStopRouter } from './stop.js';
 const testIds: string[] = ['-12883', 'kasd'];

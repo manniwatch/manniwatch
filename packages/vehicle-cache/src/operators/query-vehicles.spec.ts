@@ -4,11 +4,11 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import { IVehicleLocationList } from '@manniwatch/api-types';
+import type { IVehicleLocationList } from '@manniwatch/api-types';
 import { expect } from 'chai';
 import 'mocha';
 import { of, Observable } from 'rxjs';
-import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
+import type { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
 import { queryVehiclesOperator } from './query-vehicles.js';

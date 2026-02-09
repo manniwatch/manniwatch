@@ -8,7 +8,7 @@ import { expect } from 'chai';
 import express from 'express';
 import 'mocha';
 import NodeCache from 'node-cache';
-import sinon, { SinonFakeTimers } from 'sinon';
+import sinon, { type SinonFakeTimers } from 'sinon';
 import supertest from 'supertest';
 import { SUCCESS_RESPONSE, SUCCESS_RESPONSE_LENGTH } from './common-test.spec.js';
 import { createSettingsRouter } from './settings.js';

@@ -2,7 +2,7 @@
  * Source https://github.com/manniwatch/manniwatch Package: pb-converter
  */
 
-import { IVehicleLocationList, VehicleLocations } from '@manniwatch/api-types';
+import type { IVehicleLocationList, VehicleLocations } from '@manniwatch/api-types';
 import manniwatch from '@manniwatch/pb-types';
 import { convertVehicleLocation } from './convert-vehicle-location.js';
 

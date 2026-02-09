@@ -3,8 +3,8 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { PositionType } from '@manniwatch/api-types';
-import Ajv, { ValidateFunction } from 'ajv';
+import { type PositionType } from '@manniwatch/api-types';
+import Ajv, { type ValidateFunction } from 'ajv';
 import { expect } from 'chai';
 import 'mocha';
 import { POSITION_TYPE_SCHEMA } from './position-type.js';

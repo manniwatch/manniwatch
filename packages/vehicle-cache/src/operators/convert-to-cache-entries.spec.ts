@@ -3,15 +3,15 @@
  * Source https://manniwatch.github.io/manniwatch/
  */
 
-import { IVehicleLocationList } from '@manniwatch/api-types';
+import { type IVehicleLocationList } from '@manniwatch/api-types';
 import { expect } from 'chai';
 import 'mocha';
 import { Observable } from 'rxjs';
-import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
+import type { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
 import * as sinon from 'sinon';
 import { convertToCacheEntries } from './convert-to-cache-entries.js';
-import { CacheEntry } from '../types';
+import { type CacheEntry } from '../types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 describe('operators/convert-to-cache-entries', function (): void {

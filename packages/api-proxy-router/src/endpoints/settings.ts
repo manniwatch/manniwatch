@@ -4,7 +4,7 @@
  */
 
 import { ManniWatchApiClient } from '@manniwatch/api-client';
-import { ISettings } from '@manniwatch/api-types';
+import { type ISettings } from '@manniwatch/api-types';
 import { Mutex } from 'async-mutex';
 import { createHash } from 'crypto';
 import express from 'express';

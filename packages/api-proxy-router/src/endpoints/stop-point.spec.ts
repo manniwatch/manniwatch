@@ -18,9 +18,9 @@ import {
     NOT_FOUND_RESPONSE_LENGTH,
     SUCCESS_RESPONSE,
     SUCCESS_RESPONSE_LENGTH,
-    ErrorSpy,
+    type ErrorSpy,
 } from './common-test.spec.js';
-import { ValidateRequestStub } from './common-test.spec.js';
+import type { ValidateRequestStub } from './common-test.spec.js';
 const testIds: string[] = ['-12883', 'kasd'];
 
 /* eslint-disable @typescript-eslint/no-explicit-any, mocha/no-setup-in-describe */
