@@ -50,7 +50,7 @@
         "url": "https://github.com/manniwatch/manniwatch.git"
     },
     "devDependencies": {
-        "@types/ol": "6.5.3",
+        "@types/ol": "7.0.0",
         "@electron/asar": "4.0.1",
         "chai": "6.2.2",
         "copy-webpack-plugin": "13.0.1",
