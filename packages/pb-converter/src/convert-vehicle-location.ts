@@ -9,7 +9,7 @@ import * as convertVehicleCategory from './convert-vehicle-category.js';
 
 export const convertVehicleLocation: (loc: VehicleLocations, timestamp: number) => manniwatch.manniwatch.IVehicleLocation = (
     loc: VehicleLocations,
-    timestamp: number
+    timestamp: number,
 ): manniwatch.manniwatch.IVehicleLocation => {
     if (loc.isDeleted === true) {
         return {
