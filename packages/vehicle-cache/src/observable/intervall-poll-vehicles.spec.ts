@@ -7,7 +7,7 @@ import { type IVehicleLocationList } from '@manniwatch/api-types';
 import { expect } from 'chai';
 import 'mocha';
 import { Observable } from 'rxjs';
-import { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
+import type { RunHelpers } from 'rxjs/internal/testing/TestScheduler';
 import { TestScheduler } from 'rxjs/testing';
 import sinon from 'sinon';
 import { intervallPollVehicles } from './intervall-poll-vehicles.js';
