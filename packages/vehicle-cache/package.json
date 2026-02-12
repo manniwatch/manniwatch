@@ -1,6 +1,6 @@
 {
     "name": "@manniwatch/vehicle-cache",
-    "version": "0.30.0",
+    "version": "0.31.0",
     "description": "Caching for vehicle locations",
     "type": "module",
     "types": "./dist/index.d.ts",
