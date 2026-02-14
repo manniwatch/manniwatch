@@ -67,7 +67,7 @@
         "@manniwatch/api-types": "^0.30.0",
         "@manniwatch/client-ng": "^0.30.1",
         "@manniwatch/client-types": "^0.30.0",
-        "ajv": "~8.17.1",
+        "ajv": "~8.18.0",
         "ajv-formats": "~3.0.1",
         "commander": "~14.0.3",
         "deepmerge": "~4.3.1",
