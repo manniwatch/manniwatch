@@ -19,6 +19,35 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **deps:** bump angular to ng 19 ([#4034](https://github.com/manniwatch/manniwatch/issues/4034)) ([6f272e4](https://github.com/manniwatch/manniwatch/commit/6f272e451ca61709684508424c3f03c4b1c8f441))
 
+## [0.31.0](https://github.com/manniwatch/manniwatch/compare/api-client-v0.30.0...api-client-v0.31.0) (2026-02-21)
+
+
+### Features
+
+* **deps:** bump angular to ng 19 ([#4034](https://github.com/manniwatch/manniwatch/issues/4034)) ([6f272e4](https://github.com/manniwatch/manniwatch/commit/6f272e451ca61709684508424c3f03c4b1c8f441))
+
+
+### Bug Fixes
+
+* **deps-dev:** bump eslint dependencies ([#4142](https://github.com/manniwatch/manniwatch/issues/4142)) ([2113839](https://github.com/manniwatch/manniwatch/commit/2113839c4f142a8a696fcb98b802dfb99b21b252))
+* **deps:** update dependency axios to v1.13.2 ([#4077](https://github.com/manniwatch/manniwatch/issues/4077)) ([14a8cdd](https://github.com/manniwatch/manniwatch/commit/14a8cdddfa9fa975ee0e64a76e7c6f0d8b7e58ac))
+* **deps:** update dependency axios to v1.13.3 ([#4159](https://github.com/manniwatch/manniwatch/issues/4159)) ([6ec2916](https://github.com/manniwatch/manniwatch/commit/6ec2916651ee6455a684353cc0d575ddc37ee79e))
+* **deps:** update dependency axios to v1.13.4 ([#4162](https://github.com/manniwatch/manniwatch/issues/4162)) ([90a3e3b](https://github.com/manniwatch/manniwatch/commit/90a3e3b8c48ec215cbb19f23fbc4306fcb019840))
+* **deps:** update dependency axios to v1.13.5 ([#4192](https://github.com/manniwatch/manniwatch/issues/4192)) ([7d025a1](https://github.com/manniwatch/manniwatch/commit/7d025a1c868c628502bb12f988b54ba8cfea1eeb))
+* **deps:** update dependency axios to v1.13.5 ([#4208](https://github.com/manniwatch/manniwatch/issues/4208)) ([f2b8605](https://github.com/manniwatch/manniwatch/commit/f2b8605a173d914a00091b7431c643aba28f83c1))
+* **deps:** update dependency qs to ~6.12.0 ([ce59086](https://github.com/manniwatch/manniwatch/commit/ce59086011e4cd4e83a7fed8afba7e6c8206a772))
+* **deps:** update dependency qs to ~6.12.1 ([da221d7](https://github.com/manniwatch/manniwatch/commit/da221d77a4cb848cd687509848d2b634859d2ccb))
+* **deps:** update dependency qs to ~6.12.3 ([cb3beed](https://github.com/manniwatch/manniwatch/commit/cb3beed1b2ad1014e6499142061d71b027a39d01))
+* **deps:** update dependency qs to ~6.14.0 ([#3998](https://github.com/manniwatch/manniwatch/issues/3998)) ([f427378](https://github.com/manniwatch/manniwatch/commit/f427378c270d480d33a6219cdcc4dcff52b21a82))
+* **deps:** update dependency qs to ~6.14.1 ([#4114](https://github.com/manniwatch/manniwatch/issues/4114)) ([5264388](https://github.com/manniwatch/manniwatch/commit/5264388a364f8eee17cd4b59d36f9138330cf239))
+* **deps:** update dependency qs to ~6.14.2 ([#4232](https://github.com/manniwatch/manniwatch/issues/4232)) ([6827363](https://github.com/manniwatch/manniwatch/commit/682736344620f6fd92cedcc8c65ebc687072fe6e))
+* force use typed imports ([#4187](https://github.com/manniwatch/manniwatch/issues/4187)) ([de53c59](https://github.com/manniwatch/manniwatch/commit/de53c59bc7f7fe45199f3cba3d88e57181aeb021))
+
+
+### Reverts
+
+* rollback state to b30397bd ([#4199](https://github.com/manniwatch/manniwatch/issues/4199)) ([a0d4041](https://github.com/manniwatch/manniwatch/commit/a0d404190cee4a7e321af828c76b06e8eea5750c))
+
 ## [0.29.16](https://github.com/manniwatch/manniwatch/compare/v0.29.15...v0.29.16) (2022-06-20)
 
 ### Bug Fixes

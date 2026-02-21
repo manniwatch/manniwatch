@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.31.0](https://github.com/manniwatch/manniwatch/compare/client-ng-v0.30.1...client-ng-v0.31.0) (2026-02-21)
+
+
+### Features
+
+* **deps:** bump angular to ng 19 ([#4034](https://github.com/manniwatch/manniwatch/issues/4034)) ([6f272e4](https://github.com/manniwatch/manniwatch/commit/6f272e451ca61709684508424c3f03c4b1c8f441))
+* **deps:** update many deps ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+* **deps:** update many deps ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+* **deps:** update many deps ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+* **deps:** update many deps ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+* **deps:** update many deps ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+* **deps:** update many deps ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+* **deps:** update many deps ([#4089](https://github.com/manniwatch/manniwatch/issues/4089)) ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+
+
+### Bug Fixes
+
+* **deps-dev:** bump eslint dependencies ([#4133](https://github.com/manniwatch/manniwatch/issues/4133)) ([d9bf75e](https://github.com/manniwatch/manniwatch/commit/d9bf75e5f34fc3de844a27703088f3e033253a0a))
+* **deps-dev:** bump eslint dependencies ([#4142](https://github.com/manniwatch/manniwatch/issues/4142)) ([2113839](https://github.com/manniwatch/manniwatch/commit/2113839c4f142a8a696fcb98b802dfb99b21b252))
+* **deps:** update angular monorepo to v21.1.2 ([#4164](https://github.com/manniwatch/manniwatch/issues/4164)) ([b916d60](https://github.com/manniwatch/manniwatch/commit/b916d603c2f2d693f6f4e5ecfbc0bcd2e3a9c622))
+* **deps:** update angular monorepo to v21.1.3 ([#4185](https://github.com/manniwatch/manniwatch/issues/4185)) ([3f53774](https://github.com/manniwatch/manniwatch/commit/3f5377446bbbe5b9e1055eb5c9038bd206cd0c12))
+* **deps:** update angular monorepo to v21.1.3 ([#4204](https://github.com/manniwatch/manniwatch/issues/4204)) ([b8e27e9](https://github.com/manniwatch/manniwatch/commit/b8e27e9335addc996fe3e1ba51cf3d6a91cdc93a))
+* **deps:** update angular monorepo to v21.1.4 ([#4227](https://github.com/manniwatch/manniwatch/issues/4227)) ([0b668a6](https://github.com/manniwatch/manniwatch/commit/0b668a6ef2de3509b218efe19052816768d159bd))
+* **deps:** update angular-cli monorepo to v21.1.2 ([#4078](https://github.com/manniwatch/manniwatch/issues/4078)) ([840bef6](https://github.com/manniwatch/manniwatch/commit/840bef63b02077b0a78a1899dbf90537ea7fe622))
+* **deps:** update angular-cli monorepo to v21.1.3 ([#4186](https://github.com/manniwatch/manniwatch/issues/4186)) ([569d2bf](https://github.com/manniwatch/manniwatch/commit/569d2bf7096adbb00e3eee6b2d0695caae24a5ab))
+* **deps:** update angular-cli monorepo to v21.1.3 ([#4205](https://github.com/manniwatch/manniwatch/issues/4205)) ([f0e2704](https://github.com/manniwatch/manniwatch/commit/f0e27049b4924d5ea356d72ca9c239ac81af2f4a))
+* **deps:** update angular-cli monorepo to v21.1.4 ([#4228](https://github.com/manniwatch/manniwatch/issues/4228)) ([0df4b5a](https://github.com/manniwatch/manniwatch/commit/0df4b5af2f4b56ec162ec49368e83d40b96d84f2))
+* **deps:** update angularmaterial monorepo to v17.2.0 ([9833f0f](https://github.com/manniwatch/manniwatch/commit/9833f0fbe821a2cc85091bfaa3aebc5bb064750d))
+* **deps:** update angularmaterial monorepo to v17.2.1 ([185351e](https://github.com/manniwatch/manniwatch/commit/185351e6fd2f51ec5129fbd9fd9c4654ca738f55))
+* **deps:** update angularmaterial monorepo to v17.2.2 ([4276c3d](https://github.com/manniwatch/manniwatch/commit/4276c3d5dbf95f265566cf4287359d040a934e00))
+* **deps:** update angularmaterial monorepo to v17.3.0 ([65ccea6](https://github.com/manniwatch/manniwatch/commit/65ccea6816708f5cbbb27642345a980c84d5a80a))
+* **deps:** update angularmaterial monorepo to v17.3.1 ([7833bfc](https://github.com/manniwatch/manniwatch/commit/7833bfcb187655b604f09456caa4886d656daae7))
+* **deps:** update angularmaterial monorepo to v17.3.10 ([7bed9dd](https://github.com/manniwatch/manniwatch/commit/7bed9ddd7fadcc2879767a38243aae1a7c188008))
+* **deps:** update angularmaterial monorepo to v17.3.2 ([04aaaa2](https://github.com/manniwatch/manniwatch/commit/04aaaa204006c64a092e632aebe30739b503783d))
+* **deps:** update angularmaterial monorepo to v17.3.3 ([bd8a6d2](https://github.com/manniwatch/manniwatch/commit/bd8a6d290adbae71dc38531aec58eb7c677dafbe))
+* **deps:** update angularmaterial monorepo to v17.3.4 ([d5fba12](https://github.com/manniwatch/manniwatch/commit/d5fba12959a4e9915138939f07f87b73b7f22330))
+* **deps:** update angularmaterial monorepo to v17.3.5 ([d9a2f76](https://github.com/manniwatch/manniwatch/commit/d9a2f76c994a0e47c2749eebaa3e2fe08ff60b72))
+* **deps:** update angularmaterial monorepo to v17.3.6 ([e8a2f9f](https://github.com/manniwatch/manniwatch/commit/e8a2f9f8275d9b5cf77c426e52783b05d77d37c4))
+* **deps:** update angularmaterial monorepo to v17.3.7 ([d47c3fc](https://github.com/manniwatch/manniwatch/commit/d47c3fcdb213b40090b11be25ebaf52c4738e31e))
+* **deps:** update angularmaterial monorepo to v17.3.8 ([bb3c71d](https://github.com/manniwatch/manniwatch/commit/bb3c71d6533b7d32018ee25445abebedfd0bd6cd))
+* **deps:** update angularmaterial monorepo to v21.1.2 ([#4165](https://github.com/manniwatch/manniwatch/issues/4165)) ([bb87f90](https://github.com/manniwatch/manniwatch/commit/bb87f90199475e95e4610304cff660404697a698))
+* **deps:** update angularmaterial monorepo to v21.1.3 ([#4177](https://github.com/manniwatch/manniwatch/issues/4177)) ([b1da973](https://github.com/manniwatch/manniwatch/commit/b1da973e8e3dfb00d608415044edcfc893df304d))
+* **deps:** update angularmaterial monorepo to v21.1.4 ([#4229](https://github.com/manniwatch/manniwatch/issues/4229)) ([3eff8c9](https://github.com/manniwatch/manniwatch/commit/3eff8c953a71f3d1e5e87b8f764ba147a784d105))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.6.2 ([#3993](https://github.com/manniwatch/manniwatch/issues/3993)) ([96da276](https://github.com/manniwatch/manniwatch/commit/96da2767c3dc84df7c1110e2dfcbe01bbeb21532))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.6.37 ([#4166](https://github.com/manniwatch/manniwatch/issues/4166)) ([0fc94b0](https://github.com/manniwatch/manniwatch/commit/0fc94b06c4cf9948c4798d6af60e5595ba7973ff))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.6.38 ([#4190](https://github.com/manniwatch/manniwatch/issues/4190)) ([0ad2a77](https://github.com/manniwatch/manniwatch/commit/0ad2a77e71e6f57491f03aac46554c46d3af4873))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.6.38 ([#4206](https://github.com/manniwatch/manniwatch/issues/4206)) ([f61e9e9](https://github.com/manniwatch/manniwatch/commit/f61e9e9686e9fb63758d900787de518712a49043))
+* **deps:** update dependency @donmahallem/rxjs-zone to v0.6.39 ([#4231](https://github.com/manniwatch/manniwatch/issues/4231)) ([4e77d06](https://github.com/manniwatch/manniwatch/commit/4e77d06551da372812bbd73595d48e3b2d05e468))
+* **deps:** update dependency date-fns to v3.4.0 ([5226c44](https://github.com/manniwatch/manniwatch/commit/5226c449e0b79a754006b144326234158fe8f1cb))
+* **deps:** update dependency date-fns to v3.5.0 ([c6540fc](https://github.com/manniwatch/manniwatch/commit/c6540fcb247ff03256d0c23438c8112c92897572))
+* **deps:** update dependency date-fns to v3.6.0 ([98ee338](https://github.com/manniwatch/manniwatch/commit/98ee338f16c1552afe3a82db8a67b8468449c220))
+* **deps:** update dependency date-fns to v4 ([#3996](https://github.com/manniwatch/manniwatch/issues/3996)) ([2978f01](https://github.com/manniwatch/manniwatch/commit/2978f019759f974cb066332881811adadace7272))
+* **deps:** update dependency express to v4.21.2 ([#3990](https://github.com/manniwatch/manniwatch/issues/3990)) ([9868d2f](https://github.com/manniwatch/manniwatch/commit/9868d2f4353c28609e8ae76ff2747efd30033322))
+* **deps:** update dependency express to v5 ([#4154](https://github.com/manniwatch/manniwatch/issues/4154)) ([5cb0488](https://github.com/manniwatch/manniwatch/commit/5cb0488e75830205ff2d519581c96af300d29be8))
+* **deps:** update dependency ol to v10 ([#3967](https://github.com/manniwatch/manniwatch/issues/3967)) ([7c2eaf6](https://github.com/manniwatch/manniwatch/commit/7c2eaf6d0cfedd5e5dda5e3915fdf89a38ca3381))
+* **deps:** update dependency ol to v9 ([#4066](https://github.com/manniwatch/manniwatch/issues/4066)) ([952366a](https://github.com/manniwatch/manniwatch/commit/952366a5d1a588637127c880c84f6e21628723ba))
+* **deps:** update dependency ol-mapbox-style to v12.2.1 ([60ccad2](https://github.com/manniwatch/manniwatch/commit/60ccad20130761eff1598b969a17d8e7a485acb5))
+* **deps:** update dependency ol-mapbox-style to v12.2.2 ([3e16363](https://github.com/manniwatch/manniwatch/commit/3e163635dd2ec97ff8dc47eab254e2e01718546d))
+* **deps:** update dependency ol-mapbox-style to v12.3.0 ([40ea5e7](https://github.com/manniwatch/manniwatch/commit/40ea5e76b8368444d916b6194f83a21c62f5950d))
+* **deps:** update dependency ol-mapbox-style to v12.3.1 ([c705e49](https://github.com/manniwatch/manniwatch/commit/c705e4976654fc2bb099ac8d6702663ca8dcdf26))
+* **deps:** update dependency ol-mapbox-style to v12.3.2 ([f6d8072](https://github.com/manniwatch/manniwatch/commit/f6d80726ffb9d66dfef4feeb1e051d0c2f846fdd))
+* **deps:** update dependency ol-mapbox-style to v12.3.3 ([0a06b7a](https://github.com/manniwatch/manniwatch/commit/0a06b7aae087cc25766f87025122f8bbaa1cc7ef))
+* **deps:** update dependency ol-mapbox-style to v12.3.4 ([6027637](https://github.com/manniwatch/manniwatch/commit/60276374f482944579e9d215870ec8a1615abfa5))
+* **deps:** update dependency ol-mapbox-style to v12.3.5 ([#3944](https://github.com/manniwatch/manniwatch/issues/3944)) ([27d6f4d](https://github.com/manniwatch/manniwatch/commit/27d6f4dda50e3b1586d9faf5d9e1467824360b32))
+* **deps:** update dependency ol-mapbox-style to v12.4.1 ([#4015](https://github.com/manniwatch/manniwatch/issues/4015)) ([1fd473f](https://github.com/manniwatch/manniwatch/commit/1fd473fd61abb23e9d7a43cde803d7167e3a9251))
+* **deps:** update dependency ol-mapbox-style to v12.5.0 ([#4058](https://github.com/manniwatch/manniwatch/issues/4058)) ([1bf7650](https://github.com/manniwatch/manniwatch/commit/1bf7650234617cce4c75e3e22ec6c8bb399be2a6))
+* **deps:** update dependency ol-mapbox-style to v12.6.1 ([#4134](https://github.com/manniwatch/manniwatch/issues/4134)) ([8b4308a](https://github.com/manniwatch/manniwatch/commit/8b4308adc00178a10e8d86d536f6010270025710))
+* **deps:** update dependency ol-mapbox-style to v13 ([#4155](https://github.com/manniwatch/manniwatch/issues/4155)) ([42cfa7f](https://github.com/manniwatch/manniwatch/commit/42cfa7f6b840e8b54ba4eb9e5bab19d70ef96715))
+* **deps:** update dependency zone.js to v0.16.0 ([#3662](https://github.com/manniwatch/manniwatch/issues/3662)) ([559d968](https://github.com/manniwatch/manniwatch/commit/559d968abfaaa5cf597cde33aeff44cb072752df))
+
+
+### Reverts
+
+* rollback state to b30397bd ([#4199](https://github.com/manniwatch/manniwatch/issues/4199)) ([a0d4041](https://github.com/manniwatch/manniwatch/commit/a0d404190cee4a7e321af828c76b06e8eea5750c))
+
 ## [0.30.1](https://github.com/manniwatch/manniwatch/compare/v0.30.0...v0.30.1) (2025-03-08)
 
 ### Bug Fixes

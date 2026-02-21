@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.31.0](https://github.com/manniwatch/manniwatch/compare/api-proxy-server-v0.30.1...api-proxy-server-v0.31.0) (2026-02-21)
+
+
+### Features
+
+* **api-proxy-server:** add live check endpoint ([#4069](https://github.com/manniwatch/manniwatch/issues/4069)) ([b1be510](https://github.com/manniwatch/manniwatch/commit/b1be5105d22e8c63519fe69a92e1e2a609533a00))
+* **deps:** update turbo dependencies ([#4001](https://github.com/manniwatch/manniwatch/issues/4001)) ([bbe9187](https://github.com/manniwatch/manniwatch/commit/bbe91873fcf0394154c47f72556b763dc352fabc))
+
+
+### Bug Fixes
+
+* **api-proxy-server:** fix relative module references ([#4068](https://github.com/manniwatch/manniwatch/issues/4068)) ([938803f](https://github.com/manniwatch/manniwatch/commit/938803f7f0037857f8798ef2c220c1602445a216))
+* **deps-dev:** bump eslint dependencies ([#4142](https://github.com/manniwatch/manniwatch/issues/4142)) ([2113839](https://github.com/manniwatch/manniwatch/commit/2113839c4f142a8a696fcb98b802dfb99b21b252))
+* **deps:** update dependency express to v4.21.2 ([#3990](https://github.com/manniwatch/manniwatch/issues/3990)) ([9868d2f](https://github.com/manniwatch/manniwatch/commit/9868d2f4353c28609e8ae76ff2747efd30033322))
+* **deps:** update dependency express to v5 ([#4030](https://github.com/manniwatch/manniwatch/issues/4030)) ([2b22fca](https://github.com/manniwatch/manniwatch/commit/2b22fca33e66f588d7f21b6593e87df7207c474d))
+* **deps:** update dependency express to v5 ([#4154](https://github.com/manniwatch/manniwatch/issues/4154)) ([5cb0488](https://github.com/manniwatch/manniwatch/commit/5cb0488e75830205ff2d519581c96af300d29be8))
+* **deps:** update dependency helmet to ~7.2.0 ([#4010](https://github.com/manniwatch/manniwatch/issues/4010)) ([bc1bb73](https://github.com/manniwatch/manniwatch/commit/bc1bb73230b67cfe7aa26bad7ccb81ccfa79b0ea))
+* **deps:** update dependency helmet to ~8.1.0 ([#4126](https://github.com/manniwatch/manniwatch/issues/4126)) ([c096a36](https://github.com/manniwatch/manniwatch/commit/c096a36bf4bb58fa0c5d502e7e16abf36c4f3f07))
+* **deps:** update dependency helmet to v8 ([#4031](https://github.com/manniwatch/manniwatch/issues/4031)) ([09e8770](https://github.com/manniwatch/manniwatch/commit/09e8770e78db9a7157e130e822557124ff32c5c1))
+* **deps:** update dependency nconf to ~0.13.0 ([#4127](https://github.com/manniwatch/manniwatch/issues/4127)) ([521e114](https://github.com/manniwatch/manniwatch/commit/521e114f9ffcd7387fc20a88aa59f7cb82519dc4))
+
 ## [0.30.1](https://github.com/manniwatch/manniwatch/compare/v0.30.0...v0.30.1) (2025-03-08)
 
 ### Bug Fixes

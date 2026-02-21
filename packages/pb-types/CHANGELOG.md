@@ -13,6 +13,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **deps:** update dependency protobufjs to ~7.4.0 ([#3997](https://github.com/manniwatch/manniwatch/issues/3997)) ([44e11d1](https://github.com/manniwatch/manniwatch/commit/44e11d143fdb146a0234085e804d8d9d0965f5a5))
 - fix dependencies and build system issues ([#3585](https://github.com/manniwatch/manniwatch/issues/3585)) ([21b9f36](https://github.com/manniwatch/manniwatch/commit/21b9f361934c137a013974d40e4e49d2bf6d9552))
 
+## [0.31.0](https://github.com/manniwatch/manniwatch/compare/pb-types-v0.30.0...pb-types-v0.31.0) (2026-02-21)
+
+
+### Features
+
+* **deps:** bump protobufjs to v8 ([#4157](https://github.com/manniwatch/manniwatch/issues/4157)) ([a9da0f8](https://github.com/manniwatch/manniwatch/commit/a9da0f851ecd998c76f3293ff39bea1398c26377))
+
+
+### Bug Fixes
+
+* **deps-dev:** bump eslint dependencies ([#4142](https://github.com/manniwatch/manniwatch/issues/4142)) ([2113839](https://github.com/manniwatch/manniwatch/commit/2113839c4f142a8a696fcb98b802dfb99b21b252))
+* **deps:** update dependency protobufjs to ~7.3.0 ([f1c7817](https://github.com/manniwatch/manniwatch/commit/f1c78172b17d24e3f858d16eef055a0104332309))
+* **deps:** update dependency protobufjs to ~7.3.2 ([badea48](https://github.com/manniwatch/manniwatch/commit/badea48a22154c5037ddb635304ea813cf3ed9db))
+* **deps:** update dependency protobufjs to ~7.4.0 ([#3997](https://github.com/manniwatch/manniwatch/issues/3997)) ([44e11d1](https://github.com/manniwatch/manniwatch/commit/44e11d143fdb146a0234085e804d8d9d0965f5a5))
+
 ## [0.29.16](https://github.com/manniwatch/manniwatch/compare/v0.29.15...v0.29.16) (2022-06-20)
 
 ### Bug Fixes

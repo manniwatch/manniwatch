@@ -16,6 +16,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **deps:** bump angular to ng 19 ([#4034](https://github.com/manniwatch/manniwatch/issues/4034)) ([6f272e4](https://github.com/manniwatch/manniwatch/commit/6f272e451ca61709684508424c3f03c4b1c8f441))
 
+## [0.31.0](https://github.com/manniwatch/manniwatch/compare/vehicle-cache-v0.30.0...vehicle-cache-v0.31.0) (2026-02-21)
+
+
+### Features
+
+* **deps:** bump angular to ng 19 ([#4034](https://github.com/manniwatch/manniwatch/issues/4034)) ([6f272e4](https://github.com/manniwatch/manniwatch/commit/6f272e451ca61709684508424c3f03c4b1c8f441))
+
+
+### Bug Fixes
+
+* **deps-dev:** bump eslint dependencies ([#4142](https://github.com/manniwatch/manniwatch/issues/4142)) ([2113839](https://github.com/manniwatch/manniwatch/commit/2113839c4f142a8a696fcb98b802dfb99b21b252))
+* force use typed imports ([#4187](https://github.com/manniwatch/manniwatch/issues/4187)) ([de53c59](https://github.com/manniwatch/manniwatch/commit/de53c59bc7f7fe45199f3cba3d88e57181aeb021))
+* use typed imports ([#4189](https://github.com/manniwatch/manniwatch/issues/4189)) ([e418c3a](https://github.com/manniwatch/manniwatch/commit/e418c3aee65fbe02811ac0bbe2ca90da7c3de060))
+
 ## [0.29.16](https://github.com/manniwatch/manniwatch/compare/v0.29.15...v0.29.16) (2022-06-20)
 
 ### Bug Fixes

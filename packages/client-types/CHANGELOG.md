@@ -10,6 +10,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **client-ng:** update ol dependencies ([#3639](https://github.com/manniwatch/manniwatch/issues/3639)) ([9d2358b](https://github.com/manniwatch/manniwatch/commit/9d2358b3231a9303a486f8df13a9e29cdaa2f363))
 - fix dependencies and build system issues ([#3585](https://github.com/manniwatch/manniwatch/issues/3585)) ([21b9f36](https://github.com/manniwatch/manniwatch/commit/21b9f361934c137a013974d40e4e49d2bf6d9552))
 
+## [0.30.1](https://github.com/manniwatch/manniwatch/compare/client-types-v0.30.0...client-types-v0.30.1) (2026-02-21)
+
+
+### Bug Fixes
+
+* **deps-dev:** bump eslint dependencies ([#4142](https://github.com/manniwatch/manniwatch/issues/4142)) ([2113839](https://github.com/manniwatch/manniwatch/commit/2113839c4f142a8a696fcb98b802dfb99b21b252))
+* **deps:** update dependency ol to v10 ([#3967](https://github.com/manniwatch/manniwatch/issues/3967)) ([7c2eaf6](https://github.com/manniwatch/manniwatch/commit/7c2eaf6d0cfedd5e5dda5e3915fdf89a38ca3381))
+* **deps:** update dependency ol to v9 ([#4066](https://github.com/manniwatch/manniwatch/issues/4066)) ([952366a](https://github.com/manniwatch/manniwatch/commit/952366a5d1a588637127c880c84f6e21628723ba))
+
+
+### Reverts
+
+* rollback state to b30397bd ([#4199](https://github.com/manniwatch/manniwatch/issues/4199)) ([a0d4041](https://github.com/manniwatch/manniwatch/commit/a0d404190cee4a7e321af828c76b06e8eea5750c))
+
 ## [0.29.16](https://github.com/manniwatch/manniwatch/compare/v0.29.15...v0.29.16) (2022-06-20)
 
 ### Bug Fixes
