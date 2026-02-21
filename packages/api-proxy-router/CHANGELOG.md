@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.31.0](https://github.com/manniwatch/manniwatch/compare/api-proxy-router-v0.30.1...api-proxy-router-v0.31.0) (2026-02-21)
+
+
+### Features
+
+* **api-proxy-router:** remove promiseToResponse ([#4012](https://github.com/manniwatch/manniwatch/issues/4012)) ([ce96721](https://github.com/manniwatch/manniwatch/commit/ce96721118c2fbc0ac960b93622bb53956af1caf))
+* **deps:** bump angular to ng 19 ([#4034](https://github.com/manniwatch/manniwatch/issues/4034)) ([6f272e4](https://github.com/manniwatch/manniwatch/commit/6f272e451ca61709684508424c3f03c4b1c8f441))
+* **deps:** update many deps ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+* **deps:** update many deps ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+* **deps:** update many deps ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+* **deps:** update many deps ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+* **deps:** update many deps ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+* **deps:** update many deps ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+* **deps:** update many deps ([#4089](https://github.com/manniwatch/manniwatch/issues/4089)) ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+* **deps:** update turbo dependencies ([#4001](https://github.com/manniwatch/manniwatch/issues/4001)) ([bbe9187](https://github.com/manniwatch/manniwatch/commit/bbe91873fcf0394154c47f72556b763dc352fabc))
+
+
+### Bug Fixes
+
+* **api-proxy-router:** fix breaking change in sinon19 ([#4050](https://github.com/manniwatch/manniwatch/issues/4050)) ([a118aa6](https://github.com/manniwatch/manniwatch/commit/a118aa6a6badd73e571b4af01babf711ed9fb9eb))
+* **api-proxy-router:** fix regression ([#4003](https://github.com/manniwatch/manniwatch/issues/4003)) ([3818dd0](https://github.com/manniwatch/manniwatch/commit/3818dd0bc0bda50e0ddfe2a59edebb9df96d3167))
+* **deps-dev:** bump eslint dependencies ([#4142](https://github.com/manniwatch/manniwatch/issues/4142)) ([2113839](https://github.com/manniwatch/manniwatch/commit/2113839c4f142a8a696fcb98b802dfb99b21b252))
+* **deps:** update dependency @donmahallem/turbo to v3 ([#3986](https://github.com/manniwatch/manniwatch/issues/3986)) ([0801cb6](https://github.com/manniwatch/manniwatch/commit/0801cb6f831a561324837607808666f4ffc63dd8))
+* **deps:** update dependency @donmahallem/turbo-validate-request to ~3.2.1 ([#4041](https://github.com/manniwatch/manniwatch/issues/4041)) ([0883fe3](https://github.com/manniwatch/manniwatch/commit/0883fe375a21bb090c0462bb408d7f4531b794e6))
+* **deps:** update dependency @donmahallem/turbo-validate-request to ~3.2.27 ([#4191](https://github.com/manniwatch/manniwatch/issues/4191)) ([d5e7f79](https://github.com/manniwatch/manniwatch/commit/d5e7f79465f7f2aba17459b34b3f448f73aa28f0))
+* **deps:** update dependency @donmahallem/turbo-validate-request to ~3.2.27 ([#4207](https://github.com/manniwatch/manniwatch/issues/4207)) ([aacc7f9](https://github.com/manniwatch/manniwatch/commit/aacc7f9d823491e2fa34bb8e15e8e997ceb9762f))
+* **deps:** update dependency ajv to v8.18.0 ([#4236](https://github.com/manniwatch/manniwatch/issues/4236)) ([bc803dc](https://github.com/manniwatch/manniwatch/commit/bc803dc3f752ee23d2c57de42143e672eb621810))
+* **deps:** update dependency async-mutex to ~0.5.0 ([6c40371](https://github.com/manniwatch/manniwatch/commit/6c4037140e6f733bc7a512df9da360c9f055cb7c))
+* **deps:** update dependency axios to v1.13.2 ([#4077](https://github.com/manniwatch/manniwatch/issues/4077)) ([14a8cdd](https://github.com/manniwatch/manniwatch/commit/14a8cdddfa9fa975ee0e64a76e7c6f0d8b7e58ac))
+* **deps:** update dependency axios to v1.13.3 ([#4159](https://github.com/manniwatch/manniwatch/issues/4159)) ([6ec2916](https://github.com/manniwatch/manniwatch/commit/6ec2916651ee6455a684353cc0d575ddc37ee79e))
+* **deps:** update dependency axios to v1.13.4 ([#4162](https://github.com/manniwatch/manniwatch/issues/4162)) ([90a3e3b](https://github.com/manniwatch/manniwatch/commit/90a3e3b8c48ec215cbb19f23fbc4306fcb019840))
+* **deps:** update dependency axios to v1.13.5 ([#4192](https://github.com/manniwatch/manniwatch/issues/4192)) ([7d025a1](https://github.com/manniwatch/manniwatch/commit/7d025a1c868c628502bb12f988b54ba8cfea1eeb))
+* **deps:** update dependency axios to v1.13.5 ([#4208](https://github.com/manniwatch/manniwatch/issues/4208)) ([f2b8605](https://github.com/manniwatch/manniwatch/commit/f2b8605a173d914a00091b7431c643aba28f83c1))
+* **deps:** update dependency express to v4.21.2 ([#3990](https://github.com/manniwatch/manniwatch/issues/3990)) ([9868d2f](https://github.com/manniwatch/manniwatch/commit/9868d2f4353c28609e8ae76ff2747efd30033322))
+* **deps:** update dependency express to v5 ([#4030](https://github.com/manniwatch/manniwatch/issues/4030)) ([2b22fca](https://github.com/manniwatch/manniwatch/commit/2b22fca33e66f588d7f21b6593e87df7207c474d))
+* **deps:** update dependency express to v5 ([#4154](https://github.com/manniwatch/manniwatch/issues/4154)) ([5cb0488](https://github.com/manniwatch/manniwatch/commit/5cb0488e75830205ff2d519581c96af300d29be8))
+* force use typed imports ([#4187](https://github.com/manniwatch/manniwatch/issues/4187)) ([de53c59](https://github.com/manniwatch/manniwatch/commit/de53c59bc7f7fe45199f3cba3d88e57181aeb021))
+
+
+### Reverts
+
+* rollback state to b30397bd ([#4199](https://github.com/manniwatch/manniwatch/issues/4199)) ([a0d4041](https://github.com/manniwatch/manniwatch/commit/a0d404190cee4a7e321af828c76b06e8eea5750c))
+
 ## [0.30.1](https://github.com/manniwatch/manniwatch/compare/v0.30.0...v0.30.1) (2025-03-08)
 
 ### Bug Fixes

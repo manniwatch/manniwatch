@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.31.0](https://github.com/manniwatch/manniwatch/compare/client-desktop-v0.30.1...client-desktop-v0.31.0) (2026-02-21)
+
+
+### Features
+
+* **deps:** update many deps ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+* **deps:** update many deps ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+* **deps:** update many deps ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+* **deps:** update many deps ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+* **deps:** update many deps ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+* **deps:** update many deps ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+* **deps:** update many deps ([#4089](https://github.com/manniwatch/manniwatch/issues/4089)) ([dc23fcb](https://github.com/manniwatch/manniwatch/commit/dc23fcbb8cea6924989bb4309e9706dc35c33aaa))
+
+
+### Bug Fixes
+
+* **client-desktop:** change how relectorn works ([#4045](https://github.com/manniwatch/manniwatch/issues/4045)) ([9e67c63](https://github.com/manniwatch/manniwatch/commit/9e67c63711c6b29210292f5618fa04e4793e212c))
+* **client-desktop:** fix prepublishScript ([809e8df](https://github.com/manniwatch/manniwatch/commit/809e8df5375ba2f694825432c883576dc3acae42))
+* **deps-dev:** bump eslint dependencies ([#4142](https://github.com/manniwatch/manniwatch/issues/4142)) ([2113839](https://github.com/manniwatch/manniwatch/commit/2113839c4f142a8a696fcb98b802dfb99b21b252))
+* **deps:** update dependency ajv to v8.18.0 ([#4236](https://github.com/manniwatch/manniwatch/issues/4236)) ([bc803dc](https://github.com/manniwatch/manniwatch/commit/bc803dc3f752ee23d2c57de42143e672eb621810))
+* **deps:** update dependency ajv-formats to v3 ([6ec3ae4](https://github.com/manniwatch/manniwatch/commit/6ec3ae4a79b4aa228d99510ae211a7b099e4e29f))
+* **deps:** update dependency commander to ~12.1.0 ([95583a1](https://github.com/manniwatch/manniwatch/commit/95583a1af829ab23859413ced21c9f61ec74a417))
+* **deps:** update dependency commander to ~14.0.3 ([#4173](https://github.com/manniwatch/manniwatch/issues/4173)) ([731d0b7](https://github.com/manniwatch/manniwatch/commit/731d0b7828cad5e32178b88c903e5c03d51b0df0))
+* **deps:** update dependency commander to v13 ([#4021](https://github.com/manniwatch/manniwatch/issues/4021)) ([3290eba](https://github.com/manniwatch/manniwatch/commit/3290ebaf2a315263ffeeb576be7712fd7efa8933))
+* **deps:** update dependency commander to v14 ([#4149](https://github.com/manniwatch/manniwatch/issues/4149)) ([5bbc0bf](https://github.com/manniwatch/manniwatch/commit/5bbc0bf3ca9da8b75b834d4f95c7afa8e682cd0c))
+* **deps:** update dependency electron to ~35.0.1 ([#4073](https://github.com/manniwatch/manniwatch/issues/4073)) ([8e4007a](https://github.com/manniwatch/manniwatch/commit/8e4007aa43adcc6de01961976cdfa904b0cf02d8))
+* **deps:** update dependency electron to ~35.7.5 ([#4132](https://github.com/manniwatch/manniwatch/issues/4132)) ([b1376cc](https://github.com/manniwatch/manniwatch/commit/b1376cc8c7ead892e64acacfb4fc4d94a422341b))
+* **deps:** update dependency electron to ~40.1.0 ([#4167](https://github.com/manniwatch/manniwatch/issues/4167)) ([88642bc](https://github.com/manniwatch/manniwatch/commit/88642bce1e6164308b6f00f3c74698ff6ab3dc1d))
+* **deps:** update dependency electron to ~40.2.1 ([#4198](https://github.com/manniwatch/manniwatch/issues/4198)) ([8fa0124](https://github.com/manniwatch/manniwatch/commit/8fa012469031fea239e8f2676db355d80fcdb626))
+* **deps:** update dependency electron to ~40.3.0 ([#4225](https://github.com/manniwatch/manniwatch/issues/4225)) ([138f0ad](https://github.com/manniwatch/manniwatch/commit/138f0ad7e2074cadfa11e29b34a79ba7fadf984d))
+* **deps:** update dependency electron to ~40.4.0 ([#4230](https://github.com/manniwatch/manniwatch/issues/4230)) ([057418e](https://github.com/manniwatch/manniwatch/commit/057418e0c3cc108c4fbe750f836ec0d1aa614bab))
+* **deps:** update dependency electron to ~40.4.1 ([#4235](https://github.com/manniwatch/manniwatch/issues/4235)) ([50d3701](https://github.com/manniwatch/manniwatch/commit/50d37012f0adedbc786ac70b4d9142ad5fa02b0c))
+* **deps:** update dependency electron to ~40.6.0 ([#4239](https://github.com/manniwatch/manniwatch/issues/4239)) ([2019f89](https://github.com/manniwatch/manniwatch/commit/2019f8977bac0fd6bd4872f86cbb5adb072d6fd8))
+* **deps:** update dependency electron to v24 ([#4024](https://github.com/manniwatch/manniwatch/issues/4024)) ([3c13df7](https://github.com/manniwatch/manniwatch/commit/3c13df783b6ffe267c91fe905b240a3bcff0764d))
+* **deps:** update dependency electron to v33 ([#4063](https://github.com/manniwatch/manniwatch/issues/4063)) ([205b23c](https://github.com/manniwatch/manniwatch/commit/205b23c9e862cd6c1400fb5e81e8e96dac8bf41f))
+* **deps:** update dependency electron to v35 ([#4065](https://github.com/manniwatch/manniwatch/issues/4065)) ([342dc7e](https://github.com/manniwatch/manniwatch/commit/342dc7ea6bf1723ba855644c59fc58ab592188a5))
+* **deps:** update dependency electron to v40 ([#4150](https://github.com/manniwatch/manniwatch/issues/4150)) ([8aec087](https://github.com/manniwatch/manniwatch/commit/8aec087fd10416b282c2b414e6ab0587dc75735a))
+* **deps:** update dependency ol to v10 ([#3967](https://github.com/manniwatch/manniwatch/issues/3967)) ([7c2eaf6](https://github.com/manniwatch/manniwatch/commit/7c2eaf6d0cfedd5e5dda5e3915fdf89a38ca3381))
+* **deps:** update dependency ol to v9 ([#4066](https://github.com/manniwatch/manniwatch/issues/4066)) ([952366a](https://github.com/manniwatch/manniwatch/commit/952366a5d1a588637127c880c84f6e21628723ba))
+
+
+### Reverts
+
+* rollback state to b30397bd ([#4199](https://github.com/manniwatch/manniwatch/issues/4199)) ([a0d4041](https://github.com/manniwatch/manniwatch/commit/a0d404190cee4a7e321af828c76b06e8eea5750c))
+
 ## [0.30.1](https://github.com/manniwatch/manniwatch/compare/v0.30.0...v0.30.1) (2025-03-08)
 
 ### Bug Fixes

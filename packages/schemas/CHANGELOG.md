@@ -9,6 +9,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - fix dependencies and build system issues ([#3585](https://github.com/manniwatch/manniwatch/issues/3585)) ([21b9f36](https://github.com/manniwatch/manniwatch/commit/21b9f361934c137a013974d40e4e49d2bf6d9552))
 
+## [0.30.1](https://github.com/manniwatch/manniwatch/compare/schemas-v0.30.0...schemas-v0.30.1) (2026-02-21)
+
+
+### Bug Fixes
+
+* **deps-dev:** bump eslint dependencies ([#4142](https://github.com/manniwatch/manniwatch/issues/4142)) ([2113839](https://github.com/manniwatch/manniwatch/commit/2113839c4f142a8a696fcb98b802dfb99b21b252))
+* **deps:** update dependency ajv to v8.18.0 ([#4236](https://github.com/manniwatch/manniwatch/issues/4236)) ([bc803dc](https://github.com/manniwatch/manniwatch/commit/bc803dc3f752ee23d2c57de42143e672eb621810))
+* force use typed imports ([#4187](https://github.com/manniwatch/manniwatch/issues/4187)) ([de53c59](https://github.com/manniwatch/manniwatch/commit/de53c59bc7f7fe45199f3cba3d88e57181aeb021))
+
 ## [0.29.16](https://github.com/manniwatch/manniwatch/compare/v0.29.15...v0.29.16) (2022-06-20)
 
 ### Bug Fixes
