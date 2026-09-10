@@ -6,7 +6,7 @@
         "@donmahallem/eslint-config": "2.3.378",
         "@donmahallem/rollup-config": "4.2.4",
         "@donmahallem/tslint-config": "0.6.1",
-        "@rollup/plugin-commonjs": "29.0.0",
+        "@rollup/plugin-commonjs": "29.0.3",
         "@rollup/plugin-json": "6.1.0",
         "@rollup/plugin-node-resolve": "16.0.3",
         "@rollup/plugin-replace": "6.0.3",
