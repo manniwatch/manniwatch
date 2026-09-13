@@ -89,7 +89,7 @@
         "@angular/compiler-cli": "21.2.23",
         "@angular/language-service": "21.2.23",
         "@angular/platform-server": "21.2.23",
-        "@compodoc/compodoc": "1.2.1",
+        "@compodoc/compodoc": "2.0.0",
         "@manniwatch/api-client": "^0.30.0",
         "@manniwatch/client-types": "^0.30.0",
         "@types/jasmine": "6.0.0",
