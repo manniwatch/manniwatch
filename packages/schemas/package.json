@@ -1,6 +1,6 @@
 {
     "name": "@manniwatch/schemas",
-    "version": "0.30.0",
+    "version": "0.30.1",
     "description": "An express api router used to proxy requests to the upstream server",
     "type": "module",
     "main": "./dist/index.js",
