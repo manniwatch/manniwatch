@@ -99,7 +99,7 @@
         "angular-eslint": "21.4.0",
         "apply-loader": "2.0.0",
         "codelyzer": "6.0.2",
-        "copy-webpack-plugin": "13.0.1",
+        "copy-webpack-plugin": "14.0.0",
         "eslint": "9.39.5",
         "express": "5.2.1",
         "jasmine-core": "6.3.0",
