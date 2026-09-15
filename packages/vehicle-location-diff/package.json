@@ -1,6 +1,6 @@
 {
     "name": "@manniwatch/vehicle-location-diff",
-    "version": "0.30.0",
+    "version": "0.30.1",
     "description": "Tool to calculate diff between vehicle location snapshots",
     "type": "module",
     "types": "./dist/index.d.ts",
